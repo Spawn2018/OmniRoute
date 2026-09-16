@@ -1014,6 +1014,10 @@ class InvalidHandoverSbarMark(DomainError):
     """N11: HITL przekazanie zmiany SBAR — nie drugi czat / nie auto SBAR."""
 
 
+class InvalidTripBillMark(DomainError):
+    """N2: HITL gotowość przejazdu do FV — nie SQL trips_to_bill / nie F1 live."""
+
+
 class InvalidL3GateMark(DomainError):
     """AI8.2: HITL checklista bramy L3 — nie silnik write / nie mutacja autonomy_level."""
 

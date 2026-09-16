@@ -139,6 +139,7 @@ from app.models.kpi_definition_mark import KpiDefinitionMark  # noqa: F401
 from app.models.margin_floor import MarginFloor  # noqa: F401
 from app.models.shipment_clone_mark import ShipmentCloneMark  # noqa: F401
 from app.models.handover_sbar_mark import HandoverSbarMark  # noqa: F401
+from app.models.trip_bill_mark import TripBillMark  # noqa: F401
 from app.models.model_feature_mark import ModelFeatureMark  # noqa: F401
 from app.models.automation_bias_mark import AutomationBiasMark  # noqa: F401
 from app.models.l3_gate_mark import L3GateMark  # noqa: F401

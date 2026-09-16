@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **530.0** N2 — HITL `trips_to_bill` (po T2+F1)
+**Następny:** **531.0** O6 leftover — HITL accept `carrier_quote` → `channel_quote` + inquiry `answered`
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -466,7 +466,7 @@ Pogłębienie żywych M-07/M-08 (`source_ref`), M-10, M-12, M-13, M-19, M-20, M-
 | **O3** | `carrier_inquiry` batch; statusy `queued`/`sent`/`answered`/`declined`; lane POL/POD | Plan → plaster | zamknięty (`docs/deltas/archived/136.0-carrier-inquiry-batch.md`) | Wskazanie wyceny w API, nie import serwisu. 1 / wielu / wszyscy |
 | **O4** | Checkboxy + default N z M-03; N× `mail_draft`; ranking SQL | Plan → plaster | zamknięty (`docs/deltas/archived/138.0-inquiry-mail-draft-batch.md`) | Send = S18 po S11. Zakaz auto-send. Graph HTTP leftover |
 | **O5** | `party_lane_scorecard` + szablon podpowiedzi z SQL | Plan → plaster | **delta 139.0 zaakceptowana** | `sample_size=0` i tak ma tekst. Nie LLM. Nie scoring osoby |
-| **O6** | `extraction_draft.draft_kind=carrier_quote` → HITL → `channel_quote` + `answered` | Plan → plaster | po O2 | ExtractionService nie zapisuje stawek |
+| **O6** | `extraction_draft.draft_kind=carrier_quote` → HITL → `channel_quote` + `answered` | Plan → plaster | **delta 531.0 zaakceptowana** ([open/531.0-carrier-quote-hitl.md](deltas/open/531.0-carrier-quote-hitl.md)); 140.0 = kind+quote; leftover = inquiry `answered` | ExtractionService nie zapisuje stawek |
 | **O7** | Kraj ISO na liście agentów (`party.country_code` już jest) + filtr | Plan → plaster | z O4 | Holandia na SHA→RTM. Nie druga kolumna kraju |
 | **O8** | Buy-desk: group-by edytowalny (party/kraj/wątek/status) + saved view | Plan → plaster | po O4 | Nie nowy czat. Audyt [incoterms-booking-customs-ux.md](analysis/incoterms-booking-customs-ux.md) |
 | **N5** | Cisza agenta: SLA `no_reply_after` (U4 dni robocze) → notice | Plan → plaster | zamknięty (`docs/deltas/archived/143.0-inquiry-no-reply.md`) | nie auto-send ponaglenia |
@@ -559,7 +559,7 @@ Karta: [karty-pol-g2-tender.md](analysis/karty-pol-g2-tender.md). P6 = oferty od
 |---|---|---|---|
 | F1 | KSeF live FA(3) + VAT matrix N12 | po S35 | mandat 2026; nie LLM VAT; dump `04b`: KSeF/JPK nie publiczne u TMS top-10 — leftover fiskalne PL nasze |
 | F2–F4 | skonto, noty, CAMT+HITL + period lock N13 | zamknięty HITL F2 katalog ([189.0](deltas/archived/189.0-cash-discount.md)); leftover Decimal / F3 noty / F4 CAMT | karta [karty-pol-fala-f.md](analysis/karty-pol-fala-f.md) |
-| **N2** | `trips_to_bill` | po T2+F1 | |
+| **N2** | `trips_to_bill` | zamknięty HITL ([530.0](deltas/archived/530.0-trip-bill-mark.md); leftover SQL trips×charge · F1 live) | po T2+F1 | leftover SQL trips×charge · F1 live |
 | F5 / F7 | diety / faktoring | TO_VERIFY | nie LLM diet |
 | F6 | windykacja + blokada zlecenia | po T2 | S11; zakaz auto art. 22 |
 | **M14b** | Szkic oceny kredytowej | po M-14 | LLM nie liczy limitu |

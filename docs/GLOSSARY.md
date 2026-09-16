@@ -116,7 +116,7 @@ kolumn. Nie 468.0.
 | skrót hasła | password_hash | argon2id; nigdy plaintext w API |
 | pochodzenie | source_ref | obowiązkowe |
 | zastąpiona przez | superseded_by | stary wiersz wskazuje nowy; kwoty się nie nadpisuje |
-| szkic ekstrakcji | extraction_draft | HITL przed zapisem domeny; 447.0 PATCH; 448.0 revision; 449.0 `extract_path`; 503.0 `history` |
+| szkic ekstrakcji | extraction_draft | HITL przed zapisem domeny; `draft_kind` `rate_line`\|`carrier_quote`\|`tender_rfp`; 140.0 accept quote→`channel_quote`; 531.0 plan leftover→inquiry `answered`; 447.0 PATCH; 448.0 revision; 449.0 `extract_path`; 503.0 `history` |
 | ścieżka ekstrakcji | extract_path | `text` albo `image`; etykieta, nie live vision |
 | ramka kandydata | bbox_text | dana na kandydacie; nie float; nie rysunek PDF |
 | pewność kandydata | confidence_text | dana na kandydacie; nie float; nie próg auto-accept |
@@ -250,6 +250,7 @@ kolumn. Nie 468.0.
 | podłoga marży | margin_floor | N6; HITL Decimal DONE 527.0; leftover 409/S11 |
 | intencja klonu zlecenia | shipment_clone_mark | N9; HITL DONE 528.0; leftover copy/U1 / similar SQL |
 | przekazanie zmiany SBAR | handover_sbar_mark | N11; HITL DONE 529.0; leftover notatka S/B/A/R · T6 bind |
+| gotowość przejazdu do FV | trip_bill_mark | N2; HITL DONE 530.0; leftover SQL trips_to_bill · F1 live |
 | ETA fizyczne | eta_physical | V2 HITL 194.0 na `stop`; GPS/korek leftover; nie jedyny znacznik |
 | ETA prawne | eta_legal | V2 HITL 194.0 na `stop`; zakaz jazdy/tacho leftover |
 | obserwacja pogody | weather_observation | V2 HITL 195.0; Open-Meteo/geometria leftover; nie ETA |

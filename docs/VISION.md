@@ -113,7 +113,10 @@ zostają w badaniach `04`).
 | 2026-09-16 | N9 plan (**528.0**): HITL `shipment_clone_mark` last_similar|manual_pick|other (`REQUIREMENT`). Auto-copy / drugi SoR `REJECTED`. |
 | 2026-09-16 | **528.0** `shipment_clone_mark` w kodzie (`CONFIRMED`, git). N9 HITL intencja DONE. Następny = **N11** handover SBAR (`REQUIREMENT`). Copy/U1 leftover. |
 | 2026-09-16 | N11 plan (**529.0**): HITL `handover_sbar_mark` situation\|background\|assessment\|recommendation (`REQUIREMENT`). Drugi czat / auto SBAR z LLM `REJECTED`. |
-| 2026-09-16 | **529.0** `handover_sbar_mark` w kodzie (`CONFIRMED`, git). N11 HITL DONE. Następny = kolejne Q z PLAN (`REQUIREMENT`). Notatka S/B/A/R leftover. |
+| 2026-09-16 | **529.0** `handover_sbar_mark` w kodzie (`CONFIRMED`, git). N11 HITL DONE. Następny = **N2** `trip_bill_mark` (`REQUIREMENT`). Notatka S/B/A/R leftover. |
+| 2026-09-16 | N2 plan (**530.0**): HITL `trip_bill_mark` ready\|held\|billed (`REQUIREMENT`). SQL trips×charge / F1 live `REJECTED` na tym wierszu. |
+| 2026-09-16 | **530.0** `trip_bill_mark` w kodzie (`CONFIRMED`, git po push). N2 HITL DONE. Leftover SQL `trips_to_bill` · F1 live. Następny = **O6** carrier_quote HITL (`REQUIREMENT`). |
+| 2026-09-16 | Plan **531.0** O6 leftover: HITL accept `carrier_quote` → `channel_quote` + inquiry `answered` (`REQUIREMENT`). 140.0 już ma kind+quote (`CONFIRMED`). ExtractionService zapis ofert `REJECTED`. Auto-accept / live HTTP / float / fuzzy match inquiry `REJECTED`. |
 | 2026-09-13 | AI3.4 plan (**451.0**): parser `xlsx_sheet` stdlib. `openpyxl` `REJECTED`. `.xls` leftover. |
 | 2026-09-13 | **451.0** `xlsx_sheet` w kodzie (`CONFIRMED`, git). Następny = **AI4.0** FK `plan_snapshot` (`REQUIREMENT`). `.xls` leftover. |
 | 2026-09-13 | AI4.0 plan (**452.0**): FK złożone RESTRICT. CASCADE `REJECTED`. What-if `REJECTED` na tym wierszu. |
