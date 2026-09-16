@@ -774,6 +774,30 @@ Dump `03` / `04b`: WMS i BR6.2 evidenced; p44/LSP44 = dwie skóry jeden OpenAPI;
 
 Zdublowane listy Fal 2–11 (M-xx): [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md). Status żywy = tabela Fala 1 + katalog M-01…M-70.
 
+### Fala SH-R16 — Rejestr wdrożenia 16 IX (fabryka + park)
+
+**Źródło:** 20 plików `D:\OMNIROUTE-badania` (2026-09-16). **Kanon pokrycia:** [rejestr-wdrozenia-16-ix.md](ops/rejestr-wdrozenia-16-ix.md) (158× R16, 20/20). Promocja: jawne polecenie operatora przy `/noc` stop.
+
+**Nie** zastępuje pinu **2026-09-08c**. `/noc`: batch **SH-R16-*** z CURRENT, potem **527.0+**.
+
+| ID | Co | Tryb | Status | Poza / warunek |
+|---|---|---|---|---|
+| **SH-R16-0** | Rejestr + ten wiersz + CURRENT | docs | DONE 2026-09-16 | nie kod 527.0 |
+| **SH-R16-1** | Error-budget fabryki | docs | DONE (`ops/error-budget-factory.md`) | nie SLO tenanta |
+| **SH-R16-2** | Karta PM-FAC W38 | docs | DONE (`_knowledge/.../pm-fac-20260916.md`) | nie nowy OS |
+| **SH-R16-3** | Szablony triggerowe | docs | DONE (`ops/szablony/`) | wypełniaj przy zdarzeniu |
+| **SH-R16-4** | Leftover **UXCL-L1** eventy extract-accept + privacy | leftover | czeka | po batch NOW; nie scoring |
+| **SH-R16-5** | Leftover **AI3-payload** sygnał uczenia extractu | leftover | czeka | żywy OpenAI CI = park |
+| **SH-R16-6** | Audit GH Actions permissions / `pull_request_target` | chore | DONE 2026-09-16 | brak `pull_request_target`; codeql/pr-nudge `contents: read`; gate report-failure = write uzasadnione |
+| **SH-R16-7** | Wiersz `factory_ai_spend` w WBR | docs | DONE (szablon WBR) | CEO wkleja $ |
+| **UXCL-L1** | Instrumentacja jobu extract-accept | Plan→plaster | park→CURRENT | L0 privacy TAK; D2 16 IX akceptuję |
+| **AI3-payload** | Jedno payload / delta AI vs człowiek | Plan→plaster | park→CURRENT | SH-R16-5 |
+| **Plat-HD-flow** | Obieg ticket→owner | Plan→plaster | park | G0+G1 + D2 owner |
+| **G0-SH** | Host/IdP/CF (`22`/`23`) | — | park | klient → PREMORT→PRR→LAUNCH |
+| **SBOM / attestation / EAA / CRA / hire-human** | GIGANT L2–L3 | — | park | rejestr §1.3 |
+
+REJECT rejestr §1.4 = **nigdy** (nie Q).
+
 ### Parked (w katalogu, nie w kolejce aktywnej)
 
 | ID | Dlaczego nie teraz | Kiedy |
@@ -785,6 +809,7 @@ Zdublowane listy Fal 2–11 (M-xx): [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md). 
 | **Portale F10** | Brak IdP | **S55** po **S53** |
 | **M-04 SSO** | OpenFGA hello ≠ IdP | Razem z Auth0 **S53** |
 | **M-03 reszta** | Żyje `default_currency` | **S8** (numeracja/szablon), nie zamiast Q-E |
+| **SH-R16 G0 / SBOM / EAA / CRA / hire** | Rejestr 16 IX §1.3 | [rejestr-wdrozenia-16-ix.md](ops/rejestr-wdrozenia-16-ix.md) |
 
 **WIP=1.** Po plasterze: [docs/ops/post-plaster.md](ops/post-plaster.md), PROGRESS, CURRENT = następne Q, push, **nowa rozmowa**. Nie startuj kolejnego Q przy niepushniętym zakresie.
 

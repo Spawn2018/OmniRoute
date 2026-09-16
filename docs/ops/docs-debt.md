@@ -262,6 +262,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 
 - **OS-1 (fabryka, poza osią Q/S, open):** [delta](../deltas/open/OS-1-fabryka-uczenie-i-automacje.md) · [playbook](multitask-playbook.md) · [automations.md](automations.md). E1 na `main` (a6ba742). E3 + zamek drzewa + karty 006–008/002–003 + `.cursorignore` `_source` = `2bfa483`. **Kolizja 2026-09-02:** commity fabryki weszły pod plaster 66.0 — nie przepisywać historii 66.0. Leftover: D1/D3/D4 wyłączone; promptfoo `synth://` echo (B3). E2 i monitoring = OS-2.
 
+- **SH-R16 (2026-09-16):** [rejestr-wdrozenia-16-ix.md](rejestr-wdrozenia-16-ix.md) — 20/20 plików badań. DONE: error-budget, szablony, karta PM-FAC, WBR FinOps. Czeka: SH-R16-6 Actions audit; leftover UXCL-L1 / AI3-payload. Park: G0/SBOM/EAA/CRA/hire. Nie oś Q produktu.
+
 - **63.0 Q-E4 DONE:** STRIDE tenant+HITL w `docs/ops/threat-model-tenant-hitl.md`. CodeQL workflow (python + JS/TS) poza `just gate`. Pierwszy run: analiza OK, upload SARIF padł („Code scanning is not enabled”). `upload: never` — leftover GHAS, nie DoD.
 - **62.0 Q-E3 DONE:** how-to `docs/operator/kontrahent.md` i `katalogi.md`; C4 context+container w ARCHITECTURE. Nie 70 stubów. Nie how-to tablic-odczytów.
 - **61.0 Q-E2 DONE:** testy jadą przez `alembic upgrade head` na `omniroute_test` (`ALEMBIC_DATABASE_URL`). Indeks `ix_rate_line_current_charge_code` w EXPLAIN. `rate_line` = 0 wierszy — p95 50k = N/A ([quote-budget.md](quote-budget.md)). Nie seed. Nie k6.

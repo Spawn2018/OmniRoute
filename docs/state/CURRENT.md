@@ -1,6 +1,6 @@
 ﻿# Bieżący focus
 
-**Faza:** P0 leftover + pełna oś pinu 2026-09-08c (Luki i ulepszenia)
+**Faza:** P0 leftover + pełna oś pinu 2026-09-08c (po Rejestrze 16 IX)
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
@@ -8,25 +8,23 @@
 
 **Etap:** Plan — delta **527.0** zaakceptowana; wolno `/plaster`
 
-**Noc:** **stop** (operator `/noc stop` 2026-09-16T02:56+02). `NOC-LIVE` = stop. Nie wznawiaj `/noc` z tej karty.
+**Noc:** **stop**. Rejestr 16 IX batch NOW **DONE** (SH-R16-0…7). Wolno `/noc 7` → start od **527.0**.
 
-**Miejsce pracy:** produkt = to repo + GitHub. `D:\OMNIROUTE-badania` = surowiec. Promocja (plan/kanon/agent/kontrakt) **tylko** po stopie `/noc` **i** jawnym poleceniu.
+**Miejsce pracy:** produkt = to repo + GitHub. Badania = surowiec. Kanon pokrycia SH: [rejestr-wdrozenia-16-ix.md](../ops/rejestr-wdrozenia-16-ix.md).
 
 **Następny:** **527.0** N6 — HITL `margin_floor` Decimal (para UN/LOCODE; nie 409 w tym plasterze)
 
-**Park:** live ingest / 22 dostępy bez bramy · live train AI5.1 · SQL alokacji / TCM · SQL grafu / EBITDA · Graph live · Expo/EAS · GPS live poll · unwrap umów · live SMEO HTTP · wycena zapasu SQL · FK PO · live giełda HTTP · live WMS HTTP · live RFID HTTP · live zastaw · N8 / T8 · SQL line impact / EBITDA · BR2.3/BR6.3 Expo · auto-fix bez owner · Mob Expo · L3 write · silnik porównania stylu · silnik auto-zejścia · HubSpot live · Alpega live · cold-send CRM · auto-award SQL · live vision · żywy OpenAI w CI · DocLayNet · wiring Instructor (`07`) · U-art50 UI · wzór KPI egzekucja · 409 margin_floor. Nie otwieraj AI0.
+**Park:** UXCL-L1 eventy · AI3-payload · Plat-HD-flow · G0 host/IdP · SBOM/attestation · EAA/CRA · hire-human · live ingest / 22 dostępy · live train · SQL alokacji/TCM/graf/EBITDA · Graph live · Expo · GPS · unwrap · SMEO · WMS/RFID · N8/T8 · auto-award · L3 write · U-art50 · 409 margin_floor · … (pełna lista w rejestrze §1.3 + poprzedni Park). Nie AI0.
 
 **Spec (jedyna na sesję):** [docs/deltas/open/527.0-margin-floor.md](../deltas/open/527.0-margin-floor.md)
 
-**Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — jedyny plan. Wizja: [VISION.md](../VISION.md).
+**Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) — § Fala SH-R16 + oś pinu. Wizja: [VISION.md](../VISION.md).
 
-**Uczciwość:** HITL zostaje. LLM nie liczy. `charge` = marża. **443.0–526.0** w kodzie.
+**Uczciwość:** HITL. LLM nie liczy. `charge` = marża. **443.0–526.0** w kodzie. SH-R16: 20/20 zmapowane; leftover produktowe w PLAN.
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-15:** Plan **527.0** zaakceptowany (`/noc 7`) — HITL `margin_floor` Decimal; 409 leftover.
-**2026-09-15:** Plaster **526.0** zamknięty (`/noc 7`) — HITL `kpi_definition_mark`; wzór KPI leftover.
-**2026-09-15:** Plan **526.0** zaakceptowany (`/noc 7`) — HITL `kpi_definition_mark`; bez wzoru z modelu.
-**2026-09-15:** Plaster **525.0** zamknięty (`/noc 7`) — HITL `cfo_narrative_mark`; silnik narracji leftover.
-**2026-09-15:** Plan **525.0** zaakceptowany (`/noc 7`) — HITL `cfo_narrative_mark`; bez silnika narracji.
-**2026-09-15:** Plaster **524.0** zamknięty (`/noc 7`) — HITL `model_feature_mark`; live train leftover.
+**2026-09-16:** Rejestr wdrożenia 16 IX — promocja 20 plików → PLAN/ops; batch NOW DONE; następny **527.0**.
+**2026-09-16:** `/noc stop` 02:56+02.
+**2026-09-15:** Plan **527.0** zaakceptowany — HITL `margin_floor`; 409 leftover.
+**2026-09-15:** Plaster **526.0** zamknięty — HITL `kpi_definition_mark`.

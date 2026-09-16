@@ -2,7 +2,7 @@
 
 Operator odpalasz w Cursorze, tryb Agent: **`/noc 7`** (albo `/noc 8`). To jest pętla do **najbliższej** takiej godziny czasu polskiego. Komenda bez godziny nie startuje. **`/noc stop`** kończy strażnika.
 
-To nie jest drugi plan produktu. Kolejka: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Oś leftoverów `/noc`. Tablica: [CURRENT.md](../state/CURRENT.md). Numer plastra **nie** jest wpisany w `/noc` — agent zawsze czyta CURRENT. Po Fali E: **Fala S** (pogłębienia). `/plaster` przy Etap Refaktor = stop (`/refaktor`).
+To nie jest drugi plan produktu. Kolejka: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Oś leftoverów `/noc` **oraz** § Fala SH-R16 gdy CURRENT wskazuje `SH-R16-*` / leftover z [rejestr-wdrozenia-16-ix.md](rejestr-wdrozenia-16-ix.md). Tablica: [CURRENT.md](../state/CURRENT.md). Numer plastra **nie** jest wpisany w `/noc` — agent zawsze czyta CURRENT. Po Fali E: **Fala S** (pogłębienia). `/plaster` przy Etap Refaktor = stop (`/refaktor`).
 
 **Dwa foldery.** Gdy ta pętla **chodzi** (`NOC-LIVE` = `busy`): commit/push/CI = OmniRoute + GitHub; nowe notatki = `D:\OMNIROUTE-badania`. **Zakaz** promocji badań do kanonu / skilli / kontraktów w trakcie nocy. Gdy noc **stoi**: produkt zostaje w tym repo; przeniesienie z badań (plan, kanon, agent, kontrakt) **tylko** po jawnym poleceniu operatora. VISION D.8.
 

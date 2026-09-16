@@ -223,6 +223,7 @@ zostają w badaniach `04`).
 | 2026-09-13 | D.8: badania ≠ drugi kanon. C.4 mapa leftover. AI3 leftover z `07`. C.3 Grupa 6: `crm_opportunity` jest. E.3 Q11 zamknięte. Nie 468.0. |
 | 2026-09-16 | D.8: przy `/noc` busy badania = schowek pomysłów/wizji (`REQUIREMENT`). Przy idle/stop praca = repo OmniRoute + GitHub (`REQUIREMENT`). Badania nadal ≠ drugi kanon (`CONFIRMED`). Nie 527.0 z tej karty. |
 | 2026-09-16 | D.8: badania = surowiec na nowe plany/kanony/agentów/kontrakty w repo — **tylko** po stopie `/noc` **i** jawnym poleceniu człowieka (`REQUIREMENT`). Sam idle ≠ promocja. [WYCOFANE 2026-09-16: „idle = przenieś pakiet SH do repo”.] |
+| 2026-09-16 | **Rejestr wdrożenia 16 IX:** 20 plików badań → kanon kolejki [rejestr-wdrozenia-16-ix.md](ops/rejestr-wdrozenia-16-ix.md) + PLAN § Fala SH-R16 (`REQUIREMENT` operatora: 100% pokrycie; park z warunkiem). Pin 2026-09-08c bez zmian. Nie AI0. |
 
 ---
 
@@ -1537,7 +1538,12 @@ Do `docs/VISION.md` i `docs/PLAN-REALIZACJA.md` wchodzi: `REQUIREMENT` /
 wchodzi: zrzut czatu (`99`), eseje vendorów (`03`/`04`/`04b` — zostaje
 skrót w A.2), playbook sprzedaży (`02`), metodyka modeli (`05`/`06`),
 szkice CURRENT (`14`), kolejka `12-FALA-AI-KOLEJKA.md` (SUPERSEDED),
-książka Murphy jako BC (`18`), pakiet SH (`22`/`23`/`24` / `*-OS.md`).
+książka Murphy jako BC (`18`).
+
+**Wyjątek 2026-09-16 (jawne polecenie):** pakiet SH z badań (20 plików
+16 IX) → kanon kolejki fabryki [ops/rejestr-wdrozenia-16-ix.md](../ops/rejestr-wdrozenia-16-ix.md)
++ PLAN § Fala SH-R16. Eseje `*-OS.md` / `22`–`24` **nie** są drugim CURRENT;
+są **zmapowane** (DONE/NOW/PARK/REJECT). `/noc` nie wczytuje surowca — czyta rejestr + CURRENT.
 
 **22 dostępy P0** z C.1 = katalog `09`/`10`, pierwszy ingest = **AI5.0**,
 nie 22 plastry. Zero live HTTP, dopóki CURRENT nie wskaże AI5.
