@@ -16,11 +16,11 @@ Skopiuj **wszystkie** wiersze. Nie skracaj do skuteczność / szybkość / dług
 
 | Pytanie | Werdykt | Notatka |
 |---|---|---|
-| Skuteczność | PRZESZŁO / NIE / STUB | kryteria delty vs hello/echo/no-op |
+| Skuteczność | PRZESZŁO / NIE / STUB | kryteria delty vs hello/echo/no-op. PRZESZŁO tylko gdy `gh` workflow `gate` na SHA close = `success`; `cancelled` ≠ zielone |
 | Szybkość | N/A ten plaster / PRZESZŁO / NIE | tylko ścieżki z budżetu w AGENTS.md; inaczej N/A |
 | SQL | N/A / EXPLAIN / leftover | nowy albo zmieniony SELECT/INSERT/UPDATE/resolve: `EXPLAIN ANALYZE` albo leftover z powodem. Brak zapytania w diffie = N/A |
 | N+1 | OK / 1–3 poprawki / leftover | zakaz pętli z zapytaniem w diffie. Jest `for` + `session` / `execute` / `fetch` — wyciąć albo leftover |
-| Dług / człowiek | OK / 1–3 poprawki / leftover | `just complexity` + `just dup` na plikach z `git diff`. Komentarz tylko *dlaczego*. Trzecie powtórzenie wycięte albo leftover. Brak nowej warstwy z jedną implementacją |
+| Dług / człowiek | OK / 1–3 poprawki / leftover | `just complexity` + `just dup` na plikach z `git diff`. Komentarz tylko *dlaczego* (klasy: no-slop — prawo / invariant / odrzucona oczywistość / park). Trzecie powtórzenie wycięte albo leftover. Brak nowej warstwy z jedną implementacją |
 | Proza operatora | N/A / 5–15 zdań / leftover | tylko gdy plaster dał **job zapisu** (nie panel-odczyt cudzej tabeli). Brak `docs/operator/` = leftover z „dlaczego nie”, nie 70 stubów |
 | Docs/OS | PRZESZŁO / NIE | CURRENT, potem `just docs`; spec z CURRENT; skill jeśli dotyczy |
 | Pushy do zielonego | liczba / N/A | agent z `gh run list` albo N/A; **nie** job operatora |

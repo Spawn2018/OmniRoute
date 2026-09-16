@@ -17,6 +17,7 @@ ZAKAZANE BEZWZGLĘDNIE:
 
 WYMAGANE:
 - Komentarz uzasadnia decyzję: `# NBP D-1 roboczy — wymóg ustawy o VAT art. 31a`
+- Klasy komentarza (gdy nazwa i typ nie niosą decyzji): prawo/urząd; invariant tenanta (RLS); odrzucona oczywistość (leftover w spec, nie w każdym wierszu); park CURRENT. Inaczej — brak komentarza.
 - Nazwy z GLOSSARY.md: chargeable_weight, nie calc_weight
 - Wczesne wyjścia zamiast zagnieżdżeń
 - Jedna funkcja = jedna odpowiedzialność

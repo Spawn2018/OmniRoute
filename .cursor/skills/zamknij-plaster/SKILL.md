@@ -18,6 +18,6 @@ description: Zamyka plaster, archiwizuje delta-spec, przygotowuje następną roz
 8d. Zmiana `AGENTS.md` / `GROUNDING.md` / `.cursor/rules/*` bez przepisanego baseline zawsze daje czerwony CI (6 z 7 runów #79-#88). Przy takiej zmianie: `python scripts/quality/agentlint.py --write` + `scripts/quality/agentlint.baseline.json` w tym samym commicie. Sprawdzenie: `just meta-gate` (ok. 1 s).
 8e. `python scripts/quality/factory_cycle.py --close` — styl slopu, bench, karta z powtórzonych czerwonych CI, podłoga w górę / sufit funkcji w dół. `just meta-gate` łapie OS-3 (test / how-to / delta) i OS-4 (`craft-style`). Operator nie redaguje. **Nie** dopisuj zasad do AGENTS. **Nie** ruszaj GROUNDING.
 8f. `just meta-gate` — jeśli C2 pada na kontrakcie: **osobny** commit higieny cytatu + `agentlint.py --write`. To nie jest Auto-AGENTS. Zero nowych zasad.
-9. Commit + push: `feat(M-xx): opis [plaster id]` — **dopiero potem** wolno startować kolejny plaster. `git push --no-verify` tylko z powodem wpisanym do `docs/ops/docs-debt.md`
+9. Commit + push: `feat(M-xx): opis [plaster id]` — **dopiero potem** wolno startować kolejny plaster. `git push --no-verify` tylko z powodem wpisanym do `docs/ops/docs-debt.md`. PRZESZŁO / następny cykl tylko gdy `gh` workflow `gate` na SHA close = `success`; `cancelled` ≠ zielone.
 10. **Nowa rozmowa Cursor** — nie kontynuuj w tym wątku.
     **Wyjątek `/noc`:** nie nowa rozmowa — wróć do pętli albo napisz raport (`docs/ops/nocna-zmiana.md`).

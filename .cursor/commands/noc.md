@@ -42,7 +42,7 @@ Czytaj CURRENT + kolejkę. Leftover HITL/SQL z **Następny** = praca, nie skip. 
 
 ### Close → commit → push (twarda kolejność)
 
-1. `python scripts/quality/factory_cycle.py --close` — exit 0.
+1. `python scripts/quality/factory_cycle.py --close` — exit 0. PRZESZŁO / następny cykl tylko przy `gate=success` na SHA; `cancelled` ≠ zielone.
 2. Istnieje `docs/_bench/cases/<ID>-*.md` dla plastra z CURRENT; plik **w tym samym commicie** co zamknięcie. Brak bench = **zakaz** `git push`.
 3. Commit. Dopiero potem push:
    `powershell -ExecutionPolicy Bypass -File scripts/git-push-main.ps1`

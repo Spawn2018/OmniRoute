@@ -32,6 +32,8 @@ Planowanie zostaje (delta, zakres, testy zanim kod). Znika tylko czekanie na kli
 
 Bez `docs/_bench/cases/<ID>-*.md` dla plastra z CURRENT **zakaz** `git push` (pre-push padnie na `test_live_current_has_a_bench_case`). Kolejność: `factory_cycle.py --close` → commit z benchem → `powershell -File scripts/git-push-main.ps1` (nie `git push 2>&1 | Select-Object`). Gate/push: limit **20 min**; po timeoutie ubij osierocone `python`/`git` w **osobnym** oknie PowerShell, nie dokładaj wiszących shelli w Cursorze. `just test-unit` nie drukuje tabeli coverage w terminalu (próg 80% zostaje).
 
+PRZESZŁO i następny cykl wolno tylko gdy workflow `gate` na SHA close ma `conclusion=success`. `cancelled` nie jest deployem i nie jest zielone. Nie zapisuj PRZESZŁO w PROGRESS, gdy `gh` na tym SHA jest inny niż success. Czekaj na success zanim kolejny plaster. `cancel-in-progress` kasuje poprzedni run — to nie jest pass.
+
 ### Strażnik (`loop-noc`)
 
 Co 15 minut (`/loop`, nazwa `loop-noc`) **w tej samej sesji Agent** co `/noc` — nie fire-and-forget `Task` z czatu-rodzica, który kończy turę.

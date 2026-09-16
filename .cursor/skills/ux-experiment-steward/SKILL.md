@@ -11,13 +11,13 @@ Kotwica: Kohavi et al., *Trustworthy Online Controlled Experiments* (2020). HEAR
 
 ## Wejście
 
-1. Signal Card (`szablony/SIGNAL.md` w badaniach; po instalacji — kopia w sesji firmy) albo jedno zdanie hipotezy od człowieka.
+1. Signal Card (`D:/OMNIROUTE-badania/szablony/SIGNAL.md`) albo jedno zdanie hipotezy od człowieka.
 2. CURRENT + NOC-LIVE (busy → tylko karta w badaniach).
 3. Stan flag (jeśli PostHog już jest). Brak flag = nie wymyślaj platformy.
 
 ## Kroki
 
-1. Wypisz Experiment Card 1 strona (`szablony/EXPERIMENT.md`). Brak primary albo guardrail = **stop**, nie kod.
+1. Wypisz Experiment Card 1 strona (`D:/OMNIROUTE-badania/szablony/EXPERIMENT.md`). Brak primary albo guardrail = **stop**, nie kod.
 2. Oznacz osobno:
    - `flag_*` — release / kill-switch
    - `exp_*` — nauka (hipoteza, stop)

@@ -12,7 +12,7 @@ Jeden job: **wolno mierzyć** i **jak nazwać event**, zanim ktokolwiek doda Pos
 1. `docs/state/CURRENT.md`
 2. Lokalne `docs/state/NOC-LIVE.md` — jeśli `busy` / trwa `/noc`: **zero edycji** `frontend/` i `docs/ops` w OmniRoute. Wolno karta w `D:\OMNIROUTE-badania`.
 3. Job: **extract-accept**, dopóki inbox D2 nie wskaże inaczej. Nie drugi job (`charge`) w tym samym cyklu.
-4. `PROC-UXCL.md` § P2. Nie wczytuj `22`/`23`/`24` w sesji plastra.
+4. `docs/ops/ux-continuous-loop.md` § P2. Nie wczytuj `22`/`23`/`24` w sesji plastra.
 
 ## Kroki
 
