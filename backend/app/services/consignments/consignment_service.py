@@ -7,6 +7,7 @@ from app.domain.consignment import (
     require_consignment_shipment_id,
     require_consignment_source_ref,
 )
+from app.domain.errors import ResourceNotFound
 from app.models.consignment import Consignment
 from app.repositories.consignments.consignment_repository import ConsignmentRepository
 
@@ -17,6 +18,12 @@ class ConsignmentService:
 
     async def list_parcels(self) -> list[Consignment]:
         return await self._rows.list_all()
+
+    async def get_parcel(self, consignment_id: UUID) -> Consignment:
+        row = await self._rows.get_by_id(consignment_id)
+        if row is None:
+            raise ResourceNotFound("nieznana przesyłka")
+        return row
 
     async def record_parcel(
         self,

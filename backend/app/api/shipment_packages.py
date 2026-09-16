@@ -6,8 +6,12 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.deps import get_current_identity, require_permission, require_tenant_session
 from app.core.session_token import SessionIdentity
-from app.domain.shipment_package import require_stop_on_shipment
+from app.domain.shipment_package import (
+    require_consignment_on_shipment,
+    require_stop_on_shipment,
+)
 from app.models.shipment_package import ShipmentPackage
+from app.services.consignments.consignment_service import ConsignmentService
 from app.services.shipment_packages.shipment_package_service import ShipmentPackageService
 from app.services.shipments.shipment_service import ShipmentService
 from app.services.stops.stop_service import StopService
@@ -26,6 +30,7 @@ class ShipmentPackageCreate(BaseModel):
     package_status: str
     scan_token: str
     source_ref: str
+    consignment_id: UUID | None = None
 
 
 class ShipmentPackageResponse(BaseModel):
@@ -35,6 +40,7 @@ class ShipmentPackageResponse(BaseModel):
     organization_id: UUID
     shipment_id: UUID
     stop_id: UUID
+    consignment_id: UUID | None
     package_code: str
     package_status: str
     scan_token: str
@@ -64,6 +70,11 @@ async def create_shipment_package(
     order = await ShipmentService(session).get_shipment(body.shipment_id)
     halt = await StopService(session).get_stop(body.stop_id)
     require_stop_on_shipment(order.id, halt.shipment_id)
+    bound_id: UUID | None = None
+    if body.consignment_id is not None:
+        parcel = await ConsignmentService(session).get_parcel(body.consignment_id)
+        require_consignment_on_shipment(order.id, parcel.shipment_id)
+        bound_id = parcel.id
     row = await ShipmentPackageService(session).record_package(
         organization_id=identity.organization_id,
         user_id=identity.user_id,
@@ -73,6 +84,7 @@ async def create_shipment_package(
         package_status=body.package_status,
         scan_token=body.scan_token,
         source_ref=body.source_ref,
+        consignment_id=bound_id,
     )
     await session.commit()
     return _as_row(row)

@@ -33,13 +33,18 @@ class ShipmentPackageService:
         package_status: object,
         scan_token: object,
         source_ref: object,
+        consignment_id: object | None = None,
     ) -> ShipmentPackage:
         code = require_package_code(package_code)
+        bound: UUID | None = None
+        if consignment_id is not None:
+            bound = require_package_uuid(consignment_id, field="consignment_id")
         row = ShipmentPackage(
             id=uuid4(),
             organization_id=organization_id,
             shipment_id=require_package_uuid(shipment_id, field="shipment_id"),
             stop_id=require_package_uuid(stop_id, field="stop_id"),
+            consignment_id=bound,
             package_code=code,
             package_status=require_package_status(package_status),
             scan_token=require_scan_token(scan_token, code),

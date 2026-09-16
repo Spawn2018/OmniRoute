@@ -17,6 +17,14 @@ class ConsignmentRepository:
         )
         return list(result.all())
 
+    async def get_by_id(self, consignment_id: object) -> Consignment | None:
+        loaded = await self._session.scalar(
+            select(Consignment).where(Consignment.id == consignment_id).limit(1),
+        )
+        if loaded is None:
+            return None
+        return loaded
+
     async def count_for_shipment(self, shipment_id: object) -> int:
         total = await self._session.scalar(
             select(func.count())

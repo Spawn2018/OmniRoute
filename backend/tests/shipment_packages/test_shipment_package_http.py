@@ -73,6 +73,7 @@ class StubShipmentPackageService:
         package_status: object,
         scan_token: object,
         source_ref: object,
+        consignment_id: object | None = None,
     ) -> ShipmentPackage:
         code = require_package_code(package_code)
         row = ShipmentPackage(
@@ -80,6 +81,7 @@ class StubShipmentPackageService:
             organization_id=organization_id,
             shipment_id=shipment_id if type(shipment_id) is UUID else uuid4(),
             stop_id=stop_id if type(stop_id) is UUID else uuid4(),
+            consignment_id=consignment_id if type(consignment_id) is UUID else None,
             package_code=code,
             package_status=require_package_status(package_status),
             scan_token=require_scan_token(scan_token, code),
@@ -88,6 +90,23 @@ class StubShipmentPackageService:
         )
         self.rows.append(row)
         return row
+
+
+class StubConsignmentService:
+    def __init__(self, session: object) -> None:
+        self._session = session
+        self.row: object | None = None
+
+    async def get_parcel(self, consignment_id: UUID) -> object:
+        from types import SimpleNamespace
+
+        if self.row is None:
+            raise ResourceNotFound("nieznana przesyÅka")
+        parcel = self.row
+        assert isinstance(parcel, SimpleNamespace)
+        if parcel.id != consignment_id:
+            raise ResourceNotFound("nieznana przesyÅka")
+        return parcel
 
 
 def _shipment() -> Shipment:
@@ -122,6 +141,7 @@ def parcel_client(monkeypatch: pytest.MonkeyPatch) -> object:
     ships = StubShipmentService(object())
     halts = StubStopService(object())
     parcels = StubShipmentPackageService(object())
+    consignments = StubConsignmentService(object())
     ships.row = _shipment()
     assert ships.row is not None
     halts.row = _halt(ships.row.id)
@@ -134,15 +154,16 @@ def parcel_client(monkeypatch: pytest.MonkeyPatch) -> object:
     monkeypatch.setattr("app.api.shipment_packages.ShipmentService", lambda _s: ships)
     monkeypatch.setattr("app.api.shipment_packages.StopService", lambda _s: halts)
     monkeypatch.setattr("app.api.shipment_packages.ShipmentPackageService", lambda _s: parcels)
+    monkeypatch.setattr("app.api.shipment_packages.ConsignmentService", lambda _s: consignments)
     set_authz_checker(AllowAllAuthz())
     app.dependency_overrides[require_tenant_session] = _fake_tenant_session
-    yield TestClient(app), ships, halts
+    yield TestClient(app), ships, halts, consignments
     app.dependency_overrides.clear()
     set_authz_checker(None)
 
 
 def test_http_create_list_and_reject_foreign_scan(parcel_client: object) -> None:
-    client, ships, halts = parcel_client
+    client, ships, halts, _cons = parcel_client
     assert ships.row is not None
     assert halts.row is not None
     org_id = uuid4()
@@ -174,7 +195,7 @@ def test_http_create_list_and_reject_foreign_scan(parcel_client: object) -> None
 
 
 def test_http_unknown_shipment_is_404(parcel_client: object) -> None:
-    client, _ships, halts = parcel_client
+    client, _ships, halts, _cons = parcel_client
     assert halts.row is not None
     response = client.post(
         "/api/v1/shipment-packages",
@@ -192,7 +213,7 @@ def test_http_unknown_shipment_is_404(parcel_client: object) -> None:
 
 
 def test_http_stop_off_route_is_400(parcel_client: object) -> None:
-    client, ships, halts = parcel_client
+    client, ships, halts, _cons = parcel_client
     assert ships.row is not None
     assert halts.row is not None
     halts.row.shipment_id = uuid4()
@@ -210,3 +231,52 @@ def test_http_stop_off_route_is_400(parcel_client: object) -> None:
     )
     assert response.status_code == 400
     assert "trasy" in response.json()["detail"]
+
+def test_http_binds_consignment_on_same_shipment(parcel_client: object) -> None:
+    from types import SimpleNamespace
+
+    client, ships, halts, consignments = parcel_client
+    assert ships.row is not None
+    assert halts.row is not None
+    parcel_id = uuid4()
+    consignments.row = SimpleNamespace(id=parcel_id, shipment_id=ships.row.id)
+    response = client.post(
+        "/api/v1/shipment-packages",
+        headers=bearer_auth_headers(),
+        json={
+            "shipment_id": str(ships.row.id),
+            "stop_id": str(halts.row.id),
+            "package_code": "box_c1",
+            "package_status": "noted",
+            "scan_token": "omni://shipment-package/box_c1",
+            "source_ref": "fixture://shipment-package/c1",
+            "consignment_id": str(parcel_id),
+        },
+    )
+    assert response.status_code == 201
+    assert response.json()["consignment_id"] == str(parcel_id)
+
+
+def test_http_rejects_consignment_off_shipment(parcel_client: object) -> None:
+    from types import SimpleNamespace
+
+    client, ships, halts, consignments = parcel_client
+    assert ships.row is not None
+    assert halts.row is not None
+    parcel_id = uuid4()
+    consignments.row = SimpleNamespace(id=parcel_id, shipment_id=uuid4())
+    response = client.post(
+        "/api/v1/shipment-packages",
+        headers=bearer_auth_headers(),
+        json={
+            "shipment_id": str(ships.row.id),
+            "stop_id": str(halts.row.id),
+            "package_code": "box_c2",
+            "package_status": "noted",
+            "scan_token": "omni://shipment-package/box_c2",
+            "source_ref": "fixture://shipment-package/c2",
+            "consignment_id": str(parcel_id),
+        },
+    )
+    assert response.status_code == 400
+    assert "spoza" in response.json()["detail"]

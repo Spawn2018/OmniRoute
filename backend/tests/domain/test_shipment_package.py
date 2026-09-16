@@ -4,6 +4,7 @@ import pytest
 
 from app.domain.errors import InvalidShipmentPackage
 from app.domain.shipment_package import (
+    require_consignment_on_shipment,
     require_package_code,
     require_package_source_ref,
     require_package_status,
@@ -24,6 +25,7 @@ def test_shipment_package_allowlists() -> None:
     )
     same = uuid4()
     require_stop_on_shipment(same, same)
+    require_consignment_on_shipment(same, same)
 
 
 def test_shipment_package_rejects_foreign_scan_and_stop() -> None:
@@ -31,6 +33,8 @@ def test_shipment_package_rejects_foreign_scan_and_stop() -> None:
         require_scan_token("barcode-123", "box_1")
     with pytest.raises(InvalidShipmentPackage, match="trasy"):
         require_stop_on_shipment(uuid4(), uuid4())
+    with pytest.raises(InvalidShipmentPackage, match="przesyłka"):
+        require_consignment_on_shipment(uuid4(), uuid4())
     with pytest.raises(InvalidShipmentPackage, match="status"):
         require_package_status("lost")
     with pytest.raises(InvalidShipmentPackage, match="obce"):

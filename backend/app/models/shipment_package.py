@@ -30,6 +30,12 @@ class ShipmentPackage(Base, TimestampMixin):
             name="fk_shipment_package_stop",
             ondelete="RESTRICT",
         ),
+        ForeignKeyConstraint(
+            ["organization_id", "consignment_id"],
+            ["consignment.organization_id", "consignment.id"],
+            name="fk_shipment_package_consignment",
+            ondelete="RESTRICT",
+        ),
         UniqueConstraint("organization_id", "id", name="uq_shipment_package_org_id"),
         CheckConstraint(
             "package_status IN ('noted','at_stop','in_transit','delivered')",
@@ -48,6 +54,7 @@ class ShipmentPackage(Base, TimestampMixin):
     )
     shipment_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), nullable=False)
     stop_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), nullable=False)
+    consignment_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)
     package_code: Mapped[str] = mapped_column(String(32), nullable=False)
     package_status: Mapped[str] = mapped_column(String(16), nullable=False)
     scan_token: Mapped[str] = mapped_column(Text, nullable=False)

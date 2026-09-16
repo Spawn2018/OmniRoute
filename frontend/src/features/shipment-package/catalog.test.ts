@@ -43,5 +43,6 @@ describe("shipment_package surface for 156.0", () => {
     expect(panel).not.toContain("CatalogCreateForm")
     expect(panel).not.toContain("wms")
     expect(src("features/ops/ops-index.ts")).toContain('"156.0": "/shipment-packages"')
+    expect(src("features/ops/ops-index.ts")).toContain('"541.0": "/shipment-packages"')
   })
 })

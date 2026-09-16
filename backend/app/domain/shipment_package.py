@@ -50,6 +50,14 @@ def require_stop_on_shipment(shipment_id: UUID, stop_shipment_id: UUID) -> None:
         raise InvalidShipmentPackage("stop spoza trasy zlecenia")
 
 
+def require_consignment_on_shipment(
+    shipment_id: UUID,
+    consignment_shipment_id: UUID,
+) -> None:
+    if shipment_id != consignment_shipment_id:
+        raise InvalidShipmentPackage("przesyłka spoza zlecenia paczki")
+
+
 def require_package_source_ref(raw: object) -> str:
     if type(raw) is not str:
         raise InvalidShipmentPackage("source_ref musi być tekstem")
