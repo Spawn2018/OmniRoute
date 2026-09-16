@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **AI3-payload** (park→CURRENT) albo **Plat-HD-flow** / G0 — nie SH-R16-13 w `/noc`. Nie AI0.
+**Następny:** **N1** leftover FTL=1 409 na consignment. Nie SH-R16-13 w `/noc`. Nie AI0. S11 N6 = park.
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -529,7 +529,7 @@ Przy `/plan-modul`: karta T + [EXP1](analysis/karty-pol-fala-exp.md) (stop/konte
 | ID | Co | Status | Uwagi |
 |---|---|---|---|
 | P1–P3 | rate card / szablony / FSC + indeks BAF/CAF (EXP1) + A11 nowy wiersz | P1 zamknięty ([163.0](deltas/archived/163.0-rate-card.md); leftover P1b matching GET ([205.0](deltas/archived/205.0-rate-card-match.md)); leftover P1c–d); P2 zamknięty ([164.0](deltas/archived/164.0-charge-template.md); leftover P2c exclusion daterange ([206.0](deltas/archived/206.0-charge-template-span.md))); P3 zamknięty ([165.0](deltas/archived/165.0-fuel-index.md); leftover P3b–d) | po T7 + M-18; dane + SQL; nie T-SQL |
-| **N6** | `margin_floor` per tenant/lane → 409 albo S11 | zamknięty HITL katalog ([527.0](deltas/archived/527.0-margin-floor.md); leftover 409/S11) | Decimal; nie LLM |
+| **N6** | `margin_floor` per tenant/lane → 409 albo S11 | zamknięty HITL ([527.0](deltas/archived/527.0-margin-floor.md); 409 API [539.0](deltas/archived/539.0-margin-floor-409.md); leftover S11) | Decimal; nie LLM |
 | P4 | Local Charge Library + THC/ISPS/seal/amendment (EXP4.5) + warning | zamknięty ([166.0](deltas/archived/166.0-local-charge.md); leftover P4b `port_unlocode` ([207.0](deltas/archived/207.0-local-charge-port.md)); leftover P4b rest `iso_size_type` ([208.0](deltas/archived/208.0-local-charge-iso.md)); leftover P4b armator/serwis; leftover P4c) | po O2; warning ≠ fakt |
 | P5 | expected vs actual na `trip` | zamknięty ([167.0](deltas/archived/167.0-trip-expected-buy.md); leftover P5b–c) | po T2; nie druga marża |
 | P6 | tender quotes (buy) | zamknięty ([168.0](deltas/archived/168.0-tender-quote.md); leftover P6b–c) | po M-25; nie auto-award; klej G2 |

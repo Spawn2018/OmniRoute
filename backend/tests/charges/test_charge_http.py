@@ -72,12 +72,39 @@ class StubChargeService:
         return row
 
 
+class StubMarginFloorRepository:
+    def __init__(self, session: object) -> None:
+        self._session = session
+        self.floor: object | None = None
+        self.calls: list[dict[str, str]] = []
+
+    async def find_for_lane(
+        self,
+        *,
+        origin_unlocode: str,
+        destination_unlocode: str,
+        floor_currency: str,
+    ) -> object | None:
+        self.calls.append(
+            {
+                "origin_unlocode": origin_unlocode,
+                "destination_unlocode": destination_unlocode,
+                "floor_currency": floor_currency,
+            }
+        )
+        return self.floor
+
+
 @pytest.fixture
 def charges_client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
     stub = StubChargeService(object())
+    floor_stub = StubMarginFloorRepository(object())
 
     def _factory(session: object) -> StubChargeService:
         return stub
+
+    def _floor_factory(session: object) -> StubMarginFloorRepository:
+        return floor_stub
 
     async def _fake_tenant_session() -> object:
         session = AsyncMock()
@@ -85,9 +112,12 @@ def charges_client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
         return session
 
     monkeypatch.setattr("app.api.charges.ChargeService", _factory)
+    monkeypatch.setattr("app.api.charges.MarginFloorRepository", _floor_factory)
     set_authz_checker(AllowAllAuthz())
     app.dependency_overrides[require_tenant_session] = _fake_tenant_session
-    yield TestClient(app)
+    client = TestClient(app)
+    client.floor_stub = floor_stub  # type: ignore[attr-defined]
+    yield client
     app.dependency_overrides.clear()
     set_authz_checker(None)
 
@@ -193,3 +223,99 @@ def test_http_rejects_blank_source_ref(charges_client: TestClient) -> None:
     )
     assert response.status_code == 400
     assert "source_ref" in response.json()["detail"]
+
+
+def test_http_rejects_margin_below_floor(charges_client: TestClient) -> None:
+    from types import SimpleNamespace
+
+    floor_stub: StubMarginFloorRepository = charges_client.floor_stub  # type: ignore[attr-defined]
+    floor_stub.floor = SimpleNamespace(
+        floor_amount=Decimal("10.0000"),
+        floor_currency="EUR",
+    )
+    response = charges_client.post(
+        "/api/v1/charges",
+        headers=bearer_auth_headers(),
+        json={
+            "charge_code": "THC",
+            "buy_amount": "10",
+            "buy_currency": "EUR",
+            "sell_amount": "14",
+            "sell_currency": "EUR",
+            "source_ref": "tenant:manual",
+            "origin_unlocode": "PLGDN",
+            "destination_unlocode": "DEHAM",
+        },
+    )
+    assert response.status_code == 409
+    assert "podłogi" in response.json()["detail"]
+    assert floor_stub.calls == [
+        {
+            "origin_unlocode": "PLGDN",
+            "destination_unlocode": "DEHAM",
+            "floor_currency": "EUR",
+        }
+    ]
+
+
+def test_http_accepts_margin_at_or_above_floor(charges_client: TestClient) -> None:
+    from types import SimpleNamespace
+
+    floor_stub: StubMarginFloorRepository = charges_client.floor_stub  # type: ignore[attr-defined]
+    floor_stub.floor = SimpleNamespace(
+        floor_amount=Decimal("3.5000"),
+        floor_currency="EUR",
+    )
+    response = charges_client.post(
+        "/api/v1/charges",
+        headers=bearer_auth_headers(),
+        json={
+            "charge_code": "THC",
+            "buy_amount": "10",
+            "buy_currency": "EUR",
+            "sell_amount": "14",
+            "sell_currency": "EUR",
+            "source_ref": "tenant:manual",
+            "origin_unlocode": "plgdn",
+            "destination_unlocode": "deham",
+        },
+    )
+    assert response.status_code == 201
+    assert response.json()["margin_amount"] == "4.0000"
+
+
+def test_http_skips_floor_when_lane_omitted(charges_client: TestClient) -> None:
+    floor_stub: StubMarginFloorRepository = charges_client.floor_stub  # type: ignore[attr-defined]
+    floor_stub.floor = object()
+    response = charges_client.post(
+        "/api/v1/charges",
+        headers=bearer_auth_headers(),
+        json={
+            "charge_code": "THC",
+            "buy_amount": "10",
+            "buy_currency": "EUR",
+            "sell_amount": "11",
+            "sell_currency": "EUR",
+            "source_ref": "tenant:manual",
+        },
+    )
+    assert response.status_code == 201
+    assert floor_stub.calls == []
+
+
+def test_http_rejects_incomplete_floor_lane(charges_client: TestClient) -> None:
+    response = charges_client.post(
+        "/api/v1/charges",
+        headers=bearer_auth_headers(),
+        json={
+            "charge_code": "THC",
+            "buy_amount": "10",
+            "buy_currency": "EUR",
+            "sell_amount": "14",
+            "sell_currency": "EUR",
+            "source_ref": "tenant:manual",
+            "origin_unlocode": "PLGDN",
+        },
+    )
+    assert response.status_code == 400
+    assert "obu końców" in response.json()["detail"]

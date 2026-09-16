@@ -42,5 +42,6 @@ describe("margin_floor surface for 527.0", () => {
     expect(panel).not.toContain("leaflet")
     expect(panel).not.toContain("CatalogCreateForm")
     expect(src("features/ops/ops-index.ts")).toContain('"527.0": "/margin-floors"')
+    expect(src("features/ops/ops-index.ts")).toContain('"539.0": "/charges"')
   })
 })

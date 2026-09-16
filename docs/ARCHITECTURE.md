@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **538.0** `/mail` group_by=thread po rfc822. **Etap:** Plan — następne AI3-payload / Plat-HD / G0 park; komenda `/plan-modul` gdy CURRENT wskaże. **Następny:** **AI3-payload** (park→CURRENT) albo **Plat-HD-flow** / G0 — nie SH-R16-13 w `/noc`. Nie AI0. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **539.0** N6 409 margin_floor na POST charge. **Etap:** Plan — **N1** leftover FTL=1 409; komenda `/plan-modul`. **Następny:** **N1** leftover FTL=1 409 na consignment. Nie SH-R16-13 w `/noc`. Nie AI0. S11 N6 = park. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

@@ -2,7 +2,12 @@ import re
 from dataclasses import dataclass
 from decimal import Decimal
 
-from app.domain.errors import InvalidMarginFloor, InvalidMoney, InvalidUnlocode
+from app.domain.errors import (
+    InvalidMarginFloor,
+    InvalidMoney,
+    InvalidUnlocode,
+    MarginFloorBreach,
+)
 from app.domain.money import Money
 from app.domain.port import normalize_unlocode
 
@@ -79,3 +84,31 @@ def parse_margin_floor_row(
         floor_currency=money.currency.code,
         source_ref=_source_ref(source_ref),
     )
+
+
+def parse_optional_floor_lane(
+    origin_raw: object | None,
+    dest_raw: object | None,
+) -> tuple[str, str] | None:
+    """Para UN/LOCODE na POST charge — None = bez sprawdzenia podłogi."""
+    if origin_raw is None and dest_raw is None:
+        return None
+    if origin_raw is None or dest_raw is None:
+        raise InvalidMarginFloor("para UN/LOCODE wymaga obu końców")
+    return _lane_pair(origin_raw, dest_raw)
+
+
+def require_margin_above_floor(
+    *,
+    margin_amount: Decimal,
+    margin_currency: str,
+    floor_amount: Decimal,
+    floor_currency: str,
+) -> None:
+    if margin_currency != floor_currency:
+        return
+    if margin_amount < floor_amount:
+        raise MarginFloorBreach(
+            f"marża poniżej podłogi: {margin_amount} {margin_currency} "
+            f"< {floor_amount} {floor_currency}"
+        )

@@ -50,7 +50,7 @@ class MarginFloor(Base, TimestampMixin):
     )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True)
-    # RLS: podłoga marży tego tenanta — HITL Decimal, nie 409 na charge.
+    # RLS: podłoga marży tego tenanta — HITL Decimal; 409 = API charges (539.0).
     organization_id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True), ForeignKey("organization.id", ondelete="RESTRICT"), nullable=False
     )

@@ -10,6 +10,7 @@ from app.domain.errors import (
     DomainError,
     DraftNotPending,
     ExtractionCandidatesNotEditable,
+    MarginFloorBreach,
     PartyConflict,
     PermissionDenied,
     QuotationNamedPlaceRequired,
@@ -74,6 +75,14 @@ async def extraction_candidates_not_editable_handler(
 async def channel_quote_conflict_handler(
     _request: Request,
     exc: ChannelQuoteConflict,
+) -> JSONResponse:
+    return JSONResponse(status_code=409, content={"detail": str(exc)})
+
+
+@app.exception_handler(MarginFloorBreach)
+async def margin_floor_breach_handler(
+    _request: Request,
+    exc: MarginFloorBreach,
 ) -> JSONResponse:
     return JSONResponse(status_code=409, content={"detail": str(exc)})
 

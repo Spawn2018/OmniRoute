@@ -1003,7 +1003,11 @@ class InvalidKpiDefinitionMark(DomainError):
 
 
 class InvalidMarginFloor(DomainError):
-    """N6: HITL podłoga marży Decimal + UN/LOCODE — nie 409 na charge."""
+    """N6: HITL podłoga marży Decimal + UN/LOCODE — nie matching."""
+
+
+class MarginFloorBreach(DomainError):
+    """N6 leftover: marża sell−buy poniżej margin_floor — HTTP 409 w API."""
 
 
 class InvalidShipmentCloneMark(DomainError):

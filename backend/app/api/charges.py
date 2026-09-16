@@ -8,8 +8,10 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.api.deps import get_current_identity, require_permission, require_tenant_session
 from app.core.session_token import SessionIdentity
 from app.domain.charge import margin
+from app.domain.margin_floor import parse_optional_floor_lane, require_margin_above_floor
 from app.domain.money import Money
 from app.models.charge import Charge
+from app.repositories.margin_floors.margin_floor_repository import MarginFloorRepository
 from app.services.charges.charge_service import ChargeService
 
 router = APIRouter(prefix="/charges", tags=["charges"])
@@ -23,6 +25,9 @@ class ChargeCreate(BaseModel):
     sell_currency: str = Field(min_length=3, max_length=3)
     rate_line_id: UUID | None = None
     source_ref: str = Field(min_length=1, max_length=512)
+    # 539.0: tylko lookup margin_floor — nie kolumny na charge
+    origin_unlocode: str | None = Field(default=None, max_length=5)
+    destination_unlocode: str | None = Field(default=None, max_length=5)
 
 
 class ChargeResponse(BaseModel):
@@ -93,6 +98,23 @@ async def create_charge(
     session: AsyncSession = Depends(require_tenant_session),
     identity: SessionIdentity = Depends(get_current_identity),
 ) -> ChargeResponse:
+    lane = parse_optional_floor_lane(body.origin_unlocode, body.destination_unlocode)
+    if lane is not None:
+        buy = Money.of(body.buy_amount, body.buy_currency)
+        sell = Money.of(body.sell_amount, body.sell_currency)
+        gap = margin(buy, sell)
+        floor = await MarginFloorRepository(session).find_for_lane(
+            origin_unlocode=lane[0],
+            destination_unlocode=lane[1],
+            floor_currency=gap.currency.code,
+        )
+        if floor is not None:
+            require_margin_above_floor(
+                margin_amount=gap.amount,
+                margin_currency=gap.currency.code,
+                floor_amount=floor.floor_amount,
+                floor_currency=floor.floor_currency,
+            )
     service = ChargeService(session)
     row = await service.create_charge(
         organization_id=identity.organization_id,
