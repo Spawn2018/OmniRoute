@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **539.0** N6 409 margin_floor na POST charge. **Etap:** Plan — **N1** leftover FTL=1 409; komenda `/plan-modul`. **Następny:** **N1** leftover FTL=1 409 na consignment. Nie SH-R16-13 w `/noc`. Nie AI0. S11 N6 = park. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **540.0** N1 FTL=1 409 na consignment. **Etap:** Plan — leftover D2b FK paczki albo park AI3-payload; komenda `/plan-modul`. **Następny:** leftover **D2b** FK `shipment_package`→`consignment` albo **AI3-payload** (park). Nie SH-R16-13. Nie AI0. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

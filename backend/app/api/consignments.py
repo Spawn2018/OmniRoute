@@ -1,3 +1,4 @@
+from typing import Literal
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, status
@@ -6,8 +7,13 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.deps import get_current_identity, require_permission, require_tenant_session
 from app.core.session_token import SessionIdentity
-from app.domain.consignment import require_consignment_shipment_id
+from app.domain.consignment import (
+    parse_optional_load_kind,
+    require_consignment_shipment_id,
+    require_ftl_room,
+)
 from app.models.consignment import Consignment
+from app.repositories.consignments.consignment_repository import ConsignmentRepository
 from app.services.consignments.consignment_service import ConsignmentService
 from app.services.shipments.shipment_service import ShipmentService
 
@@ -22,6 +28,8 @@ class ConsignmentCreate(BaseModel):
     shipment_id: UUID | bool | None = None
     consignment_ref: str
     source_ref: str
+    # 540.0: tylko egzekucja FTL=1 — nie kolumna na shipment
+    load_kind: Literal["ftl", "ltl"] | None = None
 
 
 class ConsignmentResponse(BaseModel):
@@ -56,6 +64,10 @@ async def create_consignment(
 ) -> ConsignmentResponse:
     shipment_id = require_consignment_shipment_id(body.shipment_id)
     order = await ShipmentService(session).get_shipment(shipment_id)
+    kind = parse_optional_load_kind(body.load_kind)
+    if kind == "ftl":
+        existing = await ConsignmentRepository(session).count_for_shipment(order.id)
+        require_ftl_room(existing)
     row = await ConsignmentService(session).record_parcel(
         organization_id=identity.organization_id,
         user_id=identity.user_id,

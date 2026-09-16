@@ -128,6 +128,8 @@ zostają w badaniach `04`).
 | 2026-09-16 | **538.0** `/mail` thread group_by w kodzie (`CONFIRMED`, git po push). Buy-desk rfc822 / live Graph `REJECTED` na tym wierszu. Następny = park AI3-payload / Plat-HD / G0 (`REQUIREMENT`). |
 | 2026-09-16 | Plan **539.0** N6 leftover: 409 gdy marża < `margin_floor` przy opcjonalnej parze UN/LOCODE na POST charge (`REQUIREMENT`). S11 / kolumna lane na charge `REJECTED`. |
 | 2026-09-16 | **539.0** N6 409 w kodzie (`CONFIRMED`, git po push). Compose w API charges. Leftover S11. Następny = **N1** leftover FTL=1 409 (`REQUIREMENT`). |
+| 2026-09-16 | Plan **540.0** N1 leftover: opcjonalne `load_kind=ftl` → 409 gdy zlecenie ma już przesyłkę (`REQUIREMENT`). Unique FTL w DB / kolumna na shipment `REJECTED`. |
+| 2026-09-16 | **540.0** N1 FTL=1 409 w kodzie (`CONFIRMED`, git po push). Leftover D2b / `stop`. Następny = leftover D2b FK paczki albo park AI3-payload (`REQUIREMENT`). |
 | 2026-09-13 | AI3.4 plan (**451.0**): parser `xlsx_sheet` stdlib. `openpyxl` `REJECTED`. `.xls` leftover. |
 | 2026-09-13 | **451.0** `xlsx_sheet` w kodzie (`CONFIRMED`, git). Następny = **AI4.0** FK `plan_snapshot` (`REQUIREMENT`). `.xls` leftover. |
 | 2026-09-13 | AI4.0 plan (**452.0**): FK złożone RESTRICT. CASCADE `REJECTED`. What-if `REJECTED` na tym wierszu. |

@@ -547,7 +547,11 @@ class InvalidOceanBill(DomainError):
 
 
 class InvalidConsignment(DomainError):
-    """Przesyłka N1 na zleceniu — nie paczka, nie unique FTL."""
+    """Przesyłka N1 na zleceniu — nie paczka, nie unique FTL w DB."""
+
+
+class ConsignmentFtlLimit(DomainError):
+    """N1 leftover: FTL=1 — druga przesyłka na zlecenie → HTTP 409."""
 
 
 class InvalidPalletBalance(DomainError):

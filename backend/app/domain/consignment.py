@@ -1,12 +1,15 @@
 import re
+from typing import Literal
 from uuid import UUID
 
-from app.domain.errors import InvalidConsignment
+from app.domain.errors import ConsignmentFtlLimit, InvalidConsignment
 
 _REF = re.compile(r"^[A-Za-z0-9._:-]{2,64}$")
 _MAX_SOURCE = 256
 _FIXTURE = "fixture://consignment/"
 _MANUAL = "tenant:manual"
+
+ConsignmentLoadKind = Literal["ftl", "ltl"]
 
 
 def require_consignment_ref(raw: object) -> str:
@@ -35,3 +38,21 @@ def require_consignment_source_ref(raw: object) -> str:
     if token != _MANUAL and not token.startswith(_FIXTURE):
         raise InvalidConsignment("obce wskazanie zapisu przesyłki")
     return token
+
+
+def parse_optional_load_kind(raw: object | None) -> ConsignmentLoadKind | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidConsignment("tryb załadunku musi być tekstem")
+    token = raw.strip().lower()
+    if token == "ftl":
+        return "ftl"
+    if token == "ltl":
+        return "ltl"
+    raise InvalidConsignment("tryb załadunku: ftl albo ltl")
+
+
+def require_ftl_room(existing_count: int) -> None:
+    if existing_count >= 1:
+        raise ConsignmentFtlLimit("FTL dopuszcza tylko jedną przesyłkę na zlecenie")

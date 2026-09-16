@@ -7,6 +7,7 @@ from app.core.request_id import RequestIdMiddleware
 from app.domain.errors import (
     BulkAcceptConfidenceBelow,
     ChannelQuoteConflict,
+    ConsignmentFtlLimit,
     DomainError,
     DraftNotPending,
     ExtractionCandidatesNotEditable,
@@ -83,6 +84,14 @@ async def channel_quote_conflict_handler(
 async def margin_floor_breach_handler(
     _request: Request,
     exc: MarginFloorBreach,
+) -> JSONResponse:
+    return JSONResponse(status_code=409, content={"detail": str(exc)})
+
+
+@app.exception_handler(ConsignmentFtlLimit)
+async def consignment_ftl_limit_handler(
+    _request: Request,
+    exc: ConsignmentFtlLimit,
 ) -> JSONResponse:
     return JSONResponse(status_code=409, content={"detail": str(exc)})
 

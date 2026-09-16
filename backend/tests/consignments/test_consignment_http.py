@@ -69,6 +69,17 @@ class StubConsignmentService:
         return row
 
 
+class StubConsignmentRepository:
+    def __init__(self, session: object) -> None:
+        self._session = session
+        self.count = 0
+        self.calls: list[UUID] = []
+
+    async def count_for_shipment(self, shipment_id: object) -> int:
+        self.calls.append(require_consignment_shipment_id(shipment_id))
+        return self.count
+
+
 def _shipment() -> Shipment:
     return Shipment(
         id=uuid4(),
@@ -84,12 +95,16 @@ def _shipment() -> Shipment:
 def catalog_client(monkeypatch: pytest.MonkeyPatch) -> object:
     ships = StubShipmentService(object())
     rows = StubConsignmentService(object())
+    floors = StubConsignmentRepository(object())
 
     def _ships(_session: object) -> StubShipmentService:
         return ships
 
     def _rows(_session: object) -> StubConsignmentService:
         return rows
+
+    def _repo(_session: object) -> StubConsignmentRepository:
+        return floors
 
     async def _fake_tenant_session() -> object:
         session = AsyncMock()
@@ -98,16 +113,17 @@ def catalog_client(monkeypatch: pytest.MonkeyPatch) -> object:
 
     monkeypatch.setattr("app.api.consignments.ShipmentService", _ships)
     monkeypatch.setattr("app.api.consignments.ConsignmentService", _rows)
+    monkeypatch.setattr("app.api.consignments.ConsignmentRepository", _repo)
     ships.row = _shipment()
     set_authz_checker(AllowAllAuthz())
     app.dependency_overrides[require_tenant_session] = _fake_tenant_session
-    yield TestClient(app), ships, rows
+    yield TestClient(app), ships, rows, floors
     app.dependency_overrides.clear()
     set_authz_checker(None)
 
 
 def test_http_create_and_list_consignment(catalog_client: object) -> None:
-    client, ships, _rows = catalog_client
+    client, ships, _rows, _floors = catalog_client
     assert ships.row is not None
     org_id = uuid4()
     headers = bearer_auth_headers(organization_id=org_id)
@@ -132,7 +148,7 @@ def test_http_create_and_list_consignment(catalog_client: object) -> None:
 
 
 def test_http_create_two_consignments_on_one_shipment(catalog_client: object) -> None:
-    client, ships, _rows = catalog_client
+    client, ships, _rows, _floors = catalog_client
     assert ships.row is not None
     headers = bearer_auth_headers()
     first = client.post(
@@ -159,7 +175,7 @@ def test_http_create_two_consignments_on_one_shipment(catalog_client: object) ->
 
 
 def test_http_create_consignment_unknown_shipment_is_404(catalog_client: object) -> None:
-    client, _ships, _rows = catalog_client
+    client, _ships, _rows, _floors = catalog_client
     response = client.post(
         "/api/v1/consignments",
         headers=bearer_auth_headers(),
@@ -173,7 +189,7 @@ def test_http_create_consignment_unknown_shipment_is_404(catalog_client: object)
 
 
 def test_http_create_consignment_bool_shipment_is_400(catalog_client: object) -> None:
-    client, _ships, _rows = catalog_client
+    client, _ships, _rows, _floors = catalog_client
     response = client.post(
         "/api/v1/consignments",
         headers=bearer_auth_headers(),
@@ -188,7 +204,7 @@ def test_http_create_consignment_bool_shipment_is_400(catalog_client: object) ->
 
 
 def test_http_create_consignment_missing_shipment_is_400(catalog_client: object) -> None:
-    client, _ships, _rows = catalog_client
+    client, _ships, _rows, _floors = catalog_client
     response = client.post(
         "/api/v1/consignments",
         headers=bearer_auth_headers(),
@@ -202,7 +218,7 @@ def test_http_create_consignment_missing_shipment_is_400(catalog_client: object)
 
 
 def test_http_create_consignment_bad_ref_is_400(catalog_client: object) -> None:
-    client, ships, _rows = catalog_client
+    client, ships, _rows, _floors = catalog_client
     assert ships.row is not None
     response = client.post(
         "/api/v1/consignments",
@@ -218,7 +234,7 @@ def test_http_create_consignment_bad_ref_is_400(catalog_client: object) -> None:
 
 
 def test_http_create_consignment_foreign_source_ref_is_400(catalog_client: object) -> None:
-    client, ships, _rows = catalog_client
+    client, ships, _rows, _floors = catalog_client
     assert ships.row is not None
     response = client.post(
         "/api/v1/consignments",
@@ -231,3 +247,58 @@ def test_http_create_consignment_foreign_source_ref_is_400(catalog_client: objec
     )
     assert response.status_code == 400
     assert "obce" in response.json()["detail"]
+
+
+def test_http_ftl_rejects_second_consignment(catalog_client: object) -> None:
+    client, ships, _rows, floors = catalog_client
+    assert ships.row is not None
+    floors.count = 1
+    response = client.post(
+        "/api/v1/consignments",
+        headers=bearer_auth_headers(),
+        json={
+            "shipment_id": str(ships.row.id),
+            "consignment_ref": "CN-FTL-2",
+            "source_ref": "fixture://consignment/ftl-2",
+            "load_kind": "ftl",
+        },
+    )
+    assert response.status_code == 409
+    assert "FTL" in response.json()["detail"]
+    assert floors.calls == [ships.row.id]
+
+
+def test_http_ftl_allows_first_consignment(catalog_client: object) -> None:
+    client, ships, _rows, floors = catalog_client
+    assert ships.row is not None
+    floors.count = 0
+    response = client.post(
+        "/api/v1/consignments",
+        headers=bearer_auth_headers(),
+        json={
+            "shipment_id": str(ships.row.id),
+            "consignment_ref": "CN-FTL-1",
+            "source_ref": "fixture://consignment/ftl-1",
+            "load_kind": "ftl",
+        },
+    )
+    assert response.status_code == 201
+    assert floors.calls == [ships.row.id]
+
+
+def test_http_ltl_skips_ftl_count(catalog_client: object) -> None:
+    client, ships, _rows, floors = catalog_client
+    assert ships.row is not None
+    floors.count = 3
+    response = client.post(
+        "/api/v1/consignments",
+        headers=bearer_auth_headers(),
+        json={
+            "shipment_id": str(ships.row.id),
+            "consignment_ref": "CN-LTL-4",
+            "source_ref": "fixture://consignment/ltl-4",
+            "load_kind": "ltl",
+        },
+    )
+    assert response.status_code == 201
+    assert floors.calls == []

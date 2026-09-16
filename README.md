@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **539.0** N6 409 margin_floor na POST charge
-- **Etap:** Plan — **N1** leftover FTL=1 409; komenda `/plan-modul`
-- **Następny:** **N1** leftover FTL=1 409 na consignment. Nie SH-R16-13 w `/noc`. Nie AI0. S11 N6 = park.
+- **Ostatni plaster:** **540.0** N1 FTL=1 409 na consignment
+- **Etap:** Plan — leftover D2b FK paczki albo park AI3-payload; komenda `/plan-modul`
+- **Następny:** leftover **D2b** FK `shipment_package`→`consignment` albo **AI3-payload** (park). Nie SH-R16-13. Nie AI0.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

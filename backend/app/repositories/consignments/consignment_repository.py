@@ -1,4 +1,4 @@
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models.consignment import Consignment
@@ -16,6 +16,14 @@ class ConsignmentRepository:
             ),
         )
         return list(result.all())
+
+    async def count_for_shipment(self, shipment_id: object) -> int:
+        total = await self._session.scalar(
+            select(func.count())
+            .select_from(Consignment)
+            .where(Consignment.shipment_id == shipment_id),
+        )
+        return int(total or 0)
 
     async def add(self, row: Consignment) -> Consignment:
         self._session.add(row)
