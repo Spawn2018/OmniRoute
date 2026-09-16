@@ -607,6 +607,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/job-metric-marks",
   "/kpi-definition-marks",
   "/margin-floors",
+  "/shipment-clone-marks",
   "/vda-odette-marks",
   "/inventory-position-marks",
   "/fair-share-marks",
