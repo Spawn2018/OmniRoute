@@ -22,7 +22,6 @@ import {
   createNetworkMember,
   fetchNetworkMembers,
   fetchNetworks,
-  membersForCountry,
   networkCreateBody,
   partyCountryMap,
   resolveNetwork,
@@ -120,8 +119,8 @@ export function NetworkCatalogPage() {
     onError: () => setResolved(null),
   })
   const members = useQuery({
-    queryKey: ["network-members", ctx.organizationId, networkId],
-    queryFn: () => fetchNetworkMembers(networkId),
+    queryKey: ["network-members", ctx.organizationId, networkId, countryFilter.trim().toUpperCase()],
+    queryFn: () => fetchNetworkMembers(networkId, countryFilter),
     enabled: sessionReady && networkId !== "",
     retry: false,
   })
@@ -132,7 +131,7 @@ export function NetworkCatalogPage() {
     retry: false,
   })
   const countryByPartyId = partyCountryMap(parties.data ?? [])
-  const visibleMembers = membersForCountry(members.data ?? [], countryByPartyId, countryFilter)
+  const visibleMembers = members.data ?? []
   const inquiries = useQuery({
     queryKey: ["carrier-inquiries", ctx.organizationId],
     queryFn: () => fetchCarrierInquiries(),

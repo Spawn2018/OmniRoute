@@ -118,6 +118,8 @@ zostają w badaniach `04`).
 | 2026-09-16 | **530.0** `trip_bill_mark` w kodzie (`CONFIRMED`, git po push). N2 HITL DONE. Leftover SQL `trips_to_bill` · F1 live. Następny = **O6** carrier_quote HITL (`REQUIREMENT`). |
 | 2026-09-16 | Plan **531.0** O6 leftover: HITL accept `carrier_quote` → `channel_quote` + inquiry `answered` (`REQUIREMENT`). 140.0 już ma kind+quote (`CONFIRMED`). ExtractionService zapis ofert `REJECTED`. Auto-accept / live HTTP / float / fuzzy match inquiry `REJECTED`. |
 | 2026-09-16 | **531.0** O6 leftover w kodzie (`CONFIRMED`, git po push). Accept → `channel_quote` + opcjonalnie inquiry `answered`. Leftover `quote_recorded` przy accept. Następny = **O7** kraj ISO (`REQUIREMENT`). |
+| 2026-09-16 | Plan **532.0** O7: filtr `country_code` na `GET …/networks/{id}/members` JOIN `party` (`REQUIREMENT`). UI 141.0 już filtruje w pamięci (`CONFIRMED`). Druga kolumna kraju / scrape / live HTTP `REJECTED`. |
+| 2026-09-16 | **532.0** O7 w kodzie (`CONFIRMED`, git po push). API JOIN `party.country_code` + UI param. Leftover EXPLAIN. Następny = **O8** buy-desk (`REQUIREMENT`). |
 | 2026-09-13 | AI3.4 plan (**451.0**): parser `xlsx_sheet` stdlib. `openpyxl` `REJECTED`. `.xls` leftover. |
 | 2026-09-13 | **451.0** `xlsx_sheet` w kodzie (`CONFIRMED`, git). Następny = **AI4.0** FK `plan_snapshot` (`REQUIREMENT`). `.xls` leftover. |
 | 2026-09-13 | AI4.0 plan (**452.0**): FK złożone RESTRICT. CASCADE `REJECTED`. What-if `REJECTED` na tym wierszu. |

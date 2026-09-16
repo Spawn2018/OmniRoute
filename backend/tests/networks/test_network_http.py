@@ -53,6 +53,7 @@ class StubNetworkService:
         self._session = session
         self.rows: list[Network] = []
         self.members: list[NetworkMember] = []
+        self.party_country: dict[UUID, str] = {}
 
     async def list_networks(self) -> list[Network]:
         return list(self.rows)
@@ -97,9 +98,22 @@ class StubNetworkService:
                 return row
         raise UnknownNetwork(f"nieznana sieć: {network_id}")
 
-    async def list_members(self, network_id: UUID) -> list[NetworkMember]:
+    async def list_members(
+        self,
+        network_id: UUID,
+        *,
+        country_code: str | None = None,
+    ) -> list[NetworkMember]:
         await self.get_network(network_id)
-        return [row for row in self.members if row.network_id == network_id]
+        rows = [row for row in self.members if row.network_id == network_id]
+        if country_code is None:
+            return rows
+        # Stub HTTP: country z mapy party — brak party_id = poza filtrem
+        return [
+            row
+            for row in rows
+            if row.party_id is not None and self.party_country.get(row.party_id) == country_code
+        ]
 
     async def create_member(
         self,
@@ -135,6 +149,7 @@ def catalog_client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
     stub = StubNetworkService(object())
     parties = StubPartyService(object())
     parties.row = _party()
+    stub.party_country[parties.row.id] = parties.row.country_code
 
     def _factory(session: object) -> StubNetworkService:
         return stub
@@ -313,3 +328,70 @@ def test_http_members_unknown_network_is_rejected(catalog_client: object) -> Non
     )
     assert response.status_code == 400
     assert "nieznana sieć" in response.json()["detail"]
+
+
+def test_http_members_filter_by_country_code(catalog_client: object) -> None:
+    catalog_client, parties = catalog_client
+    assert parties.row is not None
+    headers = bearer_auth_headers()
+    created = catalog_client.post(
+        "/api/v1/networks",
+        headers=headers,
+        json={"code": "wca", "name": "WCA", "aliases": [], "is_global": True},
+    )
+    network_id = created.json()["id"]
+    member = catalog_client.post(
+        f"/api/v1/networks/{network_id}/members",
+        headers=headers,
+        json={
+            "member_code": "agent_nl",
+            "legal_name": "Rotterdam Agent",
+            "party_id": str(parties.row.id),
+        },
+    )
+    assert member.status_code == 201
+
+    all_rows = catalog_client.get(f"/api/v1/networks/{network_id}/members", headers=headers)
+    assert all_rows.status_code == 200
+    assert len(all_rows.json()) == 1
+
+    empty_filter = catalog_client.get(
+        f"/api/v1/networks/{network_id}/members",
+        headers=headers,
+        params={"country_code": "  "},
+    )
+    assert empty_filter.status_code == 200
+    assert len(empty_filter.json()) == 1
+
+    match = catalog_client.get(
+        f"/api/v1/networks/{network_id}/members",
+        headers=headers,
+        params={"country_code": "pl"},
+    )
+    assert match.status_code == 200
+    assert len(match.json()) == 1
+    assert match.json()[0]["id"] == member.json()["id"]
+
+    miss = catalog_client.get(
+        f"/api/v1/networks/{network_id}/members",
+        headers=headers,
+        params={"country_code": "NL"},
+    )
+    assert miss.status_code == 200
+    assert miss.json() == []
+
+    bad_short = catalog_client.get(
+        f"/api/v1/networks/{network_id}/members",
+        headers=headers,
+        params={"country_code": "N"},
+    )
+    assert bad_short.status_code == 400
+    assert "country_code" in bad_short.json()["detail"]
+
+    bad_digits = catalog_client.get(
+        f"/api/v1/networks/{network_id}/members",
+        headers=headers,
+        params={"country_code": "12"},
+    )
+    assert bad_digits.status_code == 400
+    assert "ISO" in bad_digits.json()["detail"]

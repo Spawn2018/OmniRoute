@@ -65,6 +65,19 @@ def test_network_service_has_no_scrape() -> None:
     assert "app.services.parties" not in service
 
 
+def test_member_list_joins_party_country_without_party_service() -> None:
+    repo = (
+        _ROOT / "backend" / "app" / "repositories" / "networks" / "network_member_repository.py"
+    ).read_text(encoding="utf-8")
+    assert "Party" in repo
+    assert "country_code" in repo
+    service = (_SERVICES / "networks" / "network_service.py").read_text(encoding="utf-8")
+    assert "app.services.parties" not in service
+    api = (_ROOT / "backend" / "app" / "api" / "networks.py").read_text(encoding="utf-8")
+    assert "normalize_country_code" in api
+    assert 'country_code: str | None = Query(default=None)' in api
+
+
 def test_migration_073_adds_party_id_without_new_table() -> None:
     source = (
         _ROOT / "backend" / "alembic" / "versions" / "073_network_member_party.py"

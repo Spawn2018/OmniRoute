@@ -85,8 +85,21 @@ export type NetworkMember = {
   source_ref: string
 }
 
-export async function fetchNetworkMembers(networkId: string): Promise<NetworkMember[]> {
-  const response = await fetch(`/api/v1/networks/${networkId}/members`, {
+export function membersListQuery(countryCode: string): string {
+  const token = countryCode.trim().toUpperCase()
+  if (token === "") {
+    return ""
+  }
+  return new URLSearchParams({ country_code: token }).toString()
+}
+
+export async function fetchNetworkMembers(
+  networkId: string,
+  countryCode = "",
+): Promise<NetworkMember[]> {
+  const query = membersListQuery(countryCode)
+  const suffix = query.length === 0 ? "" : `?${query}`
+  const response = await fetch(`/api/v1/networks/${networkId}/members${suffix}`, {
     headers: requireAuthHeaders(),
   })
   if (!response.ok) {

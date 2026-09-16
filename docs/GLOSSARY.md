@@ -192,7 +192,8 @@ kolumn. Nie 468.0.
 | profil armatora | carrier_profile | 1:1 z `party`; adapter tylko jako dane |
 | sieć spedycyjna | network | katalog M-12; token kodu (`wca`, `fiata`, …); kopia per tenant; nie portal |
 | kod sieci | network code | snake 2–32; `resolve` po kodzie albo aliasie |
-| członek sieci | network_member | 82.0 ręczny agent w `network` tenanta; O0 `party_id` FK tenanta; nie portal |
+| członek sieci | network_member | 82.0 ręczny agent w `network` tenanta; O0 `party_id` FK tenanta; O7 filtr `country_code` z `party` (141.0 UI · 532.0 API); nie portal |
+| kod kraju kontrahenta | country_code | ISO 3166-1 alpha-2 na `party`; filtr listy agentów O7; nie druga kolumna na `network_member` |
 | karta wyników kontrahenta | party_scorecard | M-13; 10.0 snapshot globalny; 120.0 odczyt decyzji oferty; lane = `party_lane_scorecard` (O5); nie scoring osoby; nie silnik RFQ |
 | recenzja kredytowa | credit_review | M-14; decyzja operatora per `party`+dzień; 88.0 `bureau_attachment_ref`; M14b szkic sugestii; zapis limitu tylko S11; LLM nie liczy limitu |
 | decyzja operatora | operator_decision | 74.0 szyna pending/accept/reject; 77.0 `lock_version`; 121.0 `changed`; nie HITL extract; nie send |

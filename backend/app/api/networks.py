@@ -6,6 +6,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.deps import get_current_identity, require_permission, require_tenant_session
 from app.core.session_token import SessionIdentity
+from app.domain.party import normalize_country_code
 from app.models.network_member import NetworkMember
 from app.services.networks.network_service import NetworkService
 from app.services.parties.party_service import PartyService
@@ -108,10 +109,14 @@ async def create_network(
 @router.get("/{network_id}/members", response_model=list[NetworkMemberResponse])
 async def list_network_members(
     network_id: UUID,
+    country_code: str | None = Query(default=None),
     _authz: None = Depends(require_permission("can_manage_networks", "organization")),
     session: AsyncSession = Depends(require_tenant_session),
 ) -> list[NetworkMemberResponse]:
-    rows = await NetworkService(session).list_members(network_id)
+    code: str | None = None
+    if country_code is not None and country_code.strip() != "":
+        code = normalize_country_code(country_code)
+    rows = await NetworkService(session).list_members(network_id, country_code=code)
     return [NetworkMemberResponse.from_row(row) for row in rows]
 
 

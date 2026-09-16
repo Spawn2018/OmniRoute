@@ -1682,6 +1682,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "139.0": "/party-scorecards",
   "140.0": "/ai",
   "141.0": "/networks",
+  "532.0": "/networks",
   "142.0": "/mail",
   "143.0": "/networks",
   "144.0": "/quotations",

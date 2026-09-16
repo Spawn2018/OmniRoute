@@ -76,9 +76,14 @@ class NetworkService:
             raise UnknownNetwork(f"nieznana sieć: {network_id}")
         return found
 
-    async def list_members(self, network_id: UUID) -> list[NetworkMember]:
+    async def list_members(
+        self,
+        network_id: UUID,
+        *,
+        country_code: str | None = None,
+    ) -> list[NetworkMember]:
         await self.get_network(network_id)
-        return await self._members.list_for_network(network_id)
+        return await self._members.list_for_network(network_id, country_code=country_code)
 
     async def create_member(
         self,

@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **531.0** O6 — HITL accept `carrier_quote` → `answered`
-- **Etap:** Plan **532.0** — `/plan-modul` (O7 kraj ISO na liście agentów)
-- **Następny:** **532.0** O7 — kraj ISO na liście agentów + filtr
+- **Ostatni plaster:** **532.0** O7 — filtr `country_code` na liście członków sieci
+- **Etap:** Plan **533.0** — `/plan-modul` (O8 buy-desk group-by + saved view)
+- **Następny:** **533.0** O8 — Buy-desk: group-by edytowalny + saved view
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

@@ -10,7 +10,7 @@ import {
 import { mailDraftBatchBody } from "@/lib/mail-drafts-api"
 import { noReplyNoticeCreateBody } from "@/lib/operator-notices-api"
 import { inquiryDefaultN } from "@/lib/organization-settings-api"
-import { membersForCountry, networkCreateBody, partyCountryMap } from "@/lib/networks-api"
+import { membersForCountry, membersListQuery, networkCreateBody, partyCountryMap } from "@/lib/networks-api"
 
 const srcRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..")
 
@@ -69,7 +69,8 @@ describe("networks catalog surface for 9.0", () => {
     expect(page).toContain('data-carrier-inquiry="overdue"')
     expect(page).toContain("noReplyNoticeCreateBody")
     expect(page).toContain("patchInquirySilence")
-    expect(page).toContain("membersForCountry")
+    expect(page).toContain("fetchNetworkMembers")
+    expect(page).toContain("countryFilter")
     expect(page).toContain("fetchParties")
     expect(page).not.toContain("cheerio")
     expect(page).not.toContain("httpx")
@@ -175,6 +176,12 @@ describe("O7 country filter helpers", () => {
     ]
     expect(membersForCountry(members, mapped, "nl").map((row) => row.id)).toEqual(["m1"])
     expect(membersForCountry(members, mapped, "").map((row) => row.id)).toEqual(["m1", "m2", "m3"])
+  })
+
+  it("builds country_code query for API list", () => {
+    expect(membersListQuery("")).toBe("")
+    expect(membersListQuery(" nl ")).toBe("country_code=NL")
+    expect(membersListQuery("12")).toBe("country_code=12")
   })
 })
 
