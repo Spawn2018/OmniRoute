@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **533.0** O8 — buy-desk group-by + saved view **Następny:** **534.0** leftover O6 `quote_recorded` przy accept HITL `carrier_quote` · potem leftover O7/O8 EXPLAIN · SH-R16-12…15 · G0. Nie AI0.
+**Stan (z CURRENT.md):** **534.0** O6 leftover — `quote_recorded` przy accept HITL **Następny:** leftover O7/O8 EXPLAIN JOIN · SH-R16-12…15 · G0. Nie AI0.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

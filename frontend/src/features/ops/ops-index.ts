@@ -1684,6 +1684,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "141.0": "/networks",
   "532.0": "/networks",
   "533.0": "/networks",
+  "534.0": "/entity-events",
   "142.0": "/mail",
   "143.0": "/networks",
   "144.0": "/quotations",

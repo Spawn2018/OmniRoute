@@ -24,6 +24,7 @@ from app.models.extraction_draft import ExtractionDraft
 from app.models.rate_line import RateLine
 from app.services.carrier_inquiries.carrier_inquiry_service import CarrierInquiryService
 from app.services.channel_quotes.channel_quote_service import ChannelQuoteService
+from app.services.entity_events.entity_event_service import EntityEventService
 from app.services.extraction.extraction_service import ExtractionService
 from app.services.organization_settings.organization_setting_service import (
     OrganizationSettingService,
@@ -55,6 +56,7 @@ class AcceptExtractionToRates:
         intakes: TenderRfpIntakeService | None = None,
         boards: TenderService | None = None,
         settings: OrganizationSettingService | None = None,
+        events: EntityEventService | None = None,
     ) -> None:
         self._extraction = extraction or ExtractionService(session)
         self._rates = rates or RateLineService(session)
@@ -63,6 +65,7 @@ class AcceptExtractionToRates:
         self._intakes = intakes or TenderRfpIntakeService(session)
         self._boards = boards or TenderService(session)
         self._settings = settings or OrganizationSettingService(session)
+        self._events = events or EntityEventService(session)
 
     async def accept(
         self,
@@ -148,11 +151,20 @@ class AcceptExtractionToRates:
             source_ref=draft.source_ref,
         )
         if stored.carrier_inquiry_id is not None:
-            await self._inquiries.mark_answered(
+            inquiry = await self._inquiries.mark_answered(
                 inquiry_id=stored.carrier_inquiry_id,
                 quoted_amount=stored.amount,
                 quoted_currency=stored.currency,
                 quoted_transit_days=stored.transit_days,
+            )
+            await self._events.create_event(
+                organization_id=draft.organization_id,
+                user_id=user_id,
+                subject_kind="carrier_inquiry",
+                subject_id=inquiry.id,
+                event_kind="quote_recorded",
+                source_ref=inquiry.source_ref,
+                occurred_at=None,
             )
         return quote
 

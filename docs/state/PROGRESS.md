@@ -1,6 +1,7 @@
 ﻿# Historia plastrów
 
 | Data | Plaster | Moduł | Opis |
+| 2026-09-16 | 534.0 | O6 quote_recorded on accept | 2026-09-16 | PRZESZLO (CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-16 | 533.0 | O8 buy-desk group-by | 2026-09-16 | PRZESZLO | N/A | leftover EXPLAIN JOIN | OK | OK | N/A | PRZESZLO | N/A | N/A | PRZESZLO (gate po push) |
 | 2026-09-16 | 532.0 | O7 country_code filter API | 2026-09-16 | PRZESZLO | N/A | leftover EXPLAIN | OK | OK | N/A | PRZESZLO | N/A | N/A | PRZESZLO (gate po push) |
 | 2026-09-16 | 531.0 | O6 leftover carrier_quote answered | 2026-09-16 | PRZESZLO | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO (gate po push) |

@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **533.0** O8 — buy-desk group-by + saved view. **Etap:** Plan — delta **534.0** zaakceptowana (`/noc`); wolno `/plaster`. **Następny:** **534.0** leftover O6 `quote_recorded` przy accept HITL `carrier_quote` · potem leftover O7/O8 EXPLAIN · SH-R16-12…15 · G0. Nie AI0. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **534.0** O6 leftover — `quote_recorded` przy accept HITL. **Etap:** park — leftover O7/O8 EXPLAIN · SH-R16-12…15 · G0 (nie AI0). **Następny:** leftover O7/O8 EXPLAIN JOIN · SH-R16-12…15 · G0. Nie AI0. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

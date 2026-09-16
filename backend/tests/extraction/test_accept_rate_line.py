@@ -478,6 +478,7 @@ async def test_accept_carrier_quote_writes_quote_not_rate() -> None:
     rates = AsyncMock()
     quotes = AsyncMock()
     inquiries = AsyncMock()
+    events = AsyncMock()
     created = AsyncMock()
     created.id = uuid4()
     quotes.create_quote = AsyncMock(return_value=created)
@@ -488,6 +489,7 @@ async def test_accept_carrier_quote_writes_quote_not_rate() -> None:
         rates=rates,
         quotes=quotes,
         inquiries=inquiries,
+        events=events,
     ).accept(draft_id=draft.id, user_id=uuid4())
 
     assert outcome.rate_lines == []
@@ -495,6 +497,7 @@ async def test_accept_carrier_quote_writes_quote_not_rate() -> None:
     rates.create_buy_rate.assert_not_called()
     quotes.create_quote.assert_awaited_once()
     inquiries.mark_answered.assert_not_called()
+    events.create_event.assert_not_called()
     kwargs = quotes.create_quote.await_args.kwargs
     assert kwargs["party_id"] == party_id
     assert kwargs["source_ref"] == "fixture://quote/1"
@@ -535,10 +538,15 @@ async def test_accept_carrier_quote_marks_inquiry_answered() -> None:
     rates = AsyncMock()
     quotes = AsyncMock()
     inquiries = AsyncMock()
+    events = AsyncMock()
     created = AsyncMock()
     created.id = uuid4()
     quotes.create_quote = AsyncMock(return_value=created)
-    inquiries.mark_answered = AsyncMock(return_value=AsyncMock())
+    answered = AsyncMock()
+    answered.id = inquiry_id
+    answered.source_ref = "tenant:manual:inquiry"
+    inquiries.mark_answered = AsyncMock(return_value=answered)
+    user_id = uuid4()
 
     outcome = await AcceptExtractionToRates(
         session,
@@ -546,7 +554,8 @@ async def test_accept_carrier_quote_marks_inquiry_answered() -> None:
         rates=rates,
         quotes=quotes,
         inquiries=inquiries,
-    ).accept(draft_id=draft.id, user_id=uuid4())
+        events=events,
+    ).accept(draft_id=draft.id, user_id=user_id)
 
     assert outcome.channel_quotes == [created]
     quotes.create_quote.assert_awaited_once()
@@ -555,6 +564,15 @@ async def test_accept_carrier_quote_marks_inquiry_answered() -> None:
         quoted_amount="12.5000",
         quoted_currency="EUR",
         quoted_transit_days=14,
+    )
+    events.create_event.assert_awaited_once_with(
+        organization_id=draft.organization_id,
+        user_id=user_id,
+        subject_kind="carrier_inquiry",
+        subject_id=inquiry_id,
+        event_kind="quote_recorded",
+        source_ref="tenant:manual:inquiry",
+        occurred_at=None,
     )
 
 
