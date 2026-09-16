@@ -276,6 +276,7 @@ export function MailIntegrationPage() {
             <option value="party">party</option>
             <option value="country">country</option>
             <option value="status">status</option>
+            <option value="thread">thread</option>
           </select>
         </label>
         <ul className="text-xs" data-mail="groups">

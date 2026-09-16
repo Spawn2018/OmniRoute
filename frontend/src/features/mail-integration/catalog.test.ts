@@ -117,4 +117,55 @@ describe("O8 mail group_by", () => {
     expect(groupInboundMessages(rows, parties, "country").map((row) => row.key)).toEqual(["NL", "PL"])
     expect(groupInboundMessages(rows, parties, "party").map((row) => row.key)).toEqual(["p-nl", "p-pl"])
   })
+
+  it("groups by rfc822 thread key", () => {
+    const page = readFileSync(path.join(srcRoot, "features/mail-integration/catalog-page.tsx"), "utf8")
+    expect(page).toContain('value="thread"')
+    const rows = [
+      {
+        id: "root",
+        organization_id: "o",
+        source_ref: "fixture://1",
+        from_address: "a@x.test",
+        subject: "A",
+        body_text: "x",
+        status: "draft",
+        party_id: "p-nl",
+        external_id: null,
+        rfc822_message_id: "<root@ex.com>",
+        in_reply_to: null,
+      },
+      {
+        id: "reply",
+        organization_id: "o",
+        source_ref: "fixture://2",
+        from_address: "b@x.test",
+        subject: "Re: A",
+        body_text: "y",
+        status: "draft",
+        party_id: "p-pl",
+        external_id: null,
+        rfc822_message_id: "<reply@ex.com>",
+        in_reply_to: "<root@ex.com>",
+      },
+      {
+        id: "orphan",
+        organization_id: "o",
+        source_ref: "fixture://3",
+        from_address: "c@x.test",
+        subject: "C",
+        body_text: "z",
+        status: "draft",
+        party_id: null,
+        external_id: null,
+        rfc822_message_id: null,
+        in_reply_to: null,
+      },
+    ]
+    expect(groupInboundMessages(rows, [], "thread").map((row) => row.key)).toEqual([
+      "<root@ex.com>",
+      "—",
+    ])
+    expect(groupInboundMessages(rows, [], "thread")[0]?.rows).toHaveLength(2)
+  })
 })

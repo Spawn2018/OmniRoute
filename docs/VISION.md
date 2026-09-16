@@ -124,6 +124,8 @@ zostają w badaniach `04`).
 | 2026-09-16 | **536.0** O8 leftover rfc822 na `inbound_message` w kodzie (`CONFIRMED`, git po push). Message-ID / In-Reply-To HITL. Live Graph fill / group-by buy-desk po rfc822 `REJECTED` na tym wierszu. Następny = **UXCL-L1** (`REQUIREMENT`). |
 | 2026-09-16 | Plan **537.0** UXCL-L1: L0 privacy + allowlista istniejących `extraction_draft_*` (`REQUIREMENT`). Job#2 charge / replay / A/B `REJECTED`. |
 | 2026-09-16 | **537.0** UXCL-L1 w kodzie (`CONFIRMED`, git po push). Allowlista extract-accept. Banner zgody / Job#2 `REJECTED` na tym wierszu. Następny = leftover O8 group-by `/mail` po rfc822 (`REQUIREMENT`). |
+| 2026-09-16 | Plan **538.0**: `/mail` `group_by=thread` po `in_reply_to`/`rfc822_message_id` (`REQUIREMENT`). Buy-desk lane / live Graph `REJECTED`. |
+| 2026-09-16 | **538.0** `/mail` thread group_by w kodzie (`CONFIRMED`, git po push). Buy-desk rfc822 / live Graph `REJECTED` na tym wierszu. Następny = park AI3-payload / Plat-HD / G0 (`REQUIREMENT`). |
 | 2026-09-13 | AI3.4 plan (**451.0**): parser `xlsx_sheet` stdlib. `openpyxl` `REJECTED`. `.xls` leftover. |
 | 2026-09-13 | **451.0** `xlsx_sheet` w kodzie (`CONFIRMED`, git). Następny = **AI4.0** FK `plan_snapshot` (`REQUIREMENT`). `.xls` leftover. |
 | 2026-09-13 | AI4.0 plan (**452.0**): FK złożone RESTRICT. CASCADE `REJECTED`. What-if `REJECTED` na tym wierszu. |

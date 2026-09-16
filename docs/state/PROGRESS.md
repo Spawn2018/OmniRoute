@@ -1,7 +1,8 @@
 ﻿# Historia plastrów
 
 | Data | Plaster | Moduł | Opis |
-| 2026-09-16 | 537.0 | UXCL-L1 L0 extract-accept | 2026-09-16 | PRZESZLO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
+| 2026-09-16 | 538.0 | O8 leftover mail thread group_by | 2026-09-16 | PRZESZLO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
+| 2026-09-16 | 537.0 | UXCL-L1 L0 extract-accept | 2026-09-16 | PRZESZLO (gate success) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-16 | 536.0 | O8 leftover inbound rfc822 | 2026-09-16 | PRZESZLO (gate success) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-16 | SH-R16-14/15 | skills fire + PARK-RADAR Q3 | 2026-09-16 | DOCS | N/A | N/A | OK | OK | N/A | DOCS | N/A | N/A | DOCS |
 | 2026-09-16 | SH-R16-12 | FACTORY-PULSE W38 | 2026-09-16 | DOCS | N/A | N/A | OK | OK | N/A | DOCS | N/A | N/A | DOCS |
