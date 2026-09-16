@@ -1,6 +1,18 @@
 const POSTHOG_KEY = import.meta.env.VITE_POSTHOG_KEY as string | undefined
 const POSTHOG_HOST = (import.meta.env.VITE_POSTHOG_HOST as string | undefined) ?? "https://eu.i.posthog.com"
 
+export const EXTRACT_ACCEPT_EVENTS = [
+  "extraction_draft_created",
+  "extraction_draft_accepted",
+  "extraction_draft_rejected",
+  "extraction_draft_patched",
+  "extraction_draft_undone",
+] as const
+
+export type ExtractAcceptEvent = (typeof EXTRACT_ACCEPT_EVENTS)[number]
+
+const ALLOWED = new Set<string>(EXTRACT_ACCEPT_EVENTS)
+
 type PosthogClient = {
   init: (key: string, options: Record<string, unknown>) => void
   capture: (event: string, properties?: Record<string, string | number | boolean>) => void
@@ -8,6 +20,10 @@ type PosthogClient = {
 
 let initialized = false
 let posthogClient: PosthogClient | null = null
+
+export function isExtractAcceptEvent(event: string): event is ExtractAcceptEvent {
+  return ALLOWED.has(event)
+}
 
 async function loadPosthog(): Promise<PosthogClient | null> {
   if (!POSTHOG_KEY) {
@@ -31,11 +47,11 @@ export function initAnalytics(): void {
     }
     ph.init(POSTHOG_KEY, {
       api_host: POSTHOG_HOST,
-      person_profiles: "identified_only",
-      capture_pageview: true,
+      person_profiles: "never",
+      capture_pageview: false,
+      disable_session_recording: true,
     })
     initialized = true
-    ph.capture("app_loaded")
   })
 }
 
@@ -43,5 +59,11 @@ export function track(event: string, properties?: Record<string, string | number
   if (!initialized || !posthogClient) {
     return
   }
-  posthogClient.capture(event, properties)
+  if (!isExtractAcceptEvent(event)) {
+    return
+  }
+  if (properties !== undefined) {
+    return
+  }
+  posthogClient.capture(event)
 }

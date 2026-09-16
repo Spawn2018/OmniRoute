@@ -30,6 +30,10 @@ ma pewność co najmniej progu tenanta `hitl_confidence_min` z `/organization-se
 Pusty, `orange`, `hold` albo niższy ułamek blokuje zbiorczą akceptację — popraw
 pewność, zaznacz jednego kandydata albo podnieś próg w ustawieniach.
 
+Telemetria jobu (extract-accept) leci tylko gdy tenant ma klucz PostHog w env.
+Zapisuje nazwy szkicu: utworzony / zaakceptowany / odrzucony / poprawiony / cofnięty.
+Bez treści cennika, bez NIP, bez e-maila, bez nagrania sesji. Brak klucza = cisza.
+
 Nazwy w kodzie: `extraction_draft` · `payload.revision` · `payload.history` ·
 `candidate_indexes` · `payload.extract_path` · `bbox_text` · `confidence_text` ·
 `hitl_confidence_min` · brama zbiorcza 501.0 · partial 504.0 · ustawienie 505.0.

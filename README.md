@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **536.0** inbound rfc822 Message-ID / In-Reply-To
-- **Etap:** Plan — delta **537.0** zaakceptowana (`/noc`); wolno `/plaster`
-- **Następny:** **537.0** UXCL-L1 L0 privacy + allowlista extract-accept · potem AI3-payload / Plat-HD / G0 park. Nie AI0. Nie SH-R16-13 w `/noc`.
+- **Ostatni plaster:** **537.0** UXCL-L1 L0 privacy extract-accept
+- **Etap:** Plan — następne leftover **mail group_by=thread** z rfc822; komenda `/plan-modul`
+- **Następny:** leftover O8 **group-by `/mail` po rfc822** (Plan→plaster) · potem AI3-payload / Plat-HD / G0 park. Nie AI0. Nie SH-R16-13 w `/noc`.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
