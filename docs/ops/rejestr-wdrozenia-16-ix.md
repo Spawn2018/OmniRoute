@@ -66,7 +66,7 @@ Szablony: **29/29** w `docs/ops/szablony/`. Playbooki/RACI: [fabryka-playbooki-s
 | **SH-R16-9** | Materialne: playbooki/RACI/cooling/CEO/Diátaxis | docs | **DONE** (`fabryka-playbooki-sh.md`) | — |
 | **SH-R16-10** | Rejestr gap R16 + statusy | docs | **DONE** 2026-09-16b | — |
 | **SH-R16-11** | Meta-KPI Closure ≤14d w PROC | docs | **DONE** 2026-09-16b | egzekucja po UXCL-L1 |
-| **SH-R16-12** | FACTORY-PULSE pierwsze liczby | rytuał P-Y | **czeka** | idle + P-Y |
+| **SH-R16-12** | FACTORY-PULSE pierwsze liczby | rytuał P-Y | **DONE** 2026-09-16 | [pulses/FACTORY-PULSE-2026-W38.md](pulses/FACTORY-PULSE-2026-W38.md) |
 | **SH-R16-13** | Dependabot 1 paczka / tydzień | rytuał idle | **czeka** | nie auto-PR w nocy |
 | **SH-R16-14** | Fire skill >4 tyg. | rytuał P-Y | **czeka** | friday / IDLE |
 | **SH-R16-15** | PARK-RADAR Q3/Q4 2026 | rytuał kwartał | **czeka** | idle ≤30 min |

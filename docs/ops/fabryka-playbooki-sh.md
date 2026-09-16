@@ -59,7 +59,7 @@ Nowe `*-OS.md` / P-Z = **zakaz** (PACK-STOP).
 
 | ID PLAN | Co | Status |
 |---|---|---|
-| **SH-R16-12** | Pierwszy FACTORY-PULSE z liczbami `gh` (P-Y) | czeka idle |
+| **SH-R16-12** | Pierwszy FACTORY-PULSE z liczbami `gh` (P-Y) | DONE 2026-09-16 |
 | **SH-R16-13** | Dependabot: 1 paczka / tydzień WIP=1 (alerts już ON; auto-PR OFF) | czeka idle |
 | **SH-R16-14** | Audit skill >4 tyg. (fire/archiwum) w P-Y | czeka idle |
 | **SH-R16-15** | PARK-RADAR Q3/Q4 2026 ≤30 min | czeka kwartał idle |
