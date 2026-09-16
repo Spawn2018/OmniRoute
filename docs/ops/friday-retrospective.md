@@ -12,7 +12,7 @@ Ten plik jest **procedurą na wypadek ręcznego prune**, nie logiem i nie checkl
 1. AlwaysApply — czy nadal ≤3 i ≤~2k tokenów łącznie?
 2. Skill nietknięty >4 tygodnie → archiwum albo skasuj.
 3. `agentlint` baseline — czy ruszany świadomie, w tym samym commicie co treść?
-4. Knowledge: karta po zdarzeniu, nie dump OSS. Max 8–20 retrieve.
+4. Knowledge: karta po zdarzeniu, nie dump OSS. Max 8–20 retrieve. **SLA:** karta ≤**7 dni** od close plastra / PM-FAC (LEARNING-OS); zaległa = kubełek debt albo dwuobieg, nie druga karta.
 5. Jedna decyzja ADR albo linia w PROGRESS — zero „omówimy”.
 6. Czy leftover w `docs-debt.md` przestał być leftoverem?
 

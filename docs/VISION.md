@@ -224,6 +224,7 @@ zostają w badaniach `04`).
 | 2026-09-16 | D.8: przy `/noc` busy badania = schowek pomysłów/wizji (`REQUIREMENT`). Przy idle/stop praca = repo OmniRoute + GitHub (`REQUIREMENT`). Badania nadal ≠ drugi kanon (`CONFIRMED`). Nie 527.0 z tej karty. |
 | 2026-09-16 | D.8: badania = surowiec na nowe plany/kanony/agentów/kontrakty w repo — **tylko** po stopie `/noc` **i** jawnym poleceniu człowieka (`REQUIREMENT`). Sam idle ≠ promocja. [WYCOFANE 2026-09-16: „idle = przenieś pakiet SH do repo”.] |
 | 2026-09-16 | **Rejestr wdrożenia 16 IX:** 20 plików badań → kanon kolejki [rejestr-wdrozenia-16-ix.md](ops/rejestr-wdrozenia-16-ix.md) + PLAN § Fala SH-R16 (`REQUIREMENT` operatora: 100% pokrycie; park z warunkiem). Pin 2026-09-08c bez zmian. Nie AI0. |
+| 2026-09-16 | SH-R16 audyt braków → szablony 29/29, false DONE naprawione, materialne w PLAN (SH-R16-8…15). (`REQUIREMENT`) |
 
 ---
 

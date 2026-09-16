@@ -6,10 +6,10 @@
 | Wersja | **1.8 — 2026-09-16** |
 | Owner | człowiek (CEO / owner produktu) |
 | Agent | `ux-loop-orchestrator` (po instalacji); do instalacji — człowiek albo Ask |
-| Docelowo w repo | `docs/ops/ux-continuous-loop.md` — **tylko po D2 + `/noc` idle** |
-| Status | BADANIA — nie next-ID |
+| Docelowo w repo | `docs/ops/ux-continuous-loop.md` |
+| Status | **KANON** — job produktowy = leftover UXCL-L1 (po privacy); nie next-ID HITL |
 
-Szablony: `szablony/SIGNAL.md`, `EXPERIMENT.md`, `CLOSURE.md`. Instalacja do repo: `INSTALL-UXCL.md` (nie ta procedura). Job #1: **extract-accept** (D2 w inboxie `czeka`). Context budget: sesja firmy; plaster nie wczytuje `22`–`24` / OS badań / `IDLE-SESJA`. UXCL ≠ fabryka. Po idle UXCL jedzie **w** P-Y (krok INSTALL), nie jako drugi tydzień.
+Szablony: [`docs/ops/szablony/SIGNAL.md`](szablony/SIGNAL.md), [`EXPERIMENT.md`](szablony/EXPERIMENT.md), [`CLOSURE.md`](szablony/CLOSURE.md). Job #1: **extract-accept** (D2 **akceptuję** 2026-09-16; instrumentacja = leftover UXCL-L1). Context budget: sesja firmy; plaster/`/noc` nie wczytuje pakietu SH badań (lista w `context.mdc`). UXCL ≠ fabryka. Po idle UXCL jedzie **w** P-Y, nie jako drugi tydzień.
 
 ---
 
@@ -35,9 +35,9 @@ Kotwice: HEART×job (Rodden et al.); RITE (Medlock et al.); Kohavi 2020; SRE err
 3. WIP hipotez Top 5 ≤ 5. Powyżej → tylko zamykanie, zero nowych w Top 5.
 4. Error budget spalony (p95 / 5xx / LCP / bundle — gdy macie liczby) → tylko fix/rollback.
 5. Next-ID produktu **nie** pochodzi z tej procedury.
-6. Error budget fabryki: `ERROR-BUDGET-POLICY.md` § A — **żywy**. Twarde spalenie → stop Top 5 i stop hire. Tenant G1 = N/A.
-7. Noc z problemem: AAR (`szablony/AAR.md`). Trigger A2: PM-FAC, nie sam AAR.
-8. Czerwony gate: `szablony/ANDON.md` (`factory_recover`). 3× fail ≠ nowy skill.
+6. Error budget fabryki: [`error-budget-factory.md`](error-budget-factory.md) § A — **żywy**. Twarde spalenie → stop Top 5 i stop hire. Tenant G1 = N/A.
+7. Noc z problemem: AAR ([`szablony/AAR.md`](szablony/AAR.md)). Trigger A2: PM-FAC, nie sam AAR.
+8. Czerwony gate: [`szablony/ANDON.md`](szablony/ANDON.md) (`factory_recover`). 3× fail ≠ nowy skill.
 9. Pulse DORA: nie z tej procedury w `/noc`. Po idle: P-R + P-S (WBR). Nie myl HEART jobu z `factory_df`.
 10. G0/unpark nie z tej procedury — `MECHANISMS.md` / PRR.
 11. Nauka produktu (Closure) ≠ nauka fabryki (`LEARNING-OS`). Recurrence fabryki nie jest KPI jobu.
@@ -106,7 +106,7 @@ Przed releasem extract/modelu: golden + human label; Art.14 (override, nie rubbe
 
 | Akcja | Agent | Człowiek |
 |---|---|---|
-| Signal / Experiment / Closure w badaniach | D0 | D1 czytaj |
+| Signal / Experiment / Closure w `docs/ops/szablony/` | D0 | D1 czytaj |
 | Eventy / plaster FE | plan + kod po D2 lub `/noc` na CURRENT | leftover do PLAN |
 | Instalacja skill/proc do repo | nie | D2 |
 | Owner approve Plat-HD | propozycja | D2 |
@@ -119,7 +119,7 @@ Przed releasem extract/modelu: golden + human label; Art.14 (override, nie rubbe
 
 | Metryka | Cel | Alarm |
 |---|---|---|
-| Signal → Closure w ≤14 dni | większość Top 5 | karty bez daty stop |
+| Signal → Closure w ≤14 dni | większość Top 5 | karty bez daty stop; **meta-KPI** egzekucja po UXCL-L1 (SH-R16-11) |
 | Kolizje agent × `/noc` | 0 | > 0 |
 | Experiment bez guardrail | 0 | > 0 |
 | Plat-HD bez owner decyzji | < 10% otwartych | wiszące propozycje |

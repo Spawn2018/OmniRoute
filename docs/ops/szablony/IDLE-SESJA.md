@@ -14,10 +14,10 @@ Czas: agent ≤45 min (liczby). CEO ≤15 min (WBR §4). Łącznie **jedna** roz
 - [ ] `git status` czysty na `origin/main` (albo WIP nie z tej sesji)
 - [ ] Otwarte D2 ≤7
 
-## 1. Instalacja UXCL — tylko jeśli inbox „3 skille + PROC” jeszcze czeka
+## 1. Instalacja UXCL — **DONE** (2026-09-16)
 
-Checklista: `INSTALL-UXCL.md`. Osobny commit. Człowiek każe.  
-Dziesięć skilli fabryki **nie ruszaj**. Potem `skill_n` oczekiwane = 13.
+3 skille + PROC w OmniRoute. `skill_n` = 13. Nie powtarzaj INSTALL.  
+Dziesięć skilli fabryki **nie ruszaj**.
 
 ## 2. Arkusze (załączniki, nie spotkania)
 

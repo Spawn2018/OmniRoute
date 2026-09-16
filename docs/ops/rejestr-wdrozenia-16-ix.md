@@ -31,20 +31,20 @@ Ten plik **jest** kanonem kolejki fabryki z 16 IX.
 | 6 | `CRAFT-OS.md` | łańcuch rzemiosła | **DONE** (haki + L1–L3 no-slop); pulse = P-Y |
 | 7 | `DECISION-INBOX.md` | inbox D2/D3 | **BADANIA** (żywy poza gitem); decyzje 16 IX wpisane tu jako DONE/PARK |
 | 8 | `DORA-FABRYKA.md` | analogi `factory_*` | **POKRYTE** — `gate=success` DONE; pulse 4 tyg. = NOW/P-Y |
-| 9 | `ERROR-BUDGET-POLICY.md` | Andon fabryki | **NOW** → `docs/ops/error-budget-factory.md` |
-| 10 | `GIGANT-LUKI-2026.md` | 6 luk IX 2026 | **POKRYTE** — ruleset+alerts+scanning DONE; SBOM/EAA/CRA/hire PARK |
-| 11 | `INSTALL-UXCL.md` | 3 skille + PROC | **DONE** (`321e9207`) |
-| 12 | `JAK-PISZEMY.md` | semantyka / komentarz / Diátaxis | **DONE** (L1–L3 `8a0f5a14`); esej = BADANIA |
+| 9 | `ERROR-BUDGET-POLICY.md` | Andon fabryki | **DONE** (`ops/error-budget-factory.md`) |
+| 10 | `GIGANT-LUKI-2026.md` | 6 luk IX 2026 | **POKRYTE** — ruleset+alerts DONE; szablony GITHUB/EAA/HIRE/SUPPLY w ops; SBOM/attestation/hire PARK |
+| 11 | `INSTALL-UXCL.md` | 3 skille + PROC | **DONE** |
+| 12 | `JAK-PISZEMY.md` | semantyka / komentarz / Diátaxis | **DONE** L1–L3 + Diátaxis w `fabryka-playbooki-sh.md` |
 | 13 | `JAK-PISZEMY-AUTOMACJA.md` | podłoga haków; L4 PARK | **DONE** L1–L3; L4/L5 = PARK/REJECT |
-| 14 | `JAK-PISZEMY-RESZTA.md` | test/parse/debug | **DONE** (polityka w no-slop/testy); MagicMock L5 PARK |
-| 15 | `LEARNING-OS.md` | recurrence + kubełki | **POKRYTE** — friday w repo; flush = P-Y; karta W38 = NOW |
-| 16 | `MECHANISMS.md` | PRR/WBR/SEV/LAUNCH | **POKRYTE** — G0 PARK z sekwencją; P-Y = NOW |
-| 17 | `PROC-UXCL.md` | pętla UX | **DONE** (`docs/ops/ux-continuous-loop.md`); job eventy = AFTER_527 |
-| 18 | `SH-CZYTAJ.md` | spis czytania + zakaz w plasterze | **BADANIA** (wskaźnik); zakaz wczytania do plaster = DONE w AGENTS |
-| 19 | `SKILLS-OS.md` | 10+3 skilli | **DONE** (`skill_n`=13); pulse = P-Y; 11. skill = REJECT |
-| 20 | `ZRODLA-FABRYKA.md` | bibliografia | **BADANIA** (nie OS; nie rytuał) |
+| 14 | `JAK-PISZEMY-RESZTA.md` | test/parse/debug | **DONE**; MagicMock L5 PARK |
+| 15 | `LEARNING-OS.md` | recurrence + kubełki | **POKRYTE** — friday + SLA 7 dni; flush = P-Y |
+| 16 | `MECHANISMS.md` | PRR/WBR/SEV/LAUNCH | **POKRYTE** — szablony w ops; G0 PARK |
+| 17 | `PROC-UXCL.md` | pętla UX | **DONE** (kanon + szablony SIGNAL/EXPERIMENT/CLOSURE); job = UXCL-L1 |
+| 18 | `SH-CZYTAJ.md` | spis + zakaz w plasterze | **BADANIA** + enum w `context.mdc` |
+| 19 | `SKILLS-OS.md` | 10+3 skilli | **DONE**; fire >4 tyg. = SH-R16-14 |
+| 20 | `ZRODLA-FABRYKA.md` | bibliografia | **BADANIA** (nie rytuał) |
 
-Szablony / `sesje/2026-W38/` = artefakty form; unikalne wymagania w §3–§4 poniżej.
+Szablony: **29/29** w `docs/ops/szablony/`. Playbooki/RACI: [fabryka-playbooki-sh.md](fabryka-playbooki-sh.md).
 
 ---
 
@@ -57,13 +57,21 @@ Szablony / `sesje/2026-W38/` = artefakty form; unikalne wymagania w §3–§4 po
 | **SH-R16-0** | Ten rejestr + wiersz PLAN § Fala SH-R16 + CURRENT | docs | **DONE** | nie 527.0 kod |
 | **SH-R16-1** | Polityka error-budget fabryki → `docs/ops/error-budget-factory.md` | docs | **DONE** | nie SLO tenanta |
 | **SH-R16-2** | Karta wiedzy PM-FAC W38 → `docs/_knowledge/memory-patterns/pm-fac-20260916.md` | docs | **DONE** | nie nowy OS |
-| **SH-R16-3** | Szablony triggerowe → `docs/ops/szablony/` | docs | **DONE** | kopiuj przy zdarzeniu |
+| **SH-R16-3** | Szablony → `docs/ops/szablony/` (**29/29**, w tym SIGNAL…HIRE) | docs | **DONE** 2026-09-16b | kopiuj przy zdarzeniu |
 | **SH-R16-4** | Leftover PLAN: **UXCL-L1** eventy jobu extract-accept | leftover wiersz | **DONE** (wiersz w PLAN) | kod = AFTER_527 |
 | **SH-R16-5** | Leftover PLAN: **AI3-payload** | leftover wiersz | **DONE** (wiersz w PLAN) | żywy OpenAI CI = PARK |
 | **SH-R16-6** | Audit GH Actions | chore | **DONE** | brak `pull_request_target` |
 | **SH-R16-7** | Wiersz `factory_ai_spend` w WBR | docs | **DONE** | CEO wkleja $ |
+| **SH-R16-8** | False DONE: PROC kanon; PACK-STOP; SLA 7d; enum context budget | docs | **DONE** 2026-09-16b | — |
+| **SH-R16-9** | Materialne: playbooki/RACI/cooling/CEO/Diátaxis | docs | **DONE** (`fabryka-playbooki-sh.md`) | — |
+| **SH-R16-10** | Rejestr gap R16 + statusy | docs | **DONE** 2026-09-16b | — |
+| **SH-R16-11** | Meta-KPI Closure ≤14d w PROC | docs | **DONE** 2026-09-16b | egzekucja po UXCL-L1 |
+| **SH-R16-12** | FACTORY-PULSE pierwsze liczby | rytuał P-Y | **czeka** | idle + P-Y |
+| **SH-R16-13** | Dependabot 1 paczka / tydzień | rytuał idle | **czeka** | nie auto-PR w nocy |
+| **SH-R16-14** | Fire skill >4 tyg. | rytuał P-Y | **czeka** | friday / IDLE |
+| **SH-R16-15** | PARK-RADAR Q3/Q4 2026 | rytuał kwartał | **czeka** | idle ≤30 min |
 
-Po **SH-R16-0…7** (albo cutoff godziny): wróć do **527.0** i osi pinu.
+Po **SH-R16-8…11** (docs): `/noc` produkt = **527.0**, potem UXCL-L1/AI3. Rytuały **12–15** = gdy idle/P-Y (nie skip — wiersz w PLAN).
 
 ### 1.2 AFTER_527 — produkt (oś pinu + job G1)
 
@@ -148,7 +156,7 @@ Każdy wiersz = jedna dyskretna treść. Status: D=DONE, N=NOW, A=AFTER_527, P=P
 | R16-040 | 10 kryteriów sukcesu firmy | N |
 | R16-041 | Nie-misja 205/silniki/scoring | R |
 | R16-042 | Prawo 1–12 = AGENTS/GROUNDING | D |
-| R16-043 | Context budget pkt 13 | D |
+| R16-043 | Context budget pkt 13 — enum w `context.mdc` | D |
 | R16-044 | Krytyk nie commituje | D |
 | R16-045 | PROMPT-CHG + golden | P |
 | R16-046 | PM-FAC / AAR | N |
@@ -238,8 +246,8 @@ Każdy wiersz = jedna dyskretna treść. Status: D=DONE, N=NOW, A=AFTER_527, P=P
 
 | ID | Treść | St |
 |---|---|---|
-| R16-120 | A1 twarde spalenie | N |
-| R16-121 | A2 miękkie | N |
+| R16-120 | A1 twarde spalenie | D |
+| R16-121 | A2 miękkie | D |
 | R16-122 | Budżet tenanta N/A | P |
 | R16-123 | Stop FE/BE osobno / scoring / 11 skill | R |
 
@@ -257,7 +265,7 @@ Każdy wiersz = jedna dyskretna treść. Status: D=DONE, N=NOW, A=AFTER_527, P=P
 | R16-137 | Environments / required PR | P |
 | R16-138 | EAA park claim | P |
 | R16-139 | CRA TO_VERIFY | P |
-| R16-140 | factory_ai_spend WBR | N |
+| R16-140 | factory_ai_spend WBR | D |
 | R16-141 | PARK-RADAR kwartał | N |
 | R16-142 | Hire human D3 | P |
 | R16-143 | REJECT in-toto/GitFlow/… | R |
@@ -346,9 +354,9 @@ Każdy wiersz = jedna dyskretna treść. Status: D=DONE, N=NOW, A=AFTER_527, P=P
 
 | ID | Treść | St |
 |---|---|---|
-| R16-250 | Actions permissions / brak PR_target+sekrety | N |
+| R16-250 | Actions permissions / brak PR_target+sekrety | D |
 | R16-251 | L1–L3 commit procedura | D |
-| R16-252 | PACK-STOP / gate=success | D |
+| R16-252 | PACK-STOP w ops + gate=success | D |
 | R16-253 | IDLE-SESJA checklista | N |
 | R16-254 | W38 ograniczenie | D |
 | R16-255 | KNOWLEDGE-DRAFT → `_knowledge` | N |
@@ -357,7 +365,7 @@ Każdy wiersz = jedna dyskretna treść. Status: D=DONE, N=NOW, A=AFTER_527, P=P
 | R16-258 | Po hire: required PR | P |
 | R16-259 | Marketing B2C = D3 nie leftover | P |
 
-**Licznik:** 20/20 plików + 158 pozycji R16 zmapowanych. Brak „pominięte”.
+**Licznik:** 20/20 plików + R16-001…272 (luki numeracji OK). Audyt 16b: twarde+false DONE+materialne → PLAN SH-R16-8…15.
 
 ---
 
@@ -376,12 +384,67 @@ Każdy wiersz = jedna dyskretna treść. Status: D=DONE, N=NOW, A=AFTER_527, P=P
 
 ## 4. Audyt zamknięcia rejestru
 
-Przed ogłoszeniem „Rejestr 16 IX zamknięty”:
+Przed ogłoszeniem „Rejestr 16 IX zamknięty” (produktowo: po SH-R16-12…15 + UXCL-L1):
 
-1. Wszystkie wiersze §2 mają St ∈ {D,N,A,P,R,B}.
-2. Wszystkie N mają ID SH-R16-* lub są domknięte w tej promocji.
-3. Wszystkie P są w PLAN Parked / CURRENT Park.
+1. Szablony **29/29** w `docs/ops/szablony/`.
+2. False DONE z audytu 16 IX = naprawione (SH-R16-8).
+3. Materialne niezmapowane = w `fabryka-playbooki-sh.md` + wiersze SH-R16-12…15.
 4. 20/20 plików w §0 = POKRYTE/DONE/BADANIA.
-5. `just docs` + push; CI `gate=success` na SHA.
+5. Push + CI `gate=success` na SHA docs.
 
 Nie ogłaszaj elite. Nie zdejmuj pinu 2026-09-08c.
+
+---
+
+## 5. Domknięcie audytu 2026-09-16b (braki → PLAN `/noc`)
+
+### 5.1 Twarde — DONE w tej promocji
+
+| Brak audytu | Naprawa |
+|---|---|
+| 13 szablonów | skopiowane → 29/29 |
+| PROC bez SIGNAL/EXPERIMENT/CLOSURE | ścieżki + status KANON |
+| Brak KNOWLEDGE.md | w `ops/szablony/` |
+| SH-R16-3 false DONE | status = pełne 29 |
+
+### 5.2 False DONE — DONE w tej promocji
+
+| Claim | Naprawa |
+|---|---|
+| PACK-STOP „D” bez pliku | `ops/szablony/PACK-STOP.md` |
+| PROC BADANIA / extract „czeka” | kanon; D2 akceptuję; leftover UXCL-L1 |
+| Context budget bez enumu | `context.mdc` + agentlint |
+| SLA karty ≤7 dni | `friday-retrospective.md` |
+
+### 5.3 Materialne — zmapowane do PLAN
+
+| Treść | Gdzie |
+|---|---|
+| Playbooki P-A…P-Y, RACI, cooling 14d, CEO budget, Diátaxis | `ops/fabryka-playbooki-sh.md` (SH-R16-9) |
+| Meta-KPI Closure ≤14d | PROC + SH-R16-11 |
+| FACTORY-PULSE liczby | **SH-R16-12** czeka idle |
+| Dependabot 1/tydzień | **SH-R16-13** czeka idle |
+| Fire skill >4 tyg. | **SH-R16-14** czeka P-Y |
+| PARK-RADAR kwartał | **SH-R16-15** czeka |
+| UXCL-L1 / AI3 / Plat-HD / G0 / SBOM… | PLAN § Fala SH-R16 + §1.2–1.3 |
+
+### 5.4 Nowe R16 (uzupełnienie luk)
+
+| ID | Treść | St |
+|---|---|---|
+| R16-260 | Szablony 29/29 w OmniRoute | D |
+| R16-261 | Enum context budget w AlwaysApply | D |
+| R16-262 | SLA karty ≤7 dni w friday | D |
+| R16-263 | Cooling 14 dni D3 | D (`fabryka-playbooki-sh`) |
+| R16-264 | Budżet uwagi CEO | D |
+| R16-265 | RACI skrót | D |
+| R16-266 | Indeks P-A…P-Y | D |
+| R16-267 | Diátaxis mapowanie docs | D |
+| R16-268 | Meta-KPI Closure ≤14d | D (wiersz); egzekucja A |
+| R16-269 | FACTORY-PULSE pierwsze liczby | N → SH-R16-12 |
+| R16-270 | Dependabot 1 paczka/tydzień | N → SH-R16-13 |
+| R16-271 | Fire skill >4 tyg. | N → SH-R16-14 |
+| R16-272 | PARK-RADAR Q3/Q4 | N → SH-R16-15 |
+
+**Kolejka `/noc` po tym commicie:** rytuały SH-R16-12…15 gdy idle; produkt **527.0**; potem UXCL-L1 / AI3 gdy CURRENT.
+

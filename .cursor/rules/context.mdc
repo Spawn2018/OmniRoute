@@ -17,6 +17,7 @@ NIE RÓB:
 - Nie otwieraj więcej niż jednego pliku spec.
 - Nie ładuj `Informacje z claude/` ani `docs/_source/` do kontekstu.
 - `D:\OMNIROUTE-badania` = surowiec. Przy `/noc` busy: tylko tam nowe notatki; zero promocji do kanonu. Przy idle: produkt tutaj + GitHub. Plan/kanon/agent/kontrakt z badań **tylko** po jawnym poleceniu.
+- Plaster/`/noc` **nie** wczytuje: `22`/`23`/`24`, `08`, `DORA-FABRYKA`, `MECHANISMS`, `LEARNING-OS`, `CRAFT-OS`, `JAK-PISZEMY*`, `SKILLS-OS`, `IDLE-SESJA`, `PACK-STOP`, `ZRODLA-FABRYKA`, `GIGANT-LUKI-2026`, `SUPPLY-CHAIN`, `GITHUB-MAIN`, `EAA-CRA`, `FINOPS-NOC`, `PARK-RADAR`, `HIRE-HUMAN`, `sesje/`, katalogu 205. Wejście: CURRENT + spec z CURRENT + max 8–20 kart `_knowledge`. Pakiet SH = sesja firmy albo Ask; kanon kolejki = `docs/ops/rejestr-wdrozenia-16-ix.md`.
 - Nie zgaduj nazw kolumn ani endpointów.
 
 Brakuje informacji **spoza** CURRENT/kolejki → zapytaj jednym pytaniem. Nie eksploruj. Nie pytaj „co chcesz budować”, gdy CURRENT wskazuje Q.

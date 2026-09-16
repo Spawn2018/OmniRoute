@@ -776,27 +776,35 @@ Zdublowane listy Fal 2–11 (M-xx): [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md). 
 
 ### Fala SH-R16 — Rejestr wdrożenia 16 IX (fabryka + park)
 
-**Źródło:** 20 plików `D:\OMNIROUTE-badania` (2026-09-16). **Kanon pokrycia:** [rejestr-wdrozenia-16-ix.md](ops/rejestr-wdrozenia-16-ix.md) (158× R16, 20/20). Promocja: jawne polecenie operatora przy `/noc` stop.
+**Źródło:** 20 plików `D:\OMNIROUTE-badania` (2026-09-16). **Kanon:** [rejestr-wdrozenia-16-ix.md](ops/rejestr-wdrozenia-16-ix.md). Audyt braków → domknięcie 2026-09-16b (szablony 29/29, false DONE, materialne).
 
-**Nie** zastępuje pinu **2026-09-08c**. `/noc`: batch **SH-R16-*** z CURRENT, potem **527.0+**.
+**Nie** zastępuje pinu **2026-09-08c**. `/noc`: najpierw otwarte **SH-R16-*** z CURRENT, potem **527.0+**.
 
 | ID | Co | Tryb | Status | Poza / warunek |
 |---|---|---|---|---|
-| **SH-R16-0** | Rejestr + ten wiersz + CURRENT | docs | DONE 2026-09-16 | nie kod 527.0 |
-| **SH-R16-1** | Error-budget fabryki | docs | DONE (`ops/error-budget-factory.md`) | nie SLO tenanta |
-| **SH-R16-2** | Karta PM-FAC W38 | docs | DONE (`_knowledge/.../pm-fac-20260916.md`) | nie nowy OS |
-| **SH-R16-3** | Szablony triggerowe | docs | DONE (`ops/szablony/`) | wypełniaj przy zdarzeniu |
-| **SH-R16-4** | Leftover **UXCL-L1** eventy extract-accept + privacy | leftover | czeka | po batch NOW; nie scoring |
-| **SH-R16-5** | Leftover **AI3-payload** sygnał uczenia extractu | leftover | czeka | żywy OpenAI CI = park |
-| **SH-R16-6** | Audit GH Actions permissions / `pull_request_target` | chore | DONE 2026-09-16 | brak `pull_request_target`; codeql/pr-nudge `contents: read`; gate report-failure = write uzasadnione |
-| **SH-R16-7** | Wiersz `factory_ai_spend` w WBR | docs | DONE (szablon WBR) | CEO wkleja $ |
-| **UXCL-L1** | Instrumentacja jobu extract-accept | Plan→plaster | park→CURRENT | L0 privacy TAK; D2 16 IX akceptuję |
-| **AI3-payload** | Jedno payload / delta AI vs człowiek | Plan→plaster | park→CURRENT | SH-R16-5 |
+| **SH-R16-0** | Rejestr + PLAN + CURRENT | docs | DONE | nie kod 527.0 |
+| **SH-R16-1** | Error-budget fabryki | docs | DONE | nie SLO tenanta |
+| **SH-R16-2** | Karta PM-FAC W38 | docs | DONE | nie nowy OS |
+| **SH-R16-3** | Szablony — **pełne 29/29** (w tym SIGNAL…HIRE) | docs | DONE 2026-09-16b | wypełniaj przy zdarzeniu |
+| **SH-R16-4** | Leftover **UXCL-L1** eventy + privacy | leftover | czeka | L0 privacy; nie scoring |
+| **SH-R16-5** | Leftover **AI3-payload** | leftover | czeka | żywy OpenAI CI = park |
+| **SH-R16-6** | Audit GH Actions / `pull_request_target` | chore | DONE | — |
+| **SH-R16-7** | `factory_ai_spend` w WBR | docs | DONE | CEO wkleja $ |
+| **SH-R16-8** | False DONE: PROC kanon + path szablonów; PACK-STOP w ops; SLA 7 dni; enum context budget | docs | DONE 2026-09-16b | agentlint w commicie |
+| **SH-R16-9** | Materialne: playbooki/RACI/cooling/CEO budget/Diátaxis | docs | DONE (`ops/fabryka-playbooki-sh.md`) | nie next-ID |
+| **SH-R16-10** | Rejestr: uzupełnienie R16 gap + statusy spójne | docs | DONE 2026-09-16b | — |
+| **SH-R16-11** | Meta-KPI UXCL Closure ≤14 dni — wiersz w PROC + CLOSURE | docs | DONE 2026-09-16b | egzekucja = po UXCL-L1 |
+| **SH-R16-12** | FACTORY-PULSE pierwsze liczby (`gh`) | rytuał P-Y | czeka | `/noc` idle + P-Y |
+| **SH-R16-13** | Dependabot 1 paczka / tydzień WIP=1 | rytuał idle | czeka | nie auto-PR w nocy |
+| **SH-R16-14** | Fire/archiwum skill >4 tyg. | rytuał P-Y | czeka | friday / IDLE |
+| **SH-R16-15** | PARK-RADAR Q3/Q4 2026 | rytuał kwartał | czeka | idle ≤30 min |
+| **UXCL-L1** | Instrumentacja extract-accept | Plan→plaster | park→CURRENT | po privacy; D2 akceptuję |
+| **AI3-payload** | Payload / delta AI vs człowiek | Plan→plaster | park→CURRENT | SH-R16-5 |
 | **Plat-HD-flow** | Obieg ticket→owner | Plan→plaster | park | G0+G1 + D2 owner |
-| **G0-SH** | Host/IdP/CF (`22`/`23`) | — | park | klient → PREMORT→PRR→LAUNCH |
+| **G0-SH** | Host/IdP/CF | — | park | PREMORT→PRR→LAUNCH |
 | **SBOM / attestation / EAA / CRA / hire-human** | GIGANT L2–L3 | — | park | rejestr §1.3 |
 
-REJECT rejestr §1.4 = **nigdy** (nie Q).
+REJECT rejestr §1.4 = **nigdy** (nie Q). Indeks rytuałów: [fabryka-playbooki-sh.md](ops/fabryka-playbooki-sh.md).
 
 ### Parked (w katalogu, nie w kolejce aktywnej)
 
