@@ -111,6 +111,10 @@ export const BUSINESS_LISTS = {
     route: "/kpi-definition-marks",
     tableKey: "kpi_definition_mark",
   },
+  marginFloor: {
+    route: "/margin-floors",
+    tableKey: "margin_floor",
+  },
   automationBiasMark: {
     route: "/automation-bias-marks",
     tableKey: "automation_bias_mark",
@@ -598,6 +602,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/jit-jis-marks",
   "/job-metric-marks",
   "/kpi-definition-marks",
+  "/margin-floors",
   "/vda-odette-marks",
   "/inventory-position-marks",
   "/fair-share-marks",

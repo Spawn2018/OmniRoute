@@ -1002,6 +1002,10 @@ class InvalidKpiDefinitionMark(DomainError):
     """AI5.0 leftover: HITL definicja KPI — nie wzór z modelu / nie OTIF%."""
 
 
+class InvalidMarginFloor(DomainError):
+    """N6: HITL podłoga marży Decimal + UN/LOCODE — nie 409 na charge."""
+
+
 class InvalidL3GateMark(DomainError):
     """AI8.2: HITL checklista bramy L3 — nie silnik write / nie mutacja autonomy_level."""
 

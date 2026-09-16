@@ -162,6 +162,7 @@ import { Route as LocationsRouteImport } from './routes/locations'
 import { Route as MailRouteImport } from './routes/mail'
 import { Route as MailAcceptMarksRouteImport } from './routes/mail-accept-marks'
 import { Route as MakeOrBuyMarksRouteImport } from './routes/make-or-buy-marks'
+import { Route as MarginFloorsRouteImport } from './routes/margin-floors'
 import { Route as MemoryEdgesRouteImport } from './routes/memory-edges'
 import { Route as MobileClientMarksRouteImport } from './routes/mobile-client-marks'
 import { Route as ModelFeatureMarksRouteImport } from './routes/model-feature-marks'
@@ -1080,6 +1081,11 @@ const MailAcceptMarksRoute = MailAcceptMarksRouteImport.update({
 const MakeOrBuyMarksRoute = MakeOrBuyMarksRouteImport.update({
   id: '/make-or-buy-marks',
   path: '/make-or-buy-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarginFloorsRoute = MarginFloorsRouteImport.update({
+  id: '/margin-floors',
+  path: '/margin-floors',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MemoryEdgesRoute = MemoryEdgesRouteImport.update({
@@ -2003,6 +2009,7 @@ export interface FileRoutesByFullPath {
   '/mail': typeof MailRoute
   '/mail-accept-marks': typeof MailAcceptMarksRoute
   '/make-or-buy-marks': typeof MakeOrBuyMarksRoute
+  '/margin-floors': typeof MarginFloorsRoute
   '/memory-edges': typeof MemoryEdgesRoute
   '/mobile-client-marks': typeof MobileClientMarksRoute
   '/model-feature-marks': typeof ModelFeatureMarksRoute
@@ -2311,6 +2318,7 @@ export interface FileRoutesByTo {
   '/mail': typeof MailRoute
   '/mail-accept-marks': typeof MailAcceptMarksRoute
   '/make-or-buy-marks': typeof MakeOrBuyMarksRoute
+  '/margin-floors': typeof MarginFloorsRoute
   '/memory-edges': typeof MemoryEdgesRoute
   '/mobile-client-marks': typeof MobileClientMarksRoute
   '/model-feature-marks': typeof ModelFeatureMarksRoute
@@ -2620,6 +2628,7 @@ export interface FileRoutesById {
   '/mail': typeof MailRoute
   '/mail-accept-marks': typeof MailAcceptMarksRoute
   '/make-or-buy-marks': typeof MakeOrBuyMarksRoute
+  '/margin-floors': typeof MarginFloorsRoute
   '/memory-edges': typeof MemoryEdgesRoute
   '/mobile-client-marks': typeof MobileClientMarksRoute
   '/model-feature-marks': typeof ModelFeatureMarksRoute
@@ -2930,6 +2939,7 @@ export interface FileRouteTypes {
     | '/mail'
     | '/mail-accept-marks'
     | '/make-or-buy-marks'
+    | '/margin-floors'
     | '/memory-edges'
     | '/mobile-client-marks'
     | '/model-feature-marks'
@@ -3238,6 +3248,7 @@ export interface FileRouteTypes {
     | '/mail'
     | '/mail-accept-marks'
     | '/make-or-buy-marks'
+    | '/margin-floors'
     | '/memory-edges'
     | '/mobile-client-marks'
     | '/model-feature-marks'
@@ -3546,6 +3557,7 @@ export interface FileRouteTypes {
     | '/mail'
     | '/mail-accept-marks'
     | '/make-or-buy-marks'
+    | '/margin-floors'
     | '/memory-edges'
     | '/mobile-client-marks'
     | '/model-feature-marks'
@@ -3855,6 +3867,7 @@ export interface RootRouteChildren {
   MailRoute: typeof MailRoute
   MailAcceptMarksRoute: typeof MailAcceptMarksRoute
   MakeOrBuyMarksRoute: typeof MakeOrBuyMarksRoute
+  MarginFloorsRoute: typeof MarginFloorsRoute
   MemoryEdgesRoute: typeof MemoryEdgesRoute
   MobileClientMarksRoute: typeof MobileClientMarksRoute
   ModelFeatureMarksRoute: typeof ModelFeatureMarksRoute
@@ -5081,6 +5094,13 @@ declare module '@tanstack/react-router' {
       path: '/make-or-buy-marks'
       fullPath: '/make-or-buy-marks'
       preLoaderRoute: typeof MakeOrBuyMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/margin-floors': {
+      id: '/margin-floors'
+      path: '/margin-floors'
+      fullPath: '/margin-floors'
+      preLoaderRoute: typeof MarginFloorsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/memory-edges': {
@@ -6311,6 +6331,7 @@ const rootRouteChildren: RootRouteChildren = {
   MailRoute: MailRoute,
   MailAcceptMarksRoute: MailAcceptMarksRoute,
   MakeOrBuyMarksRoute: MakeOrBuyMarksRoute,
+  MarginFloorsRoute: MarginFloorsRoute,
   MemoryEdgesRoute: MemoryEdgesRoute,
   MobileClientMarksRoute: MobileClientMarksRoute,
   ModelFeatureMarksRoute: ModelFeatureMarksRoute,

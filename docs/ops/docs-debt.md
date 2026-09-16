@@ -1,3 +1,4 @@
+- **527.0 leftover:** 409 gdy sell−buy < floor na POST charge · S11 · matching lane. 527.0 = HITL `margin_floor` Decimal + UN/LOCODE.
 - **499.0 leftover:** Alpega live park · auto-award SQL. 499.0 = HITL `shipper_award_mark`.
 - **498.0 leftover:** Alpega live park · FK UUID · auto-award. 498.0 = HITL `shipper_bind_mark`. **499.0** = award stance (DONE).
 - **497.0 leftover:** HubSpot live park · FK UUID. 497.0 = HITL `sales_bind_mark`.

@@ -158,6 +158,7 @@ modules =
     app.services.model_feature_marks
     app.services.cfo_narrative_marks
     app.services.kpi_definition_marks
+    app.services.margin_floors
     app.services.automation_bias_marks
     app.services.l3_gate_marks
     app.services.style_cascade_marks
@@ -774,8 +775,11 @@ forbidden_modules =
     app.repositories.cfo_narrative_marks
     app.models.cfo_narrative_mark
     app.services.kpi_definition_marks
+    app.services.margin_floors
     app.repositories.kpi_definition_marks
+    app.repositories.margin_floors
     app.models.kpi_definition_mark
+    app.models.margin_floor
     app.services.automation_bias_marks
     app.repositories.automation_bias_marks
     app.models.automation_bias_mark
