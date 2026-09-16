@@ -87,10 +87,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **535.0** EXPLAIN · rytuały **SH-R16-12/14/15** DONE · **13** czeka (nie `/noc`)
-- **Etap:** park — leftover O8 rfc822 · SH-R16-13 Dependabot (idle dzień) · G0 · UXCL-L1 (nie AI0)
-- **Następny:** leftover O8 rfc822 · albo UXCL-L1 · G0. SH-R16-13 tylko poza nocą. Nie AI0.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **535.0** EXPLAIN · rytuały SH-R16-12/14/15
+- **Etap:** Plan — delta **536.0** zaakceptowana (`/noc`); wolno `/plaster`
+- **Następny:** **536.0** rfc822 Message-ID / In-Reply-To na `inbound_message` · potem G0 / UXCL-L1. Nie AI0.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

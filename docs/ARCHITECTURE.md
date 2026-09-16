@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **535.0** EXPLAIN · rytuały **SH-R16-12/14/15** DONE · **13** czeka (nie `/noc`). **Etap:** park — leftover O8 rfc822 · SH-R16-13 Dependabot (idle dzień) · G0 · UXCL-L1 (nie AI0). **Następny:** leftover O8 rfc822 · albo UXCL-L1 · G0. SH-R16-13 tylko poza nocą. Nie AI0. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **535.0** EXPLAIN · rytuały SH-R16-12/14/15. **Etap:** Plan — delta **536.0** zaakceptowana (`/noc`); wolno `/plaster`. **Następny:** **536.0** rfc822 Message-ID / In-Reply-To na `inbound_message` · potem G0 / UXCL-L1. Nie AI0. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
