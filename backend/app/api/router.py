@@ -211,6 +211,7 @@ from app.api import (
     product_ticket_marks,
     product_tickets,
     profit_center_marks,
+    purchase_invoices,
     purchase_orders,
     quality_descent_marks,
     quotations,
@@ -505,6 +506,7 @@ api_router.include_router(aeo_dossier_marks.router)
 api_router.include_router(yard_marks.router)
 api_router.include_router(billing_marks.router)
 api_router.include_router(self_billing_marks.router)
+api_router.include_router(purchase_invoices.router)
 api_router.include_router(reefer_marks.router)
 api_router.include_router(registry_poll_marks.router)
 api_router.include_router(working_capital_marks.router)

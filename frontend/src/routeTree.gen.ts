@@ -217,6 +217,7 @@ import { Route as PredictionLedgersRouteImport } from './routes/prediction-ledge
 import { Route as ProductTicketMarksRouteImport } from './routes/product-ticket-marks'
 import { Route as ProductTicketsRouteImport } from './routes/product-tickets'
 import { Route as ProfitCenterMarksRouteImport } from './routes/profit-center-marks'
+import { Route as PurchaseInvoicesRouteImport } from './routes/purchase-invoices'
 import { Route as PurchaseOrdersRouteImport } from './routes/purchase-orders'
 import { Route as QualityRouteImport } from './routes/quality'
 import { Route as QualityDescentMarksRouteImport } from './routes/quality-descent-marks'
@@ -1364,6 +1365,11 @@ const ProfitCenterMarksRoute = ProfitCenterMarksRouteImport.update({
   path: '/profit-center-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PurchaseInvoicesRoute = PurchaseInvoicesRouteImport.update({
+  id: '/purchase-invoices',
+  path: '/purchase-invoices',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PurchaseOrdersRoute = PurchaseOrdersRouteImport.update({
   id: '/purchase-orders',
   path: '/purchase-orders',
@@ -2100,6 +2106,7 @@ export interface FileRoutesByFullPath {
   '/product-ticket-marks': typeof ProductTicketMarksRoute
   '/product-tickets': typeof ProductTicketsRoute
   '/profit-center-marks': typeof ProfitCenterMarksRoute
+  '/purchase-invoices': typeof PurchaseInvoicesRoute
   '/purchase-orders': typeof PurchaseOrdersRoute
   '/quality': typeof QualityRoute
   '/quality-descent-marks': typeof QualityDescentMarksRoute
@@ -2415,6 +2422,7 @@ export interface FileRoutesByTo {
   '/product-ticket-marks': typeof ProductTicketMarksRoute
   '/product-tickets': typeof ProductTicketsRoute
   '/profit-center-marks': typeof ProfitCenterMarksRoute
+  '/purchase-invoices': typeof PurchaseInvoicesRoute
   '/purchase-orders': typeof PurchaseOrdersRoute
   '/quality': typeof QualityRoute
   '/quality-descent-marks': typeof QualityDescentMarksRoute
@@ -2731,6 +2739,7 @@ export interface FileRoutesById {
   '/product-ticket-marks': typeof ProductTicketMarksRoute
   '/product-tickets': typeof ProductTicketsRoute
   '/profit-center-marks': typeof ProfitCenterMarksRoute
+  '/purchase-invoices': typeof PurchaseInvoicesRoute
   '/purchase-orders': typeof PurchaseOrdersRoute
   '/quality': typeof QualityRoute
   '/quality-descent-marks': typeof QualityDescentMarksRoute
@@ -3048,6 +3057,7 @@ export interface FileRouteTypes {
     | '/product-ticket-marks'
     | '/product-tickets'
     | '/profit-center-marks'
+    | '/purchase-invoices'
     | '/purchase-orders'
     | '/quality'
     | '/quality-descent-marks'
@@ -3363,6 +3373,7 @@ export interface FileRouteTypes {
     | '/product-ticket-marks'
     | '/product-tickets'
     | '/profit-center-marks'
+    | '/purchase-invoices'
     | '/purchase-orders'
     | '/quality'
     | '/quality-descent-marks'
@@ -3678,6 +3689,7 @@ export interface FileRouteTypes {
     | '/product-ticket-marks'
     | '/product-tickets'
     | '/profit-center-marks'
+    | '/purchase-invoices'
     | '/purchase-orders'
     | '/quality'
     | '/quality-descent-marks'
@@ -3994,6 +4006,7 @@ export interface RootRouteChildren {
   ProductTicketMarksRoute: typeof ProductTicketMarksRoute
   ProductTicketsRoute: typeof ProductTicketsRoute
   ProfitCenterMarksRoute: typeof ProfitCenterMarksRoute
+  PurchaseInvoicesRoute: typeof PurchaseInvoicesRoute
   PurchaseOrdersRoute: typeof PurchaseOrdersRoute
   QualityRoute: typeof QualityRoute
   QualityDescentMarksRoute: typeof QualityDescentMarksRoute
@@ -5559,6 +5572,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProfitCenterMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/purchase-invoices': {
+      id: '/purchase-invoices'
+      path: '/purchase-invoices'
+      fullPath: '/purchase-invoices'
+      preLoaderRoute: typeof PurchaseInvoicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/purchase-orders': {
       id: '/purchase-orders'
       path: '/purchase-orders'
@@ -6506,6 +6526,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProductTicketMarksRoute: ProductTicketMarksRoute,
   ProductTicketsRoute: ProductTicketsRoute,
   ProfitCenterMarksRoute: ProfitCenterMarksRoute,
+  PurchaseInvoicesRoute: PurchaseInvoicesRoute,
   PurchaseOrdersRoute: PurchaseOrdersRoute,
   QualityRoute: QualityRoute,
   QualityDescentMarksRoute: QualityDescentMarksRoute,

@@ -15849,6 +15849,80 @@
         ]
       }
     },
+    "/api/v1/purchase-invoices": {
+      "get": {
+        "tags": [
+          "purchase-invoices"
+        ],
+        "summary": "List Purchase Invoices",
+        "operationId": "list_purchase_invoices_api_v1_purchase_invoices_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/PurchaseInvoiceResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Purchase Invoices Api V1 Purchase Invoices Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "purchase-invoices"
+        ],
+        "summary": "Create Purchase Invoice",
+        "operationId": "create_purchase_invoice_api_v1_purchase_invoices_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PurchaseInvoiceCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PurchaseInvoiceResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/reefer-marks": {
       "get": {
         "tags": [
@@ -45089,6 +45163,65 @@
           "source_ref"
         ],
         "title": "ProfitCenterMarkResponse"
+      },
+      "PurchaseInvoiceCreate": {
+        "properties": {
+          "invoice_ref": {
+            "type": "string",
+            "title": "Invoice Ref"
+          },
+          "invoice_kind": {
+            "type": "string",
+            "title": "Invoice Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "invoice_ref",
+          "invoice_kind",
+          "source_ref"
+        ],
+        "title": "PurchaseInvoiceCreate"
+      },
+      "PurchaseInvoiceResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "invoice_ref": {
+            "type": "string",
+            "title": "Invoice Ref"
+          },
+          "invoice_kind": {
+            "type": "string",
+            "title": "Invoice Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "invoice_ref",
+          "invoice_kind",
+          "source_ref"
+        ],
+        "title": "PurchaseInvoiceResponse"
       },
       "PurchaseOrderCreate": {
         "properties": {

@@ -1,22 +1,22 @@
 ﻿# Bieżący focus
 
-**Faza:** Oś pinu — **549.0** F10 `purchase_invoice`
+**Faza:** Oś pinu — **550.0** F10 leftover `invoice_match_mark`
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **548.0** N14 `self_billing_mark`
+**Ostatni plaster:** **549.0** F10 `purchase_invoice`
 
-**Etap:** Plaster — delta `docs/deltas/open/549.0-purchase-invoice.md` zaakceptowana `/noc`; wolno `/plaster`
+**Etap:** Plan — brak delty; `/plan-modul` przed kodem
 
 **Noc:** `/noc 17` do **2026-09-17T17:00:00+02:00**
 
 **Miejsce pracy:** produkt = to repo + GitHub.
 
-**Następny:** **549.0** F10 HITL `purchase_invoice`. Nie AI3-payload. Nie G0-SH.
+**Następny:** **550.0** F10 leftover HITL `invoice_match_mark`. Nie AI3-payload. Nie G0-SH.
 
 **Park / czeka w PLAN:** AI3-payload · G0-SH · SH-R16-13 · …
 
-**Spec (jedyna na sesję produktu):** [549.0-purchase-invoice.md](../deltas/open/549.0-purchase-invoice.md)
+**Spec (jedyna na sesję produktu):** (brak — najpierw delta 550)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 
@@ -24,5 +24,5 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-17:** Delta **549.0** F10 purchase_invoice. `/noc 17`.
+**2026-09-17:** Plaster **549.0** F10 purchase_invoice zamknięty. `/noc 17`.
 **2026-09-17:** Plaster **548.0** N14 self_billing_mark zamknięty. `/noc 17`.

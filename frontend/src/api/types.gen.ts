@@ -11597,6 +11597,50 @@ export type ProfitCenterMarkResponse = {
 };
 
 /**
+ * PurchaseInvoiceCreate
+ */
+export type PurchaseInvoiceCreate = {
+    /**
+     * Invoice Ref
+     */
+    invoice_ref: string;
+    /**
+     * Invoice Kind
+     */
+    invoice_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * PurchaseInvoiceResponse
+ */
+export type PurchaseInvoiceResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Invoice Ref
+     */
+    invoice_ref: string;
+    /**
+     * Invoice Kind
+     */
+    invoice_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * PurchaseOrderCreate
  */
 export type PurchaseOrderCreate = {
@@ -26543,6 +26587,49 @@ export type CreateSelfBillingMarkApiV1SelfBillingMarksPostResponses = {
 };
 
 export type CreateSelfBillingMarkApiV1SelfBillingMarksPostResponse = CreateSelfBillingMarkApiV1SelfBillingMarksPostResponses[keyof CreateSelfBillingMarkApiV1SelfBillingMarksPostResponses];
+
+export type ListPurchaseInvoicesApiV1PurchaseInvoicesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/purchase-invoices';
+};
+
+export type ListPurchaseInvoicesApiV1PurchaseInvoicesGetResponses = {
+    /**
+     * Response List Purchase Invoices Api V1 Purchase Invoices Get
+     *
+     * Successful Response
+     */
+    200: Array<PurchaseInvoiceResponse>;
+};
+
+export type ListPurchaseInvoicesApiV1PurchaseInvoicesGetResponse = ListPurchaseInvoicesApiV1PurchaseInvoicesGetResponses[keyof ListPurchaseInvoicesApiV1PurchaseInvoicesGetResponses];
+
+export type CreatePurchaseInvoiceApiV1PurchaseInvoicesPostData = {
+    body: PurchaseInvoiceCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/purchase-invoices';
+};
+
+export type CreatePurchaseInvoiceApiV1PurchaseInvoicesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreatePurchaseInvoiceApiV1PurchaseInvoicesPostError = CreatePurchaseInvoiceApiV1PurchaseInvoicesPostErrors[keyof CreatePurchaseInvoiceApiV1PurchaseInvoicesPostErrors];
+
+export type CreatePurchaseInvoiceApiV1PurchaseInvoicesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: PurchaseInvoiceResponse;
+};
+
+export type CreatePurchaseInvoiceApiV1PurchaseInvoicesPostResponse = CreatePurchaseInvoiceApiV1PurchaseInvoicesPostResponses[keyof CreatePurchaseInvoiceApiV1PurchaseInvoicesPostResponses];
 
 export type ListReeferMarksApiV1ReeferMarksGetData = {
     body?: never;

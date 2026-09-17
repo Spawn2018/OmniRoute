@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **548.0** N14 `self_billing_mark` **Następny:** **549.0** F10 HITL `purchase_invoice`. Nie AI3-payload. Nie G0-SH.
+**Stan (z CURRENT.md):** **549.0** F10 `purchase_invoice` **Następny:** **550.0** F10 leftover HITL `invoice_match_mark`. Nie AI3-payload. Nie G0-SH.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

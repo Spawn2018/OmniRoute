@@ -1118,6 +1118,10 @@ class InvalidSelfBillingMark(DomainError):
     """N14: HITL self-billing podwykonawcy — nie live / nie JPK."""
 
 
+class InvalidPurchaseInvoice(DomainError):
+    """F10: HITL FV zakupu — nie ranking / nie allocation."""
+
+
 class InvalidRegistryPollMark(DomainError):
     """EXP7.2: HITL poll rejestru — nie live scrape."""
 

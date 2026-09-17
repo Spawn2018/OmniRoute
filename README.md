@@ -87,10 +87,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **548.0** N14 `self_billing_mark`
-- **Etap:** Plaster — delta `docs/deltas/open/549.0-purchase-invoice.md` zaakceptowana `/noc`; wolno `/plaster`
-- **Następny:** **549.0** F10 HITL `purchase_invoice`. Nie AI3-payload. Nie G0-SH.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **549.0** F10 `purchase_invoice`
+- **Etap:** Plan — brak delty; `/plan-modul` przed kodem
+- **Następny:** **550.0** F10 leftover HITL `invoice_match_mark`. Nie AI3-payload. Nie G0-SH.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

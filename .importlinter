@@ -183,6 +183,7 @@ modules =
     app.services.yard_marks
     app.services.billing_marks
     app.services.self_billing_marks
+    app.services.purchase_invoices
     app.services.registry_poll_marks
     app.services.working_capital_marks
     app.services.make_or_buy_marks
@@ -861,6 +862,9 @@ forbidden_modules =
     app.services.self_billing_marks
     app.repositories.self_billing_marks
     app.models.self_billing_mark
+    app.services.purchase_invoices
+    app.repositories.purchase_invoices
+    app.models.purchase_invoice
     app.services.registry_poll_marks
     app.repositories.registry_poll_marks
     app.models.registry_poll_mark
