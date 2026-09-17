@@ -61,12 +61,13 @@ describe("U-routes-breadth standing", () => {
     expect(SHIPPED_CHARGE_ROUTES["548.0"]).toBe("/self-billing-marks")
     expect(SHIPPED_CHARGE_ROUTES["549.0"]).toBe("/purchase-invoices")
     expect(SHIPPED_CHARGE_ROUTES["550.0"]).toBe("/invoice-match-marks")
-    expect(Object.keys(SHIPPED_CHARGE_ROUTES)).toHaveLength(491)
+    expect(SHIPPED_CHARGE_ROUTES["551.0"]).toBe("/invoice-alloc-marks")
+    expect(Object.keys(SHIPPED_CHARGE_ROUTES)).toHaveLength(492)
 
     expect(OPS_JOBS.map((job) => job.route)).toEqual(
       expect.arrayContaining(Object.values(SHIPPED_CHARGE_ROUTES)),
     )
-    expect(OPS_JOBS).toHaveLength(322)
+    expect(OPS_JOBS).toHaveLength(323)
 
     expect(OPS_JOBS.length).not.toBe(157)
 

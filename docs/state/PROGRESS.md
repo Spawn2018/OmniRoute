@@ -1,7 +1,8 @@
 ﻿# Historia plastrów
 
 | Data | Plaster | Moduł | Opis |
-| 2026-09-17 | 550.0 | F10 invoice_match_mark HITL | 2026-09-17 | PRZESZLO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
+| 2026-09-17 | 551.0 | F10 invoice_alloc_mark HITL | 2026-09-17 | PRZESZLO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
+| 2026-09-17 | 550.0 | F10 invoice_match_mark HITL | 2026-09-17 | PRZESZLO (gate success) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-17 | 549.0 | F10 purchase_invoice HITL | 2026-09-17 | PRZESZLO (gate success) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-17 | 548.0 | N14 self_billing_mark HITL | 2026-09-17 | PRZESZLO (gate success) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-17 | 547.0 | N6 UI UN + floor_decision na /charges | 2026-09-17 | PRZESZLO (gate success) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |

@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **551.0** F10 leftover HITL `invoice_alloc_mark`. Nie ranking SQL. Nie AI3-payload. Nie G0-SH.
+**Następny:** **552.0** F11 leftover HITL `postal_dispatch_mark`. Nie AI3-payload. Nie G0-SH. Nie ranking SQL.
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -566,8 +566,8 @@ Karta: [karty-pol-g2-tender.md](analysis/karty-pol-g2-tender.md). P6 = oferty od
 | F8 | Peppol + MPP/split (EXP2.20) | kalendarz UE | nie zastępuje KSeF |
 | F9 | `purchase_invoice` + ERP FS+FZ | zamknięty HITL catalog Optima fixture ([268.0](deltas/archived/268.0-erp-connector.md)); leftover XL / live SOAP / FS+FZ / `erp_series_map` / `erp_export` / `purchase_invoice` | zakaz SQL `sa` |
 | **N14** | self-billing podwykonawcy | zamknięty HITL ([548.0](deltas/archived/548.0-self-billing-mark.md)); leftover live · FK party · JPK | po F9+D |
-| F10 | ingest FV HITL + ranking SQL | zamknięty HITL ([549.0](deltas/archived/549.0-purchase-invoice.md)); [550.0](deltas/archived/550.0-invoice-match-mark.md) `invoice_match_mark`; delta **551.0** HITL `invoice_alloc_mark` (open); leftover candidate / ranking SQL / allocation z kwotą | po F9 + X9 |
-| F11 | książka PP EN+USS+EPO | TO_VERIFY umowa | leftover `postal_dispatch` / `postal_epo`; **≠ e-Doręczenia** (EXP2.19) |
+| F10 | ingest FV HITL + ranking SQL | zamknięty HITL ([549.0](deltas/archived/549.0-purchase-invoice.md)); [550.0](deltas/archived/550.0-invoice-match-mark.md); [551.0](deltas/archived/551.0-invoice-alloc-mark.md); leftover candidate / ranking SQL / allocation z kwotą | po F9 + X9 |
+| F11 | książka PP EN+USS+EPO | TO_VERIFY umowa; **552.0** next HITL `postal_dispatch_mark` | leftover `postal_dispatch` / `postal_epo`; **≠ e-Doręczenia** (EXP2.19) |
 | **EXP2.1** | working capital: DSO, cash-at-risk, aging | 338.0 HITL katalog `working_capital_mark` (capital_kind); leftover DSO SQL / druga marża | nie druga marża |
 
 ### Fala C — celna / compliance
@@ -892,13 +892,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

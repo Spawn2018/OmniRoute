@@ -133,6 +133,7 @@ from app.api import (
     inventory_collateral_marks,
     inventory_finance_marks,
     inventory_position_marks,
+    invoice_alloc_marks,
     invoice_match_marks,
     iso_nis2_marks,
     jit_jis_marks,
@@ -426,6 +427,7 @@ api_router.include_router(spend_marks.router)
 api_router.include_router(penalty_marks.router)
 api_router.include_router(intervention_outcomes.router)
 api_router.include_router(invoice_match_marks.router)
+api_router.include_router(invoice_alloc_marks.router)
 api_router.include_router(load_order_marks.router)
 api_router.include_router(load_plan_marks.router)
 api_router.include_router(cmms_marks.router)

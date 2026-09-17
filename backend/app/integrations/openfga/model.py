@@ -216,9 +216,20 @@ def _organization_crm_sales_relations() -> dict[str, Userset]:
     }
 
 
+def _organization_f_invoice_relations() -> dict[str, Userset]:
+    return {
+        "can_manage_billing_marks": _member(),
+        "can_manage_self_billing_marks": _member(),
+        "can_manage_purchase_invoices": _member(),
+        "can_manage_invoice_match_marks": _member(),
+        "can_manage_invoice_alloc_marks": _member(),
+    }
+
+
 def _organization_g_catalog_relations() -> dict[str, Userset]:
     return {
         **_organization_crm_sales_relations(),
+        **_organization_f_invoice_relations(),
         "can_manage_lc_checklists": _member(),
         "can_manage_ncts_drafts": _member(),
         "can_manage_oog_marks": _member(),
@@ -231,10 +242,6 @@ def _organization_g_catalog_relations() -> dict[str, Userset]:
         "can_manage_edi_map_marks": _member(),
         "can_manage_aeo_dossier_marks": _member(),
         "can_manage_yard_marks": _member(),
-        "can_manage_billing_marks": _member(),
-        "can_manage_self_billing_marks": _member(),
-        "can_manage_purchase_invoices": _member(),
-        "can_manage_invoice_match_marks": _member(),
         "can_manage_registry_poll_marks": _member(),
         "can_manage_working_capital_marks": _member(),
         "can_manage_make_or_buy_marks": _member(),

@@ -139,6 +139,7 @@ import { Route as InterventionOutcomesRouteImport } from './routes/intervention-
 import { Route as InventoryCollateralMarksRouteImport } from './routes/inventory-collateral-marks'
 import { Route as InventoryFinanceMarksRouteImport } from './routes/inventory-finance-marks'
 import { Route as InventoryPositionMarksRouteImport } from './routes/inventory-position-marks'
+import { Route as InvoiceAllocMarksRouteImport } from './routes/invoice-alloc-marks'
 import { Route as InvoiceMatchMarksRouteImport } from './routes/invoice-match-marks'
 import { Route as InvoicesRouteImport } from './routes/invoices'
 import { Route as IsoNis2MarksRouteImport } from './routes/iso-nis2-marks'
@@ -974,6 +975,11 @@ const InventoryFinanceMarksRoute = InventoryFinanceMarksRouteImport.update({
 const InventoryPositionMarksRoute = InventoryPositionMarksRouteImport.update({
   id: '/inventory-position-marks',
   path: '/inventory-position-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvoiceAllocMarksRoute = InvoiceAllocMarksRouteImport.update({
+  id: '/invoice-alloc-marks',
+  path: '/invoice-alloc-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InvoiceMatchMarksRoute = InvoiceMatchMarksRouteImport.update({
@@ -2034,6 +2040,7 @@ export interface FileRoutesByFullPath {
   '/inventory-collateral-marks': typeof InventoryCollateralMarksRoute
   '/inventory-finance-marks': typeof InventoryFinanceMarksRoute
   '/inventory-position-marks': typeof InventoryPositionMarksRoute
+  '/invoice-alloc-marks': typeof InvoiceAllocMarksRoute
   '/invoice-match-marks': typeof InvoiceMatchMarksRoute
   '/invoices': typeof InvoicesRoute
   '/iso-nis2-marks': typeof IsoNis2MarksRoute
@@ -2351,6 +2358,7 @@ export interface FileRoutesByTo {
   '/inventory-collateral-marks': typeof InventoryCollateralMarksRoute
   '/inventory-finance-marks': typeof InventoryFinanceMarksRoute
   '/inventory-position-marks': typeof InventoryPositionMarksRoute
+  '/invoice-alloc-marks': typeof InvoiceAllocMarksRoute
   '/invoice-match-marks': typeof InvoiceMatchMarksRoute
   '/invoices': typeof InvoicesRoute
   '/iso-nis2-marks': typeof IsoNis2MarksRoute
@@ -2669,6 +2677,7 @@ export interface FileRoutesById {
   '/inventory-collateral-marks': typeof InventoryCollateralMarksRoute
   '/inventory-finance-marks': typeof InventoryFinanceMarksRoute
   '/inventory-position-marks': typeof InventoryPositionMarksRoute
+  '/invoice-alloc-marks': typeof InvoiceAllocMarksRoute
   '/invoice-match-marks': typeof InvoiceMatchMarksRoute
   '/invoices': typeof InvoicesRoute
   '/iso-nis2-marks': typeof IsoNis2MarksRoute
@@ -2988,6 +2997,7 @@ export interface FileRouteTypes {
     | '/inventory-collateral-marks'
     | '/inventory-finance-marks'
     | '/inventory-position-marks'
+    | '/invoice-alloc-marks'
     | '/invoice-match-marks'
     | '/invoices'
     | '/iso-nis2-marks'
@@ -3305,6 +3315,7 @@ export interface FileRouteTypes {
     | '/inventory-collateral-marks'
     | '/inventory-finance-marks'
     | '/inventory-position-marks'
+    | '/invoice-alloc-marks'
     | '/invoice-match-marks'
     | '/invoices'
     | '/iso-nis2-marks'
@@ -3622,6 +3633,7 @@ export interface FileRouteTypes {
     | '/inventory-collateral-marks'
     | '/inventory-finance-marks'
     | '/inventory-position-marks'
+    | '/invoice-alloc-marks'
     | '/invoice-match-marks'
     | '/invoices'
     | '/iso-nis2-marks'
@@ -3940,6 +3952,7 @@ export interface RootRouteChildren {
   InventoryCollateralMarksRoute: typeof InventoryCollateralMarksRoute
   InventoryFinanceMarksRoute: typeof InventoryFinanceMarksRoute
   InventoryPositionMarksRoute: typeof InventoryPositionMarksRoute
+  InvoiceAllocMarksRoute: typeof InvoiceAllocMarksRoute
   InvoiceMatchMarksRoute: typeof InvoiceMatchMarksRoute
   InvoicesRoute: typeof InvoicesRoute
   IsoNis2MarksRoute: typeof IsoNis2MarksRoute
@@ -5037,6 +5050,13 @@ declare module '@tanstack/react-router' {
       path: '/inventory-position-marks'
       fullPath: '/inventory-position-marks'
       preLoaderRoute: typeof InventoryPositionMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/invoice-alloc-marks': {
+      id: '/invoice-alloc-marks'
+      path: '/invoice-alloc-marks'
+      fullPath: '/invoice-alloc-marks'
+      preLoaderRoute: typeof InvoiceAllocMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/invoice-match-marks': {
@@ -6468,6 +6488,7 @@ const rootRouteChildren: RootRouteChildren = {
   InventoryCollateralMarksRoute: InventoryCollateralMarksRoute,
   InventoryFinanceMarksRoute: InventoryFinanceMarksRoute,
   InventoryPositionMarksRoute: InventoryPositionMarksRoute,
+  InvoiceAllocMarksRoute: InvoiceAllocMarksRoute,
   InvoiceMatchMarksRoute: InvoiceMatchMarksRoute,
   InvoicesRoute: InvoicesRoute,
   IsoNis2MarksRoute: IsoNis2MarksRoute,
