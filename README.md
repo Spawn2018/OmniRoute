@@ -88,9 +88,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **543.0** N11 HITL notatka S/B/A/R
-- **Etap:** Plan — park AI3-payload / Plat-HD / G0-SH / leftover N6 S11; komenda `/plan-modul`
-- **Następny:** park **AI3-payload** / **Plat-HD** / **G0-SH** · leftover **N6 S11**. Nie SH-R16-13. Nie AI0.
-- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Etap:** Plaster — delta **544.0** zaakceptowana `/noc`; wolno `/plaster`
+- **Następny:** **544.0** N6 leftover S11 przy breach `margin_floor`. Park: AI3-payload · Plat-HD · G0-SH. Nie SH-R16-13. Nie AI0.
+- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

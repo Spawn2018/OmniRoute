@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** park **AI3-payload** / **Plat-HD** / **G0-SH** · leftover **N6 S11**. Nie SH-R16-13. Nie AI0.
+**Następny:** **544.0** N6 leftover S11 przy breach `margin_floor`. Park: AI3-payload · Plat-HD · G0-SH. Nie SH-R16-13. Nie AI0.
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -529,7 +529,7 @@ Przy `/plan-modul`: karta T + [EXP1](analysis/karty-pol-fala-exp.md) (stop/konte
 | ID | Co | Status | Uwagi |
 |---|---|---|---|
 | P1–P3 | rate card / szablony / FSC + indeks BAF/CAF (EXP1) + A11 nowy wiersz | P1 zamknięty ([163.0](deltas/archived/163.0-rate-card.md); leftover P1b matching GET ([205.0](deltas/archived/205.0-rate-card-match.md)); leftover P1c–d); P2 zamknięty ([164.0](deltas/archived/164.0-charge-template.md); leftover P2c exclusion daterange ([206.0](deltas/archived/206.0-charge-template-span.md))); P3 zamknięty ([165.0](deltas/archived/165.0-fuel-index.md); leftover P3b–d) | po T7 + M-18; dane + SQL; nie T-SQL |
-| **N6** | `margin_floor` per tenant/lane → 409 albo S11 | zamknięty HITL ([527.0](deltas/archived/527.0-margin-floor.md); 409 API [539.0](deltas/archived/539.0-margin-floor-409.md); leftover S11) | Decimal; nie LLM |
+| **N6** | `margin_floor` per tenant/lane → 409 albo S11 | zamknięty HITL ([527.0](deltas/archived/527.0-margin-floor.md); 409 API [539.0](deltas/archived/539.0-margin-floor-409.md); S11 w toku [544.0](deltas/open/544.0-margin-floor-s11.md)) | Decimal; nie LLM |
 | P4 | Local Charge Library + THC/ISPS/seal/amendment (EXP4.5) + warning | zamknięty ([166.0](deltas/archived/166.0-local-charge.md); leftover P4b `port_unlocode` ([207.0](deltas/archived/207.0-local-charge-port.md)); leftover P4b rest `iso_size_type` ([208.0](deltas/archived/208.0-local-charge-iso.md)); leftover P4b armator/serwis; leftover P4c) | po O2; warning ≠ fakt |
 | P5 | expected vs actual na `trip` | zamknięty ([167.0](deltas/archived/167.0-trip-expected-buy.md); leftover P5b–c) | po T2; nie druga marża |
 | P6 | tender quotes (buy) | zamknięty ([168.0](deltas/archived/168.0-tender-quote.md); leftover P6b–c) | po M-25; nie auto-award; klej G2 |
@@ -892,13 +892,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plan-modul` (Etap z CURRENT.md).
+**Teraz:** `/plaster` (Etap z CURRENT.md).
 
 ```
-/plan-modul
+/plaster
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->
