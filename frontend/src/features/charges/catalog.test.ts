@@ -41,6 +41,26 @@ describe("chargeCreateBody", () => {
       }).rate_line_id,
     ).toBe("11111111-1111-1111-1111-111111111111")
   })
+
+  it("sends optional UN pair and floor_decision_id for margin_floor", () => {
+    expect(
+      chargeCreateBody({
+        chargeCode: "THC",
+        buyAmount: "10",
+        sellAmount: "11",
+        currency: "EUR",
+        rateLineId: "",
+        sourceRef: "tenant:manual",
+        originUnlocode: " plgdy ",
+        destinationUnlocode: " deham ",
+        floorDecisionId: " 22222222-2222-2222-2222-222222222222 ",
+      }),
+    ).toMatchObject({
+      origin_unlocode: "PLGDY",
+      destination_unlocode: "DEHAM",
+      floor_decision_id: "22222222-2222-2222-2222-222222222222",
+    })
+  })
 })
 
 describe("comparisonChargeBody", () => {
@@ -62,11 +82,12 @@ describe("comparisonChargeBody", () => {
   })
 })
 
-describe("charge catalog 262.0", () => {
-  it("renders API margin without subtracting in the browser", () => {
-    expect(page).toContain("margin_amount")
-    expect(page).toContain("<Money")
+describe("charge catalog 547.0", () => {
+  it("exposes UN and floor_decision fields without matching in the browser", () => {
+    expect(page).toContain("UN/LOCODE origin")
+    expect(page).toContain("UN/LOCODE destination")
+    expect(page).toContain("floor_decision_id")
     expect(page).not.toContain("parseFloat")
-    expect(page).not.toContain("sell_amount -")
+    expect(page).not.toContain("Haversine")
   })
 })

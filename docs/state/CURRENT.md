@@ -1,10 +1,10 @@
 ﻿# Bieżący focus
 
-**Faza:** Oś pinu po **546.0**
+**Faza:** Oś pinu po **547.0**
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **546.0** Plat-HD S11 owner na `product_ticket`
+**Ostatni plaster:** **547.0** N6 UI UN na `/charges`
 
 **Etap:** Plan — park AI3-payload / G0-SH; komenda `/plan-modul`
 
@@ -24,6 +24,6 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-17:** Plaster **546.0** Plat-HD S11 owner. `/noc 17`.
+**2026-09-17:** Plaster **547.0** N6 UI UN. `/noc 17`.
+**2026-09-17:** Plaster **546.0** Plat-HD S11. `/noc 17`.
 **2026-09-17:** Plaster **545.0** Plat-HD-flow. `/noc 17`.
-**2026-09-17:** Plaster **544.0** N6 S11. `/noc 17`.

@@ -107,6 +107,9 @@ export function chargeCreateBody(args: {
   currency: string
   rateLineId: string
   sourceRef: string
+  originUnlocode?: string
+  destinationUnlocode?: string
+  floorDecisionId?: string
 }): {
   charge_code: string
   buy_amount: string
@@ -115,10 +118,27 @@ export function chargeCreateBody(args: {
   sell_currency: string
   rate_line_id: string | null
   source_ref: string
+  origin_unlocode?: string
+  destination_unlocode?: string
+  floor_decision_id?: string
 } {
   const currency = args.currency.trim().toUpperCase()
   const linked = args.rateLineId.trim()
-  return {
+  const origin = (args.originUnlocode ?? "").trim().toUpperCase()
+  const destination = (args.destinationUnlocode ?? "").trim().toUpperCase()
+  const decision = (args.floorDecisionId ?? "").trim()
+  const body: {
+    charge_code: string
+    buy_amount: string
+    buy_currency: string
+    sell_amount: string
+    sell_currency: string
+    rate_line_id: string | null
+    source_ref: string
+    origin_unlocode?: string
+    destination_unlocode?: string
+    floor_decision_id?: string
+  } = {
     charge_code: args.chargeCode.trim(),
     buy_amount: args.buyAmount.trim(),
     buy_currency: currency,
@@ -127,11 +147,37 @@ export function chargeCreateBody(args: {
     rate_line_id: linked === "" ? null : linked,
     source_ref: args.sourceRef.trim(),
   }
+  if (origin !== "") {
+    body.origin_unlocode = origin
+  }
+  if (destination !== "") {
+    body.destination_unlocode = destination
+  }
+  if (decision !== "") {
+    body.floor_decision_id = decision
+  }
+  return body
 }
 
 async function readCharge(response: Response, fallback: string): Promise<Charge> {
   if (!response.ok) {
-    throw new ApiError(await readApiDetail(response, fallback), httpErrorStatus(response))
+    const payload: unknown = await response.json().catch(() => null)
+    let detail = fallback
+    let decisionId: string | null = null
+    if (typeof payload === "object" && payload !== null) {
+      if ("detail" in payload && typeof (payload as { detail: unknown }).detail === "string") {
+        detail = (payload as { detail: string }).detail
+      }
+      if (
+        "decision_id" in payload &&
+        typeof (payload as { decision_id: unknown }).decision_id === "string"
+      ) {
+        decisionId = (payload as { decision_id: string }).decision_id
+      }
+    }
+    const message =
+      decisionId === null ? detail : `${detail} · decyzja S11: ${decisionId}`
+    throw new ApiError(message, httpErrorStatus(response))
   }
   return (await response.json()) as Charge
 }
@@ -152,6 +198,9 @@ export async function createCharge(body: {
   sell_currency: string
   rate_line_id: string | null
   source_ref: string
+  origin_unlocode?: string
+  destination_unlocode?: string
+  floor_decision_id?: string
 }): Promise<Charge> {
   const response = await fetch("/api/v1/charges", {
     method: "POST",

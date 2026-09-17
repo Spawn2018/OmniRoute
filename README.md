@@ -87,7 +87,7 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **546.0** Plat-HD S11 owner na `product_ticket`
+- **Ostatni plaster:** **547.0** N6 UI UN na `/charges`
 - **Etap:** Plan — park AI3-payload / G0-SH; komenda `/plan-modul`
 - **Następny:** park **AI3-payload** / **G0-SH**. Nie SH-R16-13. Nie AI0.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)

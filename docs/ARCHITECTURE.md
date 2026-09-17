@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **546.0** Plat-HD S11 owner na `product_ticket`. **Etap:** Plan — park AI3-payload / G0-SH; komenda `/plan-modul`. **Następny:** park **AI3-payload** / **G0-SH**. Nie SH-R16-13. Nie AI0. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **547.0** N6 UI UN na `/charges`. **Etap:** Plan — park AI3-payload / G0-SH; komenda `/plan-modul`. **Następny:** park **AI3-payload** / **G0-SH**. Nie SH-R16-13. Nie AI0. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

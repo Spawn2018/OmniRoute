@@ -60,6 +60,9 @@ type Draft = {
   currency: string
   rateLineId: string
   sourceRef: string
+  originUnlocode: string
+  destinationUnlocode: string
+  floorDecisionId: string
 }
 
 const EMPTY_DRAFT: Draft = {
@@ -69,6 +72,9 @@ const EMPTY_DRAFT: Draft = {
   currency: "EUR",
   rateLineId: "",
   sourceRef: "",
+  originUnlocode: "",
+  destinationUnlocode: "",
+  floorDecisionId: "",
 }
 
 export function ChargeCatalogPage() {
@@ -100,7 +106,7 @@ export function ChargeCatalogPage() {
     <div className="space-y-3">
       <CatalogHeading
         title="Opłaty"
-        subtitle="charge M-08 · buy i sell na jednym wierszu · marża w kodzie · nie accept HITL"
+        subtitle="charge M-08 · buy i sell na jednym wierszu · marża w kodzie · UN opcjonalnie pod margin_floor · nie accept HITL"
       />
 
       {signedIn ? null : <TenantSessionNotice />}
@@ -116,6 +122,9 @@ export function ChargeCatalogPage() {
         <Input aria-label="Kwota kupna" placeholder="10.5000" value={draft.buyAmount} onChange={setField("buyAmount")} required />
         <Input aria-label="Kwota sprzedaży" placeholder="14.0000" value={draft.sellAmount} onChange={setField("sellAmount")} required />
         <Input aria-label="Waluta ISO" placeholder="EUR" value={draft.currency} onChange={setField("currency")} required />
+        <Input aria-label="UN/LOCODE origin" placeholder="PLGDY (opcjonalnie)" value={draft.originUnlocode} onChange={setField("originUnlocode")} />
+        <Input aria-label="UN/LOCODE destination" placeholder="DEHAM (opcjonalnie)" value={draft.destinationUnlocode} onChange={setField("destinationUnlocode")} />
+        <Input aria-label="Identyfikator decyzji podłogi" placeholder="floor_decision_id po S11" value={draft.floorDecisionId} onChange={setField("floorDecisionId")} />
         <Input aria-label="Identyfikator stawki kupna" placeholder="rate_line (opcjonalnie)" value={draft.rateLineId} onChange={setField("rateLineId")} />
         <Input aria-label="Pochodzenie" placeholder="tenant:manual albo fixture://charge/…" value={draft.sourceRef} onChange={setField("sourceRef")} required />
         <Button type="submit" disabled={createMutation.isPending || !signedIn}>
