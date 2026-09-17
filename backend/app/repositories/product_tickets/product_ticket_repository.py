@@ -15,6 +15,9 @@ class ProductTicketRepository:
         )
         return list((await self._session.scalars(stmt)).all())
 
+    async def get_ticket(self, ticket_id: object) -> ProductTicket | None:
+        return await self._session.get(ProductTicket, ticket_id)
+
     async def add_ticket(self, row: ProductTicket) -> ProductTicket:
         self._session.add(row)
         await self._session.flush()

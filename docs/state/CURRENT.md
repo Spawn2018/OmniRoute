@@ -1,22 +1,22 @@
 ﻿# Bieżący focus
 
-**Faza:** Oś pinu — **546.0** Plat-HD S11 owner
+**Faza:** Oś pinu po **546.0**
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **545.0** Plat-HD-flow HITL `product_ticket`
+**Ostatni plaster:** **546.0** Plat-HD S11 owner na `product_ticket`
 
-**Etap:** Plaster — delta `docs/deltas/open/546.0-product-ticket-owner-s11.md` zaakceptowana `/noc`; wolno `/plaster`
+**Etap:** Plan — park AI3-payload / G0-SH; komenda `/plan-modul`
 
 **Noc:** `/noc 17` do **2026-09-17T17:00:00+02:00**
 
 **Miejsce pracy:** produkt = to repo + GitHub.
 
-**Następny:** **546.0** Plat-HD leftover S11 owner na `product_ticket`. Nie AI3-payload. Nie G0-SH. Nie SH-R16-13.
+**Następny:** park **AI3-payload** / **G0-SH**. Nie SH-R16-13. Nie AI0.
 
 **Park / czeka w PLAN:** AI3-payload · G0-SH · SH-R16-13 · …
 
-**Spec (jedyna na sesję produktu):** [546.0-product-ticket-owner-s11.md](../deltas/open/546.0-product-ticket-owner-s11.md)
+**Spec (jedyna na sesję produktu):** brak — wybór Q w następnym cyklu
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 

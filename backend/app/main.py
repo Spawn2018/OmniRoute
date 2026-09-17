@@ -14,6 +14,7 @@ from app.domain.errors import (
     MarginFloorBreach,
     PartyConflict,
     PermissionDenied,
+    ProductTicketOwnerRequired,
     QuotationNamedPlaceRequired,
     ResourceNotFound,
     RoutingGuideOffGuide,
@@ -84,6 +85,17 @@ async def channel_quote_conflict_handler(
 async def margin_floor_breach_handler(
     _request: Request,
     exc: MarginFloorBreach,
+) -> JSONResponse:
+    body: dict[str, object] = {"detail": str(exc)}
+    if exc.decision_id is not None:
+        body["decision_id"] = str(exc.decision_id)
+    return JSONResponse(status_code=409, content=body)
+
+
+@app.exception_handler(ProductTicketOwnerRequired)
+async def product_ticket_owner_required_handler(
+    _request: Request,
+    exc: ProductTicketOwnerRequired,
 ) -> JSONResponse:
     body: dict[str, object] = {"detail": str(exc)}
     if exc.decision_id is not None:

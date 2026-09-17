@@ -978,6 +978,14 @@ class InvalidProductTicket(DomainError):
     """Plat-HD-flow: HITL wpis ticketu — nie auto-fix / nie CAPA."""
 
 
+class ProductTicketOwnerRequired(DomainError):
+    """Plat-HD leftover: owner_ok wymaga S11 — HTTP 409 w API."""
+
+    def __init__(self, message: str, *, decision_id: object | None = None) -> None:
+        super().__init__(message)
+        self.decision_id = decision_id
+
+
 class InvalidRiskRegisterMark(DomainError):
     """AI9.2: HITL rejestr ryzyka — nie scoring osoby / nie L3 silnik."""
 

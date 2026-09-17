@@ -2,6 +2,7 @@ from uuid import UUID, uuid4
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.domain.errors import ResourceNotFound
 from app.domain.product_ticket import parse_product_ticket_row
 from app.models.product_ticket import ProductTicket
 from app.repositories.product_tickets.product_ticket_repository import (
@@ -15,6 +16,12 @@ class ProductTicketService:
 
     async def list_tickets(self) -> list[ProductTicket]:
         return await self._rows.list_tickets()
+
+    async def get_ticket(self, ticket_id: UUID) -> ProductTicket:
+        found = await self._rows.get_ticket(ticket_id)
+        if found is None:
+            raise ResourceNotFound(f"nieznany ticket produktu: {ticket_id}")
+        return found
 
     async def persist_product_ticket(
         self,

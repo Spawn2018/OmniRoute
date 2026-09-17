@@ -1,4 +1,5 @@
 from pathlib import Path
+from types import SimpleNamespace
 from unittest.mock import AsyncMock
 from uuid import UUID, uuid4
 
@@ -25,6 +26,16 @@ def test_migration_426_creates_product_ticket_and_forces_rls() -> None:
     assert "product_ticket_tenant_isolation" in source
     for banned in ("amount", "float(", "httpx", "auto_fix", "capa"):
         assert banned not in source
+
+
+def test_migration_427_allows_product_ticket_subject_kind() -> None:
+    source = (_ROOT / "backend/alembic/versions/427_od_product_ticket.py").read_text(
+        encoding="utf-8",
+    )
+    assert 'revision: str = "427_od_product_ticket"' in source
+    assert 'down_revision: str | None = "426_product_ticket"' in source
+    assert "product_ticket" in source
+    assert "auto_fix" not in source
 
 
 def test_importlinter_lists_product_ticket_on_deny_list() -> None:
@@ -69,6 +80,14 @@ class InMemoryProductTicketDesk:
     async def list_tickets(self) -> list[ProductTicket]:
         return list(self.rows)
 
+    async def get_ticket(self, ticket_id: UUID) -> ProductTicket:
+        from app.domain.errors import ResourceNotFound
+
+        for row in self.rows:
+            if row.id == ticket_id:
+                return row
+        raise ResourceNotFound(f"nieznany ticket produktu: {ticket_id}")
+
     async def persist_product_ticket(
         self,
         *,
@@ -101,12 +120,66 @@ class InMemoryProductTicketDesk:
         return row
 
 
+class StubOperatorDecisionService:
+    def __init__(self, session: object) -> None:
+        self.pending_by_ticket: dict[UUID, object] = {}
+        self.decisions: dict[UUID, object] = {}
+        self.create_calls = 0
+
+    async def create_decision(
+        self,
+        *,
+        organization_id: UUID,
+        user_id: UUID,
+        subject_kind: str,
+        subject_id: UUID,
+        source_ref: str,
+    ) -> object:
+        self.create_calls += 1
+        from app.domain.errors import OperatorDecisionConflict
+
+        if subject_id in self.pending_by_ticket:
+            raise OperatorDecisionConflict("pending na ten subject już istnieje")
+        row = SimpleNamespace(
+            id=uuid4(),
+            subject_kind=subject_kind,
+            subject_id=subject_id,
+            status="pending",
+            source_ref=source_ref,
+            organization_id=organization_id,
+            created_by=user_id,
+        )
+        self.pending_by_ticket[subject_id] = row
+        self.decisions[row.id] = row
+        return row
+
+    async def get_pending(self, subject_kind: str, subject_id: UUID) -> object | None:
+        row = self.pending_by_ticket.get(subject_id)
+        if row is None:
+            return None
+        if row.subject_kind != subject_kind or row.status != "pending":
+            return None
+        return row
+
+    async def get_decision(self, decision_id: UUID) -> object:
+        from app.domain.errors import ResourceNotFound
+
+        found = self.decisions.get(decision_id)
+        if found is None:
+            raise ResourceNotFound(f"nieznana decyzja operatora: {decision_id}")
+        return found
+
+
 @pytest.fixture
 def product_ticket_client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
     desk = InMemoryProductTicketDesk(object())
+    decision_stub = StubOperatorDecisionService(object())
 
     def _factory(session: object) -> InMemoryProductTicketDesk:
         return desk
+
+    def _decision_factory(session: object) -> StubOperatorDecisionService:
+        return decision_stub
 
     async def _fake_tenant_session() -> object:
         session = AsyncMock()
@@ -117,10 +190,15 @@ def product_ticket_client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
         "app.api.product_tickets.ProductTicketService",
         _factory,
     )
+    monkeypatch.setattr(
+        "app.api.product_tickets.OperatorDecisionService",
+        _decision_factory,
+    )
     set_authz_checker(ProductTicketAuthz())
     app.dependency_overrides[require_tenant_session] = _fake_tenant_session
     client = TestClient(app)
     client.desk = desk  # type: ignore[attr-defined]
+    client.decision_stub = decision_stub  # type: ignore[attr-defined]
     yield client
     app.dependency_overrides.clear()
     set_authz_checker(None)
@@ -197,3 +275,157 @@ def test_http_lists_product_tickets(product_ticket_client: TestClient) -> None:
     )
     assert response.status_code == 200
     assert len(response.json()) == 1
+
+
+def test_http_owner_ok_opens_pending_decision(
+    product_ticket_client: TestClient,
+) -> None:
+    desk: InMemoryProductTicketDesk = product_ticket_client.desk  # type: ignore[attr-defined]
+    decision_stub: StubOperatorDecisionService = (
+        product_ticket_client.decision_stub  # type: ignore[attr-defined]
+    )
+    reviewed_id = uuid4()
+    desk.rows.append(
+        ProductTicket(
+            id=reviewed_id,
+            organization_id=uuid4(),
+            ticket_code="bug_report",
+            title="Report",
+            body="Body",
+            ticket_kind="report",
+            source_ref="tenant:manual",
+            created_by=uuid4(),
+        ),
+    )
+    response = product_ticket_client.post(
+        "/api/v1/product-tickets",
+        headers=bearer_auth_headers(),
+        json={
+            "ticket_code": "bug_owner_01",
+            "title": "Owner ok",
+            "body": "Approve fix",
+            "ticket_kind": "owner_ok",
+            "source_ref": "tenant:manual",
+            "reviewed_ticket_id": str(reviewed_id),
+        },
+    )
+    assert response.status_code == 409
+    payload = response.json()
+    assert "decision_id" in payload
+    assert decision_stub.create_calls == 1
+    decision_id = UUID(payload["decision_id"])
+    assert decision_id in decision_stub.decisions
+
+
+def test_http_owner_ok_reuses_pending_decision(
+    product_ticket_client: TestClient,
+) -> None:
+    desk: InMemoryProductTicketDesk = product_ticket_client.desk  # type: ignore[attr-defined]
+    decision_stub: StubOperatorDecisionService = (
+        product_ticket_client.decision_stub  # type: ignore[attr-defined]
+    )
+    reviewed_id = uuid4()
+    desk.rows.append(
+        ProductTicket(
+            id=reviewed_id,
+            organization_id=uuid4(),
+            ticket_code="bug_report",
+            title="Report",
+            body="Body",
+            ticket_kind="report",
+            source_ref="tenant:manual",
+            created_by=uuid4(),
+        ),
+    )
+    first = product_ticket_client.post(
+        "/api/v1/product-tickets",
+        headers=bearer_auth_headers(),
+        json={
+            "ticket_code": "bug_owner_01",
+            "title": "Owner ok",
+            "body": "Approve fix",
+            "ticket_kind": "owner_ok",
+            "source_ref": "tenant:manual",
+            "reviewed_ticket_id": str(reviewed_id),
+        },
+    )
+    second = product_ticket_client.post(
+        "/api/v1/product-tickets",
+        headers=bearer_auth_headers(),
+        json={
+            "ticket_code": "bug_owner_02",
+            "title": "Owner ok again",
+            "body": "Approve fix",
+            "ticket_kind": "owner_ok",
+            "source_ref": "tenant:manual",
+            "reviewed_ticket_id": str(reviewed_id),
+        },
+    )
+    assert first.status_code == 409
+    assert second.status_code == 409
+    assert first.json()["decision_id"] == second.json()["decision_id"]
+    assert decision_stub.create_calls >= 1
+    assert len(decision_stub.pending_by_ticket) == 1
+
+
+def test_http_owner_ok_with_accepted_decision(
+    product_ticket_client: TestClient,
+) -> None:
+    desk: InMemoryProductTicketDesk = product_ticket_client.desk  # type: ignore[attr-defined]
+    decision_stub: StubOperatorDecisionService = (
+        product_ticket_client.decision_stub  # type: ignore[attr-defined]
+    )
+    reviewed_id = uuid4()
+    decision_id = uuid4()
+    desk.rows.append(
+        ProductTicket(
+            id=reviewed_id,
+            organization_id=uuid4(),
+            ticket_code="bug_report",
+            title="Report",
+            body="Body",
+            ticket_kind="report",
+            source_ref="tenant:manual",
+            created_by=uuid4(),
+        ),
+    )
+    decision_stub.decisions[decision_id] = SimpleNamespace(
+        id=decision_id,
+        subject_kind="product_ticket",
+        subject_id=reviewed_id,
+        status="accepted",
+    )
+    response = product_ticket_client.post(
+        "/api/v1/product-tickets",
+        headers=bearer_auth_headers(),
+        json={
+            "ticket_code": "bug_owner_01",
+            "title": "Owner ok",
+            "body": "Approve fix",
+            "ticket_kind": "owner_ok",
+            "source_ref": "tenant:manual",
+            "reviewed_ticket_id": str(reviewed_id),
+            "owner_decision_id": str(decision_id),
+        },
+    )
+    assert response.status_code == 201
+    assert response.json()["ticket_kind"] == "owner_ok"
+
+
+def test_http_rejects_owner_fields_on_report(
+    product_ticket_client: TestClient,
+) -> None:
+    response = product_ticket_client.post(
+        "/api/v1/product-tickets",
+        headers=bearer_auth_headers(),
+        json={
+            "ticket_code": "bug_login_01",
+            "title": "Login stuck",
+            "body": "Operator cannot enter after refresh",
+            "ticket_kind": "report",
+            "source_ref": "tenant:manual",
+            "reviewed_ticket_id": str(uuid4()),
+        },
+    )
+    assert response.status_code == 400
+    assert "owner_ok" in response.json()["detail"]

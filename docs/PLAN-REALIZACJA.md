@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **546.0** Plat-HD leftover S11 owner na `product_ticket`. Nie AI3-payload. Nie G0-SH. Nie SH-R16-13.
+**Następny:** park **AI3-payload** / **G0-SH**. Nie SH-R16-13. Nie AI0.
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -800,7 +800,7 @@ Zdublowane listy Fal 2–11 (M-xx): [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md). 
 | **SH-R16-15** | PARK-RADAR Q3/Q4 2026 | rytuał kwartał | DONE 2026-09-16 Q3 ([pulses/PARK-RADAR-2026-Q3.md](ops/pulses/PARK-RADAR-2026-Q3.md)) | idle ≤30 min |
 | **UXCL-L1** | Instrumentacja extract-accept | Plan→plaster | zamknięty ([537.0](deltas/archived/537.0-uxcl-l1-extract-accept.md)) | leftover banner zgody · Job#2 charge |
 | **AI3-payload** | Payload / delta AI vs człowiek | Plan→plaster | park→CURRENT | SH-R16-5 |
-| **Plat-HD-flow** | Obieg ticket→owner | Plan→plaster | zamknięty HITL wpis ([545.0](deltas/archived/545.0-product-ticket.md); **546.0** S11 owner w toku; leftover Mob · auto-fix · FK mark) | G0+G1 + D2 owner |
+| **Plat-HD-flow** | Obieg ticket→owner | Plan→plaster | zamknięty HITL wpis ([545.0](deltas/archived/545.0-product-ticket.md); S11 owner [546.0](deltas/archived/546.0-product-ticket-owner-s11.md); leftover Mob · auto-fix · FK mark) | G0+G1 + D2 owner |
 | **G0-SH** | Host/IdP/CF | — | park | PREMORT→PRR→LAUNCH |
 | **SBOM / attestation / EAA / CRA / hire-human** | GIGANT L2–L3 | — | park | rejestr §1.3 |
 
@@ -892,13 +892,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

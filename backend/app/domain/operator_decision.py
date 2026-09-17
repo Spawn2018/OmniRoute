@@ -5,7 +5,13 @@ from app.domain.rate_line import require_source_ref
 
 _PENDING = "pending"
 _SUBJECTS = frozenset(
-    {"inbound_message", "mail_draft", "quotation", "margin_floor"},
+    {
+        "inbound_message",
+        "mail_draft",
+        "quotation",
+        "margin_floor",
+        "product_ticket",
+    },
 )
 _DECIDE = frozenset({"accepted", "changed", "rejected"})
 
@@ -24,7 +30,8 @@ def require_subject_kind(raw: object) -> str:
     token = raw.strip()
     if token not in _SUBJECTS:
         raise InvalidOperatorDecision(
-            "subject_kind: inbound_message, mail_draft, quotation albo margin_floor",
+            "subject_kind: inbound_message, mail_draft, quotation, "
+            "margin_floor albo product_ticket",
         )
     return token
 
