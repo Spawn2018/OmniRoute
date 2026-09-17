@@ -139,6 +139,7 @@ import { Route as InterventionOutcomesRouteImport } from './routes/intervention-
 import { Route as InventoryCollateralMarksRouteImport } from './routes/inventory-collateral-marks'
 import { Route as InventoryFinanceMarksRouteImport } from './routes/inventory-finance-marks'
 import { Route as InventoryPositionMarksRouteImport } from './routes/inventory-position-marks'
+import { Route as InvoiceMatchMarksRouteImport } from './routes/invoice-match-marks'
 import { Route as InvoicesRouteImport } from './routes/invoices'
 import { Route as IsoNis2MarksRouteImport } from './routes/iso-nis2-marks'
 import { Route as JitJisMarksRouteImport } from './routes/jit-jis-marks'
@@ -973,6 +974,11 @@ const InventoryFinanceMarksRoute = InventoryFinanceMarksRouteImport.update({
 const InventoryPositionMarksRoute = InventoryPositionMarksRouteImport.update({
   id: '/inventory-position-marks',
   path: '/inventory-position-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvoiceMatchMarksRoute = InvoiceMatchMarksRouteImport.update({
+  id: '/invoice-match-marks',
+  path: '/invoice-match-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InvoicesRoute = InvoicesRouteImport.update({
@@ -2028,6 +2034,7 @@ export interface FileRoutesByFullPath {
   '/inventory-collateral-marks': typeof InventoryCollateralMarksRoute
   '/inventory-finance-marks': typeof InventoryFinanceMarksRoute
   '/inventory-position-marks': typeof InventoryPositionMarksRoute
+  '/invoice-match-marks': typeof InvoiceMatchMarksRoute
   '/invoices': typeof InvoicesRoute
   '/iso-nis2-marks': typeof IsoNis2MarksRoute
   '/jit-jis-marks': typeof JitJisMarksRoute
@@ -2344,6 +2351,7 @@ export interface FileRoutesByTo {
   '/inventory-collateral-marks': typeof InventoryCollateralMarksRoute
   '/inventory-finance-marks': typeof InventoryFinanceMarksRoute
   '/inventory-position-marks': typeof InventoryPositionMarksRoute
+  '/invoice-match-marks': typeof InvoiceMatchMarksRoute
   '/invoices': typeof InvoicesRoute
   '/iso-nis2-marks': typeof IsoNis2MarksRoute
   '/jit-jis-marks': typeof JitJisMarksRoute
@@ -2661,6 +2669,7 @@ export interface FileRoutesById {
   '/inventory-collateral-marks': typeof InventoryCollateralMarksRoute
   '/inventory-finance-marks': typeof InventoryFinanceMarksRoute
   '/inventory-position-marks': typeof InventoryPositionMarksRoute
+  '/invoice-match-marks': typeof InvoiceMatchMarksRoute
   '/invoices': typeof InvoicesRoute
   '/iso-nis2-marks': typeof IsoNis2MarksRoute
   '/jit-jis-marks': typeof JitJisMarksRoute
@@ -2979,6 +2988,7 @@ export interface FileRouteTypes {
     | '/inventory-collateral-marks'
     | '/inventory-finance-marks'
     | '/inventory-position-marks'
+    | '/invoice-match-marks'
     | '/invoices'
     | '/iso-nis2-marks'
     | '/jit-jis-marks'
@@ -3295,6 +3305,7 @@ export interface FileRouteTypes {
     | '/inventory-collateral-marks'
     | '/inventory-finance-marks'
     | '/inventory-position-marks'
+    | '/invoice-match-marks'
     | '/invoices'
     | '/iso-nis2-marks'
     | '/jit-jis-marks'
@@ -3611,6 +3622,7 @@ export interface FileRouteTypes {
     | '/inventory-collateral-marks'
     | '/inventory-finance-marks'
     | '/inventory-position-marks'
+    | '/invoice-match-marks'
     | '/invoices'
     | '/iso-nis2-marks'
     | '/jit-jis-marks'
@@ -3928,6 +3940,7 @@ export interface RootRouteChildren {
   InventoryCollateralMarksRoute: typeof InventoryCollateralMarksRoute
   InventoryFinanceMarksRoute: typeof InventoryFinanceMarksRoute
   InventoryPositionMarksRoute: typeof InventoryPositionMarksRoute
+  InvoiceMatchMarksRoute: typeof InvoiceMatchMarksRoute
   InvoicesRoute: typeof InvoicesRoute
   IsoNis2MarksRoute: typeof IsoNis2MarksRoute
   JitJisMarksRoute: typeof JitJisMarksRoute
@@ -5024,6 +5037,13 @@ declare module '@tanstack/react-router' {
       path: '/inventory-position-marks'
       fullPath: '/inventory-position-marks'
       preLoaderRoute: typeof InventoryPositionMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/invoice-match-marks': {
+      id: '/invoice-match-marks'
+      path: '/invoice-match-marks'
+      fullPath: '/invoice-match-marks'
+      preLoaderRoute: typeof InvoiceMatchMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/invoices': {
@@ -6448,6 +6468,7 @@ const rootRouteChildren: RootRouteChildren = {
   InventoryCollateralMarksRoute: InventoryCollateralMarksRoute,
   InventoryFinanceMarksRoute: InventoryFinanceMarksRoute,
   InventoryPositionMarksRoute: InventoryPositionMarksRoute,
+  InvoiceMatchMarksRoute: InvoiceMatchMarksRoute,
   InvoicesRoute: InvoicesRoute,
   IsoNis2MarksRoute: IsoNis2MarksRoute,
   JitJisMarksRoute: JitJisMarksRoute,

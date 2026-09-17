@@ -187,6 +187,7 @@ from app.models.yard_mark import YardMark  # noqa: F401
 from app.models.billing_mark import BillingMark  # noqa: F401
 from app.models.self_billing_mark import SelfBillingMark  # noqa: F401
 from app.models.purchase_invoice import PurchaseInvoice  # noqa: F401
+from app.models.invoice_match_mark import InvoiceMatchMark  # noqa: F401
 from app.models.registry_poll_mark import RegistryPollMark  # noqa: F401
 from app.models.working_capital_mark import WorkingCapitalMark  # noqa: F401
 from app.models.make_or_buy_mark import MakeOrBuyMark  # noqa: F401

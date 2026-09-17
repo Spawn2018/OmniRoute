@@ -819,6 +819,11 @@ export const OPS_JOBS = [
     job: "katalog purchase_invoice HITL",
   },
   {
+    route: BUSINESS_LISTS.invoiceMatchMark.route,
+    label: "Dopasowanie FV zakupu",
+    job: "katalog invoice_match_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.registryPollMark.route,
     label: "Poll rejestrów",
     job: "katalog registry_poll_mark HITL",
@@ -1720,6 +1725,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "547.0": "/charges",
   "548.0": "/self-billing-marks",
   "549.0": "/purchase-invoices",
+  "550.0": "/invoice-match-marks",
   "142.0": "/mail",
   "143.0": "/networks",
   "144.0": "/quotations",

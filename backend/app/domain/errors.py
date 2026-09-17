@@ -1122,6 +1122,10 @@ class InvalidPurchaseInvoice(DomainError):
     """F10: HITL FV zakupu — nie ranking / nie allocation."""
 
 
+class InvalidInvoiceMatchMark(DomainError):
+    """F10 leftover: HITL stancja match FV — nie ranking SQL."""
+
+
 class InvalidRegistryPollMark(DomainError):
     """EXP7.2: HITL poll rejestru — nie live scrape."""
 
