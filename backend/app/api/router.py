@@ -208,6 +208,7 @@ from app.api import (
     port_surcharges,
     ports,
     position_events,
+    postal_dispatch_marks,
     posting_marks,
     prediction_ledgers,
     product_ticket_marks,
@@ -629,6 +630,7 @@ api_router.include_router(e_cmr_marks.router)
 api_router.include_router(e_delivery_marks.router)
 api_router.include_router(e_doreczenia_marks.router)
 api_router.include_router(peppol_marks.router)
+api_router.include_router(postal_dispatch_marks.router)
 api_router.include_router(phyto_ata_marks.router)
 api_router.include_router(sid_import_marks.router)
 api_router.include_router(integration_hub_marks.router)

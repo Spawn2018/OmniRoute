@@ -273,6 +273,7 @@ def _organization_exp2_catalog_relations() -> dict[str, Userset]:
         "can_manage_e_delivery_marks": _member(),
         "can_manage_e_doreczenia_marks": _member(),
         "can_manage_peppol_marks": _member(),
+        "can_manage_postal_dispatch_marks": _member(),
         "can_manage_sid_import_marks": _member(),
         "can_manage_integration_hub_marks": _member(),
         "can_manage_webhook_outbox_marks": _member(),

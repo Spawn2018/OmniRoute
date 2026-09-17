@@ -1,22 +1,22 @@
 ﻿# Bieżący focus
 
-**Faza:** Oś pinu — **552.0** F11 leftover `postal_dispatch_mark`
+**Faza:** Oś pinu — **553.0** C1 leftover `shipment_monitoring_filing`
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **551.0** F10 `invoice_alloc_mark`
+**Ostatni plaster:** **552.0** F11 `postal_dispatch_mark`
 
-**Etap:** Plaster — delta zaakceptowana `/noc`; wolno `/plaster`
+**Etap:** Plan — wydmuszka leftover; `/plan-modul` → delta → plaster
 
 **Noc:** `/noc 7` do **2026-09-18T07:00:00+02:00**
 
 **Miejsce pracy:** produkt = to repo + GitHub.
 
-**Następny:** **552.0** F11 leftover HITL `postal_dispatch_mark`. Nie AI3-payload. Nie G0-SH.
+**Następny:** **553.0** C1 leftover HITL `shipment_monitoring_filing`. Nie AI3-payload. Nie G0-SH.
 
-**Park / czeka w PLAN:** AI3-payload · G0-SH · SH-R16-13 · invoice_match_candidate · ranking SQL · …
+**Park / czeka w PLAN:** AI3-payload · G0-SH · SH-R16-13 · invoice_match_candidate · ranking SQL · live PP · postal_epo · …
 
-**Spec (jedyna na sesję produktu):** [deltas/open/552.0-postal-dispatch-mark.md](../deltas/open/552.0-postal-dispatch-mark.md)
+**Spec (jedyna na sesję produktu):** (brak — najpierw delta `553.0`)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 
@@ -24,6 +24,6 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-17:** Delta **552.0** zaakceptowana `/noc 7`. Wolno plaster.
-**2026-09-17:** Plaster **551.0** F10 invoice_alloc_mark zamknięty. `/noc 7`.
+**2026-09-17:** Plaster **552.0** F11 postal_dispatch_mark zamknięty. `/noc 7`.
+**2026-09-17:** Plaster **551.0** F10 invoice_alloc_mark zamknięty (gate success). `/noc 7`.
 **2026-09-17:** Plaster **550.0** F10 invoice_match_mark zamknięty (gate success). `/noc 7`.

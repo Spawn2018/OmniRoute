@@ -1130,6 +1130,10 @@ class InvalidInvoiceAllocMark(DomainError):
     """F10 leftover: HITL stancja alokacji FV — nie allocation z kwotą."""
 
 
+class InvalidPostalDispatchMark(DomainError):
+    """F11 leftover: HITL książka PP — nie live Poczta Polska."""
+
+
 class InvalidRegistryPollMark(DomainError):
     """EXP7.2: HITL poll rejestru — nie live scrape."""
 

@@ -963,3 +963,5 @@
 - 2026-09-14T01:35:00Z | 470.0 | silk_corridor_mark | DONE | HITL catalog corridor_kind silk/block_train/transit/other; bez live CR Express / lane_pattern
 - 2026-09-13T23:45:00Z | 469.0 | nac_mark | DONE | HITL catalog nac_kind nac/nominated/agent/other; bez live NAC / FK stakeholder
 - 2026-09-13T23:05:00Z | 468.0 | lcl_console_mark | DONE | HITL catalog console_kind console/cfs/other; bez live CFS / CBM
+
+- 2026-09-17T20:30:00Z | 552.0 | postal_dispatch_mark | DONE | HITL catalog dispatch_kind en/uss/epo/other; bez live PP / e-Doreczenia

@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **552.0** F11 leftover HITL `postal_dispatch_mark`. Nie AI3-payload. Nie G0-SH.
+**Następny:** **553.0** C1 leftover HITL `shipment_monitoring_filing`. Nie AI3-payload. Nie G0-SH.
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -567,14 +567,14 @@ Karta: [karty-pol-g2-tender.md](analysis/karty-pol-g2-tender.md). P6 = oferty od
 | F9 | `purchase_invoice` + ERP FS+FZ | zamknięty HITL catalog Optima fixture ([268.0](deltas/archived/268.0-erp-connector.md)); leftover XL / live SOAP / FS+FZ / `erp_series_map` / `erp_export` / `purchase_invoice` | zakaz SQL `sa` |
 | **N14** | self-billing podwykonawcy | zamknięty HITL ([548.0](deltas/archived/548.0-self-billing-mark.md)); leftover live · FK party · JPK | po F9+D |
 | F10 | ingest FV HITL + ranking SQL | zamknięty HITL ([549.0](deltas/archived/549.0-purchase-invoice.md)); [550.0](deltas/archived/550.0-invoice-match-mark.md); [551.0](deltas/archived/551.0-invoice-alloc-mark.md); leftover candidate / ranking SQL / allocation z kwotą | po F9 + X9 |
-| F11 | książka PP EN+USS+EPO | delta **552.0** HITL `postal_dispatch_mark` (open); leftover live PP / `postal_epo` | **≠ e-Doręczenia** (EXP2.19) |
+| F11 | książka PP EN+USS+EPO | zamknięty HITL ([552.0](deltas/archived/552.0-postal-dispatch-mark.md)); leftover live PP / `postal_epo` | **≠ e-Doręczenia** (EXP2.19) |
 | **EXP2.1** | working capital: DSO, cash-at-risk, aging | 338.0 HITL katalog `working_capital_mark` (capital_kind); leftover DSO SQL / druga marża | nie druga marża |
 
 ### Fala C — celna / compliance
 
 | ID | Co | Status | Uwagi |
 |---|---|---|---|
-| C1 / C6–C8 | SENT, BDO, `monitoring_scheme`, `party_document` 409 + KREPTD C8 | zamknięty HITL C7 katalog ([187.0](deltas/archived/187.0-monitoring-scheme.md)); zamknięty HITL C8 katalog ([188.0](deltas/archived/188.0-party-document.md)); leftover C1 `shipment_monitoring_filing` / 409 / `relation_document_requirement` | karta [karty-pol-fala-c.md](analysis/karty-pol-fala-c.md); dump `04b`: SENT nie publiczne u TMS top-10 |
+| C1 / C6–C8 | SENT, BDO, `monitoring_scheme`, `party_document` 409 + KREPTD C8 | zamknięty HITL C7 katalog ([187.0](deltas/archived/187.0-monitoring-scheme.md)); zamknięty HITL C8 katalog ([188.0](deltas/archived/188.0-party-document.md)); leftover C1 `shipment_monitoring_filing` / 409 / `relation_document_requirement` (kolejka **553.0** HITL) | karta [karty-pol-fala-c.md](analysis/karty-pol-fala-c.md); dump `04b`: SENT nie publiczne u TMS top-10 |
 | C2 | AIS/AES/Intrastat | TO_VERIFY PUESC | |
 | C3–C5 / C9 | lookup live, eCMR 2027 (EXP2.18), CO₂+metodyka, Trans.eu snapshot | zamknięty HITL C5 katalog ([190.0](deltas/archived/190.0-carbon-method.md)); leftover C3 live VIES/GUS / C4 eCMR / C9 Trans.eu | C9 bez scrapingu opinii |
 | **EXP0.8** | `cargo_claim` deadline CMR 7/21/365 + OS&D | zamknięty HITL OS&D + terminy ([191.0](deltas/archived/191.0-cargo-claim-cmr.md)); leftover Deadline Engine / evidence / S11 | nie kwota z LLM |
@@ -892,13 +892,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->
