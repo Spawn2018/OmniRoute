@@ -6,17 +6,17 @@
 
 **Ostatni plaster:** **551.0** F10 `invoice_alloc_mark`
 
-**Etap:** Plan — brak delty; `/plan-modul` przed kodem
+**Etap:** Plaster — delta zaakceptowana `/noc`; wolno `/plaster`
 
 **Noc:** `/noc 7` do **2026-09-18T07:00:00+02:00**
 
 **Miejsce pracy:** produkt = to repo + GitHub.
 
-**Następny:** **552.0** F11 leftover HITL `postal_dispatch_mark`. Nie AI3-payload. Nie G0-SH. Nie ranking SQL.
+**Następny:** **552.0** F11 leftover HITL `postal_dispatch_mark`. Nie AI3-payload. Nie G0-SH.
 
-**Park / czeka w PLAN:** AI3-payload · G0-SH · SH-R16-13 · invoice_match_candidate · ranking SQL · purchase_invoice_allocation · …
+**Park / czeka w PLAN:** AI3-payload · G0-SH · SH-R16-13 · invoice_match_candidate · ranking SQL · …
 
-**Spec (jedyna na sesję produktu):** (brak — najpierw delta 552)
+**Spec (jedyna na sesję produktu):** [deltas/open/552.0-postal-dispatch-mark.md](../deltas/open/552.0-postal-dispatch-mark.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 
@@ -24,6 +24,6 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
+**2026-09-17:** Delta **552.0** zaakceptowana `/noc 7`. Wolno plaster.
 **2026-09-17:** Plaster **551.0** F10 invoice_alloc_mark zamknięty. `/noc 7`.
 **2026-09-17:** Plaster **550.0** F10 invoice_match_mark zamknięty (gate success). `/noc 7`.
-**2026-09-17:** Plaster **549.0** F10 purchase_invoice zamknięty. `/noc 17`.

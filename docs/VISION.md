@@ -149,6 +149,7 @@ zostają w badaniach `04`).
 | 2026-09-17 | **550.0** `invoice_match_mark` w kodzie (`CONFIRMED`, git po push). Leftover candidate / ranking / allocation. Następny = **551.0** `invoice_alloc_mark` (`REQUIREMENT`). |
 | 2026-09-17 | Plan **551.0** F10 leftover HITL `invoice_alloc_mark` (`REQUIREMENT`). `purchase_invoice_allocation` z kwotą / ranking SQL `REJECTED` → leftover. |
 | 2026-09-17 | **551.0** `invoice_alloc_mark` w kodzie (`CONFIRMED`, git po push). Leftover candidate / ranking / allocation z kwotą. Następny = **552.0** F11 `postal_dispatch_mark` (`REQUIREMENT`). |
+| 2026-09-17 | Plan **552.0** F11 leftover HITL `postal_dispatch_mark` (`REQUIREMENT`). Live PP / `postal_epo` / e-Doręczenia `REJECTED` → leftover. |
 | 2026-09-13 | AI3.4 plan (**451.0**): parser `xlsx_sheet` stdlib. `openpyxl` `REJECTED`. `.xls` leftover. |
 | 2026-09-13 | **451.0** `xlsx_sheet` w kodzie (`CONFIRMED`, git). Następny = **AI4.0** FK `plan_snapshot` (`REQUIREMENT`). `.xls` leftover. |
 | 2026-09-13 | AI4.0 plan (**452.0**): FK złożone RESTRICT. CASCADE `REJECTED`. What-if `REJECTED` na tym wierszu. |
