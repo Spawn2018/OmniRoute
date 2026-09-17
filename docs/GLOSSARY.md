@@ -242,6 +242,7 @@ kolumn. Nie 468.0.
 | znacznik współpracy 3 stron | collaboration_mark | CT11 HITL 284.0 `mark_code` + role shipper\|carrier\|consignee; nie wspólny SELECT |
 | znacznik audytu frachtu | freight_audit_mark | CT10 HITL 283.0 `mark_code` + kind expected_vs_invoice\|expected_vs_charge; nie SQL vs charge |
 | znacznik dopasowania FV | invoice_match_mark | F10 HITL 550.0 `mark_code` + kind candidate\|rank\|allocate\|other; nie ranking SQL |
+| znacznik alokacji FV | invoice_alloc_mark | F10 HITL 551.0 `mark_code` + kind line\|header\|batch\|other; nie allocation z kwotą |
 | znacznik CAPA | capa_mark | CT12 HITL 282.0 `mark_code` + kind capa\|eight_d\|recurrence; nie workflow |
 | konektor SAP/Oracle | sap_connector | CT6 HITL 281.0 kod + kind `sap`\|`oracle`; nie live SOAP; nie sekrety |
 | awizacja terminalu | terminal_appointment | T8; requested/confirmed/rejected; `source_ref` |
