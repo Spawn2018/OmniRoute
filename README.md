@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **542.0** N1 opcjonalny `stop_id` na przesyłce
-- **Etap:** Plan — park AI3-payload / Plat-HD / G0-SH; komenda `/plan-modul`
-- **Następny:** park **AI3-payload** / **Plat-HD** / **G0-SH**. Nie SH-R16-13. Nie AI0.
+- **Ostatni plaster:** **543.0** N11 HITL notatka S/B/A/R
+- **Etap:** Plan — park AI3-payload / Plat-HD / G0-SH / leftover N6 S11; komenda `/plan-modul`
+- **Następny:** park **AI3-payload** / **Plat-HD** / **G0-SH** · leftover **N6 S11**. Nie SH-R16-13. Nie AI0.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

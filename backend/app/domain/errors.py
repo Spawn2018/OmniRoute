@@ -1022,6 +1022,10 @@ class InvalidHandoverSbarMark(DomainError):
     """N11: HITL przekazanie zmiany SBAR — nie drugi czat / nie auto SBAR."""
 
 
+class InvalidHandoverNote(DomainError):
+    """N11 leftover: HITL wpis S/B/A/R — nie auto SBAR / nie T6."""
+
+
 class InvalidTripBillMark(DomainError):
     """N2: HITL gotowość przejazdu do FV — nie SQL trips_to_bill / nie F1 live."""
 

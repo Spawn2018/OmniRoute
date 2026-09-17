@@ -115,6 +115,7 @@ from app.api import (
     groupage_dispatcher_marks,
     groupage_lines,
     groupage_tariffs,
+    handover_notes,
     handover_sbar_marks,
     haulier_role_marks,
     high_value_marks,
@@ -518,6 +519,7 @@ api_router.include_router(kpi_definition_marks.router)
 api_router.include_router(margin_floors.router)
 api_router.include_router(shipment_clone_marks.router)
 api_router.include_router(handover_sbar_marks.router)
+api_router.include_router(handover_notes.router)
 api_router.include_router(trip_bill_marks.router)
 api_router.include_router(asns.router)
 api_router.include_router(otif_marks.router)

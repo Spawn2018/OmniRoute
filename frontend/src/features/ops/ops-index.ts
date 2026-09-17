@@ -694,6 +694,11 @@ export const OPS_JOBS = [
     job: "katalog handover_sbar_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.handoverNote.route,
+    label: "Notatka SBAR",
+    job: "katalog handover_note HITL",
+  },
+  {
     route: BUSINESS_LISTS.tripBillMark.route,
     label: "Gotowość do FV",
     job: "katalog trip_bill_mark HITL",
@@ -1693,6 +1698,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "540.0": "/consignments",
   "541.0": "/shipment-packages",
   "542.0": "/consignments",
+  "543.0": "/handover-notes",
   "142.0": "/mail",
   "143.0": "/networks",
   "144.0": "/quotations",

@@ -161,6 +161,7 @@ modules =
     app.services.margin_floors
     app.services.shipment_clone_marks
     app.services.handover_sbar_marks
+    app.services.handover_notes
     app.services.trip_bill_marks
     app.services.automation_bias_marks
     app.services.l3_gate_marks
@@ -781,16 +782,19 @@ forbidden_modules =
     app.services.margin_floors
     app.services.shipment_clone_marks
     app.services.handover_sbar_marks
+    app.services.handover_notes
     app.services.trip_bill_marks
     app.repositories.kpi_definition_marks
     app.repositories.margin_floors
     app.repositories.shipment_clone_marks
     app.repositories.handover_sbar_marks
+    app.repositories.handover_notes
     app.repositories.trip_bill_marks
     app.models.kpi_definition_mark
     app.models.margin_floor
     app.models.shipment_clone_mark
     app.models.handover_sbar_mark
+    app.models.handover_note
     app.models.trip_bill_mark
     app.services.automation_bias_marks
     app.repositories.automation_bias_marks

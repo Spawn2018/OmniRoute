@@ -1,18 +1,18 @@
 ﻿# Bieżący focus
 
-**Faza:** Oś pinu po **542.0**
+**Faza:** Oś pinu po **543.0**
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **542.0** N1 opcjonalny `stop_id` na przesyłce
+**Ostatni plaster:** **543.0** N11 HITL notatka S/B/A/R
 
-**Etap:** Plan — park AI3-payload / Plat-HD / G0-SH; komenda `/plan-modul`
+**Etap:** Plan — park AI3-payload / Plat-HD / G0-SH / leftover N6 S11; komenda `/plan-modul`
 
 **Noc:** `/noc 7` do **2026-09-17T07:00:00+02:00**
 
 **Miejsce pracy:** produkt = to repo + GitHub.
 
-**Następny:** park **AI3-payload** / **Plat-HD** / **G0-SH**. Nie SH-R16-13. Nie AI0.
+**Następny:** park **AI3-payload** / **Plat-HD** / **G0-SH** · leftover **N6 S11**. Nie SH-R16-13. Nie AI0.
 
 **Park / czeka w PLAN:** SH-R16-13 · G0-SH · AI3-payload · Plat-HD-flow · N6 S11 · …
 
@@ -24,6 +24,7 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
+**2026-09-17:** Plaster **543.0** N11 note. `/noc 7`.
 **2026-09-17:** Plaster **542.0** N1 stop. `/noc 7`.
 **2026-09-17:** Plaster **541.0** D2b. `/noc 7`.
 **2026-09-17:** Plaster **540.0** N1 FTL=1. `/noc 7`.

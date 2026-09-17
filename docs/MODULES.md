@@ -139,7 +139,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | W3 | Krawędź pamięci HITL | 201.0 `memory_edge` | **ukończony (HITL)** · rodzaj krawędzi; leftover graf / pgvector / RAG na stawkach |
 | W4 | Pytanie zarządu HITL | 202.0 `executive_mark` | **ukończony (HITL)** · rodzaj pytania; leftover suma LLM / zdania SQL |
 | W5 | Oś rankingu HITL | 203.0 `rank_mark` | **ukończony (HITL)** · oś zakupu; leftover ranking SQL / N szkiców / auto-award |
-| N11 | Przekazanie zmiany SBAR HITL | 529.0 `handover_sbar_mark` | **ukończony (HITL)** · S/B/A/R; leftover notatka · T6 bind |
+| N11 | Przekazanie zmiany SBAR HITL | 529.0 `handover_sbar_mark` · 543.0 `handover_note` | **ukończony (HITL)** · kind + notatka S/B/A/R; leftover T6 bind · N8 |
 | N2 | Gotowość przejazdu do FV HITL | 530.0 `trip_bill_mark` | **ukończony (HITL)** · ready/held/billed; leftover SQL trips_to_bill · F1 live |
 
 Nie dopisuj tu 70 pustych wierszy M-xx. Katalog + **kolejka Q1… / Q-E / Fala S** (co budować jedno po drugim, tryb Plan potem plaster): `docs/PLAN-REALIZACJA.md` § Kolejka. Archiwum Claude zostaje magazynem specyfikacji, nie SoT kolejności.

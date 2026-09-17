@@ -134,6 +134,8 @@ zostają w badaniach `04`).
 | 2026-09-17 | **541.0** D2b FK w kodzie (`CONFIRMED`, git po push). Leftover `stop` na consignment. Następny = leftover N1 `stop` albo park AI3-payload (`REQUIREMENT`). |
 | 2026-09-17 | Plan **542.0** N1 leftover: opcjonalny `stop_id` na `consignment` + złożone FK (`REQUIREMENT`). Required stop / mapa / WMS `REJECTED`. |
 | 2026-09-17 | **542.0** `stop_id` na consignment w kodzie (`CONFIRMED`, git po push). Leftover auto-link / mapa. Następny = park AI3-payload / Plat-HD / G0 (`REQUIREMENT`). |
+| 2026-09-17 | Plan **543.0** N11 leftover: HITL `handover_note` z polami S/B/A/R (`REQUIREMENT`). Auto T6 / LLM / FK mark `REJECTED`. |
+| 2026-09-17 | **543.0** `handover_note` w kodzie (`CONFIRMED`, git po push). Leftover T6 bind · N8. Następny = park AI3-payload / Plat-HD / G0 / N6 S11 (`REQUIREMENT`). |
 | 2026-09-13 | AI3.4 plan (**451.0**): parser `xlsx_sheet` stdlib. `openpyxl` `REJECTED`. `.xls` leftover. |
 | 2026-09-13 | **451.0** `xlsx_sheet` w kodzie (`CONFIRMED`, git). Następny = **AI4.0** FK `plan_snapshot` (`REQUIREMENT`). `.xls` leftover. |
 | 2026-09-13 | AI4.0 plan (**452.0**): FK złożone RESTRICT. CASCADE `REJECTED`. What-if `REJECTED` na tym wierszu. |

@@ -136,6 +136,7 @@ const NAV = [
   { to: "/margin-floors", label: "Podłoga marży" },
   { to: "/shipment-clone-marks", label: "Intencja klonu" },
   { to: "/handover-sbar-marks", label: "Przekazanie SBAR" },
+  { to: "/handover-notes", label: "Notatka SBAR" },
   { to: "/trip-bill-marks", label: "Gotowość do FV" },
   { to: "/automation-bias-marks", label: "Automation bias" },
   { to: "/l3-gate-marks", label: "Brama L3" },

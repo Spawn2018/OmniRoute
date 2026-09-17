@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** park **AI3-payload** / **Plat-HD** / **G0-SH**. Nie SH-R16-13. Nie AI0.
+**Następny:** park **AI3-payload** / **Plat-HD** / **G0-SH** · leftover **N6 S11**. Nie SH-R16-13. Nie AI0.
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -508,7 +508,7 @@ Przy `/plan-modul`: karta T + [EXP1](analysis/karty-pol-fala-exp.md) (stop/konte
 | T4 | `parent_shipment_id`; rentowność SQL na `charge` | zamknięty HITL ([210.0](deltas/archived/210.0-shipment-parent.md); leftover T4b SQL lista ([262.0](deltas/archived/262.0-charge-sql-margin.md)); leftover rollup drzewa) | po T1 | nie druga marża |
 | T5 | task engine (warunki = dane) | zamknięty HITL szablon ([263.0](deltas/archived/263.0-task-template.md); leftover outbox kind ([264.0](deltas/archived/264.0-outbox-task-template.md)); leftover instancja `task` / matching SQL / konsument) | po T2 | async po konsumencie outboxa (leftover M-02) |
 | T6 | planning board 4 widoki + mapa lazy + klawiatura N10 | zamknięty HITL mapa ([261.0](deltas/archived/261.0-planning-map.md); leftover 4 widoki / N10 / T6b–d / X8) | po T2 | mapa poza 250 kB |
-| **N11** | handover SBAR zmiany | zamknięty HITL ([529.0](deltas/archived/529.0-handover-sbar-mark.md); leftover notatka S/B/A/R · T6 bind) | po T6 | leftover notatka S/B/A/R · T6 bind |
+| **N11** | handover SBAR zmiany | zamknięty HITL ([529.0](deltas/archived/529.0-handover-sbar-mark.md); notatka S/B/A/R [543.0](deltas/archived/543.0-handover-note.md); leftover T6 bind · N8) | po T6 | leftover T6 bind · N8 |
 | T7 | `fx_rate_basis` SQL; kalendarz U4 | zamknięty HITL ([211.0](deltas/archived/211.0-fx-rate-basis.md); leftover T7b override/`charge`; leftover T7c U4 D-1) | po T1+U4 | LLM/JS nie liczą |
 | T8 | slot capability + godziny terminalu N4; **confirmed tylko z API** | zamknięty HITL ([269.0](deltas/archived/269.0-terminal-slot-connector.md); leftover live API / `terminal_appointment` / confirmed z adaptera) | po T3 | nie gwarancja prawna; nie Selenium |
 
