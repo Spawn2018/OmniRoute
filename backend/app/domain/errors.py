@@ -1133,6 +1133,9 @@ class InvalidInvoiceAllocMark(DomainError):
 class InvalidPostalDispatchMark(DomainError):
     """F11 leftover: HITL książka PP — nie live Poczta Polska."""
 
+class InvalidShipmentMonitoringFiling(DomainError):
+    """C1 leftover: HITL zgloszenie SENT/BDO — nie live PUESC."""
+
 
 class InvalidRegistryPollMark(DomainError):
     """EXP7.2: HITL poll rejestru — nie live scrape."""

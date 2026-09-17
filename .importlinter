@@ -187,6 +187,7 @@ modules =
     app.services.invoice_match_marks
     app.services.invoice_alloc_marks
     app.services.postal_dispatch_marks
+    app.services.shipment_monitoring_filings
     app.services.registry_poll_marks
     app.services.working_capital_marks
     app.services.make_or_buy_marks
@@ -873,11 +874,15 @@ forbidden_modules =
     app.models.invoice_match_mark
     app.services.invoice_alloc_marks
     app.services.postal_dispatch_marks
+    app.services.shipment_monitoring_filings
     app.repositories.invoice_alloc_marks
     app.models.invoice_alloc_mark
     app.services.postal_dispatch_marks
+    app.services.shipment_monitoring_filings
     app.repositories.postal_dispatch_marks
+    app.repositories.shipment_monitoring_filings
     app.models.postal_dispatch_mark
+    app.models.shipment_monitoring_filing
     app.services.registry_poll_marks
     app.repositories.registry_poll_marks
     app.models.registry_poll_mark

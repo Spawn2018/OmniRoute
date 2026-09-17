@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **553.0** C1 leftover HITL `shipment_monitoring_filing`. Nie AI3-payload. Nie G0-SH.
+**Następny:** **554.0** C8 leftover HITL `relation_document_requirement`. Nie AI3-payload. Nie G0-SH.
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -574,7 +574,7 @@ Karta: [karty-pol-g2-tender.md](analysis/karty-pol-g2-tender.md). P6 = oferty od
 
 | ID | Co | Status | Uwagi |
 |---|---|---|---|
-| C1 / C6–C8 | SENT, BDO, `monitoring_scheme`, `party_document` 409 + KREPTD C8 | zamknięty HITL C7 katalog ([187.0](deltas/archived/187.0-monitoring-scheme.md)); zamknięty HITL C8 katalog ([188.0](deltas/archived/188.0-party-document.md)); leftover C1 `shipment_monitoring_filing` / 409 / `relation_document_requirement` (kolejka **553.0** HITL) | karta [karty-pol-fala-c.md](analysis/karty-pol-fala-c.md); dump `04b`: SENT nie publiczne u TMS top-10 |
+| C1 / C6–C8 | SENT, BDO, `monitoring_scheme`, `party_document` 409 + KREPTD C8 | zamknięty HITL C7 katalog ([187.0](deltas/archived/187.0-monitoring-scheme.md)); zamknięty HITL C8 katalog ([188.0](deltas/archived/188.0-party-document.md)); zamknięty HITL C1 ([553.0](deltas/archived/553.0-shipment-monitoring-filing.md)); leftover bind shipment/scheme / PUESC; leftover C8 `relation_document_requirement` / 409 (kolejka **554.0** HITL) | karta [karty-pol-fala-c.md](analysis/karty-pol-fala-c.md); dump `04b`: SENT nie publiczne u TMS top-10 |
 | C2 | AIS/AES/Intrastat | TO_VERIFY PUESC | |
 | C3–C5 / C9 | lookup live, eCMR 2027 (EXP2.18), CO₂+metodyka, Trans.eu snapshot | zamknięty HITL C5 katalog ([190.0](deltas/archived/190.0-carbon-method.md)); leftover C3 live VIES/GUS / C4 eCMR / C9 Trans.eu | C9 bez scrapingu opinii |
 | **EXP0.8** | `cargo_claim` deadline CMR 7/21/365 + OS&D | zamknięty HITL OS&D + terminy ([191.0](deltas/archived/191.0-cargo-claim-cmr.md)); leftover Deadline Engine / evidence / S11 | nie kwota z LLM |

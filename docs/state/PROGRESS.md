@@ -965,3 +965,5 @@
 - 2026-09-13T23:05:00Z | 468.0 | lcl_console_mark | DONE | HITL catalog console_kind console/cfs/other; bez live CFS / CBM
 
 - 2026-09-17T20:30:00Z | 552.0 | postal_dispatch_mark | DONE | HITL catalog dispatch_kind en/uss/epo/other; bez live PP / e-Doreczenia
+
+- 2026-09-17T23:30:00Z | 553.0 | shipment_monitoring_filing | DONE | HITL catalog status_kind open/filed/closed/other; bez PUESC / XML / FK shipment

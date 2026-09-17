@@ -187,6 +187,7 @@ type organization
     define can_manage_e_doreczenia_marks: member
     define can_manage_peppol_marks: member
     define can_manage_postal_dispatch_marks: member
+    define can_manage_shipment_monitoring_filings: member
     define can_manage_sid_import_marks: member
     define can_manage_integration_hub_marks: member
     define can_manage_webhook_outbox_marks: member

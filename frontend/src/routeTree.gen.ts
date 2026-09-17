@@ -259,6 +259,7 @@ import { Route as SelfBillingMarksRouteImport } from './routes/self-billing-mark
 import { Route as SessionRouteImport } from './routes/session'
 import { Route as ShipmentCloneMarksRouteImport } from './routes/shipment-clone-marks'
 import { Route as ShipmentDocumentsRouteImport } from './routes/shipment-documents'
+import { Route as ShipmentMonitoringFilingsRouteImport } from './routes/shipment-monitoring-filings'
 import { Route as ShipmentPackagesRouteImport } from './routes/shipment-packages'
 import { Route as ShipmentsRouteImport } from './routes/shipments'
 import { Route as ShipperAwardMarksRouteImport } from './routes/shipper-award-marks'
@@ -1579,6 +1580,12 @@ const ShipmentDocumentsRoute = ShipmentDocumentsRouteImport.update({
   path: '/shipment-documents',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ShipmentMonitoringFilingsRoute =
+  ShipmentMonitoringFilingsRouteImport.update({
+    id: '/shipment-monitoring-filings',
+    path: '/shipment-monitoring-filings',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ShipmentPackagesRoute = ShipmentPackagesRouteImport.update({
   id: '/shipment-packages',
   path: '/shipment-packages',
@@ -2166,6 +2173,7 @@ export interface FileRoutesByFullPath {
   '/session': typeof SessionRoute
   '/shipment-clone-marks': typeof ShipmentCloneMarksRoute
   '/shipment-documents': typeof ShipmentDocumentsRoute
+  '/shipment-monitoring-filings': typeof ShipmentMonitoringFilingsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
   '/shipper-award-marks': typeof ShipperAwardMarksRoute
@@ -2485,6 +2493,7 @@ export interface FileRoutesByTo {
   '/session': typeof SessionRoute
   '/shipment-clone-marks': typeof ShipmentCloneMarksRoute
   '/shipment-documents': typeof ShipmentDocumentsRoute
+  '/shipment-monitoring-filings': typeof ShipmentMonitoringFilingsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
   '/shipper-award-marks': typeof ShipperAwardMarksRoute
@@ -2805,6 +2814,7 @@ export interface FileRoutesById {
   '/session': typeof SessionRoute
   '/shipment-clone-marks': typeof ShipmentCloneMarksRoute
   '/shipment-documents': typeof ShipmentDocumentsRoute
+  '/shipment-monitoring-filings': typeof ShipmentMonitoringFilingsRoute
   '/shipment-packages': typeof ShipmentPackagesRoute
   '/shipments': typeof ShipmentsRoute
   '/shipper-award-marks': typeof ShipperAwardMarksRoute
@@ -3126,6 +3136,7 @@ export interface FileRouteTypes {
     | '/session'
     | '/shipment-clone-marks'
     | '/shipment-documents'
+    | '/shipment-monitoring-filings'
     | '/shipment-packages'
     | '/shipments'
     | '/shipper-award-marks'
@@ -3445,6 +3456,7 @@ export interface FileRouteTypes {
     | '/session'
     | '/shipment-clone-marks'
     | '/shipment-documents'
+    | '/shipment-monitoring-filings'
     | '/shipment-packages'
     | '/shipments'
     | '/shipper-award-marks'
@@ -3764,6 +3776,7 @@ export interface FileRouteTypes {
     | '/session'
     | '/shipment-clone-marks'
     | '/shipment-documents'
+    | '/shipment-monitoring-filings'
     | '/shipment-packages'
     | '/shipments'
     | '/shipper-award-marks'
@@ -4084,6 +4097,7 @@ export interface RootRouteChildren {
   SessionRoute: typeof SessionRoute
   ShipmentCloneMarksRoute: typeof ShipmentCloneMarksRoute
   ShipmentDocumentsRoute: typeof ShipmentDocumentsRoute
+  ShipmentMonitoringFilingsRoute: typeof ShipmentMonitoringFilingsRoute
   ShipmentPackagesRoute: typeof ShipmentPackagesRoute
   ShipmentsRoute: typeof ShipmentsRoute
   ShipperAwardMarksRoute: typeof ShipperAwardMarksRoute
@@ -5905,6 +5919,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShipmentDocumentsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/shipment-monitoring-filings': {
+      id: '/shipment-monitoring-filings'
+      path: '/shipment-monitoring-filings'
+      fullPath: '/shipment-monitoring-filings'
+      preLoaderRoute: typeof ShipmentMonitoringFilingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/shipment-packages': {
       id: '/shipment-packages'
       path: '/shipment-packages'
@@ -6628,6 +6649,7 @@ const rootRouteChildren: RootRouteChildren = {
   SessionRoute: SessionRoute,
   ShipmentCloneMarksRoute: ShipmentCloneMarksRoute,
   ShipmentDocumentsRoute: ShipmentDocumentsRoute,
+  ShipmentMonitoringFilingsRoute: ShipmentMonitoringFilingsRoute,
   ShipmentPackagesRoute: ShipmentPackagesRoute,
   ShipmentsRoute: ShipmentsRoute,
   ShipperAwardMarksRoute: ShipperAwardMarksRoute,

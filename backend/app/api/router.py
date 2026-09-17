@@ -251,6 +251,7 @@ from app.api import (
     shipment_clone_marks,
     shipment_documents,
     shipment_legs,
+    shipment_monitoring_filings,
     shipment_packages,
     shipment_stakeholders,
     shipments,
@@ -590,6 +591,7 @@ api_router.include_router(groupage_dispatcher_marks.router)
 api_router.include_router(groupage_lines.router)
 api_router.include_router(groupage_tariffs.router)
 api_router.include_router(shipment_legs.router)
+api_router.include_router(shipment_monitoring_filings.router)
 api_router.include_router(organization_calendars.router)
 api_router.include_router(organization_settings.router)
 api_router.include_router(parties.router)
