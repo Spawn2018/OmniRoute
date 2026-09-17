@@ -88,9 +88,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **545.0** Plat-HD-flow HITL `product_ticket`
-- **Etap:** Plan — park AI3-payload / G0-SH; komenda `/plan-modul`
-- **Następny:** park **AI3-payload** / **G0-SH**. Nie SH-R16-13. Nie AI0.
-- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Etap:** Plaster — delta `docs/deltas/open/546.0-product-ticket-owner-s11.md` zaakceptowana `/noc`; wolno `/plaster`
+- **Następny:** **546.0** Plat-HD leftover S11 owner na `product_ticket`. Nie AI3-payload. Nie G0-SH. Nie SH-R16-13.
+- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 
