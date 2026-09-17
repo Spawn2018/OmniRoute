@@ -223,6 +223,7 @@ def _organization_f_invoice_relations() -> dict[str, Userset]:
         "can_manage_self_billing_marks": _member(),
         "can_manage_purchase_invoices": _member(),
         "can_manage_invoice_match_marks": _member(),
+        "can_manage_invoice_match_candidates": _member(),
         "can_manage_invoice_alloc_marks": _member(),
     }
 

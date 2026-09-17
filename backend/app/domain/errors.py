@@ -1139,6 +1139,9 @@ class InvalidShipmentMonitoringFiling(DomainError):
 class InvalidRelationDocumentRequirement(DomainError):
     """C8 leftover: HITL wymog dokumentow relacji — nie 409."""
 
+class InvalidInvoiceMatchCandidate(DomainError):
+    """F10 leftover: HITL kandydat dopasowania FV — nie ranking SQL."""
+
 
 class InvalidRegistryPollMark(DomainError):
     """EXP7.2: HITL poll rejestru — nie live scrape."""

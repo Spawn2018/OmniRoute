@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **554.0** C8 `relation_document_requirement`
+- **Ostatni plaster:** **555.0** F10 `invoice_match_candidate`
 - **Etap:** Plan — wydmuszka leftover; `/plan-modul` → delta → plaster
-- **Następny:** **555.0** F10 leftover HITL `invoice_match_candidate`. Nie AI3-payload. Nie G0-SH.
+- **Następny:** **556.0** C8 leftover HITL `create_block_mark`. Nie AI3-payload. Nie G0-SH. Nie live 409.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
