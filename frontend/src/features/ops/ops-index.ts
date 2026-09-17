@@ -839,6 +839,11 @@ export const OPS_JOBS = [
     job: "katalog shipment_monitoring_filing HITL",
   },
   {
+    route: BUSINESS_LISTS.relationDocumentRequirement.route,
+    label: "Wymog dokumentow relacji",
+    job: "katalog relation_document_requirement HITL",
+  },
+  {
     route: BUSINESS_LISTS.registryPollMark.route,
     label: "Poll rejestrów",
     job: "katalog registry_poll_mark HITL",
@@ -1744,6 +1749,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "551.0": "/invoice-alloc-marks",
   "552.0": "/postal-dispatch-marks",
   "553.0": "/shipment-monitoring-filings",
+  "554.0": "/relation-document-requirements",
   "142.0": "/mail",
   "143.0": "/networks",
   "144.0": "/quotations",

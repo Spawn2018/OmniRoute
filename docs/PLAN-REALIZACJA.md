@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **554.0** C8 leftover HITL `relation_document_requirement`. Nie AI3-payload. Nie G0-SH.
+**Następny:** **555.0** F10 leftover HITL `invoice_match_candidate`. Nie AI3-payload. Nie G0-SH.
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -566,7 +566,7 @@ Karta: [karty-pol-g2-tender.md](analysis/karty-pol-g2-tender.md). P6 = oferty od
 | F8 | Peppol + MPP/split (EXP2.20) | kalendarz UE | nie zastępuje KSeF |
 | F9 | `purchase_invoice` + ERP FS+FZ | zamknięty HITL catalog Optima fixture ([268.0](deltas/archived/268.0-erp-connector.md)); leftover XL / live SOAP / FS+FZ / `erp_series_map` / `erp_export` / `purchase_invoice` | zakaz SQL `sa` |
 | **N14** | self-billing podwykonawcy | zamknięty HITL ([548.0](deltas/archived/548.0-self-billing-mark.md)); leftover live · FK party · JPK | po F9+D |
-| F10 | ingest FV HITL + ranking SQL | zamknięty HITL ([549.0](deltas/archived/549.0-purchase-invoice.md)); [550.0](deltas/archived/550.0-invoice-match-mark.md); [551.0](deltas/archived/551.0-invoice-alloc-mark.md); leftover candidate / ranking SQL / allocation z kwotą | po F9 + X9 |
+| F10 | ingest FV HITL + ranking SQL | zamknięty HITL ([549.0](deltas/archived/549.0-purchase-invoice.md)); [550.0](deltas/archived/550.0-invoice-match-mark.md); [551.0](deltas/archived/551.0-invoice-alloc-mark.md); leftover candidate (kolejka **555.0** HITL) / ranking SQL / allocation z kwotą | po F9 + X9 |
 | F11 | książka PP EN+USS+EPO | zamknięty HITL ([552.0](deltas/archived/552.0-postal-dispatch-mark.md)); leftover live PP / `postal_epo` | **≠ e-Doręczenia** (EXP2.19) |
 | **EXP2.1** | working capital: DSO, cash-at-risk, aging | 338.0 HITL katalog `working_capital_mark` (capital_kind); leftover DSO SQL / druga marża | nie druga marża |
 
@@ -574,7 +574,7 @@ Karta: [karty-pol-g2-tender.md](analysis/karty-pol-g2-tender.md). P6 = oferty od
 
 | ID | Co | Status | Uwagi |
 |---|---|---|---|
-| C1 / C6–C8 | SENT, BDO, `monitoring_scheme`, `party_document` 409 + KREPTD C8 | zamknięty HITL C7 katalog ([187.0](deltas/archived/187.0-monitoring-scheme.md)); zamknięty HITL C8 katalog ([188.0](deltas/archived/188.0-party-document.md)); zamknięty HITL C1 ([553.0](deltas/archived/553.0-shipment-monitoring-filing.md)); leftover bind shipment/scheme / PUESC; leftover C8 `relation_document_requirement` / 409 (kolejka **554.0** HITL) | karta [karty-pol-fala-c.md](analysis/karty-pol-fala-c.md); dump `04b`: SENT nie publiczne u TMS top-10 |
+| C1 / C6–C8 | SENT, BDO, `monitoring_scheme`, `party_document` 409 + KREPTD C8 | zamknięty HITL C7 katalog ([187.0](deltas/archived/187.0-monitoring-scheme.md)); zamknięty HITL C8 katalog ([188.0](deltas/archived/188.0-party-document.md)); zamknięty HITL C1 ([553.0](deltas/archived/553.0-shipment-monitoring-filing.md)); leftover bind shipment/scheme / PUESC; zamknięty HITL C8 leftover ([554.0](deltas/archived/554.0-relation-document-requirement.md)); leftover blocks_create / 409 / document_kind matching | karta [karty-pol-fala-c.md](analysis/karty-pol-fala-c.md); dump `04b`: SENT nie publiczne u TMS top-10 |
 | C2 | AIS/AES/Intrastat | TO_VERIFY PUESC | |
 | C3–C5 / C9 | lookup live, eCMR 2027 (EXP2.18), CO₂+metodyka, Trans.eu snapshot | zamknięty HITL C5 katalog ([190.0](deltas/archived/190.0-carbon-method.md)); leftover C3 live VIES/GUS / C4 eCMR / C9 Trans.eu | C9 bez scrapingu opinii |
 | **EXP0.8** | `cargo_claim` deadline CMR 7/21/365 + OS&D | zamknięty HITL OS&D + terminy ([191.0](deltas/archived/191.0-cargo-claim-cmr.md)); leftover Deadline Engine / evidence / S11 | nie kwota z LLM |

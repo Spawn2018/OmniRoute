@@ -230,6 +230,7 @@ from app.api import (
     reefer_marks,
     registry_poll_marks,
     regulatory_radar_marks,
+    relation_document_requirements,
     remediation_options,
     repair_playbooks,
     resources,
@@ -515,6 +516,7 @@ api_router.include_router(self_billing_marks.router)
 api_router.include_router(purchase_invoices.router)
 api_router.include_router(reefer_marks.router)
 api_router.include_router(registry_poll_marks.router)
+api_router.include_router(relation_document_requirements.router)
 api_router.include_router(working_capital_marks.router)
 api_router.include_router(make_or_buy_marks.router)
 api_router.include_router(cost_allocation_marks.router)

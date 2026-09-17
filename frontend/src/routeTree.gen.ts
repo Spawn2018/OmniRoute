@@ -238,6 +238,7 @@ import { Route as RateLinesRouteImport } from './routes/rate-lines'
 import { Route as ReeferMarksRouteImport } from './routes/reefer-marks'
 import { Route as RegistryPollMarksRouteImport } from './routes/registry-poll-marks'
 import { Route as RegulatoryRadarMarksRouteImport } from './routes/regulatory-radar-marks'
+import { Route as RelationDocumentRequirementsRouteImport } from './routes/relation-document-requirements'
 import { Route as RemediationOptionsRouteImport } from './routes/remediation-options'
 import { Route as RepairPlaybooksRouteImport } from './routes/repair-playbooks'
 import { Route as RfidMarksRouteImport } from './routes/rfid-marks'
@@ -1474,6 +1475,12 @@ const RegulatoryRadarMarksRoute = RegulatoryRadarMarksRouteImport.update({
   path: '/regulatory-radar-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RelationDocumentRequirementsRoute =
+  RelationDocumentRequirementsRouteImport.update({
+    id: '/relation-document-requirements',
+    path: '/relation-document-requirements',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const RemediationOptionsRoute = RemediationOptionsRouteImport.update({
   id: '/remediation-options',
   path: '/remediation-options',
@@ -2152,6 +2159,7 @@ export interface FileRoutesByFullPath {
   '/reefer-marks': typeof ReeferMarksRoute
   '/registry-poll-marks': typeof RegistryPollMarksRoute
   '/regulatory-radar-marks': typeof RegulatoryRadarMarksRoute
+  '/relation-document-requirements': typeof RelationDocumentRequirementsRoute
   '/remediation-options': typeof RemediationOptionsRoute
   '/repair-playbooks': typeof RepairPlaybooksRoute
   '/rfid-marks': typeof RfidMarksRoute
@@ -2472,6 +2480,7 @@ export interface FileRoutesByTo {
   '/reefer-marks': typeof ReeferMarksRoute
   '/registry-poll-marks': typeof RegistryPollMarksRoute
   '/regulatory-radar-marks': typeof RegulatoryRadarMarksRoute
+  '/relation-document-requirements': typeof RelationDocumentRequirementsRoute
   '/remediation-options': typeof RemediationOptionsRoute
   '/repair-playbooks': typeof RepairPlaybooksRoute
   '/rfid-marks': typeof RfidMarksRoute
@@ -2793,6 +2802,7 @@ export interface FileRoutesById {
   '/reefer-marks': typeof ReeferMarksRoute
   '/registry-poll-marks': typeof RegistryPollMarksRoute
   '/regulatory-radar-marks': typeof RegulatoryRadarMarksRoute
+  '/relation-document-requirements': typeof RelationDocumentRequirementsRoute
   '/remediation-options': typeof RemediationOptionsRoute
   '/repair-playbooks': typeof RepairPlaybooksRoute
   '/rfid-marks': typeof RfidMarksRoute
@@ -3115,6 +3125,7 @@ export interface FileRouteTypes {
     | '/reefer-marks'
     | '/registry-poll-marks'
     | '/regulatory-radar-marks'
+    | '/relation-document-requirements'
     | '/remediation-options'
     | '/repair-playbooks'
     | '/rfid-marks'
@@ -3435,6 +3446,7 @@ export interface FileRouteTypes {
     | '/reefer-marks'
     | '/registry-poll-marks'
     | '/regulatory-radar-marks'
+    | '/relation-document-requirements'
     | '/remediation-options'
     | '/repair-playbooks'
     | '/rfid-marks'
@@ -3755,6 +3767,7 @@ export interface FileRouteTypes {
     | '/reefer-marks'
     | '/registry-poll-marks'
     | '/regulatory-radar-marks'
+    | '/relation-document-requirements'
     | '/remediation-options'
     | '/repair-playbooks'
     | '/rfid-marks'
@@ -4076,6 +4089,7 @@ export interface RootRouteChildren {
   ReeferMarksRoute: typeof ReeferMarksRoute
   RegistryPollMarksRoute: typeof RegistryPollMarksRoute
   RegulatoryRadarMarksRoute: typeof RegulatoryRadarMarksRoute
+  RelationDocumentRequirementsRoute: typeof RelationDocumentRequirementsRoute
   RemediationOptionsRoute: typeof RemediationOptionsRoute
   RepairPlaybooksRoute: typeof RepairPlaybooksRoute
   RfidMarksRoute: typeof RfidMarksRoute
@@ -5772,6 +5786,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RegulatoryRadarMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/relation-document-requirements': {
+      id: '/relation-document-requirements'
+      path: '/relation-document-requirements'
+      fullPath: '/relation-document-requirements'
+      preLoaderRoute: typeof RelationDocumentRequirementsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/remediation-options': {
       id: '/remediation-options'
       path: '/remediation-options'
@@ -6628,6 +6649,7 @@ const rootRouteChildren: RootRouteChildren = {
   ReeferMarksRoute: ReeferMarksRoute,
   RegistryPollMarksRoute: RegistryPollMarksRoute,
   RegulatoryRadarMarksRoute: RegulatoryRadarMarksRoute,
+  RelationDocumentRequirementsRoute: RelationDocumentRequirementsRoute,
   RemediationOptionsRoute: RemediationOptionsRoute,
   RepairPlaybooksRoute: RepairPlaybooksRoute,
   RfidMarksRoute: RfidMarksRoute,

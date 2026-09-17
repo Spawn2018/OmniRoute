@@ -1136,6 +1136,9 @@ class InvalidPostalDispatchMark(DomainError):
 class InvalidShipmentMonitoringFiling(DomainError):
     """C1 leftover: HITL zgloszenie SENT/BDO — nie live PUESC."""
 
+class InvalidRelationDocumentRequirement(DomainError):
+    """C8 leftover: HITL wymog dokumentow relacji — nie 409."""
+
 
 class InvalidRegistryPollMark(DomainError):
     """EXP7.2: HITL poll rejestru — nie live scrape."""
