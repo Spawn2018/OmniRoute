@@ -10,6 +10,7 @@ from app.domain.consignment import (
     require_consignment_shipment_id,
     require_consignment_source_ref,
     require_ftl_room,
+    require_stop_on_consignment_shipment,
 )
 from app.domain.errors import ConsignmentFtlLimit, InvalidConsignment
 
@@ -68,3 +69,10 @@ def test_require_ftl_room_raises() -> None:
 
 def test_require_ftl_room_allows_empty() -> None:
     require_ftl_room(0)
+
+
+def test_require_stop_on_consignment_shipment() -> None:
+    same = uuid4()
+    require_stop_on_consignment_shipment(same, same)
+    with pytest.raises(InvalidConsignment, match="trasy"):
+        require_stop_on_consignment_shipment(uuid4(), uuid4())

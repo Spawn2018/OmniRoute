@@ -27,6 +27,20 @@ def require_consignment_shipment_id(raw: object) -> UUID:
     return raw
 
 
+def require_consignment_stop_id(raw: object) -> UUID:
+    if type(raw) is not UUID:
+        raise InvalidConsignment("punkt musi być UUID")
+    return raw
+
+
+def require_stop_on_consignment_shipment(
+    shipment_id: UUID,
+    stop_shipment_id: UUID,
+) -> None:
+    if shipment_id != stop_shipment_id:
+        raise InvalidConsignment("punkt spoza trasy zlecenia")
+
+
 def require_consignment_source_ref(raw: object) -> str:
     if type(raw) is not str:
         raise InvalidConsignment("source_ref musi być tekstem")

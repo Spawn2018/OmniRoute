@@ -37,5 +37,6 @@ describe("consignment surface for 260.0", () => {
     expect(/parseFloat|leaflet|CatalogCreateForm|buy_amount/.test(panel)).toBe(false)
     expect(ops).toMatch(/"260\.0": "\/consignments"/)
     expect(ops).toMatch(/"540\.0": "\/consignments"/)
+    expect(ops).toMatch(/"542\.0": "\/consignments"/)
   })
 })

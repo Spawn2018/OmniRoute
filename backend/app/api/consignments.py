@@ -11,11 +11,13 @@ from app.domain.consignment import (
     parse_optional_load_kind,
     require_consignment_shipment_id,
     require_ftl_room,
+    require_stop_on_consignment_shipment,
 )
 from app.models.consignment import Consignment
 from app.repositories.consignments.consignment_repository import ConsignmentRepository
 from app.services.consignments.consignment_service import ConsignmentService
 from app.services.shipments.shipment_service import ShipmentService
+from app.services.stops.stop_service import StopService
 
 router = APIRouter(prefix="/consignments", tags=["consignments"])
 
@@ -28,8 +30,8 @@ class ConsignmentCreate(BaseModel):
     shipment_id: UUID | bool | None = None
     consignment_ref: str
     source_ref: str
-    # 540.0: tylko egzekucja FTL=1 — nie kolumna na shipment
     load_kind: Literal["ftl", "ltl"] | None = None
+    stop_id: UUID | None = None
 
 
 class ConsignmentResponse(BaseModel):
@@ -38,6 +40,7 @@ class ConsignmentResponse(BaseModel):
     id: UUID
     organization_id: UUID
     shipment_id: UUID
+    stop_id: UUID | None
     consignment_ref: str
     source_ref: str
 
@@ -68,12 +71,18 @@ async def create_consignment(
     if kind == "ftl":
         existing = await ConsignmentRepository(session).count_for_shipment(order.id)
         require_ftl_room(existing)
+    halt_id: UUID | None = None
+    if body.stop_id is not None:
+        halt = await StopService(session).get_stop(body.stop_id)
+        require_stop_on_consignment_shipment(order.id, halt.shipment_id)
+        halt_id = halt.id
     row = await ConsignmentService(session).record_parcel(
         organization_id=identity.organization_id,
         user_id=identity.user_id,
         shipment_id=order.id,
         consignment_ref=body.consignment_ref,
         source_ref=body.source_ref,
+        stop_id=halt_id,
     )
     await session.commit()
     return _as_row(row)

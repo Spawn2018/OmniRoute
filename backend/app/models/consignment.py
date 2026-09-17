@@ -16,6 +16,12 @@ class Consignment(Base, TimestampMixin):
             name="fk_consignment_shipment",
             ondelete="RESTRICT",
         ),
+        ForeignKeyConstraint(
+            ["organization_id", "shipment_id", "stop_id"],
+            ["stop.organization_id", "stop.shipment_id", "stop.id"],
+            name="fk_consignment_stop",
+            ondelete="RESTRICT",
+        ),
         UniqueConstraint("organization_id", "id", name="uq_consignment_org_id"),
         UniqueConstraint(
             "organization_id",
@@ -39,5 +45,6 @@ class Consignment(Base, TimestampMixin):
         index=True,
     )
     shipment_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), nullable=False)
+    stop_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)
     consignment_ref: Mapped[str] = mapped_column(String(64), nullable=False)
     source_ref: Mapped[str] = mapped_column(String(256), nullable=False)
