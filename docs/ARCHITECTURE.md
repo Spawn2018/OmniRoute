@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **548.0** N14 `self_billing_mark`. **Etap:** Plan — brak delty; `/plan-modul` przed kodem. **Następny:** **549.0** F10 HITL ingest FV / ranking SQL. Nie AI3-payload. Nie G0-SH. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **548.0** N14 `self_billing_mark`. **Etap:** Plaster — delta `docs/deltas/open/549.0-purchase-invoice.md` zaakceptowana `/noc`; wolno `/plaster`. **Następny:** **549.0** F10 HITL `purchase_invoice`. Nie AI3-payload. Nie G0-SH. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
