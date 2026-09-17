@@ -145,6 +145,7 @@ zostają w badaniach `04`).
 | 2026-09-17 | Plan **547.0** N6 UI UN na `/charges` (`REQUIREMENT`). Matching / auto charge `REJECTED`. |
 | 2026-09-17 | **547.0** pola UN + `floor_decision_id` na UI `/charges` (`CONFIRMED`, git po push). Leftover matching / auto charge. Następny = park AI3-payload / G0 (`REQUIREMENT`). |
 | 2026-09-17 | Plan **548.0** N14 HITL `self_billing_mark` (`REQUIREMENT`). Live self-billing / JPK / FK party `REJECTED`. |
+| 2026-09-17 | Plan **550.0** F10 leftover HITL `invoice_match_mark` (`REQUIREMENT`). `invoice_match_candidate` / ranking SQL / allocation `REJECTED` → leftover. |
 | 2026-09-13 | AI3.4 plan (**451.0**): parser `xlsx_sheet` stdlib. `openpyxl` `REJECTED`. `.xls` leftover. |
 | 2026-09-13 | **451.0** `xlsx_sheet` w kodzie (`CONFIRMED`, git). Następny = **AI4.0** FK `plan_snapshot` (`REQUIREMENT`). `.xls` leftover. |
 | 2026-09-13 | AI4.0 plan (**452.0**): FK złożone RESTRICT. CASCADE `REJECTED`. What-if `REJECTED` na tym wierszu. |
@@ -1267,7 +1268,8 @@ Lista dosłowna z rozmowy „blueprinting" (`CONFIRMED`, dokument `01` §14.1):
 | `map_basemap` · `user_map_prefs` · `tenant_map_provider` | leftover **X8** |
 | `erp_series_map` · `erp_export` | leftover **F9** |
 | `scan_enhance_run` | leftover **X9** |
-| `invoice_match_candidate` | leftover **F10** |
+| `invoice_match_candidate` | leftover **F10** po 550.0 |
+| `invoice_match_mark` | **550.0** HITL katalog stancji (`REQUIREMENT`) |
 | `network_print_requirement` | leftover **D9** |
 | `postal_dispatch` · `postal_tracking_event` · `postal_epo` | leftover **F11** |
 | `purchase_invoice` · `purchase_invoice_allocation` | leftover **F9** / **F10** |

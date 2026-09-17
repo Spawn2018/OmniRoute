@@ -110,7 +110,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | G2.21 | Km ładowny HITL | 267.0 `lane_km` | **ukończony (HITL)** · ładowny/pusty/dolot Decimal; leftover P / silnik 500k |
 | F9 | Konektor Optima HITL | 268.0 `erp_connector` | **ukończony (HITL)** · kod + kind `optima`; leftover XL / live SOAP / FS+FZ |
 | N14 | Self-billing podwykonawcy HITL | **548.0** `self_billing_mark` | **ukończony (HITL)** · self/subcontractor/other; leftover live · FK party · JPK |
-| F10 | Faktura zakupu HITL | **549.0** `purchase_invoice` | **ukończony (HITL)** · noted/other; leftover match/ranking/allocation |
+| F10 | Faktura zakupu HITL | **549.0** `purchase_invoice` · **550.0** `invoice_match_mark` (delta) | **549.0 ukończony** · **550.0 w toku** · leftover candidate/ranking/allocation |
 | T8 | Konektor slotu HITL | 269.0 `terminal_slot_connector` | **ukończony (HITL)** · mode + godziny N4; leftover live API / `terminal_appointment` / confirmed |
 | S53 | Konektor IdP HITL | 270.0 `idp_connector` | **ukończony (HITL)** · kod + provider `auth0`; leftover I1/I2 live / portale |
 | S55 | Konektor giełdy HITL | 271.0 `exchange_connector` | **ukończony (HITL)** · kod + kind `trans_eu`; leftover live giełda / X1–X5 SPA |

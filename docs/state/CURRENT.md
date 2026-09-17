@@ -6,9 +6,9 @@
 
 **Ostatni plaster:** **549.0** F10 `purchase_invoice`
 
-**Etap:** Plan — brak delty; `/plan-modul` przed kodem
+**Etap:** Plaster — delta zaakceptowana `/noc`; wolno `/plaster`
 
-**Noc:** `/noc 17` do **2026-09-17T17:00:00+02:00**
+**Noc:** `/noc 7` do **2026-09-18T07:00:00+02:00**
 
 **Miejsce pracy:** produkt = to repo + GitHub.
 
@@ -16,7 +16,7 @@
 
 **Park / czeka w PLAN:** AI3-payload · G0-SH · SH-R16-13 · …
 
-**Spec (jedyna na sesję produktu):** (brak — najpierw delta 550)
+**Spec (jedyna na sesję produktu):** [deltas/open/550.0-invoice-match-mark.md](../deltas/open/550.0-invoice-match-mark.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 
@@ -24,5 +24,6 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
+**2026-09-17:** Delta **550.0** zaakceptowana `/noc 7`. Wolno plaster.
 **2026-09-17:** Plaster **549.0** F10 purchase_invoice zamknięty. `/noc 17`.
 **2026-09-17:** Plaster **548.0** N14 self_billing_mark zamknięty. `/noc 17`.
