@@ -209,6 +209,7 @@ from app.api import (
     posting_marks,
     prediction_ledgers,
     product_ticket_marks,
+    product_tickets,
     profit_center_marks,
     purchase_orders,
     quality_descent_marks,
@@ -520,6 +521,7 @@ api_router.include_router(margin_floors.router)
 api_router.include_router(shipment_clone_marks.router)
 api_router.include_router(handover_sbar_marks.router)
 api_router.include_router(handover_notes.router)
+api_router.include_router(product_tickets.router)
 api_router.include_router(trip_bill_marks.router)
 api_router.include_router(asns.router)
 api_router.include_router(otif_marks.router)

@@ -1,6 +1,7 @@
 ﻿# Historia plastrów
 
 | Data | Plaster | Moduł | Opis |
+| 2026-09-17 | 545.0 | Plat-HD-flow product_ticket HITL | 2026-09-17 | PRZESZLO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-17 | 544.0 | N6 leftover S11 margin_floor | 2026-09-17 | PRZESZLO (gate success) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-17 | 543.0 | N11 leftover handover_note S/B/A/R | 2026-09-17 | PRZESZLO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-17 | 542.0 | N1 leftover stop_id consignment | 2026-09-17 | PRZESZLO (gate success) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |

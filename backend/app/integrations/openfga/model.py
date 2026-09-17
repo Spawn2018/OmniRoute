@@ -177,6 +177,7 @@ def _organization_br_catalog_relations() -> dict[str, Userset]:
         "can_manage_ops_room_marks": _member(),
         "can_manage_line_impact_layer_marks": _member(),
         "can_manage_product_ticket_marks": _member(),
+        "can_manage_product_tickets": _member(),
         "can_manage_risk_register_marks": _member(),
         "can_manage_article50_marks": _member(),
         "can_manage_data_sources": _member(),

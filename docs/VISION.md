@@ -138,6 +138,8 @@ zostają w badaniach `04`).
 | 2026-09-17 | **543.0** `handover_note` w kodzie (`CONFIRMED`, git po push). Leftover T6 bind · N8. Następny = park AI3-payload / Plat-HD / G0 / N6 S11 (`REQUIREMENT`). |
 | 2026-09-17 | Plan **544.0** N6 S11: pending `operator_decision` (`margin_floor`) przy breach + 409 z `decision_id`; override przez accepted `floor_decision_id` (`REQUIREMENT`). Auto charge na accept / usunięcie 409 `REJECTED`. |
 | 2026-09-17 | **544.0** N6 S11 w kodzie (`CONFIRMED`, git po push). Leftover UI UN / matching / auto charge. Następny = park AI3-payload / Plat-HD / G0 (`REQUIREMENT`). |
+| 2026-09-17 | Plan **545.0** Plat-HD-flow: HITL `product_ticket` title+body+kind (`REQUIREMENT`). Auto-fix / FK mark / Mob `REJECTED`. |
+| 2026-09-17 | **545.0** `product_ticket` w kodzie (`CONFIRMED`, git po push). Leftover S11 owner · FK mark · Mob. Następny = park AI3-payload / G0 (`REQUIREMENT`). |
 | 2026-09-13 | AI3.4 plan (**451.0**): parser `xlsx_sheet` stdlib. `openpyxl` `REJECTED`. `.xls` leftover. |
 | 2026-09-13 | **451.0** `xlsx_sheet` w kodzie (`CONFIRMED`, git). Następny = **AI4.0** FK `plan_snapshot` (`REQUIREMENT`). `.xls` leftover. |
 | 2026-09-13 | AI4.0 plan (**452.0**): FK złożone RESTRICT. CASCADE `REJECTED`. What-if `REJECTED` na tym wierszu. |

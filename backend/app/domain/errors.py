@@ -974,6 +974,10 @@ class InvalidProductTicketMark(DomainError):
     """Plat-HD: HITL ticket produktu — nie CAPA / nie auto-naprawa / nie operator_notice."""
 
 
+class InvalidProductTicket(DomainError):
+    """Plat-HD-flow: HITL wpis ticketu — nie auto-fix / nie CAPA."""
+
+
 class InvalidRiskRegisterMark(DomainError):
     """AI9.2: HITL rejestr ryzyka — nie scoring osoby / nie L3 silnik."""
 

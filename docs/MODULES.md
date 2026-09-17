@@ -94,7 +94,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | BR1.3 | Zabezpieczenie na towarze HITL | 477.0 `inventory_collateral_mark` | **ukończony (HITL)** · kind pledge/lien/hold/other; leftover FK position · live zastaw |
 | BR7.0 | Sala operacyjna — warstwa HITL | 478.0 `ops_room_mark` | **ukończony (HITL)** · layer shift/board/escalation/other; leftover N8 · widok sklejony · T8 live |
 | BR7.1 | Wpływ na linię — warstwa liczona HITL | 479.0 `line_impact_layer_mark` | **ukończony (HITL)** · scored/forecast/actual/other; leftover SQL · EBITDA · plant feed |
-| Plat-HD | Ticket produktu HITL | 480.0 `product_ticket_mark` | **ukończony (HITL)** · report/triage/owner_ok/other; leftover workflow naprawy · Mob; nie CAPA |
+| Plat-HD | Ticket produktu HITL | 480.0 `product_ticket_mark` · **545.0** `product_ticket` | **ukończony (HITL)** · report/triage/owner_ok/other + wpis title/body; leftover S11 owner · Mob · auto-fix; nie CAPA |
 | AI9.2 | Rejestr ryzyka HITL | 481.0 `risk_register_mark` · **488.0** `compliance_program_mark` | **ukończony (HITL)** · rejestr + program zgodności; U-art50 zostaje |
 | AI9.1 | Automation bias HITL | 482.0 `automation_bias_mark` · **487.0** `field_confidence_mark` | **ukończony (HITL)** · bias + pasma ui-04; U-art50 zostaje |
 | AI8.2 | Brama L3 HITL | 483.0 `l3_gate_mark` · 486.0 `quality_descent_mark` | **ukończony (HITL)** · gate + powód zejścia mae/crps/brier/manual/other; leftover silnik auto-zejścia · L3 write park |

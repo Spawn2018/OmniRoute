@@ -699,6 +699,11 @@ export const OPS_JOBS = [
     job: "katalog handover_note HITL",
   },
   {
+    route: BUSINESS_LISTS.productTicket.route,
+    label: "Ticket produktu",
+    job: "katalog product_ticket HITL",
+  },
+  {
     route: BUSINESS_LISTS.tripBillMark.route,
     label: "Gotowość do FV",
     job: "katalog trip_bill_mark HITL",
@@ -1700,6 +1705,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "542.0": "/consignments",
   "543.0": "/handover-notes",
   "544.0": "/charges",
+  "545.0": "/product-tickets",
   "142.0": "/mail",
   "143.0": "/networks",
   "144.0": "/quotations",

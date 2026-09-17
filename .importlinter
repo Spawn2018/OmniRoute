@@ -151,6 +151,7 @@ modules =
     app.services.ops_room_marks
     app.services.line_impact_layer_marks
     app.services.product_ticket_marks
+    app.services.product_tickets
     app.services.risk_register_marks
     app.services.article50_marks
     app.services.data_sources
@@ -760,6 +761,9 @@ forbidden_modules =
     app.services.product_ticket_marks
     app.repositories.product_ticket_marks
     app.models.product_ticket_mark
+    app.services.product_tickets
+    app.repositories.product_tickets
+    app.models.product_ticket
     app.services.risk_register_marks
     app.repositories.risk_register_marks
     app.models.risk_register_mark

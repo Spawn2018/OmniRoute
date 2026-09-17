@@ -125,6 +125,7 @@ type organization
     define can_manage_ops_room_marks: member
     define can_manage_line_impact_layer_marks: member
     define can_manage_product_ticket_marks: member
+    define can_manage_product_tickets: member
     define can_manage_risk_register_marks: member
     define can_manage_article50_marks: member
     define can_manage_data_sources: member

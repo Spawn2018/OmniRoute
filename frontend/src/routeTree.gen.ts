@@ -122,8 +122,8 @@ import { Route as GeneralAverageMarksRouteImport } from './routes/general-averag
 import { Route as GroupageRouteImport } from './routes/groupage'
 import { Route as GroupageDispatcherMarksRouteImport } from './routes/groupage-dispatcher-marks'
 import { Route as GroupageTariffsRouteImport } from './routes/groupage-tariffs'
-import { Route as HandoverSbarMarksRouteImport } from './routes/handover-sbar-marks'
 import { Route as HandoverNotesRouteImport } from './routes/handover-notes'
+import { Route as HandoverSbarMarksRouteImport } from './routes/handover-sbar-marks'
 import { Route as HaulierRoleMarksRouteImport } from './routes/haulier-role-marks'
 import { Route as HealthRouteImport } from './routes/health'
 import { Route as HighValueMarksRouteImport } from './routes/high-value-marks'
@@ -215,6 +215,7 @@ import { Route as PositionEventsRouteImport } from './routes/position-events'
 import { Route as PostingMarksRouteImport } from './routes/posting-marks'
 import { Route as PredictionLedgersRouteImport } from './routes/prediction-ledgers'
 import { Route as ProductTicketMarksRouteImport } from './routes/product-ticket-marks'
+import { Route as ProductTicketsRouteImport } from './routes/product-tickets'
 import { Route as ProfitCenterMarksRouteImport } from './routes/profit-center-marks'
 import { Route as PurchaseOrdersRouteImport } from './routes/purchase-orders'
 import { Route as QualityRouteImport } from './routes/quality'
@@ -886,14 +887,14 @@ const GroupageTariffsRoute = GroupageTariffsRouteImport.update({
   path: '/groupage-tariffs',
   getParentRoute: () => rootRouteImport,
 } as any)
-const HandoverSbarMarksRoute = HandoverSbarMarksRouteImport.update({
-  id: '/handover-sbar-marks',
-  path: '/handover-sbar-marks',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const HandoverNotesRoute = HandoverNotesRouteImport.update({
   id: '/handover-notes',
   path: '/handover-notes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HandoverSbarMarksRoute = HandoverSbarMarksRouteImport.update({
+  id: '/handover-sbar-marks',
+  path: '/handover-sbar-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HaulierRoleMarksRoute = HaulierRoleMarksRouteImport.update({
@@ -1350,6 +1351,11 @@ const PredictionLedgersRoute = PredictionLedgersRouteImport.update({
 const ProductTicketMarksRoute = ProductTicketMarksRouteImport.update({
   id: '/product-ticket-marks',
   path: '/product-ticket-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductTicketsRoute = ProductTicketsRouteImport.update({
+  id: '/product-tickets',
+  path: '/product-tickets',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProfitCenterMarksRoute = ProfitCenterMarksRouteImport.update({
@@ -1993,8 +1999,8 @@ export interface FileRoutesByFullPath {
   '/groupage': typeof GroupageRoute
   '/groupage-dispatcher-marks': typeof GroupageDispatcherMarksRoute
   '/groupage-tariffs': typeof GroupageTariffsRoute
-  '/handover-sbar-marks': typeof HandoverSbarMarksRoute
   '/handover-notes': typeof HandoverNotesRoute
+  '/handover-sbar-marks': typeof HandoverSbarMarksRoute
   '/haulier-role-marks': typeof HaulierRoleMarksRoute
   '/health': typeof HealthRoute
   '/high-value-marks': typeof HighValueMarksRoute
@@ -2086,6 +2092,7 @@ export interface FileRoutesByFullPath {
   '/posting-marks': typeof PostingMarksRoute
   '/prediction-ledgers': typeof PredictionLedgersRoute
   '/product-ticket-marks': typeof ProductTicketMarksRoute
+  '/product-tickets': typeof ProductTicketsRoute
   '/profit-center-marks': typeof ProfitCenterMarksRoute
   '/purchase-orders': typeof PurchaseOrdersRoute
   '/quality': typeof QualityRoute
@@ -2306,8 +2313,8 @@ export interface FileRoutesByTo {
   '/groupage': typeof GroupageRoute
   '/groupage-dispatcher-marks': typeof GroupageDispatcherMarksRoute
   '/groupage-tariffs': typeof GroupageTariffsRoute
-  '/handover-sbar-marks': typeof HandoverSbarMarksRoute
   '/handover-notes': typeof HandoverNotesRoute
+  '/handover-sbar-marks': typeof HandoverSbarMarksRoute
   '/haulier-role-marks': typeof HaulierRoleMarksRoute
   '/health': typeof HealthRoute
   '/high-value-marks': typeof HighValueMarksRoute
@@ -2399,6 +2406,7 @@ export interface FileRoutesByTo {
   '/posting-marks': typeof PostingMarksRoute
   '/prediction-ledgers': typeof PredictionLedgersRoute
   '/product-ticket-marks': typeof ProductTicketMarksRoute
+  '/product-tickets': typeof ProductTicketsRoute
   '/profit-center-marks': typeof ProfitCenterMarksRoute
   '/purchase-orders': typeof PurchaseOrdersRoute
   '/quality': typeof QualityRoute
@@ -2620,8 +2628,8 @@ export interface FileRoutesById {
   '/groupage': typeof GroupageRoute
   '/groupage-dispatcher-marks': typeof GroupageDispatcherMarksRoute
   '/groupage-tariffs': typeof GroupageTariffsRoute
-  '/handover-sbar-marks': typeof HandoverSbarMarksRoute
   '/handover-notes': typeof HandoverNotesRoute
+  '/handover-sbar-marks': typeof HandoverSbarMarksRoute
   '/haulier-role-marks': typeof HaulierRoleMarksRoute
   '/health': typeof HealthRoute
   '/high-value-marks': typeof HighValueMarksRoute
@@ -2713,6 +2721,7 @@ export interface FileRoutesById {
   '/posting-marks': typeof PostingMarksRoute
   '/prediction-ledgers': typeof PredictionLedgersRoute
   '/product-ticket-marks': typeof ProductTicketMarksRoute
+  '/product-tickets': typeof ProductTicketsRoute
   '/profit-center-marks': typeof ProfitCenterMarksRoute
   '/purchase-orders': typeof PurchaseOrdersRoute
   '/quality': typeof QualityRoute
@@ -2935,8 +2944,8 @@ export interface FileRouteTypes {
     | '/groupage'
     | '/groupage-dispatcher-marks'
     | '/groupage-tariffs'
-    | '/handover-sbar-marks'
     | '/handover-notes'
+    | '/handover-sbar-marks'
     | '/haulier-role-marks'
     | '/health'
     | '/high-value-marks'
@@ -3028,6 +3037,7 @@ export interface FileRouteTypes {
     | '/posting-marks'
     | '/prediction-ledgers'
     | '/product-ticket-marks'
+    | '/product-tickets'
     | '/profit-center-marks'
     | '/purchase-orders'
     | '/quality'
@@ -3248,8 +3258,8 @@ export interface FileRouteTypes {
     | '/groupage'
     | '/groupage-dispatcher-marks'
     | '/groupage-tariffs'
-    | '/handover-sbar-marks'
     | '/handover-notes'
+    | '/handover-sbar-marks'
     | '/haulier-role-marks'
     | '/health'
     | '/high-value-marks'
@@ -3341,6 +3351,7 @@ export interface FileRouteTypes {
     | '/posting-marks'
     | '/prediction-ledgers'
     | '/product-ticket-marks'
+    | '/product-tickets'
     | '/profit-center-marks'
     | '/purchase-orders'
     | '/quality'
@@ -3561,8 +3572,8 @@ export interface FileRouteTypes {
     | '/groupage'
     | '/groupage-dispatcher-marks'
     | '/groupage-tariffs'
-    | '/handover-sbar-marks'
     | '/handover-notes'
+    | '/handover-sbar-marks'
     | '/haulier-role-marks'
     | '/health'
     | '/high-value-marks'
@@ -3654,6 +3665,7 @@ export interface FileRouteTypes {
     | '/posting-marks'
     | '/prediction-ledgers'
     | '/product-ticket-marks'
+    | '/product-tickets'
     | '/profit-center-marks'
     | '/purchase-orders'
     | '/quality'
@@ -3875,8 +3887,8 @@ export interface RootRouteChildren {
   GroupageRoute: typeof GroupageRoute
   GroupageDispatcherMarksRoute: typeof GroupageDispatcherMarksRoute
   GroupageTariffsRoute: typeof GroupageTariffsRoute
-  HandoverSbarMarksRoute: typeof HandoverSbarMarksRoute
   HandoverNotesRoute: typeof HandoverNotesRoute
+  HandoverSbarMarksRoute: typeof HandoverSbarMarksRoute
   HaulierRoleMarksRoute: typeof HaulierRoleMarksRoute
   HealthRoute: typeof HealthRoute
   HighValueMarksRoute: typeof HighValueMarksRoute
@@ -3968,6 +3980,7 @@ export interface RootRouteChildren {
   PostingMarksRoute: typeof PostingMarksRoute
   PredictionLedgersRoute: typeof PredictionLedgersRoute
   ProductTicketMarksRoute: typeof ProductTicketMarksRoute
+  ProductTicketsRoute: typeof ProductTicketsRoute
   ProfitCenterMarksRoute: typeof ProfitCenterMarksRoute
   PurchaseOrdersRoute: typeof PurchaseOrdersRoute
   QualityRoute: typeof QualityRoute
@@ -4868,18 +4881,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GroupageTariffsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/handover-sbar-marks': {
-      id: '/handover-sbar-marks'
-      path: '/handover-sbar-marks'
-      fullPath: '/handover-sbar-marks'
-      preLoaderRoute: typeof HandoverSbarMarksRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/handover-notes': {
       id: '/handover-notes'
       path: '/handover-notes'
       fullPath: '/handover-notes'
       preLoaderRoute: typeof HandoverNotesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/handover-sbar-marks': {
+      id: '/handover-sbar-marks'
+      path: '/handover-sbar-marks'
+      fullPath: '/handover-sbar-marks'
+      preLoaderRoute: typeof HandoverSbarMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/haulier-role-marks': {
@@ -5517,6 +5530,13 @@ declare module '@tanstack/react-router' {
       path: '/product-ticket-marks'
       fullPath: '/product-ticket-marks'
       preLoaderRoute: typeof ProductTicketMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/product-tickets': {
+      id: '/product-tickets'
+      path: '/product-tickets'
+      fullPath: '/product-tickets'
+      preLoaderRoute: typeof ProductTicketsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/profit-center-marks': {
@@ -6371,8 +6391,8 @@ const rootRouteChildren: RootRouteChildren = {
   GroupageRoute: GroupageRoute,
   GroupageDispatcherMarksRoute: GroupageDispatcherMarksRoute,
   GroupageTariffsRoute: GroupageTariffsRoute,
-  HandoverSbarMarksRoute: HandoverSbarMarksRoute,
   HandoverNotesRoute: HandoverNotesRoute,
+  HandoverSbarMarksRoute: HandoverSbarMarksRoute,
   HaulierRoleMarksRoute: HaulierRoleMarksRoute,
   HealthRoute: HealthRoute,
   HighValueMarksRoute: HighValueMarksRoute,
@@ -6464,6 +6484,7 @@ const rootRouteChildren: RootRouteChildren = {
   PostingMarksRoute: PostingMarksRoute,
   PredictionLedgersRoute: PredictionLedgersRoute,
   ProductTicketMarksRoute: ProductTicketMarksRoute,
+  ProductTicketsRoute: ProductTicketsRoute,
   ProfitCenterMarksRoute: ProfitCenterMarksRoute,
   PurchaseOrdersRoute: PurchaseOrdersRoute,
   QualityRoute: QualityRoute,
