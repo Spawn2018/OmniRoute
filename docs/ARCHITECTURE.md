@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **543.0** N11 HITL notatka S/B/A/R. **Etap:** Plaster — delta **544.0** zaakceptowana `/noc`; wolno `/plaster`. **Następny:** **544.0** N6 leftover S11 przy breach `margin_floor`. Park: AI3-payload · Plat-HD · G0-SH. Nie SH-R16-13. Nie AI0. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **544.0** N6 leftover S11 przy breach `margin_floor`. **Etap:** Plan — park AI3-payload / Plat-HD / G0-SH; komenda `/plan-modul`. **Następny:** park **AI3-payload** / **Plat-HD** / **G0-SH**. Nie SH-R16-13. Nie AI0. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

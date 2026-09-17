@@ -85,7 +85,10 @@ async def margin_floor_breach_handler(
     _request: Request,
     exc: MarginFloorBreach,
 ) -> JSONResponse:
-    return JSONResponse(status_code=409, content={"detail": str(exc)})
+    body: dict[str, object] = {"detail": str(exc)}
+    if exc.decision_id is not None:
+        body["decision_id"] = str(exc.decision_id)
+    return JSONResponse(status_code=409, content=body)
 
 
 @app.exception_handler(ConsignmentFtlLimit)

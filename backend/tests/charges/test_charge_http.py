@@ -1,4 +1,5 @@
 from decimal import Decimal
+from types import SimpleNamespace
 from unittest.mock import AsyncMock
 from uuid import UUID, uuid4
 
@@ -95,16 +96,71 @@ class StubMarginFloorRepository:
         return self.floor
 
 
+class StubOperatorDecisionService:
+    def __init__(self, session: object) -> None:
+        self._session = session
+        self.pending_by_floor: dict[UUID, object] = {}
+        self.decisions: dict[UUID, object] = {}
+        self.create_calls = 0
+
+    async def create_decision(
+        self,
+        *,
+        organization_id: UUID,
+        user_id: UUID,
+        subject_kind: str,
+        subject_id: UUID,
+        source_ref: str,
+    ) -> object:
+        self.create_calls += 1
+        from app.domain.errors import OperatorDecisionConflict
+
+        if subject_id in self.pending_by_floor:
+            raise OperatorDecisionConflict("pending na ten subject już istnieje")
+        row = SimpleNamespace(
+            id=uuid4(),
+            subject_kind=subject_kind,
+            subject_id=subject_id,
+            status="pending",
+            source_ref=source_ref,
+            organization_id=organization_id,
+            created_by=user_id,
+        )
+        self.pending_by_floor[subject_id] = row
+        self.decisions[row.id] = row
+        return row
+
+    async def get_pending(self, subject_kind: str, subject_id: UUID) -> object | None:
+        row = self.pending_by_floor.get(subject_id)
+        if row is None:
+            return None
+        if row.subject_kind != subject_kind or row.status != "pending":
+            return None
+        return row
+
+    async def get_decision(self, decision_id: UUID) -> object:
+        from app.domain.errors import ResourceNotFound
+
+        found = self.decisions.get(decision_id)
+        if found is None:
+            raise ResourceNotFound(f"nieznana decyzja operatora: {decision_id}")
+        return found
+
+
 @pytest.fixture
 def charges_client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
     stub = StubChargeService(object())
     floor_stub = StubMarginFloorRepository(object())
+    decision_stub = StubOperatorDecisionService(object())
 
     def _factory(session: object) -> StubChargeService:
         return stub
 
     def _floor_factory(session: object) -> StubMarginFloorRepository:
         return floor_stub
+
+    def _decision_factory(session: object) -> StubOperatorDecisionService:
+        return decision_stub
 
     async def _fake_tenant_session() -> object:
         session = AsyncMock()
@@ -113,11 +169,15 @@ def charges_client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
 
     monkeypatch.setattr("app.api.charges.ChargeService", _factory)
     monkeypatch.setattr("app.api.charges.MarginFloorRepository", _floor_factory)
+    monkeypatch.setattr("app.api.charges.OperatorDecisionService", _decision_factory)
     set_authz_checker(AllowAllAuthz())
     app.dependency_overrides[require_tenant_session] = _fake_tenant_session
     client = TestClient(app)
     client.floor_stub = floor_stub  # type: ignore[attr-defined]
+    client.decision_stub = decision_stub  # type: ignore[attr-defined]
     yield client
+    app.dependency_overrides.clear()
+    set_authz_checker(None)
     app.dependency_overrides.clear()
     set_authz_checker(None)
 
@@ -226,10 +286,11 @@ def test_http_rejects_blank_source_ref(charges_client: TestClient) -> None:
 
 
 def test_http_rejects_margin_below_floor(charges_client: TestClient) -> None:
-    from types import SimpleNamespace
-
+    floor_id = uuid4()
     floor_stub: StubMarginFloorRepository = charges_client.floor_stub  # type: ignore[attr-defined]
+    decision_stub: StubOperatorDecisionService = charges_client.decision_stub  # type: ignore[attr-defined]
     floor_stub.floor = SimpleNamespace(
+        id=floor_id,
         floor_amount=Decimal("10.0000"),
         floor_currency="EUR",
     )
@@ -248,7 +309,10 @@ def test_http_rejects_margin_below_floor(charges_client: TestClient) -> None:
         },
     )
     assert response.status_code == 409
-    assert "podłogi" in response.json()["detail"]
+    body = response.json()
+    assert "podłogi" in body["detail"]
+    assert body["decision_id"] == str(decision_stub.pending_by_floor[floor_id].id)
+    assert decision_stub.create_calls == 1
     assert floor_stub.calls == [
         {
             "origin_unlocode": "PLGDN",
@@ -258,11 +322,120 @@ def test_http_rejects_margin_below_floor(charges_client: TestClient) -> None:
     ]
 
 
-def test_http_accepts_margin_at_or_above_floor(charges_client: TestClient) -> None:
-    from types import SimpleNamespace
+def test_http_reuses_pending_floor_decision(charges_client: TestClient) -> None:
+    floor_id = uuid4()
+    floor_stub: StubMarginFloorRepository = charges_client.floor_stub  # type: ignore[attr-defined]
+    decision_stub: StubOperatorDecisionService = charges_client.decision_stub  # type: ignore[attr-defined]
+    floor_stub.floor = SimpleNamespace(
+        id=floor_id,
+        floor_amount=Decimal("10.0000"),
+        floor_currency="EUR",
+    )
+    payload = {
+        "charge_code": "THC",
+        "buy_amount": "10",
+        "buy_currency": "EUR",
+        "sell_amount": "14",
+        "sell_currency": "EUR",
+        "source_ref": "tenant:manual",
+        "origin_unlocode": "PLGDN",
+        "destination_unlocode": "DEHAM",
+    }
+    first = charges_client.post(
+        "/api/v1/charges",
+        headers=bearer_auth_headers(),
+        json=payload,
+    )
+    second = charges_client.post(
+        "/api/v1/charges",
+        headers=bearer_auth_headers(),
+        json=payload,
+    )
+    assert first.status_code == 409
+    assert second.status_code == 409
+    assert first.json()["decision_id"] == second.json()["decision_id"]
+    assert decision_stub.create_calls == 2
 
+
+def test_http_accepts_below_floor_with_accepted_decision(
+    charges_client: TestClient,
+) -> None:
+    floor_id = uuid4()
+    decision_id = uuid4()
+    floor_stub: StubMarginFloorRepository = charges_client.floor_stub  # type: ignore[attr-defined]
+    decision_stub: StubOperatorDecisionService = charges_client.decision_stub  # type: ignore[attr-defined]
+    floor_stub.floor = SimpleNamespace(
+        id=floor_id,
+        floor_amount=Decimal("10.0000"),
+        floor_currency="EUR",
+    )
+    decision_stub.decisions[decision_id] = SimpleNamespace(
+        id=decision_id,
+        subject_kind="margin_floor",
+        subject_id=floor_id,
+        status="accepted",
+    )
+    response = charges_client.post(
+        "/api/v1/charges",
+        headers=bearer_auth_headers(),
+        json={
+            "charge_code": "THC",
+            "buy_amount": "10",
+            "buy_currency": "EUR",
+            "sell_amount": "14",
+            "sell_currency": "EUR",
+            "source_ref": "tenant:manual",
+            "origin_unlocode": "PLGDN",
+            "destination_unlocode": "DEHAM",
+            "floor_decision_id": str(decision_id),
+        },
+    )
+    assert response.status_code == 201
+    assert response.json()["margin_amount"] == "4.0000"
+    assert decision_stub.create_calls == 0
+
+
+def test_http_rejects_pending_floor_decision_override(
+    charges_client: TestClient,
+) -> None:
+    floor_id = uuid4()
+    decision_id = uuid4()
+    floor_stub: StubMarginFloorRepository = charges_client.floor_stub  # type: ignore[attr-defined]
+    decision_stub: StubOperatorDecisionService = charges_client.decision_stub  # type: ignore[attr-defined]
+    floor_stub.floor = SimpleNamespace(
+        id=floor_id,
+        floor_amount=Decimal("10.0000"),
+        floor_currency="EUR",
+    )
+    decision_stub.decisions[decision_id] = SimpleNamespace(
+        id=decision_id,
+        subject_kind="margin_floor",
+        subject_id=floor_id,
+        status="pending",
+    )
+    response = charges_client.post(
+        "/api/v1/charges",
+        headers=bearer_auth_headers(),
+        json={
+            "charge_code": "THC",
+            "buy_amount": "10",
+            "buy_currency": "EUR",
+            "sell_amount": "14",
+            "sell_currency": "EUR",
+            "source_ref": "tenant:manual",
+            "origin_unlocode": "PLGDN",
+            "destination_unlocode": "DEHAM",
+            "floor_decision_id": str(decision_id),
+        },
+    )
+    assert response.status_code == 400
+    assert "accepted" in response.json()["detail"]
+
+
+def test_http_accepts_margin_at_or_above_floor(charges_client: TestClient) -> None:
     floor_stub: StubMarginFloorRepository = charges_client.floor_stub  # type: ignore[attr-defined]
     floor_stub.floor = SimpleNamespace(
+        id=uuid4(),
         floor_amount=Decimal("3.5000"),
         floor_currency="EUR",
     )

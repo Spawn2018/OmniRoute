@@ -31,8 +31,12 @@ def test_require_subject_kind_accepts_quotation() -> None:
     assert require_subject_kind("quotation") == "quotation"
 
 
+def test_require_subject_kind_accepts_margin_floor() -> None:
+    assert require_subject_kind("margin_floor") == "margin_floor"
+
+
 def test_require_subject_kind_rejects_other() -> None:
-    with pytest.raises(InvalidOperatorDecision, match="quotation"):
+    with pytest.raises(InvalidOperatorDecision, match="margin_floor"):
         require_subject_kind("extraction_draft")
 
 

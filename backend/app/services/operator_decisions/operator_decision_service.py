@@ -36,6 +36,16 @@ class OperatorDecisionService:
         found = await self._rows.get_accepted(subject_kind, subject_id)
         return found is not None
 
+    async def get_pending(
+        self,
+        subject_kind: str,
+        subject_id: UUID,
+    ) -> OperatorDecision | None:
+        return await self._rows.get_pending(
+            require_subject_kind(subject_kind),
+            require_subject_id(subject_id),
+        )
+
     async def create_decision(
         self,
         *,

@@ -67,7 +67,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-68 | Obserwowalność | 48.0 `observability` · 119.0 park | **ukończony (fundament)** · tablica `fetchHealth`; S59 named park; nie OTel; nie k6 |
 | M-69 | Jakość | 49.0 `extraction_quality` | **ukończony (fundament)** · tablica `unparsed_regions`; nie scoring; nie tabela QA |
 | M-70 | Wdrożenie | 50.0 `tenant_rollout` | **ukończony (fundament)** · tablica `default_currency`; nie tabela rollout; nie upsert |
-| M-71 | Szyna decyzji operatora | 74.0 `operator_decision` · 77.0 lock · 121.0 `changed` | **ukończony (leftover S11b)** · pending → accept/changed/reject + `lock_version`; nie extract 1.3; nie send |
+| M-71 | Szyna decyzji operatora | 74.0 `operator_decision` · 77.0 lock · 121.0 `changed` · **544.0** `margin_floor` | **ukończony (leftover S11b)** · pending → accept/changed/reject + `lock_version`; nie extract 1.3; nie send |
 | B0b | Ledger predykcji | 193.0 `prediction_ledger` · 265.0 `plan_snapshot` · 446.0 · 452.0 | **ukończony (HITL)** · przedział; nowy INSERT bez CRPS/MAE; leftover Brier / champion; FK snapshot RESTRICT |
 | AI1.0 | Ledger podpowiedzi | 432.0 `suggestion_ledger` | **ukończony (HITL)** · przedział + reaction + changed_to; leftover outcome_ledger / CRPS liczone |
 | AI1.1 | Ledger wyniku | 433.0 `outcome_ledger` | **ukończony (HITL)** · actual_value Decimal; leftover CRPS liczone / złączenie |

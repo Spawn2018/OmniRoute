@@ -8,13 +8,25 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.api.deps import get_current_identity, require_permission, require_tenant_session
 from app.core.session_token import SessionIdentity
 from app.domain.charge import margin
+from app.domain.errors import (
+    InvalidOperatorDecision,
+    MarginFloorBreach,
+    OperatorDecisionConflict,
+)
 from app.domain.margin_floor import parse_optional_floor_lane, require_margin_above_floor
 from app.domain.money import Money
 from app.models.charge import Charge
+from app.models.margin_floor import MarginFloor
+from app.models.operator_decision import OperatorDecision
 from app.repositories.margin_floors.margin_floor_repository import MarginFloorRepository
 from app.services.charges.charge_service import ChargeService
+from app.services.operator_decisions.operator_decision_service import (
+    OperatorDecisionService,
+)
 
 router = APIRouter(prefix="/charges", tags=["charges"])
+
+_FLOOR_KIND = "margin_floor"
 
 
 class ChargeCreate(BaseModel):
@@ -28,6 +40,8 @@ class ChargeCreate(BaseModel):
     # 539.0: tylko lookup margin_floor — nie kolumny na charge
     origin_unlocode: str | None = Field(default=None, max_length=5)
     destination_unlocode: str | None = Field(default=None, max_length=5)
+    # 544.0: accepted operator_decision (margin_floor) — override podłogi
+    floor_decision_id: UUID | None = None
 
 
 class ChargeResponse(BaseModel):
@@ -81,6 +95,79 @@ class ChargeResponse(BaseModel):
         )
 
 
+async def _accepted_floor_override(
+    decisions: OperatorDecisionService,
+    *,
+    decision_id: UUID,
+    floor_id: UUID,
+) -> None:
+    row = await decisions.get_decision(decision_id)
+    if (
+        row.subject_kind != _FLOOR_KIND
+        or row.subject_id != floor_id
+        or row.status != "accepted"
+    ):
+        raise InvalidOperatorDecision(
+            "floor_decision_id musi być accepted dla tej podłogi marży",
+        )
+
+
+async def _pending_for_floor_breach(
+    decisions: OperatorDecisionService,
+    *,
+    organization_id: UUID,
+    user_id: UUID,
+    floor_id: UUID,
+    source_ref: str,
+) -> OperatorDecision:
+    try:
+        return await decisions.create_decision(
+            organization_id=organization_id,
+            user_id=user_id,
+            subject_kind=_FLOOR_KIND,
+            subject_id=floor_id,
+            source_ref=source_ref,
+        )
+    except OperatorDecisionConflict:
+        existing = await decisions.get_pending(_FLOOR_KIND, floor_id)
+        if existing is None:
+            raise
+        return existing
+
+
+async def _enforce_margin_floor(
+    session: AsyncSession,
+    identity: SessionIdentity,
+    body: ChargeCreate,
+    floor: MarginFloor,
+    gap: Money,
+) -> None:
+    try:
+        require_margin_above_floor(
+            margin_amount=gap.amount,
+            margin_currency=gap.currency.code,
+            floor_amount=floor.floor_amount,
+            floor_currency=floor.floor_currency,
+        )
+    except MarginFloorBreach as breach:
+        decisions = OperatorDecisionService(session)
+        if body.floor_decision_id is not None:
+            await _accepted_floor_override(
+                decisions,
+                decision_id=body.floor_decision_id,
+                floor_id=floor.id,
+            )
+            return
+        pending = await _pending_for_floor_breach(
+            decisions,
+            organization_id=identity.organization_id,
+            user_id=identity.user_id,
+            floor_id=floor.id,
+            source_ref=body.source_ref,
+        )
+        raise MarginFloorBreach(str(breach), decision_id=pending.id) from breach
+
+
 @router.get("", response_model=list[ChargeResponse])
 async def list_charges(
     _authz: None = Depends(require_permission("can_manage_charges", "organization")),
@@ -109,12 +196,7 @@ async def create_charge(
             floor_currency=gap.currency.code,
         )
         if floor is not None:
-            require_margin_above_floor(
-                margin_amount=gap.amount,
-                margin_currency=gap.currency.code,
-                floor_amount=floor.floor_amount,
-                floor_currency=floor.floor_currency,
-            )
+            await _enforce_margin_floor(session, identity, body, floor, gap)
     service = ChargeService(session)
     row = await service.create_charge(
         organization_id=identity.organization_id,

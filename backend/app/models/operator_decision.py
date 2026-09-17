@@ -20,7 +20,8 @@ class OperatorDecision(Base, TimestampMixin):
     __tablename__ = "operator_decision"
     __table_args__ = (
         CheckConstraint(
-            "subject_kind IN ('inbound_message', 'mail_draft', 'quotation')",
+            "subject_kind IN ("
+            "'inbound_message', 'mail_draft', 'quotation', 'margin_floor')",
             name="ck_operator_decision_subject_kind",
         ),
         CheckConstraint(

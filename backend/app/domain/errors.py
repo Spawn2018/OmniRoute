@@ -1013,6 +1013,10 @@ class InvalidMarginFloor(DomainError):
 class MarginFloorBreach(DomainError):
     """N6 leftover: marża sell−buy poniżej margin_floor — HTTP 409 w API."""
 
+    def __init__(self, message: str, *, decision_id: object | None = None) -> None:
+        super().__init__(message)
+        self.decision_id = decision_id
+
 
 class InvalidShipmentCloneMark(DomainError):
     """N9: HITL intencja klonu zlecenia — nie drugi SoR / nie auto-copy."""
