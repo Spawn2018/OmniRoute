@@ -251,6 +251,7 @@ import { Route as SanctionsRouteImport } from './routes/sanctions'
 import { Route as SanctionsMarksRouteImport } from './routes/sanctions-marks'
 import { Route as SapConnectorsRouteImport } from './routes/sap-connectors'
 import { Route as ScheduleExceptionMarksRouteImport } from './routes/schedule-exception-marks'
+import { Route as SelfBillingMarksRouteImport } from './routes/self-billing-marks'
 import { Route as SessionRouteImport } from './routes/session'
 import { Route as ShipmentCloneMarksRouteImport } from './routes/shipment-clone-marks'
 import { Route as ShipmentDocumentsRouteImport } from './routes/shipment-documents'
@@ -1534,6 +1535,11 @@ const ScheduleExceptionMarksRoute = ScheduleExceptionMarksRouteImport.update({
   path: '/schedule-exception-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SelfBillingMarksRoute = SelfBillingMarksRouteImport.update({
+  id: '/self-billing-marks',
+  path: '/self-billing-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SessionRoute = SessionRouteImport.update({
   id: '/session',
   path: '/session',
@@ -2128,6 +2134,7 @@ export interface FileRoutesByFullPath {
   '/sanctions-marks': typeof SanctionsMarksRoute
   '/sap-connectors': typeof SapConnectorsRoute
   '/schedule-exception-marks': typeof ScheduleExceptionMarksRoute
+  '/self-billing-marks': typeof SelfBillingMarksRoute
   '/session': typeof SessionRoute
   '/shipment-clone-marks': typeof ShipmentCloneMarksRoute
   '/shipment-documents': typeof ShipmentDocumentsRoute
@@ -2442,6 +2449,7 @@ export interface FileRoutesByTo {
   '/sanctions-marks': typeof SanctionsMarksRoute
   '/sap-connectors': typeof SapConnectorsRoute
   '/schedule-exception-marks': typeof ScheduleExceptionMarksRoute
+  '/self-billing-marks': typeof SelfBillingMarksRoute
   '/session': typeof SessionRoute
   '/shipment-clone-marks': typeof ShipmentCloneMarksRoute
   '/shipment-documents': typeof ShipmentDocumentsRoute
@@ -2757,6 +2765,7 @@ export interface FileRoutesById {
   '/sanctions-marks': typeof SanctionsMarksRoute
   '/sap-connectors': typeof SapConnectorsRoute
   '/schedule-exception-marks': typeof ScheduleExceptionMarksRoute
+  '/self-billing-marks': typeof SelfBillingMarksRoute
   '/session': typeof SessionRoute
   '/shipment-clone-marks': typeof ShipmentCloneMarksRoute
   '/shipment-documents': typeof ShipmentDocumentsRoute
@@ -3073,6 +3082,7 @@ export interface FileRouteTypes {
     | '/sanctions-marks'
     | '/sap-connectors'
     | '/schedule-exception-marks'
+    | '/self-billing-marks'
     | '/session'
     | '/shipment-clone-marks'
     | '/shipment-documents'
@@ -3387,6 +3397,7 @@ export interface FileRouteTypes {
     | '/sanctions-marks'
     | '/sap-connectors'
     | '/schedule-exception-marks'
+    | '/self-billing-marks'
     | '/session'
     | '/shipment-clone-marks'
     | '/shipment-documents'
@@ -3701,6 +3712,7 @@ export interface FileRouteTypes {
     | '/sanctions-marks'
     | '/sap-connectors'
     | '/schedule-exception-marks'
+    | '/self-billing-marks'
     | '/session'
     | '/shipment-clone-marks'
     | '/shipment-documents'
@@ -4016,6 +4028,7 @@ export interface RootRouteChildren {
   SanctionsMarksRoute: typeof SanctionsMarksRoute
   SapConnectorsRoute: typeof SapConnectorsRoute
   ScheduleExceptionMarksRoute: typeof ScheduleExceptionMarksRoute
+  SelfBillingMarksRoute: typeof SelfBillingMarksRoute
   SessionRoute: typeof SessionRoute
   ShipmentCloneMarksRoute: typeof ShipmentCloneMarksRoute
   ShipmentDocumentsRoute: typeof ShipmentDocumentsRoute
@@ -5784,6 +5797,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ScheduleExceptionMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/self-billing-marks': {
+      id: '/self-billing-marks'
+      path: '/self-billing-marks'
+      fullPath: '/self-billing-marks'
+      preLoaderRoute: typeof SelfBillingMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/session': {
       id: '/session'
       path: '/session'
@@ -6520,6 +6540,7 @@ const rootRouteChildren: RootRouteChildren = {
   SanctionsMarksRoute: SanctionsMarksRoute,
   SapConnectorsRoute: SapConnectorsRoute,
   ScheduleExceptionMarksRoute: ScheduleExceptionMarksRoute,
+  SelfBillingMarksRoute: SelfBillingMarksRoute,
   SessionRoute: SessionRoute,
   ShipmentCloneMarksRoute: ShipmentCloneMarksRoute,
   ShipmentDocumentsRoute: ShipmentDocumentsRoute,

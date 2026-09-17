@@ -1410,6 +1410,14 @@ export type CarrierInquiryResponse = {
      * No Reply After
      */
     no_reply_after: string | null;
+    /**
+     * Party Id
+     */
+    party_id?: string | null;
+    /**
+     * Country Code
+     */
+    country_code?: string | null;
 };
 
 /**
@@ -1806,6 +1814,18 @@ export type ChargeCreate = {
      * Source Ref
      */
     source_ref: string;
+    /**
+     * Origin Unlocode
+     */
+    origin_unlocode?: string | null;
+    /**
+     * Destination Unlocode
+     */
+    destination_unlocode?: string | null;
+    /**
+     * Floor Decision Id
+     */
+    floor_decision_id?: string | null;
 };
 
 /**
@@ -2540,6 +2560,14 @@ export type ConsignmentCreate = {
      * Source Ref
      */
     source_ref: string;
+    /**
+     * Load Kind
+     */
+    load_kind?: 'ftl' | 'ltl' | null;
+    /**
+     * Stop Id
+     */
+    stop_id?: string | null;
 };
 
 /**
@@ -2558,6 +2586,10 @@ export type ConsignmentResponse = {
      * Shipment Id
      */
     shipment_id: string;
+    /**
+     * Stop Id
+     */
+    stop_id: string | null;
     /**
      * Consignment Ref
      */
@@ -6419,6 +6451,74 @@ export type HttpValidationError = {
 };
 
 /**
+ * HandoverNoteCreate
+ */
+export type HandoverNoteCreate = {
+    /**
+     * Note Code
+     */
+    note_code: string;
+    /**
+     * Situation
+     */
+    situation: string;
+    /**
+     * Background
+     */
+    background: string;
+    /**
+     * Assessment
+     */
+    assessment: string;
+    /**
+     * Recommendation
+     */
+    recommendation: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * HandoverNoteResponse
+ */
+export type HandoverNoteResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Note Code
+     */
+    note_code: string;
+    /**
+     * Situation
+     */
+    situation: string;
+    /**
+     * Background
+     */
+    background: string;
+    /**
+     * Assessment
+     */
+    assessment: string;
+    /**
+     * Recommendation
+     */
+    recommendation: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * HandoverSbarMarkCreate
  */
 export type HandoverSbarMarkCreate = {
@@ -6900,6 +7000,14 @@ export type InboundMessageCreate = {
      * Body Text
      */
     body_text: string;
+    /**
+     * Rfc822 Message Id
+     */
+    rfc822_message_id?: string | null;
+    /**
+     * In Reply To
+     */
+    in_reply_to?: string | null;
 };
 
 /**
@@ -6942,6 +7050,14 @@ export type InboundMessageResponse = {
      * External Id
      */
     external_id: string | null;
+    /**
+     * Rfc822 Message Id
+     */
+    rfc822_message_id: string | null;
+    /**
+     * In Reply To
+     */
+    in_reply_to: string | null;
 };
 
 /**
@@ -11325,6 +11441,40 @@ export type PredictionLedgerResponse = {
 };
 
 /**
+ * ProductTicketCreate
+ */
+export type ProductTicketCreate = {
+    /**
+     * Ticket Code
+     */
+    ticket_code: string;
+    /**
+     * Title
+     */
+    title: string;
+    /**
+     * Body
+     */
+    body: string;
+    /**
+     * Ticket Kind
+     */
+    ticket_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+    /**
+     * Reviewed Ticket Id
+     */
+    reviewed_ticket_id?: string | null;
+    /**
+     * Owner Decision Id
+     */
+    owner_decision_id?: string | null;
+};
+
+/**
  * ProductTicketMarkCreate
  */
 export type ProductTicketMarkCreate = {
@@ -11358,6 +11508,40 @@ export type ProductTicketMarkResponse = {
      * Mark Code
      */
     mark_code: string;
+    /**
+     * Ticket Kind
+     */
+    ticket_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ProductTicketResponse
+ */
+export type ProductTicketResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Ticket Code
+     */
+    ticket_code: string;
+    /**
+     * Title
+     */
+    title: string;
+    /**
+     * Body
+     */
+    body: string;
     /**
      * Ticket Kind
      */
@@ -13149,6 +13333,50 @@ export type ScorecardUpsert = {
 };
 
 /**
+ * SelfBillingMarkCreate
+ */
+export type SelfBillingMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Billing Kind
+     */
+    billing_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * SelfBillingMarkResponse
+ */
+export type SelfBillingMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Billing Kind
+     */
+    billing_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * SessionMeResponse
  */
 export type SessionMeResponse = {
@@ -13434,6 +13662,10 @@ export type ShipmentPackageCreate = {
      * Source Ref
      */
     source_ref: string;
+    /**
+     * Consignment Id
+     */
+    consignment_id?: string | null;
 };
 
 /**
@@ -13456,6 +13688,10 @@ export type ShipmentPackageResponse = {
      * Stop Id
      */
     stop_id: string;
+    /**
+     * Consignment Id
+     */
+    consignment_id: string | null;
     /**
      * Package Code
      */
@@ -18095,7 +18331,12 @@ export type ListNetworkMembersApiV1NetworksNetworkIdMembersGetData = {
          */
         network_id: string;
     };
-    query?: never;
+    query?: {
+        /**
+         * Country Code
+         */
+        country_code?: string | null;
+    };
     url: '/api/v1/networks/{network_id}/members';
 };
 
@@ -18157,6 +18398,10 @@ export type ListCarrierInquiriesApiV1CarrierInquiriesGetData = {
          * Silent
          */
         silent?: string | null;
+        /**
+         * Group By
+         */
+        group_by?: string | null;
     };
     url: '/api/v1/carrier-inquiries';
 };
@@ -26256,6 +26501,49 @@ export type CreateBillingMarkApiV1BillingMarksPostResponses = {
 
 export type CreateBillingMarkApiV1BillingMarksPostResponse = CreateBillingMarkApiV1BillingMarksPostResponses[keyof CreateBillingMarkApiV1BillingMarksPostResponses];
 
+export type ListSelfBillingMarksApiV1SelfBillingMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/self-billing-marks';
+};
+
+export type ListSelfBillingMarksApiV1SelfBillingMarksGetResponses = {
+    /**
+     * Response List Self Billing Marks Api V1 Self Billing Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<SelfBillingMarkResponse>;
+};
+
+export type ListSelfBillingMarksApiV1SelfBillingMarksGetResponse = ListSelfBillingMarksApiV1SelfBillingMarksGetResponses[keyof ListSelfBillingMarksApiV1SelfBillingMarksGetResponses];
+
+export type CreateSelfBillingMarkApiV1SelfBillingMarksPostData = {
+    body: SelfBillingMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/self-billing-marks';
+};
+
+export type CreateSelfBillingMarkApiV1SelfBillingMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateSelfBillingMarkApiV1SelfBillingMarksPostError = CreateSelfBillingMarkApiV1SelfBillingMarksPostErrors[keyof CreateSelfBillingMarkApiV1SelfBillingMarksPostErrors];
+
+export type CreateSelfBillingMarkApiV1SelfBillingMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: SelfBillingMarkResponse;
+};
+
+export type CreateSelfBillingMarkApiV1SelfBillingMarksPostResponse = CreateSelfBillingMarkApiV1SelfBillingMarksPostResponses[keyof CreateSelfBillingMarkApiV1SelfBillingMarksPostResponses];
+
 export type ListReeferMarksApiV1ReeferMarksGetData = {
     body?: never;
     path?: never;
@@ -26986,6 +27274,92 @@ export type CreateHandoverSbarMarkApiV1HandoverSbarMarksPostResponses = {
 };
 
 export type CreateHandoverSbarMarkApiV1HandoverSbarMarksPostResponse = CreateHandoverSbarMarkApiV1HandoverSbarMarksPostResponses[keyof CreateHandoverSbarMarkApiV1HandoverSbarMarksPostResponses];
+
+export type ListHandoverNotesApiV1HandoverNotesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/handover-notes';
+};
+
+export type ListHandoverNotesApiV1HandoverNotesGetResponses = {
+    /**
+     * Response List Handover Notes Api V1 Handover Notes Get
+     *
+     * Successful Response
+     */
+    200: Array<HandoverNoteResponse>;
+};
+
+export type ListHandoverNotesApiV1HandoverNotesGetResponse = ListHandoverNotesApiV1HandoverNotesGetResponses[keyof ListHandoverNotesApiV1HandoverNotesGetResponses];
+
+export type CreateHandoverNoteApiV1HandoverNotesPostData = {
+    body: HandoverNoteCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/handover-notes';
+};
+
+export type CreateHandoverNoteApiV1HandoverNotesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateHandoverNoteApiV1HandoverNotesPostError = CreateHandoverNoteApiV1HandoverNotesPostErrors[keyof CreateHandoverNoteApiV1HandoverNotesPostErrors];
+
+export type CreateHandoverNoteApiV1HandoverNotesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: HandoverNoteResponse;
+};
+
+export type CreateHandoverNoteApiV1HandoverNotesPostResponse = CreateHandoverNoteApiV1HandoverNotesPostResponses[keyof CreateHandoverNoteApiV1HandoverNotesPostResponses];
+
+export type ListProductTicketsApiV1ProductTicketsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/product-tickets';
+};
+
+export type ListProductTicketsApiV1ProductTicketsGetResponses = {
+    /**
+     * Response List Product Tickets Api V1 Product Tickets Get
+     *
+     * Successful Response
+     */
+    200: Array<ProductTicketResponse>;
+};
+
+export type ListProductTicketsApiV1ProductTicketsGetResponse = ListProductTicketsApiV1ProductTicketsGetResponses[keyof ListProductTicketsApiV1ProductTicketsGetResponses];
+
+export type CreateProductTicketApiV1ProductTicketsPostData = {
+    body: ProductTicketCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/product-tickets';
+};
+
+export type CreateProductTicketApiV1ProductTicketsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateProductTicketApiV1ProductTicketsPostError = CreateProductTicketApiV1ProductTicketsPostErrors[keyof CreateProductTicketApiV1ProductTicketsPostErrors];
+
+export type CreateProductTicketApiV1ProductTicketsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ProductTicketResponse;
+};
+
+export type CreateProductTicketApiV1ProductTicketsPostResponse = CreateProductTicketApiV1ProductTicketsPostResponses[keyof CreateProductTicketApiV1ProductTicketsPostResponses];
 
 export type ListTripBillMarksApiV1TripBillMarksGetData = {
     body?: never;

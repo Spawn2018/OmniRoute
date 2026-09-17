@@ -182,6 +182,7 @@ modules =
     app.services.aeo_dossier_marks
     app.services.yard_marks
     app.services.billing_marks
+    app.services.self_billing_marks
     app.services.registry_poll_marks
     app.services.working_capital_marks
     app.services.make_or_buy_marks
@@ -857,6 +858,9 @@ forbidden_modules =
     app.services.billing_marks
     app.repositories.billing_marks
     app.models.billing_mark
+    app.services.self_billing_marks
+    app.repositories.self_billing_marks
+    app.models.self_billing_mark
     app.services.registry_poll_marks
     app.repositories.registry_poll_marks
     app.models.registry_poll_mark

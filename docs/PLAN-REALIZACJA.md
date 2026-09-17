@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** park **AI3-payload** / **G0-SH**. Nie SH-R16-13. Nie AI0.
+**Następny:** **549.0** F10 HITL ingest FV / ranking SQL. Nie AI3-payload. Nie G0-SH.
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -565,7 +565,7 @@ Karta: [karty-pol-g2-tender.md](analysis/karty-pol-g2-tender.md). P6 = oferty od
 | **M14b** | Szkic oceny kredytowej | po M-14 | LLM nie liczy limitu |
 | F8 | Peppol + MPP/split (EXP2.20) | kalendarz UE | nie zastępuje KSeF |
 | F9 | `purchase_invoice` + ERP FS+FZ | zamknięty HITL catalog Optima fixture ([268.0](deltas/archived/268.0-erp-connector.md)); leftover XL / live SOAP / FS+FZ / `erp_series_map` / `erp_export` / `purchase_invoice` | zakaz SQL `sa` |
-| **N14** | self-billing podwykonawcy | po F9+D | |
+| **N14** | self-billing podwykonawcy | zamknięty HITL ([548.0](deltas/archived/548.0-self-billing-mark.md)); leftover live · FK party · JPK | po F9+D |
 | F10 | ingest FV HITL + ranking SQL | po F9 + X9 | leftover `invoice_match_candidate` / `purchase_invoice_allocation`; nigdy auto-link |
 | F11 | książka PP EN+USS+EPO | TO_VERIFY umowa | leftover `postal_dispatch` / `postal_epo`; **≠ e-Doręczenia** (EXP2.19) |
 | **EXP2.1** | working capital: DSO, cash-at-risk, aging | 338.0 HITL katalog `working_capital_mark` (capital_kind); leftover DSO SQL / druga marża | nie druga marża |

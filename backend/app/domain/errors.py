@@ -1114,6 +1114,10 @@ class InvalidBillingMark(DomainError):
     """G16: HITL billing SaaS — nie live Stripe."""
 
 
+class InvalidSelfBillingMark(DomainError):
+    """N14: HITL self-billing podwykonawcy — nie live / nie JPK."""
+
+
 class InvalidRegistryPollMark(DomainError):
     """EXP7.2: HITL poll rejestru — nie live scrape."""
 

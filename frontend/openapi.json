@@ -1602,6 +1602,22 @@
               "format": "uuid",
               "title": "Network Id"
             }
+          },
+          {
+            "name": "country_code",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Country Code"
+            }
           }
         ],
         "responses": {
@@ -1715,6 +1731,22 @@
                 }
               ],
               "title": "Silent"
+            }
+          },
+          {
+            "name": "group_by",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Group By"
             }
           }
         ],
@@ -15743,6 +15775,80 @@
         ]
       }
     },
+    "/api/v1/self-billing-marks": {
+      "get": {
+        "tags": [
+          "self-billing-marks"
+        ],
+        "summary": "List Self Billing Marks",
+        "operationId": "list_self_billing_marks_api_v1_self_billing_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/SelfBillingMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Self Billing Marks Api V1 Self Billing Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "self-billing-marks"
+        ],
+        "summary": "Create Self Billing Mark",
+        "operationId": "create_self_billing_mark_api_v1_self_billing_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SelfBillingMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SelfBillingMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/reefer-marks": {
       "get": {
         "tags": [
@@ -16979,6 +17085,154 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/HandoverSbarMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/handover-notes": {
+      "get": {
+        "tags": [
+          "handover-notes"
+        ],
+        "summary": "List Handover Notes",
+        "operationId": "list_handover_notes_api_v1_handover_notes_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HandoverNoteResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Handover Notes Api V1 Handover Notes Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "handover-notes"
+        ],
+        "summary": "Create Handover Note",
+        "operationId": "create_handover_note_api_v1_handover_notes_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HandoverNoteCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HandoverNoteResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/product-tickets": {
+      "get": {
+        "tags": [
+          "product-tickets"
+        ],
+        "summary": "List Product Tickets",
+        "operationId": "list_product_tickets_api_v1_product_tickets_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ProductTicketResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Product Tickets Api V1 Product Tickets Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "product-tickets"
+        ],
+        "summary": "Create Product Ticket",
+        "operationId": "create_product_ticket_api_v1_product_tickets_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductTicketCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductTicketResponse"
                 }
               }
             }
@@ -29325,6 +29579,29 @@
               }
             ],
             "title": "No Reply After"
+          },
+          "party_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Party Id"
+          },
+          "country_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Country Code"
           }
         },
         "type": "object",
@@ -29961,6 +30238,42 @@
             "maxLength": 512,
             "minLength": 1,
             "title": "Source Ref"
+          },
+          "origin_unlocode": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 5
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin Unlocode"
+          },
+          "destination_unlocode": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 5
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Destination Unlocode"
+          },
+          "floor_decision_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Floor Decision Id"
           }
         },
         "type": "object",
@@ -31024,6 +31337,33 @@
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
+          },
+          "load_kind": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "ftl",
+                  "ltl"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Load Kind"
+          },
+          "stop_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Stop Id"
           }
         },
         "additionalProperties": false,
@@ -31051,6 +31391,18 @@
             "format": "uuid",
             "title": "Shipment Id"
           },
+          "stop_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Stop Id"
+          },
           "consignment_ref": {
             "type": "string",
             "title": "Consignment Ref"
@@ -31065,6 +31417,7 @@
           "id",
           "organization_id",
           "shipment_id",
+          "stop_id",
           "consignment_ref",
           "source_ref"
         ],
@@ -36996,6 +37349,95 @@
         "type": "object",
         "title": "HTTPValidationError"
       },
+      "HandoverNoteCreate": {
+        "properties": {
+          "note_code": {
+            "type": "string",
+            "title": "Note Code"
+          },
+          "situation": {
+            "type": "string",
+            "title": "Situation"
+          },
+          "background": {
+            "type": "string",
+            "title": "Background"
+          },
+          "assessment": {
+            "type": "string",
+            "title": "Assessment"
+          },
+          "recommendation": {
+            "type": "string",
+            "title": "Recommendation"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "note_code",
+          "situation",
+          "background",
+          "assessment",
+          "recommendation",
+          "source_ref"
+        ],
+        "title": "HandoverNoteCreate"
+      },
+      "HandoverNoteResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "note_code": {
+            "type": "string",
+            "title": "Note Code"
+          },
+          "situation": {
+            "type": "string",
+            "title": "Situation"
+          },
+          "background": {
+            "type": "string",
+            "title": "Background"
+          },
+          "assessment": {
+            "type": "string",
+            "title": "Assessment"
+          },
+          "recommendation": {
+            "type": "string",
+            "title": "Recommendation"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "note_code",
+          "situation",
+          "background",
+          "assessment",
+          "recommendation",
+          "source_ref"
+        ],
+        "title": "HandoverNoteResponse"
+      },
       "HandoverSbarMarkCreate": {
         "properties": {
           "mark_code": {
@@ -37689,6 +38131,30 @@
             "maxLength": 65536,
             "minLength": 1,
             "title": "Body Text"
+          },
+          "rfc822_message_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 512
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rfc822 Message Id"
+          },
+          "in_reply_to": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 512
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "In Reply To"
           }
         },
         "additionalProperties": false,
@@ -37755,6 +38221,28 @@
               }
             ],
             "title": "External Id"
+          },
+          "rfc822_message_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rfc822 Message Id"
+          },
+          "in_reply_to": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "In Reply To"
           }
         },
         "type": "object",
@@ -37767,7 +38255,9 @@
           "body_text",
           "status",
           "party_id",
-          "external_id"
+          "external_id",
+          "rfc822_message_id",
+          "in_reply_to"
         ],
         "title": "InboundMessageResponse"
       },
@@ -44373,6 +44863,64 @@
         ],
         "title": "PredictionLedgerResponse"
       },
+      "ProductTicketCreate": {
+        "properties": {
+          "ticket_code": {
+            "type": "string",
+            "title": "Ticket Code"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "body": {
+            "type": "string",
+            "title": "Body"
+          },
+          "ticket_kind": {
+            "type": "string",
+            "title": "Ticket Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          },
+          "reviewed_ticket_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reviewed Ticket Id"
+          },
+          "owner_decision_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Owner Decision Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "ticket_code",
+          "title",
+          "body",
+          "ticket_kind",
+          "source_ref"
+        ],
+        "title": "ProductTicketCreate"
+      },
       "ProductTicketMarkCreate": {
         "properties": {
           "mark_code": {
@@ -44431,6 +44979,51 @@
           "source_ref"
         ],
         "title": "ProductTicketMarkResponse"
+      },
+      "ProductTicketResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "ticket_code": {
+            "type": "string",
+            "title": "Ticket Code"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "body": {
+            "type": "string",
+            "title": "Body"
+          },
+          "ticket_kind": {
+            "type": "string",
+            "title": "Ticket Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "ticket_code",
+          "title",
+          "body",
+          "ticket_kind",
+          "source_ref"
+        ],
+        "title": "ProductTicketResponse"
       },
       "ProfitCenterMarkCreate": {
         "properties": {
@@ -47224,6 +47817,65 @@
         "type": "object",
         "title": "ScorecardUpsert"
       },
+      "SelfBillingMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "billing_kind": {
+            "type": "string",
+            "title": "Billing Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "billing_kind",
+          "source_ref"
+        ],
+        "title": "SelfBillingMarkCreate"
+      },
+      "SelfBillingMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "billing_kind": {
+            "type": "string",
+            "title": "Billing Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "billing_kind",
+          "source_ref"
+        ],
+        "title": "SelfBillingMarkResponse"
+      },
       "SessionMeResponse": {
         "properties": {
           "user_id": {
@@ -47668,6 +48320,18 @@
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
+          },
+          "consignment_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Consignment Id"
           }
         },
         "additionalProperties": false,
@@ -47704,6 +48368,18 @@
             "format": "uuid",
             "title": "Stop Id"
           },
+          "consignment_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Consignment Id"
+          },
           "package_code": {
             "type": "string",
             "title": "Package Code"
@@ -47727,6 +48403,7 @@
           "organization_id",
           "shipment_id",
           "stop_id",
+          "consignment_id",
           "package_code",
           "package_status",
           "scan_token",

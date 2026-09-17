@@ -127,6 +127,7 @@ const NAV = [
   { to: "/line-impact-layer-marks", label: "Warstwa liczona linii" },
   { to: "/product-ticket-marks", label: "Stancja ticketu" },
   { to: "/product-tickets", label: "Ticket produktu" },
+  { to: "/self-billing-marks", label: "Self-billing" },
   { to: "/risk-register-marks", label: "Rejestr ryzyka" },
   { to: "/article50-marks", label: "Art. 50" },
   { to: "/data-sources", label: "Zrodla danych" },

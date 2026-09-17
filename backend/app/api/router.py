@@ -242,6 +242,7 @@ from app.api import (
     sanctions_marks,
     sap_connectors,
     schedule_exception_marks,
+    self_billing_marks,
     session,
     shipment_clone_marks,
     shipment_documents,
@@ -503,6 +504,7 @@ api_router.include_router(air_ra3_marks.router)
 api_router.include_router(aeo_dossier_marks.router)
 api_router.include_router(yard_marks.router)
 api_router.include_router(billing_marks.router)
+api_router.include_router(self_billing_marks.router)
 api_router.include_router(reefer_marks.router)
 api_router.include_router(registry_poll_marks.router)
 api_router.include_router(working_capital_marks.router)

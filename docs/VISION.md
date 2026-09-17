@@ -144,6 +144,7 @@ zostają w badaniach `04`).
 | 2026-09-17 | **546.0** S11 owner na `product_ticket` w kodzie (`CONFIRMED`, git po push). Leftover FK mark · Mob · auto-fix. Następny = park AI3-payload / G0 (`REQUIREMENT`). |
 | 2026-09-17 | Plan **547.0** N6 UI UN na `/charges` (`REQUIREMENT`). Matching / auto charge `REJECTED`. |
 | 2026-09-17 | **547.0** pola UN + `floor_decision_id` na UI `/charges` (`CONFIRMED`, git po push). Leftover matching / auto charge. Następny = park AI3-payload / G0 (`REQUIREMENT`). |
+| 2026-09-17 | Plan **548.0** N14 HITL `self_billing_mark` (`REQUIREMENT`). Live self-billing / JPK / FK party `REJECTED`. |
 | 2026-09-13 | AI3.4 plan (**451.0**): parser `xlsx_sheet` stdlib. `openpyxl` `REJECTED`. `.xls` leftover. |
 | 2026-09-13 | **451.0** `xlsx_sheet` w kodzie (`CONFIRMED`, git). Następny = **AI4.0** FK `plan_snapshot` (`REQUIREMENT`). `.xls` leftover. |
 | 2026-09-13 | AI4.0 plan (**452.0**): FK złożone RESTRICT. CASCADE `REJECTED`. What-if `REJECTED` na tym wierszu. |

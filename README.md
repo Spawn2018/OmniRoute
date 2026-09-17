@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **547.0** N6 UI UN na `/charges`
-- **Etap:** Plan — park AI3-payload / G0-SH; komenda `/plan-modul`
-- **Następny:** park **AI3-payload** / **G0-SH**. Nie SH-R16-13. Nie AI0.
+- **Ostatni plaster:** **548.0** N14 `self_billing_mark`
+- **Etap:** Plan — brak delty; `/plan-modul` przed kodem
+- **Następny:** **549.0** F10 HITL ingest FV / ranking SQL. Nie AI3-payload. Nie G0-SH.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

@@ -156,6 +156,7 @@ type organization
     define can_manage_aeo_dossier_marks: member
     define can_manage_yard_marks: member
     define can_manage_billing_marks: member
+    define can_manage_self_billing_marks: member
     define can_manage_registry_poll_marks: member
     define can_manage_working_capital_marks: member
     define can_manage_make_or_buy_marks: member
