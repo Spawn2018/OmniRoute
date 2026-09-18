@@ -854,6 +854,11 @@ export const OPS_JOBS = [
     job: "katalog create_block_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.documentKindMatchMark.route,
+    label: "Dopasowanie rodzaju dokumentu",
+    job: "katalog document_kind_match_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.registryPollMark.route,
     label: "Poll rejestrów",
     job: "katalog registry_poll_mark HITL",
@@ -1762,6 +1767,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "554.0": "/relation-document-requirements",
   "555.0": "/invoice-match-candidates",
   "556.0": "/create-block-marks",
+  "557.0": "/document-kind-match-marks",
   "142.0": "/mail",
   "143.0": "/networks",
   "144.0": "/quotations",

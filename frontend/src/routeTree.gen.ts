@@ -82,6 +82,7 @@ import { Route as DemoSimMarksRouteImport } from './routes/demo-sim-marks'
 import { Route as DemoWipeMarksRouteImport } from './routes/demo-wipe-marks'
 import { Route as DiversionMarksRouteImport } from './routes/diversion-marks'
 import { Route as DockAppointmentsRouteImport } from './routes/dock-appointments'
+import { Route as DocumentKindMatchMarksRouteImport } from './routes/document-kind-match-marks'
 import { Route as DocumentTemplatesRouteImport } from './routes/document-templates'
 import { Route as DualLedgerMarksRouteImport } from './routes/dual-ledger-marks'
 import { Route as ECmrMarksRouteImport } from './routes/e-cmr-marks'
@@ -694,6 +695,11 @@ const DiversionMarksRoute = DiversionMarksRouteImport.update({
 const DockAppointmentsRoute = DockAppointmentsRouteImport.update({
   id: '/dock-appointments',
   path: '/dock-appointments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DocumentKindMatchMarksRoute = DocumentKindMatchMarksRouteImport.update({
+  id: '/document-kind-match-marks',
+  path: '/document-kind-match-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DocumentTemplatesRoute = DocumentTemplatesRouteImport.update({
@@ -2015,6 +2021,7 @@ export interface FileRoutesByFullPath {
   '/demo-wipe-marks': typeof DemoWipeMarksRoute
   '/diversion-marks': typeof DiversionMarksRoute
   '/dock-appointments': typeof DockAppointmentsRoute
+  '/document-kind-match-marks': typeof DocumentKindMatchMarksRoute
   '/document-templates': typeof DocumentTemplatesRoute
   '/dual-ledger-marks': typeof DualLedgerMarksRoute
   '/e-cmr-marks': typeof ECmrMarksRoute
@@ -2338,6 +2345,7 @@ export interface FileRoutesByTo {
   '/demo-wipe-marks': typeof DemoWipeMarksRoute
   '/diversion-marks': typeof DiversionMarksRoute
   '/dock-appointments': typeof DockAppointmentsRoute
+  '/document-kind-match-marks': typeof DocumentKindMatchMarksRoute
   '/document-templates': typeof DocumentTemplatesRoute
   '/dual-ledger-marks': typeof DualLedgerMarksRoute
   '/e-cmr-marks': typeof ECmrMarksRoute
@@ -2662,6 +2670,7 @@ export interface FileRoutesById {
   '/demo-wipe-marks': typeof DemoWipeMarksRoute
   '/diversion-marks': typeof DiversionMarksRoute
   '/dock-appointments': typeof DockAppointmentsRoute
+  '/document-kind-match-marks': typeof DocumentKindMatchMarksRoute
   '/document-templates': typeof DocumentTemplatesRoute
   '/dual-ledger-marks': typeof DualLedgerMarksRoute
   '/e-cmr-marks': typeof ECmrMarksRoute
@@ -2987,6 +2996,7 @@ export interface FileRouteTypes {
     | '/demo-wipe-marks'
     | '/diversion-marks'
     | '/dock-appointments'
+    | '/document-kind-match-marks'
     | '/document-templates'
     | '/dual-ledger-marks'
     | '/e-cmr-marks'
@@ -3310,6 +3320,7 @@ export interface FileRouteTypes {
     | '/demo-wipe-marks'
     | '/diversion-marks'
     | '/dock-appointments'
+    | '/document-kind-match-marks'
     | '/document-templates'
     | '/dual-ledger-marks'
     | '/e-cmr-marks'
@@ -3633,6 +3644,7 @@ export interface FileRouteTypes {
     | '/demo-wipe-marks'
     | '/diversion-marks'
     | '/dock-appointments'
+    | '/document-kind-match-marks'
     | '/document-templates'
     | '/dual-ledger-marks'
     | '/e-cmr-marks'
@@ -3957,6 +3969,7 @@ export interface RootRouteChildren {
   DemoWipeMarksRoute: typeof DemoWipeMarksRoute
   DiversionMarksRoute: typeof DiversionMarksRoute
   DockAppointmentsRoute: typeof DockAppointmentsRoute
+  DocumentKindMatchMarksRoute: typeof DocumentKindMatchMarksRoute
   DocumentTemplatesRoute: typeof DocumentTemplatesRoute
   DualLedgerMarksRoute: typeof DualLedgerMarksRoute
   ECmrMarksRoute: typeof ECmrMarksRoute
@@ -4718,6 +4731,13 @@ declare module '@tanstack/react-router' {
       path: '/dock-appointments'
       fullPath: '/dock-appointments'
       preLoaderRoute: typeof DockAppointmentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/document-kind-match-marks': {
+      id: '/document-kind-match-marks'
+      path: '/document-kind-match-marks'
+      fullPath: '/document-kind-match-marks'
+      preLoaderRoute: typeof DocumentKindMatchMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/document-templates': {
@@ -6533,6 +6553,7 @@ const rootRouteChildren: RootRouteChildren = {
   DemoWipeMarksRoute: DemoWipeMarksRoute,
   DiversionMarksRoute: DiversionMarksRoute,
   DockAppointmentsRoute: DockAppointmentsRoute,
+  DocumentKindMatchMarksRoute: DocumentKindMatchMarksRoute,
   DocumentTemplatesRoute: DocumentTemplatesRoute,
   DualLedgerMarksRoute: DualLedgerMarksRoute,
   ECmrMarksRoute: ECmrMarksRoute,

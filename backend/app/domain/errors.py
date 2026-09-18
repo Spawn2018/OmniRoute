@@ -1147,6 +1147,10 @@ class InvalidCreateBlockMark(DomainError):
     """C8 leftover: HITL brama create — nie live 409."""
 
 
+class InvalidDocumentKindMatchMark(DomainError):
+    """C8 leftover: HITL dopasowanie rodzaju dokumentu — nie live matching."""
+
+
 class InvalidRegistryPollMark(DomainError):
     """EXP7.2: HITL poll rejestru — nie live scrape."""
 

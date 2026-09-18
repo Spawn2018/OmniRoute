@@ -77,6 +77,7 @@ from app.api import (
     dock_appointments,
     document_checklist_rules,
     document_dispatch_rules,
+    document_kind_match_marks,
     document_templates,
     dual_ledger_marks,
     e_cmr_marks,
@@ -434,6 +435,7 @@ api_router.include_router(intervention_outcomes.router)
 api_router.include_router(invoice_match_marks.router)
 api_router.include_router(invoice_match_candidates.router)
 api_router.include_router(create_block_marks.router)
+api_router.include_router(document_kind_match_marks.router)
 api_router.include_router(invoice_alloc_marks.router)
 api_router.include_router(load_order_marks.router)
 api_router.include_router(load_plan_marks.router)
