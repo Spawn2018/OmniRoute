@@ -38,6 +38,7 @@ from app.domain.container import (
     require_seal_no_2,
     require_seal_no_3,
     require_si_cutoff_at,
+    require_tare_kg,
     require_vessel_name,
     require_vgm_cutoff_at,
     require_vgm_kg,
@@ -308,6 +309,20 @@ def test_vgm_bundle_accepts_decimal_solas_and_aware_clock() -> None:
         require_vgm_method("weighed")
     with pytest.raises(InvalidContainer, match="vgm"):
         require_vgm_cutoff_at("2026-09-10T12:00:00")
+
+
+def test_tare_kg_reuses_positive_kg_rule() -> None:
+    assert require_tare_kg(None) is None
+    assert require_tare_kg("  ") is None
+    assert require_tare_kg("2200.5") == Decimal("2200.5000")
+    with pytest.raises(InvalidContainer, match="tara"):
+        require_tare_kg(12.5)
+    with pytest.raises(InvalidContainer, match="tara"):
+        require_tare_kg(0)
+    with pytest.raises(InvalidContainer, match="tara"):
+        require_tare_kg(-1)
+    with pytest.raises(InvalidContainer, match="tara"):
+        require_tare_kg(True)
 
 
 def test_last_survey_at_reuses_aware_clock_and_rejects_naive() -> None:

@@ -38,6 +38,7 @@ from app.domain.container import (
     require_seal_no_2,
     require_seal_no_3,
     require_si_cutoff_at,
+    require_tare_kg,
     require_vessel_name,
     require_vgm_cutoff_at,
     require_vgm_kg,
@@ -86,6 +87,7 @@ class _WriteBox(NamedTuple):
     book: object
     carrier: object
     leg: object
+    tare: object
 
 
 class _BoxDraft(NamedTuple):
@@ -126,6 +128,7 @@ class _BoxDraft(NamedTuple):
     book: str | None
     carrier: UUID | None
     leg: UUID | None
+    tare: Decimal | None
 
 
 def _box_draft(write: _WriteBox) -> _BoxDraft:
@@ -160,6 +163,7 @@ def _box_draft(write: _WriteBox) -> _BoxDraft:
         require_booking_no(write.book),
         require_carrier_party_id(write.carrier),
         require_container_shipment_leg_id(write.leg),
+        require_tare_kg(write.tare),
     )
 
 
@@ -210,6 +214,7 @@ def _box_unchanged(current: Container, draft: _BoxDraft) -> bool:
         and current.booking_no == draft.book
         and current.carrier_party_id == draft.carrier
         and current.shipment_leg_id == draft.leg
+        and current.tare_kg == draft.tare
     )
 
 
@@ -260,6 +265,7 @@ def _container_row(organization_id: UUID, user_id: UUID, draft: _BoxDraft) -> Co
         booking_no=draft.book,
         carrier_party_id=draft.carrier,
         shipment_leg_id=draft.leg,
+        tare_kg=draft.tare,
         created_by=user_id,
     )
 

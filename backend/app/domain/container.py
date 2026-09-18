@@ -321,20 +321,28 @@ def require_vgm_cutoff_at(raw: object) -> datetime | None:
 
 
 def require_vgm_kg(raw: object) -> Decimal | None:
+    return _require_positive_kg(raw, "vgm")
+
+
+def require_tare_kg(raw: object) -> Decimal | None:
+    return _require_positive_kg(raw, "tara")
+
+
+def _require_positive_kg(raw: object, label: str) -> Decimal | None:
     if raw is None:
         return None
     if type(raw) is str and raw.strip() == "":
         return None
     if isinstance(raw, float) or isinstance(raw, bool):
-        raise InvalidContainer("vgm nie może być float")
+        raise InvalidContainer(f"{label} nie może być float")
     if not isinstance(raw, Decimal | str | int):
-        raise InvalidContainer("vgm musi być liczbą dziesiętną")
+        raise InvalidContainer(f"{label} musi być liczbą dziesiętną")
     try:
         parsed = raw if isinstance(raw, Decimal) else Decimal(str(raw))
     except InvalidOperation as exc:
-        raise InvalidContainer("vgm musi być liczbą dziesiętną") from exc
+        raise InvalidContainer(f"{label} musi być liczbą dziesiętną") from exc
     if parsed <= 0:
-        raise InvalidContainer("vgm musi być dodatnia")
+        raise InvalidContainer(f"{label} musi być dodatnia")
     return parsed.quantize(_FOUR)
 
 

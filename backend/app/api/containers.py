@@ -52,6 +52,7 @@ class ContainerCreate(BaseModel):
     cy_cutoff_at: object | None = None
     cfs_cutoff_at: object | None = None
     vgm_kg: object | None = None
+    tare_kg: object | None = None
     vgm_method: object | None = None
     vgm_cutoff_at: object | None = None
     last_survey_at: object | None = None
@@ -96,6 +97,7 @@ class ContainerResponse(BaseModel):
     cy_cutoff_at: datetime | None
     cfs_cutoff_at: datetime | None
     vgm_kg: str | None
+    tare_kg: str | None
     vgm_method: str | None
     vgm_cutoff_at: datetime | None
     last_survey_at: datetime | None
@@ -108,6 +110,7 @@ class ContainerResponse(BaseModel):
 def _as_response(row: Container) -> ContainerResponse:
     dumped = {name: getattr(row, name) for name in ContainerResponse.model_fields}
     dumped["vgm_kg"] = None if row.vgm_kg is None else format(row.vgm_kg, "f")
+    dumped["tare_kg"] = None if row.tare_kg is None else format(row.tare_kg, "f")
     return ContainerResponse.model_validate(dumped)
 
 
@@ -149,6 +152,7 @@ def _write_from_body(
         body.booking_no,
         carrier_id,
         leg_id,
+        body.tare_kg,
     )
 
 

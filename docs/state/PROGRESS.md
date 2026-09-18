@@ -1,6 +1,7 @@
 # Historia plastrów
 
 | Data | Plaster | Moduł | Opis |
+| 2026-09-18 | 569.0 | T3 container.tare_kg | 2026-09-18 | PRZESZLO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-18 | 568.0 | V3 container.mixed_dd_days | 2026-09-18 | PRZESZLO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-18 | 567.0 | V3 container.detention_free_days | 2026-09-18 | PRZESZLO (gate success) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-18 | 566.0 | V3 container.demurrage_free_days | 2026-09-18 | PRZESZLO (gate success) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |

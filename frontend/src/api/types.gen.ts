@@ -2789,6 +2789,10 @@ export type ContainerCreate = {
      */
     vgm_kg?: unknown | null;
     /**
+     * Tare Kg
+     */
+    tare_kg?: unknown | null;
+    /**
      * Vgm Method
      */
     vgm_method?: unknown | null;
@@ -2950,6 +2954,10 @@ export type ContainerResponse = {
      * Vgm Kg
      */
     vgm_kg: string | null;
+    /**
+     * Tare Kg
+     */
+    tare_kg: string | null;
     /**
      * Vgm Method
      */

@@ -97,6 +97,7 @@ describe("shipment surface for 28.0 and 90.0", () => {
     expect(box).toContain("Zapisz kontener")
     expect(box).not.toContain("parseFloat")
     expect(box).toContain("vgm_kg")
+    expect(box).toContain("tare_kg")
     expect(box).toContain("carrier_party_id")
     expect(box).toContain("shipment_leg_id")
     expect(page).not.toContain("fetchQuotations")

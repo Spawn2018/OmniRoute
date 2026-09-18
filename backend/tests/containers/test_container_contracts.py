@@ -384,6 +384,20 @@ def test_migration_448_adds_mixed_dd_without_countdown() -> None:
     assert "mixed_dd_days" in source.split("def downgrade")[1]
 
 
+def test_migration_449_adds_tare_without_calculator() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "449_container_tare.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "449_container_tare"' in source
+    assert 'down_revision: str | None = "448_container_mixed_dd"' in source
+    assert "tare_kg" in source
+    assert "Numeric(14, 4)" in source
+    assert "httpx" not in source
+    assert "create_table" not in source
+    assert "def downgrade" in source
+    assert "tare_kg" in source.split("def downgrade")[1]
+
+
 def test_migration_174_adds_si_cutoff_without_live_http() -> None:
     source = (
         _ROOT / "backend" / "alembic" / "versions" / "174_container_si_cutoff.py"
@@ -549,6 +563,7 @@ def test_generated_api_types_include_container() -> None:
     assert "cy_cutoff_at" in source
     assert "cfs_cutoff_at" in source
     assert "vgm_kg" in source
+    assert "tare_kg" in source
     assert "vgm_method" in source
     assert "vgm_cutoff_at" in source
     assert "last_survey_at" in source

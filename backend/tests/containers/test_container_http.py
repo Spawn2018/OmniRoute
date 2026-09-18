@@ -171,6 +171,7 @@ def test_http_create_list_supersede_and_reject_check_digit(box_client: object) -
     assert first.json()["cy_cutoff_at"] is None
     assert first.json()["cfs_cutoff_at"] is None
     assert first.json()["vgm_kg"] is None
+    assert first.json()["tare_kg"] is None
     assert first.json()["vgm_method"] is None
     assert first.json()["vgm_cutoff_at"] is None
     assert first.json()["last_survey_at"] is None
@@ -179,6 +180,7 @@ def test_http_create_list_supersede_and_reject_check_digit(box_client: object) -
     assert first.json()["shipment_leg_id"] is None
     assert "amount" not in first.json()
     assert "vgm" not in first.json()
+    assert "tare" not in first.json()
     second = client.post(
         "/api/v1/containers",
         headers=headers,
@@ -1015,6 +1017,43 @@ def test_http_create_container_with_mixed_dd_days(box_client: object) -> None:
     assert created.json()["detention_free_days"] is None
     assert "remaining" not in created.json()
     assert "countdown" not in created.json()
+
+
+def test_http_create_container_with_tare_kg(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    created = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "tare_kg": "2200.5000",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["tare_kg"] == "2200.5000"
+    assert created.json()["vgm_kg"] is None
+    assert "amount" not in created.json()
+    assert "pin" not in created.json()
+
+
+def test_http_rejects_float_tare_kg(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "tare_kg": 12.5,
+        },
+    )
+    assert reply.status_code == 400
+    assert "tara" in reply.json()["detail"]
 
 
 def test_http_rejects_negative_mixed_dd_days(box_client: object) -> None:
