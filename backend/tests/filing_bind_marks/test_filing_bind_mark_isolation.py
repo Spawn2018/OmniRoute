@@ -7,7 +7,14 @@ from app.core.database import bind_tenant
 from app.models.filing_bind_mark import FilingBindMark
 
 
-def _row(*, organization_id, created_by, mark_code="bind_01", bind_kind="shipment", source_ref="tenant:manual"):
+def _row(
+    *,
+    organization_id,
+    created_by,
+    mark_code="bind_01",
+    bind_kind="shipment",
+    source_ref="tenant:manual",
+):
     return FilingBindMark(
         id=uuid4(),
         organization_id=organization_id,
