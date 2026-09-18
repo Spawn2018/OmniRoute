@@ -16,7 +16,7 @@
 
 **Park / czeka w PLAN:** AI3-payload · G0-SH · PUESC · MOS live · live FK UUID · live 409 · C3 VIES/GUS · C4 eCMR · N3 countdown · …
 
-**Spec (jedyna na sesję produktu):** brak delty — `/plan-modul` pisze `docs/deltas/open/574.0-container-weight-kg.md`
+**Spec (jedyna na sesję produktu):** brak delty — `/plan-modul`
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 
