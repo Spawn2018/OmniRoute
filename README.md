@@ -87,10 +87,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **565.0** V3 `blank_sailing_mark`
-- **Etap:** Plan — wydmuszka leftover; `/plan-modul` → delta → plaster
+- **Ostatni plaster:** **565.0** V3 `blank_sailing_mark` (gate success)
+- **Etap:** Plaster — delta zaakceptowana (`docs/deltas/open/566.0-container-demurrage-days.md`); wolno `/plaster`
 - **Następny:** **566.0** V3 leftover HITL `container.demurrage_free_days`. Nie countdown N3. Nie szkic charge. Nie AI3-payload. Nie G0-SH.
-- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 
