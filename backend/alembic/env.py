@@ -197,6 +197,7 @@ from app.models.create_block_mark import CreateBlockMark  # noqa: F401
 from app.models.document_kind_match_mark import DocumentKindMatchMark  # noqa: F401
 from app.models.filing_bind_mark import FilingBindMark  # noqa: F401
 from app.models.postal_epo_mark import PostalEpoMark  # noqa: F401
+from app.models.blocks_create_enforcement_mark import BlocksCreateEnforcementMark  # noqa: F401
 from app.models.registry_poll_mark import RegistryPollMark  # noqa: F401
 from app.models.working_capital_mark import WorkingCapitalMark  # noqa: F401
 from app.models.make_or_buy_mark import MakeOrBuyMark  # noqa: F401

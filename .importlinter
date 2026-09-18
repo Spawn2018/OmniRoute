@@ -190,6 +190,7 @@ modules =
     app.services.document_kind_match_marks
     app.services.filing_bind_marks
     app.services.postal_epo_marks
+    app.services.blocks_create_enforcement_marks
     app.services.invoice_alloc_marks
     app.services.postal_dispatch_marks
     app.services.shipment_monitoring_filings
@@ -887,12 +888,15 @@ forbidden_modules =
     app.repositories.filing_bind_marks
     app.services.postal_epo_marks
     app.repositories.postal_epo_marks
+    app.services.blocks_create_enforcement_marks
+    app.repositories.blocks_create_enforcement_marks
     app.models.invoice_match_mark
     app.models.invoice_match_candidate
     app.models.create_block_mark
     app.models.document_kind_match_mark
     app.models.filing_bind_mark
     app.models.postal_epo_mark
+    app.models.blocks_create_enforcement_mark
     app.services.invoice_alloc_marks
     app.services.postal_dispatch_marks
     app.services.shipment_monitoring_filings

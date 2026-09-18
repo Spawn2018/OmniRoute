@@ -869,6 +869,11 @@ export const OPS_JOBS = [
     job: "katalog postal_epo_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.blocksCreateEnforcementMark.route,
+    label: "Egzekucja bramy create",
+    job: "katalog blocks_create_enforcement_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.registryPollMark.route,
     label: "Poll rejestrów",
     job: "katalog registry_poll_mark HITL",
@@ -1780,6 +1785,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "557.0": "/document-kind-match-marks",
   "558.0": "/filing-bind-marks",
   "559.0": "/postal-epo-marks",
+  "560.0": "/blocks-create-enforcement-marks",
   "142.0": "/mail",
   "143.0": "/networks",
   "144.0": "/quotations",

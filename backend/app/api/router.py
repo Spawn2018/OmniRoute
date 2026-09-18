@@ -16,6 +16,7 @@ from app.api import (
     bid_decision_marks,
     billing_marks,
     bin_pack_marks,
+    blocks_create_enforcement_marks,
     bonded_marks,
     booking_instructions,
     bookkeeping,
@@ -440,6 +441,7 @@ api_router.include_router(create_block_marks.router)
 api_router.include_router(document_kind_match_marks.router)
 api_router.include_router(filing_bind_marks.router)
 api_router.include_router(postal_epo_marks.router)
+api_router.include_router(blocks_create_enforcement_marks.router)
 api_router.include_router(invoice_alloc_marks.router)
 api_router.include_router(load_order_marks.router)
 api_router.include_router(load_plan_marks.router)

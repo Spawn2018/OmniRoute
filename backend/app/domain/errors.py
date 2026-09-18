@@ -1159,6 +1159,10 @@ class InvalidPostalEpoMark(DomainError):
     """F11 leftover: HITL EPO/PP — nie live PP."""
 
 
+class InvalidBlocksCreateEnforcementMark(DomainError):
+    """C8 leftover: HITL egzekucja bramy create — nie live 409."""
+
+
 class InvalidRegistryPollMark(DomainError):
     """EXP7.2: HITL poll rejestru — nie live scrape."""
 
