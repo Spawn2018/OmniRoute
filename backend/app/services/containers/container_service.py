@@ -24,6 +24,7 @@ from app.domain.container import (
     require_container_shipment_id,
     require_container_shipment_leg_id,
     require_container_source_ref,
+    require_container_weight_kg,
     require_cy_cutoff_at,
     require_demurrage_free_days,
     require_detention_free_days,
@@ -96,6 +97,7 @@ class _WriteBox(NamedTuple):
     payload: object
     teu: object
     qty: object
+    kilos: object
 
 
 class _BoxDraft(NamedTuple):
@@ -141,6 +143,7 @@ class _BoxDraft(NamedTuple):
     payload: Decimal | None
     teu: Decimal | None
     qty: int | None
+    kilos: Decimal | None
 
 
 def _box_draft(write: _WriteBox) -> _BoxDraft:
@@ -180,6 +183,7 @@ def _box_draft(write: _WriteBox) -> _BoxDraft:
         require_payload_kg(write.payload),
         require_teu(write.teu),
         require_container_quantity(write.qty),
+        require_container_weight_kg(write.kilos),
     )
 
 
@@ -235,6 +239,7 @@ def _box_unchanged(current: Container, draft: _BoxDraft) -> bool:
         and current.payload_kg == draft.payload
         and current.teu == draft.teu
         and current.quantity == draft.qty
+        and current.weight_kg == draft.kilos
     )
 
 
@@ -289,7 +294,7 @@ def _container_row(organization_id: UUID, user_id: UUID, draft: _BoxDraft) -> Co
         pin_code=draft.pin,
         payload_kg=draft.payload,
         teu=draft.teu,
-        quantity=draft.qty,
+        quantity=draft.qty, weight_kg=draft.kilos,
         created_by=user_id,
     )
 

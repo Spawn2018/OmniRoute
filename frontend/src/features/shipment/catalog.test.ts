@@ -102,6 +102,7 @@ describe("shipment surface for 28.0 and 90.0", () => {
     expect(box).toContain("payload_kg")
     expect(box).toContain("teu")
     expect(box).toContain("quantity")
+    expect(box).toContain("weight_kg")
     expect(box).toContain("carrier_party_id")
     expect(box).toContain("shipment_leg_id")
     expect(page).not.toContain("fetchQuotations")

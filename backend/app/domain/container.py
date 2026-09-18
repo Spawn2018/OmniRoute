@@ -360,6 +360,10 @@ def require_teu(raw: object) -> Decimal | None:
     return _require_positive_kg(raw, "teu")
 
 
+def require_container_weight_kg(raw: object) -> Decimal | None:
+    return _require_positive_kg(raw, "waga")
+
+
 def _require_positive_kg(raw: object, label: str) -> Decimal | None:
     if raw is None:
         return None

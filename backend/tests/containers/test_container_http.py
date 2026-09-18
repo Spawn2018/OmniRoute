@@ -1188,6 +1188,7 @@ def test_http_create_container_with_quantity(box_client: object) -> None:
     assert created.status_code == 201
     assert created.json()["quantity"] == 3
     assert created.json()["teu"] is None
+    assert created.json()["weight_kg"] is None
     assert "stop_id" not in created.json()
 
 
@@ -1206,6 +1207,43 @@ def test_http_rejects_negative_container_quantity(box_client: object) -> None:
     )
     assert reply.status_code == 400
     assert "ilość" in reply.json()["detail"]
+
+
+def test_http_create_container_with_weight_kg(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    created = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "weight_kg": "1250.5000",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["weight_kg"] == "1250.5000"
+    assert created.json()["quantity"] is None
+    assert created.json()["tare_kg"] is None
+    assert created.json()["vgm_kg"] is None
+
+
+def test_http_rejects_zero_container_weight(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "weight_kg": "0",
+        },
+    )
+    assert reply.status_code == 400
+    assert "waga" in reply.json()["detail"]
 
 
 def test_http_rejects_negative_mixed_dd_days(box_client: object) -> None:

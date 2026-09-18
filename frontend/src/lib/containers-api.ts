@@ -40,6 +40,7 @@ export type ContainerRow = {
   payload_kg: string | null
   teu: string | null
   quantity: number | null
+  weight_kg: string | null
   vgm_method: string | null
   vgm_cutoff_at: string | null
   last_survey_at: string | null
@@ -86,6 +87,7 @@ export type ContainerWrite = {
   payload_kg?: string | null
   teu?: string | null
   quantity?: number | null
+  weight_kg?: string | null
   vgm_method?: string | null
   vgm_cutoff_at?: string | null
   last_survey_at?: string | null
