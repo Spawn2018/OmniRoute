@@ -225,6 +225,7 @@ modules =
     app.services.peppol_marks
     app.services.sid_import_marks
     app.services.ais_import_marks
+    app.services.waste_marks
     app.services.integration_hub_marks
     app.services.webhook_outbox_marks
     app.services.partner_exchange_marks
@@ -1004,6 +1005,9 @@ forbidden_modules =
     app.services.ais_import_marks
     app.repositories.ais_import_marks
     app.models.ais_import_mark
+    app.services.waste_marks
+    app.repositories.waste_marks
+    app.models.waste_mark
     app.services.integration_hub_marks
     app.services.webhook_outbox_marks
     app.services.partner_exchange_marks

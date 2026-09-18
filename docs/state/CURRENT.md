@@ -1,10 +1,10 @@
 ﻿# Bieżący focus
 
-**Faza:** Oś pinu — **563.0** leftover `waste_mark`
+**Faza:** Oś pinu — **564.0** leftover `shipment.is_waste`
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **562.0** C2 `ais_import_mark`
+**Ostatni plaster:** **563.0** C6 `waste_mark`
 
 **Etap:** Plan — wydmuszka leftover; `/plan-modul` → delta → plaster
 
@@ -12,11 +12,11 @@
 
 **Miejsce pracy:** produkt = to repo + GitHub.
 
-**Następny:** **563.0** C6 leftover HITL `waste_mark`. Nie MOS/BDO live. Nie AI3-payload. Nie G0-SH.
+**Następny:** **564.0** C6 leftover HITL `shipment.is_waste`. Nie MOS live. Nie AI3-payload. Nie G0-SH.
 
-**Park / czeka w PLAN:** AI3-payload · G0-SH · PUESC · live FK UUID · live 409 blocks_create · …
+**Park / czeka w PLAN:** AI3-payload · G0-SH · PUESC · live FK UUID · live 409 blocks_create · C3 VIES/GUS · C4 eCMR · …
 
-**Spec (jedyna na sesję produktu):** (brak — najpierw delta `563.0`)
+**Spec (jedyna na sesję produktu):** brak — najpierw `/plan-modul` → `docs/deltas/open/564.0-*.md`
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 
@@ -24,7 +24,6 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-18:** Plaster **562.0** C2 ais_import_mark zamknięty. `/noc 17`.
+**2026-09-18:** Plaster **563.0** C6 waste_mark zamknięty. `/noc 17`.
+**2026-09-18:** Plaster **562.0** C2 ais_import_mark zamknięty (gate success). `/noc 17`.
 **2026-09-18:** Plaster **561.0** C1 filing_fk_mark zamknięty. `/noc 7`.
-**2026-09-18:** Plaster **560.0** C8 blocks_create_enforcement_mark zamknięty. `/noc 7`.
-**2026-09-18:** Plaster **559.0** F11 postal_epo_mark zamknięty (gate success). `/noc 7`.

@@ -325,6 +325,7 @@ from app.api import (
     version_windows,
     visibility_connectors,
     war_room_marks,
+    waste_marks,
     weather_observations,
     webhook_outbox_marks,
     what_if_marks,
@@ -525,6 +526,7 @@ api_router.include_router(abandoned_rto_marks.router)
 api_router.include_router(ab_sus_marks.router)
 api_router.include_router(air_ra3_marks.router)
 api_router.include_router(ais_import_marks.router)
+api_router.include_router(waste_marks.router)
 api_router.include_router(aeo_dossier_marks.router)
 api_router.include_router(yard_marks.router)
 api_router.include_router(billing_marks.router)

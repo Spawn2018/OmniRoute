@@ -328,6 +328,7 @@ import { Route as VersionScoresRouteImport } from './routes/version-scores'
 import { Route as VersionWindowsRouteImport } from './routes/version-windows'
 import { Route as VisibilityConnectorsRouteImport } from './routes/visibility-connectors'
 import { Route as WarRoomMarksRouteImport } from './routes/war-room-marks'
+import { Route as WasteMarksRouteImport } from './routes/waste-marks'
 import { Route as WatchtowerRouteImport } from './routes/watchtower'
 import { Route as WeatherObservationsRouteImport } from './routes/weather-observations'
 import { Route as WebhookOutboxMarksRouteImport } from './routes/webhook-outbox-marks'
@@ -1936,6 +1937,11 @@ const WarRoomMarksRoute = WarRoomMarksRouteImport.update({
   path: '/war-room-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WasteMarksRoute = WasteMarksRouteImport.update({
+  id: '/waste-marks',
+  path: '/waste-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WatchtowerRoute = WatchtowerRouteImport.update({
   id: '/watchtower',
   path: '/watchtower',
@@ -2297,6 +2303,7 @@ export interface FileRoutesByFullPath {
   '/version-windows': typeof VersionWindowsRoute
   '/visibility-connectors': typeof VisibilityConnectorsRoute
   '/war-room-marks': typeof WarRoomMarksRoute
+  '/waste-marks': typeof WasteMarksRoute
   '/watchtower': typeof WatchtowerRoute
   '/weather-observations': typeof WeatherObservationsRoute
   '/webhook-outbox-marks': typeof WebhookOutboxMarksRoute
@@ -2626,6 +2633,7 @@ export interface FileRoutesByTo {
   '/version-windows': typeof VersionWindowsRoute
   '/visibility-connectors': typeof VisibilityConnectorsRoute
   '/war-room-marks': typeof WarRoomMarksRoute
+  '/waste-marks': typeof WasteMarksRoute
   '/watchtower': typeof WatchtowerRoute
   '/weather-observations': typeof WeatherObservationsRoute
   '/webhook-outbox-marks': typeof WebhookOutboxMarksRoute
@@ -2956,6 +2964,7 @@ export interface FileRoutesById {
   '/version-windows': typeof VersionWindowsRoute
   '/visibility-connectors': typeof VisibilityConnectorsRoute
   '/war-room-marks': typeof WarRoomMarksRoute
+  '/waste-marks': typeof WasteMarksRoute
   '/watchtower': typeof WatchtowerRoute
   '/weather-observations': typeof WeatherObservationsRoute
   '/webhook-outbox-marks': typeof WebhookOutboxMarksRoute
@@ -3287,6 +3296,7 @@ export interface FileRouteTypes {
     | '/version-windows'
     | '/visibility-connectors'
     | '/war-room-marks'
+    | '/waste-marks'
     | '/watchtower'
     | '/weather-observations'
     | '/webhook-outbox-marks'
@@ -3616,6 +3626,7 @@ export interface FileRouteTypes {
     | '/version-windows'
     | '/visibility-connectors'
     | '/war-room-marks'
+    | '/waste-marks'
     | '/watchtower'
     | '/weather-observations'
     | '/webhook-outbox-marks'
@@ -3945,6 +3956,7 @@ export interface FileRouteTypes {
     | '/version-windows'
     | '/visibility-connectors'
     | '/war-room-marks'
+    | '/waste-marks'
     | '/watchtower'
     | '/weather-observations'
     | '/webhook-outbox-marks'
@@ -4275,6 +4287,7 @@ export interface RootRouteChildren {
   VersionWindowsRoute: typeof VersionWindowsRoute
   VisibilityConnectorsRoute: typeof VisibilityConnectorsRoute
   WarRoomMarksRoute: typeof WarRoomMarksRoute
+  WasteMarksRoute: typeof WasteMarksRoute
   WatchtowerRoute: typeof WatchtowerRoute
   WeatherObservationsRoute: typeof WeatherObservationsRoute
   WebhookOutboxMarksRoute: typeof WebhookOutboxMarksRoute
@@ -6520,6 +6533,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WarRoomMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/waste-marks': {
+      id: '/waste-marks'
+      path: '/waste-marks'
+      fullPath: '/waste-marks'
+      preLoaderRoute: typeof WasteMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/watchtower': {
       id: '/watchtower'
       path: '/watchtower'
@@ -6899,6 +6919,7 @@ const rootRouteChildren: RootRouteChildren = {
   VersionWindowsRoute: VersionWindowsRoute,
   VisibilityConnectorsRoute: VisibilityConnectorsRoute,
   WarRoomMarksRoute: WarRoomMarksRoute,
+  WasteMarksRoute: WasteMarksRoute,
   WatchtowerRoute: WatchtowerRoute,
   WeatherObservationsRoute: WeatherObservationsRoute,
   WebhookOutboxMarksRoute: WebhookOutboxMarksRoute,
