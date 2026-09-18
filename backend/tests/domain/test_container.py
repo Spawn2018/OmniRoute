@@ -1,4 +1,4 @@
-from datetime import UTC, datetime
+from datetime import UTC, date, datetime
 from decimal import Decimal
 from uuid import uuid4
 
@@ -14,6 +14,7 @@ from app.domain.container import (
     require_cfs_cutoff_at,
     require_container_bl_kind,
     require_container_no,
+    require_container_pickup_date,
     require_container_quantity,
     require_container_reefer,
     require_container_ref_1,
@@ -406,6 +407,18 @@ def test_container_volume_m3_is_positive_decimal() -> None:
         require_container_volume_m3(True)
     with pytest.raises(InvalidContainer, match="objętość"):
         require_container_volume_m3(1.5)
+
+
+def test_container_pickup_date_is_calendar_day() -> None:
+    assert require_container_pickup_date(None) is None
+    assert require_container_pickup_date("  ") is None
+    assert require_container_pickup_date("2026-09-19") == date(2026, 9, 19)
+    with pytest.raises(InvalidContainer, match="data odbioru"):
+        require_container_pickup_date("2026-09-19T00:00:00")
+    with pytest.raises(InvalidContainer, match="data odbioru"):
+        require_container_pickup_date(True)
+    with pytest.raises(InvalidContainer, match="data odbioru"):
+        require_container_pickup_date(1)
 
 
 def test_last_survey_at_reuses_aware_clock_and_rejects_naive() -> None:

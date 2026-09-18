@@ -1263,6 +1263,7 @@ def test_http_create_container_with_volume_m3(box_client: object) -> None:
     assert created.status_code == 201
     assert created.json()["volume_m3"] == "12.5000"
     assert created.json()["weight_kg"] is None
+    assert created.json()["pickup_date"] is None
 
 
 def test_http_rejects_zero_container_volume(box_client: object) -> None:
@@ -1280,6 +1281,41 @@ def test_http_rejects_zero_container_volume(box_client: object) -> None:
     )
     assert reply.status_code == 400
     assert "objętość" in reply.json()["detail"]
+
+
+def test_http_create_container_with_pickup_date(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    created = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "pickup_date": "2026-09-19",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["pickup_date"] == "2026-09-19"
+    assert created.json()["volume_m3"] is None
+
+
+def test_http_rejects_timestamp_container_pickup(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "pickup_date": "2026-09-19T00:00:00",
+        },
+    )
+    assert reply.status_code == 400
+    assert "data odbioru" in reply.json()["detail"]
 
 
 def test_http_rejects_negative_mixed_dd_days(box_client: object) -> None:

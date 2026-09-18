@@ -2817,6 +2817,10 @@ export type ContainerCreate = {
      */
     volume_m3?: unknown | null;
     /**
+     * Pickup Date
+     */
+    pickup_date?: unknown | null;
+    /**
      * Vgm Method
      */
     vgm_method?: unknown | null;
@@ -3006,6 +3010,10 @@ export type ContainerResponse = {
      * Volume M3
      */
     volume_m3: string | null;
+    /**
+     * Pickup Date
+     */
+    pickup_date: string | null;
     /**
      * Vgm Method
      */

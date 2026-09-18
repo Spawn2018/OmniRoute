@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date, datetime
 from decimal import Decimal
 from typing import NamedTuple
 from uuid import UUID, uuid4
@@ -13,6 +13,7 @@ from app.domain.container import (
     require_cfs_cutoff_at,
     require_container_bl_kind,
     require_container_no,
+    require_container_pickup_date,
     require_container_quantity,
     require_container_reefer,
     require_container_ref_1,
@@ -100,6 +101,7 @@ class _WriteBox(NamedTuple):
     qty: object
     kilos: object
     cub: object
+    picked: object
 
 
 class _BoxDraft(NamedTuple):
@@ -147,6 +149,7 @@ class _BoxDraft(NamedTuple):
     qty: int | None
     kilos: Decimal | None
     cub: Decimal | None
+    picked: date | None
 
 
 def _box_draft(write: _WriteBox) -> _BoxDraft:
@@ -186,8 +189,8 @@ def _box_draft(write: _WriteBox) -> _BoxDraft:
         require_payload_kg(write.payload),
         require_teu(write.teu),
         require_container_quantity(write.qty),
-        require_container_weight_kg(write.kilos),
-        require_container_volume_m3(write.cub),
+        require_container_weight_kg(write.kilos), require_container_volume_m3(write.cub),
+        require_container_pickup_date(write.picked),
     )
 
 
@@ -245,6 +248,7 @@ def _box_unchanged(current: Container, draft: _BoxDraft) -> bool:
         and current.quantity == draft.qty
         and current.weight_kg == draft.kilos
         and current.volume_m3 == draft.cub
+        and current.pickup_date == draft.picked
     )
 
 
@@ -299,7 +303,7 @@ def _container_row(organization_id: UUID, user_id: UUID, draft: _BoxDraft) -> Co
         pin_code=draft.pin,
         payload_kg=draft.payload,
         teu=draft.teu,
-        quantity=draft.qty, weight_kg=draft.kilos, volume_m3=draft.cub,
+        quantity=draft.qty, weight_kg=draft.kilos, volume_m3=draft.cub, pickup_date=draft.picked,
         created_by=user_id,
     )
 

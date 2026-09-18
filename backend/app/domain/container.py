@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date, datetime
 from decimal import Decimal, InvalidOperation
 from uuid import UUID
 
@@ -366,6 +366,22 @@ def require_container_weight_kg(raw: object) -> Decimal | None:
 
 def require_container_volume_m3(raw: object) -> Decimal | None:
     return _require_positive_kg(raw, "objętość")
+
+
+def require_container_pickup_date(raw: object) -> date | None:
+    if raw is None:
+        return None
+    if type(raw) is date:
+        return raw
+    if type(raw) is not str:
+        raise InvalidContainer("data odbioru: data kalendarzowa")
+    token = raw.strip()
+    if token == "":
+        return None
+    try:
+        return date.fromisoformat(token)
+    except ValueError as exc:
+        raise InvalidContainer("data odbioru: data kalendarzowa") from exc
 
 
 def _require_positive_kg(raw: object, label: str) -> Decimal | None:
