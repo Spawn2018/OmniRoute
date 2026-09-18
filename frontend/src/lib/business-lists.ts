@@ -644,6 +644,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/fuel-card-marks",
   "/fleet-cost-marks",
   "/bin-pack-marks",
+  "/blank-sailing-marks",
   "/pallet-pool-marks",
   "/e-cmr-marks",
   "/e-delivery-marks",
