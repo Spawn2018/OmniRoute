@@ -1167,6 +1167,10 @@ class InvalidWasteMark(DomainError):
     """C6 leftover: HITL BDO/KPO/WSR — nie MOS live."""
 
 
+class InvalidBlankSailingMark(DomainError):
+    """V3 leftover: HITL blank sailing / congestion / Gate OS — nie countdown."""
+
+
 class InvalidPostalEpoMark(DomainError):
     """F11 leftover: HITL EPO/PP — nie live PP."""
 

@@ -879,6 +879,11 @@ export const OPS_JOBS = [
     job: "katalog waste_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.blankSailingMark.route,
+    label: "Blank sailing / congestion / Gate OS",
+    job: "katalog blank_sailing_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.postalEpoMark.route,
     label: "Znacznik EPO/PP",
     job: "katalog postal_epo_mark HITL",
@@ -1805,6 +1810,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "562.0": "/ais-import-marks",
   "563.0": "/waste-marks",
   "564.0": "/shipments",
+  "565.0": "/blank-sailing-marks",
   "142.0": "/mail",
   "143.0": "/networks",
   "144.0": "/quotations",

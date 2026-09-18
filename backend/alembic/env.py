@@ -201,6 +201,8 @@ from app.models.blocks_create_enforcement_mark import BlocksCreateEnforcementMar
 from app.models.filing_fk_mark import FilingFkMark  # noqa: F401
 from app.models.ais_import_mark import AisImportMark  # noqa: F401
 from app.models.waste_mark import WasteMark  # noqa: F401
+from app.models.blank_sailing_mark import BlankSailingMark  # noqa: F401
+
 from app.models.registry_poll_mark import RegistryPollMark  # noqa: F401
 from app.models.working_capital_mark import WorkingCapitalMark  # noqa: F401
 from app.models.make_or_buy_mark import MakeOrBuyMark  # noqa: F401

@@ -186,6 +186,11 @@ export const BUSINESS_LISTS = {
   filingBindMark: { route: "/filing-bind-marks", tableKey: "filing_bind_mark" },
   filingFkMark: { route: "/filing-fk-marks", tableKey: "filing_fk_mark" },
   aisImportMark: { route: "/ais-import-marks", tableKey: "ais_import_mark" },
+  blankSailingMark: {
+    route: "/blank-sailing-marks",
+    tableKey: "blank_sailing_mark",
+  },
+
   wasteMark: { route: "/waste-marks", tableKey: "waste_mark" },
   postalEpoMark: { route: "/postal-epo-marks", tableKey: "postal_epo_mark" },
   invoiceAllocMark: { route: "/invoice-alloc-marks", tableKey: "invoice_alloc_mark" },

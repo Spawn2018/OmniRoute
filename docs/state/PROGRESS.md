@@ -983,3 +983,4 @@
 - 2026-09-18T03:55:00Z | 558.0 | filing_bind_mark | DONE | HITL catalog bind_kind shipment/scheme/both/other; bez FK shipment / PUESC
 
 - 2026-09-18T04:42:00Z | 559.0 | postal_epo_mark | DONE | HITL catalog epo_kind register/label/track/other; bez live PP / e-Doreczenia
+- 2026-09-18T11:17:00Z | 565.0 | blank_sailing_mark | DONE | HITL catalog sailing_kind blank/congestion/gate/other; bez N3 countdown / charge

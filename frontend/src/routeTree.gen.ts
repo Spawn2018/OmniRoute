@@ -27,6 +27,7 @@ import { Route as BenefitLedgersRouteImport } from './routes/benefit-ledgers'
 import { Route as BidDecisionMarksRouteImport } from './routes/bid-decision-marks'
 import { Route as BillingMarksRouteImport } from './routes/billing-marks'
 import { Route as BinPackMarksRouteImport } from './routes/bin-pack-marks'
+import { Route as BlankSailingMarksRouteImport } from './routes/blank-sailing-marks'
 import { Route as BlocksCreateEnforcementMarksRouteImport } from './routes/blocks-create-enforcement-marks'
 import { Route as BondedMarksRouteImport } from './routes/bonded-marks'
 import { Route as BookkeepingRouteImport } from './routes/bookkeeping'
@@ -428,11 +429,17 @@ const BinPackMarksRoute = BinPackMarksRouteImport.update({
   path: '/bin-pack-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BlocksCreateEnforcementMarksRoute = BlocksCreateEnforcementMarksRouteImport.update({
-  id: '/blocks-create-enforcement-marks',
-  path: '/blocks-create-enforcement-marks',
+const BlankSailingMarksRoute = BlankSailingMarksRouteImport.update({
+  id: '/blank-sailing-marks',
+  path: '/blank-sailing-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlocksCreateEnforcementMarksRoute =
+  BlocksCreateEnforcementMarksRouteImport.update({
+    id: '/blocks-create-enforcement-marks',
+    path: '/blocks-create-enforcement-marks',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const BondedMarksRoute = BondedMarksRouteImport.update({
   id: '/bonded-marks',
   path: '/bonded-marks',
@@ -2002,6 +2009,7 @@ export interface FileRoutesByFullPath {
   '/bid-decision-marks': typeof BidDecisionMarksRoute
   '/billing-marks': typeof BillingMarksRoute
   '/bin-pack-marks': typeof BinPackMarksRoute
+  '/blank-sailing-marks': typeof BlankSailingMarksRoute
   '/blocks-create-enforcement-marks': typeof BlocksCreateEnforcementMarksRoute
   '/bonded-marks': typeof BondedMarksRoute
   '/bookkeeping': typeof BookkeepingRoute
@@ -2332,6 +2340,7 @@ export interface FileRoutesByTo {
   '/bid-decision-marks': typeof BidDecisionMarksRoute
   '/billing-marks': typeof BillingMarksRoute
   '/bin-pack-marks': typeof BinPackMarksRoute
+  '/blank-sailing-marks': typeof BlankSailingMarksRoute
   '/blocks-create-enforcement-marks': typeof BlocksCreateEnforcementMarksRoute
   '/bonded-marks': typeof BondedMarksRoute
   '/bookkeeping': typeof BookkeepingRoute
@@ -2663,6 +2672,7 @@ export interface FileRoutesById {
   '/bid-decision-marks': typeof BidDecisionMarksRoute
   '/billing-marks': typeof BillingMarksRoute
   '/bin-pack-marks': typeof BinPackMarksRoute
+  '/blank-sailing-marks': typeof BlankSailingMarksRoute
   '/blocks-create-enforcement-marks': typeof BlocksCreateEnforcementMarksRoute
   '/bonded-marks': typeof BondedMarksRoute
   '/bookkeeping': typeof BookkeepingRoute
@@ -2995,6 +3005,7 @@ export interface FileRouteTypes {
     | '/bid-decision-marks'
     | '/billing-marks'
     | '/bin-pack-marks'
+    | '/blank-sailing-marks'
     | '/blocks-create-enforcement-marks'
     | '/bonded-marks'
     | '/bookkeeping'
@@ -3325,6 +3336,7 @@ export interface FileRouteTypes {
     | '/bid-decision-marks'
     | '/billing-marks'
     | '/bin-pack-marks'
+    | '/blank-sailing-marks'
     | '/blocks-create-enforcement-marks'
     | '/bonded-marks'
     | '/bookkeeping'
@@ -3655,6 +3667,7 @@ export interface FileRouteTypes {
     | '/bid-decision-marks'
     | '/billing-marks'
     | '/bin-pack-marks'
+    | '/blank-sailing-marks'
     | '/blocks-create-enforcement-marks'
     | '/bonded-marks'
     | '/bookkeeping'
@@ -3986,6 +3999,7 @@ export interface RootRouteChildren {
   BidDecisionMarksRoute: typeof BidDecisionMarksRoute
   BillingMarksRoute: typeof BillingMarksRoute
   BinPackMarksRoute: typeof BinPackMarksRoute
+  BlankSailingMarksRoute: typeof BlankSailingMarksRoute
   BlocksCreateEnforcementMarksRoute: typeof BlocksCreateEnforcementMarksRoute
   BondedMarksRoute: typeof BondedMarksRoute
   BookkeepingRoute: typeof BookkeepingRoute
@@ -4424,6 +4438,13 @@ declare module '@tanstack/react-router' {
       path: '/bin-pack-marks'
       fullPath: '/bin-pack-marks'
       preLoaderRoute: typeof BinPackMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blank-sailing-marks': {
+      id: '/blank-sailing-marks'
+      path: '/blank-sailing-marks'
+      fullPath: '/blank-sailing-marks'
+      preLoaderRoute: typeof BlankSailingMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blocks-create-enforcement-marks': {
@@ -6618,6 +6639,7 @@ const rootRouteChildren: RootRouteChildren = {
   BidDecisionMarksRoute: BidDecisionMarksRoute,
   BillingMarksRoute: BillingMarksRoute,
   BinPackMarksRoute: BinPackMarksRoute,
+  BlankSailingMarksRoute: BlankSailingMarksRoute,
   BlocksCreateEnforcementMarksRoute: BlocksCreateEnforcementMarksRoute,
   BondedMarksRoute: BondedMarksRoute,
   BookkeepingRoute: BookkeepingRoute,

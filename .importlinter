@@ -218,6 +218,7 @@ modules =
     app.services.fuel_card_marks
     app.services.fleet_cost_marks
     app.services.bin_pack_marks
+    app.services.blank_sailing_marks
     app.services.pallet_pool_marks
     app.services.e_cmr_marks
     app.services.e_delivery_marks
@@ -984,6 +985,9 @@ forbidden_modules =
     app.services.bin_pack_marks
     app.repositories.bin_pack_marks
     app.models.bin_pack_mark
+    app.services.blank_sailing_marks
+    app.repositories.blank_sailing_marks
+    app.models.blank_sailing_mark
     app.services.pallet_pool_marks
     app.repositories.pallet_pool_marks
     app.models.pallet_pool_mark

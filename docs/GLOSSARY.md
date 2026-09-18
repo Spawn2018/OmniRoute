@@ -260,6 +260,7 @@ kolumn. Nie 468.0.
 | ETA prawne | eta_legal | V2 HITL 194.0 na `stop`; zakaz jazdy/tacho leftover |
 | obserwacja pogody | weather_observation | V2 HITL 195.0; Open-Meteo/geometria leftover; nie ETA |
 | zegar D&D | free_time_clock | V3 HITL 196.0 rodzaj + free_days; nie countdown; nie charge |
+| blank sailing | blank_sailing_mark | V3 HITL 565.0 blank\|congestion\|gate; nie predykcja; nie N3 |
 | umowa klienta | customer_contract | CI9 HITL 272.0 nagłówek; 273.0 opaque present/absent, nie szyfr; leftover `wrapped_dek`; nie super-admin |
 | znacznik KEK | tenant_contract_kek | CI9 HITL 274.0 wrap_kind `password`/`kms`; nie klucz; nie materiał; 273.0 nadal nie szyfr |
 | klauzula SLA | sla_clause | CI1 HITL 313.0 na `customer_contract`; próg jako tekst; leftover kara SQL / ciphertext |

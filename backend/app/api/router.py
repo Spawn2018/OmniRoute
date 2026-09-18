@@ -17,6 +17,7 @@ from app.api import (
     bid_decision_marks,
     billing_marks,
     bin_pack_marks,
+    blank_sailing_marks,
     blocks_create_enforcement_marks,
     bonded_marks,
     booking_instructions,
@@ -527,6 +528,7 @@ api_router.include_router(ab_sus_marks.router)
 api_router.include_router(air_ra3_marks.router)
 api_router.include_router(ais_import_marks.router)
 api_router.include_router(waste_marks.router)
+api_router.include_router(blank_sailing_marks.router)
 api_router.include_router(aeo_dossier_marks.router)
 api_router.include_router(yard_marks.router)
 api_router.include_router(billing_marks.router)

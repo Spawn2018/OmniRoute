@@ -230,6 +230,8 @@ def _organization_f_invoice_relations() -> dict[str, Userset]:
         "can_manage_filing_fk_marks": _member(),
         "can_manage_ais_import_marks": _member(),
         "can_manage_waste_marks": _member(),
+        "can_manage_blank_sailing_marks": _member(),
+
         "can_manage_postal_epo_marks": _member(),
         "can_manage_blocks_create_enforcement_marks": _member(),
         "can_manage_invoice_alloc_marks": _member(),

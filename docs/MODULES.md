@@ -133,7 +133,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | CT11 | Znacznik współpracy 3 stron HITL | 284.0 `collaboration_mark` | **ukończony (HITL katalog roli)** · leftover wspólny SELECT |
 | CT12 | Znacznik CAPA HITL | 282.0 `capa_mark` | **ukończony (HITL katalog rodzaju)** · leftover workflow |
 | V2 | Pogoda HITL | 194.0 `stop` ETA · 195.0 `weather_observation` | **ukończony (HITL)** · dwa ETA + warunek/stacja; leftover Open-Meteo / myto |
-| V3 | Zegar D&D HITL | 196.0 `free_time_clock` | **ukończony (HITL)** · rodzaj + dni wolne; leftover countdown / charge / blank sailing |
+| V3 | Zegar D&D HITL | 196.0 `free_time_clock` · 565.0 `blank_sailing_mark` | **ukończony (HITL)** · rodzaj + dni wolne + blank/congestion/gate; leftover countdown / charge |
 | V5 | Konektor GPS HITL | 197.0 `telematics_connector` | **ukończony (HITL)** · reżim + dostawca; leftover ciphertext / 3 dni U4; `position_event` katalog 457.0 (leftover współrzędne / poll) |
 | V6 | Impact wieży HITL | 198.0 `tower_impact` | **ukończony (HITL)** · etap łańcucha + status umowy; leftover silnik EBITDA / sla_clause / scoring |
 | W1 | Bliźniak HITL | 199.0 `twin_mark` | **ukończony (HITL)** · 8 rodzajów; leftover 8 silników fizyki (`plan_snapshot` DONE 265.0) |
