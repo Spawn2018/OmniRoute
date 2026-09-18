@@ -2761,6 +2761,10 @@ export type ContainerCreate = {
      */
     demurrage_free_days?: unknown | null;
     /**
+     * Detention Free Days
+     */
+    detention_free_days?: unknown | null;
+    /**
      * Si Cutoff At
      */
     si_cutoff_at?: unknown | null;
@@ -2914,6 +2918,10 @@ export type ContainerResponse = {
      * Demurrage Free Days
      */
     demurrage_free_days: number | null;
+    /**
+     * Detention Free Days
+     */
+    detention_free_days: number | null;
     /**
      * Si Cutoff At
      */

@@ -45,6 +45,7 @@ class ContainerCreate(BaseModel):
     free_time_origin_h: object | None = None
     free_time_dest_h: object | None = None
     demurrage_free_days: object | None = None
+    detention_free_days: object | None = None
     si_cutoff_at: object | None = None
     ams_cutoff_at: object | None = None
     cy_cutoff_at: object | None = None
@@ -87,6 +88,7 @@ class ContainerResponse(BaseModel):
     free_time_origin_h: int | None
     free_time_dest_h: int | None
     demurrage_free_days: int | None
+    detention_free_days: int | None
     si_cutoff_at: datetime | None
     ams_cutoff_at: datetime | None
     cy_cutoff_at: datetime | None
@@ -132,9 +134,8 @@ def _write_from_body(
         body.pickup_terminal,
         body.return_terminal,
         body.bl_kind,
-        body.free_time_origin_h,
-        body.free_time_dest_h,
-        body.demurrage_free_days,
+        body.free_time_origin_h, body.free_time_dest_h,
+        body.demurrage_free_days, body.detention_free_days,
         body.si_cutoff_at,
         body.ams_cutoff_at,
         body.cy_cutoff_at,

@@ -1,7 +1,8 @@
 ﻿# Historia plastrów
 
 | Data | Plaster | Moduł | Opis |
-| 2026-09-18 | 566.0 | V3 container.demurrage_free_days | 2026-09-18 | PRZESZLO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
+| 2026-09-18 | 567.0 | V3 container.detention_free_days | 2026-09-18 | PRZESZLO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
+| 2026-09-18 | 566.0 | V3 container.demurrage_free_days | 2026-09-18 | PRZESZLO (gate success) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-17 | 551.0 | F10 invoice_alloc_mark HITL | 2026-09-17 | PRZESZLO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-17 | 550.0 | F10 invoice_match_mark HITL | 2026-09-17 | PRZESZLO (gate success) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-17 | 549.0 | F10 purchase_invoice HITL | 2026-09-17 | PRZESZLO (gate success) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
@@ -986,3 +987,4 @@
 - 2026-09-18T04:42:00Z | 559.0 | postal_epo_mark | DONE | HITL catalog epo_kind register/label/track/other; bez live PP / e-Doreczenia
 - 2026-09-18T11:17:00Z | 565.0 | blank_sailing_mark | DONE | HITL catalog sailing_kind blank/congestion/gate/other; bez N3 countdown / charge
 - 2026-09-18T12:45:00Z | 566.0 | container.demurrage_free_days | DONE | HITL dni demurrage na container; bez countdown / charge / detention
+- 2026-09-18T14:00:00Z | 567.0 | container.detention_free_days | DONE | HITL dni detention na container; bez countdown / charge / mixed

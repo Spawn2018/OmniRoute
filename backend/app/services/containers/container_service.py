@@ -25,6 +25,7 @@ from app.domain.container import (
     require_container_source_ref,
     require_cy_cutoff_at,
     require_demurrage_free_days,
+    require_detention_free_days,
     require_free_time_dest_h,
     require_free_time_origin_h,
     require_iso_size_type,
@@ -71,6 +72,7 @@ class _WriteBox(NamedTuple):
     idle: object
     dwell: object
     demurrage: object
+    detention: object
     cut: object
     ams: object
     cy: object
@@ -109,6 +111,7 @@ class _BoxDraft(NamedTuple):
     idle: int | None
     dwell: int | None
     demurrage: int | None
+    detention: int | None
     cut: datetime | None
     ams: datetime | None
     cy: datetime | None
@@ -123,6 +126,7 @@ class _BoxDraft(NamedTuple):
 
 
 def _box_draft(write: _WriteBox) -> _BoxDraft:
+    clocks = _require_clocks(write)
     return _BoxDraft(
         require_container_no(write.number),
         require_iso_size_type(write.size_type),
@@ -145,13 +149,7 @@ def _box_draft(write: _WriteBox) -> _BoxDraft:
         require_pickup_terminal(write.dock),
         require_return_terminal(write.yard),
         require_container_bl_kind(write.bill),
-        require_free_time_origin_h(write.idle),
-        require_free_time_dest_h(write.dwell),
-        require_demurrage_free_days(write.demurrage),
-        require_si_cutoff_at(write.cut),
-        require_ams_cutoff_at(write.ams),
-        require_cy_cutoff_at(write.cy),
-        require_cfs_cutoff_at(write.cfs),
+        *clocks,
         require_vgm_kg(write.mass),
         require_vgm_method(write.weigh),
         require_vgm_cutoff_at(write.vgm),
@@ -159,6 +157,22 @@ def _box_draft(write: _WriteBox) -> _BoxDraft:
         require_booking_no(write.book),
         require_carrier_party_id(write.carrier),
         require_container_shipment_leg_id(write.leg),
+    )
+
+
+def _require_clocks(write: _WriteBox) -> tuple[
+    int | None, int | None, int | None, int | None,
+    datetime | None, datetime | None, datetime | None, datetime | None,
+]:
+    return (
+        require_free_time_origin_h(write.idle),
+        require_free_time_dest_h(write.dwell),
+        require_demurrage_free_days(write.demurrage),
+        require_detention_free_days(write.detention),
+        require_si_cutoff_at(write.cut),
+        require_ams_cutoff_at(write.ams),
+        require_cy_cutoff_at(write.cy),
+        require_cfs_cutoff_at(write.cfs),
     )
 
 
@@ -184,13 +198,7 @@ def _box_unchanged(current: Container, draft: _BoxDraft) -> bool:
         and current.pickup_terminal == draft.dock
         and current.return_terminal == draft.yard
         and current.bl_kind == draft.bill
-        and current.free_time_origin_h == draft.idle
-        and current.free_time_dest_h == draft.dwell
-        and current.demurrage_free_days == draft.demurrage
-        and current.si_cutoff_at == draft.cut
-        and current.ams_cutoff_at == draft.ams
-        and current.cy_cutoff_at == draft.cy
-        and current.cfs_cutoff_at == draft.cfs
+        and _clocks_match(current, draft)
         and current.vgm_kg == draft.mass
         and current.vgm_method == draft.weigh
         and current.vgm_cutoff_at == draft.vgm
@@ -198,6 +206,19 @@ def _box_unchanged(current: Container, draft: _BoxDraft) -> bool:
         and current.booking_no == draft.book
         and current.carrier_party_id == draft.carrier
         and current.shipment_leg_id == draft.leg
+    )
+
+
+def _clocks_match(current: Container, draft: _BoxDraft) -> bool:
+    return (
+        current.free_time_origin_h == draft.idle
+        and current.free_time_dest_h == draft.dwell
+        and current.demurrage_free_days == draft.demurrage
+        and current.detention_free_days == draft.detention
+        and current.si_cutoff_at == draft.cut
+        and current.ams_cutoff_at == draft.ams
+        and current.cy_cutoff_at == draft.cy
+        and current.cfs_cutoff_at == draft.cfs
     )
 
 
@@ -226,12 +247,7 @@ def _container_row(organization_id: UUID, user_id: UUID, draft: _BoxDraft) -> Co
         pickup_terminal=draft.dock,
         return_terminal=draft.yard,
         bl_kind=draft.bill,
-        free_time_origin_h=draft.idle, free_time_dest_h=draft.dwell,
-        demurrage_free_days=draft.demurrage,
-        si_cutoff_at=draft.cut,
-        ams_cutoff_at=draft.ams,
-        cy_cutoff_at=draft.cy,
-        cfs_cutoff_at=draft.cfs,
+        **_clock_kwargs(draft),
         vgm_kg=draft.mass,
         vgm_method=draft.weigh,
         vgm_cutoff_at=draft.vgm,
@@ -241,6 +257,19 @@ def _container_row(organization_id: UUID, user_id: UUID, draft: _BoxDraft) -> Co
         shipment_leg_id=draft.leg,
         created_by=user_id,
     )
+
+
+def _clock_kwargs(draft: _BoxDraft) -> dict[str, object]:
+    return {
+        "free_time_origin_h": draft.idle,
+        "free_time_dest_h": draft.dwell,
+        "demurrage_free_days": draft.demurrage,
+        "detention_free_days": draft.detention,
+        "si_cutoff_at": draft.cut,
+        "ams_cutoff_at": draft.ams,
+        "cy_cutoff_at": draft.cy,
+        "cfs_cutoff_at": draft.cfs,
+    }
 
 
 class ContainerService:

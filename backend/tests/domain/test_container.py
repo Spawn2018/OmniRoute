@@ -25,6 +25,7 @@ from app.domain.container import (
     require_container_source_ref,
     require_cy_cutoff_at,
     require_demurrage_free_days,
+    require_detention_free_days,
     require_free_time_dest_h,
     require_free_time_origin_h,
     require_iso_size_type,
@@ -233,6 +234,12 @@ def test_demurrage_free_days_keeps_days_and_rejects_float() -> None:
         require_demurrage_free_days(-1)
     with pytest.raises(InvalidContainer, match="dni"):
         require_demurrage_free_days(1.5)  # type: ignore[arg-type]
+
+
+def test_detention_free_days_reuses_dd_days_rule() -> None:
+    assert require_detention_free_days(5) == 5
+    with pytest.raises(InvalidContainer, match="dni"):
+        require_detention_free_days(-1)
 
 
 def test_si_cutoff_at_keeps_aware_clock_and_rejects_naive() -> None:

@@ -232,14 +232,22 @@ def require_free_time_dest_h(raw: object) -> int | None:
 
 
 def require_demurrage_free_days(raw: object) -> int | None:
+    return _require_dd_days(raw, "demurrage")
+
+
+def require_detention_free_days(raw: object) -> int | None:
+    return _require_dd_days(raw, "detention")
+
+
+def _require_dd_days(raw: object, label: str) -> int | None:
     if raw is None:
         return None
     if type(raw) is bool or type(raw) is not int:
-        raise InvalidContainer("dni demurrage muszą być liczbą całkowitą")
+        raise InvalidContainer(f"dni {label} muszą być liczbą całkowitą")
     if raw < 0:
-        raise InvalidContainer("dni demurrage: nieujemne")
+        raise InvalidContainer(f"dni {label}: nieujemne")
     if raw > _MAX_DEMURRAGE_DAYS:
-        raise InvalidContainer("dni demurrage: za dużo")
+        raise InvalidContainer(f"dni {label}: za dużo")
     return raw
 
 
