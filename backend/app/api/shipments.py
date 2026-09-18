@@ -35,6 +35,7 @@ class ShipmentCreate(BaseModel):
     guide_code: str | None = None
     plant_label: str | None = None
     carrier_label: str | None = None
+    is_waste: bool | None = None
 
 
 class ShipmentResponse(BaseModel):
@@ -52,8 +53,8 @@ class ShipmentResponse(BaseModel):
     plant_label: str | None
     carrier_label: str | None
     asn_id: UUID | None
+    is_waste: bool
     status: str
-
 
 async def _enforce_guide_if_blocking(
     session: AsyncSession,
@@ -126,6 +127,7 @@ async def create_shipment(
         guide_code=body.guide_code,
         plant_label=body.plant_label,
         carrier_label=body.carrier_label,
+        is_waste=body.is_waste,
     )
     await session.commit()
     return ShipmentResponse.model_validate(row)

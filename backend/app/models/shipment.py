@@ -1,6 +1,7 @@
 import uuid
 
 from sqlalchemy import (
+    Boolean,
     CheckConstraint,
     ForeignKey,
     ForeignKeyConstraint,
@@ -112,4 +113,6 @@ class Shipment(Base, TimestampMixin):
     plant_label: Mapped[str | None] = mapped_column(String(128), nullable=True)
     carrier_label: Mapped[str | None] = mapped_column(String(128), nullable=True)
     asn_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)
+    # HITL flaga odpadu — nie MOS live i nie auto z waste_mark.
+    is_waste: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
     status: Mapped[str] = mapped_column(String(8), nullable=False)

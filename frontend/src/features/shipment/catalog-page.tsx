@@ -27,6 +27,7 @@ function ShipmentCreateForm(args: { organizationId: string | null }) {
   const [guideCode, setGuideCode] = useState("")
   const [plantLabel, setPlantLabel] = useState("")
   const [carrierLabel, setCarrierLabel] = useState("")
+  const [isWaste, setIsWaste] = useState(false)
   const save = useMutation({
     mutationFn: () =>
       createShipment({
@@ -38,6 +39,7 @@ function ShipmentCreateForm(args: { organizationId: string | null }) {
         guide_code: guideCode.trim() === "" ? null : guideCode.trim(),
         plant_label: plantLabel.trim() === "" ? null : plantLabel.trim(),
         carrier_label: carrierLabel.trim() === "" ? null : carrierLabel.trim(),
+        is_waste: isWaste,
       }),
     onSuccess: () => {
       setQuotationId("")
@@ -47,6 +49,7 @@ function ShipmentCreateForm(args: { organizationId: string | null }) {
       setGuideCode("")
       setPlantLabel("")
       setCarrierLabel("")
+      setIsWaste(false)
       void client.invalidateQueries({ queryKey: ["shipments", args.organizationId] })
     },
   })
@@ -96,6 +99,15 @@ function ShipmentCreateForm(args: { organizationId: string | null }) {
         value={carrierLabel}
         onChange={(event) => setCarrierLabel(event.target.value)}
       />
+      <label className="flex items-center gap-2 text-xs">
+        <input
+          aria-label="Flaga odpadu is_waste"
+          checked={isWaste}
+          onChange={(event) => setIsWaste(event.target.checked)}
+          type="checkbox"
+        />
+        is_waste (HITL · nie MOS)
+      </label>
       <Button type="submit" disabled={save.isPending || !args.organizationId}>
         Zapisz zlecenie
       </Button>
@@ -133,6 +145,7 @@ export function ShipmentPage() {
         <p key={row.id} className="text-xs">
           {row.status} {row.source_ref} {row.shipment_ref ?? "bez numeru"}{" "}
           {row.parent_shipment_id ?? "bez rodzica"} {row.relation_kind ?? ""}{" "}
+          {row.is_waste ? "odpad" : "bez odpadu"}{" "}
           <Link className="underline" to="/quotations">
             wycena
           </Link>

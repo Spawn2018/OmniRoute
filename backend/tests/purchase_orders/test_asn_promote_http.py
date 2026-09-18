@@ -90,6 +90,7 @@ def _bind_promote(
                 plant_label=kwargs.get("plant_label"),  # type: ignore[arg-type]
                 carrier_label=kwargs.get("carrier_label"),  # type: ignore[arg-type]
                 asn_id=kwargs.get("asn_id"),  # type: ignore[arg-type]
+                is_waste=False,
                 status="draft",
                 created_by=kwargs["user_id"],  # type: ignore[arg-type]
             )

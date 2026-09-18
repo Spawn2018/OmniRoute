@@ -13,6 +13,8 @@ export type Shipment = {
   guide_code: string | null
   plant_label: string | null
   carrier_label: string | null
+  asn_id: string | null
+  is_waste: boolean
   status: string
 }
 
@@ -38,6 +40,7 @@ export async function createShipment(input: {
   guide_code?: string | null
   plant_label?: string | null
   carrier_label?: string | null
+  is_waste?: boolean | null
 }): Promise<Shipment> {
   const response = await fetch("/api/v1/shipments", {
     method: "POST",

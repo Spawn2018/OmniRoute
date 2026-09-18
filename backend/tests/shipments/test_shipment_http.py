@@ -63,6 +63,7 @@ class StubShipmentService:
         guide_code: object = None,
         plant_label: object = None,
         carrier_label: object = None,
+        is_waste: object = None,
     ) -> Shipment:
         if any(row.quotation_id == quotation_id for row in self.rows):
             raise ShipmentConflict("to zlecenie już istnieje dla tej wyceny")
@@ -82,6 +83,11 @@ class StubShipmentService:
         carrier = None
         if type(carrier_label) is str:
             carrier = carrier_label.strip() or None
+        waste = False
+        if is_waste is not None:
+            if type(is_waste) is not bool:
+                raise InvalidShipment("is_waste musi być true albo false")
+            waste = is_waste
         row = Shipment(
             id=row_id,
             organization_id=organization_id,
@@ -94,6 +100,7 @@ class StubShipmentService:
             guide_code=token,
             plant_label=plant,
             carrier_label=carrier,
+            is_waste=waste,
             status="draft",
             created_by=user_id,
         )
@@ -213,6 +220,7 @@ def test_http_create_and_list_shipment(catalog_client: object) -> None:
     assert body["shipment_ref"] is None
     assert body["parent_shipment_id"] is None
     assert body["relation_kind"] is None
+    assert body["is_waste"] is False
     assert body["status"] == "draft"
     assert "amount" not in body
     assert "margin" not in body
@@ -282,6 +290,37 @@ def test_http_create_shipment_with_ref(catalog_client: object) -> None:
     assert created.status_code == 201
     assert created.json()["shipment_ref"] == "omni://shipment/ab1"
     assert "qr" not in created.json()
+
+
+def test_http_create_shipment_is_waste_true(catalog_client: object) -> None:
+    client, quotes, _shipments, _guides, _enf, _matches = catalog_client
+    assert quotes.row is not None
+    created = client.post(
+        "/api/v1/shipments",
+        headers=bearer_auth_headers(),
+        json={
+            "quotation_id": str(quotes.row.id),
+            "source_ref": "fixture://shipment/1",
+            "is_waste": True,
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["is_waste"] is True
+
+
+def test_http_create_shipment_bad_is_waste_is_422(catalog_client: object) -> None:
+    client, quotes, _shipments, _guides, _enf, _matches = catalog_client
+    assert quotes.row is not None
+    response = client.post(
+        "/api/v1/shipments",
+        headers=bearer_auth_headers(),
+        json={
+            "quotation_id": str(quotes.row.id),
+            "source_ref": "fixture://shipment/1",
+            "is_waste": ["x"],
+        },
+    )
+    assert response.status_code == 422
 
 
 def test_http_create_shipment_bad_ref_is_400(catalog_client: object) -> None:

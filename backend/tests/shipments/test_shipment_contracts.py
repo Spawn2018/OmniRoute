@@ -68,6 +68,19 @@ def test_migration_144_adds_shipment_ref_without_qr() -> None:
     assert "def downgrade" in source
 
 
+def test_migration_444_adds_is_waste_without_mos() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "444_shipment_is_waste.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "444_shipment_is_waste"' in source
+    assert 'down_revision: str | None = "443_waste_mark"' in source
+    assert "is_waste" in source
+    assert "Boolean" in source
+    assert "httpx" not in source
+    assert "Numeric" not in source
+    assert "def downgrade" in source
+
+
 def test_migration_150_adds_parent_without_charge() -> None:
     source = (_ROOT / "backend" / "alembic" / "versions" / "150_shipment_parent.py").read_text(
         encoding="utf-8",

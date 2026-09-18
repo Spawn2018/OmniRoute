@@ -1,22 +1,22 @@
 ﻿# Bieżący focus
 
-**Faza:** Oś pinu — **564.0** leftover `shipment.is_waste`
+**Faza:** Oś pinu — **565.0** leftover V3 `blank_sailing_mark`
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **563.0** C6 `waste_mark`
+**Ostatni plaster:** **564.0** C6 `shipment.is_waste`
 
-**Etap:** Plaster — delta `564.0` zaakceptowana `/noc`; wolno `/plaster`
+**Etap:** Plan — wydmuszka leftover; `/plan-modul` → delta → plaster
 
 **Noc:** `/noc 17` do **2026-09-18T17:00:00+02:00**
 
 **Miejsce pracy:** produkt = to repo + GitHub.
 
-**Następny:** **564.0** C6 leftover HITL `shipment.is_waste`. Nie MOS live. Nie AI3-payload. Nie G0-SH.
+**Następny:** **565.0** V3 leftover HITL `blank_sailing_mark`. Nie countdown N3. Nie szkic charge. Nie AI3-payload. Nie G0-SH.
 
-**Park / czeka w PLAN:** AI3-payload · G0-SH · PUESC · live FK UUID · live 409 blocks_create · C3 VIES/GUS · C4 eCMR · …
+**Park / czeka w PLAN:** AI3-payload · G0-SH · PUESC · MOS live · live FK UUID · live 409 · C3 VIES/GUS · C4 eCMR · …
 
-**Spec (jedyna na sesję produktu):** [docs/deltas/open/564.0-shipment-is-waste.md](../deltas/open/564.0-shipment-is-waste.md)
+**Spec (jedyna na sesję produktu):** brak — najpierw `/plan-modul` → `docs/deltas/open/565.0-*.md`
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 
@@ -24,6 +24,6 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-18:** Delta **564.0** zaakceptowana `/noc 17`. Wolno plaster.
+**2026-09-18:** Plaster **564.0** C6 shipment.is_waste zamknięty. `/noc 17`.
 **2026-09-18:** Plaster **563.0** C6 waste_mark zamknięty (gate success). `/noc 17`.
 **2026-09-18:** Plaster **562.0** C2 ais_import_mark zamknięty (gate success). `/noc 17`.

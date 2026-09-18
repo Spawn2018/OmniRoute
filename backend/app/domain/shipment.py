@@ -64,6 +64,14 @@ def require_shipment_ref(raw: object) -> str | None:
     raise InvalidShipment("obce wskazanie numeru zlecenia")
 
 
+def require_is_waste(raw: object) -> bool:
+    if raw is None:
+        return False
+    if type(raw) is not bool:
+        raise InvalidShipment("is_waste musi być true albo false")
+    return raw
+
+
 _PARENT_KINDS = frozenset({"drayage", "oncarriage", "leg_subcontract", "other"})
 _SNAKE = re.compile(r"^[a-z][a-z0-9_]{1,31}$")
 _MAX_LABEL = 128

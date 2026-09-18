@@ -970,6 +970,7 @@
 
 - 2026-09-18T06:05:00Z | 562.0 | ais_import_mark | DONE | HITL catalog import_kind ais/aes/intrastat/other; bez PUESC / XML
 - 2026-09-18T08:20:00Z | 563.0 | waste_mark | DONE | HITL catalog waste_kind bdo/kpo/wsr/other; bez MOS / shipment.is_waste
+- 2026-09-18T09:50:00Z | 564.0 | shipment.is_waste | DONE | HITL bool na shipment DEFAULT false; bez MOS / auto waste_mark
 - 2026-09-18T04:05:00Z | 561.0 | filing_fk_mark | DONE | HITL catalog fk_kind shipment/scheme/other; bez live FK / PUESC
 - 2026-09-18T03:20:00Z | 560.0 | blocks_create_enforcement_mark | DONE | HITL catalog enforcement_kind block_409/warn_only/record_only/other; bez live 409 / wiring create_block\n- 2026-09-18T00:20:00Z | 554.0 | relation_document_requirement | DONE | HITL catalog relation_kind domestic/international/waste/other; bez 409 / blocks_create
 

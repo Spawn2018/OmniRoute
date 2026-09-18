@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **564.0** C6 leftover HITL `shipment.is_waste`. Nie MOS live. Nie AI3-payload. Nie G0-SH.
+**Następny:** **565.0** V3 leftover HITL `blank_sailing_mark`. Nie countdown N3. Nie szkic charge. Nie AI3-payload. Nie G0-SH.
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -574,7 +574,7 @@ Karta: [karty-pol-g2-tender.md](analysis/karty-pol-g2-tender.md). P6 = oferty od
 
 | ID | Co | Status | Uwagi |
 |---|---|---|---|
-| C1 / C6–C8 | SENT, BDO, `monitoring_scheme`, `party_document` 409 + KREPTD C8 | zamknięty HITL C7 katalog ([187.0](deltas/archived/187.0-monitoring-scheme.md)); zamknięty HITL C8 katalog ([188.0](deltas/archived/188.0-party-document.md)); zamknięty HITL C1 ([553.0](deltas/archived/553.0-shipment-monitoring-filing.md)); zamknięty HITL bind ([558.0](deltas/archived/558.0-filing-bind-mark.md)); zamknięty HITL cel FK ([561.0](deltas/archived/561.0-filing-fk-mark.md)); leftover live FK UUID / PUESC; zamknięty HITL C8 leftover ([554.0](deltas/archived/554.0-relation-document-requirement.md)); zamknięty HITL brama create ([556.0](deltas/archived/556.0-create-block-mark.md)); zamknięty HITL egzekucja bramy ([560.0](deltas/archived/560.0-blocks-create-enforcement-mark.md)); leftover live 409 shipment / wiring; zamknięty HITL document_kind ([557.0](deltas/archived/557.0-document-kind-match-mark.md)); zamknięty HITL C6 `waste_mark` ([563.0](deltas/archived/563.0-waste-mark.md)); leftover MOS live / `shipment.is_waste` | karta [karty-pol-fala-c.md](analysis/karty-pol-fala-c.md); dump `04b`: SENT nie publiczne u TMS top-10 |
+| C1 / C6–C8 | SENT, BDO, `monitoring_scheme`, `party_document` 409 + KREPTD C8 | zamknięty HITL C7 katalog ([187.0](deltas/archived/187.0-monitoring-scheme.md)); zamknięty HITL C8 katalog ([188.0](deltas/archived/188.0-party-document.md)); zamknięty HITL C1 ([553.0](deltas/archived/553.0-shipment-monitoring-filing.md)); zamknięty HITL bind ([558.0](deltas/archived/558.0-filing-bind-mark.md)); zamknięty HITL cel FK ([561.0](deltas/archived/561.0-filing-fk-mark.md)); leftover live FK UUID / PUESC; zamknięty HITL C8 leftover ([554.0](deltas/archived/554.0-relation-document-requirement.md)); zamknięty HITL brama create ([556.0](deltas/archived/556.0-create-block-mark.md)); zamknięty HITL egzekucja bramy ([560.0](deltas/archived/560.0-blocks-create-enforcement-mark.md)); leftover live 409 shipment / wiring; zamknięty HITL document_kind ([557.0](deltas/archived/557.0-document-kind-match-mark.md)); zamknięty HITL C6 `waste_mark` ([563.0](deltas/archived/563.0-waste-mark.md)); zamknięty HITL C6 `shipment.is_waste` ([564.0](deltas/archived/564.0-shipment-is-waste.md)); leftover MOS live | karta [karty-pol-fala-c.md](analysis/karty-pol-fala-c.md); dump `04b`: SENT nie publiczne u TMS top-10 |
 | C2 | AIS/AES/Intrastat | zamknięty HITL katalog ([562.0](deltas/archived/562.0-ais-import-mark.md)); leftover PUESC live | TO_VERIFY konto PUESC |
 | C3–C5 / C9 | lookup live, eCMR 2027 (EXP2.18), CO₂+metodyka, Trans.eu snapshot | zamknięty HITL C5 katalog ([190.0](deltas/archived/190.0-carbon-method.md)); leftover C3 live VIES/GUS / C4 eCMR / C9 Trans.eu | C9 bez scrapingu opinii |
 | **EXP0.8** | `cargo_claim` deadline CMR 7/21/365 + OS&D | zamknięty HITL OS&D + terminy ([191.0](deltas/archived/191.0-cargo-claim-cmr.md)); leftover Deadline Engine / evidence / S11 | nie kwota z LLM |
@@ -892,13 +892,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

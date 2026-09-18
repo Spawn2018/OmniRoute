@@ -7,6 +7,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.domain.errors import InvalidShipment, ResourceNotFound, ShipmentConflict
 from app.domain.shipment import (
     require_guide_code,
+    require_is_waste,
     require_optional_label,
     require_parent_pair,
     require_parent_shipment_id,
@@ -34,6 +35,45 @@ def _raise_create_conflict(orig: IntegrityError) -> NoReturn:
     if "fk_shipment_parent" in detail:
         raise InvalidShipment("główne zlecenie nie istnieje") from orig
     raise orig
+
+
+def _draft_shipment(
+    *,
+    row_id: UUID,
+    organization_id: UUID,
+    user_id: UUID,
+    quotation_id: UUID,
+    party_id: UUID,
+    source_ref: str,
+    shipment_ref: object,
+    parent_shipment_id: object,
+    relation_kind: object,
+    guide_code: object,
+    plant_label: object,
+    carrier_label: object,
+    asn_id: UUID | None,
+    is_waste: object,
+) -> Shipment:
+    parent = require_parent_shipment_id(parent_shipment_id)
+    kind = require_relation_kind(relation_kind)
+    require_parent_pair(parent, kind, child_id=row_id)
+    return Shipment(
+        id=row_id,
+        organization_id=organization_id,
+        quotation_id=require_quotation_id(quotation_id),
+        party_id=require_party_on_quotation(party_id),
+        source_ref=require_shipment_source_ref(source_ref),
+        shipment_ref=require_shipment_ref(shipment_ref),
+        parent_shipment_id=parent,
+        relation_kind=kind,
+        guide_code=require_guide_code(guide_code),
+        plant_label=require_optional_label(plant_label, "zakład"),
+        carrier_label=require_optional_label(carrier_label, "przewoźnik"),
+        asn_id=asn_id,
+        is_waste=require_is_waste(is_waste),
+        status=shipment_draft_status(),
+        created_by=user_id,
+    )
 
 
 class ShipmentService:
@@ -64,26 +104,23 @@ class ShipmentService:
         plant_label: object = None,
         carrier_label: object = None,
         asn_id: UUID | None = None,
+        is_waste: object = None,
     ) -> Shipment:
-        row_id = uuid4()
-        parent = require_parent_shipment_id(parent_shipment_id)
-        kind = require_relation_kind(relation_kind)
-        require_parent_pair(parent, kind, child_id=row_id)
-        row = Shipment(
-            id=row_id,
+        row = _draft_shipment(
+            row_id=uuid4(),
             organization_id=organization_id,
-            quotation_id=require_quotation_id(quotation_id),
-            party_id=require_party_on_quotation(party_id),
-            source_ref=require_shipment_source_ref(source_ref),
-            shipment_ref=require_shipment_ref(shipment_ref),
-            parent_shipment_id=parent,
-            relation_kind=kind,
-            guide_code=require_guide_code(guide_code),
-            plant_label=require_optional_label(plant_label, "zakład"),
-            carrier_label=require_optional_label(carrier_label, "przewoźnik"),
+            user_id=user_id,
+            quotation_id=quotation_id,
+            party_id=party_id,
+            source_ref=source_ref,
+            shipment_ref=shipment_ref,
+            parent_shipment_id=parent_shipment_id,
+            relation_kind=relation_kind,
+            guide_code=guide_code,
+            plant_label=plant_label,
+            carrier_label=carrier_label,
             asn_id=asn_id,
-            status=shipment_draft_status(),
-            created_by=user_id,
+            is_waste=is_waste,
         )
         try:
             return await self._shipments.add(row)
