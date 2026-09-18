@@ -219,6 +219,7 @@ import { Route as PortSurchargesRouteImport } from './routes/port-surcharges'
 import { Route as PortsRouteImport } from './routes/ports'
 import { Route as PositionEventsRouteImport } from './routes/position-events'
 import { Route as PostalDispatchMarksRouteImport } from './routes/postal-dispatch-marks'
+import { Route as PostalEpoMarksRouteImport } from './routes/postal-epo-marks'
 import { Route as PostingMarksRouteImport } from './routes/posting-marks'
 import { Route as PredictionLedgersRouteImport } from './routes/prediction-ledgers'
 import { Route as ProductTicketMarksRouteImport } from './routes/product-ticket-marks'
@@ -1384,6 +1385,11 @@ const PostalDispatchMarksRoute = PostalDispatchMarksRouteImport.update({
   path: '/postal-dispatch-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PostalEpoMarksRoute = PostalEpoMarksRouteImport.update({
+  id: '/postal-epo-marks',
+  path: '/postal-epo-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PostingMarksRoute = PostingMarksRouteImport.update({
   id: '/posting-marks',
   path: '/posting-marks',
@@ -2164,6 +2170,7 @@ export interface FileRoutesByFullPath {
   '/ports': typeof PortsRoute
   '/position-events': typeof PositionEventsRoute
   '/postal-dispatch-marks': typeof PostalDispatchMarksRoute
+  '/postal-epo-marks': typeof PostalEpoMarksRoute
   '/posting-marks': typeof PostingMarksRoute
   '/prediction-ledgers': typeof PredictionLedgersRoute
   '/product-ticket-marks': typeof ProductTicketMarksRoute
@@ -2489,6 +2496,7 @@ export interface FileRoutesByTo {
   '/ports': typeof PortsRoute
   '/position-events': typeof PositionEventsRoute
   '/postal-dispatch-marks': typeof PostalDispatchMarksRoute
+  '/postal-epo-marks': typeof PostalEpoMarksRoute
   '/posting-marks': typeof PostingMarksRoute
   '/prediction-ledgers': typeof PredictionLedgersRoute
   '/product-ticket-marks': typeof ProductTicketMarksRoute
@@ -2815,6 +2823,7 @@ export interface FileRoutesById {
   '/ports': typeof PortsRoute
   '/position-events': typeof PositionEventsRoute
   '/postal-dispatch-marks': typeof PostalDispatchMarksRoute
+  '/postal-epo-marks': typeof PostalEpoMarksRoute
   '/posting-marks': typeof PostingMarksRoute
   '/prediction-ledgers': typeof PredictionLedgersRoute
   '/product-ticket-marks': typeof ProductTicketMarksRoute
@@ -3142,6 +3151,7 @@ export interface FileRouteTypes {
     | '/ports'
     | '/position-events'
     | '/postal-dispatch-marks'
+    | '/postal-epo-marks'
     | '/posting-marks'
     | '/prediction-ledgers'
     | '/product-ticket-marks'
@@ -3467,6 +3477,7 @@ export interface FileRouteTypes {
     | '/ports'
     | '/position-events'
     | '/postal-dispatch-marks'
+    | '/postal-epo-marks'
     | '/posting-marks'
     | '/prediction-ledgers'
     | '/product-ticket-marks'
@@ -3792,6 +3803,7 @@ export interface FileRouteTypes {
     | '/ports'
     | '/position-events'
     | '/postal-dispatch-marks'
+    | '/postal-epo-marks'
     | '/posting-marks'
     | '/prediction-ledgers'
     | '/product-ticket-marks'
@@ -4118,6 +4130,7 @@ export interface RootRouteChildren {
   PortsRoute: typeof PortsRoute
   PositionEventsRoute: typeof PositionEventsRoute
   PostalDispatchMarksRoute: typeof PostalDispatchMarksRoute
+  PostalEpoMarksRoute: typeof PostalEpoMarksRoute
   PostingMarksRoute: typeof PostingMarksRoute
   PredictionLedgersRoute: typeof PredictionLedgersRoute
   ProductTicketMarksRoute: typeof ProductTicketMarksRoute
@@ -5705,6 +5718,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PostalDispatchMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/postal-epo-marks': {
+      id: '/postal-epo-marks'
+      path: '/postal-epo-marks'
+      fullPath: '/postal-epo-marks'
+      preLoaderRoute: typeof PostalEpoMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/posting-marks': {
       id: '/posting-marks'
       path: '/posting-marks'
@@ -6710,6 +6730,7 @@ const rootRouteChildren: RootRouteChildren = {
   PortsRoute: PortsRoute,
   PositionEventsRoute: PositionEventsRoute,
   PostalDispatchMarksRoute: PostalDispatchMarksRoute,
+  PostalEpoMarksRoute: PostalEpoMarksRoute,
   PostingMarksRoute: PostingMarksRoute,
   PredictionLedgersRoute: PredictionLedgersRoute,
   ProductTicketMarksRoute: ProductTicketMarksRoute,

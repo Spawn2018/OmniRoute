@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **559.0** F11 leftover HITL `postal_epo_mark`. Nie AI3-payload. Nie G0-SH. Nie live PP / e-Doręczenia.
+**Następny:** **560.0** C8 leftover HITL `blocks_create_enforcement_mark`. Nie AI3-payload. Nie G0-SH. Nie live 409.
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).

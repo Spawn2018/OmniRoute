@@ -163,6 +163,7 @@ type organization
     define can_manage_create_block_marks: member
     define can_manage_document_kind_match_marks: member
     define can_manage_filing_bind_marks: member
+    define can_manage_postal_epo_marks: member
     define can_manage_invoice_alloc_marks: member
     define can_manage_registry_poll_marks: member
     define can_manage_working_capital_marks: member

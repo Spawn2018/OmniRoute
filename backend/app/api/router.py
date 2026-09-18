@@ -213,6 +213,7 @@ from app.api import (
     ports,
     position_events,
     postal_dispatch_marks,
+    postal_epo_marks,
     posting_marks,
     prediction_ledgers,
     product_ticket_marks,
@@ -438,6 +439,7 @@ api_router.include_router(invoice_match_candidates.router)
 api_router.include_router(create_block_marks.router)
 api_router.include_router(document_kind_match_marks.router)
 api_router.include_router(filing_bind_marks.router)
+api_router.include_router(postal_epo_marks.router)
 api_router.include_router(invoice_alloc_marks.router)
 api_router.include_router(load_order_marks.router)
 api_router.include_router(load_plan_marks.router)

@@ -227,6 +227,7 @@ def _organization_f_invoice_relations() -> dict[str, Userset]:
         "can_manage_create_block_marks": _member(),
         "can_manage_document_kind_match_marks": _member(),
         "can_manage_filing_bind_marks": _member(),
+        "can_manage_postal_epo_marks": _member(),
         "can_manage_invoice_alloc_marks": _member(),
     }
 

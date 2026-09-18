@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **558.0** C1 `filing_bind_mark`. **Etap:** Plan — wydmuszka leftover; `/plan-modul` → delta → plaster. **Następny:** **559.0** F11 leftover HITL `postal_epo_mark`. Nie AI3-payload. Nie G0-SH. Nie live PP / e-Doręczenia. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **559.0** F11 `postal_epo_mark`. **Etap:** Plan — wydmuszka leftover; `/plan-modul` → delta → plaster. **Następny:** **560.0** C8 leftover HITL `blocks_create_enforcement_mark`. Nie AI3-payload. Nie G0-SH. Nie live 409. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
