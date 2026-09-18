@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **561.0** C1 `filing_fk_mark`. **Etap:** Plan — wydmuszka leftover; `/plan-modul` → delta → plaster. **Następny:** **562.0** C2 leftover HITL `ais_import_mark`. Nie PUESC live. Nie AI3-payload. Nie G0-SH. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **561.0** C1 `filing_fk_mark`. **Etap:** Plaster — delta `562.0` zaakceptowana `/noc`; wolno `/plaster`. **Następny:** **562.0** C2 leftover HITL `ais_import_mark`. Nie PUESC live. Nie AI3-payload. Nie G0-SH. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
