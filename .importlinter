@@ -224,6 +224,7 @@ modules =
     app.services.e_doreczenia_marks
     app.services.peppol_marks
     app.services.sid_import_marks
+    app.services.ais_import_marks
     app.services.integration_hub_marks
     app.services.webhook_outbox_marks
     app.services.partner_exchange_marks
@@ -1000,6 +1001,9 @@ forbidden_modules =
     app.services.sid_import_marks
     app.repositories.sid_import_marks
     app.models.sid_import_mark
+    app.services.ais_import_marks
+    app.repositories.ais_import_marks
+    app.models.ais_import_mark
     app.services.integration_hub_marks
     app.services.webhook_outbox_marks
     app.services.partner_exchange_marks

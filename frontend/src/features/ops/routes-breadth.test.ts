@@ -70,12 +70,13 @@ describe("U-routes-breadth standing", () => {
     expect(SHIPPED_CHARGE_ROUTES["559.0"]).toBe("/postal-epo-marks")
     expect(SHIPPED_CHARGE_ROUTES["560.0"]).toBe("/blocks-create-enforcement-marks")
     expect(SHIPPED_CHARGE_ROUTES["561.0"]).toBe("/filing-fk-marks")
-    expect(Object.keys(SHIPPED_CHARGE_ROUTES)).toHaveLength(502)
+    expect(SHIPPED_CHARGE_ROUTES["562.0"]).toBe("/ais-import-marks")
+    expect(Object.keys(SHIPPED_CHARGE_ROUTES)).toHaveLength(503)
 
     expect(OPS_JOBS.map((job) => job.route)).toEqual(
       expect.arrayContaining(Object.values(SHIPPED_CHARGE_ROUTES)),
     )
-    expect(OPS_JOBS).toHaveLength(333)
+    expect(OPS_JOBS).toHaveLength(334)
 
     expect(OPS_JOBS.length).not.toBe(157)
 

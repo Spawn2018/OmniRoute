@@ -5,6 +5,7 @@ from app.api import (
     abandoned_rto_marks,
     aeo_dossier_marks,
     air_ra3_marks,
+    ais_import_marks,
     allocation_keys,
     allocation_levels,
     article50_marks,
@@ -523,6 +524,7 @@ api_router.include_router(po_batch_marks.router)
 api_router.include_router(abandoned_rto_marks.router)
 api_router.include_router(ab_sus_marks.router)
 api_router.include_router(air_ra3_marks.router)
+api_router.include_router(ais_import_marks.router)
 api_router.include_router(aeo_dossier_marks.router)
 api_router.include_router(yard_marks.router)
 api_router.include_router(billing_marks.router)

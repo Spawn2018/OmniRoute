@@ -87,10 +87,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **561.0** C1 `filing_fk_mark`
-- **Etap:** Plaster — delta `562.0` zaakceptowana `/noc`; wolno `/plaster`
-- **Następny:** **562.0** C2 leftover HITL `ais_import_mark`. Nie PUESC live. Nie AI3-payload. Nie G0-SH.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **562.0** C2 `ais_import_mark`
+- **Etap:** Plan — wydmuszka leftover; `/plan-modul` → delta → plaster
+- **Następny:** **563.0** C6 leftover HITL `waste_mark`. Nie MOS/BDO live. Nie AI3-payload. Nie G0-SH.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

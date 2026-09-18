@@ -16,6 +16,7 @@ import { Route as AeoDossierMarksRouteImport } from './routes/aeo-dossier-marks'
 import { Route as AiRouteImport } from './routes/ai'
 import { Route as AirRouteImport } from './routes/air'
 import { Route as AirRa3MarksRouteImport } from './routes/air-ra3-marks'
+import { Route as AisImportMarksRouteImport } from './routes/ais-import-marks'
 import { Route as AllocationKeysRouteImport } from './routes/allocation-keys'
 import { Route as AllocationLevelsRouteImport } from './routes/allocation-levels'
 import { Route as Article50MarksRouteImport } from './routes/article50-marks'
@@ -369,6 +370,11 @@ const AirRoute = AirRouteImport.update({
 const AirRa3MarksRoute = AirRa3MarksRouteImport.update({
   id: '/air-ra3-marks',
   path: '/air-ra3-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AisImportMarksRoute = AisImportMarksRouteImport.update({
+  id: '/ais-import-marks',
+  path: '/ais-import-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AllocationKeysRoute = AllocationKeysRouteImport.update({
@@ -1979,6 +1985,7 @@ export interface FileRoutesByFullPath {
   '/ai': typeof AiRoute
   '/air': typeof AirRoute
   '/air-ra3-marks': typeof AirRa3MarksRoute
+  '/ais-import-marks': typeof AisImportMarksRoute
   '/allocation-keys': typeof AllocationKeysRoute
   '/allocation-levels': typeof AllocationLevelsRoute
   '/article50-marks': typeof Article50MarksRoute
@@ -2307,6 +2314,7 @@ export interface FileRoutesByTo {
   '/ai': typeof AiRoute
   '/air': typeof AirRoute
   '/air-ra3-marks': typeof AirRa3MarksRoute
+  '/ais-import-marks': typeof AisImportMarksRoute
   '/allocation-keys': typeof AllocationKeysRoute
   '/allocation-levels': typeof AllocationLevelsRoute
   '/article50-marks': typeof Article50MarksRoute
@@ -2636,6 +2644,7 @@ export interface FileRoutesById {
   '/ai': typeof AiRoute
   '/air': typeof AirRoute
   '/air-ra3-marks': typeof AirRa3MarksRoute
+  '/ais-import-marks': typeof AisImportMarksRoute
   '/allocation-keys': typeof AllocationKeysRoute
   '/allocation-levels': typeof AllocationLevelsRoute
   '/article50-marks': typeof Article50MarksRoute
@@ -2966,6 +2975,7 @@ export interface FileRouteTypes {
     | '/ai'
     | '/air'
     | '/air-ra3-marks'
+    | '/ais-import-marks'
     | '/allocation-keys'
     | '/allocation-levels'
     | '/article50-marks'
@@ -3294,6 +3304,7 @@ export interface FileRouteTypes {
     | '/ai'
     | '/air'
     | '/air-ra3-marks'
+    | '/ais-import-marks'
     | '/allocation-keys'
     | '/allocation-levels'
     | '/article50-marks'
@@ -3622,6 +3633,7 @@ export interface FileRouteTypes {
     | '/ai'
     | '/air'
     | '/air-ra3-marks'
+    | '/ais-import-marks'
     | '/allocation-keys'
     | '/allocation-levels'
     | '/article50-marks'
@@ -3951,6 +3963,7 @@ export interface RootRouteChildren {
   AiRoute: typeof AiRoute
   AirRoute: typeof AirRoute
   AirRa3MarksRoute: typeof AirRa3MarksRoute
+  AisImportMarksRoute: typeof AisImportMarksRoute
   AllocationKeysRoute: typeof AllocationKeysRoute
   AllocationLevelsRoute: typeof AllocationLevelsRoute
   Article50MarksRoute: typeof Article50MarksRoute
@@ -4321,6 +4334,13 @@ declare module '@tanstack/react-router' {
       path: '/air-ra3-marks'
       fullPath: '/air-ra3-marks'
       preLoaderRoute: typeof AirRa3MarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ais-import-marks': {
+      id: '/ais-import-marks'
+      path: '/ais-import-marks'
+      fullPath: '/ais-import-marks'
+      preLoaderRoute: typeof AisImportMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/allocation-keys': {
@@ -6567,6 +6587,7 @@ const rootRouteChildren: RootRouteChildren = {
   AiRoute: AiRoute,
   AirRoute: AirRoute,
   AirRa3MarksRoute: AirRa3MarksRoute,
+  AisImportMarksRoute: AisImportMarksRoute,
   AllocationKeysRoute: AllocationKeysRoute,
   AllocationLevelsRoute: AllocationLevelsRoute,
   Article50MarksRoute: Article50MarksRoute,

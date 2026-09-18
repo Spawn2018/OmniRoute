@@ -1159,6 +1159,10 @@ class InvalidFilingFkMark(DomainError):
     """C1 leftover: HITL cel FK zgłoszenia — nie live UUID."""
 
 
+class InvalidAisImportMark(DomainError):
+    """C2 leftover: HITL AIS/AES/Intrastat — nie PUESC live."""
+
+
 class InvalidPostalEpoMark(DomainError):
     """F11 leftover: HITL EPO/PP — nie live PP."""
 

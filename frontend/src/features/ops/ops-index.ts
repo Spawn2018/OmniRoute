@@ -869,6 +869,11 @@ export const OPS_JOBS = [
     job: "katalog filing_fk_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.aisImportMark.route,
+    label: "AIS / AES / Intrastat",
+    job: "katalog ais_import_mark HITL",
+  },
+  {
     route: BUSINESS_LISTS.postalEpoMark.route,
     label: "Znacznik EPO/PP",
     job: "katalog postal_epo_mark HITL",
@@ -1792,6 +1797,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "559.0": "/postal-epo-marks",
   "560.0": "/blocks-create-enforcement-marks",
   "561.0": "/filing-fk-marks",
+  "562.0": "/ais-import-marks",
   "142.0": "/mail",
   "143.0": "/networks",
   "144.0": "/quotations",
