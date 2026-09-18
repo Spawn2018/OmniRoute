@@ -1155,6 +1155,10 @@ class InvalidFilingBindMark(DomainError):
     """C1 leftover: HITL wiązanie zgłoszenia — nie FK shipment."""
 
 
+class InvalidFilingFkMark(DomainError):
+    """C1 leftover: HITL cel FK zgłoszenia — nie live UUID."""
+
+
 class InvalidPostalEpoMark(DomainError):
     """F11 leftover: HITL EPO/PP — nie live PP."""
 

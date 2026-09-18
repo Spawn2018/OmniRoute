@@ -103,6 +103,7 @@ from app.api import (
     field_carry_forwards,
     field_confidence_marks,
     filing_bind_marks,
+    filing_fk_marks,
     filing_scheme_marks,
     fleet_cost_marks,
     fraud_flags,
@@ -440,6 +441,7 @@ api_router.include_router(invoice_match_candidates.router)
 api_router.include_router(create_block_marks.router)
 api_router.include_router(document_kind_match_marks.router)
 api_router.include_router(filing_bind_marks.router)
+api_router.include_router(filing_fk_marks.router)
 api_router.include_router(postal_epo_marks.router)
 api_router.include_router(blocks_create_enforcement_marks.router)
 api_router.include_router(invoice_alloc_marks.router)

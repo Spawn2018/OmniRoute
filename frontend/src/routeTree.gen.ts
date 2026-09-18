@@ -108,6 +108,7 @@ import { Route as FerryArt9MarksRouteImport } from './routes/ferry-art9-marks'
 import { Route as FerryBookingMarksRouteImport } from './routes/ferry-booking-marks'
 import { Route as FieldConfidenceMarksRouteImport } from './routes/field-confidence-marks'
 import { Route as FilingBindMarksRouteImport } from './routes/filing-bind-marks'
+import { Route as FilingFkMarksRouteImport } from './routes/filing-fk-marks'
 import { Route as FilingSchemeMarksRouteImport } from './routes/filing-scheme-marks'
 import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as FleetRouteImport } from './routes/fleet'
@@ -828,6 +829,11 @@ const FieldConfidenceMarksRoute = FieldConfidenceMarksRouteImport.update({
 const FilingBindMarksRoute = FilingBindMarksRouteImport.update({
   id: '/filing-bind-marks',
   path: '/filing-bind-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FilingFkMarksRoute = FilingFkMarksRouteImport.update({
+  id: '/filing-fk-marks',
+  path: '/filing-fk-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FilingSchemeMarksRoute = FilingSchemeMarksRouteImport.update({
@@ -2065,6 +2071,7 @@ export interface FileRoutesByFullPath {
   '/ferry-booking-marks': typeof FerryBookingMarksRoute
   '/field-confidence-marks': typeof FieldConfidenceMarksRoute
   '/filing-bind-marks': typeof FilingBindMarksRoute
+  '/filing-fk-marks': typeof FilingFkMarksRoute
   '/filing-scheme-marks': typeof FilingSchemeMarksRoute
   '/finance': typeof FinanceRoute
   '/fleet': typeof FleetRoute
@@ -2392,6 +2399,7 @@ export interface FileRoutesByTo {
   '/ferry-booking-marks': typeof FerryBookingMarksRoute
   '/field-confidence-marks': typeof FieldConfidenceMarksRoute
   '/filing-bind-marks': typeof FilingBindMarksRoute
+  '/filing-fk-marks': typeof FilingFkMarksRoute
   '/filing-scheme-marks': typeof FilingSchemeMarksRoute
   '/finance': typeof FinanceRoute
   '/fleet': typeof FleetRoute
@@ -2720,6 +2728,7 @@ export interface FileRoutesById {
   '/ferry-booking-marks': typeof FerryBookingMarksRoute
   '/field-confidence-marks': typeof FieldConfidenceMarksRoute
   '/filing-bind-marks': typeof FilingBindMarksRoute
+  '/filing-fk-marks': typeof FilingFkMarksRoute
   '/filing-scheme-marks': typeof FilingSchemeMarksRoute
   '/finance': typeof FinanceRoute
   '/fleet': typeof FleetRoute
@@ -3049,6 +3058,7 @@ export interface FileRouteTypes {
     | '/ferry-booking-marks'
     | '/field-confidence-marks'
     | '/filing-bind-marks'
+    | '/filing-fk-marks'
     | '/filing-scheme-marks'
     | '/finance'
     | '/fleet'
@@ -3376,6 +3386,7 @@ export interface FileRouteTypes {
     | '/ferry-booking-marks'
     | '/field-confidence-marks'
     | '/filing-bind-marks'
+    | '/filing-fk-marks'
     | '/filing-scheme-marks'
     | '/finance'
     | '/fleet'
@@ -3703,6 +3714,7 @@ export interface FileRouteTypes {
     | '/ferry-booking-marks'
     | '/field-confidence-marks'
     | '/filing-bind-marks'
+    | '/filing-fk-marks'
     | '/filing-scheme-marks'
     | '/finance'
     | '/fleet'
@@ -4031,6 +4043,7 @@ export interface RootRouteChildren {
   FerryBookingMarksRoute: typeof FerryBookingMarksRoute
   FieldConfidenceMarksRoute: typeof FieldConfidenceMarksRoute
   FilingBindMarksRoute: typeof FilingBindMarksRoute
+  FilingFkMarksRoute: typeof FilingFkMarksRoute
   FilingSchemeMarksRoute: typeof FilingSchemeMarksRoute
   FinanceRoute: typeof FinanceRoute
   FleetRoute: typeof FleetRoute
@@ -4952,6 +4965,13 @@ declare module '@tanstack/react-router' {
       path: '/filing-bind-marks'
       fullPath: '/filing-bind-marks'
       preLoaderRoute: typeof FilingBindMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/filing-fk-marks': {
+      id: '/filing-fk-marks'
+      path: '/filing-fk-marks'
+      fullPath: '/filing-fk-marks'
+      preLoaderRoute: typeof FilingFkMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/filing-scheme-marks': {
@@ -6639,6 +6659,7 @@ const rootRouteChildren: RootRouteChildren = {
   FerryBookingMarksRoute: FerryBookingMarksRoute,
   FieldConfidenceMarksRoute: FieldConfidenceMarksRoute,
   FilingBindMarksRoute: FilingBindMarksRoute,
+  FilingFkMarksRoute: FilingFkMarksRoute,
   FilingSchemeMarksRoute: FilingSchemeMarksRoute,
   FinanceRoute: FinanceRoute,
   FleetRoute: FleetRoute,

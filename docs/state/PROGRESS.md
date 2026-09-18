@@ -968,6 +968,7 @@
 
 - 2026-09-17T23:30:00Z | 553.0 | shipment_monitoring_filing | DONE | HITL catalog status_kind open/filed/closed/other; bez PUESC / XML / FK shipment
 
+- 2026-09-18T04:05:00Z | 561.0 | filing_fk_mark | DONE | HITL catalog fk_kind shipment/scheme/other; bez live FK / PUESC
 - 2026-09-18T03:20:00Z | 560.0 | blocks_create_enforcement_mark | DONE | HITL catalog enforcement_kind block_409/warn_only/record_only/other; bez live 409 / wiring create_block\n- 2026-09-18T00:20:00Z | 554.0 | relation_document_requirement | DONE | HITL catalog relation_kind domestic/international/waste/other; bez 409 / blocks_create
 
 - 2026-09-18T00:50:00Z | 555.0 | invoice_match_candidate | DONE | HITL catalog candidate_kind proposed/held/rejected/other; bez ranking SQL / FK charge
