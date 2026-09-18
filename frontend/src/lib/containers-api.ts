@@ -36,6 +36,7 @@ export type ContainerRow = {
   cfs_cutoff_at: string | null
   vgm_kg: string | null
   tare_kg: string | null
+  pin_code: string | null
   vgm_method: string | null
   vgm_cutoff_at: string | null
   last_survey_at: string | null
@@ -78,6 +79,7 @@ export type ContainerWrite = {
   cfs_cutoff_at?: string | null
   vgm_kg?: string | null
   tare_kg?: string | null
+  pin_code?: string | null
   vgm_method?: string | null
   vgm_cutoff_at?: string | null
   last_survey_at?: string | null

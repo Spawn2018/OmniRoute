@@ -398,6 +398,21 @@ def test_migration_449_adds_tare_without_calculator() -> None:
     assert "tare_kg" in source.split("def downgrade")[1]
 
 
+def test_migration_450_adds_pin_without_ciphertext() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "450_container_pin.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "450_container_pin"' in source
+    assert 'down_revision: str | None = "449_container_tare"' in source
+    assert "pin_code" in source
+    assert "String(64)" in source
+    assert "httpx" not in source
+    assert "BYTEA" not in source
+    assert "create_table" not in source
+    assert "def downgrade" in source
+    assert "pin_code" in source.split("def downgrade")[1]
+
+
 def test_migration_174_adds_si_cutoff_without_live_http() -> None:
     source = (
         _ROOT / "backend" / "alembic" / "versions" / "174_container_si_cutoff.py"
@@ -564,6 +579,7 @@ def test_generated_api_types_include_container() -> None:
     assert "cfs_cutoff_at" in source
     assert "vgm_kg" in source
     assert "tare_kg" in source
+    assert "pin_code" in source
     assert "vgm_method" in source
     assert "vgm_cutoff_at" in source
     assert "last_survey_at" in source

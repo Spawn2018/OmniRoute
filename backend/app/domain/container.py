@@ -13,6 +13,7 @@ _MAX_SEAL = 32
 _MAX_VESSEL = 128
 _MAX_MARK = 64
 _MAX_BOOK = 64
+_MAX_PIN = 64
 _BL_KINDS = frozenset({"original", "seawaybill", "telex", "express"})
 _VGM_METHODS = frozenset({"method1", "method2"})
 _MAX_ORIGIN_H = 8760
@@ -282,6 +283,19 @@ def require_booking_no(raw: object) -> str | None:
         return None
     if len(token) > _MAX_BOOK:
         raise InvalidContainer("booking za długi")
+    return token
+
+
+def require_pin_code(raw: object) -> str | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidContainer("pin musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        return None
+    if len(token) > _MAX_PIN:
+        raise InvalidContainer("pin za długi")
     return token
 
 

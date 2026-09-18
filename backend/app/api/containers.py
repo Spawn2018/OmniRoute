@@ -53,6 +53,7 @@ class ContainerCreate(BaseModel):
     cfs_cutoff_at: object | None = None
     vgm_kg: object | None = None
     tare_kg: object | None = None
+    pin_code: object | None = None
     vgm_method: object | None = None
     vgm_cutoff_at: object | None = None
     last_survey_at: object | None = None
@@ -98,6 +99,7 @@ class ContainerResponse(BaseModel):
     cfs_cutoff_at: datetime | None
     vgm_kg: str | None
     tare_kg: str | None
+    pin_code: str | None
     vgm_method: str | None
     vgm_cutoff_at: datetime | None
     last_survey_at: datetime | None
@@ -152,7 +154,7 @@ def _write_from_body(
         body.booking_no,
         carrier_id,
         leg_id,
-        body.tare_kg,
+        body.tare_kg, body.pin_code,
     )
 
 

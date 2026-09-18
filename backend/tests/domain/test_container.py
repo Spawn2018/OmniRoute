@@ -33,6 +33,7 @@ from app.domain.container import (
     require_mixed_dd_days,
     require_packaging_code,
     require_pickup_terminal,
+    require_pin_code,
     require_return_terminal,
     require_seal_no_1,
     require_seal_no_2,
@@ -110,6 +111,16 @@ def test_booking_no_omits_blank_and_keeps_token() -> None:
     assert require_booking_no(" BK123456 ") == "BK123456"
     with pytest.raises(InvalidContainer, match="booking"):
         require_booking_no("x" * 65)
+
+
+def test_pin_code_omits_blank_and_keeps_token() -> None:
+    assert require_pin_code(None) is None
+    assert require_pin_code("  ") is None
+    assert require_pin_code(" GATE-18 ") == "GATE-18"
+    with pytest.raises(InvalidContainer, match="pin"):
+        require_pin_code("x" * 65)
+    with pytest.raises(InvalidContainer, match="pin"):
+        require_pin_code(12)
 
 
 def test_carrier_party_id_accepts_uuid_and_rejects_text() -> None:

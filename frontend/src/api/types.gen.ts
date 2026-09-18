@@ -2793,6 +2793,10 @@ export type ContainerCreate = {
      */
     tare_kg?: unknown | null;
     /**
+     * Pin Code
+     */
+    pin_code?: unknown | null;
+    /**
      * Vgm Method
      */
     vgm_method?: unknown | null;
@@ -2958,6 +2962,10 @@ export type ContainerResponse = {
      * Tare Kg
      */
     tare_kg: string | null;
+    /**
+     * Pin Code
+     */
+    pin_code: string | null;
     /**
      * Vgm Method
      */
