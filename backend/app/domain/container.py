@@ -346,6 +346,10 @@ def require_payload_kg(raw: object) -> Decimal | None:
     return _require_positive_kg(raw, "ładowność")
 
 
+def require_teu(raw: object) -> Decimal | None:
+    return _require_positive_kg(raw, "teu")
+
+
 def _require_positive_kg(raw: object, label: str) -> Decimal | None:
     if raw is None:
         return None

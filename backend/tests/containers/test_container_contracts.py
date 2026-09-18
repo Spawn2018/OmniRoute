@@ -445,6 +445,22 @@ def test_migration_451_adds_payload_without_calculator() -> None:
     assert "create_table" not in source
     assert "def downgrade" in source
     assert "payload_kg" in source.split("def downgrade")[1]
+    assert "teu" not in source
+
+
+def test_migration_452_adds_teu_without_iso_calculator() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "452_container_teu.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "452_container_teu"' in source
+    assert 'down_revision: str | None = "451_container_payload"' in source
+    assert "teu" in source
+    assert "Numeric(14, 4)" in source
+    assert "iso_size_type" not in source
+    assert "httpx" not in source
+    assert "create_table" not in source
+    assert "def downgrade" in source
+    assert "teu" in source.split("def downgrade")[1]
 
 
 def test_migration_174_adds_si_cutoff_without_live_http() -> None:
@@ -624,6 +640,7 @@ def test_generated_api_types_include_container() -> None:
     assert "tare_kg" in source
     assert "pin_code" in source
     assert "payload_kg" in source
+    assert "teu" in source
     assert "vgm_method" in source
     assert "vgm_cutoff_at" in source
     assert "last_survey_at" in source

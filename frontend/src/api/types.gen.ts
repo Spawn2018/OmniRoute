@@ -2801,6 +2801,10 @@ export type ContainerCreate = {
      */
     payload_kg?: unknown | null;
     /**
+     * Teu
+     */
+    teu?: unknown | null;
+    /**
      * Vgm Method
      */
     vgm_method?: unknown | null;
@@ -2974,6 +2978,10 @@ export type ContainerResponse = {
      * Payload Kg
      */
     payload_kg: string | null;
+    /**
+     * Teu
+     */
+    teu: string | null;
     /**
      * Vgm Method
      */

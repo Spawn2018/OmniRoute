@@ -38,6 +38,7 @@ export type ContainerRow = {
   tare_kg: string | null
   pin_code: string | null
   payload_kg: string | null
+  teu: string | null
   vgm_method: string | null
   vgm_cutoff_at: string | null
   last_survey_at: string | null
@@ -82,6 +83,7 @@ export type ContainerWrite = {
   tare_kg?: string | null
   pin_code?: string | null
   payload_kg?: string | null
+  teu?: string | null
   vgm_method?: string | null
   vgm_cutoff_at?: string | null
   last_survey_at?: string | null

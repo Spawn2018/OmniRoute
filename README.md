@@ -87,10 +87,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **571.0** T3 `container.payload_kg` (gate success)
-- **Etap:** Plaster — delta zaakceptowana; komenda `/plaster`
-- **Następny:** **572.0** leftover T3 HITL `container.teu`. Nie quantity. Nie kalkulator z typu ISO. Nie `payload_kg`. Nie ciphertext. Nie AI3-payload. Nie G0-SH.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **572.0** T3 `container.teu` (lokalnie; CI po push)
+- **Etap:** Plan — brak delty; komenda `/plan-modul`
+- **Następny:** **573.0** leftover T3 HITL quantity na kontenerze. Nie `stop.quantity`. Nie TEU. Nie kalkulator. Nie ciphertext. Nie AI3-payload. Nie G0-SH.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

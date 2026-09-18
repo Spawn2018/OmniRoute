@@ -41,6 +41,7 @@ from app.domain.container import (
     require_seal_no_3,
     require_si_cutoff_at,
     require_tare_kg,
+    require_teu,
     require_vessel_name,
     require_vgm_cutoff_at,
     require_vgm_kg,
@@ -92,6 +93,7 @@ class _WriteBox(NamedTuple):
     tare: object
     pin: object
     payload: object
+    teu: object
 
 
 class _BoxDraft(NamedTuple):
@@ -135,6 +137,7 @@ class _BoxDraft(NamedTuple):
     tare: Decimal | None
     pin: str | None
     payload: Decimal | None
+    teu: Decimal | None
 
 
 def _box_draft(write: _WriteBox) -> _BoxDraft:
@@ -172,6 +175,7 @@ def _box_draft(write: _WriteBox) -> _BoxDraft:
         require_tare_kg(write.tare),
         require_pin_code(write.pin),
         require_payload_kg(write.payload),
+        require_teu(write.teu),
     )
 
 
@@ -225,6 +229,7 @@ def _box_unchanged(current: Container, draft: _BoxDraft) -> bool:
         and current.tare_kg == draft.tare
         and current.pin_code == draft.pin
         and current.payload_kg == draft.payload
+        and current.teu == draft.teu
     )
 
 
@@ -278,6 +283,7 @@ def _container_row(organization_id: UUID, user_id: UUID, draft: _BoxDraft) -> Co
         tare_kg=draft.tare,
         pin_code=draft.pin,
         payload_kg=draft.payload,
+        teu=draft.teu,
         created_by=user_id,
     )
 

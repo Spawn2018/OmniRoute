@@ -41,6 +41,7 @@ from app.domain.container import (
     require_seal_no_3,
     require_si_cutoff_at,
     require_tare_kg,
+    require_teu,
     require_vessel_name,
     require_vgm_cutoff_at,
     require_vgm_kg,
@@ -349,6 +350,20 @@ def test_payload_kg_reuses_positive_kg_rule() -> None:
         require_payload_kg(-1)
     with pytest.raises(InvalidContainer, match="ładowność"):
         require_payload_kg(True)
+
+
+def test_teu_reuses_positive_decimal_rule() -> None:
+    assert require_teu(None) is None
+    assert require_teu("  ") is None
+    assert require_teu("2.25") == Decimal("2.2500")
+    with pytest.raises(InvalidContainer, match="teu"):
+        require_teu(1.5)
+    with pytest.raises(InvalidContainer, match="teu"):
+        require_teu(0)
+    with pytest.raises(InvalidContainer, match="teu"):
+        require_teu(-1)
+    with pytest.raises(InvalidContainer, match="teu"):
+        require_teu(True)
 
 
 def test_last_survey_at_reuses_aware_clock_and_rejects_naive() -> None:
