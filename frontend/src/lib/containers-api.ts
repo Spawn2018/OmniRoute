@@ -39,6 +39,7 @@ export type ContainerRow = {
   pin_code: string | null
   payload_kg: string | null
   teu: string | null
+  quantity: number | null
   vgm_method: string | null
   vgm_cutoff_at: string | null
   last_survey_at: string | null
@@ -84,6 +85,7 @@ export type ContainerWrite = {
   pin_code?: string | null
   payload_kg?: string | null
   teu?: string | null
+  quantity?: number | null
   vgm_method?: string | null
   vgm_cutoff_at?: string | null
   last_survey_at?: string | null

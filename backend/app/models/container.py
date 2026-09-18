@@ -4,6 +4,7 @@ from decimal import Decimal
 
 from sqlalchemy import (
     Boolean,
+    CheckConstraint,
     DateTime,
     ForeignKey,
     ForeignKeyConstraint,
@@ -42,6 +43,10 @@ class Container(Base, TimestampMixin):
             ondelete="RESTRICT",
         ),
         Index("ix_container_org_type", "organization_id", "iso_size_type"),
+        CheckConstraint(
+            "quantity IS NULL OR quantity >= 0",
+            name="ck_container_quantity",
+        ),
     )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True)
@@ -91,6 +96,7 @@ class Container(Base, TimestampMixin):
     pin_code: Mapped[str | None] = mapped_column(String(64), nullable=True)
     payload_kg: Mapped[Decimal | None] = mapped_column(Numeric(14, 4), nullable=True)
     teu: Mapped[Decimal | None] = mapped_column(Numeric(14, 4), nullable=True)
+    quantity: Mapped[int | None] = mapped_column(Integer(), nullable=True)
     vgm_method: Mapped[str | None] = mapped_column(String(16), nullable=True)
     vgm_cutoff_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     last_survey_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)

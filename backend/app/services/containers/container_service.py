@@ -13,6 +13,7 @@ from app.domain.container import (
     require_cfs_cutoff_at,
     require_container_bl_kind,
     require_container_no,
+    require_container_quantity,
     require_container_reefer,
     require_container_ref_1,
     require_container_ref_2,
@@ -94,6 +95,7 @@ class _WriteBox(NamedTuple):
     pin: object
     payload: object
     teu: object
+    qty: object
 
 
 class _BoxDraft(NamedTuple):
@@ -138,6 +140,7 @@ class _BoxDraft(NamedTuple):
     pin: str | None
     payload: Decimal | None
     teu: Decimal | None
+    qty: int | None
 
 
 def _box_draft(write: _WriteBox) -> _BoxDraft:
@@ -176,6 +179,7 @@ def _box_draft(write: _WriteBox) -> _BoxDraft:
         require_pin_code(write.pin),
         require_payload_kg(write.payload),
         require_teu(write.teu),
+        require_container_quantity(write.qty),
     )
 
 
@@ -230,6 +234,7 @@ def _box_unchanged(current: Container, draft: _BoxDraft) -> bool:
         and current.pin_code == draft.pin
         and current.payload_kg == draft.payload
         and current.teu == draft.teu
+        and current.quantity == draft.qty
     )
 
 
@@ -284,6 +289,7 @@ def _container_row(organization_id: UUID, user_id: UUID, draft: _BoxDraft) -> Co
         pin_code=draft.pin,
         payload_kg=draft.payload,
         teu=draft.teu,
+        quantity=draft.qty,
         created_by=user_id,
     )
 

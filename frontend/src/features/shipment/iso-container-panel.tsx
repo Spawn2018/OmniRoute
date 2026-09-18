@@ -42,6 +42,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
   const [pin, setPin] = useState("")
   const [payload, setPayload] = useState("")
   const [teu, setTeu] = useState("")
+  const [pieces, setPieces] = useState("")
   const [weigh, setWeigh] = useState("")
   const [vgm, setVgm] = useState("")
   const [survey, setSurvey] = useState("")
@@ -93,6 +94,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
         pin_code: optionalToken(pin),
         payload_kg: optionalToken(payload),
         teu: optionalToken(teu),
+        quantity: optionalHours(pieces),
         vgm_method: optionalToken(weigh),
         vgm_cutoff_at: optionalToken(vgm),
         last_survey_at: optionalToken(survey),
@@ -109,7 +111,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
     <section className="grid gap-2 rounded-md border border-border p-3" data-container="iso">
       <h2 className="text-sm font-medium">Kontener ISO</h2>
       <p className="text-xs text-muted-foreground">
-        Numer z cyfrą kontrolną i typ 4 znaków. Opcjonalne plomby, statek, rejs, uwaga, ładunek, opakowanie, referencje, flaga chłodniczego, terminale pobrania oraz zwrotu, rodzaj listu, godziny wolnego czasu na origin oraz destination, dni demurrage HITL, dni detention HITL, dni mixed D&D HITL, cutoff SI, cutoff AMS, cutoff CY, cutoff CFS, VGM (kg Decimal, metoda SOLAS, cutoff), tara HITL (kg Decimal), ładowność HITL (kg Decimal), TEU HITL (Decimal, nie z typu ISO), czas ostatniego przeglądu, numer bookingu, PIN odbioru HITL (tekst), UUID armatora oraz UUID odcinka. Nie odliczanie. Nie HBL. Nie temperatura. Nie kalkulator kg. Nie live terminal. Nie ciphertext. Nie S21. Nie live HTTP.
+        Numer z cyfrą kontrolną i typ 4 znaków. Opcjonalne plomby, statek, rejs, uwaga, ładunek, opakowanie, referencje, flaga chłodniczego, terminale pobrania oraz zwrotu, rodzaj listu, godziny wolnego czasu na origin oraz destination, dni demurrage HITL, dni detention HITL, dni mixed D&D HITL, cutoff SI, cutoff AMS, cutoff CY, cutoff CFS, VGM (kg Decimal, metoda SOLAS, cutoff), tara HITL (kg Decimal), ładowność HITL (kg Decimal), TEU HITL (Decimal, nie z typu ISO), ilość HITL (sztuki, nie punkt), czas ostatniego przeglądu, numer bookingu, PIN odbioru HITL (tekst), UUID armatora oraz UUID odcinka. Nie odliczanie. Nie HBL. Nie temperatura. Nie kalkulator kg. Nie live terminal. Nie ciphertext. Nie S21. Nie live HTTP.
       </p>
       <label className="flex flex-col gap-1 text-xs">
         Numer ISO 6346
@@ -409,6 +411,15 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
         />
       </label>
       <label className="flex flex-col gap-1 text-xs">
+        Ilość HITL (opcjonalnie)
+        <Input
+          aria-label="Ilość kontenera"
+          placeholder="quantity"
+          value={pieces}
+          onChange={(event) => setPieces(event.target.value)}
+        />
+      </label>
+      <label className="flex flex-col gap-1 text-xs">
         PIN odbioru (opcjonalnie)
         <Input
           aria-label="PIN odbioru kontenera"
@@ -508,6 +519,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
             {row.tare_kg !== null ? ` · tara ${row.tare_kg}` : ""}
             {row.payload_kg !== null ? ` · ładowność ${row.payload_kg}` : ""}
             {row.teu !== null ? ` · TEU ${row.teu}` : ""}
+            {row.quantity !== null ? ` · ${String(row.quantity)} szt.` : ""}
             {row.pin_code !== null ? ` · PIN ${row.pin_code}` : ""}
             {row.vgm_method !== null ? ` · ${row.vgm_method}` : ""}
             {row.vgm_cutoff_at !== null ? ` · VGM ${row.vgm_cutoff_at}` : ""}

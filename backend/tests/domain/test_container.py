@@ -14,6 +14,7 @@ from app.domain.container import (
     require_cfs_cutoff_at,
     require_container_bl_kind,
     require_container_no,
+    require_container_quantity,
     require_container_reefer,
     require_container_ref_1,
     require_container_ref_2,
@@ -364,6 +365,18 @@ def test_teu_reuses_positive_decimal_rule() -> None:
         require_teu(-1)
     with pytest.raises(InvalidContainer, match="teu"):
         require_teu(True)
+
+
+def test_container_quantity_is_non_negative_int() -> None:
+    assert require_container_quantity(None) is None
+    assert require_container_quantity(0) == 0
+    assert require_container_quantity(3) == 3
+    with pytest.raises(InvalidContainer, match="ilość"):
+        require_container_quantity(-1)
+    with pytest.raises(InvalidContainer, match="ilość"):
+        require_container_quantity(True)
+    with pytest.raises(InvalidContainer, match="ilość"):
+        require_container_quantity(1.5)
 
 
 def test_last_survey_at_reuses_aware_clock_and_rejects_naive() -> None:

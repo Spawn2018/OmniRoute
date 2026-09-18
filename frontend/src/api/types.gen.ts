@@ -2805,6 +2805,10 @@ export type ContainerCreate = {
      */
     teu?: unknown | null;
     /**
+     * Quantity
+     */
+    quantity?: unknown | null;
+    /**
      * Vgm Method
      */
     vgm_method?: unknown | null;
@@ -2982,6 +2986,10 @@ export type ContainerResponse = {
      * Teu
      */
     teu: string | null;
+    /**
+     * Quantity
+     */
+    quantity: number | null;
     /**
      * Vgm Method
      */

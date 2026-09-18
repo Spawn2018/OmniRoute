@@ -463,6 +463,21 @@ def test_migration_452_adds_teu_without_iso_calculator() -> None:
     assert "teu" in source.split("def downgrade")[1]
 
 
+def test_migration_453_adds_quantity_without_stop_write() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "453_container_quantity.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "453_container_quantity"' in source
+    assert 'down_revision: str | None = "452_container_teu"' in source
+    assert "quantity" in source
+    assert "ck_container_quantity" in source
+    assert "stop" not in source
+    assert "httpx" not in source
+    assert "create_table" not in source
+    assert "def downgrade" in source
+    assert "quantity" in source.split("def downgrade")[1]
+
+
 def test_migration_174_adds_si_cutoff_without_live_http() -> None:
     source = (
         _ROOT / "backend" / "alembic" / "versions" / "174_container_si_cutoff.py"
@@ -641,6 +656,7 @@ def test_generated_api_types_include_container() -> None:
     assert "pin_code" in source
     assert "payload_kg" in source
     assert "teu" in source
+    assert "quantity" in source
     assert "vgm_method" in source
     assert "vgm_cutoff_at" in source
     assert "last_survey_at" in source

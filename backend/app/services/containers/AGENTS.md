@@ -1,6 +1,6 @@
 # BC container (T3)
 
-Kontener ISO 6346 per tenant. Opcjonalne `shipment_id`. HITL VGM. HITL `booking_no`. HITL `pin_code` (tekst). HITL `payload_kg` (Decimal, nie kalkulator). HITL `teu` (Decimal, nie kalkulator z typu ISO). HITL `carrier_party_id` (FK, bind w API). HITL `shipment_leg_id` (FK, bind w API). Nie S21.
+Kontener ISO 6346 per tenant. Opcjonalne `shipment_id`. HITL VGM. HITL `booking_no`. HITL `pin_code` (tekst). HITL `payload_kg` (Decimal, nie kalkulator). HITL `teu` (Decimal, nie kalkulator z typu ISO). HITL `quantity` (Integer, nie stop). HITL `carrier_party_id` (FK, bind w API). HITL `shipment_leg_id` (FK, bind w API). Nie S21.
 
 ## Dozwolone zależności
 - `app.models.container`

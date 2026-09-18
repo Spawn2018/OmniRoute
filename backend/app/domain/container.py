@@ -240,6 +240,16 @@ def require_detention_free_days(raw: object) -> int | None:
     return _require_dd_days(raw, "detention")
 
 
+def require_container_quantity(raw: object) -> int | None:
+    if raw is None:
+        return None
+    if type(raw) is bool or type(raw) is not int:
+        raise InvalidContainer("ilość musi być liczbą całkowitą")
+    if raw < 0:
+        raise InvalidContainer("ilość: nieujemne")
+    return raw
+
+
 def require_mixed_dd_days(raw: object) -> int | None:
     return _require_dd_days(raw, "mixed")
 
