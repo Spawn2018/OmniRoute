@@ -239,6 +239,10 @@ def require_detention_free_days(raw: object) -> int | None:
     return _require_dd_days(raw, "detention")
 
 
+def require_mixed_dd_days(raw: object) -> int | None:
+    return _require_dd_days(raw, "mixed")
+
+
 def _require_dd_days(raw: object, label: str) -> int | None:
     if raw is None:
         return None

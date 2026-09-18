@@ -81,6 +81,7 @@ class Container(Base, TimestampMixin):
     free_time_dest_h: Mapped[int | None] = mapped_column(Integer(), nullable=True)
     demurrage_free_days: Mapped[int | None] = mapped_column(Integer(), nullable=True)
     detention_free_days: Mapped[int | None] = mapped_column(Integer(), nullable=True)
+    mixed_dd_days: Mapped[int | None] = mapped_column(Integer(), nullable=True)
     si_cutoff_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     ams_cutoff_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     cy_cutoff_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)

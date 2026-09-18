@@ -2765,6 +2765,10 @@ export type ContainerCreate = {
      */
     detention_free_days?: unknown | null;
     /**
+     * Mixed Dd Days
+     */
+    mixed_dd_days?: unknown | null;
+    /**
      * Si Cutoff At
      */
     si_cutoff_at?: unknown | null;
@@ -2922,6 +2926,10 @@ export type ContainerResponse = {
      * Detention Free Days
      */
     detention_free_days: number | null;
+    /**
+     * Mixed Dd Days
+     */
+    mixed_dd_days: number | null;
     /**
      * Si Cutoff At
      */

@@ -369,6 +369,21 @@ def test_migration_447_adds_detention_days_without_countdown() -> None:
     assert "detention_free_days" in source.split("def downgrade")[1]
 
 
+def test_migration_448_adds_mixed_dd_without_countdown() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "448_container_mixed_dd.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "448_container_mixed_dd"' in source
+    assert 'down_revision: str | None = "447_container_detention"' in source
+    assert "mixed_dd_days" in source
+    assert "countdown" not in source
+    assert "remaining" not in source
+    assert "free_time_clock" not in source
+    assert "create_table" not in source
+    assert "def downgrade" in source
+    assert "mixed_dd_days" in source.split("def downgrade")[1]
+
+
 def test_migration_174_adds_si_cutoff_without_live_http() -> None:
     source = (
         _ROOT / "backend" / "alembic" / "versions" / "174_container_si_cutoff.py"
@@ -528,6 +543,7 @@ def test_generated_api_types_include_container() -> None:
     assert "free_time_dest_h" in source
     assert "demurrage_free_days" in source
     assert "detention_free_days" in source
+    assert "mixed_dd_days" in source
     assert "si_cutoff_at" in source
     assert "ams_cutoff_at" in source
     assert "cy_cutoff_at" in source

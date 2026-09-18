@@ -30,6 +30,7 @@ from app.domain.container import (
     require_free_time_origin_h,
     require_iso_size_type,
     require_last_survey_at,
+    require_mixed_dd_days,
     require_packaging_code,
     require_pickup_terminal,
     require_return_terminal,
@@ -73,6 +74,7 @@ class _WriteBox(NamedTuple):
     dwell: object
     demurrage: object
     detention: object
+    mixed: object
     cut: object
     ams: object
     cy: object
@@ -112,6 +114,7 @@ class _BoxDraft(NamedTuple):
     dwell: int | None
     demurrage: int | None
     detention: int | None
+    mixed: int | None
     cut: datetime | None
     ams: datetime | None
     cy: datetime | None
@@ -161,7 +164,7 @@ def _box_draft(write: _WriteBox) -> _BoxDraft:
 
 
 def _require_clocks(write: _WriteBox) -> tuple[
-    int | None, int | None, int | None, int | None,
+    int | None, int | None, int | None, int | None, int | None,
     datetime | None, datetime | None, datetime | None, datetime | None,
 ]:
     return (
@@ -169,6 +172,7 @@ def _require_clocks(write: _WriteBox) -> tuple[
         require_free_time_dest_h(write.dwell),
         require_demurrage_free_days(write.demurrage),
         require_detention_free_days(write.detention),
+        require_mixed_dd_days(write.mixed),
         require_si_cutoff_at(write.cut),
         require_ams_cutoff_at(write.ams),
         require_cy_cutoff_at(write.cy),
@@ -215,6 +219,7 @@ def _clocks_match(current: Container, draft: _BoxDraft) -> bool:
         and current.free_time_dest_h == draft.dwell
         and current.demurrage_free_days == draft.demurrage
         and current.detention_free_days == draft.detention
+        and current.mixed_dd_days == draft.mixed
         and current.si_cutoff_at == draft.cut
         and current.ams_cutoff_at == draft.ams
         and current.cy_cutoff_at == draft.cy
@@ -265,6 +270,7 @@ def _clock_kwargs(draft: _BoxDraft) -> dict[str, object]:
         "free_time_dest_h": draft.dwell,
         "demurrage_free_days": draft.demurrage,
         "detention_free_days": draft.detention,
+        "mixed_dd_days": draft.mixed,
         "si_cutoff_at": draft.cut,
         "ams_cutoff_at": draft.ams,
         "cy_cutoff_at": draft.cy,

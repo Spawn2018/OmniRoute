@@ -30,6 +30,7 @@ from app.domain.container import (
     require_free_time_origin_h,
     require_iso_size_type,
     require_last_survey_at,
+    require_mixed_dd_days,
     require_packaging_code,
     require_pickup_terminal,
     require_return_terminal,
@@ -240,6 +241,12 @@ def test_detention_free_days_reuses_dd_days_rule() -> None:
     assert require_detention_free_days(5) == 5
     with pytest.raises(InvalidContainer, match="dni"):
         require_detention_free_days(-1)
+
+
+def test_mixed_dd_days_reuses_dd_days_rule() -> None:
+    assert require_mixed_dd_days(3) == 3
+    with pytest.raises(InvalidContainer, match="dni"):
+        require_mixed_dd_days(-1)
 
 
 def test_si_cutoff_at_keeps_aware_clock_and_rejects_naive() -> None:

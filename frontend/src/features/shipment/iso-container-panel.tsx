@@ -32,6 +32,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
   const [dwell, setDwell] = useState("")
   const [demurrage, setDemurrage] = useState("")
   const [detention, setDetention] = useState("")
+  const [mixed, setMixed] = useState("")
   const [cut, setCut] = useState("")
   const [ams, setAms] = useState("")
   const [cy, setCy] = useState("")
@@ -78,6 +79,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
         free_time_dest_h: optionalHours(dwell),
         demurrage_free_days: optionalHours(demurrage),
         detention_free_days: optionalHours(detention),
+        mixed_dd_days: optionalHours(mixed),
         si_cutoff_at: optionalToken(cut),
         ams_cutoff_at: optionalToken(ams),
         cy_cutoff_at: optionalToken(cy),
@@ -99,7 +101,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
     <section className="grid gap-2 rounded-md border border-border p-3" data-container="iso">
       <h2 className="text-sm font-medium">Kontener ISO</h2>
       <p className="text-xs text-muted-foreground">
-        Numer z cyfrą kontrolną i typ 4 znaków. Opcjonalne plomby, statek, rejs, uwaga, ładunek, opakowanie, referencje, flaga chłodniczego, terminale pobrania oraz zwrotu, rodzaj listu, godziny wolnego czasu na origin oraz destination, dni demurrage HITL, dni detention HITL, cutoff SI, cutoff AMS, cutoff CY, cutoff CFS, VGM (kg Decimal, metoda SOLAS, cutoff), czas ostatniego przeglądu, numer bookingu, UUID armatora oraz UUID odcinka. Nie odliczanie. Nie HBL. Nie temperatura. Nie kalkulator kg. Nie PIN. Nie S21. Nie live HTTP.
+        Numer z cyfrą kontrolną i typ 4 znaków. Opcjonalne plomby, statek, rejs, uwaga, ładunek, opakowanie, referencje, flaga chłodniczego, terminale pobrania oraz zwrotu, rodzaj listu, godziny wolnego czasu na origin oraz destination, dni demurrage HITL, dni detention HITL, dni mixed D&D HITL, cutoff SI, cutoff AMS, cutoff CY, cutoff CFS, VGM (kg Decimal, metoda SOLAS, cutoff), czas ostatniego przeglądu, numer bookingu, UUID armatora oraz UUID odcinka. Nie odliczanie. Nie HBL. Nie temperatura. Nie kalkulator kg. Nie PIN. Nie S21. Nie live HTTP.
       </p>
       <label className="flex flex-col gap-1 text-xs">
         Numer ISO 6346
@@ -315,6 +317,15 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
           placeholder="detention_free_days"
           value={detention}
           onChange={(event) => setDetention(event.target.value)}
+        />
+      </label>
+      <label className="flex flex-col gap-1 text-xs">
+        Dni mixed D&D HITL (opcjonalnie)
+        <Input
+          aria-label="Dni mixed D and D HITL kontenera"
+          placeholder="mixed_dd_days"
+          value={mixed}
+          onChange={(event) => setMixed(event.target.value)}
         />
       </label>
       <label className="flex flex-col gap-1 text-xs">
