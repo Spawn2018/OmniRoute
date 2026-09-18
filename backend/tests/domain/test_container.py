@@ -24,6 +24,7 @@ from app.domain.container import (
     require_container_shipment_leg_id,
     require_container_source_ref,
     require_cy_cutoff_at,
+    require_demurrage_free_days,
     require_free_time_dest_h,
     require_free_time_origin_h,
     require_iso_size_type,
@@ -223,6 +224,15 @@ def test_free_time_dest_h_reuses_same_hours_rule() -> None:
     assert require_free_time_dest_h(24) == 24
     with pytest.raises(InvalidContainer, match="godziny"):
         require_free_time_dest_h(-1)
+
+
+def test_demurrage_free_days_keeps_days_and_rejects_float() -> None:
+    assert require_demurrage_free_days(None) is None
+    assert require_demurrage_free_days(7) == 7
+    with pytest.raises(InvalidContainer, match="dni"):
+        require_demurrage_free_days(-1)
+    with pytest.raises(InvalidContainer, match="dni"):
+        require_demurrage_free_days(1.5)  # type: ignore[arg-type]
 
 
 def test_si_cutoff_at_keeps_aware_clock_and_rejects_naive() -> None:

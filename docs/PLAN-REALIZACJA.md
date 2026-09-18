@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **566.0** V3 leftover HITL `container.demurrage_free_days`. Nie countdown N3. Nie szkic charge. Nie AI3-payload. Nie G0-SH.
+**Następny:** **567.0** V3 leftover HITL `container.detention_free_days`. Nie countdown N3. Nie szkic charge. Nie AI3-payload. Nie G0-SH.
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -586,7 +586,7 @@ Karta: [karty-pol-g2-tender.md](analysis/karty-pol-g2-tender.md). P6 = oferty od
 |---|---|---|---|
 | V1 | Prediction Ledger + N7 przedział/kalibracja | zamknięty HITL CRPS/MAE ([193.0](deltas/archived/193.0-prediction-ledger.md)); leftover champion/challenger / drift | punkt bez CRPS = zakaz; dump CT `03`: p44 PLANNED/ACTUAL/ESTIMATE analog, vendor bez CRPS/MAE — leftover AI2 liczy; Triple SLA Shippeo ZA LOGOWANIEM, nie claimować; dump `04b`: Oracle LML 95% interval = metoda, nie CRPS; ledger HITL aż AI2 |
 | V2 / V2b | ETA **dwa czasy** `eta_physical`/`eta_legal` + pogoda; myto → `charge`+`source_ref` | ETA HITL zamknięte ([194.0](deltas/archived/194.0-stop-eta.md)); pogoda HITL zamknięta ([195.0](deltas/archived/195.0-weather-observation.md)); leftover Open-Meteo / geometria / myto | brak taryfy = warning |
-| V3 | D&D / rollover + zegar N3 + blank sailing EXP2.7 | zamknięty HITL katalog ([196.0](deltas/archived/196.0-free-time-clock.md)); zamknięty HITL blank sailing ([565.0](deltas/archived/565.0-blank-sailing-mark.md)); leftover N3 countdown / szkic charge / kolumny na container | |
+| V3 | D&D / rollover + zegar N3 + blank sailing EXP2.7 | zamknięty HITL katalog ([196.0](deltas/archived/196.0-free-time-clock.md)); zamknięty HITL blank sailing ([565.0](deltas/archived/565.0-blank-sailing-mark.md)); zamknięty HITL `demurrage_free_days` ([566.0](deltas/archived/566.0-container-demurrage-days.md)); leftover N3 countdown / szkic charge / `detention_free_days` / `mixed_dd_days` | |
 | V4 | AIS wieży | leftover S32 | nie V5 |
 | V5 / V5b | hub GPS; `omni_telematic` vs `external_api` 3 dni **robocze** (U4) | zamknięty HITL katalog ([197.0](deltas/archived/197.0-telematics-connector.md)); leftover `resource_telematics_link` / ciphertext / 3 dni U4 / V5b `exchange_message`; `position_event` HITL = **457.0** | zero własnego HW |
 | V6 | wieża impact; bez `sla_clause` = „brak danych umowy” (EXP0.1 → CI5) | zamknięty HITL katalog ([198.0](deltas/archived/198.0-tower-impact.md)); leftover silnik EBITDA / `sla_clause` CI5 / V8 | nie scoring osoby; dump CT `03`: GTT planned+tolerance / unplanned / XRI — leftover silnik, otwarty słownik milestone (nie lista w kodzie) |
@@ -892,13 +892,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

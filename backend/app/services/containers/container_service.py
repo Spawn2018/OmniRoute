@@ -24,6 +24,7 @@ from app.domain.container import (
     require_container_shipment_leg_id,
     require_container_source_ref,
     require_cy_cutoff_at,
+    require_demurrage_free_days,
     require_free_time_dest_h,
     require_free_time_origin_h,
     require_iso_size_type,
@@ -69,6 +70,7 @@ class _WriteBox(NamedTuple):
     bill: object
     idle: object
     dwell: object
+    demurrage: object
     cut: object
     ams: object
     cy: object
@@ -106,6 +108,7 @@ class _BoxDraft(NamedTuple):
     bill: str | None
     idle: int | None
     dwell: int | None
+    demurrage: int | None
     cut: datetime | None
     ams: datetime | None
     cy: datetime | None
@@ -144,6 +147,7 @@ def _box_draft(write: _WriteBox) -> _BoxDraft:
         require_container_bl_kind(write.bill),
         require_free_time_origin_h(write.idle),
         require_free_time_dest_h(write.dwell),
+        require_demurrage_free_days(write.demurrage),
         require_si_cutoff_at(write.cut),
         require_ams_cutoff_at(write.ams),
         require_cy_cutoff_at(write.cy),
@@ -182,6 +186,7 @@ def _box_unchanged(current: Container, draft: _BoxDraft) -> bool:
         and current.bl_kind == draft.bill
         and current.free_time_origin_h == draft.idle
         and current.free_time_dest_h == draft.dwell
+        and current.demurrage_free_days == draft.demurrage
         and current.si_cutoff_at == draft.cut
         and current.ams_cutoff_at == draft.ams
         and current.cy_cutoff_at == draft.cy
@@ -221,8 +226,8 @@ def _container_row(organization_id: UUID, user_id: UUID, draft: _BoxDraft) -> Co
         pickup_terminal=draft.dock,
         return_terminal=draft.yard,
         bl_kind=draft.bill,
-        free_time_origin_h=draft.idle,
-        free_time_dest_h=draft.dwell,
+        free_time_origin_h=draft.idle, free_time_dest_h=draft.dwell,
+        demurrage_free_days=draft.demurrage,
         si_cutoff_at=draft.cut,
         ams_cutoff_at=draft.ams,
         cy_cutoff_at=draft.cy,

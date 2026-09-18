@@ -339,6 +339,21 @@ def test_migration_173_adds_free_time_dest_without_clock() -> None:
     assert "free_time_dest_h" in source.split("def downgrade")[1]
 
 
+def test_migration_446_adds_demurrage_days_without_countdown() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "446_container_demurrage.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "446_container_demurrage"' in source
+    assert 'down_revision: str | None = "445_blank_sailing_mark"' in source
+    assert "demurrage_free_days" in source
+    assert "countdown" not in source
+    assert "remaining" not in source
+    assert "free_time_clock" not in source
+    assert "create_table" not in source
+    assert "def downgrade" in source
+    assert "demurrage_free_days" in source.split("def downgrade")[1]
+
+
 def test_migration_174_adds_si_cutoff_without_live_http() -> None:
     source = (
         _ROOT / "backend" / "alembic" / "versions" / "174_container_si_cutoff.py"
@@ -496,6 +511,7 @@ def test_generated_api_types_include_container() -> None:
     assert "pickup_terminal" in source
     assert "free_time_origin_h" in source
     assert "free_time_dest_h" in source
+    assert "demurrage_free_days" in source
     assert "si_cutoff_at" in source
     assert "ams_cutoff_at" in source
     assert "cy_cutoff_at" in source

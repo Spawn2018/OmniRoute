@@ -16,6 +16,7 @@ _MAX_BOOK = 64
 _BL_KINDS = frozenset({"original", "seawaybill", "telex", "express"})
 _VGM_METHODS = frozenset({"method1", "method2"})
 _MAX_ORIGIN_H = 8760
+_MAX_DEMURRAGE_DAYS = 3650
 _FOUR = Decimal("0.0001")
 
 
@@ -228,6 +229,18 @@ def require_free_time_origin_h(raw: object) -> int | None:
 
 def require_free_time_dest_h(raw: object) -> int | None:
     return require_free_time_origin_h(raw)
+
+
+def require_demurrage_free_days(raw: object) -> int | None:
+    if raw is None:
+        return None
+    if type(raw) is bool or type(raw) is not int:
+        raise InvalidContainer("dni demurrage muszą być liczbą całkowitą")
+    if raw < 0:
+        raise InvalidContainer("dni demurrage: nieujemne")
+    if raw > _MAX_DEMURRAGE_DAYS:
+        raise InvalidContainer("dni demurrage: za dużo")
+    return raw
 
 
 def require_si_cutoff_at(raw: object) -> datetime | None:

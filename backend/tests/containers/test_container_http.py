@@ -163,6 +163,7 @@ def test_http_create_list_supersede_and_reject_check_digit(box_client: object) -
     assert first.json()["bl_kind"] is None
     assert first.json()["free_time_origin_h"] is None
     assert first.json()["free_time_dest_h"] is None
+    assert first.json()["demurrage_free_days"] is None
     assert first.json()["si_cutoff_at"] is None
     assert first.json()["ams_cutoff_at"] is None
     assert first.json()["cy_cutoff_at"] is None
@@ -918,6 +919,43 @@ def test_http_rejects_negative_free_time_dest_h(box_client: object) -> None:
     )
     assert reply.status_code == 400
     assert "godziny" in reply.json()["detail"]
+
+
+def test_http_create_container_with_demurrage_free_days(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    created = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "demurrage_free_days": 7,
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["demurrage_free_days"] == 7
+    assert created.json()["free_time_dest_h"] is None
+    assert "remaining" not in created.json()
+    assert "countdown" not in created.json()
+
+
+def test_http_rejects_negative_demurrage_free_days(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "demurrage_free_days": -1,
+        },
+    )
+    assert reply.status_code == 400
+    assert "dni" in reply.json()["detail"]
 
 
 def test_http_create_container_with_si_cutoff_at(box_client: object) -> None:

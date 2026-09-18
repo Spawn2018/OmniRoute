@@ -2757,6 +2757,10 @@ export type ContainerCreate = {
      */
     free_time_dest_h?: unknown | null;
     /**
+     * Demurrage Free Days
+     */
+    demurrage_free_days?: unknown | null;
+    /**
      * Si Cutoff At
      */
     si_cutoff_at?: unknown | null;
@@ -2906,6 +2910,10 @@ export type ContainerResponse = {
      * Free Time Dest H
      */
     free_time_dest_h: number | null;
+    /**
+     * Demurrage Free Days
+     */
+    demurrage_free_days: number | null;
     /**
      * Si Cutoff At
      */

@@ -27,6 +27,7 @@ export type ContainerRow = {
   bl_kind: string | null
   free_time_origin_h: number | null
   free_time_dest_h: number | null
+  demurrage_free_days: number | null
   si_cutoff_at: string | null
   ams_cutoff_at: string | null
   cy_cutoff_at: string | null
@@ -65,6 +66,7 @@ export type ContainerWrite = {
   bl_kind?: string | null
   free_time_origin_h?: number | null
   free_time_dest_h?: number | null
+  demurrage_free_days?: number | null
   si_cutoff_at?: string | null
   ams_cutoff_at?: string | null
   cy_cutoff_at?: string | null
