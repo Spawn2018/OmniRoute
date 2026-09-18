@@ -52,6 +52,7 @@ def test_migration_155_adds_seal_without_pin() -> None:
     assert 'down_revision: str | None = "154_stop_notes"' in source
     assert "seal_no_1" in source
     assert "pin_code" not in source
+    assert "payload_kg" not in source
     assert "vgm" not in source.casefold()
     assert "create_table" not in source
     assert "def downgrade" in source
@@ -66,6 +67,7 @@ def test_migration_156_adds_second_seal_without_pin() -> None:
     assert 'down_revision: str | None = "155_container_seal"' in source
     assert "seal_no_2" in source
     assert "pin_code" not in source
+    assert "payload_kg" not in source
     assert "vgm" not in source.casefold()
     assert "create_table" not in source
     assert "def downgrade" in source
@@ -80,6 +82,7 @@ def test_migration_157_adds_third_seal_without_pin() -> None:
     assert 'down_revision: str | None = "156_container_seal2"' in source
     assert "seal_no_3" in source
     assert "pin_code" not in source
+    assert "payload_kg" not in source
     assert "vgm" not in source.casefold()
     assert "create_table" not in source
     assert "def downgrade" in source
@@ -95,6 +98,7 @@ def test_migration_158_adds_vessel_without_voyage() -> None:
     assert "vessel_name" in source
     assert "voyage_no" not in source
     assert "pin_code" not in source
+    assert "payload_kg" not in source
     assert "vgm" not in source.casefold()
     assert "create_table" not in source
     assert "def downgrade" in source
@@ -110,6 +114,7 @@ def test_migration_159_adds_voyage_without_booking() -> None:
     assert "voyage_no" in source
     assert "booking_no" not in source
     assert "pin_code" not in source
+    assert "payload_kg" not in source
     assert "vgm" not in source.casefold()
     assert "create_table" not in source
     assert "def downgrade" in source
@@ -125,6 +130,7 @@ def test_migration_160_adds_remarks_without_weight() -> None:
     assert "remarks" in source
     assert "weight_kg" not in source
     assert "pin_code" not in source
+    assert "payload_kg" not in source
     assert "vgm" not in source.casefold()
     assert "create_table" not in source
     assert "def downgrade" in source
@@ -140,6 +146,7 @@ def test_migration_161_adds_cargo_description_without_weight() -> None:
     assert "cargo_description" in source
     assert "weight_kg" not in source
     assert "pin_code" not in source
+    assert "payload_kg" not in source
     assert "vgm" not in source.casefold()
     assert "create_table" not in source
     assert "def downgrade" in source
@@ -155,6 +162,7 @@ def test_migration_162_adds_packaging_code_without_weight() -> None:
     assert "packaging_code" in source
     assert "weight_kg" not in source
     assert "pin_code" not in source
+    assert "payload_kg" not in source
     assert "vgm" not in source.casefold()
     assert "create_table" not in source
     assert "def downgrade" in source
@@ -171,6 +179,7 @@ def test_migration_163_adds_ref_1_without_weight() -> None:
     assert "booking_no" not in source
     assert "weight_kg" not in source
     assert "pin_code" not in source
+    assert "payload_kg" not in source
     assert "vgm" not in source.casefold()
     assert "create_table" not in source
     assert "def downgrade" in source
@@ -187,6 +196,7 @@ def test_migration_164_adds_ref_2_without_weight() -> None:
     assert "booking_no" not in source
     assert "weight_kg" not in source
     assert "pin_code" not in source
+    assert "payload_kg" not in source
     assert "vgm" not in source.casefold()
     assert "create_table" not in source
     assert "def downgrade" in source
@@ -203,6 +213,7 @@ def test_migration_165_adds_ref_3_without_weight() -> None:
     assert "booking_no" not in source
     assert "weight_kg" not in source
     assert "pin_code" not in source
+    assert "payload_kg" not in source
     assert "vgm" not in source.casefold()
     assert "create_table" not in source
     assert "def downgrade" in source
@@ -219,6 +230,7 @@ def test_migration_166_adds_ref_4_without_weight() -> None:
     assert "booking_no" not in source
     assert "weight_kg" not in source
     assert "pin_code" not in source
+    assert "payload_kg" not in source
     assert "vgm" not in source.casefold()
     assert "create_table" not in source
     assert "def downgrade" in source
@@ -235,6 +247,7 @@ def test_migration_167_adds_ref_5_without_weight() -> None:
     assert "booking_no" not in source
     assert "weight_kg" not in source
     assert "pin_code" not in source
+    assert "payload_kg" not in source
     assert "vgm" not in source.casefold()
     assert "create_table" not in source
     assert "def downgrade" in source
@@ -251,6 +264,7 @@ def test_migration_168_adds_reefer_without_temperature() -> None:
     assert "temp_min" not in source
     assert "temp_max" not in source
     assert "pin_code" not in source
+    assert "payload_kg" not in source
     assert "vgm" not in source.casefold()
     assert "create_table" not in source
     assert "def downgrade" in source
@@ -267,6 +281,7 @@ def test_migration_169_adds_pickup_terminal_without_fk() -> None:
     assert "pickup_terminal_id" not in source
     assert "carrier_party" not in source
     assert "pin_code" not in source
+    assert "payload_kg" not in source
     assert "vgm" not in source.casefold()
     assert "create_table" not in source
     assert "def downgrade" in source
@@ -283,6 +298,7 @@ def test_migration_170_adds_return_terminal_without_fk() -> None:
     assert "return_terminal_id" not in source
     assert "carrier_party" not in source
     assert "pin_code" not in source
+    assert "payload_kg" not in source
     assert "vgm" not in source.casefold()
     assert "create_table" not in source
     assert "def downgrade" in source
@@ -299,6 +315,7 @@ def test_migration_171_adds_bl_kind_without_hbl() -> None:
     assert "ocean_bill" not in source
     assert "hbl" not in source.casefold()
     assert "pin_code" not in source
+    assert "payload_kg" not in source
     assert "vgm" not in source.casefold()
     assert "create_table" not in source
     assert "def downgrade" in source
@@ -316,6 +333,7 @@ def test_migration_172_adds_free_time_origin_without_countdown() -> None:
     assert "countdown" not in source.casefold()
     assert "remaining" not in source
     assert "pin_code" not in source
+    assert "payload_kg" not in source
     assert "vgm" not in source.casefold()
     assert "create_table" not in source
     assert "def downgrade" in source
@@ -333,6 +351,7 @@ def test_migration_173_adds_free_time_dest_without_clock() -> None:
     assert "countdown" not in source
     assert "remaining" not in source
     assert "pin_code" not in source
+    assert "payload_kg" not in source
     assert "vgm" not in source.casefold()
     assert "create_table" not in source
     assert "def downgrade" in source
@@ -408,9 +427,24 @@ def test_migration_450_adds_pin_without_ciphertext() -> None:
     assert "String(64)" in source
     assert "httpx" not in source
     assert "BYTEA" not in source
+    assert "payload_kg" not in source
     assert "create_table" not in source
     assert "def downgrade" in source
     assert "pin_code" in source.split("def downgrade")[1]
+
+
+def test_migration_451_adds_payload_without_calculator() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "451_container_payload.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "451_container_payload"' in source
+    assert 'down_revision: str | None = "450_container_pin"' in source
+    assert "payload_kg" in source
+    assert "Numeric(14, 4)" in source
+    assert "httpx" not in source
+    assert "create_table" not in source
+    assert "def downgrade" in source
+    assert "payload_kg" in source.split("def downgrade")[1]
 
 
 def test_migration_174_adds_si_cutoff_without_live_http() -> None:
@@ -422,6 +456,7 @@ def test_migration_174_adds_si_cutoff_without_live_http() -> None:
     assert "si_cutoff_at" in source
     assert "ams_cutoff" not in source
     assert "pin_code" not in source
+    assert "payload_kg" not in source
     assert "vgm" not in source.casefold()
     assert "httpx" not in source
     assert "create_table" not in source
@@ -439,6 +474,7 @@ def test_migration_175_adds_ams_cutoff_without_live_http() -> None:
     assert "cy_cutoff" not in source
     assert "cfs_cutoff" not in source
     assert "pin_code" not in source
+    assert "payload_kg" not in source
     assert "vgm" not in source.casefold()
     assert "httpx" not in source
     assert "create_table" not in source
@@ -455,6 +491,7 @@ def test_migration_176_adds_cy_cutoff_without_live_http() -> None:
     assert "cy_cutoff_at" in source
     assert "cfs_cutoff" not in source
     assert "pin_code" not in source
+    assert "payload_kg" not in source
     assert "vgm" not in source.casefold()
     assert "httpx" not in source
     assert "create_table" not in source
@@ -471,6 +508,7 @@ def test_migration_177_adds_cfs_cutoff_without_live_http() -> None:
     assert "cfs_cutoff_at" in source
     assert "vgm" not in source.casefold()
     assert "pin_code" not in source
+    assert "payload_kg" not in source
     assert "httpx" not in source
     assert "create_table" not in source
     assert "def downgrade" in source
@@ -488,6 +526,7 @@ def test_migration_178_adds_vgm_bundle_without_live_http() -> None:
     assert "vgm_cutoff_at" in source
     assert "Numeric(14, 4)" in source
     assert "pin_code" not in source
+    assert "payload_kg" not in source
     assert "httpx" not in source
     assert "create_table" not in source
     assert "def downgrade" in source
@@ -502,6 +541,7 @@ def test_migration_179_adds_last_survey_without_live_http() -> None:
     assert 'down_revision: str | None = "178_container_vgm"' in source
     assert "last_survey_at" in source
     assert "pin_code" not in source
+    assert "payload_kg" not in source
     assert "httpx" not in source
     assert "create_table" not in source
     assert "def downgrade" in source
@@ -516,6 +556,7 @@ def test_migration_180_adds_booking_no_without_live_http() -> None:
     assert 'down_revision: str | None = "179_container_last_survey"' in source
     assert "booking_no" in source
     assert "pin_code" not in source
+    assert "payload_kg" not in source
     assert "httpx" not in source
     assert "create_table" not in source
     assert "def downgrade" in source
@@ -531,6 +572,7 @@ def test_migration_181_adds_carrier_party_without_live_http() -> None:
     assert "carrier_party_id" in source
     assert "fk_container_carrier_party" in source
     assert "pin_code" not in source
+    assert "payload_kg" not in source
     assert "httpx" not in source
     assert "create_table" not in source
     assert "def downgrade" in source
@@ -547,6 +589,7 @@ def test_migration_182_adds_shipment_leg_without_live_http() -> None:
     assert "uq_shipment_leg_org_id" in source
     assert "fk_container_shipment_leg" in source
     assert "pin_code" not in source
+    assert "payload_kg" not in source
     assert "httpx" not in source
     assert "create_table" not in source
     assert "def downgrade" in source
@@ -580,6 +623,7 @@ def test_generated_api_types_include_container() -> None:
     assert "vgm_kg" in source
     assert "tare_kg" in source
     assert "pin_code" in source
+    assert "payload_kg" in source
     assert "vgm_method" in source
     assert "vgm_cutoff_at" in source
     assert "last_survey_at" in source

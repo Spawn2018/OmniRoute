@@ -1,22 +1,22 @@
 ﻿# Bieżący focus
 
-**Faza:** Oś pinu — **571.0** leftover T3 HITL `container.payload_kg`
+**Faza:** Oś pinu — **572.0** leftover T3 HITL TEU
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **570.0** T3 `container.pin_code` (gate success)
+**Ostatni plaster:** **571.0** T3 `container.payload_kg` (lokalnie; CI po push)
 
-**Etap:** Plaster — delta zaakceptowana; komenda `/plaster`
+**Etap:** Plan — brak delty; komenda `/plan-modul`
 
 **Noc:** `/noc 9` do **2026-09-19T09:00:00+02:00**
 
 **Miejsce pracy:** produkt = to repo + GitHub.
 
-**Następny:** **571.0** leftover T3 HITL `container.payload_kg`. Nie quantity. Nie TEU. Nie kalkulator VGM. Nie countdown N3. Nie ciphertext. Nie AI3-payload. Nie G0-SH.
+**Następny:** **572.0** leftover T3 HITL TEU. Nie quantity. Nie kalkulator z typu ISO. Nie `payload_kg`. Nie ciphertext. Nie AI3-payload. Nie G0-SH.
 
 **Park / czeka w PLAN:** AI3-payload · G0-SH · PUESC · MOS live · live FK UUID · live 409 · C3 VIES/GUS · C4 eCMR · N3 countdown · …
 
-**Spec (jedyna na sesję produktu):** [571.0-container-payload-kg.md](../deltas/open/571.0-container-payload-kg.md)
+**Spec (jedyna na sesję produktu):** brak — najpierw delta `572.0`
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 
@@ -24,6 +24,7 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
+**2026-09-18:** Plaster **571.0** payload_kg zamknięty (CI po push). `/noc 9`.
 **2026-09-18:** Delta **571.0** payload_kg zaakceptowana `/noc`. Gate **570.0** success. `/noc 9`.
 **2026-09-18:** Plaster **570.0** pin_code zamknięty (gate success). `/noc 9`.
 **2026-09-18:** Delta **570.0** pin_code zaakceptowana `/noc`. `/noc 9`.

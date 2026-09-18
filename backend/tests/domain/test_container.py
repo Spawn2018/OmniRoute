@@ -32,6 +32,7 @@ from app.domain.container import (
     require_last_survey_at,
     require_mixed_dd_days,
     require_packaging_code,
+    require_payload_kg,
     require_pickup_terminal,
     require_pin_code,
     require_return_terminal,
@@ -334,6 +335,20 @@ def test_tare_kg_reuses_positive_kg_rule() -> None:
         require_tare_kg(-1)
     with pytest.raises(InvalidContainer, match="tara"):
         require_tare_kg(True)
+
+
+def test_payload_kg_reuses_positive_kg_rule() -> None:
+    assert require_payload_kg(None) is None
+    assert require_payload_kg("  ") is None
+    assert require_payload_kg("28000.5") == Decimal("28000.5000")
+    with pytest.raises(InvalidContainer, match="ładowność"):
+        require_payload_kg(12.5)
+    with pytest.raises(InvalidContainer, match="ładowność"):
+        require_payload_kg(0)
+    with pytest.raises(InvalidContainer, match="ładowność"):
+        require_payload_kg(-1)
+    with pytest.raises(InvalidContainer, match="ładowność"):
+        require_payload_kg(True)
 
 
 def test_last_survey_at_reuses_aware_clock_and_rejects_naive() -> None:

@@ -89,6 +89,7 @@ class Container(Base, TimestampMixin):
     vgm_kg: Mapped[Decimal | None] = mapped_column(Numeric(14, 4), nullable=True)
     tare_kg: Mapped[Decimal | None] = mapped_column(Numeric(14, 4), nullable=True)
     pin_code: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    payload_kg: Mapped[Decimal | None] = mapped_column(Numeric(14, 4), nullable=True)
     vgm_method: Mapped[str | None] = mapped_column(String(16), nullable=True)
     vgm_cutoff_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     last_survey_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)

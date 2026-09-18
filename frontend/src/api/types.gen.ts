@@ -2797,6 +2797,10 @@ export type ContainerCreate = {
      */
     pin_code?: unknown | null;
     /**
+     * Payload Kg
+     */
+    payload_kg?: unknown | null;
+    /**
      * Vgm Method
      */
     vgm_method?: unknown | null;
@@ -2966,6 +2970,10 @@ export type ContainerResponse = {
      * Pin Code
      */
     pin_code: string | null;
+    /**
+     * Payload Kg
+     */
+    payload_kg: string | null;
     /**
      * Vgm Method
      */

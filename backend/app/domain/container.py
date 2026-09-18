@@ -342,6 +342,10 @@ def require_tare_kg(raw: object) -> Decimal | None:
     return _require_positive_kg(raw, "tara")
 
 
+def require_payload_kg(raw: object) -> Decimal | None:
+    return _require_positive_kg(raw, "ładowność")
+
+
 def _require_positive_kg(raw: object, label: str) -> Decimal | None:
     if raw is None:
         return None

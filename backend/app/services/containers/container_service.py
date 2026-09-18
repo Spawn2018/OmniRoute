@@ -32,6 +32,7 @@ from app.domain.container import (
     require_last_survey_at,
     require_mixed_dd_days,
     require_packaging_code,
+    require_payload_kg,
     require_pickup_terminal,
     require_pin_code,
     require_return_terminal,
@@ -90,6 +91,7 @@ class _WriteBox(NamedTuple):
     leg: object
     tare: object
     pin: object
+    payload: object
 
 
 class _BoxDraft(NamedTuple):
@@ -132,6 +134,7 @@ class _BoxDraft(NamedTuple):
     leg: UUID | None
     tare: Decimal | None
     pin: str | None
+    payload: Decimal | None
 
 
 def _box_draft(write: _WriteBox) -> _BoxDraft:
@@ -168,6 +171,7 @@ def _box_draft(write: _WriteBox) -> _BoxDraft:
         require_container_shipment_leg_id(write.leg),
         require_tare_kg(write.tare),
         require_pin_code(write.pin),
+        require_payload_kg(write.payload),
     )
 
 
@@ -220,6 +224,7 @@ def _box_unchanged(current: Container, draft: _BoxDraft) -> bool:
         and current.shipment_leg_id == draft.leg
         and current.tare_kg == draft.tare
         and current.pin_code == draft.pin
+        and current.payload_kg == draft.payload
     )
 
 
@@ -272,6 +277,7 @@ def _container_row(organization_id: UUID, user_id: UUID, draft: _BoxDraft) -> Co
         shipment_leg_id=draft.leg,
         tare_kg=draft.tare,
         pin_code=draft.pin,
+        payload_kg=draft.payload,
         created_by=user_id,
     )
 
