@@ -59,6 +59,7 @@ import { Route as CostAllocationMarksRouteImport } from './routes/cost-allocatio
 import { Route as CostCategoryMarksRouteImport } from './routes/cost-category-marks'
 import { Route as CostToServeRouteImport } from './routes/cost-to-serve'
 import { Route as CounterfactualRunsRouteImport } from './routes/counterfactual-runs'
+import { Route as CreateBlockMarksRouteImport } from './routes/create-block-marks'
 import { Route as CreditReviewsRouteImport } from './routes/credit-reviews'
 import { Route as CrmActivitiesRouteImport } from './routes/crm-activities'
 import { Route as CrmDedupMarksRouteImport } from './routes/crm-dedup-marks'
@@ -578,6 +579,11 @@ const CostToServeRoute = CostToServeRouteImport.update({
 const CounterfactualRunsRoute = CounterfactualRunsRouteImport.update({
   id: '/counterfactual-runs',
   path: '/counterfactual-runs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CreateBlockMarksRoute = CreateBlockMarksRouteImport.update({
+  id: '/create-block-marks',
+  path: '/create-block-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CreditReviewsRoute = CreditReviewsRouteImport.update({
@@ -1986,6 +1992,7 @@ export interface FileRoutesByFullPath {
   '/cost-category-marks': typeof CostCategoryMarksRoute
   '/cost-to-serve': typeof CostToServeRoute
   '/counterfactual-runs': typeof CounterfactualRunsRoute
+  '/create-block-marks': typeof CreateBlockMarksRoute
   '/credit-reviews': typeof CreditReviewsRoute
   '/crm-activities': typeof CrmActivitiesRoute
   '/crm-dedup-marks': typeof CrmDedupMarksRoute
@@ -2308,6 +2315,7 @@ export interface FileRoutesByTo {
   '/cost-category-marks': typeof CostCategoryMarksRoute
   '/cost-to-serve': typeof CostToServeRoute
   '/counterfactual-runs': typeof CounterfactualRunsRoute
+  '/create-block-marks': typeof CreateBlockMarksRoute
   '/credit-reviews': typeof CreditReviewsRoute
   '/crm-activities': typeof CrmActivitiesRoute
   '/crm-dedup-marks': typeof CrmDedupMarksRoute
@@ -2631,6 +2639,7 @@ export interface FileRoutesById {
   '/cost-category-marks': typeof CostCategoryMarksRoute
   '/cost-to-serve': typeof CostToServeRoute
   '/counterfactual-runs': typeof CounterfactualRunsRoute
+  '/create-block-marks': typeof CreateBlockMarksRoute
   '/credit-reviews': typeof CreditReviewsRoute
   '/crm-activities': typeof CrmActivitiesRoute
   '/crm-dedup-marks': typeof CrmDedupMarksRoute
@@ -2955,6 +2964,7 @@ export interface FileRouteTypes {
     | '/cost-category-marks'
     | '/cost-to-serve'
     | '/counterfactual-runs'
+    | '/create-block-marks'
     | '/credit-reviews'
     | '/crm-activities'
     | '/crm-dedup-marks'
@@ -3277,6 +3287,7 @@ export interface FileRouteTypes {
     | '/cost-category-marks'
     | '/cost-to-serve'
     | '/counterfactual-runs'
+    | '/create-block-marks'
     | '/credit-reviews'
     | '/crm-activities'
     | '/crm-dedup-marks'
@@ -3599,6 +3610,7 @@ export interface FileRouteTypes {
     | '/cost-category-marks'
     | '/cost-to-serve'
     | '/counterfactual-runs'
+    | '/create-block-marks'
     | '/credit-reviews'
     | '/crm-activities'
     | '/crm-dedup-marks'
@@ -3922,6 +3934,7 @@ export interface RootRouteChildren {
   CostCategoryMarksRoute: typeof CostCategoryMarksRoute
   CostToServeRoute: typeof CostToServeRoute
   CounterfactualRunsRoute: typeof CounterfactualRunsRoute
+  CreateBlockMarksRoute: typeof CreateBlockMarksRoute
   CreditReviewsRoute: typeof CreditReviewsRoute
   CrmActivitiesRoute: typeof CrmActivitiesRoute
   CrmDedupMarksRoute: typeof CrmDedupMarksRoute
@@ -4544,6 +4557,13 @@ declare module '@tanstack/react-router' {
       path: '/counterfactual-runs'
       fullPath: '/counterfactual-runs'
       preLoaderRoute: typeof CounterfactualRunsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/create-block-marks': {
+      id: '/create-block-marks'
+      path: '/create-block-marks'
+      fullPath: '/create-block-marks'
+      preLoaderRoute: typeof CreateBlockMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/credit-reviews': {
@@ -6490,6 +6510,7 @@ const rootRouteChildren: RootRouteChildren = {
   CostCategoryMarksRoute: CostCategoryMarksRoute,
   CostToServeRoute: CostToServeRoute,
   CounterfactualRunsRoute: CounterfactualRunsRoute,
+  CreateBlockMarksRoute: CreateBlockMarksRoute,
   CreditReviewsRoute: CreditReviewsRoute,
   CrmActivitiesRoute: CrmActivitiesRoute,
   CrmDedupMarksRoute: CrmDedupMarksRoute,

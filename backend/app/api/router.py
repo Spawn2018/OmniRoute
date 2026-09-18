@@ -52,6 +52,7 @@ from app.api import (
     cost_category_marks,
     cost_to_serve,
     counterfactual_runs,
+    create_block_marks,
     credit_reviews,
     crm_activities,
     crm_dedup_marks,
@@ -432,6 +433,7 @@ api_router.include_router(penalty_marks.router)
 api_router.include_router(intervention_outcomes.router)
 api_router.include_router(invoice_match_marks.router)
 api_router.include_router(invoice_match_candidates.router)
+api_router.include_router(create_block_marks.router)
 api_router.include_router(invoice_alloc_marks.router)
 api_router.include_router(load_order_marks.router)
 api_router.include_router(load_plan_marks.router)

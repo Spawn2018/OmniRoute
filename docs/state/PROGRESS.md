@@ -971,3 +971,5 @@
 - 2026-09-18T00:20:00Z | 554.0 | relation_document_requirement | DONE | HITL catalog relation_kind domestic/international/waste/other; bez 409 / blocks_create
 
 - 2026-09-18T00:50:00Z | 555.0 | invoice_match_candidate | DONE | HITL catalog candidate_kind proposed/held/rejected/other; bez ranking SQL / FK charge
+
+- 2026-09-18T02:10:00Z | 556.0 | create_block_mark | DONE | HITL catalog block_kind block/warn/allow/other; bez live 409 / blocks_create egzekucja

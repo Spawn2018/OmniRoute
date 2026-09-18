@@ -1143,6 +1143,10 @@ class InvalidInvoiceMatchCandidate(DomainError):
     """F10 leftover: HITL kandydat dopasowania FV — nie ranking SQL."""
 
 
+class InvalidCreateBlockMark(DomainError):
+    """C8 leftover: HITL brama create — nie live 409."""
+
+
 class InvalidRegistryPollMark(DomainError):
     """EXP7.2: HITL poll rejestru — nie live scrape."""
 

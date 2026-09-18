@@ -186,6 +186,7 @@ modules =
     app.services.purchase_invoices
     app.services.invoice_match_marks
     app.services.invoice_match_candidates
+    app.services.create_block_marks
     app.services.invoice_alloc_marks
     app.services.postal_dispatch_marks
     app.services.shipment_monitoring_filings
@@ -873,10 +874,13 @@ forbidden_modules =
     app.models.purchase_invoice
     app.services.invoice_match_marks
     app.services.invoice_match_candidates
+    app.services.create_block_marks
     app.repositories.invoice_match_marks
     app.repositories.invoice_match_candidates
+    app.repositories.create_block_marks
     app.models.invoice_match_mark
     app.models.invoice_match_candidate
+    app.models.create_block_mark
     app.services.invoice_alloc_marks
     app.services.postal_dispatch_marks
     app.services.shipment_monitoring_filings
