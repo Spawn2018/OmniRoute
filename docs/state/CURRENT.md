@@ -1,10 +1,10 @@
 ﻿# Bieżący focus
 
-**Faza:** Oś pinu — **558.0** C1 leftover `filing_bind_mark`
+**Faza:** Oś pinu — **559.0** F11 leftover `postal_epo_mark`
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **557.0** C8 `document_kind_match_mark`
+**Ostatni plaster:** **558.0** C1 `filing_bind_mark`
 
 **Etap:** Plan — wydmuszka leftover; `/plan-modul` → delta → plaster
 
@@ -12,11 +12,11 @@
 
 **Miejsce pracy:** produkt = to repo + GitHub.
 
-**Następny:** **558.0** C1 leftover HITL `filing_bind_mark`. Nie AI3-payload. Nie G0-SH. Nie PUESC. Nie FK shipment.
+**Następny:** **559.0** F11 leftover HITL `postal_epo_mark`. Nie AI3-payload. Nie G0-SH. Nie live PP / e-Doręczenia.
 
-**Park / czeka w PLAN:** AI3-payload · G0-SH · SH-R16-13 · ranking SQL · live PP · postal_epo · PUESC · 409 egzekucja · …
+**Park / czeka w PLAN:** AI3-payload · G0-SH · SH-R16-13 · ranking SQL · live PP · PUESC · 409 egzekucja · FK filing · …
 
-**Spec (jedyna na sesję produktu):** (brak — najpierw delta `558.0`)
+**Spec (jedyna na sesję produktu):** (brak — najpierw delta `559.0`)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 
@@ -24,7 +24,7 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-18:** Plaster **557.0** C8 document_kind_match_mark zamknięty. `/noc 7`.
+**2026-09-18:** Plaster **558.0** C1 filing_bind_mark zamknięty. `/noc 7`.
+**2026-09-18:** Plaster **557.0** C8 document_kind_match_mark zamknięty (gate success). `/noc 7`.
 **2026-09-18:** Plaster **556.0** C8 create_block_mark zamknięty (gate success). `/noc 7`.
 **2026-09-18:** Plaster **555.0** F10 invoice_match_candidate zamknięty (gate success). `/noc 7`.
-**2026-09-18:** Plaster **554.0** C8 relation_document_requirement zamknięty. `/noc 7`.

@@ -1151,6 +1151,10 @@ class InvalidDocumentKindMatchMark(DomainError):
     """C8 leftover: HITL dopasowanie rodzaju dokumentu — nie live matching."""
 
 
+class InvalidFilingBindMark(DomainError):
+    """C1 leftover: HITL wiązanie zgłoszenia — nie FK shipment."""
+
+
 class InvalidRegistryPollMark(DomainError):
     """EXP7.2: HITL poll rejestru — nie live scrape."""
 

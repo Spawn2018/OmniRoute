@@ -106,6 +106,7 @@ import { Route as FairShareMarksRouteImport } from './routes/fair-share-marks'
 import { Route as FerryArt9MarksRouteImport } from './routes/ferry-art9-marks'
 import { Route as FerryBookingMarksRouteImport } from './routes/ferry-booking-marks'
 import { Route as FieldConfidenceMarksRouteImport } from './routes/field-confidence-marks'
+import { Route as FilingBindMarksRouteImport } from './routes/filing-bind-marks'
 import { Route as FilingSchemeMarksRouteImport } from './routes/filing-scheme-marks'
 import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as FleetRouteImport } from './routes/fleet'
@@ -815,6 +816,11 @@ const FerryBookingMarksRoute = FerryBookingMarksRouteImport.update({
 const FieldConfidenceMarksRoute = FieldConfidenceMarksRouteImport.update({
   id: '/field-confidence-marks',
   path: '/field-confidence-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FilingBindMarksRoute = FilingBindMarksRouteImport.update({
+  id: '/filing-bind-marks',
+  path: '/filing-bind-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FilingSchemeMarksRoute = FilingSchemeMarksRouteImport.update({
@@ -2045,6 +2051,7 @@ export interface FileRoutesByFullPath {
   '/ferry-art9-marks': typeof FerryArt9MarksRoute
   '/ferry-booking-marks': typeof FerryBookingMarksRoute
   '/field-confidence-marks': typeof FieldConfidenceMarksRoute
+  '/filing-bind-marks': typeof FilingBindMarksRoute
   '/filing-scheme-marks': typeof FilingSchemeMarksRoute
   '/finance': typeof FinanceRoute
   '/fleet': typeof FleetRoute
@@ -2369,6 +2376,7 @@ export interface FileRoutesByTo {
   '/ferry-art9-marks': typeof FerryArt9MarksRoute
   '/ferry-booking-marks': typeof FerryBookingMarksRoute
   '/field-confidence-marks': typeof FieldConfidenceMarksRoute
+  '/filing-bind-marks': typeof FilingBindMarksRoute
   '/filing-scheme-marks': typeof FilingSchemeMarksRoute
   '/finance': typeof FinanceRoute
   '/fleet': typeof FleetRoute
@@ -2694,6 +2702,7 @@ export interface FileRoutesById {
   '/ferry-art9-marks': typeof FerryArt9MarksRoute
   '/ferry-booking-marks': typeof FerryBookingMarksRoute
   '/field-confidence-marks': typeof FieldConfidenceMarksRoute
+  '/filing-bind-marks': typeof FilingBindMarksRoute
   '/filing-scheme-marks': typeof FilingSchemeMarksRoute
   '/finance': typeof FinanceRoute
   '/fleet': typeof FleetRoute
@@ -3020,6 +3029,7 @@ export interface FileRouteTypes {
     | '/ferry-art9-marks'
     | '/ferry-booking-marks'
     | '/field-confidence-marks'
+    | '/filing-bind-marks'
     | '/filing-scheme-marks'
     | '/finance'
     | '/fleet'
@@ -3344,6 +3354,7 @@ export interface FileRouteTypes {
     | '/ferry-art9-marks'
     | '/ferry-booking-marks'
     | '/field-confidence-marks'
+    | '/filing-bind-marks'
     | '/filing-scheme-marks'
     | '/finance'
     | '/fleet'
@@ -3668,6 +3679,7 @@ export interface FileRouteTypes {
     | '/ferry-art9-marks'
     | '/ferry-booking-marks'
     | '/field-confidence-marks'
+    | '/filing-bind-marks'
     | '/filing-scheme-marks'
     | '/finance'
     | '/fleet'
@@ -3993,6 +4005,7 @@ export interface RootRouteChildren {
   FerryArt9MarksRoute: typeof FerryArt9MarksRoute
   FerryBookingMarksRoute: typeof FerryBookingMarksRoute
   FieldConfidenceMarksRoute: typeof FieldConfidenceMarksRoute
+  FilingBindMarksRoute: typeof FilingBindMarksRoute
   FilingSchemeMarksRoute: typeof FilingSchemeMarksRoute
   FinanceRoute: typeof FinanceRoute
   FleetRoute: typeof FleetRoute
@@ -4899,6 +4912,13 @@ declare module '@tanstack/react-router' {
       path: '/field-confidence-marks'
       fullPath: '/field-confidence-marks'
       preLoaderRoute: typeof FieldConfidenceMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/filing-bind-marks': {
+      id: '/filing-bind-marks'
+      path: '/filing-bind-marks'
+      fullPath: '/filing-bind-marks'
+      preLoaderRoute: typeof FilingBindMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/filing-scheme-marks': {
@@ -6577,6 +6597,7 @@ const rootRouteChildren: RootRouteChildren = {
   FerryArt9MarksRoute: FerryArt9MarksRoute,
   FerryBookingMarksRoute: FerryBookingMarksRoute,
   FieldConfidenceMarksRoute: FieldConfidenceMarksRoute,
+  FilingBindMarksRoute: FilingBindMarksRoute,
   FilingSchemeMarksRoute: FilingSchemeMarksRoute,
   FinanceRoute: FinanceRoute,
   FleetRoute: FleetRoute,

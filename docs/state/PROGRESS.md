@@ -975,3 +975,5 @@
 - 2026-09-18T02:10:00Z | 556.0 | create_block_mark | DONE | HITL catalog block_kind block/warn/allow/other; bez live 409 / blocks_create egzekucja
 
 - 2026-09-18T03:08:00Z | 557.0 | document_kind_match_mark | DONE | HITL catalog match_kind exact/alias/missing/other; bez live matching SQL
+
+- 2026-09-18T03:55:00Z | 558.0 | filing_bind_mark | DONE | HITL catalog bind_kind shipment/scheme/both/other; bez FK shipment / PUESC
