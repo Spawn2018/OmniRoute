@@ -364,6 +364,10 @@ def require_container_weight_kg(raw: object) -> Decimal | None:
     return _require_positive_kg(raw, "waga")
 
 
+def require_container_volume_m3(raw: object) -> Decimal | None:
+    return _require_positive_kg(raw, "objętość")
+
+
 def _require_positive_kg(raw: object, label: str) -> Decimal | None:
     if raw is None:
         return None

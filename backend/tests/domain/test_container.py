@@ -24,6 +24,7 @@ from app.domain.container import (
     require_container_remarks,
     require_container_shipment_leg_id,
     require_container_source_ref,
+    require_container_volume_m3,
     require_container_weight_kg,
     require_cy_cutoff_at,
     require_demurrage_free_days,
@@ -393,6 +394,18 @@ def test_container_weight_kg_is_positive_decimal() -> None:
         require_container_weight_kg(True)
     with pytest.raises(InvalidContainer, match="waga"):
         require_container_weight_kg(1.5)
+
+
+def test_container_volume_m3_is_positive_decimal() -> None:
+    assert require_container_volume_m3(None) is None
+    assert require_container_volume_m3("  ") is None
+    assert require_container_volume_m3("12.5") == Decimal("12.5000")
+    with pytest.raises(InvalidContainer, match="objętość"):
+        require_container_volume_m3(0)
+    with pytest.raises(InvalidContainer, match="objętość"):
+        require_container_volume_m3(True)
+    with pytest.raises(InvalidContainer, match="objętość"):
+        require_container_volume_m3(1.5)
 
 
 def test_last_survey_at_reuses_aware_clock_and_rejects_naive() -> None:

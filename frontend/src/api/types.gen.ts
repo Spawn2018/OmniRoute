@@ -2813,6 +2813,10 @@ export type ContainerCreate = {
      */
     weight_kg?: unknown | null;
     /**
+     * Volume M3
+     */
+    volume_m3?: unknown | null;
+    /**
      * Vgm Method
      */
     vgm_method?: unknown | null;
@@ -2998,6 +3002,10 @@ export type ContainerResponse = {
      * Weight Kg
      */
     weight_kg: string | null;
+    /**
+     * Volume M3
+     */
+    volume_m3: string | null;
     /**
      * Vgm Method
      */

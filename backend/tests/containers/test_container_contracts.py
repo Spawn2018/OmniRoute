@@ -493,6 +493,23 @@ def test_migration_454_adds_weight_without_stop_write() -> None:
     assert "create_table" not in source
     assert "def downgrade" in source
     assert "weight_kg" in source.split("def downgrade")[1]
+    assert "volume_m3" not in source
+
+
+def test_migration_455_adds_volume_without_cbm() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "455_container_volume.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "455_container_volume"' in source
+    assert 'down_revision: str | None = "454_container_weight"' in source
+    assert "volume_m3" in source
+    assert "Numeric(14, 4)" in source
+    assert "stop" not in source
+    assert "weight_kg" not in source
+    assert "httpx" not in source
+    assert "create_table" not in source
+    assert "def downgrade" in source
+    assert "volume_m3" in source.split("def downgrade")[1]
 
 
 def test_migration_174_adds_si_cutoff_without_live_http() -> None:
@@ -675,6 +692,7 @@ def test_generated_api_types_include_container() -> None:
     assert "teu" in source
     assert "quantity" in source
     assert "weight_kg" in source
+    assert "volume_m3" in source
     assert "vgm_method" in source
     assert "vgm_cutoff_at" in source
     assert "last_survey_at" in source

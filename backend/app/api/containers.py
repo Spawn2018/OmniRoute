@@ -58,6 +58,7 @@ class ContainerCreate(BaseModel):
     teu: object | None = None
     quantity: object | None = None
     weight_kg: object | None = None
+    volume_m3: object | None = None
     vgm_method: object | None = None
     vgm_cutoff_at: object | None = None
     last_survey_at: object | None = None
@@ -108,6 +109,7 @@ class ContainerResponse(BaseModel):
     teu: str | None
     quantity: int | None
     weight_kg: str | None
+    volume_m3: str | None
     vgm_method: str | None
     vgm_cutoff_at: datetime | None
     last_survey_at: datetime | None
@@ -124,6 +126,7 @@ def _as_response(row: Container) -> ContainerResponse:
     dumped["payload_kg"] = None if row.payload_kg is None else format(row.payload_kg, "f")
     dumped["teu"] = None if row.teu is None else format(row.teu, "f")
     dumped["weight_kg"] = None if row.weight_kg is None else format(row.weight_kg, "f")
+    dumped["volume_m3"] = None if row.volume_m3 is None else format(row.volume_m3, "f")
     return ContainerResponse.model_validate(dumped)
 
 
@@ -163,9 +166,9 @@ def _write_from_body(
         body.vgm_cutoff_at,
         body.last_survey_at,
         body.booking_no,
-        carrier_id,
-        leg_id,
-        body.tare_kg, body.pin_code, body.payload_kg, body.teu, body.quantity, body.weight_kg,
+        carrier_id, leg_id,
+        body.tare_kg, body.pin_code, body.payload_kg, body.teu, body.quantity,
+        body.weight_kg, body.volume_m3,
     )
 
 
