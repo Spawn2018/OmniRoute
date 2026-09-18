@@ -459,7 +459,7 @@ def test_http_create_container_with_cargo_description(box_client: object) -> Non
     assert created.json()["remarks"] is None
     assert "pin" not in created.json()
     assert "vgm" not in created.json()
-    assert "weight_kg" not in created.json()
+    assert created.json()["weight_kg"] is None
 
 
 def test_http_rejects_too_long_cargo_description(box_client: object) -> None:
@@ -497,7 +497,7 @@ def test_http_create_container_with_packaging_code(box_client: object) -> None:
     assert created.json()["cargo_description"] is None
     assert "pin" not in created.json()
     assert "vgm" not in created.json()
-    assert "weight_kg" not in created.json()
+    assert created.json()["weight_kg"] is None
 
 
 def test_http_rejects_too_long_packaging_code(box_client: object) -> None:
