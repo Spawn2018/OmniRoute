@@ -28,6 +28,7 @@ from app.domain.container import (
     require_container_shipment_id,
     require_container_shipment_leg_id,
     require_container_source_ref,
+    require_container_temp_min,
     require_container_unload_date,
     require_container_volume_m3,
     require_container_weight_kg,
@@ -110,6 +111,7 @@ class _WriteBox(NamedTuple):
     gate: object
     deliv: object
     unload: object
+    cool: object
 
 
 class _BoxDraft(NamedTuple):
@@ -162,10 +164,12 @@ class _BoxDraft(NamedTuple):
     gate: date | None
     deliv: date | None
     unload: date | None
+    cool: Decimal | None
 
 
 def _box_draft(write: _WriteBox) -> _BoxDraft:
     clocks = _require_clocks(write)
+    days = _require_dates(write)
     return _BoxDraft(
         require_container_no(write.number),
         require_iso_size_type(write.size_type),
@@ -200,9 +204,7 @@ def _box_draft(write: _WriteBox) -> _BoxDraft:
         require_pin_code(write.pin), require_payload_kg(write.payload),
         require_teu(write.teu), require_container_quantity(write.qty),
         require_container_weight_kg(write.kilos), require_container_volume_m3(write.cub),
-        require_container_pickup_date(write.picked), require_container_return_date(write.back),
-        require_container_gate_in_date(write.gate), require_container_delivery_date(write.deliv),
-        require_container_unload_date(write.unload),
+        *days, require_container_temp_min(write.cool),
     )
 
 
@@ -220,6 +222,18 @@ def _require_clocks(write: _WriteBox) -> tuple[
         require_ams_cutoff_at(write.ams),
         require_cy_cutoff_at(write.cy),
         require_cfs_cutoff_at(write.cfs),
+    )
+
+
+def _require_dates(write: _WriteBox) -> tuple[
+    date | None, date | None, date | None, date | None, date | None,
+]:
+    return (
+        require_container_pickup_date(write.picked),
+        require_container_return_date(write.back),
+        require_container_gate_in_date(write.gate),
+        require_container_delivery_date(write.deliv),
+        require_container_unload_date(write.unload),
     )
 
 
@@ -259,9 +273,7 @@ def _box_unchanged(current: Container, draft: _BoxDraft) -> bool:
         and current.teu == draft.teu
         and current.quantity == draft.qty
         and current.weight_kg == draft.kilos and current.volume_m3 == draft.cub
-        and current.pickup_date == draft.picked and current.return_date == draft.back
-        and current.gate_in_date == draft.gate and current.delivery_date == draft.deliv
-        and current.unload_date == draft.unload
+        and _dates_match(current, draft) and current.temp_min == draft.cool
     )
 
 
@@ -276,6 +288,16 @@ def _clocks_match(current: Container, draft: _BoxDraft) -> bool:
         and current.ams_cutoff_at == draft.ams
         and current.cy_cutoff_at == draft.cy
         and current.cfs_cutoff_at == draft.cfs
+    )
+
+
+def _dates_match(current: Container, draft: _BoxDraft) -> bool:
+    return (
+        current.pickup_date == draft.picked
+        and current.return_date == draft.back
+        and current.gate_in_date == draft.gate
+        and current.delivery_date == draft.deliv
+        and current.unload_date == draft.unload
     )
 
 
@@ -300,7 +322,8 @@ def _container_row(organization_id: UUID, user_id: UUID, draft: _BoxDraft) -> Co
         tare_kg=draft.tare, pin_code=draft.pin, payload_kg=draft.payload, teu=draft.teu,
         quantity=draft.qty, weight_kg=draft.kilos, volume_m3=draft.cub,
         pickup_date=draft.picked, return_date=draft.back, gate_in_date=draft.gate,
-        delivery_date=draft.deliv, unload_date=draft.unload, created_by=user_id,
+        delivery_date=draft.deliv, unload_date=draft.unload, temp_min=draft.cool,
+        created_by=user_id,
     )
 
 

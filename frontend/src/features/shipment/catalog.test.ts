@@ -109,6 +109,7 @@ describe("shipment surface for 28.0 and 90.0", () => {
     expect(box).toContain("gate_in_date")
     expect(box).toContain("delivery_date")
     expect(box).toContain("unload_date")
+    expect(box).toContain("temp_min")
     expect(box).toContain("carrier_party_id")
     expect(box).toContain("shipment_leg_id")
     expect(page).not.toContain("fetchQuotations")

@@ -2837,6 +2837,10 @@ export type ContainerCreate = {
      */
     unload_date?: unknown | null;
     /**
+     * Temp Min
+     */
+    temp_min?: unknown | null;
+    /**
      * Vgm Method
      */
     vgm_method?: unknown | null;
@@ -3046,6 +3050,10 @@ export type ContainerResponse = {
      * Unload Date
      */
     unload_date: string | null;
+    /**
+     * Temp Min
+     */
+    temp_min: string | null;
     /**
      * Vgm Method
      */

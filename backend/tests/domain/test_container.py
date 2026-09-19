@@ -28,6 +28,7 @@ from app.domain.container import (
     require_container_return_date,
     require_container_shipment_leg_id,
     require_container_source_ref,
+    require_container_temp_min,
     require_container_unload_date,
     require_container_volume_m3,
     require_container_weight_kg,
@@ -471,6 +472,17 @@ def test_container_unload_date_is_calendar_day() -> None:
         require_container_unload_date(True)
     with pytest.raises(InvalidContainer, match="data rozładunku"):
         require_container_unload_date(1)
+
+
+def test_container_temp_min_allows_negative_decimal() -> None:
+    assert require_container_temp_min(None) is None
+    assert require_container_temp_min("  ") is None
+    assert require_container_temp_min("-18") == Decimal("-18.0000")
+    assert require_container_temp_min(Decimal("2.5")) == Decimal("2.5000")
+    with pytest.raises(InvalidContainer, match="temp. min"):
+        require_container_temp_min(1.5)
+    with pytest.raises(InvalidContainer, match="temp. min"):
+        require_container_temp_min(True)
 
 
 def test_last_survey_at_reuses_aware_clock_and_rejects_naive() -> None:

@@ -404,6 +404,26 @@ def require_container_unload_date(raw: object) -> date | None:
     return _require_calendar_day(raw, "data rozładunku")
 
 
+def _require_temp_c(raw: object, label: str) -> Decimal | None:
+    if raw is None:
+        return None
+    if type(raw) is str and raw.strip() == "":
+        return None
+    if isinstance(raw, float) or isinstance(raw, bool):
+        raise InvalidContainer(f"{label} nie może być float")
+    if not isinstance(raw, Decimal | str | int):
+        raise InvalidContainer(f"{label} musi być liczbą dziesiętną")
+    try:
+        parsed = raw if isinstance(raw, Decimal) else Decimal(str(raw))
+    except InvalidOperation as exc:
+        raise InvalidContainer(f"{label} musi być liczbą dziesiętną") from exc
+    return parsed.quantize(_FOUR)
+
+
+def require_container_temp_min(raw: object) -> Decimal | None:
+    return _require_temp_c(raw, "temp. min")
+
+
 def _require_positive_kg(raw: object, label: str) -> Decimal | None:
     if raw is None:
         return None

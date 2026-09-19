@@ -64,6 +64,7 @@ class ContainerCreate(BaseModel):
     gate_in_date: object | None = None
     delivery_date: object | None = None
     unload_date: object | None = None
+    temp_min: object | None = None
     vgm_method: object | None = None
     vgm_cutoff_at: object | None = None
     last_survey_at: object | None = None
@@ -120,6 +121,7 @@ class ContainerResponse(BaseModel):
     gate_in_date: date | None
     delivery_date: date | None
     unload_date: date | None
+    temp_min: str | None
     vgm_method: str | None
     vgm_cutoff_at: datetime | None
     last_survey_at: datetime | None
@@ -137,6 +139,7 @@ def _as_response(row: Container) -> ContainerResponse:
     dumped["teu"] = None if row.teu is None else format(row.teu, "f")
     dumped["weight_kg"] = None if row.weight_kg is None else format(row.weight_kg, "f")
     dumped["volume_m3"] = None if row.volume_m3 is None else format(row.volume_m3, "f")
+    dumped["temp_min"] = None if row.temp_min is None else format(row.temp_min, "f")
     return ContainerResponse.model_validate(dumped)
 
 
@@ -173,7 +176,7 @@ def _write_from_body(
         carrier_id, leg_id,
         body.tare_kg, body.pin_code, body.payload_kg, body.teu, body.quantity,
         body.weight_kg, body.volume_m3, body.pickup_date, body.return_date,
-        body.gate_in_date, body.delivery_date, body.unload_date,
+        body.gate_in_date, body.delivery_date, body.unload_date, body.temp_min,
     )
 
 
