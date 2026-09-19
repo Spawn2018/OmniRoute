@@ -103,6 +103,7 @@ class Container(Base, TimestampMixin):
     pickup_date: Mapped[date | None] = mapped_column(Date(), nullable=True)
     return_date: Mapped[date | None] = mapped_column(Date(), nullable=True)
     gate_in_date: Mapped[date | None] = mapped_column(Date(), nullable=True)
+    delivery_date: Mapped[date | None] = mapped_column(Date(), nullable=True)
     vgm_method: Mapped[str | None] = mapped_column(String(16), nullable=True)
     vgm_cutoff_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     last_survey_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)

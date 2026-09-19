@@ -48,6 +48,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
   const [pickup, setPickup] = useState("")
   const [returned, setReturned] = useState("")
   const [gateIn, setGateIn] = useState("")
+  const [delivered, setDelivered] = useState("")
   const [weigh, setWeigh] = useState("")
   const [vgm, setVgm] = useState("")
   const [survey, setSurvey] = useState("")
@@ -105,6 +106,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
         pickup_date: optionalToken(pickup),
         return_date: optionalToken(returned),
         gate_in_date: optionalToken(gateIn),
+        delivery_date: optionalToken(delivered),
         vgm_method: optionalToken(weigh),
         vgm_cutoff_at: optionalToken(vgm),
         last_survey_at: optionalToken(survey),
@@ -121,7 +123,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
     <section className="grid gap-2 rounded-md border border-border p-3" data-container="iso">
       <h2 className="text-sm font-medium">Kontener ISO</h2>
       <p className="text-xs text-muted-foreground">
-        Numer z cyfrą kontrolną i typ 4 znaków. Opcjonalne plomby, statek, rejs, uwaga, ładunek, opakowanie, referencje, flaga chłodniczego, terminale pobrania oraz zwrotu, rodzaj listu, godziny wolnego czasu na origin oraz destination, dni demurrage HITL, dni detention HITL, dni mixed D&D HITL, cutoff SI, cutoff AMS, cutoff CY, cutoff CFS, VGM (kg Decimal, metoda SOLAS, cutoff), tara HITL (kg Decimal), ładowność HITL (kg Decimal), TEU HITL (Decimal, nie z typu ISO), ilość HITL (sztuki, nie punkt), waga HITL (kg Decimal, nie punkt, nie VGM), objętość HITL (m3 Decimal, nie kalkulator), data odbioru HITL (dzień, nie countdown), data zwrotu HITL (dzień, nie countdown), data wjazdu HITL (dzień, nie countdown), czas ostatniego przeglądu, numer bookingu, PIN odbioru HITL (tekst), UUID armatora oraz UUID odcinka. Nie odliczanie. Nie HBL. Nie temperatura. Nie kalkulator kg. Nie live terminal. Nie ciphertext. Nie S21. Nie live HTTP.
+        Numer z cyfrą kontrolną i typ 4 znaków. Opcjonalne plomby, statek, rejs, uwaga, ładunek, opakowanie, referencje, flaga chłodniczego, terminale pobrania oraz zwrotu, rodzaj listu, godziny wolnego czasu na origin oraz destination, dni demurrage HITL, dni detention HITL, dni mixed D&D HITL, cutoff SI, cutoff AMS, cutoff CY, cutoff CFS, VGM (kg Decimal, metoda SOLAS, cutoff), tara HITL (kg Decimal), ładowność HITL (kg Decimal), TEU HITL (Decimal, nie z typu ISO), ilość HITL (sztuki, nie punkt), waga HITL (kg Decimal, nie punkt, nie VGM), objętość HITL (m3 Decimal, nie kalkulator), data odbioru HITL (dzień, nie countdown), data zwrotu HITL (dzień, nie countdown), data wjazdu HITL (dzień, nie countdown), data dostawy HITL (dzień, nie countdown), czas ostatniego przeglądu, numer bookingu, PIN odbioru HITL (tekst), UUID armatora oraz UUID odcinka. Nie odliczanie. Nie HBL. Nie temperatura. Nie kalkulator kg. Nie live terminal. Nie ciphertext. Nie S21. Nie live HTTP.
       </p>
       <label className="flex flex-col gap-1 text-xs">
         Numer ISO 6346
@@ -475,6 +477,15 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
         />
       </label>
       <label className="flex flex-col gap-1 text-xs">
+        Data dostawy HITL (opcjonalnie)
+        <Input
+          aria-label="Data dostawy kontenera"
+          placeholder="delivery_date"
+          value={delivered}
+          onChange={(event) => setDelivered(event.target.value)}
+        />
+      </label>
+      <label className="flex flex-col gap-1 text-xs">
         PIN odbioru (opcjonalnie)
         <Input
           aria-label="PIN odbioru kontenera"
@@ -580,6 +591,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
             {row.pickup_date !== null ? ` · odbiór ${row.pickup_date}` : ""}
             {row.return_date !== null ? ` · zwrot ${row.return_date}` : ""}
             {row.gate_in_date !== null ? ` · wjazd ${row.gate_in_date}` : ""}
+            {row.delivery_date !== null ? ` · dostawa ${row.delivery_date}` : ""}
             {row.pin_code !== null ? ` · PIN ${row.pin_code}` : ""}
             {row.vgm_method !== null ? ` · ${row.vgm_method}` : ""}
             {row.vgm_cutoff_at !== null ? ` · VGM ${row.vgm_cutoff_at}` : ""}

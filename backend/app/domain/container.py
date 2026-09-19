@@ -396,6 +396,10 @@ def require_container_gate_in_date(raw: object) -> date | None:
     return _require_calendar_day(raw, "data wjazdu")
 
 
+def require_container_delivery_date(raw: object) -> date | None:
+    return _require_calendar_day(raw, "data dostawy")
+
+
 def _require_positive_kg(raw: object, label: str) -> Decimal | None:
     if raw is None:
         return None

@@ -1,22 +1,22 @@
 ﻿# Bieżący focus
 
-**Faza:** Oś pinu — **579.0** leftover T3 HITL `container.delivery_date`
+**Faza:** Oś pinu — brak delty; następny leftover T3 `container.unload_date`
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **578.0** T3 `container.gate_in_date` (gate success)
+**Ostatni plaster:** **579.0** T3 `container.delivery_date` (CI po push)
 
-**Etap:** Plaster — delta zaakceptowana; komenda `/plaster`
+**Etap:** Plan — brak delty; komenda `/plan-modul`
 
 **Noc:** `/noc 9` do **2026-09-19T09:00:00+02:00**
 
 **Miejsce pracy:** produkt = to repo + GitHub.
 
-**Następny:** **579.0** leftover T3 HITL `container.delivery_date`. Nie `unload_date`. Nie cutoff timestamptz. Nie `temp_min`. Nie N3. Nie ciphertext. Nie AI3-payload. Nie G0-SH.
+**Następny:** leftover T3 HITL `container.unload_date` (daty SPEED). Nie cutoff timestamptz. Nie `temp_min`. Nie N3 countdown. Nie ciphertext. Nie AI3-payload. Nie G0-SH.
 
 **Park / czeka w PLAN:** AI3-payload · G0-SH · PUESC · MOS live · live FK UUID · live 409 · C3 VIES/GUS · C4 eCMR · N3 countdown · …
 
-**Spec (jedyna na sesję produktu):** [579.0-container-delivery-date.md](../deltas/open/579.0-container-delivery-date.md)
+**Spec (jedyna na sesję produktu):** brak delty — /plan-modul
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 
@@ -24,6 +24,7 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
+**2026-09-19:** Plaster **579.0** delivery_date zamknięty (CI po push). `/noc 9`.
 **2026-09-19:** Delta **579.0** delivery_date zaakceptowana `/noc`. Gate **578.0** success. `/noc 9`.
 **2026-09-19:** Plaster **578.0** gate_in_date zamknięty (CI po push). `/noc 9`.
 **2026-09-19:** Plaster **577.0** return_date zamknięty (CI po push). `/noc 9`.

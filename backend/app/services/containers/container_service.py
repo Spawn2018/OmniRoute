@@ -12,6 +12,7 @@ from app.domain.container import (
     require_carrier_party_id,
     require_cfs_cutoff_at,
     require_container_bl_kind,
+    require_container_delivery_date,
     require_container_gate_in_date,
     require_container_no,
     require_container_pickup_date,
@@ -106,6 +107,7 @@ class _WriteBox(NamedTuple):
     picked: object
     back: object
     gate: object
+    deliv: object
 
 
 class _BoxDraft(NamedTuple):
@@ -156,6 +158,7 @@ class _BoxDraft(NamedTuple):
     picked: date | None
     back: date | None
     gate: date | None
+    deliv: date | None
 
 
 def _box_draft(write: _WriteBox) -> _BoxDraft:
@@ -196,7 +199,7 @@ def _box_draft(write: _WriteBox) -> _BoxDraft:
         require_container_quantity(write.qty),
         require_container_weight_kg(write.kilos), require_container_volume_m3(write.cub),
         require_container_pickup_date(write.picked), require_container_return_date(write.back),
-        require_container_gate_in_date(write.gate),
+        require_container_gate_in_date(write.gate), require_container_delivery_date(write.deliv),
     )
 
 
@@ -252,10 +255,9 @@ def _box_unchanged(current: Container, draft: _BoxDraft) -> bool:
         and current.payload_kg == draft.payload
         and current.teu == draft.teu
         and current.quantity == draft.qty
-        and current.weight_kg == draft.kilos
-        and current.volume_m3 == draft.cub
-        and current.pickup_date == draft.picked
-        and current.return_date == draft.back and current.gate_in_date == draft.gate
+        and current.weight_kg == draft.kilos and current.volume_m3 == draft.cub
+        and current.pickup_date == draft.picked and current.return_date == draft.back
+        and current.gate_in_date == draft.gate and current.delivery_date == draft.deliv
     )
 
 
@@ -281,37 +283,20 @@ def _container_row(organization_id: UUID, user_id: UUID, draft: _BoxDraft) -> Co
         iso_size_type=draft.size_type,
         shipment_id=draft.shipment_id,
         source_ref=draft.origin,
-        seal_no_1=draft.seal,
-        seal_no_2=draft.seal2,
-        seal_no_3=draft.seal3,
-        vessel_name=draft.vessel,
-        voyage_no=draft.voyage,
-        remarks=draft.note,
-        cargo_description=draft.goods,
-        packaging_code=draft.pack,
-        ref_1=draft.mark,
-        ref_2=draft.mark2,
-        ref_3=draft.mark3,
-        ref_4=draft.mark4,
-        ref_5=draft.mark5,
-        reefer=draft.cold,
-        pickup_terminal=draft.dock,
-        return_terminal=draft.yard,
-        bl_kind=draft.bill,
+        seal_no_1=draft.seal, seal_no_2=draft.seal2, seal_no_3=draft.seal3,
+        vessel_name=draft.vessel, voyage_no=draft.voyage, remarks=draft.note,
+        cargo_description=draft.goods, packaging_code=draft.pack,
+        ref_1=draft.mark, ref_2=draft.mark2, ref_3=draft.mark3,
+        ref_4=draft.mark4, ref_5=draft.mark5, reefer=draft.cold,
+        pickup_terminal=draft.dock, return_terminal=draft.yard, bl_kind=draft.bill,
         **_clock_kwargs(draft),
-        vgm_kg=draft.mass,
-        vgm_method=draft.weigh,
-        vgm_cutoff_at=draft.vgm,
-        last_survey_at=draft.survey,
-        booking_no=draft.book,
-        carrier_party_id=draft.carrier,
-        shipment_leg_id=draft.leg,
-        tare_kg=draft.tare,
-        pin_code=draft.pin,
-        payload_kg=draft.payload,
-        teu=draft.teu,
-        quantity=draft.qty, weight_kg=draft.kilos, volume_m3=draft.cub, pickup_date=draft.picked,
-        created_by=user_id, return_date=draft.back, gate_in_date=draft.gate,
+        vgm_kg=draft.mass, vgm_method=draft.weigh, vgm_cutoff_at=draft.vgm,
+        last_survey_at=draft.survey, booking_no=draft.book,
+        carrier_party_id=draft.carrier, shipment_leg_id=draft.leg,
+        tare_kg=draft.tare, pin_code=draft.pin, payload_kg=draft.payload, teu=draft.teu,
+        quantity=draft.qty, weight_kg=draft.kilos, volume_m3=draft.cub,
+        pickup_date=draft.picked, return_date=draft.back, gate_in_date=draft.gate,
+        delivery_date=draft.deliv, created_by=user_id,
     )
 
 

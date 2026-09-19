@@ -2829,6 +2829,10 @@ export type ContainerCreate = {
      */
     gate_in_date?: unknown | null;
     /**
+     * Delivery Date
+     */
+    delivery_date?: unknown | null;
+    /**
      * Vgm Method
      */
     vgm_method?: unknown | null;
@@ -3030,6 +3034,10 @@ export type ContainerResponse = {
      * Gate In Date
      */
     gate_in_date: string | null;
+    /**
+     * Delivery Date
+     */
+    delivery_date: string | null;
     /**
      * Vgm Method
      */

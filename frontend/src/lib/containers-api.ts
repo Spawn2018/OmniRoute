@@ -45,6 +45,7 @@ export type ContainerRow = {
   pickup_date: string | null
   return_date: string | null
   gate_in_date: string | null
+  delivery_date: string | null
   vgm_method: string | null
   vgm_cutoff_at: string | null
   last_survey_at: string | null
@@ -96,6 +97,7 @@ export type ContainerWrite = {
   pickup_date?: string | null
   return_date?: string | null
   gate_in_date?: string | null
+  delivery_date?: string | null
   vgm_method?: string | null
   vgm_cutoff_at?: string | null
   last_survey_at?: string | null
