@@ -4,19 +4,19 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **595.0** T2 `resource.reefer` (lokalne; CI po push)
+**Ostatni plaster:** **595.0** T2 `resource.reefer` (gate success)
 
-**Etap:** Plan — brak delty **596.0**; `/plan-modul`
+**Etap:** Plan — delta **596.0** zaakceptowana (`/noc`); wolno `/plaster`
 
 **Noc:** `/noc 9` do **2026-09-20T09:00:00+02:00**
 
 **Miejsce pracy:** produkt = to repo + GitHub.
 
-**Następny:** **596.0** T2 leftover HITL `resource.tail_lift` (brak delty). **588.0** SH-R16-4 UXCL banner = park `/noc`. Job#2 po bannerze. Nie AI3. Nie G0-SH. Nie N3.
+**Następny:** **596.0** T2 leftover HITL `resource.tail_lift` (delta open). **588.0** SH-R16-4 UXCL banner = park `/noc`. Job#2 po bannerze. Nie AI3. Nie G0-SH. Nie N3.
 
 **Park / czeka w PLAN:** SH-R16-4 UXCL · AI3-payload · G0-SH · PUESC · MOS live · live FK UUID · N3 countdown · …
 
-**Spec (jedyna na sesję produktu):** brak — `/plan-modul`
+**Spec (jedyna na sesję produktu):** [deltas/open/596.0-resource-tail-lift.md](../deltas/open/596.0-resource-tail-lift.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 
@@ -24,7 +24,8 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-19:** Plaster **595.0** `resource.reefer` zamknięty (lokalne; CI po push). `/noc 9`.
+**2026-09-20:** Plan **596.0** `resource.tail_lift` (`/noc 9`).
+**2026-09-19:** Plaster **595.0** `resource.reefer` zamknięty (gate success). `/noc 9`.
 **2026-09-19:** Plan **595.0** `resource.reefer` (`/noc 9`).
 **2026-09-19:** Plaster **594.0** `resource.adr_certified` zamknięty (gate success). `/noc 9`.
 **2026-09-19:** Plan **594.0** `resource.adr_certified` (`/noc 9`).
