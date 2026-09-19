@@ -28,6 +28,7 @@ from app.domain.container import (
     require_container_return_date,
     require_container_shipment_leg_id,
     require_container_source_ref,
+    require_container_unload_date,
     require_container_volume_m3,
     require_container_weight_kg,
     require_cy_cutoff_at,
@@ -458,6 +459,18 @@ def test_container_delivery_date_is_calendar_day() -> None:
         require_container_delivery_date(True)
     with pytest.raises(InvalidContainer, match="data dostawy"):
         require_container_delivery_date(1)
+
+
+def test_container_unload_date_is_calendar_day() -> None:
+    assert require_container_unload_date(None) is None
+    assert require_container_unload_date("  ") is None
+    assert require_container_unload_date("2026-09-23") == date(2026, 9, 23)
+    with pytest.raises(InvalidContainer, match="data rozładunku"):
+        require_container_unload_date("2026-09-23T00:00:00")
+    with pytest.raises(InvalidContainer, match="data rozładunku"):
+        require_container_unload_date(True)
+    with pytest.raises(InvalidContainer, match="data rozładunku"):
+        require_container_unload_date(1)
 
 
 def test_last_survey_at_reuses_aware_clock_and_rejects_naive() -> None:

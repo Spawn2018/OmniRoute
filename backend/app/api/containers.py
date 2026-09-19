@@ -63,6 +63,7 @@ class ContainerCreate(BaseModel):
     return_date: object | None = None
     gate_in_date: object | None = None
     delivery_date: object | None = None
+    unload_date: object | None = None
     vgm_method: object | None = None
     vgm_cutoff_at: object | None = None
     last_survey_at: object | None = None
@@ -118,6 +119,7 @@ class ContainerResponse(BaseModel):
     return_date: date | None
     gate_in_date: date | None
     delivery_date: date | None
+    unload_date: date | None
     vgm_method: str | None
     vgm_cutoff_at: datetime | None
     last_survey_at: datetime | None
@@ -171,7 +173,7 @@ def _write_from_body(
         carrier_id, leg_id,
         body.tare_kg, body.pin_code, body.payload_kg, body.teu, body.quantity,
         body.weight_kg, body.volume_m3, body.pickup_date, body.return_date,
-        body.gate_in_date, body.delivery_date,
+        body.gate_in_date, body.delivery_date, body.unload_date,
     )
 
 

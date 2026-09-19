@@ -28,6 +28,7 @@ from app.domain.container import (
     require_container_shipment_id,
     require_container_shipment_leg_id,
     require_container_source_ref,
+    require_container_unload_date,
     require_container_volume_m3,
     require_container_weight_kg,
     require_cy_cutoff_at,
@@ -108,6 +109,7 @@ class _WriteBox(NamedTuple):
     back: object
     gate: object
     deliv: object
+    unload: object
 
 
 class _BoxDraft(NamedTuple):
@@ -159,6 +161,7 @@ class _BoxDraft(NamedTuple):
     back: date | None
     gate: date | None
     deliv: date | None
+    unload: date | None
 
 
 def _box_draft(write: _WriteBox) -> _BoxDraft:
@@ -195,11 +198,11 @@ def _box_draft(write: _WriteBox) -> _BoxDraft:
         require_container_shipment_leg_id(write.leg),
         require_tare_kg(write.tare),
         require_pin_code(write.pin), require_payload_kg(write.payload),
-        require_teu(write.teu),
-        require_container_quantity(write.qty),
+        require_teu(write.teu), require_container_quantity(write.qty),
         require_container_weight_kg(write.kilos), require_container_volume_m3(write.cub),
         require_container_pickup_date(write.picked), require_container_return_date(write.back),
         require_container_gate_in_date(write.gate), require_container_delivery_date(write.deliv),
+        require_container_unload_date(write.unload),
     )
 
 
@@ -258,6 +261,7 @@ def _box_unchanged(current: Container, draft: _BoxDraft) -> bool:
         and current.weight_kg == draft.kilos and current.volume_m3 == draft.cub
         and current.pickup_date == draft.picked and current.return_date == draft.back
         and current.gate_in_date == draft.gate and current.delivery_date == draft.deliv
+        and current.unload_date == draft.unload
     )
 
 
@@ -296,7 +300,7 @@ def _container_row(organization_id: UUID, user_id: UUID, draft: _BoxDraft) -> Co
         tare_kg=draft.tare, pin_code=draft.pin, payload_kg=draft.payload, teu=draft.teu,
         quantity=draft.qty, weight_kg=draft.kilos, volume_m3=draft.cub,
         pickup_date=draft.picked, return_date=draft.back, gate_in_date=draft.gate,
-        delivery_date=draft.deliv, created_by=user_id,
+        delivery_date=draft.deliv, unload_date=draft.unload, created_by=user_id,
     )
 
 

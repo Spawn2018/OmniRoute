@@ -2833,6 +2833,10 @@ export type ContainerCreate = {
      */
     delivery_date?: unknown | null;
     /**
+     * Unload Date
+     */
+    unload_date?: unknown | null;
+    /**
      * Vgm Method
      */
     vgm_method?: unknown | null;
@@ -3038,6 +3042,10 @@ export type ContainerResponse = {
      * Delivery Date
      */
     delivery_date: string | null;
+    /**
+     * Unload Date
+     */
+    unload_date: string | null;
     /**
      * Vgm Method
      */

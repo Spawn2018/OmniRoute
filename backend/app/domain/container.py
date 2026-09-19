@@ -400,6 +400,10 @@ def require_container_delivery_date(raw: object) -> date | None:
     return _require_calendar_day(raw, "data dostawy")
 
 
+def require_container_unload_date(raw: object) -> date | None:
+    return _require_calendar_day(raw, "data rozładunku")
+
+
 def _require_positive_kg(raw: object, label: str) -> Decimal | None:
     if raw is None:
         return None

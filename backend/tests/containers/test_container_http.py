@@ -1407,6 +1407,7 @@ def test_http_create_container_with_delivery_date(box_client: object) -> None:
     assert created.status_code == 201
     assert created.json()["delivery_date"] == "2026-09-22"
     assert created.json()["gate_in_date"] is None
+    assert created.json()["unload_date"] is None
 
 
 def test_http_rejects_timestamp_container_delivery(box_client: object) -> None:
@@ -1424,6 +1425,41 @@ def test_http_rejects_timestamp_container_delivery(box_client: object) -> None:
     )
     assert reply.status_code == 400
     assert "data dostawy" in reply.json()["detail"]
+
+
+def test_http_create_container_with_unload_date(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    created = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "unload_date": "2026-09-23",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["unload_date"] == "2026-09-23"
+    assert created.json()["delivery_date"] is None
+
+
+def test_http_rejects_timestamp_container_unload(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "unload_date": "2026-09-23T00:00:00",
+        },
+    )
+    assert reply.status_code == 400
+    assert "data rozładunku" in reply.json()["detail"]
 
 
 def test_http_rejects_negative_mixed_dd_days(box_client: object) -> None:
