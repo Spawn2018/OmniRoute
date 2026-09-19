@@ -101,6 +101,7 @@ class Container(Base, TimestampMixin):
     weight_kg: Mapped[Decimal | None] = mapped_column(Numeric(14, 4), nullable=True)
     volume_m3: Mapped[Decimal | None] = mapped_column(Numeric(14, 4), nullable=True)
     pickup_date: Mapped[date | None] = mapped_column(Date(), nullable=True)
+    return_date: Mapped[date | None] = mapped_column(Date(), nullable=True)
     vgm_method: Mapped[str | None] = mapped_column(String(16), nullable=True)
     vgm_cutoff_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     last_survey_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)

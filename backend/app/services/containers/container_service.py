@@ -22,6 +22,7 @@ from app.domain.container import (
     require_container_ref_4,
     require_container_ref_5,
     require_container_remarks,
+    require_container_return_date,
     require_container_shipment_id,
     require_container_shipment_leg_id,
     require_container_source_ref,
@@ -102,6 +103,7 @@ class _WriteBox(NamedTuple):
     kilos: object
     cub: object
     picked: object
+    back: object
 
 
 class _BoxDraft(NamedTuple):
@@ -150,6 +152,7 @@ class _BoxDraft(NamedTuple):
     kilos: Decimal | None
     cub: Decimal | None
     picked: date | None
+    back: date | None
 
 
 def _box_draft(write: _WriteBox) -> _BoxDraft:
@@ -190,7 +193,7 @@ def _box_draft(write: _WriteBox) -> _BoxDraft:
         require_teu(write.teu),
         require_container_quantity(write.qty),
         require_container_weight_kg(write.kilos), require_container_volume_m3(write.cub),
-        require_container_pickup_date(write.picked),
+        require_container_pickup_date(write.picked), require_container_return_date(write.back),
     )
 
 
@@ -249,6 +252,7 @@ def _box_unchanged(current: Container, draft: _BoxDraft) -> bool:
         and current.weight_kg == draft.kilos
         and current.volume_m3 == draft.cub
         and current.pickup_date == draft.picked
+        and current.return_date == draft.back
     )
 
 
@@ -304,7 +308,7 @@ def _container_row(organization_id: UUID, user_id: UUID, draft: _BoxDraft) -> Co
         payload_kg=draft.payload,
         teu=draft.teu,
         quantity=draft.qty, weight_kg=draft.kilos, volume_m3=draft.cub, pickup_date=draft.picked,
-        created_by=user_id,
+        created_by=user_id, return_date=draft.back,
     )
 
 

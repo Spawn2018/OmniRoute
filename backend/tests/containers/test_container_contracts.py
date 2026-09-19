@@ -527,6 +527,23 @@ def test_migration_456_adds_pickup_date_without_countdown() -> None:
     assert "create_table" not in source
     assert "def downgrade" in source
     assert "pickup_date" in source.split("def downgrade")[1]
+    assert "return_date" not in source
+
+
+def test_migration_457_adds_return_date_without_countdown() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "457_container_return_date.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "457_container_return_date"' in source
+    assert 'down_revision: str | None = "456_container_pickup_date"' in source
+    assert "return_date" in source
+    assert "Date()" in source
+    assert "stop" not in source
+    assert "pickup_date" not in source.split("def upgrade")[1]
+    assert "httpx" not in source
+    assert "create_table" not in source
+    assert "def downgrade" in source
+    assert "return_date" in source.split("def downgrade")[1]
 
 
 def test_migration_174_adds_si_cutoff_without_live_http() -> None:
@@ -711,6 +728,7 @@ def test_generated_api_types_include_container() -> None:
     assert "weight_kg" in source
     assert "volume_m3" in source
     assert "pickup_date" in source
+    assert "return_date" in source
     assert "vgm_method" in source
     assert "vgm_cutoff_at" in source
     assert "last_survey_at" in source
