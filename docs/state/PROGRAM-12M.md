@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **576.0** T3 `container.pickup_date` (CI po push) **Następny:** leftover T3 HITL `container.return_date` (daty SPEED). Nie cutoff timestamptz. Nie `temp_min`. Nie N3 countdown. Nie ciphertext. Nie AI3-payload. Nie G0-SH.
+**Stan (z CURRENT.md):** **576.0** T3 `container.pickup_date` (gate success) **Następny:** **577.0** leftover T3 HITL `container.return_date`. Nie `gate_in_date`. Nie cutoff timestamptz. Nie `temp_min`. Nie N3. Nie ciphertext. Nie AI3-payload. Nie G0-SH.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.
