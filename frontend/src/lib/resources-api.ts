@@ -7,6 +7,7 @@ export type ResourceRow = {
   resource_kind: string
   display_name: string
   registration_no: string | null
+  capacity_kg: string | null
   source_ref: string
   superseded_by: string | null
 }
@@ -15,6 +16,7 @@ export type ResourceWrite = {
   resource_kind: string
   display_name: string
   registration_no: string | null
+  capacity_kg: string | null
   source_ref: string
 }
 
@@ -24,12 +26,15 @@ export function resourceWrite(args: {
   kind: string
   label: string
   plate: string
+  capacityKg: string
 }): ResourceWrite {
   const plate = args.plate.trim()
+  const capacityKg = args.capacityKg.trim()
   return {
     resource_kind: args.kind.trim(),
     display_name: args.label.trim(),
     registration_no: plate === "" ? null : plate,
+    capacity_kg: capacityKg === "" ? null : capacityKg,
     source_ref: "tenant:manual",
   }
 }

@@ -4,6 +4,7 @@ from hypothesis import strategies as st
 
 from app.domain.errors import InvalidResource
 from app.domain.resource import (
+    require_capacity_kg,
     require_display_name,
     require_registration_no,
     require_resource_kind,
@@ -18,6 +19,8 @@ def test_resource_allowlists() -> None:
     assert require_registration_no("") is None
     assert require_registration_no(None) is None
     assert require_resource_source_ref("fixture://resource/man") == "fixture://resource/man"
+    assert require_capacity_kg("24000") is not None
+    assert require_capacity_kg(None) is None
 
 
 def test_resource_rejects_truck_kind_and_foreign_ref() -> None:
@@ -27,6 +30,10 @@ def test_resource_rejects_truck_kind_and_foreign_ref() -> None:
         require_display_name("  ")
     with pytest.raises(InvalidResource, match="obce"):
         require_resource_source_ref("https://evil.example/resource")
+    with pytest.raises(InvalidResource, match="pojemność"):
+        require_capacity_kg(0.5)
+    with pytest.raises(InvalidResource, match="pojemność"):
+        require_capacity_kg(0)
 
 
 @given(st.sampled_from(["truck", "car", "fleet"]))

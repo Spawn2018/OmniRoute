@@ -1,3 +1,4 @@
+from decimal import Decimal
 from unittest.mock import AsyncMock
 from uuid import UUID, uuid4
 
@@ -6,6 +7,7 @@ from fastapi.testclient import TestClient
 
 from app.api.deps import require_tenant_session, set_authz_checker
 from app.domain.resource import (
+    require_capacity_kg,
     require_display_name,
     require_registration_no,
     require_resource_kind,
@@ -49,11 +51,13 @@ class StubResourceService:
         resource_kind: object,
         display_name: object,
         registration_no: object,
+        capacity_kg: object = None,
         source_ref: object,
     ) -> Resource:
         kind = require_resource_kind(resource_kind)
         label = require_display_name(display_name)
         plate = require_registration_no(registration_no)
+        capacity = require_capacity_kg(capacity_kg)
         origin = require_resource_source_ref(source_ref)
         current = next(
             (
@@ -65,15 +69,20 @@ class StubResourceService:
             ),
             None,
         )
-        if current is not None and current.registration_no == plate:
-            if current.source_ref == origin:
-                return current
+        if (
+            current is not None
+            and current.registration_no == plate
+            and current.capacity_kg == capacity
+            and current.source_ref == origin
+        ):
+            return current
         successor = Resource(
             id=uuid4(),
             organization_id=organization_id,
             resource_kind=kind,
             display_name=label,
             registration_no=plate,
+            capacity_kg=capacity,
             source_ref=origin,
             created_by=user_id,
         )
@@ -113,14 +122,23 @@ def test_http_create_list_supersede_and_reject_truck(fleet_client: object) -> No
     first = client.post("/api/v1/resources", headers=headers, json=payload)
     assert first.status_code == 201
     assert first.json()["organization_id"] == str(org_id)
+    assert first.json()["capacity_kg"] is None
     assert "amount" not in first.json()
+    with_kg = client.post(
+        "/api/v1/resources",
+        headers=headers,
+        json={**payload, "capacity_kg": "24000"},
+    )
+    assert with_kg.status_code == 201
+    assert with_kg.json()["capacity_kg"] == "24000.0000"
+    assert with_kg.json()["id"] != first.json()["id"]
     second = client.post(
         "/api/v1/resources",
         headers=headers,
-        json={**payload, "registration_no": "WX 2222"},
+        json={**payload, "registration_no": "WX 2222", "capacity_kg": "24000"},
     )
     assert second.status_code == 201
-    assert second.json()["id"] != first.json()["id"]
+    assert second.json()["id"] != with_kg.json()["id"]
     listed = client.get("/api/v1/resources", headers=headers)
     assert listed.status_code == 200
     assert listed.json()[0]["id"] == second.json()["id"]
@@ -137,3 +155,16 @@ def test_http_create_list_supersede_and_reject_truck(fleet_client: object) -> No
     )
     assert truck.status_code == 400
     assert "rodzaj" in truck.json()["detail"]
+    bad_kg = client.post(
+        "/api/v1/resources",
+        headers=headers,
+        json={**payload, "display_name": "Other", "capacity_kg": 0.5},
+    )
+    assert bad_kg.status_code == 400
+    assert "pojemność" in bad_kg.json()["detail"]
+
+
+def test_capacity_kg_decimal_roundtrip_type() -> None:
+    assert require_capacity_kg("24000.5") == Decimal("24000.5000")
+    assert require_capacity_kg(None) is None
+    assert require_capacity_kg("") is None

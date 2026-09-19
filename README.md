@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **587.0** T3 409 gdy power bez `reefer` (CI po push)
-- **Etap:** Plan — delta **589.0** zaakceptowana (`/noc`); wolno `/plaster`
-- **Następny:** **589.0** T2 leftover HITL `resource.capacity_kg` (delta open). **588.0** SH-R16-4 UXCL banner = park `/noc` (PROC-UXCL §2; idle/Ask). Job#2 po bannerze. Nie AI3-payload. Nie G0-SH. Nie N3.
+- **Ostatni plaster:** **589.0** T2 `resource.capacity_kg` (CI po push)
+- **Etap:** Plan — brak delty; komenda `/plan-modul`
+- **Następny:** **590.0** T2 leftover HITL `resource.capacity_ldm` (po kg). **588.0** SH-R16-4 UXCL banner = park `/noc` (PROC-UXCL §2; idle/Ask). Job#2 po bannerze. Nie AI3-payload. Nie G0-SH. Nie N3.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

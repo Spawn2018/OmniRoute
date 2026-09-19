@@ -17,6 +17,7 @@ export function FleetResourcePanel(args: { signedIn: boolean }) {
   const [kind, setKind] = useState("vehicle")
   const [label, setLabel] = useState("")
   const [plate, setPlate] = useState("")
+  const [capacityKg, setCapacityKg] = useState("")
   const listed = useQuery({
     queryKey: ["resources", ctx.organizationId, kind],
     queryFn: () => fetchResources(kind),
@@ -24,7 +25,8 @@ export function FleetResourcePanel(args: { signedIn: boolean }) {
     retry: false,
   })
   const persist = useMutation({
-    mutationFn: () => saveResource(resourceWrite({ kind, label, plate })),
+    mutationFn: () =>
+      saveResource(resourceWrite({ kind, label, plate, capacityKg })),
     onSuccess: () => {
       void cache.invalidateQueries({ queryKey: ["resources", ctx.organizationId, kind] })
     },
@@ -32,7 +34,9 @@ export function FleetResourcePanel(args: { signedIn: boolean }) {
   return (
     <section className="grid gap-2 rounded-md border border-border p-3" data-resource="fleet">
       <h2 className="text-sm font-medium">Katalog floty</h2>
-      <p className="text-xs text-muted-foreground">Pojazd, kierowca albo naczepa. Nie trip. Nie własne HW.</p>
+      <p className="text-xs text-muted-foreground">
+        Pojazd, kierowca albo naczepa. Opcjonalna pojemność kg. Nie trip. Nie własne HW.
+      </p>
       <label className="flex flex-col gap-1 text-xs">
         Rodzaj zasobu
         <select
@@ -66,6 +70,15 @@ export function FleetResourcePanel(args: { signedIn: boolean }) {
           onChange={(event) => setPlate(event.target.value)}
         />
       </label>
+      <label className="flex flex-col gap-1 text-xs">
+        Pojemność kg (opcjonalnie)
+        <Input
+          aria-label="Pojemność kg zasobu"
+          placeholder="capacity_kg"
+          value={capacityKg}
+          onChange={(event) => setCapacityKg(event.target.value)}
+        />
+      </label>
       <Button
         type="button"
         disabled={!args.signedIn || label.trim() === "" || persist.isPending}
@@ -79,6 +92,7 @@ export function FleetResourcePanel(args: { signedIn: boolean }) {
           <li key={row.id} className="font-mono text-xs">
             {row.resource_kind} · {row.display_name}
             {row.registration_no ? ` · ${row.registration_no}` : ""}
+            {row.capacity_kg ? ` · ${row.capacity_kg} kg` : ""}
           </li>
         ))}
       </ul>

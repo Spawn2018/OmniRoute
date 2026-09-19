@@ -19,6 +19,18 @@ def test_migration_091_creates_table_and_forces_rls() -> None:
     assert "drop_table" in source.split("def downgrade")[1]
 
 
+def test_migration_465_adds_capacity_kg() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "465_resource_capacity_kg.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "465_resource_capacity_kg"' in source
+    assert 'down_revision: str | None = "464_container_release"' in source
+    assert "capacity_kg" in source
+    assert "Numeric(14, 4)" in source
+    assert "buy_amount" not in source
+    assert "drop_column" in source.split("def downgrade")[1]
+
+
 def test_service_does_not_import_parents_or_trip() -> None:
     service = (_SERVICES / "resources" / "resource_service.py").read_text(encoding="utf-8")
     assert "app.services.shipments" not in service

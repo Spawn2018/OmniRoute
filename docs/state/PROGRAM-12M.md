@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **587.0** T3 409 gdy power bez `reefer` (CI po push) **Następny:** **589.0** T2 leftover HITL `resource.capacity_kg` (delta open). **588.0** SH-R16-4 UXCL banner = park `/noc` (PROC-UXCL §2; idle/Ask). Job#2 po bannerze. Nie AI3-payload. Nie G0-SH. Nie N3.
+**Stan (z CURRENT.md):** **589.0** T2 `resource.capacity_kg` (CI po push) **Następny:** **590.0** T2 leftover HITL `resource.capacity_ldm` (po kg). **588.0** SH-R16-4 UXCL banner = park `/noc` (PROC-UXCL §2; idle/Ask). Job#2 po bannerze. Nie AI3-payload. Nie G0-SH. Nie N3.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

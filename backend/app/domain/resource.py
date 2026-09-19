@@ -1,3 +1,5 @@
+from decimal import Decimal, InvalidOperation
+
 from app.domain.errors import InvalidResource
 
 _KINDS = frozenset({"vehicle", "driver", "trailer"})
@@ -6,6 +8,7 @@ _MAX_REG = 32
 _MAX_REF = 256
 _FIXTURE = "fixture://resource/"
 _MANUAL = "tenant:manual"
+_FOUR = Decimal("0.0001")
 
 
 def require_resource_kind(raw: object) -> str:
@@ -52,3 +55,21 @@ def require_resource_source_ref(raw: object) -> str:
     if token != _MANUAL and not token.startswith(_FIXTURE):
         raise InvalidResource("obce wskazanie zapisu zasobu")
     return token
+
+
+def require_capacity_kg(raw: object) -> Decimal | None:
+    if raw is None:
+        return None
+    if type(raw) is str and raw.strip() == "":
+        return None
+    if isinstance(raw, float) or isinstance(raw, bool):
+        raise InvalidResource("pojemność nie może być float")
+    if not isinstance(raw, Decimal | str | int):
+        raise InvalidResource("pojemność musi być liczbą dziesiętną")
+    try:
+        parsed = raw if isinstance(raw, Decimal) else Decimal(str(raw))
+    except InvalidOperation as exc:
+        raise InvalidResource("pojemność musi być liczbą dziesiętną") from exc
+    if parsed <= 0:
+        raise InvalidResource("pojemność musi być dodatnia")
+    return parsed.quantize(_FOUR)

@@ -5,6 +5,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.errors import ResourceNotFound
 from app.domain.resource import (
+    require_capacity_kg,
     require_display_name,
     require_registration_no,
     require_resource_kind,
@@ -18,6 +19,7 @@ class _FleetDraft(NamedTuple):
     kind: str
     label: str
     plate: str | None
+    capacity: object
     origin: str
 
 
@@ -25,18 +27,24 @@ def _fleet_draft(
     resource_kind: object,
     display_name: object,
     registration_no: object,
+    capacity_kg: object,
     source_ref: object,
 ) -> _FleetDraft:
     return _FleetDraft(
         require_resource_kind(resource_kind),
         require_display_name(display_name),
         require_registration_no(registration_no),
+        require_capacity_kg(capacity_kg),
         require_resource_source_ref(source_ref),
     )
 
 
-def _plate_unchanged(current: Resource, draft: _FleetDraft) -> bool:
-    return current.registration_no == draft.plate and current.source_ref == draft.origin
+def _fleet_unchanged(current: Resource, draft: _FleetDraft) -> bool:
+    return (
+        current.registration_no == draft.plate
+        and current.capacity_kg == draft.capacity
+        and current.source_ref == draft.origin
+    )
 
 
 class ResourceService:
@@ -61,11 +69,18 @@ class ResourceService:
         resource_kind: object,
         display_name: object,
         registration_no: object,
+        capacity_kg: object = None,
         source_ref: object,
     ) -> Resource:
-        draft = _fleet_draft(resource_kind, display_name, registration_no, source_ref)
+        draft = _fleet_draft(
+            resource_kind,
+            display_name,
+            registration_no,
+            capacity_kg,
+            source_ref,
+        )
         current = await self._rows.find_current(draft.kind, draft.label)
-        if current is not None and _plate_unchanged(current, draft):
+        if current is not None and _fleet_unchanged(current, draft):
             return current
         saved = await self._rows.add(
             Resource(
@@ -74,6 +89,7 @@ class ResourceService:
                 resource_kind=draft.kind,
                 display_name=draft.label,
                 registration_no=draft.plate,
+                capacity_kg=draft.capacity,
                 source_ref=draft.origin,
                 created_by=user_id,
             ),

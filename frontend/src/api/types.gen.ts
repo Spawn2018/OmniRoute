@@ -181,6 +181,50 @@ export type AirRa3MarkResponse = {
 };
 
 /**
+ * AisImportMarkCreate
+ */
+export type AisImportMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Import Kind
+     */
+    import_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * AisImportMarkResponse
+ */
+export type AisImportMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Import Kind
+     */
+    import_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * AllocationKeyCreate
  */
 export type AllocationKeyCreate = {
@@ -778,6 +822,94 @@ export type BinPackMarkResponse = {
      * Pack Kind
      */
     pack_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * BlankSailingMarkCreate
+ */
+export type BlankSailingMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Sailing Kind
+     */
+    sailing_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * BlankSailingMarkResponse
+ */
+export type BlankSailingMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Sailing Kind
+     */
+    sailing_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * BlocksCreateEnforcementMarkCreate
+ */
+export type BlocksCreateEnforcementMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Enforcement Kind
+     */
+    enforcement_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * BlocksCreateEnforcementMarkResponse
+ */
+export type BlocksCreateEnforcementMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Enforcement Kind
+     */
+    enforcement_kind: string;
     /**
      * Source Ref
      */
@@ -3353,6 +3485,50 @@ export type CounterfactualRunResponse = {
 };
 
 /**
+ * CreateBlockMarkCreate
+ */
+export type CreateBlockMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Block Kind
+     */
+    block_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CreateBlockMarkResponse
+ */
+export type CreateBlockMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Block Kind
+     */
+    block_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * CreditReviewAttachBureau
  */
 export type CreditReviewAttachBureau = {
@@ -4635,6 +4811,50 @@ export type DocumentDispatchRuleResponse = {
 };
 
 /**
+ * DocumentKindMatchMarkCreate
+ */
+export type DocumentKindMatchMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Match Kind
+     */
+    match_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * DocumentKindMatchMarkResponse
+ */
+export type DocumentKindMatchMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Match Kind
+     */
+    match_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * DocumentTemplateCreate
  */
 export type DocumentTemplateCreate = {
@@ -5810,6 +6030,94 @@ export type FieldConfidenceMarkResponse = {
      * Band Kind
      */
     band_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * FilingBindMarkCreate
+ */
+export type FilingBindMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Bind Kind
+     */
+    bind_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * FilingBindMarkResponse
+ */
+export type FilingBindMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Bind Kind
+     */
+    bind_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * FilingFkMarkCreate
+ */
+export type FilingFkMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Fk Kind
+     */
+    fk_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * FilingFkMarkResponse
+ */
+export type FilingFkMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Fk Kind
+     */
+    fk_kind: string;
     /**
      * Source Ref
      */
@@ -7606,6 +7914,138 @@ export type InventoryPositionMarkResponse = {
      * Stock Kind
      */
     stock_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * InvoiceAllocMarkCreate
+ */
+export type InvoiceAllocMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Alloc Kind
+     */
+    alloc_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * InvoiceAllocMarkResponse
+ */
+export type InvoiceAllocMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Alloc Kind
+     */
+    alloc_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * InvoiceMatchCandidateCreate
+ */
+export type InvoiceMatchCandidateCreate = {
+    /**
+     * Candidate Code
+     */
+    candidate_code: string;
+    /**
+     * Candidate Kind
+     */
+    candidate_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * InvoiceMatchCandidateResponse
+ */
+export type InvoiceMatchCandidateResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Candidate Code
+     */
+    candidate_code: string;
+    /**
+     * Candidate Kind
+     */
+    candidate_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * InvoiceMatchMarkCreate
+ */
+export type InvoiceMatchMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Match Kind
+     */
+    match_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * InvoiceMatchMarkResponse
+ */
+export type InvoiceMatchMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Match Kind
+     */
+    match_kind: string;
     /**
      * Source Ref
      */
@@ -11473,6 +11913,94 @@ export type PositionEventResponse = {
 };
 
 /**
+ * PostalDispatchMarkCreate
+ */
+export type PostalDispatchMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Dispatch Kind
+     */
+    dispatch_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * PostalDispatchMarkResponse
+ */
+export type PostalDispatchMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Dispatch Kind
+     */
+    dispatch_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * PostalEpoMarkCreate
+ */
+export type PostalEpoMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Epo Kind
+     */
+    epo_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * PostalEpoMarkResponse
+ */
+export type PostalEpoMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Epo Kind
+     */
+    epo_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * PostingMarkCreate
  */
 export type PostingMarkCreate = {
@@ -12667,6 +13195,50 @@ export type RegulatoryRadarMarkResponse = {
 };
 
 /**
+ * RelationDocumentRequirementCreate
+ */
+export type RelationDocumentRequirementCreate = {
+    /**
+     * Requirement Code
+     */
+    requirement_code: string;
+    /**
+     * Relation Kind
+     */
+    relation_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * RelationDocumentRequirementResponse
+ */
+export type RelationDocumentRequirementResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Requirement Code
+     */
+    requirement_code: string;
+    /**
+     * Relation Kind
+     */
+    relation_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * RemediationOptionCreate
  */
 export type RemediationOptionCreate = {
@@ -12771,6 +13343,10 @@ export type ResourceCreate = {
      */
     registration_no?: string | null;
     /**
+     * Capacity Kg
+     */
+    capacity_kg?: unknown | null;
+    /**
      * Source Ref
      */
     source_ref: string;
@@ -12800,6 +13376,10 @@ export type ResourceResponse = {
      * Registration No
      */
     registration_no: string | null;
+    /**
+     * Capacity Kg
+     */
+    capacity_kg: string | null;
     /**
      * Source Ref
      */
@@ -13708,6 +14288,10 @@ export type ShipmentCreate = {
      * Carrier Label
      */
     carrier_label?: string | null;
+    /**
+     * Is Waste
+     */
+    is_waste?: boolean | null;
 };
 
 /**
@@ -13824,6 +14408,50 @@ export type ShipmentLegResponse = {
      * Mawb No
      */
     mawb_no: string | null;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ShipmentMonitoringFilingCreate
+ */
+export type ShipmentMonitoringFilingCreate = {
+    /**
+     * Filing Code
+     */
+    filing_code: string;
+    /**
+     * Status Kind
+     */
+    status_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ShipmentMonitoringFilingResponse
+ */
+export type ShipmentMonitoringFilingResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Filing Code
+     */
+    filing_code: string;
+    /**
+     * Status Kind
+     */
+    status_kind: string;
     /**
      * Source Ref
      */
@@ -13958,6 +14586,10 @@ export type ShipmentResponse = {
      * Asn Id
      */
     asn_id: string | null;
+    /**
+     * Is Waste
+     */
+    is_waste: boolean;
     /**
      * Status
      */
@@ -17176,6 +17808,50 @@ export type WarRoomMarkResponse = {
      * Incident Kind
      */
     incident_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * WasteMarkCreate
+ */
+export type WasteMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Waste Kind
+     */
+    waste_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * WasteMarkResponse
+ */
+export type WasteMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Waste Kind
+     */
+    waste_kind: string;
     /**
      * Source Ref
      */
@@ -23184,6 +23860,393 @@ export type CreateInterventionOutcomeApiV1InterventionOutcomesPostResponses = {
 
 export type CreateInterventionOutcomeApiV1InterventionOutcomesPostResponse = CreateInterventionOutcomeApiV1InterventionOutcomesPostResponses[keyof CreateInterventionOutcomeApiV1InterventionOutcomesPostResponses];
 
+export type ListInvoiceMatchMarksApiV1InvoiceMatchMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/invoice-match-marks';
+};
+
+export type ListInvoiceMatchMarksApiV1InvoiceMatchMarksGetResponses = {
+    /**
+     * Response List Invoice Match Marks Api V1 Invoice Match Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<InvoiceMatchMarkResponse>;
+};
+
+export type ListInvoiceMatchMarksApiV1InvoiceMatchMarksGetResponse = ListInvoiceMatchMarksApiV1InvoiceMatchMarksGetResponses[keyof ListInvoiceMatchMarksApiV1InvoiceMatchMarksGetResponses];
+
+export type CreateInvoiceMatchMarkApiV1InvoiceMatchMarksPostData = {
+    body: InvoiceMatchMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/invoice-match-marks';
+};
+
+export type CreateInvoiceMatchMarkApiV1InvoiceMatchMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateInvoiceMatchMarkApiV1InvoiceMatchMarksPostError = CreateInvoiceMatchMarkApiV1InvoiceMatchMarksPostErrors[keyof CreateInvoiceMatchMarkApiV1InvoiceMatchMarksPostErrors];
+
+export type CreateInvoiceMatchMarkApiV1InvoiceMatchMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: InvoiceMatchMarkResponse;
+};
+
+export type CreateInvoiceMatchMarkApiV1InvoiceMatchMarksPostResponse = CreateInvoiceMatchMarkApiV1InvoiceMatchMarksPostResponses[keyof CreateInvoiceMatchMarkApiV1InvoiceMatchMarksPostResponses];
+
+export type ListInvoiceMatchCandidatesApiV1InvoiceMatchCandidatesGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/invoice-match-candidates';
+};
+
+export type ListInvoiceMatchCandidatesApiV1InvoiceMatchCandidatesGetResponses = {
+    /**
+     * Response List Invoice Match Candidates Api V1 Invoice Match Candidates Get
+     *
+     * Successful Response
+     */
+    200: Array<InvoiceMatchCandidateResponse>;
+};
+
+export type ListInvoiceMatchCandidatesApiV1InvoiceMatchCandidatesGetResponse = ListInvoiceMatchCandidatesApiV1InvoiceMatchCandidatesGetResponses[keyof ListInvoiceMatchCandidatesApiV1InvoiceMatchCandidatesGetResponses];
+
+export type CreateInvoiceMatchCandidateApiV1InvoiceMatchCandidatesPostData = {
+    body: InvoiceMatchCandidateCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/invoice-match-candidates';
+};
+
+export type CreateInvoiceMatchCandidateApiV1InvoiceMatchCandidatesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateInvoiceMatchCandidateApiV1InvoiceMatchCandidatesPostError = CreateInvoiceMatchCandidateApiV1InvoiceMatchCandidatesPostErrors[keyof CreateInvoiceMatchCandidateApiV1InvoiceMatchCandidatesPostErrors];
+
+export type CreateInvoiceMatchCandidateApiV1InvoiceMatchCandidatesPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: InvoiceMatchCandidateResponse;
+};
+
+export type CreateInvoiceMatchCandidateApiV1InvoiceMatchCandidatesPostResponse = CreateInvoiceMatchCandidateApiV1InvoiceMatchCandidatesPostResponses[keyof CreateInvoiceMatchCandidateApiV1InvoiceMatchCandidatesPostResponses];
+
+export type ListCreateBlockMarksApiV1CreateBlockMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/create-block-marks';
+};
+
+export type ListCreateBlockMarksApiV1CreateBlockMarksGetResponses = {
+    /**
+     * Response List Create Block Marks Api V1 Create Block Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<CreateBlockMarkResponse>;
+};
+
+export type ListCreateBlockMarksApiV1CreateBlockMarksGetResponse = ListCreateBlockMarksApiV1CreateBlockMarksGetResponses[keyof ListCreateBlockMarksApiV1CreateBlockMarksGetResponses];
+
+export type CreateCreateBlockMarkApiV1CreateBlockMarksPostData = {
+    body: CreateBlockMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/create-block-marks';
+};
+
+export type CreateCreateBlockMarkApiV1CreateBlockMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCreateBlockMarkApiV1CreateBlockMarksPostError = CreateCreateBlockMarkApiV1CreateBlockMarksPostErrors[keyof CreateCreateBlockMarkApiV1CreateBlockMarksPostErrors];
+
+export type CreateCreateBlockMarkApiV1CreateBlockMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CreateBlockMarkResponse;
+};
+
+export type CreateCreateBlockMarkApiV1CreateBlockMarksPostResponse = CreateCreateBlockMarkApiV1CreateBlockMarksPostResponses[keyof CreateCreateBlockMarkApiV1CreateBlockMarksPostResponses];
+
+export type ListDocumentKindMatchMarksApiV1DocumentKindMatchMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/document-kind-match-marks';
+};
+
+export type ListDocumentKindMatchMarksApiV1DocumentKindMatchMarksGetResponses = {
+    /**
+     * Response List Document Kind Match Marks Api V1 Document Kind Match Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<DocumentKindMatchMarkResponse>;
+};
+
+export type ListDocumentKindMatchMarksApiV1DocumentKindMatchMarksGetResponse = ListDocumentKindMatchMarksApiV1DocumentKindMatchMarksGetResponses[keyof ListDocumentKindMatchMarksApiV1DocumentKindMatchMarksGetResponses];
+
+export type CreateDocumentKindMatchMarkApiV1DocumentKindMatchMarksPostData = {
+    body: DocumentKindMatchMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/document-kind-match-marks';
+};
+
+export type CreateDocumentKindMatchMarkApiV1DocumentKindMatchMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateDocumentKindMatchMarkApiV1DocumentKindMatchMarksPostError = CreateDocumentKindMatchMarkApiV1DocumentKindMatchMarksPostErrors[keyof CreateDocumentKindMatchMarkApiV1DocumentKindMatchMarksPostErrors];
+
+export type CreateDocumentKindMatchMarkApiV1DocumentKindMatchMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: DocumentKindMatchMarkResponse;
+};
+
+export type CreateDocumentKindMatchMarkApiV1DocumentKindMatchMarksPostResponse = CreateDocumentKindMatchMarkApiV1DocumentKindMatchMarksPostResponses[keyof CreateDocumentKindMatchMarkApiV1DocumentKindMatchMarksPostResponses];
+
+export type ListFilingBindMarksApiV1FilingBindMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/filing-bind-marks';
+};
+
+export type ListFilingBindMarksApiV1FilingBindMarksGetResponses = {
+    /**
+     * Response List Filing Bind Marks Api V1 Filing Bind Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<FilingBindMarkResponse>;
+};
+
+export type ListFilingBindMarksApiV1FilingBindMarksGetResponse = ListFilingBindMarksApiV1FilingBindMarksGetResponses[keyof ListFilingBindMarksApiV1FilingBindMarksGetResponses];
+
+export type CreateFilingBindMarkApiV1FilingBindMarksPostData = {
+    body: FilingBindMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/filing-bind-marks';
+};
+
+export type CreateFilingBindMarkApiV1FilingBindMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateFilingBindMarkApiV1FilingBindMarksPostError = CreateFilingBindMarkApiV1FilingBindMarksPostErrors[keyof CreateFilingBindMarkApiV1FilingBindMarksPostErrors];
+
+export type CreateFilingBindMarkApiV1FilingBindMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: FilingBindMarkResponse;
+};
+
+export type CreateFilingBindMarkApiV1FilingBindMarksPostResponse = CreateFilingBindMarkApiV1FilingBindMarksPostResponses[keyof CreateFilingBindMarkApiV1FilingBindMarksPostResponses];
+
+export type ListFilingFkMarksApiV1FilingFkMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/filing-fk-marks';
+};
+
+export type ListFilingFkMarksApiV1FilingFkMarksGetResponses = {
+    /**
+     * Response List Filing Fk Marks Api V1 Filing Fk Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<FilingFkMarkResponse>;
+};
+
+export type ListFilingFkMarksApiV1FilingFkMarksGetResponse = ListFilingFkMarksApiV1FilingFkMarksGetResponses[keyof ListFilingFkMarksApiV1FilingFkMarksGetResponses];
+
+export type CreateFilingFkMarkApiV1FilingFkMarksPostData = {
+    body: FilingFkMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/filing-fk-marks';
+};
+
+export type CreateFilingFkMarkApiV1FilingFkMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateFilingFkMarkApiV1FilingFkMarksPostError = CreateFilingFkMarkApiV1FilingFkMarksPostErrors[keyof CreateFilingFkMarkApiV1FilingFkMarksPostErrors];
+
+export type CreateFilingFkMarkApiV1FilingFkMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: FilingFkMarkResponse;
+};
+
+export type CreateFilingFkMarkApiV1FilingFkMarksPostResponse = CreateFilingFkMarkApiV1FilingFkMarksPostResponses[keyof CreateFilingFkMarkApiV1FilingFkMarksPostResponses];
+
+export type ListPostalEpoMarksApiV1PostalEpoMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/postal-epo-marks';
+};
+
+export type ListPostalEpoMarksApiV1PostalEpoMarksGetResponses = {
+    /**
+     * Response List Postal Epo Marks Api V1 Postal Epo Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<PostalEpoMarkResponse>;
+};
+
+export type ListPostalEpoMarksApiV1PostalEpoMarksGetResponse = ListPostalEpoMarksApiV1PostalEpoMarksGetResponses[keyof ListPostalEpoMarksApiV1PostalEpoMarksGetResponses];
+
+export type CreatePostalEpoMarkApiV1PostalEpoMarksPostData = {
+    body: PostalEpoMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/postal-epo-marks';
+};
+
+export type CreatePostalEpoMarkApiV1PostalEpoMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreatePostalEpoMarkApiV1PostalEpoMarksPostError = CreatePostalEpoMarkApiV1PostalEpoMarksPostErrors[keyof CreatePostalEpoMarkApiV1PostalEpoMarksPostErrors];
+
+export type CreatePostalEpoMarkApiV1PostalEpoMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: PostalEpoMarkResponse;
+};
+
+export type CreatePostalEpoMarkApiV1PostalEpoMarksPostResponse = CreatePostalEpoMarkApiV1PostalEpoMarksPostResponses[keyof CreatePostalEpoMarkApiV1PostalEpoMarksPostResponses];
+
+export type ListBlocksCreateEnforcementMarksApiV1BlocksCreateEnforcementMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/blocks-create-enforcement-marks';
+};
+
+export type ListBlocksCreateEnforcementMarksApiV1BlocksCreateEnforcementMarksGetResponses = {
+    /**
+     * Response List Blocks Create Enforcement Marks Api V1 Blocks Create Enforcement Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<BlocksCreateEnforcementMarkResponse>;
+};
+
+export type ListBlocksCreateEnforcementMarksApiV1BlocksCreateEnforcementMarksGetResponse = ListBlocksCreateEnforcementMarksApiV1BlocksCreateEnforcementMarksGetResponses[keyof ListBlocksCreateEnforcementMarksApiV1BlocksCreateEnforcementMarksGetResponses];
+
+export type CreateBlocksCreateEnforcementMarkApiV1BlocksCreateEnforcementMarksPostData = {
+    body: BlocksCreateEnforcementMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/blocks-create-enforcement-marks';
+};
+
+export type CreateBlocksCreateEnforcementMarkApiV1BlocksCreateEnforcementMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateBlocksCreateEnforcementMarkApiV1BlocksCreateEnforcementMarksPostError = CreateBlocksCreateEnforcementMarkApiV1BlocksCreateEnforcementMarksPostErrors[keyof CreateBlocksCreateEnforcementMarkApiV1BlocksCreateEnforcementMarksPostErrors];
+
+export type CreateBlocksCreateEnforcementMarkApiV1BlocksCreateEnforcementMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: BlocksCreateEnforcementMarkResponse;
+};
+
+export type CreateBlocksCreateEnforcementMarkApiV1BlocksCreateEnforcementMarksPostResponse = CreateBlocksCreateEnforcementMarkApiV1BlocksCreateEnforcementMarksPostResponses[keyof CreateBlocksCreateEnforcementMarkApiV1BlocksCreateEnforcementMarksPostResponses];
+
+export type ListInvoiceAllocMarksApiV1InvoiceAllocMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/invoice-alloc-marks';
+};
+
+export type ListInvoiceAllocMarksApiV1InvoiceAllocMarksGetResponses = {
+    /**
+     * Response List Invoice Alloc Marks Api V1 Invoice Alloc Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<InvoiceAllocMarkResponse>;
+};
+
+export type ListInvoiceAllocMarksApiV1InvoiceAllocMarksGetResponse = ListInvoiceAllocMarksApiV1InvoiceAllocMarksGetResponses[keyof ListInvoiceAllocMarksApiV1InvoiceAllocMarksGetResponses];
+
+export type CreateInvoiceAllocMarkApiV1InvoiceAllocMarksPostData = {
+    body: InvoiceAllocMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/invoice-alloc-marks';
+};
+
+export type CreateInvoiceAllocMarkApiV1InvoiceAllocMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateInvoiceAllocMarkApiV1InvoiceAllocMarksPostError = CreateInvoiceAllocMarkApiV1InvoiceAllocMarksPostErrors[keyof CreateInvoiceAllocMarkApiV1InvoiceAllocMarksPostErrors];
+
+export type CreateInvoiceAllocMarkApiV1InvoiceAllocMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: InvoiceAllocMarkResponse;
+};
+
+export type CreateInvoiceAllocMarkApiV1InvoiceAllocMarksPostResponse = CreateInvoiceAllocMarkApiV1InvoiceAllocMarksPostResponses[keyof CreateInvoiceAllocMarkApiV1InvoiceAllocMarksPostResponses];
+
 export type ListLoadOrderMarksApiV1LoadOrderMarksGetData = {
     body?: never;
     path?: never;
@@ -26568,6 +27631,135 @@ export type CreateAirRa3MarkApiV1AirRa3MarksPostResponses = {
 
 export type CreateAirRa3MarkApiV1AirRa3MarksPostResponse = CreateAirRa3MarkApiV1AirRa3MarksPostResponses[keyof CreateAirRa3MarkApiV1AirRa3MarksPostResponses];
 
+export type ListAisImportMarksApiV1AisImportMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/ais-import-marks';
+};
+
+export type ListAisImportMarksApiV1AisImportMarksGetResponses = {
+    /**
+     * Response List Ais Import Marks Api V1 Ais Import Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<AisImportMarkResponse>;
+};
+
+export type ListAisImportMarksApiV1AisImportMarksGetResponse = ListAisImportMarksApiV1AisImportMarksGetResponses[keyof ListAisImportMarksApiV1AisImportMarksGetResponses];
+
+export type CreateAisImportMarkApiV1AisImportMarksPostData = {
+    body: AisImportMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/ais-import-marks';
+};
+
+export type CreateAisImportMarkApiV1AisImportMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateAisImportMarkApiV1AisImportMarksPostError = CreateAisImportMarkApiV1AisImportMarksPostErrors[keyof CreateAisImportMarkApiV1AisImportMarksPostErrors];
+
+export type CreateAisImportMarkApiV1AisImportMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: AisImportMarkResponse;
+};
+
+export type CreateAisImportMarkApiV1AisImportMarksPostResponse = CreateAisImportMarkApiV1AisImportMarksPostResponses[keyof CreateAisImportMarkApiV1AisImportMarksPostResponses];
+
+export type ListWasteMarksApiV1WasteMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/waste-marks';
+};
+
+export type ListWasteMarksApiV1WasteMarksGetResponses = {
+    /**
+     * Response List Waste Marks Api V1 Waste Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<WasteMarkResponse>;
+};
+
+export type ListWasteMarksApiV1WasteMarksGetResponse = ListWasteMarksApiV1WasteMarksGetResponses[keyof ListWasteMarksApiV1WasteMarksGetResponses];
+
+export type CreateWasteMarkApiV1WasteMarksPostData = {
+    body: WasteMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/waste-marks';
+};
+
+export type CreateWasteMarkApiV1WasteMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateWasteMarkApiV1WasteMarksPostError = CreateWasteMarkApiV1WasteMarksPostErrors[keyof CreateWasteMarkApiV1WasteMarksPostErrors];
+
+export type CreateWasteMarkApiV1WasteMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: WasteMarkResponse;
+};
+
+export type CreateWasteMarkApiV1WasteMarksPostResponse = CreateWasteMarkApiV1WasteMarksPostResponses[keyof CreateWasteMarkApiV1WasteMarksPostResponses];
+
+export type ListBlankSailingMarksApiV1BlankSailingMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/blank-sailing-marks';
+};
+
+export type ListBlankSailingMarksApiV1BlankSailingMarksGetResponses = {
+    /**
+     * Response List Blank Sailing Marks Api V1 Blank Sailing Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<BlankSailingMarkResponse>;
+};
+
+export type ListBlankSailingMarksApiV1BlankSailingMarksGetResponse = ListBlankSailingMarksApiV1BlankSailingMarksGetResponses[keyof ListBlankSailingMarksApiV1BlankSailingMarksGetResponses];
+
+export type CreateBlankSailingMarkApiV1BlankSailingMarksPostData = {
+    body: BlankSailingMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/blank-sailing-marks';
+};
+
+export type CreateBlankSailingMarkApiV1BlankSailingMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateBlankSailingMarkApiV1BlankSailingMarksPostError = CreateBlankSailingMarkApiV1BlankSailingMarksPostErrors[keyof CreateBlankSailingMarkApiV1BlankSailingMarksPostErrors];
+
+export type CreateBlankSailingMarkApiV1BlankSailingMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: BlankSailingMarkResponse;
+};
+
+export type CreateBlankSailingMarkApiV1BlankSailingMarksPostResponse = CreateBlankSailingMarkApiV1BlankSailingMarksPostResponses[keyof CreateBlankSailingMarkApiV1BlankSailingMarksPostResponses];
+
 export type ListAeoDossierMarksApiV1AeoDossierMarksGetData = {
     body?: never;
     path?: never;
@@ -26868,6 +28060,49 @@ export type CreateRegistryPollMarkApiV1RegistryPollMarksPostResponses = {
 };
 
 export type CreateRegistryPollMarkApiV1RegistryPollMarksPostResponse = CreateRegistryPollMarkApiV1RegistryPollMarksPostResponses[keyof CreateRegistryPollMarkApiV1RegistryPollMarksPostResponses];
+
+export type ListRelationDocumentRequirementsApiV1RelationDocumentRequirementsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/relation-document-requirements';
+};
+
+export type ListRelationDocumentRequirementsApiV1RelationDocumentRequirementsGetResponses = {
+    /**
+     * Response List Relation Document Requirements Api V1 Relation Document Requirements Get
+     *
+     * Successful Response
+     */
+    200: Array<RelationDocumentRequirementResponse>;
+};
+
+export type ListRelationDocumentRequirementsApiV1RelationDocumentRequirementsGetResponse = ListRelationDocumentRequirementsApiV1RelationDocumentRequirementsGetResponses[keyof ListRelationDocumentRequirementsApiV1RelationDocumentRequirementsGetResponses];
+
+export type CreateRelationDocumentRequirementApiV1RelationDocumentRequirementsPostData = {
+    body: RelationDocumentRequirementCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/relation-document-requirements';
+};
+
+export type CreateRelationDocumentRequirementApiV1RelationDocumentRequirementsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateRelationDocumentRequirementApiV1RelationDocumentRequirementsPostError = CreateRelationDocumentRequirementApiV1RelationDocumentRequirementsPostErrors[keyof CreateRelationDocumentRequirementApiV1RelationDocumentRequirementsPostErrors];
+
+export type CreateRelationDocumentRequirementApiV1RelationDocumentRequirementsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: RelationDocumentRequirementResponse;
+};
+
+export type CreateRelationDocumentRequirementApiV1RelationDocumentRequirementsPostResponse = CreateRelationDocumentRequirementApiV1RelationDocumentRequirementsPostResponses[keyof CreateRelationDocumentRequirementApiV1RelationDocumentRequirementsPostResponses];
 
 export type ListWorkingCapitalMarksApiV1WorkingCapitalMarksGetData = {
     body?: never;
@@ -30097,6 +31332,49 @@ export type CreateShipmentLegApiV1ShipmentLegsPostResponses = {
 
 export type CreateShipmentLegApiV1ShipmentLegsPostResponse = CreateShipmentLegApiV1ShipmentLegsPostResponses[keyof CreateShipmentLegApiV1ShipmentLegsPostResponses];
 
+export type ListShipmentMonitoringFilingsApiV1ShipmentMonitoringFilingsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/shipment-monitoring-filings';
+};
+
+export type ListShipmentMonitoringFilingsApiV1ShipmentMonitoringFilingsGetResponses = {
+    /**
+     * Response List Shipment Monitoring Filings Api V1 Shipment Monitoring Filings Get
+     *
+     * Successful Response
+     */
+    200: Array<ShipmentMonitoringFilingResponse>;
+};
+
+export type ListShipmentMonitoringFilingsApiV1ShipmentMonitoringFilingsGetResponse = ListShipmentMonitoringFilingsApiV1ShipmentMonitoringFilingsGetResponses[keyof ListShipmentMonitoringFilingsApiV1ShipmentMonitoringFilingsGetResponses];
+
+export type CreateShipmentMonitoringFilingApiV1ShipmentMonitoringFilingsPostData = {
+    body: ShipmentMonitoringFilingCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/shipment-monitoring-filings';
+};
+
+export type CreateShipmentMonitoringFilingApiV1ShipmentMonitoringFilingsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateShipmentMonitoringFilingApiV1ShipmentMonitoringFilingsPostError = CreateShipmentMonitoringFilingApiV1ShipmentMonitoringFilingsPostErrors[keyof CreateShipmentMonitoringFilingApiV1ShipmentMonitoringFilingsPostErrors];
+
+export type CreateShipmentMonitoringFilingApiV1ShipmentMonitoringFilingsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ShipmentMonitoringFilingResponse;
+};
+
+export type CreateShipmentMonitoringFilingApiV1ShipmentMonitoringFilingsPostResponse = CreateShipmentMonitoringFilingApiV1ShipmentMonitoringFilingsPostResponses[keyof CreateShipmentMonitoringFilingApiV1ShipmentMonitoringFilingsPostResponses];
+
 export type ListOrganizationCalendarsApiV1OrganizationCalendarsGetData = {
     body?: never;
     path?: never;
@@ -32783,6 +34061,49 @@ export type CreatePeppolMarkApiV1PeppolMarksPostResponses = {
 };
 
 export type CreatePeppolMarkApiV1PeppolMarksPostResponse = CreatePeppolMarkApiV1PeppolMarksPostResponses[keyof CreatePeppolMarkApiV1PeppolMarksPostResponses];
+
+export type ListPostalDispatchMarksApiV1PostalDispatchMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/postal-dispatch-marks';
+};
+
+export type ListPostalDispatchMarksApiV1PostalDispatchMarksGetResponses = {
+    /**
+     * Response List Postal Dispatch Marks Api V1 Postal Dispatch Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<PostalDispatchMarkResponse>;
+};
+
+export type ListPostalDispatchMarksApiV1PostalDispatchMarksGetResponse = ListPostalDispatchMarksApiV1PostalDispatchMarksGetResponses[keyof ListPostalDispatchMarksApiV1PostalDispatchMarksGetResponses];
+
+export type CreatePostalDispatchMarkApiV1PostalDispatchMarksPostData = {
+    body: PostalDispatchMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/postal-dispatch-marks';
+};
+
+export type CreatePostalDispatchMarkApiV1PostalDispatchMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreatePostalDispatchMarkApiV1PostalDispatchMarksPostError = CreatePostalDispatchMarkApiV1PostalDispatchMarksPostErrors[keyof CreatePostalDispatchMarkApiV1PostalDispatchMarksPostErrors];
+
+export type CreatePostalDispatchMarkApiV1PostalDispatchMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: PostalDispatchMarkResponse;
+};
+
+export type CreatePostalDispatchMarkApiV1PostalDispatchMarksPostResponse = CreatePostalDispatchMarkApiV1PostalDispatchMarksPostResponses[keyof CreatePostalDispatchMarkApiV1PostalDispatchMarksPostResponses];
 
 export type ListPhytoAtaMarksApiV1PhytoAtaMarksGetData = {
     body?: never;

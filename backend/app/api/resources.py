@@ -20,6 +20,7 @@ class ResourceCreate(BaseModel):
     resource_kind: str
     display_name: str
     registration_no: str | None = None
+    capacity_kg: object | None = None
     source_ref: str
 
 
@@ -31,12 +32,15 @@ class ResourceResponse(BaseModel):
     resource_kind: str
     display_name: str
     registration_no: str | None
+    capacity_kg: str | None
     source_ref: str
     superseded_by: UUID | None
 
 
 def _as_response(row: Resource) -> ResourceResponse:
-    return ResourceResponse.model_validate(row)
+    dumped = {name: getattr(row, name) for name in ResourceResponse.model_fields}
+    dumped["capacity_kg"] = None if row.capacity_kg is None else format(row.capacity_kg, "f")
+    return ResourceResponse.model_validate(dumped)
 
 
 @router.get("", response_model=list[ResourceResponse])
@@ -63,6 +67,7 @@ async def create_resource(
         resource_kind=body.resource_kind,
         display_name=body.display_name,
         registration_no=body.registration_no,
+        capacity_kg=body.capacity_kg,
         source_ref=body.source_ref,
     )
     await session.commit()

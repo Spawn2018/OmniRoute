@@ -1,6 +1,7 @@
 import uuid
+from decimal import Decimal
 
-from sqlalchemy import CheckConstraint, ForeignKey, Index, String, Text, UniqueConstraint
+from sqlalchemy import CheckConstraint, ForeignKey, Index, Numeric, String, Text, UniqueConstraint
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -28,6 +29,7 @@ class Resource(Base, TimestampMixin):
     resource_kind: Mapped[str] = mapped_column(String(8), nullable=False)
     display_name: Mapped[str] = mapped_column(String(64), nullable=False)
     registration_no: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    capacity_kg: Mapped[Decimal | None] = mapped_column(Numeric(14, 4), nullable=True)
     source_ref: Mapped[str] = mapped_column(Text, nullable=False)
     superseded_by: Mapped[uuid.UUID | None] = mapped_column(
         UUID(as_uuid=True),
