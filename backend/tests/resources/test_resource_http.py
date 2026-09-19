@@ -11,6 +11,7 @@ from app.domain.resource import (
     require_capacity_ldm,
     require_capacity_m3,
     require_display_name,
+    require_inventory_no,
     require_registration_no,
     require_resource_kind,
     require_resource_source_ref,
@@ -53,6 +54,7 @@ class StubResourceService:
         resource_kind: object,
         display_name: object,
         registration_no: object,
+        inventory_no: object = None,
         capacity_kg: object = None,
         capacity_ldm: object = None,
         capacity_m3: object = None,
@@ -61,6 +63,7 @@ class StubResourceService:
         kind = require_resource_kind(resource_kind)
         label = require_display_name(display_name)
         plate = require_registration_no(registration_no)
+        inventory = require_inventory_no(inventory_no)
         capacity = require_capacity_kg(capacity_kg)
         ldm = require_capacity_ldm(capacity_ldm)
         cubic = require_capacity_m3(capacity_m3)
@@ -78,6 +81,7 @@ class StubResourceService:
         if (
             current is not None
             and current.registration_no == plate
+            and current.inventory_no == inventory
             and current.capacity_kg == capacity
             and current.capacity_ldm == ldm
             and current.capacity_m3 == cubic
@@ -90,6 +94,7 @@ class StubResourceService:
             resource_kind=kind,
             display_name=label,
             registration_no=plate,
+            inventory_no=inventory,
             capacity_kg=capacity,
             capacity_ldm=ldm,
             capacity_m3=cubic,
@@ -135,6 +140,7 @@ def test_http_create_list_supersede_and_reject_truck(fleet_client: object) -> No
     assert first.json()["capacity_kg"] is None
     assert first.json()["capacity_ldm"] is None
     assert first.json()["capacity_m3"] is None
+    assert first.json()["inventory_no"] is None
     assert "amount" not in first.json()
     with_kg = client.post(
         "/api/v1/resources",
@@ -215,6 +221,36 @@ def test_http_create_list_supersede_and_reject_truck(fleet_client: object) -> No
     )
     assert bad_m3.status_code == 400
     assert "m3" in bad_m3.json()["detail"]
+
+
+def test_http_inventory_no_supersedes(fleet_client: object) -> None:
+    client, _rows = fleet_client
+    headers = bearer_auth_headers(organization_id=uuid4())
+    payload = {
+        "resource_kind": "trailer",
+        "display_name": "Schmitz",
+        "source_ref": "tenant:manual",
+        "inventory_no": "INV-1",
+    }
+    first = client.post("/api/v1/resources", headers=headers, json=payload)
+    assert first.status_code == 201
+    assert first.json()["inventory_no"] == "INV-1"
+    same = client.post("/api/v1/resources", headers=headers, json=payload)
+    assert same.json()["id"] == first.json()["id"]
+    changed = client.post(
+        "/api/v1/resources",
+        headers=headers,
+        json={**payload, "inventory_no": "INV-2"},
+    )
+    assert changed.status_code == 201
+    assert changed.json()["id"] != first.json()["id"]
+    too_long = client.post(
+        "/api/v1/resources",
+        headers=headers,
+        json={**payload, "display_name": "Inna", "inventory_no": "x" * 33},
+    )
+    assert too_long.status_code == 400
+    assert "inwentarzowy" in too_long.json()["detail"]
 
 
 def test_capacity_kg_decimal_roundtrip_type() -> None:

@@ -20,6 +20,7 @@ export function FleetResourcePanel(args: { signedIn: boolean }) {
   const [capacityKg, setCapacityKg] = useState("")
   const [capacityLdm, setCapacityLdm] = useState("")
   const [capacityM3, setCapacityM3] = useState("")
+  const [inventoryNo, setInventoryNo] = useState("")
   const listed = useQuery({
     queryKey: ["resources", ctx.organizationId, kind],
     queryFn: () => fetchResources(kind),
@@ -29,7 +30,7 @@ export function FleetResourcePanel(args: { signedIn: boolean }) {
   const persist = useMutation({
     mutationFn: () =>
       saveResource(
-        resourceWrite({ kind, label, plate, capacityKg, capacityLdm, capacityM3 }),
+        resourceWrite({ kind, label, plate, capacityKg, capacityLdm, capacityM3, inventoryNo }),
       ),
     onSuccess: () => {
       void cache.invalidateQueries({ queryKey: ["resources", ctx.organizationId, kind] })
@@ -75,6 +76,15 @@ export function FleetResourcePanel(args: { signedIn: boolean }) {
         />
       </label>
       <label className="flex flex-col gap-1 text-xs">
+        Numer inwentarzowy (opcjonalnie)
+        <Input
+          aria-label="Numer inwentarzowy zasobu"
+          placeholder="inventory_no"
+          value={inventoryNo}
+          onChange={(event) => setInventoryNo(event.target.value)}
+        />
+      </label>
+      <label className="flex flex-col gap-1 text-xs">
         Pojemność kg (opcjonalnie)
         <Input
           aria-label="Pojemność kg zasobu"
@@ -114,6 +124,7 @@ export function FleetResourcePanel(args: { signedIn: boolean }) {
           <li key={row.id} className="font-mono text-xs">
             {row.resource_kind} · {row.display_name}
             {row.registration_no ? ` · ${row.registration_no}` : ""}
+            {row.inventory_no ? ` · ${row.inventory_no}` : ""}
             {row.capacity_kg ? ` · ${row.capacity_kg} kg` : ""}
             {row.capacity_ldm ? ` · ${row.capacity_ldm} LDM` : ""}
             {row.capacity_m3 ? ` · ${row.capacity_m3} m³` : ""}

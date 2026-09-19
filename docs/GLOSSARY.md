@@ -69,7 +69,7 @@ kolumn. Nie 468.0.
 | zbiorcza faktura | collective_invoice | 105.0 tabela pary faktura+dodatkowe zlecenie; nie kwota; nie płatność paczką |
 | transport drogowy | road_transport | 41.0 tablica `location` lądowa; 108.0 odcinek `shipment_leg` road; nie TMS; nie GPS |
 | punkt operacyjny | stop | T1; ZA/WY na zleceniu; miejsce ze słownika; 213.0 opcjonalny `stop_group_code`; 215.0 opcjonalny `notes_for_driver`; 247.0 opcjonalny `weight_kg`; 248.0 opcjonalny `quantity`; 249.0 opcjonalny `packaging_code`; 250.0 opcjonalny `seal_in`; 251.0 opcjonalny `seal_out`; 252.0 opcjonalny `appointment_ref`; 253.0 opcjonalny `waiting_free_minutes`; 254.0 opcjonalny `waiting_started_at`; 255.0 opcjonalny `pod_quality`; nie mapa |
-| zasób floty | resource | T2; pojazd / kierowca / naczepa; 259.0 trasa `/fleet`; 589.0 `capacity_kg` / 590.0 `capacity_ldm` / 591.0 `capacity_m3` HITL; 592.0 `resource_document` (rodzaj + data, nie odliczanie); nie trip; nie GPS |
+| zasób floty | resource | T2; pojazd / kierowca / naczepa; 259.0 trasa `/fleet`; 589.0 `capacity_kg` / 590.0 `capacity_ldm` / 591.0 `capacity_m3` HITL; 592.0 `resource_document` (rodzaj + data, nie odliczanie); 593.0 `inventory_no` HITL; nie trip; nie GPS |
 | przejazd | trip | T2; status + opcjonalny zasób; 212.0 opcjonalny `driver2_id`; 214.0 opcjonalny `route_label`; 256.0 opcjonalny `planned_distance_km`; 257.0 opcjonalny `actual_distance_km`; 258.0 opcjonalny `subcontractor_party_id`; 167.0 snapshot `expected_buy`; nie liczenie km; nie wariancja |
 | tablica planowania | planning board | 261.0 `/planning` leniwy overlay `trip`; nie 4 widoki; nie leaflet |
 | snapshot kosztu kupna | expected_buy | P5 freeze Decimal na `trip` przy `in_transit`/`completed`; nie marża; nie SQL na `charge` |

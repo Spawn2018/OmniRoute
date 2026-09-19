@@ -49153,6 +49153,17 @@
             ],
             "title": "Registration No"
           },
+          "inventory_no": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Inventory No"
+          },
           "capacity_kg": {
             "anyOf": [
               {},
@@ -49297,6 +49308,17 @@
             ],
             "title": "Registration No"
           },
+          "inventory_no": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Inventory No"
+          },
           "capacity_kg": {
             "anyOf": [
               {
@@ -49354,6 +49376,7 @@
           "resource_kind",
           "display_name",
           "registration_no",
+          "inventory_no",
           "capacity_kg",
           "capacity_ldm",
           "capacity_m3",

@@ -20,6 +20,7 @@ class ResourceCreate(BaseModel):
     resource_kind: str
     display_name: str
     registration_no: str | None = None
+    inventory_no: str | None = None
     capacity_kg: object | None = None
     capacity_ldm: object | None = None
     capacity_m3: object | None = None
@@ -34,6 +35,7 @@ class ResourceResponse(BaseModel):
     resource_kind: str
     display_name: str
     registration_no: str | None
+    inventory_no: str | None
     capacity_kg: str | None
     capacity_ldm: str | None
     capacity_m3: str | None
@@ -73,6 +75,7 @@ async def create_resource(
         resource_kind=body.resource_kind,
         display_name=body.display_name,
         registration_no=body.registration_no,
+        inventory_no=body.inventory_no,
         capacity_kg=body.capacity_kg,
         capacity_ldm=body.capacity_ldm,
         capacity_m3=body.capacity_m3,

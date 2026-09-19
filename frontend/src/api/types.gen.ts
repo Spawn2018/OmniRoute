@@ -13343,6 +13343,10 @@ export type ResourceCreate = {
      */
     registration_no?: string | null;
     /**
+     * Inventory No
+     */
+    inventory_no?: string | null;
+    /**
      * Capacity Kg
      */
     capacity_kg?: unknown | null;
@@ -13436,6 +13440,10 @@ export type ResourceResponse = {
      * Registration No
      */
     registration_no: string | null;
+    /**
+     * Inventory No
+     */
+    inventory_no: string | null;
     /**
      * Capacity Kg
      */

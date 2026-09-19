@@ -44,6 +44,19 @@ def require_registration_no(raw: object) -> str | None:
     return token
 
 
+def require_inventory_no(raw: object) -> str | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidResource("numer inwentarzowy musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        return None
+    if len(token) > _MAX_REG:
+        raise InvalidResource("numer inwentarzowy za długi")
+    return token
+
+
 def require_resource_source_ref(raw: object) -> str:
     if type(raw) is not str:
         raise InvalidResource("source_ref musi być tekstem")

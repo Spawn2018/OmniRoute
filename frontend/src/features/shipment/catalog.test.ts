@@ -97,6 +97,7 @@ describe("shipment surface for 28.0 and 90.0", () => {
     expect(fleet).toContain("capacity_kg")
     expect(fleet).toContain("capacity_ldm")
     expect(fleet).toContain("capacity_m3")
+    expect(fleet).toContain("inventory_no")
     expect(fleet).not.toContain("parseFloat")
     expect(run).not.toContain("parseFloat")
     expect(page).toContain("IsoContainerPanel")

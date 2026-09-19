@@ -9,6 +9,7 @@ from app.domain.resource import (
     require_capacity_ldm,
     require_capacity_m3,
     require_display_name,
+    require_inventory_no,
     require_registration_no,
     require_resource_kind,
     require_resource_source_ref,
@@ -21,6 +22,7 @@ class _FleetDraft(NamedTuple):
     kind: str
     label: str
     plate: str | None
+    inventory: str | None
     capacity: object
     ldm: object
     cubic: object
@@ -31,6 +33,7 @@ def _fleet_draft(
     resource_kind: object,
     display_name: object,
     registration_no: object,
+    inventory_no: object,
     capacity_kg: object,
     capacity_ldm: object,
     capacity_m3: object,
@@ -40,6 +43,7 @@ def _fleet_draft(
         require_resource_kind(resource_kind),
         require_display_name(display_name),
         require_registration_no(registration_no),
+        require_inventory_no(inventory_no),
         require_capacity_kg(capacity_kg),
         require_capacity_ldm(capacity_ldm),
         require_capacity_m3(capacity_m3),
@@ -50,6 +54,7 @@ def _fleet_draft(
 def _fleet_unchanged(current: Resource, draft: _FleetDraft) -> bool:
     return (
         current.registration_no == draft.plate
+        and current.inventory_no == draft.inventory
         and current.capacity_kg == draft.capacity
         and current.capacity_ldm == draft.ldm
         and current.capacity_m3 == draft.cubic
@@ -79,6 +84,7 @@ class ResourceService:
         resource_kind: object,
         display_name: object,
         registration_no: object,
+        inventory_no: object = None,
         capacity_kg: object = None,
         capacity_ldm: object = None,
         capacity_m3: object = None,
@@ -88,6 +94,7 @@ class ResourceService:
             resource_kind,
             display_name,
             registration_no,
+            inventory_no,
             capacity_kg,
             capacity_ldm,
             capacity_m3,
@@ -109,6 +116,7 @@ def _new_resource(organization_id: UUID, user_id: UUID, draft: _FleetDraft) -> R
         resource_kind=draft.kind,
         display_name=draft.label,
         registration_no=draft.plate,
+        inventory_no=draft.inventory,
         capacity_kg=draft.capacity,
         capacity_ldm=draft.ldm,
         capacity_m3=draft.cubic,
