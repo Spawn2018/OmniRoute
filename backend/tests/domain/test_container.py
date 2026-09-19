@@ -30,6 +30,7 @@ from app.domain.container import (
     require_container_return_date,
     require_container_shipment_leg_id,
     require_container_source_ref,
+    require_container_temp_band,
     require_container_temp_max,
     require_container_temp_min,
     require_container_unload_date,
@@ -504,6 +505,15 @@ def test_container_temp_max_allows_decimal() -> None:
         require_container_temp_max(2.0)
     with pytest.raises(InvalidContainer, match="temp. max"):
         require_container_temp_max(True)
+
+
+def test_container_temp_band_rejects_min_above_max() -> None:
+    require_container_temp_band(None, Decimal("2"))
+    require_container_temp_band(Decimal("-18"), None)
+    require_container_temp_band(Decimal("-18"), Decimal("2"))
+    require_container_temp_band(Decimal("2"), Decimal("2"))
+    with pytest.raises(InvalidContainer, match="temp. min"):
+        require_container_temp_band(Decimal("5"), Decimal("2"))
 
 
 def test_container_needs_external_power_keeps_flag_and_rejects_token() -> None:

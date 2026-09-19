@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **584.0** T3 `container.container_release_party_id` (CI po push) **Następny:** **585.0** leftover T3 HITL egzekucja `temp_min` ≤ `temp_max`. Nie 409 vs reefer. Nie N3. Nie ciphertext. Nie AI3-payload. Nie G0-SH.
+**Stan (z CURRENT.md):** **585.0** T3 egzekucja `temp_min` ≤ `temp_max` (CI po push) **Następny:** **586.0** leftover T3 HITL egzekucja 409 gdy `temp_min`/`temp_max` bez `reefer=true`. Nie N3. Nie ciphertext. Nie AI3-payload. Nie G0-SH.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

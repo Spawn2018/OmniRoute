@@ -436,6 +436,15 @@ def require_container_temp_max(raw: object) -> Decimal | None:
     return _require_temp_c(raw, "temp. max")
 
 
+def require_container_temp_band(
+    cool: Decimal | None, warm: Decimal | None,
+) -> None:
+    if cool is None or warm is None:
+        return
+    if cool > warm:
+        raise InvalidContainer("temp. min nie może być większa od temp. max")
+
+
 def _require_positive_kg(raw: object, label: str) -> Decimal | None:
     if raw is None:
         return None

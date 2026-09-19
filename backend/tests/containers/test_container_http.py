@@ -1536,6 +1536,43 @@ def test_http_rejects_float_container_temp_max(box_client: object) -> None:
     assert "temp. max" in reply.json()["detail"]
 
 
+def test_http_create_container_with_temp_band(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    created = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "temp_min": "-18",
+            "temp_max": "2",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["temp_min"] == "-18.0000"
+    assert created.json()["temp_max"] == "2.0000"
+
+
+def test_http_rejects_temp_min_above_temp_max(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "temp_min": "5",
+            "temp_max": "2",
+        },
+    )
+    assert reply.status_code == 400
+    assert "temp. min" in reply.json()["detail"]
+
+
 def test_http_create_container_with_needs_external_power(box_client: object) -> None:
     client, _boxes, _jobs = box_client
     headers = bearer_auth_headers()

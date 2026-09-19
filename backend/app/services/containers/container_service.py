@@ -30,6 +30,7 @@ from app.domain.container import (
     require_container_shipment_id,
     require_container_shipment_leg_id,
     require_container_source_ref,
+    require_container_temp_band,
     require_container_temp_max,
     require_container_temp_min,
     require_container_unload_date,
@@ -177,9 +178,8 @@ class _BoxDraft(NamedTuple):
 
 
 def _box_draft(write: _WriteBox) -> _BoxDraft:
-    clocks = _require_clocks(write)
-    days = _require_dates(write)
-    parties = _require_party_fks(write)
+    clocks, days = _require_clocks(write), _require_dates(write)
+    parties, temps = _require_party_fks(write), _require_temps(write)
     return _BoxDraft(
         require_container_no(write.number),
         require_iso_size_type(write.size_type),
@@ -213,9 +213,16 @@ def _box_draft(write: _WriteBox) -> _BoxDraft:
         require_pin_code(write.pin), require_payload_kg(write.payload),
         require_teu(write.teu), require_container_quantity(write.qty),
         require_container_weight_kg(write.kilos), require_container_volume_m3(write.cub),
-        *days, require_container_temp_min(write.cool), require_container_temp_max(write.warm),
+        *days, *temps,
         require_container_needs_external_power(write.power),
     )
+
+
+def _require_temps(write: _WriteBox) -> tuple[Decimal | None, Decimal | None]:
+    cool = require_container_temp_min(write.cool)
+    warm = require_container_temp_max(write.warm)
+    require_container_temp_band(cool, warm)
+    return cool, warm
 
 
 def _require_party_fks(write: _WriteBox) -> tuple[UUID | None, UUID | None, UUID | None]:
