@@ -49,6 +49,7 @@ export type ContainerRow = {
   unload_date: string | null
   temp_min: string | null
   temp_max: string | null
+  needs_external_power: boolean
   vgm_method: string | null
   vgm_cutoff_at: string | null
   last_survey_at: string | null
@@ -104,6 +105,7 @@ export type ContainerWrite = {
   unload_date?: string | null
   temp_min?: string | null
   temp_max?: string | null
+  needs_external_power?: boolean
   vgm_method?: string | null
   vgm_cutoff_at?: string | null
   last_survey_at?: string | null

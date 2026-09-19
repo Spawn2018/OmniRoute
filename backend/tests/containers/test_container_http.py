@@ -1515,6 +1515,7 @@ def test_http_create_container_with_temp_max(box_client: object) -> None:
     assert created.status_code == 201
     assert created.json()["temp_max"] == "2.0000"
     assert created.json()["temp_min"] is None
+    assert created.json()["needs_external_power"] is False
 
 
 def test_http_rejects_float_container_temp_max(box_client: object) -> None:
@@ -1532,6 +1533,41 @@ def test_http_rejects_float_container_temp_max(box_client: object) -> None:
     )
     assert reply.status_code == 400
     assert "temp. max" in reply.json()["detail"]
+
+
+def test_http_create_container_with_needs_external_power(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    created = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "needs_external_power": True,
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["needs_external_power"] is True
+    assert created.json()["reefer"] is False
+
+
+def test_http_rejects_non_bool_needs_external_power(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "needs_external_power": "yes",
+        },
+    )
+    assert reply.status_code == 400
+    assert "zasilanie" in reply.json()["detail"]
 
 
 def test_http_rejects_negative_mixed_dd_days(box_client: object) -> None:

@@ -15,6 +15,7 @@ from app.domain.container import (
     require_container_bl_kind,
     require_container_delivery_date,
     require_container_gate_in_date,
+    require_container_needs_external_power,
     require_container_no,
     require_container_pickup_date,
     require_container_quantity,
@@ -494,6 +495,13 @@ def test_container_temp_max_allows_decimal() -> None:
         require_container_temp_max(2.0)
     with pytest.raises(InvalidContainer, match="temp. max"):
         require_container_temp_max(True)
+
+
+def test_container_needs_external_power_keeps_flag_and_rejects_token() -> None:
+    assert require_container_needs_external_power(True) is True
+    assert require_container_needs_external_power(False) is False
+    with pytest.raises(InvalidContainer, match="zasilanie"):
+        require_container_needs_external_power("yes")  # type: ignore[arg-type]
 
 
 def test_last_survey_at_reuses_aware_clock_and_rejects_naive() -> None:

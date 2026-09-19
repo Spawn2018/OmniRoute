@@ -631,6 +631,21 @@ def test_migration_462_adds_temp_max_without_float() -> None:
     assert "temp_max" in source.split("def downgrade")[1]
 
 
+def test_migration_463_adds_needs_external_power_without_live() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "463_container_ext_power.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "463_container_ext_power"' in source
+    assert 'down_revision: str | None = "462_container_temp_max"' in source
+    assert "needs_external_power" in source
+    assert "Boolean" in source
+    assert "temp_max" not in source.split("def upgrade")[1]
+    assert "httpx" not in source
+    assert "create_table" not in source
+    assert "def downgrade" in source
+    assert "needs_external_power" in source.split("def downgrade")[1]
+
+
 def test_migration_174_adds_si_cutoff_without_live_http() -> None:
     source = (
         _ROOT / "backend" / "alembic" / "versions" / "174_container_si_cutoff.py"
@@ -819,6 +834,7 @@ def test_generated_api_types_include_container() -> None:
     assert "unload_date" in source
     assert "temp_min" in source
     assert "temp_max" in source
+    assert "needs_external_power" in source
     assert "vgm_method" in source
     assert "vgm_cutoff_at" in source
     assert "last_survey_at" in source

@@ -2845,6 +2845,10 @@ export type ContainerCreate = {
      */
     temp_max?: unknown | null;
     /**
+     * Needs External Power
+     */
+    needs_external_power?: unknown;
+    /**
      * Vgm Method
      */
     vgm_method?: unknown | null;
@@ -3062,6 +3066,10 @@ export type ContainerResponse = {
      * Temp Max
      */
     temp_max: string | null;
+    /**
+     * Needs External Power
+     */
+    needs_external_power: boolean;
     /**
      * Vgm Method
      */

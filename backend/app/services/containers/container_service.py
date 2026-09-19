@@ -14,6 +14,7 @@ from app.domain.container import (
     require_container_bl_kind,
     require_container_delivery_date,
     require_container_gate_in_date,
+    require_container_needs_external_power,
     require_container_no,
     require_container_pickup_date,
     require_container_quantity,
@@ -114,6 +115,7 @@ class _WriteBox(NamedTuple):
     unload: object
     cool: object
     warm: object
+    power: object
 
 
 class _BoxDraft(NamedTuple):
@@ -168,6 +170,7 @@ class _BoxDraft(NamedTuple):
     unload: date | None
     cool: Decimal | None
     warm: Decimal | None
+    power: bool
 
 
 def _box_draft(write: _WriteBox) -> _BoxDraft:
@@ -208,6 +211,7 @@ def _box_draft(write: _WriteBox) -> _BoxDraft:
         require_teu(write.teu), require_container_quantity(write.qty),
         require_container_weight_kg(write.kilos), require_container_volume_m3(write.cub),
         *days, require_container_temp_min(write.cool), require_container_temp_max(write.warm),
+        require_container_needs_external_power(write.power),
     )
 
 
@@ -278,6 +282,7 @@ def _box_unchanged(current: Container, draft: _BoxDraft) -> bool:
         and current.weight_kg == draft.kilos and current.volume_m3 == draft.cub
         and _dates_match(current, draft)
         and current.temp_min == draft.cool and current.temp_max == draft.warm
+        and current.needs_external_power == draft.power
     )
 
 
@@ -327,7 +332,8 @@ def _container_row(organization_id: UUID, user_id: UUID, draft: _BoxDraft) -> Co
         quantity=draft.qty, weight_kg=draft.kilos, volume_m3=draft.cub,
         pickup_date=draft.picked, return_date=draft.back, gate_in_date=draft.gate,
         delivery_date=draft.deliv, unload_date=draft.unload,
-        temp_min=draft.cool, temp_max=draft.warm, created_by=user_id,
+        temp_min=draft.cool, temp_max=draft.warm, needs_external_power=draft.power,
+        created_by=user_id,
     )
 
 

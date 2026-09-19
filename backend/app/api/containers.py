@@ -66,6 +66,7 @@ class ContainerCreate(BaseModel):
     unload_date: object | None = None
     temp_min: object | None = None
     temp_max: object | None = None
+    needs_external_power: object = False
     vgm_method: object | None = None
     vgm_cutoff_at: object | None = None
     last_survey_at: object | None = None
@@ -124,6 +125,7 @@ class ContainerResponse(BaseModel):
     unload_date: date | None
     temp_min: str | None
     temp_max: str | None
+    needs_external_power: bool
     vgm_method: str | None
     vgm_cutoff_at: datetime | None
     last_survey_at: datetime | None
@@ -180,7 +182,7 @@ def _write_from_body(
         body.tare_kg, body.pin_code, body.payload_kg, body.teu, body.quantity,
         body.weight_kg, body.volume_m3, body.pickup_date, body.return_date,
         body.gate_in_date, body.delivery_date, body.unload_date,
-        body.temp_min, body.temp_max,
+        body.temp_min, body.temp_max, body.needs_external_power,
     )
 
 

@@ -492,3 +492,9 @@ def require_container_reefer(raw: object) -> bool:
     if type(raw) is not bool:
         raise InvalidContainer("chłodniczy kontenera musi być flagą")
     return raw
+
+
+def require_container_needs_external_power(raw: object) -> bool:
+    if type(raw) is not bool:
+        raise InvalidContainer("zasilanie kontenera musi być flagą")
+    return raw

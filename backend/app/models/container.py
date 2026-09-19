@@ -107,6 +107,12 @@ class Container(Base, TimestampMixin):
     unload_date: Mapped[date | None] = mapped_column(Date(), nullable=True)
     temp_min: Mapped[Decimal | None] = mapped_column(Numeric(14, 4), nullable=True)
     temp_max: Mapped[Decimal | None] = mapped_column(Numeric(14, 4), nullable=True)
+    needs_external_power: Mapped[bool] = mapped_column(
+        Boolean(),
+        nullable=False,
+        server_default=text("false"),
+        default=False,
+    )
     vgm_method: Mapped[str | None] = mapped_column(String(16), nullable=True)
     vgm_cutoff_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     last_survey_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
