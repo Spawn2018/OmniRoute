@@ -14,6 +14,7 @@ from app.domain.resource import (
     require_registration_no,
     require_resource_kind,
     require_resource_source_ref,
+    require_tail_lift,
 )
 
 
@@ -30,6 +31,8 @@ def test_resource_allowlists() -> None:
     assert require_adr_certified(None) is None
     assert require_reefer(True) is True
     assert require_reefer(None) is None
+    assert require_tail_lift(True) is True
+    assert require_tail_lift(None) is None
     assert require_resource_source_ref("fixture://resource/man") == "fixture://resource/man"
     assert require_capacity_kg("24000") is not None
     assert require_capacity_ldm("13.6") is not None
@@ -60,6 +63,8 @@ def test_resource_rejects_truck_kind_and_foreign_ref() -> None:
         require_adr_certified("tak")
     with pytest.raises(InvalidResource, match="reefer"):
         require_reefer("tak")
+    with pytest.raises(InvalidResource, match="winda"):
+        require_tail_lift("tak")
 
 
 @given(st.sampled_from(["truck", "car", "fleet"]))

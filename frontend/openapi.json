@@ -49209,6 +49209,15 @@
             ],
             "title": "Reefer"
           },
+          "tail_lift": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tail Lift"
+          },
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
@@ -49392,6 +49401,17 @@
             ],
             "title": "Reefer"
           },
+          "tail_lift": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tail Lift"
+          },
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
@@ -49422,6 +49442,7 @@
           "capacity_m3",
           "adr_certified",
           "reefer",
+          "tail_lift",
           "source_ref",
           "superseded_by"
         ],

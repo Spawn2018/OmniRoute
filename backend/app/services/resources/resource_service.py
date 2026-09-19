@@ -15,6 +15,7 @@ from app.domain.resource import (
     require_registration_no,
     require_resource_kind,
     require_resource_source_ref,
+    require_tail_lift,
 )
 from app.models.resource import Resource
 from app.repositories.resources.resource_repository import ResourceRepository
@@ -30,6 +31,7 @@ class _FleetDraft(NamedTuple):
     cubic: object
     adr: bool | None
     cold: bool | None
+    lift: bool | None
     origin: str
 
 
@@ -43,6 +45,7 @@ def _fleet_draft(
     capacity_m3: object,
     adr_certified: object,
     reefer: object,
+    tail_lift: object,
     source_ref: object,
 ) -> _FleetDraft:
     return _FleetDraft(
@@ -55,6 +58,7 @@ def _fleet_draft(
         require_capacity_m3(capacity_m3),
         require_adr_certified(adr_certified),
         require_reefer(reefer),
+        require_tail_lift(tail_lift),
         require_resource_source_ref(source_ref),
     )
 
@@ -68,6 +72,7 @@ def _fleet_unchanged(current: Resource, draft: _FleetDraft) -> bool:
         and current.capacity_m3 == draft.cubic
         and current.adr_certified == draft.adr
         and current.reefer == draft.cold
+        and current.tail_lift == draft.lift
         and current.source_ref == draft.origin
     )
 
@@ -100,6 +105,7 @@ class ResourceService:
         capacity_m3: object = None,
         adr_certified: object = None,
         reefer: object = None,
+        tail_lift: object = None,
         source_ref: object,
     ) -> Resource:
         draft = _fleet_draft(
@@ -112,6 +118,7 @@ class ResourceService:
             capacity_m3,
             adr_certified,
             reefer,
+            tail_lift,
             source_ref,
         )
         current = await self._rows.find_current(draft.kind, draft.label)
@@ -136,6 +143,7 @@ def _new_resource(organization_id: UUID, user_id: UUID, draft: _FleetDraft) -> R
         capacity_m3=draft.cubic,
         adr_certified=draft.adr,
         reefer=draft.cold,
+        tail_lift=draft.lift,
         source_ref=draft.origin,
         created_by=user_id,
     )

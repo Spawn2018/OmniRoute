@@ -13367,6 +13367,10 @@ export type ResourceCreate = {
      */
     reefer?: unknown | null;
     /**
+     * Tail Lift
+     */
+    tail_lift?: unknown | null;
+    /**
      * Source Ref
      */
     source_ref: string;
@@ -13472,6 +13476,10 @@ export type ResourceResponse = {
      * Reefer
      */
     reefer: boolean | null;
+    /**
+     * Tail Lift
+     */
+    tail_lift: boolean | null;
     /**
      * Source Ref
      */

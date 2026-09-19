@@ -13,6 +13,7 @@ export type ResourceRow = {
   inventory_no: string | null
   adr_certified: boolean | null
   reefer: boolean | null
+  tail_lift: boolean | null
   source_ref: string
   superseded_by: string | null
 }
@@ -27,6 +28,7 @@ export type ResourceWrite = {
   inventory_no: string | null
   adr_certified: boolean | null
   reefer: boolean | null
+  tail_lift: boolean | null
   source_ref: string
 }
 
@@ -42,6 +44,7 @@ export function resourceWrite(args: {
   inventoryNo: string
   adr: string
   cold: string
+  lift: string
 }): ResourceWrite {
   const plate = args.plate.trim()
   const capacityKg = args.capacityKg.trim()
@@ -55,6 +58,7 @@ export function resourceWrite(args: {
     inventory_no: inventoryNo === "" ? null : inventoryNo,
     adr_certified: args.adr === "true" ? true : args.adr === "false" ? false : null,
     reefer: args.cold === "true" ? true : args.cold === "false" ? false : null,
+    tail_lift: args.lift === "true" ? true : args.lift === "false" ? false : null,
     capacity_kg: capacityKg === "" ? null : capacityKg,
     capacity_ldm: capacityLdm === "" ? null : capacityLdm,
     capacity_m3: capacityM3 === "" ? null : capacityM3,

@@ -85,6 +85,17 @@ def test_migration_471_adds_reefer() -> None:
     assert "drop_column" in source.split("def downgrade")[1]
 
 
+def test_migration_472_adds_tail_lift() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "472_resource_tail_lift.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "472_resource_tail_lift"' in source
+    assert 'down_revision: str | None = "471_resource_reefer"' in source
+    assert "tail_lift" in source
+    assert "Boolean" in source
+    assert "drop_column" in source.split("def downgrade")[1]
+
+
 def test_service_does_not_import_parents_or_trip() -> None:
     service = (_SERVICES / "resources" / "resource_service.py").read_text(encoding="utf-8")
     assert "app.services.shipments" not in service
