@@ -857,3 +857,9 @@ def test_generated_api_types_include_container() -> None:
     assert "carrier_party_id" in source
     assert "container_release_party_id" in source
     assert "shipment_leg_id" in source
+
+
+def test_main_maps_container_reefer_required_to_409() -> None:
+    source = (_ROOT / "backend" / "app" / "main.py").read_text(encoding="utf-8")
+    assert "ContainerReeferRequired" in source
+    assert "container_reefer_required_handler" in source

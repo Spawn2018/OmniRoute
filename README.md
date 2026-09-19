@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **585.0** T3 egzekucja `temp_min` ≤ `temp_max` (CI po push)
+- **Ostatni plaster:** **586.0** T3 409 gdy temp bez `reefer` (CI po push)
 - **Etap:** Plan — brak delty; komenda `/plan-modul`
-- **Następny:** **586.0** leftover T3 HITL egzekucja 409 gdy `temp_min`/`temp_max` bez `reefer=true`. Nie N3. Nie ciphertext. Nie AI3-payload. Nie G0-SH.
+- **Następny:** **587.0** leftover SH-R16-4 UXCL-L1 banner zgody (eventy + privacy). Nie scoring. Nie AI3-payload. Nie G0-SH. Nie N3.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

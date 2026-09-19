@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **585.0** T3 egzekucja `temp_min` ≤ `temp_max` (CI po push). **Etap:** Plan — brak delty; komenda `/plan-modul`. **Następny:** **586.0** leftover T3 HITL egzekucja 409 gdy `temp_min`/`temp_max` bez `reefer=true`. Nie N3. Nie ciphertext. Nie AI3-payload. Nie G0-SH. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **586.0** T3 409 gdy temp bez `reefer` (CI po push). **Etap:** Plan — brak delty; komenda `/plan-modul`. **Następny:** **587.0** leftover SH-R16-4 UXCL-L1 banner zgody (eventy + privacy). Nie scoring. Nie AI3-payload. Nie G0-SH. Nie N3. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

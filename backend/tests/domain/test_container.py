@@ -20,6 +20,7 @@ from app.domain.container import (
     require_container_pickup_date,
     require_container_quantity,
     require_container_reefer,
+    require_container_reefer_for_temps,
     require_container_ref_1,
     require_container_ref_2,
     require_container_ref_3,
@@ -61,7 +62,7 @@ from app.domain.container import (
     require_vgm_method,
     require_voyage_no,
 )
-from app.domain.errors import InvalidContainer
+from app.domain.errors import ContainerReeferRequired, InvalidContainer
 
 _GOOD = "CSQU3054383"
 
@@ -514,6 +515,17 @@ def test_container_temp_band_rejects_min_above_max() -> None:
     require_container_temp_band(Decimal("2"), Decimal("2"))
     with pytest.raises(InvalidContainer, match="temp. min"):
         require_container_temp_band(Decimal("5"), Decimal("2"))
+
+
+def test_container_reefer_required_for_temps() -> None:
+    require_container_reefer_for_temps(None, None, False)
+    require_container_reefer_for_temps(Decimal("-18"), None, True)
+    require_container_reefer_for_temps(None, Decimal("2"), True)
+    require_container_reefer_for_temps(Decimal("-18"), Decimal("2"), True)
+    with pytest.raises(ContainerReeferRequired, match="chłodniczego"):
+        require_container_reefer_for_temps(Decimal("-18"), None, False)
+    with pytest.raises(ContainerReeferRequired, match="chłodniczego"):
+        require_container_reefer_for_temps(None, Decimal("2"), False)
 
 
 def test_container_needs_external_power_keeps_flag_and_rejects_token() -> None:

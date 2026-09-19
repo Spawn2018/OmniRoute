@@ -522,6 +522,10 @@ class InvalidContainer(DomainError):
     """Kontener ISO 6346 — VGM HITL, nie kalkulator."""
 
 
+class ContainerReeferRequired(DomainError):
+    """T3 leftover: temp_min/temp_max bez reefer → HTTP 409."""
+
+
 class InvalidGroupageLine(DomainError):
     """Linia drobnicy: kod + dwa location + cutoff + TT + ISODOW — nie WMS."""
 

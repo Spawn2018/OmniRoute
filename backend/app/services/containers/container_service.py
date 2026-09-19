@@ -19,6 +19,7 @@ from app.domain.container import (
     require_container_pickup_date,
     require_container_quantity,
     require_container_reefer,
+    require_container_reefer_for_temps,
     require_container_ref_1,
     require_container_ref_2,
     require_container_ref_3,
@@ -179,7 +180,8 @@ class _BoxDraft(NamedTuple):
 
 def _box_draft(write: _WriteBox) -> _BoxDraft:
     clocks, days = _require_clocks(write), _require_dates(write)
-    parties, temps = _require_party_fks(write), _require_temps(write)
+    cold = require_container_reefer(write.cold)
+    parties, temps = _require_party_fks(write), _require_temps(write, cold)
     return _BoxDraft(
         require_container_no(write.number),
         require_iso_size_type(write.size_type),
@@ -198,7 +200,7 @@ def _box_draft(write: _WriteBox) -> _BoxDraft:
         require_container_ref_3(write.mark3),
         require_container_ref_4(write.mark4),
         require_container_ref_5(write.mark5),
-        require_container_reefer(write.cold),
+        cold,
         require_pickup_terminal(write.dock),
         require_return_terminal(write.yard),
         require_container_bl_kind(write.bill),
@@ -218,10 +220,13 @@ def _box_draft(write: _WriteBox) -> _BoxDraft:
     )
 
 
-def _require_temps(write: _WriteBox) -> tuple[Decimal | None, Decimal | None]:
+def _require_temps(
+    write: _WriteBox, cold: bool,
+) -> tuple[Decimal | None, Decimal | None]:
     cool = require_container_temp_min(write.cool)
     warm = require_container_temp_max(write.warm)
     require_container_temp_band(cool, warm)
+    require_container_reefer_for_temps(cool, warm, cold)
     return cool, warm
 
 

@@ -1474,11 +1474,13 @@ def test_http_create_container_with_temp_min(box_client: object) -> None:
             "container_no": _GOOD,
             "iso_size_type": "22G1",
             "source_ref": "tenant:manual",
+            "reefer": True,
             "temp_min": "-18",
         },
     )
     assert created.status_code == 201
     assert created.json()["temp_min"] == "-18.0000"
+    assert created.json()["reefer"] is True
     assert created.json()["unload_date"] is None
     assert created.json()["temp_max"] is None
 
@@ -1493,6 +1495,7 @@ def test_http_rejects_float_container_temp_min(box_client: object) -> None:
             "container_no": _GOOD,
             "iso_size_type": "22G1",
             "source_ref": "tenant:manual",
+            "reefer": True,
             "temp_min": -18.0,
         },
     )
@@ -1510,12 +1513,14 @@ def test_http_create_container_with_temp_max(box_client: object) -> None:
             "container_no": _GOOD,
             "iso_size_type": "22G1",
             "source_ref": "tenant:manual",
+            "reefer": True,
             "temp_max": "2",
         },
     )
     assert created.status_code == 201
     assert created.json()["temp_max"] == "2.0000"
     assert created.json()["temp_min"] is None
+    assert created.json()["reefer"] is True
     assert created.json()["needs_external_power"] is False
 
 
@@ -1529,6 +1534,7 @@ def test_http_rejects_float_container_temp_max(box_client: object) -> None:
             "container_no": _GOOD,
             "iso_size_type": "22G1",
             "source_ref": "tenant:manual",
+            "reefer": True,
             "temp_max": 2.0,
         },
     )
@@ -1546,6 +1552,7 @@ def test_http_create_container_with_temp_band(box_client: object) -> None:
             "container_no": _GOOD,
             "iso_size_type": "22G1",
             "source_ref": "tenant:manual",
+            "reefer": True,
             "temp_min": "-18",
             "temp_max": "2",
         },
@@ -1553,6 +1560,7 @@ def test_http_create_container_with_temp_band(box_client: object) -> None:
     assert created.status_code == 201
     assert created.json()["temp_min"] == "-18.0000"
     assert created.json()["temp_max"] == "2.0000"
+    assert created.json()["reefer"] is True
 
 
 def test_http_rejects_temp_min_above_temp_max(box_client: object) -> None:
@@ -1565,12 +1573,30 @@ def test_http_rejects_temp_min_above_temp_max(box_client: object) -> None:
             "container_no": _GOOD,
             "iso_size_type": "22G1",
             "source_ref": "tenant:manual",
+            "reefer": True,
             "temp_min": "5",
             "temp_max": "2",
         },
     )
     assert reply.status_code == 400
     assert "temp. min" in reply.json()["detail"]
+
+
+def test_http_rejects_temp_without_reefer(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "temp_min": "-18",
+        },
+    )
+    assert reply.status_code == 409
+    assert "chłodniczego" in reply.json()["detail"]
 
 
 def test_http_create_container_with_needs_external_power(box_client: object) -> None:

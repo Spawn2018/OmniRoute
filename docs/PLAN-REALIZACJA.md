@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **586.0** leftover T3 HITL egzekucja 409 gdy `temp_min`/`temp_max` bez `reefer=true`. Nie N3. Nie ciphertext. Nie AI3-payload. Nie G0-SH.
+**Następny:** **587.0** leftover SH-R16-4 UXCL-L1 banner zgody (eventy + privacy). Nie scoring. Nie AI3-payload. Nie G0-SH. Nie N3.
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).

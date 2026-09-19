@@ -8,6 +8,7 @@ from app.domain.errors import (
     BulkAcceptConfidenceBelow,
     ChannelQuoteConflict,
     ConsignmentFtlLimit,
+    ContainerReeferRequired,
     DomainError,
     DraftNotPending,
     ExtractionCandidatesNotEditable,
@@ -107,6 +108,14 @@ async def product_ticket_owner_required_handler(
 async def consignment_ftl_limit_handler(
     _request: Request,
     exc: ConsignmentFtlLimit,
+) -> JSONResponse:
+    return JSONResponse(status_code=409, content={"detail": str(exc)})
+
+
+@app.exception_handler(ContainerReeferRequired)
+async def container_reefer_required_handler(
+    _request: Request,
+    exc: ContainerReeferRequired,
 ) -> JSONResponse:
     return JSONResponse(status_code=409, content={"detail": str(exc)})
 

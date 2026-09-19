@@ -2,7 +2,7 @@ from datetime import date, datetime
 from decimal import Decimal, InvalidOperation
 from uuid import UUID
 
-from app.domain.errors import InvalidContainer
+from app.domain.errors import ContainerReeferRequired, InvalidContainer
 
 _MAX_REF = 256
 _FIXTURE = "fixture://container/"
@@ -443,6 +443,18 @@ def require_container_temp_band(
         return
     if cool > warm:
         raise InvalidContainer("temp. min nie może być większa od temp. max")
+
+
+def require_container_reefer_for_temps(
+    cool: Decimal | None, warm: Decimal | None, cold: bool,
+) -> None:
+    if cool is None and warm is None:
+        return
+    if cold:
+        return
+    raise ContainerReeferRequired(
+        "temperatura wymaga kontenera chłodniczego",
+    )
 
 
 def _require_positive_kg(raw: object, label: str) -> Decimal | None:
