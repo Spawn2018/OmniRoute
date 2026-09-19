@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **577.0** T3 `container.return_date` (CI po push). **Etap:** Plan — brak delty; komenda `/plan-modul`. **Następny:** leftover T3 HITL `container.gate_in_date` (daty SPEED). Nie cutoff timestamptz. Nie `temp_min`. Nie N3 countdown. Nie ciphertext. Nie AI3-payload. Nie G0-SH. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **577.0** T3 `container.return_date` (gate success). **Etap:** Plaster — delta zaakceptowana; komenda `/plaster`. **Następny:** **578.0** leftover T3 HITL `container.gate_in_date`. Nie `delivery_date`. Nie cutoff timestamptz. Nie `temp_min`. Nie N3. Nie ciphertext. Nie AI3-payload. Nie G0-SH. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
