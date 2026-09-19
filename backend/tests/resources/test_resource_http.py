@@ -9,6 +9,7 @@ from app.api.deps import require_tenant_session, set_authz_checker
 from app.domain.resource import (
     require_capacity_kg,
     require_capacity_ldm,
+    require_capacity_m3,
     require_display_name,
     require_registration_no,
     require_resource_kind,
@@ -54,6 +55,7 @@ class StubResourceService:
         registration_no: object,
         capacity_kg: object = None,
         capacity_ldm: object = None,
+        capacity_m3: object = None,
         source_ref: object,
     ) -> Resource:
         kind = require_resource_kind(resource_kind)
@@ -61,6 +63,7 @@ class StubResourceService:
         plate = require_registration_no(registration_no)
         capacity = require_capacity_kg(capacity_kg)
         ldm = require_capacity_ldm(capacity_ldm)
+        cubic = require_capacity_m3(capacity_m3)
         origin = require_resource_source_ref(source_ref)
         current = next(
             (
@@ -77,6 +80,7 @@ class StubResourceService:
             and current.registration_no == plate
             and current.capacity_kg == capacity
             and current.capacity_ldm == ldm
+            and current.capacity_m3 == cubic
             and current.source_ref == origin
         ):
             return current
@@ -88,6 +92,7 @@ class StubResourceService:
             registration_no=plate,
             capacity_kg=capacity,
             capacity_ldm=ldm,
+            capacity_m3=cubic,
             source_ref=origin,
             created_by=user_id,
         )
@@ -129,6 +134,7 @@ def test_http_create_list_supersede_and_reject_truck(fleet_client: object) -> No
     assert first.json()["organization_id"] == str(org_id)
     assert first.json()["capacity_kg"] is None
     assert first.json()["capacity_ldm"] is None
+    assert first.json()["capacity_m3"] is None
     assert "amount" not in first.json()
     with_kg = client.post(
         "/api/v1/resources",
@@ -146,6 +152,19 @@ def test_http_create_list_supersede_and_reject_truck(fleet_client: object) -> No
     assert with_ldm.status_code == 201
     assert with_ldm.json()["capacity_ldm"] == "13.6000"
     assert with_ldm.json()["id"] != with_kg.json()["id"]
+    with_m3 = client.post(
+        "/api/v1/resources",
+        headers=headers,
+        json={
+            **payload,
+            "capacity_kg": "24000",
+            "capacity_ldm": "13.6",
+            "capacity_m3": "90",
+        },
+    )
+    assert with_m3.status_code == 201
+    assert with_m3.json()["capacity_m3"] == "90.0000"
+    assert with_m3.json()["id"] != with_ldm.json()["id"]
     second = client.post(
         "/api/v1/resources",
         headers=headers,
@@ -154,10 +173,11 @@ def test_http_create_list_supersede_and_reject_truck(fleet_client: object) -> No
             "registration_no": "WX 2222",
             "capacity_kg": "24000",
             "capacity_ldm": "13.6",
+            "capacity_m3": "90",
         },
     )
     assert second.status_code == 201
-    assert second.json()["id"] != with_ldm.json()["id"]
+    assert second.json()["id"] != with_m3.json()["id"]
     listed = client.get("/api/v1/resources", headers=headers)
     assert listed.status_code == 200
     assert listed.json()[0]["id"] == second.json()["id"]
@@ -188,6 +208,13 @@ def test_http_create_list_supersede_and_reject_truck(fleet_client: object) -> No
     )
     assert bad_ldm.status_code == 400
     assert "ldm" in bad_ldm.json()["detail"]
+    bad_m3 = client.post(
+        "/api/v1/resources",
+        headers=headers,
+        json={**payload, "display_name": "Other3", "capacity_m3": 0.5},
+    )
+    assert bad_m3.status_code == 400
+    assert "m3" in bad_m3.json()["detail"]
 
 
 def test_capacity_kg_decimal_roundtrip_type() -> None:

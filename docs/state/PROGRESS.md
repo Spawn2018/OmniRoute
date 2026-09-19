@@ -1,6 +1,7 @@
 # Historia plastrów
 
 | Data | Plaster | Moduł | Opis |
+| 2026-09-19 | 591.0 | T2 resource.capacity_m3 | 2026-09-19 | PRZESZLO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-19 | 590.0 | T2 resource.capacity_ldm | 2026-09-19 | PRZESZLO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-19 | 589.0 | T2 resource.capacity_kg | 2026-09-19 | PRZESZLO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-19 | 587.0 | T3 container power bez reefer 409 | 2026-09-19 | PRZESZLO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |

@@ -19,6 +19,7 @@ export function FleetResourcePanel(args: { signedIn: boolean }) {
   const [plate, setPlate] = useState("")
   const [capacityKg, setCapacityKg] = useState("")
   const [capacityLdm, setCapacityLdm] = useState("")
+  const [capacityM3, setCapacityM3] = useState("")
   const listed = useQuery({
     queryKey: ["resources", ctx.organizationId, kind],
     queryFn: () => fetchResources(kind),
@@ -27,7 +28,9 @@ export function FleetResourcePanel(args: { signedIn: boolean }) {
   })
   const persist = useMutation({
     mutationFn: () =>
-      saveResource(resourceWrite({ kind, label, plate, capacityKg, capacityLdm })),
+      saveResource(
+        resourceWrite({ kind, label, plate, capacityKg, capacityLdm, capacityM3 }),
+      ),
     onSuccess: () => {
       void cache.invalidateQueries({ queryKey: ["resources", ctx.organizationId, kind] })
     },
@@ -36,7 +39,7 @@ export function FleetResourcePanel(args: { signedIn: boolean }) {
     <section className="grid gap-2 rounded-md border border-border p-3" data-resource="fleet">
       <h2 className="text-sm font-medium">Katalog floty</h2>
       <p className="text-xs text-muted-foreground">
-        Pojazd, kierowca albo naczepa. Opcjonalna pojemność kg i LDM. Nie trip. Nie własne HW.
+        Pojazd, kierowca albo naczepa. Opcjonalna pojemność kg, LDM i m³. Nie trip. Nie własne HW.
       </p>
       <label className="flex flex-col gap-1 text-xs">
         Rodzaj zasobu
@@ -89,6 +92,15 @@ export function FleetResourcePanel(args: { signedIn: boolean }) {
           onChange={(event) => setCapacityLdm(event.target.value)}
         />
       </label>
+      <label className="flex flex-col gap-1 text-xs">
+        Pojemność m³ (opcjonalnie)
+        <Input
+          aria-label="Pojemność m3 zasobu"
+          placeholder="capacity_m3"
+          value={capacityM3}
+          onChange={(event) => setCapacityM3(event.target.value)}
+        />
+      </label>
       <Button
         type="button"
         disabled={!args.signedIn || label.trim() === "" || persist.isPending}
@@ -104,6 +116,7 @@ export function FleetResourcePanel(args: { signedIn: boolean }) {
             {row.registration_no ? ` · ${row.registration_no}` : ""}
             {row.capacity_kg ? ` · ${row.capacity_kg} kg` : ""}
             {row.capacity_ldm ? ` · ${row.capacity_ldm} LDM` : ""}
+            {row.capacity_m3 ? ` · ${row.capacity_m3} m³` : ""}
           </li>
         ))}
       </ul>

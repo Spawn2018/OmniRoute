@@ -6,6 +6,7 @@ from app.domain.errors import InvalidResource
 from app.domain.resource import (
     require_capacity_kg,
     require_capacity_ldm,
+    require_capacity_m3,
     require_display_name,
     require_registration_no,
     require_resource_kind,
@@ -22,8 +23,10 @@ def test_resource_allowlists() -> None:
     assert require_resource_source_ref("fixture://resource/man") == "fixture://resource/man"
     assert require_capacity_kg("24000") is not None
     assert require_capacity_ldm("13.6") is not None
+    assert require_capacity_m3("90") is not None
     assert require_capacity_kg(None) is None
     assert require_capacity_ldm(None) is None
+    assert require_capacity_m3(None) is None
 
 
 def test_resource_rejects_truck_kind_and_foreign_ref() -> None:
@@ -39,6 +42,8 @@ def test_resource_rejects_truck_kind_and_foreign_ref() -> None:
         require_capacity_kg(0)
     with pytest.raises(InvalidResource, match="ldm"):
         require_capacity_ldm(0.5)
+    with pytest.raises(InvalidResource, match="m3"):
+        require_capacity_m3(0.5)
 
 
 @given(st.sampled_from(["truck", "car", "fleet"]))

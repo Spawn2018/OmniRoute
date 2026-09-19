@@ -65,6 +65,10 @@ def require_capacity_ldm(raw: object) -> Decimal | None:
     return _require_positive_decimal(raw, "ldm")
 
 
+def require_capacity_m3(raw: object) -> Decimal | None:
+    return _require_positive_decimal(raw, "m3")
+
+
 def _require_positive_decimal(raw: object, label: str) -> Decimal | None:
     if raw is None:
         return None

@@ -13351,6 +13351,10 @@ export type ResourceCreate = {
      */
     capacity_ldm?: unknown | null;
     /**
+     * Capacity M3
+     */
+    capacity_m3?: unknown | null;
+    /**
      * Source Ref
      */
     source_ref: string;
@@ -13388,6 +13392,10 @@ export type ResourceResponse = {
      * Capacity Ldm
      */
     capacity_ldm: string | null;
+    /**
+     * Capacity M3
+     */
+    capacity_m3: string | null;
     /**
      * Source Ref
      */

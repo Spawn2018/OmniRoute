@@ -31,6 +31,7 @@ class Resource(Base, TimestampMixin):
     registration_no: Mapped[str | None] = mapped_column(String(32), nullable=True)
     capacity_kg: Mapped[Decimal | None] = mapped_column(Numeric(14, 4), nullable=True)
     capacity_ldm: Mapped[Decimal | None] = mapped_column(Numeric(14, 4), nullable=True)
+    capacity_m3: Mapped[Decimal | None] = mapped_column(Numeric(14, 4), nullable=True)
     source_ref: Mapped[str] = mapped_column(Text, nullable=False)
     superseded_by: Mapped[uuid.UUID | None] = mapped_column(
         UUID(as_uuid=True),

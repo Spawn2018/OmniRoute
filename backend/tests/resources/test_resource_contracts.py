@@ -41,6 +41,17 @@ def test_migration_466_adds_capacity_ldm() -> None:
     assert "drop_column" in source.split("def downgrade")[1]
 
 
+def test_migration_467_adds_capacity_m3() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "467_resource_capacity_m3.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "467_resource_capacity_m3"' in source
+    assert 'down_revision: str | None = "466_resource_capacity_ldm"' in source
+    assert "capacity_m3" in source
+    assert "Numeric(14, 4)" in source
+    assert "drop_column" in source.split("def downgrade")[1]
+
+
 def test_service_does_not_import_parents_or_trip() -> None:
     service = (_SERVICES / "resources" / "resource_service.py").read_text(encoding="utf-8")
     assert "app.services.shipments" not in service

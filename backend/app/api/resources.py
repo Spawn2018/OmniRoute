@@ -22,6 +22,7 @@ class ResourceCreate(BaseModel):
     registration_no: str | None = None
     capacity_kg: object | None = None
     capacity_ldm: object | None = None
+    capacity_m3: object | None = None
     source_ref: str
 
 
@@ -35,6 +36,7 @@ class ResourceResponse(BaseModel):
     registration_no: str | None
     capacity_kg: str | None
     capacity_ldm: str | None
+    capacity_m3: str | None
     source_ref: str
     superseded_by: UUID | None
 
@@ -43,6 +45,7 @@ def _as_response(row: Resource) -> ResourceResponse:
     dumped = {name: getattr(row, name) for name in ResourceResponse.model_fields}
     dumped["capacity_kg"] = None if row.capacity_kg is None else format(row.capacity_kg, "f")
     dumped["capacity_ldm"] = None if row.capacity_ldm is None else format(row.capacity_ldm, "f")
+    dumped["capacity_m3"] = None if row.capacity_m3 is None else format(row.capacity_m3, "f")
     return ResourceResponse.model_validate(dumped)
 
 
@@ -72,6 +75,7 @@ async def create_resource(
         registration_no=body.registration_no,
         capacity_kg=body.capacity_kg,
         capacity_ldm=body.capacity_ldm,
+        capacity_m3=body.capacity_m3,
         source_ref=body.source_ref,
     )
     await session.commit()
