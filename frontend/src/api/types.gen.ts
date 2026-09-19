@@ -13363,6 +13363,10 @@ export type ResourceCreate = {
      */
     adr_certified?: unknown | null;
     /**
+     * Reefer
+     */
+    reefer?: unknown | null;
+    /**
      * Source Ref
      */
     source_ref: string;
@@ -13464,6 +13468,10 @@ export type ResourceResponse = {
      * Adr Certified
      */
     adr_certified: boolean | null;
+    /**
+     * Reefer
+     */
+    reefer: boolean | null;
     /**
      * Source Ref
      */

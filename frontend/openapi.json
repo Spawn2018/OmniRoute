@@ -49200,6 +49200,15 @@
             ],
             "title": "Adr Certified"
           },
+          "reefer": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reefer"
+          },
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
@@ -49372,6 +49381,17 @@
             ],
             "title": "Adr Certified"
           },
+          "reefer": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reefer"
+          },
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
@@ -49401,6 +49421,7 @@
           "capacity_ldm",
           "capacity_m3",
           "adr_certified",
+          "reefer",
           "source_ref",
           "superseded_by"
         ],

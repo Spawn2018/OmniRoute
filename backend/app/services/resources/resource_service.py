@@ -11,6 +11,7 @@ from app.domain.resource import (
     require_capacity_m3,
     require_display_name,
     require_inventory_no,
+    require_reefer,
     require_registration_no,
     require_resource_kind,
     require_resource_source_ref,
@@ -28,6 +29,7 @@ class _FleetDraft(NamedTuple):
     ldm: object
     cubic: object
     adr: bool | None
+    cold: bool | None
     origin: str
 
 
@@ -40,6 +42,7 @@ def _fleet_draft(
     capacity_ldm: object,
     capacity_m3: object,
     adr_certified: object,
+    reefer: object,
     source_ref: object,
 ) -> _FleetDraft:
     return _FleetDraft(
@@ -51,6 +54,7 @@ def _fleet_draft(
         require_capacity_ldm(capacity_ldm),
         require_capacity_m3(capacity_m3),
         require_adr_certified(adr_certified),
+        require_reefer(reefer),
         require_resource_source_ref(source_ref),
     )
 
@@ -63,6 +67,7 @@ def _fleet_unchanged(current: Resource, draft: _FleetDraft) -> bool:
         and current.capacity_ldm == draft.ldm
         and current.capacity_m3 == draft.cubic
         and current.adr_certified == draft.adr
+        and current.reefer == draft.cold
         and current.source_ref == draft.origin
     )
 
@@ -94,6 +99,7 @@ class ResourceService:
         capacity_ldm: object = None,
         capacity_m3: object = None,
         adr_certified: object = None,
+        reefer: object = None,
         source_ref: object,
     ) -> Resource:
         draft = _fleet_draft(
@@ -105,6 +111,7 @@ class ResourceService:
             capacity_ldm,
             capacity_m3,
             adr_certified,
+            reefer,
             source_ref,
         )
         current = await self._rows.find_current(draft.kind, draft.label)
@@ -128,6 +135,7 @@ def _new_resource(organization_id: UUID, user_id: UUID, draft: _FleetDraft) -> R
         capacity_ldm=draft.ldm,
         capacity_m3=draft.cubic,
         adr_certified=draft.adr,
+        reefer=draft.cold,
         source_ref=draft.origin,
         created_by=user_id,
     )

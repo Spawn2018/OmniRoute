@@ -65,6 +65,14 @@ def require_adr_certified(raw: object) -> bool | None:
     return raw
 
 
+def require_reefer(raw: object) -> bool | None:
+    if raw is None:
+        return None
+    if type(raw) is not bool:
+        raise InvalidResource("reefer")
+    return raw
+
+
 def require_resource_source_ref(raw: object) -> str:
     if type(raw) is not str:
         raise InvalidResource("source_ref musi być tekstem")

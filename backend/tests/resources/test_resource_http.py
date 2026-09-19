@@ -13,6 +13,7 @@ from app.domain.resource import (
     require_capacity_m3,
     require_display_name,
     require_inventory_no,
+    require_reefer,
     require_registration_no,
     require_resource_kind,
     require_resource_source_ref,
@@ -60,6 +61,7 @@ class StubResourceService:
         capacity_ldm: object = None,
         capacity_m3: object = None,
         adr_certified: object = None,
+        reefer: object = None,
         source_ref: object,
     ) -> Resource:
         kind = require_resource_kind(resource_kind)
@@ -70,6 +72,7 @@ class StubResourceService:
         ldm = require_capacity_ldm(capacity_ldm)
         cubic = require_capacity_m3(capacity_m3)
         adr = require_adr_certified(adr_certified)
+        cold = require_reefer(reefer)
         origin = require_resource_source_ref(source_ref)
         current = next(
             (
@@ -89,6 +92,7 @@ class StubResourceService:
             and current.capacity_ldm == ldm
             and current.capacity_m3 == cubic
             and current.adr_certified == adr
+            and current.reefer == cold
             and current.source_ref == origin
         ):
             return current
@@ -103,6 +107,7 @@ class StubResourceService:
             capacity_ldm=ldm,
             capacity_m3=cubic,
             adr_certified=adr,
+            reefer=cold,
             source_ref=origin,
             created_by=user_id,
         )
@@ -147,6 +152,7 @@ def test_http_create_list_supersede_and_reject_truck(fleet_client: object) -> No
     assert first.json()["capacity_m3"] is None
     assert first.json()["inventory_no"] is None
     assert first.json()["adr_certified"] is None
+    assert first.json()["reefer"] is None
     assert "amount" not in first.json()
     with_kg = client.post(
         "/api/v1/resources",
@@ -287,6 +293,36 @@ def test_http_adr_certified_supersedes(fleet_client: object) -> None:
     )
     assert bad.status_code == 400
     assert "adr" in bad.json()["detail"]
+
+
+def test_http_reefer_supersedes(fleet_client: object) -> None:
+    client, _rows = fleet_client
+    headers = bearer_auth_headers(organization_id=uuid4())
+    payload = {
+        "resource_kind": "trailer",
+        "display_name": "Chlodnia",
+        "source_ref": "tenant:manual",
+        "reefer": True,
+    }
+    first = client.post("/api/v1/resources", headers=headers, json=payload)
+    assert first.status_code == 201
+    assert first.json()["reefer"] is True
+    same = client.post("/api/v1/resources", headers=headers, json=payload)
+    assert same.json()["id"] == first.json()["id"]
+    changed = client.post(
+        "/api/v1/resources",
+        headers=headers,
+        json={**payload, "reefer": False},
+    )
+    assert changed.status_code == 201
+    assert changed.json()["id"] != first.json()["id"]
+    bad = client.post(
+        "/api/v1/resources",
+        headers=headers,
+        json={**payload, "display_name": "Inna", "reefer": "tak"},
+    )
+    assert bad.status_code == 400
+    assert "reefer" in bad.json()["detail"]
 
 
 def test_capacity_kg_decimal_roundtrip_type() -> None:

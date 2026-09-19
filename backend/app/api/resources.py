@@ -25,6 +25,7 @@ class ResourceCreate(BaseModel):
     capacity_ldm: object | None = None
     capacity_m3: object | None = None
     adr_certified: object | None = None
+    reefer: object | None = None
     source_ref: str
 
 
@@ -41,6 +42,7 @@ class ResourceResponse(BaseModel):
     capacity_ldm: str | None
     capacity_m3: str | None
     adr_certified: bool | None
+    reefer: bool | None
     source_ref: str
     superseded_by: UUID | None
 
@@ -82,6 +84,7 @@ async def create_resource(
         capacity_ldm=body.capacity_ldm,
         capacity_m3=body.capacity_m3,
         adr_certified=body.adr_certified,
+        reefer=body.reefer,
         source_ref=body.source_ref,
     )
     await session.commit()

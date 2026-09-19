@@ -1,6 +1,7 @@
 # Historia plastrów
 
 | Data | Plaster | Moduł | Opis |
+| 2026-09-19 | 595.0 | T2 resource.reefer | 2026-09-19 | PRZESZLO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-19 | 594.0 | T2 resource.adr_certified | 2026-09-19 | PRZESZLO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-19 | 593.0 | T2 resource.inventory_no | 2026-09-19 | PRZESZLO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |
 | 2026-09-19 | 592.0 | T2 resource_document | 2026-09-19 | PRZESZLO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZLO | N/A | N/A | PRZESZLO |

@@ -22,6 +22,7 @@ export function FleetResourcePanel(args: { signedIn: boolean }) {
   const [capacityM3, setCapacityM3] = useState("")
   const [inventoryNo, setInventoryNo] = useState("")
   const [adr, setAdr] = useState("")
+  const [cold, setCold] = useState("")
   const listed = useQuery({
     queryKey: ["resources", ctx.organizationId, kind],
     queryFn: () => fetchResources(kind),
@@ -40,6 +41,7 @@ export function FleetResourcePanel(args: { signedIn: boolean }) {
           capacityM3,
           inventoryNo,
           adr,
+          cold,
         }),
       ),
     onSuccess: () => {
@@ -134,6 +136,19 @@ export function FleetResourcePanel(args: { signedIn: boolean }) {
           <option value="false">nie</option>
         </select>
       </label>
+      <label className="flex flex-col gap-1 text-xs">
+        Chłodnia (opcjonalnie)
+        <select
+          aria-label="reefer"
+          className="h-8 rounded-md border border-border bg-background px-2 text-sm"
+          value={cold}
+          onChange={(event) => setCold(event.target.value)}
+        >
+          <option value="">brak</option>
+          <option value="true">tak</option>
+          <option value="false">nie</option>
+        </select>
+      </label>
       <Button
         type="button"
         disabled={!args.signedIn || label.trim() === "" || persist.isPending}
@@ -149,6 +164,7 @@ export function FleetResourcePanel(args: { signedIn: boolean }) {
             {row.registration_no ? ` · ${row.registration_no}` : ""}
             {row.inventory_no ? ` · ${row.inventory_no}` : ""}
             {row.adr_certified === true ? " · ADR" : ""}
+            {row.reefer === true ? " · chłodnia" : ""}
             {row.capacity_kg ? ` · ${row.capacity_kg} kg` : ""}
             {row.capacity_ldm ? ` · ${row.capacity_ldm} LDM` : ""}
             {row.capacity_m3 ? ` · ${row.capacity_m3} m³` : ""}

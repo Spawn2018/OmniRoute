@@ -74,6 +74,17 @@ def test_migration_470_adds_adr_certified() -> None:
     assert "drop_column" in source.split("def downgrade")[1]
 
 
+def test_migration_471_adds_reefer() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "471_resource_reefer.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "471_resource_reefer"' in source
+    assert 'down_revision: str | None = "470_resource_adr_certified"' in source
+    assert "reefer" in source
+    assert "Boolean" in source
+    assert "drop_column" in source.split("def downgrade")[1]
+
+
 def test_service_does_not_import_parents_or_trip() -> None:
     service = (_SERVICES / "resources" / "resource_service.py").read_text(encoding="utf-8")
     assert "app.services.shipments" not in service
