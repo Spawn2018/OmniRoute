@@ -28,6 +28,7 @@ from app.domain.container import (
     require_container_return_date,
     require_container_shipment_leg_id,
     require_container_source_ref,
+    require_container_temp_max,
     require_container_temp_min,
     require_container_unload_date,
     require_container_volume_m3,
@@ -483,6 +484,16 @@ def test_container_temp_min_allows_negative_decimal() -> None:
         require_container_temp_min(1.5)
     with pytest.raises(InvalidContainer, match="temp. min"):
         require_container_temp_min(True)
+
+
+def test_container_temp_max_allows_decimal() -> None:
+    assert require_container_temp_max(None) is None
+    assert require_container_temp_max("  ") is None
+    assert require_container_temp_max("2") == Decimal("2.0000")
+    with pytest.raises(InvalidContainer, match="temp. max"):
+        require_container_temp_max(2.0)
+    with pytest.raises(InvalidContainer, match="temp. max"):
+        require_container_temp_max(True)
 
 
 def test_last_survey_at_reuses_aware_clock_and_rejects_naive() -> None:

@@ -2841,6 +2841,10 @@ export type ContainerCreate = {
      */
     temp_min?: unknown | null;
     /**
+     * Temp Max
+     */
+    temp_max?: unknown | null;
+    /**
      * Vgm Method
      */
     vgm_method?: unknown | null;
@@ -3054,6 +3058,10 @@ export type ContainerResponse = {
      * Temp Min
      */
     temp_min: string | null;
+    /**
+     * Temp Max
+     */
+    temp_max: string | null;
     /**
      * Vgm Method
      */

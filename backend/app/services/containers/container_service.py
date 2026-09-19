@@ -28,6 +28,7 @@ from app.domain.container import (
     require_container_shipment_id,
     require_container_shipment_leg_id,
     require_container_source_ref,
+    require_container_temp_max,
     require_container_temp_min,
     require_container_unload_date,
     require_container_volume_m3,
@@ -112,6 +113,7 @@ class _WriteBox(NamedTuple):
     deliv: object
     unload: object
     cool: object
+    warm: object
 
 
 class _BoxDraft(NamedTuple):
@@ -165,6 +167,7 @@ class _BoxDraft(NamedTuple):
     deliv: date | None
     unload: date | None
     cool: Decimal | None
+    warm: Decimal | None
 
 
 def _box_draft(write: _WriteBox) -> _BoxDraft:
@@ -204,7 +207,7 @@ def _box_draft(write: _WriteBox) -> _BoxDraft:
         require_pin_code(write.pin), require_payload_kg(write.payload),
         require_teu(write.teu), require_container_quantity(write.qty),
         require_container_weight_kg(write.kilos), require_container_volume_m3(write.cub),
-        *days, require_container_temp_min(write.cool),
+        *days, require_container_temp_min(write.cool), require_container_temp_max(write.warm),
     )
 
 
@@ -273,7 +276,8 @@ def _box_unchanged(current: Container, draft: _BoxDraft) -> bool:
         and current.teu == draft.teu
         and current.quantity == draft.qty
         and current.weight_kg == draft.kilos and current.volume_m3 == draft.cub
-        and _dates_match(current, draft) and current.temp_min == draft.cool
+        and _dates_match(current, draft)
+        and current.temp_min == draft.cool and current.temp_max == draft.warm
     )
 
 
@@ -322,8 +326,8 @@ def _container_row(organization_id: UUID, user_id: UUID, draft: _BoxDraft) -> Co
         tare_kg=draft.tare, pin_code=draft.pin, payload_kg=draft.payload, teu=draft.teu,
         quantity=draft.qty, weight_kg=draft.kilos, volume_m3=draft.cub,
         pickup_date=draft.picked, return_date=draft.back, gate_in_date=draft.gate,
-        delivery_date=draft.deliv, unload_date=draft.unload, temp_min=draft.cool,
-        created_by=user_id,
+        delivery_date=draft.deliv, unload_date=draft.unload,
+        temp_min=draft.cool, temp_max=draft.warm, created_by=user_id,
     )
 
 

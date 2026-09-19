@@ -424,6 +424,10 @@ def require_container_temp_min(raw: object) -> Decimal | None:
     return _require_temp_c(raw, "temp. min")
 
 
+def require_container_temp_max(raw: object) -> Decimal | None:
+    return _require_temp_c(raw, "temp. max")
+
+
 def _require_positive_kg(raw: object, label: str) -> Decimal | None:
     if raw is None:
         return None
