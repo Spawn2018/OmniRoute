@@ -19,6 +19,7 @@ from app.domain.container import (
     require_container_pickup_date,
     require_container_quantity,
     require_container_reefer,
+    require_container_reefer_for_power,
     require_container_reefer_for_temps,
     require_container_ref_1,
     require_container_ref_2,
@@ -216,8 +217,14 @@ def _box_draft(write: _WriteBox) -> _BoxDraft:
         require_teu(write.teu), require_container_quantity(write.qty),
         require_container_weight_kg(write.kilos), require_container_volume_m3(write.cub),
         *days, *temps,
-        require_container_needs_external_power(write.power),
+        _require_power(write.power, cold),
     )
+
+
+def _require_power(raw: object, cold: bool) -> bool:
+    power = require_container_needs_external_power(raw)
+    require_container_reefer_for_power(power, cold)
+    return power
 
 
 def _require_temps(

@@ -1609,12 +1609,30 @@ def test_http_create_container_with_needs_external_power(box_client: object) -> 
             "container_no": _GOOD,
             "iso_size_type": "22G1",
             "source_ref": "tenant:manual",
+            "reefer": True,
             "needs_external_power": True,
         },
     )
     assert created.status_code == 201
     assert created.json()["needs_external_power"] is True
-    assert created.json()["reefer"] is False
+    assert created.json()["reefer"] is True
+
+
+def test_http_rejects_power_without_reefer(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "needs_external_power": True,
+        },
+    )
+    assert reply.status_code == 409
+    assert "zasilanie" in reply.json()["detail"]
 
 
 def test_http_rejects_non_bool_needs_external_power(box_client: object) -> None:

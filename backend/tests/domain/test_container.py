@@ -20,6 +20,7 @@ from app.domain.container import (
     require_container_pickup_date,
     require_container_quantity,
     require_container_reefer,
+    require_container_reefer_for_power,
     require_container_reefer_for_temps,
     require_container_ref_1,
     require_container_ref_2,
@@ -526,6 +527,14 @@ def test_container_reefer_required_for_temps() -> None:
         require_container_reefer_for_temps(Decimal("-18"), None, False)
     with pytest.raises(ContainerReeferRequired, match="chłodniczego"):
         require_container_reefer_for_temps(None, Decimal("2"), False)
+
+
+def test_container_reefer_required_for_power() -> None:
+    require_container_reefer_for_power(False, False)
+    require_container_reefer_for_power(True, True)
+    require_container_reefer_for_power(False, True)
+    with pytest.raises(ContainerReeferRequired, match="zasilanie"):
+        require_container_reefer_for_power(True, False)
 
 
 def test_container_needs_external_power_keeps_flag_and_rejects_token() -> None:

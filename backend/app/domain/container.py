@@ -457,6 +457,16 @@ def require_container_reefer_for_temps(
     )
 
 
+def require_container_reefer_for_power(power: bool, cold: bool) -> None:
+    if not power:
+        return
+    if cold:
+        return
+    raise ContainerReeferRequired(
+        "zasilanie wymaga kontenera chłodniczego",
+    )
+
+
 def _require_positive_kg(raw: object, label: str) -> Decimal | None:
     if raw is None:
         return None
