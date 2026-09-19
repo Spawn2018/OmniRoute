@@ -4,6 +4,7 @@ from hypothesis import strategies as st
 
 from app.domain.errors import InvalidResource
 from app.domain.resource import (
+    require_adr_certified,
     require_capacity_kg,
     require_capacity_ldm,
     require_capacity_m3,
@@ -24,6 +25,8 @@ def test_resource_allowlists() -> None:
     assert require_inventory_no(" INV-1 ") == "INV-1"
     assert require_inventory_no("") is None
     assert require_inventory_no(None) is None
+    assert require_adr_certified(True) is True
+    assert require_adr_certified(None) is None
     assert require_resource_source_ref("fixture://resource/man") == "fixture://resource/man"
     assert require_capacity_kg("24000") is not None
     assert require_capacity_ldm("13.6") is not None
@@ -50,6 +53,8 @@ def test_resource_rejects_truck_kind_and_foreign_ref() -> None:
         require_capacity_m3(0.5)
     with pytest.raises(InvalidResource, match="inwentarzowy"):
         require_inventory_no("x" * 33)
+    with pytest.raises(InvalidResource, match="adr"):
+        require_adr_certified("tak")
 
 
 @given(st.sampled_from(["truck", "car", "fleet"]))

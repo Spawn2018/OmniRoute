@@ -5,6 +5,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.errors import ResourceNotFound
 from app.domain.resource import (
+    require_adr_certified,
     require_capacity_kg,
     require_capacity_ldm,
     require_capacity_m3,
@@ -26,6 +27,7 @@ class _FleetDraft(NamedTuple):
     capacity: object
     ldm: object
     cubic: object
+    adr: bool | None
     origin: str
 
 
@@ -37,6 +39,7 @@ def _fleet_draft(
     capacity_kg: object,
     capacity_ldm: object,
     capacity_m3: object,
+    adr_certified: object,
     source_ref: object,
 ) -> _FleetDraft:
     return _FleetDraft(
@@ -47,6 +50,7 @@ def _fleet_draft(
         require_capacity_kg(capacity_kg),
         require_capacity_ldm(capacity_ldm),
         require_capacity_m3(capacity_m3),
+        require_adr_certified(adr_certified),
         require_resource_source_ref(source_ref),
     )
 
@@ -58,6 +62,7 @@ def _fleet_unchanged(current: Resource, draft: _FleetDraft) -> bool:
         and current.capacity_kg == draft.capacity
         and current.capacity_ldm == draft.ldm
         and current.capacity_m3 == draft.cubic
+        and current.adr_certified == draft.adr
         and current.source_ref == draft.origin
     )
 
@@ -88,6 +93,7 @@ class ResourceService:
         capacity_kg: object = None,
         capacity_ldm: object = None,
         capacity_m3: object = None,
+        adr_certified: object = None,
         source_ref: object,
     ) -> Resource:
         draft = _fleet_draft(
@@ -98,6 +104,7 @@ class ResourceService:
             capacity_kg,
             capacity_ldm,
             capacity_m3,
+            adr_certified,
             source_ref,
         )
         current = await self._rows.find_current(draft.kind, draft.label)
@@ -120,6 +127,7 @@ def _new_resource(organization_id: UUID, user_id: UUID, draft: _FleetDraft) -> R
         capacity_kg=draft.capacity,
         capacity_ldm=draft.ldm,
         capacity_m3=draft.cubic,
+        adr_certified=draft.adr,
         source_ref=draft.origin,
         created_by=user_id,
     )

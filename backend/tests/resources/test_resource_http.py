@@ -7,6 +7,7 @@ from fastapi.testclient import TestClient
 
 from app.api.deps import require_tenant_session, set_authz_checker
 from app.domain.resource import (
+    require_adr_certified,
     require_capacity_kg,
     require_capacity_ldm,
     require_capacity_m3,
@@ -58,6 +59,7 @@ class StubResourceService:
         capacity_kg: object = None,
         capacity_ldm: object = None,
         capacity_m3: object = None,
+        adr_certified: object = None,
         source_ref: object,
     ) -> Resource:
         kind = require_resource_kind(resource_kind)
@@ -67,6 +69,7 @@ class StubResourceService:
         capacity = require_capacity_kg(capacity_kg)
         ldm = require_capacity_ldm(capacity_ldm)
         cubic = require_capacity_m3(capacity_m3)
+        adr = require_adr_certified(adr_certified)
         origin = require_resource_source_ref(source_ref)
         current = next(
             (
@@ -85,6 +88,7 @@ class StubResourceService:
             and current.capacity_kg == capacity
             and current.capacity_ldm == ldm
             and current.capacity_m3 == cubic
+            and current.adr_certified == adr
             and current.source_ref == origin
         ):
             return current
@@ -98,6 +102,7 @@ class StubResourceService:
             capacity_kg=capacity,
             capacity_ldm=ldm,
             capacity_m3=cubic,
+            adr_certified=adr,
             source_ref=origin,
             created_by=user_id,
         )
@@ -141,6 +146,7 @@ def test_http_create_list_supersede_and_reject_truck(fleet_client: object) -> No
     assert first.json()["capacity_ldm"] is None
     assert first.json()["capacity_m3"] is None
     assert first.json()["inventory_no"] is None
+    assert first.json()["adr_certified"] is None
     assert "amount" not in first.json()
     with_kg = client.post(
         "/api/v1/resources",
@@ -251,6 +257,36 @@ def test_http_inventory_no_supersedes(fleet_client: object) -> None:
     )
     assert too_long.status_code == 400
     assert "inwentarzowy" in too_long.json()["detail"]
+
+
+def test_http_adr_certified_supersedes(fleet_client: object) -> None:
+    client, _rows = fleet_client
+    headers = bearer_auth_headers(organization_id=uuid4())
+    payload = {
+        "resource_kind": "vehicle",
+        "display_name": "ADR MAN",
+        "source_ref": "tenant:manual",
+        "adr_certified": True,
+    }
+    first = client.post("/api/v1/resources", headers=headers, json=payload)
+    assert first.status_code == 201
+    assert first.json()["adr_certified"] is True
+    same = client.post("/api/v1/resources", headers=headers, json=payload)
+    assert same.json()["id"] == first.json()["id"]
+    changed = client.post(
+        "/api/v1/resources",
+        headers=headers,
+        json={**payload, "adr_certified": False},
+    )
+    assert changed.status_code == 201
+    assert changed.json()["id"] != first.json()["id"]
+    bad = client.post(
+        "/api/v1/resources",
+        headers=headers,
+        json={**payload, "display_name": "Inna", "adr_certified": "tak"},
+    )
+    assert bad.status_code == 400
+    assert "adr" in bad.json()["detail"]
 
 
 def test_capacity_kg_decimal_roundtrip_type() -> None:

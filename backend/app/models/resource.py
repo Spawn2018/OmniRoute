@@ -1,7 +1,16 @@
 import uuid
 from decimal import Decimal
 
-from sqlalchemy import CheckConstraint, ForeignKey, Index, Numeric, String, Text, UniqueConstraint
+from sqlalchemy import (
+    Boolean,
+    CheckConstraint,
+    ForeignKey,
+    Index,
+    Numeric,
+    String,
+    Text,
+    UniqueConstraint,
+)
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -30,6 +39,7 @@ class Resource(Base, TimestampMixin):
     display_name: Mapped[str] = mapped_column(String(64), nullable=False)
     registration_no: Mapped[str | None] = mapped_column(String(32), nullable=True)
     inventory_no: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    adr_certified: Mapped[bool | None] = mapped_column(Boolean, nullable=True)
     capacity_kg: Mapped[Decimal | None] = mapped_column(Numeric(14, 4), nullable=True)
     capacity_ldm: Mapped[Decimal | None] = mapped_column(Numeric(14, 4), nullable=True)
     capacity_m3: Mapped[Decimal | None] = mapped_column(Numeric(14, 4), nullable=True)

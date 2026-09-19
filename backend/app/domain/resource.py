@@ -57,6 +57,14 @@ def require_inventory_no(raw: object) -> str | None:
     return token
 
 
+def require_adr_certified(raw: object) -> bool | None:
+    if raw is None:
+        return None
+    if type(raw) is not bool:
+        raise InvalidResource("adr")
+    return raw
+
+
 def require_resource_source_ref(raw: object) -> str:
     if type(raw) is not str:
         raise InvalidResource("source_ref musi być tekstem")

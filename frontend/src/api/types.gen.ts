@@ -13359,6 +13359,10 @@ export type ResourceCreate = {
      */
     capacity_m3?: unknown | null;
     /**
+     * Adr Certified
+     */
+    adr_certified?: unknown | null;
+    /**
      * Source Ref
      */
     source_ref: string;
@@ -13456,6 +13460,10 @@ export type ResourceResponse = {
      * Capacity M3
      */
     capacity_m3: string | null;
+    /**
+     * Adr Certified
+     */
+    adr_certified: boolean | null;
     /**
      * Source Ref
      */

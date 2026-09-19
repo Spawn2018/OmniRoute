@@ -21,6 +21,7 @@ export function FleetResourcePanel(args: { signedIn: boolean }) {
   const [capacityLdm, setCapacityLdm] = useState("")
   const [capacityM3, setCapacityM3] = useState("")
   const [inventoryNo, setInventoryNo] = useState("")
+  const [adr, setAdr] = useState("")
   const listed = useQuery({
     queryKey: ["resources", ctx.organizationId, kind],
     queryFn: () => fetchResources(kind),
@@ -30,7 +31,16 @@ export function FleetResourcePanel(args: { signedIn: boolean }) {
   const persist = useMutation({
     mutationFn: () =>
       saveResource(
-        resourceWrite({ kind, label, plate, capacityKg, capacityLdm, capacityM3, inventoryNo }),
+        resourceWrite({
+          kind,
+          label,
+          plate,
+          capacityKg,
+          capacityLdm,
+          capacityM3,
+          inventoryNo,
+          adr,
+        }),
       ),
     onSuccess: () => {
       void cache.invalidateQueries({ queryKey: ["resources", ctx.organizationId, kind] })
@@ -111,6 +121,19 @@ export function FleetResourcePanel(args: { signedIn: boolean }) {
           onChange={(event) => setCapacityM3(event.target.value)}
         />
       </label>
+      <label className="flex flex-col gap-1 text-xs">
+        ADR (opcjonalnie)
+        <select
+          aria-label="adr_certified"
+          className="h-8 rounded-md border border-border bg-background px-2 text-sm"
+          value={adr}
+          onChange={(event) => setAdr(event.target.value)}
+        >
+          <option value="">brak</option>
+          <option value="true">tak</option>
+          <option value="false">nie</option>
+        </select>
+      </label>
       <Button
         type="button"
         disabled={!args.signedIn || label.trim() === "" || persist.isPending}
@@ -125,6 +148,7 @@ export function FleetResourcePanel(args: { signedIn: boolean }) {
             {row.resource_kind} · {row.display_name}
             {row.registration_no ? ` · ${row.registration_no}` : ""}
             {row.inventory_no ? ` · ${row.inventory_no}` : ""}
+            {row.adr_certified === true ? " · ADR" : ""}
             {row.capacity_kg ? ` · ${row.capacity_kg} kg` : ""}
             {row.capacity_ldm ? ` · ${row.capacity_ldm} LDM` : ""}
             {row.capacity_m3 ? ` · ${row.capacity_m3} m³` : ""}

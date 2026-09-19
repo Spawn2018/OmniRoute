@@ -49191,6 +49191,15 @@
             ],
             "title": "Capacity M3"
           },
+          "adr_certified": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Adr Certified"
+          },
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
@@ -49352,6 +49361,17 @@
             ],
             "title": "Capacity M3"
           },
+          "adr_certified": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Adr Certified"
+          },
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
@@ -49380,6 +49400,7 @@
           "capacity_kg",
           "capacity_ldm",
           "capacity_m3",
+          "adr_certified",
           "source_ref",
           "superseded_by"
         ],
