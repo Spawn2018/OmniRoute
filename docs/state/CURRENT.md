@@ -4,9 +4,9 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **581.0** T3 `container.temp_min` (CI po push)
+**Ostatni plaster:** **581.0** T3 `container.temp_min` (gate success)
 
-**Etap:** Plan — brak delty; komenda `/plan-modul`
+**Etap:** Plaster — delta zaakceptowana; komenda `/plaster`
 
 **Noc:** `/noc 9` do **2026-09-19T09:00:00+02:00**
 
@@ -16,7 +16,7 @@
 
 **Park / czeka w PLAN:** AI3-payload · G0-SH · PUESC · MOS live · live FK UUID · live 409 · C3 VIES/GUS · C4 eCMR · N3 countdown · …
 
-**Spec (jedyna na sesję produktu):** brak — najpierw delta `/plan-modul`
+**Spec (jedyna na sesję produktu):** [582.0-container-temp-max.md](../deltas/open/582.0-container-temp-max.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 
@@ -24,7 +24,8 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-19:** Plaster **581.0** temp_min zamknięty (CI po push). `/noc 9`.
+**2026-09-19:** Delta **582.0** temp_max zaakceptowana `/noc`. Gate **581.0** success. `/noc 9`.
+**2026-09-19:** Plaster **581.0** temp_min zamknięty (gate success). `/noc 9`.
 **2026-09-19:** Delta **581.0** temp_min zaakceptowana `/noc`. Gate **580.0** success. `/noc 9`.
 **2026-09-19:** Plaster **580.0** unload_date zamknięty (gate success). `/noc 9`.
 **2026-09-19:** Delta **580.0** unload_date zaakceptowana `/noc`. Gate **579.0** success. `/noc 9`.
