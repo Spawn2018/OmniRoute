@@ -24,7 +24,7 @@ def test_migration_465_adds_capacity_kg() -> None:
         _ROOT / "backend" / "alembic" / "versions" / "465_resource_capacity_kg.py"
     ).read_text(encoding="utf-8")
     assert 'revision: str = "465_resource_capacity_kg"' in source
-    assert 'down_revision: str | None = "464_resource_capacity_pallets"' in source
+    assert 'down_revision: str | None = "464_container_release"' in source
     assert "capacity_kg" in source
     assert "Numeric(14, 4)" in source
     assert "drop_column" in source.split("def downgrade")[1]
