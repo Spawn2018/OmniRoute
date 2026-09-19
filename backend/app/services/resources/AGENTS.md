@@ -1,7 +1,7 @@
 # BC resource (T2 / S50)
 
-Katalog floty per tenant: pojazd / kierowca / naczepa. HITL `capacity_kg` (Decimal).
-Nie trip. Nie HW. Nie LDM/m³ w tym BC (leftover).
+Katalog floty per tenant: pojazd / kierowca / naczepa. HITL `capacity_kg` / `capacity_ldm`
+(Decimal). Nie trip. Nie HW. Nie m³ w tym BC (leftover).
 
 ## Dozwolone zależności
 - `app.models.resource`

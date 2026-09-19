@@ -24,10 +24,20 @@ def test_migration_465_adds_capacity_kg() -> None:
         _ROOT / "backend" / "alembic" / "versions" / "465_resource_capacity_kg.py"
     ).read_text(encoding="utf-8")
     assert 'revision: str = "465_resource_capacity_kg"' in source
-    assert 'down_revision: str | None = "464_container_release"' in source
+    assert 'down_revision: str | None = "464_resource_capacity_pallets"' in source
     assert "capacity_kg" in source
     assert "Numeric(14, 4)" in source
-    assert "buy_amount" not in source
+    assert "drop_column" in source.split("def downgrade")[1]
+
+
+def test_migration_466_adds_capacity_ldm() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "466_resource_capacity_ldm.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "466_resource_capacity_ldm"' in source
+    assert 'down_revision: str | None = "465_resource_capacity_kg"' in source
+    assert "capacity_ldm" in source
+    assert "Numeric(14, 4)" in source
     assert "drop_column" in source.split("def downgrade")[1]
 
 

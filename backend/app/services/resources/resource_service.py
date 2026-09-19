@@ -6,6 +6,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.domain.errors import ResourceNotFound
 from app.domain.resource import (
     require_capacity_kg,
+    require_capacity_ldm,
     require_display_name,
     require_registration_no,
     require_resource_kind,
@@ -20,6 +21,7 @@ class _FleetDraft(NamedTuple):
     label: str
     plate: str | None
     capacity: object
+    ldm: object
     origin: str
 
 
@@ -28,6 +30,7 @@ def _fleet_draft(
     display_name: object,
     registration_no: object,
     capacity_kg: object,
+    capacity_ldm: object,
     source_ref: object,
 ) -> _FleetDraft:
     return _FleetDraft(
@@ -35,6 +38,7 @@ def _fleet_draft(
         require_display_name(display_name),
         require_registration_no(registration_no),
         require_capacity_kg(capacity_kg),
+        require_capacity_ldm(capacity_ldm),
         require_resource_source_ref(source_ref),
     )
 
@@ -43,6 +47,7 @@ def _fleet_unchanged(current: Resource, draft: _FleetDraft) -> bool:
     return (
         current.registration_no == draft.plate
         and current.capacity_kg == draft.capacity
+        and current.capacity_ldm == draft.ldm
         and current.source_ref == draft.origin
     )
 
@@ -70,6 +75,7 @@ class ResourceService:
         display_name: object,
         registration_no: object,
         capacity_kg: object = None,
+        capacity_ldm: object = None,
         source_ref: object,
     ) -> Resource:
         draft = _fleet_draft(
@@ -77,6 +83,7 @@ class ResourceService:
             display_name,
             registration_no,
             capacity_kg,
+            capacity_ldm,
             source_ref,
         )
         current = await self._rows.find_current(draft.kind, draft.label)
@@ -90,6 +97,7 @@ class ResourceService:
                 display_name=draft.label,
                 registration_no=draft.plate,
                 capacity_kg=draft.capacity,
+                capacity_ldm=draft.ldm,
                 source_ref=draft.origin,
                 created_by=user_id,
             ),

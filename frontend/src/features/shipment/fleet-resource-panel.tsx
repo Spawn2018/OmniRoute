@@ -18,6 +18,7 @@ export function FleetResourcePanel(args: { signedIn: boolean }) {
   const [label, setLabel] = useState("")
   const [plate, setPlate] = useState("")
   const [capacityKg, setCapacityKg] = useState("")
+  const [capacityLdm, setCapacityLdm] = useState("")
   const listed = useQuery({
     queryKey: ["resources", ctx.organizationId, kind],
     queryFn: () => fetchResources(kind),
@@ -26,7 +27,7 @@ export function FleetResourcePanel(args: { signedIn: boolean }) {
   })
   const persist = useMutation({
     mutationFn: () =>
-      saveResource(resourceWrite({ kind, label, plate, capacityKg })),
+      saveResource(resourceWrite({ kind, label, plate, capacityKg, capacityLdm })),
     onSuccess: () => {
       void cache.invalidateQueries({ queryKey: ["resources", ctx.organizationId, kind] })
     },
@@ -35,7 +36,7 @@ export function FleetResourcePanel(args: { signedIn: boolean }) {
     <section className="grid gap-2 rounded-md border border-border p-3" data-resource="fleet">
       <h2 className="text-sm font-medium">Katalog floty</h2>
       <p className="text-xs text-muted-foreground">
-        Pojazd, kierowca albo naczepa. Opcjonalna pojemność kg. Nie trip. Nie własne HW.
+        Pojazd, kierowca albo naczepa. Opcjonalna pojemność kg i LDM. Nie trip. Nie własne HW.
       </p>
       <label className="flex flex-col gap-1 text-xs">
         Rodzaj zasobu
@@ -79,6 +80,15 @@ export function FleetResourcePanel(args: { signedIn: boolean }) {
           onChange={(event) => setCapacityKg(event.target.value)}
         />
       </label>
+      <label className="flex flex-col gap-1 text-xs">
+        Pojemność LDM (opcjonalnie)
+        <Input
+          aria-label="Pojemność LDM zasobu"
+          placeholder="capacity_ldm"
+          value={capacityLdm}
+          onChange={(event) => setCapacityLdm(event.target.value)}
+        />
+      </label>
       <Button
         type="button"
         disabled={!args.signedIn || label.trim() === "" || persist.isPending}
@@ -93,6 +103,7 @@ export function FleetResourcePanel(args: { signedIn: boolean }) {
             {row.resource_kind} · {row.display_name}
             {row.registration_no ? ` · ${row.registration_no}` : ""}
             {row.capacity_kg ? ` · ${row.capacity_kg} kg` : ""}
+            {row.capacity_ldm ? ` · ${row.capacity_ldm} LDM` : ""}
           </li>
         ))}
       </ul>

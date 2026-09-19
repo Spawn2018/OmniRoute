@@ -49088,6 +49088,15 @@
             ],
             "title": "Capacity Kg"
           },
+          "capacity_ldm": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Capacity Ldm"
+          },
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
@@ -49144,6 +49153,17 @@
             ],
             "title": "Capacity Kg"
           },
+          "capacity_ldm": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Capacity Ldm"
+          },
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
@@ -49169,6 +49189,7 @@
           "display_name",
           "registration_no",
           "capacity_kg",
+          "capacity_ldm",
           "source_ref",
           "superseded_by"
         ],

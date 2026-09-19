@@ -58,18 +58,26 @@ def require_resource_source_ref(raw: object) -> str:
 
 
 def require_capacity_kg(raw: object) -> Decimal | None:
+    return _require_positive_decimal(raw, "pojemność")
+
+
+def require_capacity_ldm(raw: object) -> Decimal | None:
+    return _require_positive_decimal(raw, "ldm")
+
+
+def _require_positive_decimal(raw: object, label: str) -> Decimal | None:
     if raw is None:
         return None
     if type(raw) is str and raw.strip() == "":
         return None
     if isinstance(raw, float) or isinstance(raw, bool):
-        raise InvalidResource("pojemność nie może być float")
+        raise InvalidResource(f"{label} nie może być float")
     if not isinstance(raw, Decimal | str | int):
-        raise InvalidResource("pojemność musi być liczbą dziesiętną")
+        raise InvalidResource(f"{label} musi być liczbą dziesiętną")
     try:
         parsed = raw if isinstance(raw, Decimal) else Decimal(str(raw))
     except InvalidOperation as exc:
-        raise InvalidResource("pojemność musi być liczbą dziesiętną") from exc
+        raise InvalidResource(f"{label} musi być liczbą dziesiętną") from exc
     if parsed <= 0:
-        raise InvalidResource("pojemność musi być dodatnia")
+        raise InvalidResource(f"{label} musi być dodatnia")
     return parsed.quantize(_FOUR)
