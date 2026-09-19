@@ -13361,6 +13361,58 @@ export type ResourceCreate = {
 };
 
 /**
+ * ResourceDocumentCreate
+ */
+export type ResourceDocumentCreate = {
+    /**
+     * Resource Id
+     */
+    resource_id: string;
+    /**
+     * Document Kind
+     */
+    document_kind: string;
+    /**
+     * Valid Until
+     */
+    valid_until: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * ResourceDocumentResponse
+ */
+export type ResourceDocumentResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Resource Id
+     */
+    resource_id: string;
+    /**
+     * Document Kind
+     */
+    document_kind: string;
+    /**
+     * Valid Until
+     */
+    valid_until: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * ResourceResponse
  */
 export type ResourceResponse = {
@@ -22020,6 +22072,49 @@ export type CreateSwitchBlLoiMarkApiV1SwitchBlLoiMarksPostResponses = {
 };
 
 export type CreateSwitchBlLoiMarkApiV1SwitchBlLoiMarksPostResponse = CreateSwitchBlLoiMarkApiV1SwitchBlLoiMarksPostResponses[keyof CreateSwitchBlLoiMarkApiV1SwitchBlLoiMarksPostResponses];
+
+export type ListResourceDocumentsApiV1ResourceDocumentsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/resource-documents';
+};
+
+export type ListResourceDocumentsApiV1ResourceDocumentsGetResponses = {
+    /**
+     * Response List Resource Documents Api V1 Resource Documents Get
+     *
+     * Successful Response
+     */
+    200: Array<ResourceDocumentResponse>;
+};
+
+export type ListResourceDocumentsApiV1ResourceDocumentsGetResponse = ListResourceDocumentsApiV1ResourceDocumentsGetResponses[keyof ListResourceDocumentsApiV1ResourceDocumentsGetResponses];
+
+export type CreateResourceDocumentApiV1ResourceDocumentsPostData = {
+    body: ResourceDocumentCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/resource-documents';
+};
+
+export type CreateResourceDocumentApiV1ResourceDocumentsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateResourceDocumentApiV1ResourceDocumentsPostError = CreateResourceDocumentApiV1ResourceDocumentsPostErrors[keyof CreateResourceDocumentApiV1ResourceDocumentsPostErrors];
+
+export type CreateResourceDocumentApiV1ResourceDocumentsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: ResourceDocumentResponse;
+};
+
+export type CreateResourceDocumentApiV1ResourceDocumentsPostResponse = CreateResourceDocumentApiV1ResourceDocumentsPostResponses[keyof CreateResourceDocumentApiV1ResourceDocumentsPostResponses];
 
 export type ListResourcesApiV1ResourcesGetData = {
     body?: never;

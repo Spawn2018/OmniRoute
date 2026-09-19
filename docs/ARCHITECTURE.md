@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **591.0** T2 `resource.capacity_m3` (gate success). **Etap:** Plan — delta **592.0** zaakceptowana (`/noc`); wolno `/plaster`. **Następny:** **592.0** T2 leftover HITL `resource_document` (ważność floty, delta open). **588.0** SH-R16-4 UXCL banner = park `/noc`. Job#2 po bannerze. Nie AI3. Nie G0-SH. Nie N3. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **592.0** T2 `resource_document` (lokalne; CI po push). **Etap:** Plan — brak delty **593.0**; `/plan-modul`, zero kodu. **Następny:** **593.0** T2 leftover HITL floating trailer (delta brak). **588.0** SH-R16-4 UXCL banner = park `/noc`. Job#2 po bannerze. Nie AI3. Nie G0-SH. Nie N3. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

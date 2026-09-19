@@ -242,6 +242,7 @@ from app.api import (
     relation_document_requirements,
     remediation_options,
     repair_playbooks,
+    resource_documents,
     resources,
     rfid_marks,
     risk_register_marks,
@@ -397,6 +398,7 @@ api_router.include_router(shipment_stakeholders.router)
 api_router.include_router(stops.router)
 api_router.include_router(subcontract_edge_marks.router)
 api_router.include_router(switch_bl_loi_marks.router)
+api_router.include_router(resource_documents.router)
 api_router.include_router(resources.router)
 api_router.include_router(trips.router)
 api_router.include_router(containers.router)

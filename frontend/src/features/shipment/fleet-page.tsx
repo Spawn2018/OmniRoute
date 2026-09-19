@@ -3,6 +3,7 @@ import {
   TenantSessionNotice,
 } from "@/components/catalog/catalog-parts"
 import { FleetResourcePanel } from "@/features/shipment/fleet-resource-panel"
+import { ResourceDocumentPanel } from "@/features/shipment/resource-document-panel"
 import { getTenantContext } from "@/lib/tenant"
 
 export function FleetPage() {
@@ -16,6 +17,7 @@ export function FleetPage() {
       />
       {!ready ? <TenantSessionNotice /> : null}
       <FleetResourcePanel signedIn={ready} />
+      <ResourceDocumentPanel signedIn={ready} />
     </div>
   )
 }

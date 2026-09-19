@@ -25,6 +25,7 @@ modules =
     app.services.organization_calendars
     app.services.stops
     app.services.resources
+    app.services.resource_documents
     app.services.trips
     app.services.containers
     app.services.organization_settings
@@ -383,6 +384,9 @@ forbidden_modules =
     app.services.resources
     app.repositories.resources
     app.models.resource
+    app.services.resource_documents
+    app.repositories.resource_documents
+    app.models.resource_document
     app.services.trips
     app.repositories.trips
     app.models.trip
