@@ -58,6 +58,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
   const [survey, setSurvey] = useState("")
   const [book, setBook] = useState("")
   const [carrier, setCarrier] = useState("")
+  const [release, setRelease] = useState("")
   const [leg, setLeg] = useState("")
   const listed = useQuery({
     queryKey: ["containers", ctx.organizationId, sizeType],
@@ -120,6 +121,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
         last_survey_at: optionalToken(survey),
         booking_no: optionalToken(book),
         carrier_party_id: optionalToken(carrier),
+        container_release_party_id: optionalToken(release),
         shipment_leg_id: optionalToken(leg),
       }),
     onSuccess: () => {
@@ -131,7 +133,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
     <section className="grid gap-2 rounded-md border border-border p-3" data-container="iso">
       <h2 className="text-sm font-medium">Kontener ISO</h2>
       <p className="text-xs text-muted-foreground">
-        Numer z cyfrą kontrolną i typ 4 znaków. Opcjonalne plomby, statek, rejs, uwaga, ładunek, opakowanie, referencje, flaga chłodniczego, terminale pobrania oraz zwrotu, rodzaj listu, godziny wolnego czasu na origin oraz destination, dni demurrage HITL, dni detention HITL, dni mixed D&D HITL, cutoff SI, cutoff AMS, cutoff CY, cutoff CFS, VGM (kg Decimal, metoda SOLAS, cutoff), tara HITL (kg Decimal), ładowność HITL (kg Decimal), TEU HITL (Decimal, nie z typu ISO), ilość HITL (sztuki, nie punkt), waga HITL (kg Decimal, nie punkt, nie VGM), objętość HITL (m3 Decimal, nie kalkulator), data odbioru HITL (dzień, nie countdown), data zwrotu HITL (dzień, nie countdown), data wjazdu HITL (dzień, nie countdown), data dostawy HITL (dzień, nie countdown), data rozładunku HITL (dzień, nie countdown), temp. min HITL (Decimal °C, nie float), temp. max HITL (Decimal °C, nie float), zasilanie zewnętrzne HITL (flaga), czas ostatniego przeglądu, numer bookingu, PIN odbioru HITL (tekst), UUID armatora oraz UUID odcinka. Nie odliczanie. Nie HBL. Nie kalkulator kg. Nie live terminal. Nie ciphertext. Nie S21. Nie live HTTP.
+        Numer z cyfrą kontrolną i typ 4 znaków. Opcjonalne plomby, statek, rejs, uwaga, ładunek, opakowanie, referencje, flaga chłodniczego, terminale pobrania oraz zwrotu, rodzaj listu, godziny wolnego czasu na origin oraz destination, dni demurrage HITL, dni detention HITL, dni mixed D&D HITL, cutoff SI, cutoff AMS, cutoff CY, cutoff CFS, VGM (kg Decimal, metoda SOLAS, cutoff), tara HITL (kg Decimal), ładowność HITL (kg Decimal), TEU HITL (Decimal, nie z typu ISO), ilość HITL (sztuki, nie punkt), waga HITL (kg Decimal, nie punkt, nie VGM), objętość HITL (m3 Decimal, nie kalkulator), data odbioru HITL (dzień, nie countdown), data zwrotu HITL (dzień, nie countdown), data wjazdu HITL (dzień, nie countdown), data dostawy HITL (dzień, nie countdown), data rozładunku HITL (dzień, nie countdown), temp. min HITL (Decimal °C, nie float), temp. max HITL (Decimal °C, nie float), zasilanie zewnętrzne HITL (flaga), czas ostatniego przeglądu, numer bookingu, PIN odbioru HITL (tekst), UUID armatora, UUID zwolnienia kontenera oraz UUID odcinka. Nie odliczanie. Nie HBL. Nie kalkulator kg. Nie live terminal. Nie ciphertext. Nie S21. Nie live HTTP.
       </p>
       <label className="flex flex-col gap-1 text-xs">
         Numer ISO 6346
@@ -584,6 +586,15 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
         />
       </label>
       <label className="flex flex-col gap-1 text-xs">
+        Zwolnienie kontenera dla (opcjonalnie)
+        <Input
+          aria-label="UUID zwolnienia kontenera"
+          placeholder="container_release_party_id"
+          value={release}
+          onChange={(event) => setRelease(event.target.value)}
+        />
+      </label>
+      <label className="flex flex-col gap-1 text-xs">
         Odcinek (opcjonalnie)
         <Input
           aria-label="UUID odcinka kontenera"
@@ -646,6 +657,9 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
             {row.last_survey_at !== null ? ` · przegląd ${row.last_survey_at}` : ""}
             {row.booking_no !== null ? ` · ${row.booking_no}` : ""}
             {row.carrier_party_id !== null ? ` · ${row.carrier_party_id}` : ""}
+            {row.container_release_party_id !== null
+              ? ` · zwolnienie ${row.container_release_party_id}`
+              : ""}
             {row.shipment_leg_id !== null ? ` · ${row.shipment_leg_id}` : ""}
           </li>
         ))}

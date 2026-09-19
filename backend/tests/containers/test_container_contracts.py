@@ -646,6 +646,21 @@ def test_migration_463_adds_needs_external_power_without_live() -> None:
     assert "needs_external_power" in source.split("def downgrade")[1]
 
 
+def test_migration_464_adds_release_party_without_live() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "464_container_release.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "464_container_release"' in source
+    assert 'down_revision: str | None = "463_container_ext_power"' in source
+    assert "container_release_party_id" in source
+    assert "fk_container_release_party" in source
+    assert "carrier_party_id" not in source.split("def upgrade")[1]
+    assert "httpx" not in source
+    assert "create_table" not in source
+    assert "def downgrade" in source
+    assert "container_release_party_id" in source.split("def downgrade")[1]
+
+
 def test_migration_174_adds_si_cutoff_without_live_http() -> None:
     source = (
         _ROOT / "backend" / "alembic" / "versions" / "174_container_si_cutoff.py"
@@ -840,4 +855,5 @@ def test_generated_api_types_include_container() -> None:
     assert "last_survey_at" in source
     assert "booking_no" in source
     assert "carrier_party_id" in source
+    assert "container_release_party_id" in source
     assert "shipment_leg_id" in source

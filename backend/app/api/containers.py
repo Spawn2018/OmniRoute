@@ -72,6 +72,7 @@ class ContainerCreate(BaseModel):
     last_survey_at: object | None = None
     booking_no: object | None = None
     carrier_party_id: UUID | None = None
+    container_release_party_id: UUID | None = None
     shipment_leg_id: UUID | None = None
 
 
@@ -131,6 +132,7 @@ class ContainerResponse(BaseModel):
     last_survey_at: datetime | None
     booking_no: str | None
     carrier_party_id: UUID | None
+    container_release_party_id: UUID | None
     shipment_leg_id: UUID | None
     superseded_by: UUID | None
 
@@ -149,7 +151,11 @@ def _as_response(row: Container) -> ContainerResponse:
 
 
 def _write_from_body(
-    body: ContainerCreate, shipment_id: UUID | None, carrier_id: UUID | None, leg_id: UUID | None,
+    body: ContainerCreate,
+    shipment_id: UUID | None,
+    carrier_id: UUID | None,
+    release_id: UUID | None,
+    leg_id: UUID | None,
 ) -> _WriteBox:
     return _WriteBox(
         body.container_no,
@@ -178,7 +184,7 @@ def _write_from_body(
         body.si_cutoff_at, body.ams_cutoff_at, body.cy_cutoff_at, body.cfs_cutoff_at,
         body.vgm_kg, body.vgm_method, body.vgm_cutoff_at, body.last_survey_at,
         body.booking_no,
-        carrier_id, leg_id,
+        carrier_id, release_id, leg_id,
         body.tare_kg, body.pin_code, body.payload_kg, body.teu, body.quantity,
         body.weight_kg, body.volume_m3, body.pickup_date, body.return_date,
         body.gate_in_date, body.delivery_date, body.unload_date,
@@ -197,6 +203,13 @@ async def _bound_carrier(session: AsyncSession, carrier_id: UUID | None) -> UUID
     if carrier_id is None:
         return None
     row = await PartyService(session).get_party(carrier_id)
+    return row.id
+
+
+async def _bound_release(session: AsyncSession, release_id: UUID | None) -> UUID | None:
+    if release_id is None:
+        return None
+    row = await PartyService(session).get_party(release_id)
     return row.id
 
 
@@ -227,11 +240,12 @@ async def create_container(
 ) -> ContainerResponse:
     shipment_id = await _bound_shipment(session, body.shipment_id)
     carrier_id = await _bound_carrier(session, body.carrier_party_id)
+    release_id = await _bound_release(session, body.container_release_party_id)
     leg_id = await _bound_leg(session, body.shipment_leg_id)
     row = await ContainerService(session).record_container(
         organization_id=identity.organization_id,
         user_id=identity.user_id,
-        write=_write_from_body(body, shipment_id, carrier_id, leg_id),
+        write=_write_from_body(body, shipment_id, carrier_id, release_id, leg_id),
     )
     await session.commit()
     return _as_response(row)

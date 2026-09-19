@@ -55,6 +55,7 @@ export type ContainerRow = {
   last_survey_at: string | null
   booking_no: string | null
   carrier_party_id: string | null
+  container_release_party_id: string | null
   shipment_leg_id: string | null
   superseded_by: string | null
 }
@@ -111,6 +112,7 @@ export type ContainerWrite = {
   last_survey_at?: string | null
   booking_no?: string | null
   carrier_party_id?: string | null
+  container_release_party_id?: string | null
   shipment_leg_id?: string | null
 }
 

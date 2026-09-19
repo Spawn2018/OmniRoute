@@ -2869,6 +2869,10 @@ export type ContainerCreate = {
      */
     carrier_party_id?: string | null;
     /**
+     * Container Release Party Id
+     */
+    container_release_party_id?: string | null;
+    /**
      * Shipment Leg Id
      */
     shipment_leg_id?: string | null;
@@ -3090,6 +3094,10 @@ export type ContainerResponse = {
      * Carrier Party Id
      */
     carrier_party_id: string | null;
+    /**
+     * Container Release Party Id
+     */
+    container_release_party_id: string | null;
     /**
      * Shipment Leg Id
      */

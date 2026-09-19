@@ -24,6 +24,7 @@ from app.domain.container import (
     require_container_ref_3,
     require_container_ref_4,
     require_container_ref_5,
+    require_container_release_party_id,
     require_container_remarks,
     require_container_return_date,
     require_container_shipment_id,
@@ -100,6 +101,7 @@ class _WriteBox(NamedTuple):
     survey: object
     book: object
     carrier: object
+    release: object
     leg: object
     tare: object
     pin: object
@@ -155,6 +157,7 @@ class _BoxDraft(NamedTuple):
     survey: datetime | None
     book: str | None
     carrier: UUID | None
+    release: UUID | None
     leg: UUID | None
     tare: Decimal | None
     pin: str | None
@@ -176,6 +179,7 @@ class _BoxDraft(NamedTuple):
 def _box_draft(write: _WriteBox) -> _BoxDraft:
     clocks = _require_clocks(write)
     days = _require_dates(write)
+    parties = _require_party_fks(write)
     return _BoxDraft(
         require_container_no(write.number),
         require_iso_size_type(write.size_type),
@@ -204,14 +208,21 @@ def _box_draft(write: _WriteBox) -> _BoxDraft:
         require_vgm_cutoff_at(write.vgm),
         require_last_survey_at(write.survey),
         require_booking_no(write.book),
-        require_carrier_party_id(write.carrier),
-        require_container_shipment_leg_id(write.leg),
+        *parties,
         require_tare_kg(write.tare),
         require_pin_code(write.pin), require_payload_kg(write.payload),
         require_teu(write.teu), require_container_quantity(write.qty),
         require_container_weight_kg(write.kilos), require_container_volume_m3(write.cub),
         *days, require_container_temp_min(write.cool), require_container_temp_max(write.warm),
         require_container_needs_external_power(write.power),
+    )
+
+
+def _require_party_fks(write: _WriteBox) -> tuple[UUID | None, UUID | None, UUID | None]:
+    return (
+        require_carrier_party_id(write.carrier),
+        require_container_release_party_id(write.release),
+        require_container_shipment_leg_id(write.leg),
     )
 
 
@@ -272,8 +283,7 @@ def _box_unchanged(current: Container, draft: _BoxDraft) -> bool:
         and current.vgm_cutoff_at == draft.vgm
         and current.last_survey_at == draft.survey
         and current.booking_no == draft.book
-        and current.carrier_party_id == draft.carrier
-        and current.shipment_leg_id == draft.leg
+        and _party_fks_match(current, draft)
         and current.tare_kg == draft.tare
         and current.pin_code == draft.pin
         and current.payload_kg == draft.payload
@@ -283,6 +293,14 @@ def _box_unchanged(current: Container, draft: _BoxDraft) -> bool:
         and _dates_match(current, draft)
         and current.temp_min == draft.cool and current.temp_max == draft.warm
         and current.needs_external_power == draft.power
+    )
+
+
+def _party_fks_match(current: Container, draft: _BoxDraft) -> bool:
+    return (
+        current.carrier_party_id == draft.carrier
+        and current.container_release_party_id == draft.release
+        and current.shipment_leg_id == draft.leg
     )
 
 
@@ -327,7 +345,8 @@ def _container_row(organization_id: UUID, user_id: UUID, draft: _BoxDraft) -> Co
         **_clock_kwargs(draft),
         vgm_kg=draft.mass, vgm_method=draft.weigh, vgm_cutoff_at=draft.vgm,
         last_survey_at=draft.survey, booking_no=draft.book,
-        carrier_party_id=draft.carrier, shipment_leg_id=draft.leg,
+        carrier_party_id=draft.carrier, container_release_party_id=draft.release,
+        shipment_leg_id=draft.leg,
         tare_kg=draft.tare, pin_code=draft.pin, payload_kg=draft.payload, teu=draft.teu,
         quantity=draft.qty, weight_kg=draft.kilos, volume_m3=draft.cub,
         pickup_date=draft.picked, return_date=draft.back, gate_in_date=draft.gate,

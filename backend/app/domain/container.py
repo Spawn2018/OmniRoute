@@ -79,6 +79,14 @@ def require_carrier_party_id(raw: object) -> UUID | None:
     return raw
 
 
+def require_container_release_party_id(raw: object) -> UUID | None:
+    if raw is None:
+        return None
+    if type(raw) is not UUID:
+        raise InvalidContainer("wskazanie zwolnienia musi być UUID")
+    return raw
+
+
 def require_container_shipment_leg_id(raw: object) -> UUID | None:
     if raw is None:
         return None

@@ -113,6 +113,7 @@ describe("shipment surface for 28.0 and 90.0", () => {
     expect(box).toContain("temp_max")
     expect(box).toContain("needs_external_power")
     expect(box).toContain("carrier_party_id")
+    expect(box).toContain("container_release_party_id")
     expect(box).toContain("shipment_leg_id")
     expect(page).not.toContain("fetchQuotations")
     expect(page).not.toContain("quotationAcceptancePending")

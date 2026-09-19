@@ -181,6 +181,7 @@ def test_http_create_list_supersede_and_reject_check_digit(box_client: object) -
     assert first.json()["last_survey_at"] is None
     assert first.json()["booking_no"] is None
     assert first.json()["carrier_party_id"] is None
+    assert first.json()["container_release_party_id"] is None
     assert first.json()["shipment_leg_id"] is None
     assert "amount" not in first.json()
     assert "vgm" not in first.json()
@@ -1906,6 +1907,7 @@ def test_http_create_container_with_carrier_party_id(box_client: object) -> None
     )
     assert created.status_code == 201
     assert created.json()["carrier_party_id"] == str(carrier.id)
+    assert created.json()["container_release_party_id"] is None
     assert created.json()["booking_no"] is None
     assert "pin" not in created.json()
 
@@ -1921,6 +1923,51 @@ def test_http_rejects_unknown_carrier_party_id(box_client: object) -> None:
             "iso_size_type": "22G1",
             "source_ref": "tenant:manual",
             "carrier_party_id": str(uuid4()),
+        },
+    )
+    assert reply.status_code == 404
+    assert "kontrahent" in reply.json()["detail"]
+
+
+def test_http_create_container_with_release_party_id(box_client: object) -> None:
+    client, boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    release = Party(
+        id=uuid4(),
+        organization_id=uuid4(),
+        legal_name="Release",
+        country_code="PL",
+        roles=["customer"],
+        source_ref="tenant:manual",
+        is_active=True,
+    )
+    boxes.counterparts.rows.append(release)
+    created = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "container_release_party_id": str(release.id),
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["container_release_party_id"] == str(release.id)
+    assert created.json()["carrier_party_id"] is None
+
+
+def test_http_rejects_unknown_release_party_id(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "container_release_party_id": str(uuid4()),
         },
     )
     assert reply.status_code == 404

@@ -1205,6 +1205,42 @@ async def test_container_carrier_party_id_same_tenant(session, two_tenants) -> N
 
 @pytest.mark.integration
 @pytest.mark.asyncio
+async def test_container_release_party_id_same_tenant(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    user_a = two_tenants["user_a"]
+    await bind_tenant(session, org_a.id)
+    release = Party(
+        id=uuid4(),
+        organization_id=org_a.id,
+        legal_name="Release A",
+        country_code="PL",
+        roles=["customer"],
+        source_ref="tenant:manual",
+        is_active=True,
+        created_by=user_a.id,
+    )
+    session.add(release)
+    await session.flush()
+    session.add(
+        Container(
+            id=uuid4(),
+            organization_id=org_a.id,
+            container_no="CSQU3054383",
+            iso_size_type="22G1",
+            source_ref="fixture://container/release",
+            container_release_party_id=release.id,
+            created_by=user_a.id,
+        ),
+    )
+    await session.flush()
+    session.expunge_all()
+    await bind_tenant(session, org_a.id)
+    loaded = list((await session.scalars(select(Container))).all())
+    assert loaded[0].container_release_party_id == release.id
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
 async def test_container_shipment_leg_id_same_tenant(session, two_tenants) -> None:
     org_a = two_tenants["org_a"]
     user_a = two_tenants["user_a"]

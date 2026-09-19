@@ -38,6 +38,12 @@ class Container(Base, TimestampMixin):
             ondelete="RESTRICT",
         ),
         ForeignKeyConstraint(
+            ["organization_id", "container_release_party_id"],
+            ["party.organization_id", "party.id"],
+            name="fk_container_release_party",
+            ondelete="RESTRICT",
+        ),
+        ForeignKeyConstraint(
             ["organization_id", "shipment_leg_id"],
             ["shipment_leg.organization_id", "shipment_leg.id"],
             name="fk_container_shipment_leg",
@@ -118,6 +124,9 @@ class Container(Base, TimestampMixin):
     last_survey_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     booking_no: Mapped[str | None] = mapped_column(String(64), nullable=True)
     carrier_party_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)
+    container_release_party_id: Mapped[uuid.UUID | None] = mapped_column(
+        UUID(as_uuid=True), nullable=True
+    )
     shipment_leg_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)
     superseded_by: Mapped[uuid.UUID | None] = mapped_column(
         UUID(as_uuid=True),
