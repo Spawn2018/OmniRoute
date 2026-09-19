@@ -6,9 +6,9 @@
 
 **Ostatni plaster:** **583.0** T3 `container.needs_external_power` (CI po push)
 
-**Etap:** Plan — brak delty; komenda `/plan-modul`
+**Etap:** Plaster — delta zaakceptowana `/noc`; wolno `/plaster`
 
-**Noc:** `/noc 9` do **2026-09-19T09:00:00+02:00**
+**Noc:** `/noc 15` do **2026-09-19T15:00:00+02:00**
 
 **Miejsce pracy:** produkt = to repo + GitHub.
 
@@ -16,7 +16,7 @@
 
 **Park / czeka w PLAN:** AI3-payload · G0-SH · PUESC · MOS live · live FK UUID · live 409 · C3 VIES/GUS · C4 eCMR · N3 countdown · …
 
-**Spec (jedyna na sesję produktu):** brak — najpierw delta `/plan-modul`
+**Spec (jedyna na sesję produktu):** [docs/deltas/open/584.0-container-release-party.md](../deltas/open/584.0-container-release-party.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 
@@ -24,6 +24,7 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
+**2026-09-19:** Delta **584.0** container_release_party_id zaakceptowana `/noc`. Gate **583.0** CI. `/noc 15`.
 **2026-09-19:** Plaster **583.0** needs_external_power zamknięty (CI po push). `/noc 9`.
 **2026-09-19:** Delta **583.0** needs_external_power zaakceptowana `/noc`. Gate **582.0** success. `/noc 9`.
 **2026-09-19:** Plaster **582.0** temp_max zamknięty (gate success). `/noc 9`.
