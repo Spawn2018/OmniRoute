@@ -368,36 +368,32 @@ def require_container_volume_m3(raw: object) -> Decimal | None:
     return _require_positive_kg(raw, "objętość")
 
 
-def require_container_pickup_date(raw: object) -> date | None:
+def _require_calendar_day(raw: object, label: str) -> date | None:
     if raw is None:
         return None
     if type(raw) is date:
         return raw
     if type(raw) is not str:
-        raise InvalidContainer("data odbioru: data kalendarzowa")
+        raise InvalidContainer(f"{label}: data kalendarzowa")
     token = raw.strip()
     if token == "":
         return None
     try:
         return date.fromisoformat(token)
     except ValueError as exc:
-        raise InvalidContainer("data odbioru: data kalendarzowa") from exc
+        raise InvalidContainer(f"{label}: data kalendarzowa") from exc
+
+
+def require_container_pickup_date(raw: object) -> date | None:
+    return _require_calendar_day(raw, "data odbioru")
 
 
 def require_container_return_date(raw: object) -> date | None:
-    if raw is None:
-        return None
-    if type(raw) is date:
-        return raw
-    if type(raw) is not str:
-        raise InvalidContainer("data zwrotu: data kalendarzowa")
-    token = raw.strip()
-    if token == "":
-        return None
-    try:
-        return date.fromisoformat(token)
-    except ValueError as exc:
-        raise InvalidContainer("data zwrotu: data kalendarzowa") from exc
+    return _require_calendar_day(raw, "data zwrotu")
+
+
+def require_container_gate_in_date(raw: object) -> date | None:
+    return _require_calendar_day(raw, "data wjazdu")
 
 
 def _require_positive_kg(raw: object, label: str) -> Decimal | None:

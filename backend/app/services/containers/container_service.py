@@ -12,6 +12,7 @@ from app.domain.container import (
     require_carrier_party_id,
     require_cfs_cutoff_at,
     require_container_bl_kind,
+    require_container_gate_in_date,
     require_container_no,
     require_container_pickup_date,
     require_container_quantity,
@@ -104,6 +105,7 @@ class _WriteBox(NamedTuple):
     cub: object
     picked: object
     back: object
+    gate: object
 
 
 class _BoxDraft(NamedTuple):
@@ -153,6 +155,7 @@ class _BoxDraft(NamedTuple):
     cub: Decimal | None
     picked: date | None
     back: date | None
+    gate: date | None
 
 
 def _box_draft(write: _WriteBox) -> _BoxDraft:
@@ -188,12 +191,12 @@ def _box_draft(write: _WriteBox) -> _BoxDraft:
         require_carrier_party_id(write.carrier),
         require_container_shipment_leg_id(write.leg),
         require_tare_kg(write.tare),
-        require_pin_code(write.pin),
-        require_payload_kg(write.payload),
+        require_pin_code(write.pin), require_payload_kg(write.payload),
         require_teu(write.teu),
         require_container_quantity(write.qty),
         require_container_weight_kg(write.kilos), require_container_volume_m3(write.cub),
         require_container_pickup_date(write.picked), require_container_return_date(write.back),
+        require_container_gate_in_date(write.gate),
     )
 
 
@@ -252,7 +255,7 @@ def _box_unchanged(current: Container, draft: _BoxDraft) -> bool:
         and current.weight_kg == draft.kilos
         and current.volume_m3 == draft.cub
         and current.pickup_date == draft.picked
-        and current.return_date == draft.back
+        and current.return_date == draft.back and current.gate_in_date == draft.gate
     )
 
 
@@ -308,7 +311,7 @@ def _container_row(organization_id: UUID, user_id: UUID, draft: _BoxDraft) -> Co
         payload_kg=draft.payload,
         teu=draft.teu,
         quantity=draft.qty, weight_kg=draft.kilos, volume_m3=draft.cub, pickup_date=draft.picked,
-        created_by=user_id, return_date=draft.back,
+        created_by=user_id, return_date=draft.back, gate_in_date=draft.gate,
     )
 
 
