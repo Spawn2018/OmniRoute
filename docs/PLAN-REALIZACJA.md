@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **601.0** T1b leftover bind (`stop.stop_group_id` / sync z `stop_group_code`). **588.0** SH-R16-4 UXCL banner = park `/noc`. Job#2 po bannerze. Nie AI3. Nie G0-SH. Nie N3. Nie HW.
+**Następny:** **601.0** T1b bind `stop.stop_group_id`. **588.0** SH-R16-4 UXCL banner = park `/noc`. Job#2 po bannerze. Nie AI3. Nie G0-SH. Nie N3. Nie HW.
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -892,13 +892,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plan-modul` (Etap z CURRENT.md).
+**Teraz:** `/plaster` (Etap z CURRENT.md).
 
 ```
-/plan-modul
+/plaster
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->
