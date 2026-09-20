@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **603.0** T1 EXP1 `appointment_status` (gate success) **Następny:** **604.0** T1 EXP1 leftover `no_show_at`. **588.0** SH-R16-4 UXCL banner = park `/noc`. Job#2 po bannerze. Nie AI3. Nie G0-SH. Nie N3. Nie HW.
+**Stan (z CURRENT.md):** **603.0** T1 EXP1 `appointment_status` (gate success) **Następny:** **604.0** T1 EXP1 `no_show_at` (delta open). `weigh_in_kg`/`weigh_out_kg` parked. **588.0** SH-R16-4 UXCL banner = park `/noc`. Job#2 po bannerze. Nie AI3. Nie G0-SH. Nie N3. Nie HW.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.
