@@ -4,19 +4,19 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **598.0** T2 `resource.driver_card_no` (lokalne; CI po push)
+**Ostatni plaster:** **598.0** T2 `resource.driver_card_no` (gate success)
 
-**Etap:** Plan — brak delty **599.0**; `/plan-modul`
+**Etap:** Plan — delta **599.0** zaakceptowana `/noc`; wolno `/plaster`
 
 **Noc:** `/noc 9` do **2026-09-20T09:00:00+02:00**
 
 **Miejsce pracy:** produkt = to repo + GitHub.
 
-**Następny:** **599.0** T2 leftover HITL `resource.vehicle_profile` (brak delty). HW = park `/noc`. **588.0** SH-R16-4 UXCL banner = park `/noc`. Job#2 po bannerze. Nie AI3. Nie G0-SH. Nie N3.
+**Następny:** **599.0** T2 leftover HITL `resource.vehicle_profile` (delta w open). HW = park `/noc`. **588.0** SH-R16-4 UXCL banner = park `/noc`. Job#2 po bannerze. Nie AI3. Nie G0-SH. Nie N3.
 
 **Park / czeka w PLAN:** HW · SH-R16-4 UXCL · AI3-payload · G0-SH · PUESC · MOS live · live FK UUID · N3 countdown · …
 
-**Spec (jedyna na sesję produktu):** brak — `/plan-modul`
+**Spec (jedyna na sesję produktu):** [599.0-resource-vehicle-profile.md](../deltas/open/599.0-resource-vehicle-profile.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 
@@ -24,7 +24,8 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-20:** Plaster **598.0** `resource.driver_card_no` zamknięty (lokalne; CI po push). `/noc 9`.
+**2026-09-20:** Plan **599.0** `resource.vehicle_profile` (`/noc 9`).
+**2026-09-20:** Plaster **598.0** `resource.driver_card_no` zamknięty (gate success). `/noc 9`.
 **2026-09-20:** Plan **598.0** `resource.driver_card_no` (`/noc 9`).
 **2026-09-20:** Plaster **597.0** `resource.phone` zamknięty (gate success). `/noc 9`.
 **2026-09-20:** Plan **597.0** `resource.phone` (`/noc 9`).
