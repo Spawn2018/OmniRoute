@@ -905,7 +905,7 @@ def test_http_create_stop_with_stop_group_id(catalog_client: object) -> None:
     assert ships.row is not None
     assert places.row is not None
     group_id = uuid4()
-    rows.groups.row = SimpleNamespace(id=group_id, shipment_id=ships.row.id)
+    rows.groups.row = SimpleNamespace(id=group_id, shipment_id=ships.row.id, group_code="GRP-A")
     headers = bearer_auth_headers()
     created = client.post(
         "/api/v1/stops",
@@ -925,7 +925,35 @@ def test_http_create_stop_with_stop_group_id(catalog_client: object) -> None:
     )
     assert created.status_code == 201
     assert created.json()["stop_group_id"] == str(group_id)
-    assert created.json()["stop_group_code"] is None
+    assert created.json()["stop_group_code"] == "GRP-A"
+
+
+def test_http_rejects_stop_group_code_mismatch(catalog_client: object) -> None:
+    client, ships, places, rows = catalog_client
+    assert ships.row is not None
+    assert places.row is not None
+    group_id = uuid4()
+    rows.groups.row = SimpleNamespace(id=group_id, shipment_id=ships.row.id, group_code="GRP-A")
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/stops",
+        headers=headers,
+        json={
+            "shipment_id": str(ships.row.id),
+            "location_id": str(places.row.id),
+            "stop_kind": "loading",
+            "sequence_no": 27,
+            "time_zone": "Europe/Warsaw",
+            "status": "pending",
+            "source_ref": "tenant:manual",
+            "eta_physical": _HITL_ISO,
+            "eta_legal": _HITL_ISO,
+            "stop_group_id": str(group_id),
+            "stop_group_code": "OTHER",
+        },
+    )
+    assert reply.status_code == 400
+    assert "grupa" in reply.json()["detail"]
 
 
 def test_http_rejects_stop_group_other_shipment(catalog_client: object) -> None:

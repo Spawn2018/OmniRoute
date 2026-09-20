@@ -119,7 +119,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 
 - **148.0 leftover:** dwa `mail_draft` przy DAP `contact_exchange`; live HTTP S21. Tu tylko status na wierszu. Nie send.
 - **147.0 leftover:** tabela `document_dispatch` (batch mail + send S18). Tu tylko katalog adresata. Nie auto-send.
-- **601.0 leftover:** T1b bind DONE. Zostaje sync `stop_group_code` ↔ `stop_group_id`; HW; UXCL. Tu tylko opcjonalny FK grupy na punkcie. Nie mapa.
+- **602.0 leftover:** T1b sync DONE. Zostaje HW; UXCL; appointment_status. Tu tylko fill kodu z FK. Nie auto-create.
+- **601.0 leftover:** T1b bind DONE. Sync DONE 602.0. Zostaje HW; UXCL. Tu tylko opcjonalny FK grupy na punkcie. Nie mapa.
 - **600.0 leftover:** T1b tabela `stop_group` DONE. Bind DONE 601.0. Zostaje sync; HW; UXCL. Tu tylko HITL nagłówek grupy na zleceniu. Nie mapa. Nie członkostwo.
 - **150.0 leftover:** `stop_group` kolumna DONE 213.0. `notes_for_driver` DONE 215.0. T1b tabela DONE 600.0. Zostaje T1b bind; EXP1 `appointment_status`/`no_show_at`. ETA HITL DONE 194.0. Tu tylko punkt + location + strefa IANA + dwa ETA HITL + grupa + notatka. Nie mapa. `resource` = 151.0. `trip` = 152.0.
 - **194.0 leftover:** Open-Meteo live HTTP / geometria trip DONE HITL 195.0 (`weather_observation`). `stop_group` kolumna DONE 213.0. Zostaje feed Open-Meteo / lat/lng; myto → `charge` (V2b); GPS/tacho / silnik ETA; T1b tabela. Tu tylko `eta_physical` + `eta_legal` HITL na `stop`. Nie GPS.

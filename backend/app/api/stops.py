@@ -7,7 +7,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.deps import get_current_identity, require_permission, require_tenant_session
 from app.core.session_token import SessionIdentity
-from app.domain.stop import require_group_on_stop_shipment
+from app.domain.stop import require_group_on_stop_shipment, require_stop_group_code_matches
 from app.models.stop import Stop
 from app.services.geography.location_service import LocationService
 from app.services.shipments.shipment_service import ShipmentService
@@ -91,6 +91,20 @@ async def list_stops(
     return [_as_response(row) for row in rows]
 
 
+async def _resolve_stop_group(
+    session: AsyncSession,
+    shipment_id: UUID,
+    stop_group_id: UUID | None,
+    stop_group_code: str | None,
+) -> tuple[UUID | None, str | None]:
+    if stop_group_id is None:
+        return None, stop_group_code
+    group = await StopGroupService(session).get_group(stop_group_id)
+    require_group_on_stop_shipment(shipment_id, group.shipment_id)
+    code = require_stop_group_code_matches(stop_group_code, group.group_code)
+    return group.id, code
+
+
 @router.post("", response_model=StopResponse, status_code=status.HTTP_201_CREATED)
 async def create_stop(
     body: StopCreate,
@@ -100,11 +114,9 @@ async def create_stop(
 ) -> StopResponse:
     shipment = await ShipmentService(session).get_shipment(body.shipment_id)
     place = await LocationService(session).get_location(body.location_id)
-    group_id: UUID | None = None
-    if body.stop_group_id is not None:
-        group = await StopGroupService(session).get_group(body.stop_group_id)
-        require_group_on_stop_shipment(shipment.id, group.shipment_id)
-        group_id = group.id
+    group_id, group_code = await _resolve_stop_group(
+        session, shipment.id, body.stop_group_id, body.stop_group_code
+    )
     row = await StopService(session).record_stop(
         organization_id=identity.organization_id,
         user_id=identity.user_id,
@@ -117,7 +129,7 @@ async def create_stop(
         source_ref=body.source_ref,
         eta_physical=body.eta_physical,
         eta_legal=body.eta_legal,
-        stop_group_code=body.stop_group_code,
+        stop_group_code=group_code,
         stop_group_id=group_id,
         notes_for_driver=body.notes_for_driver,
         weight_kg=body.weight_kg,

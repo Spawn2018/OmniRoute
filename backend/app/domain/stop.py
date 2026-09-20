@@ -109,6 +109,17 @@ def require_group_on_stop_shipment(
         raise InvalidStop("grupa spoza trasy zlecenia")
 
 
+def require_stop_group_code_matches(
+    group_code: str | None,
+    header_code: str,
+) -> str:
+    if group_code is None:
+        return header_code
+    if group_code != header_code:
+        raise InvalidStop("grupa: kod nie zgadza się z nagłówkiem")
+    return group_code
+
+
 def require_notes_for_driver(raw: object) -> str | None:
     if raw is None:
         return None

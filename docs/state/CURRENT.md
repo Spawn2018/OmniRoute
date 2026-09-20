@@ -1,18 +1,18 @@
 ﻿# Bieżący focus
 
-**Faza:** Oś pinu — po **601.0**; SH-R16-4 UXCL park; T2 HW park
+**Faza:** Oś pinu — po **602.0**; SH-R16-4 UXCL park; T2 HW park
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **601.0** T1b bind `stop.stop_group_id` (gate success)
+**Ostatni plaster:** **602.0** T1b sync `stop_group_code` ← `stop_group_id` (lokalne; CI po push)
 
-**Etap:** Plan — brak delty **602.0**; `/plan-modul`
+**Etap:** Plan — brak delty **603.0**; `/plan-modul`
 
 **Noc:** `/noc 21` do **2026-09-20T21:00:00+02:00**
 
 **Miejsce pracy:** produkt = to repo + GitHub.
 
-**Następny:** **602.0** T1b leftover sync `stop_group_code` ↔ `stop_group_id` (albo park). **588.0** SH-R16-4 UXCL banner = park `/noc`. Job#2 po bannerze. Nie AI3. Nie G0-SH. Nie N3. Nie HW.
+**Następny:** **603.0** T1 EXP1 leftover `appointment_status` / `no_show_at`. **588.0** SH-R16-4 UXCL banner = park `/noc`. Job#2 po bannerze. Nie AI3. Nie G0-SH. Nie N3. Nie HW.
 
 **Park / czeka w PLAN:** HW · SH-R16-4 UXCL · AI3-payload · G0-SH · PUESC · MOS live · live FK UUID · N3 countdown · …
 
@@ -24,6 +24,8 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
+**2026-09-20:** Plaster **602.0** T1b sync kod←FK zamknięty (lokalne; CI po push). `/noc 21`.
+**2026-09-20:** Plan **602.0** T1b sync (`/noc 21`).
 **2026-09-20:** Plaster **601.0** T1b bind `stop_group_id` zamknięty (gate success). `/noc 21`.
 **2026-09-20:** Plan **601.0** T1b bind `stop_group_id` (`/noc 21`). Sync kod parked.
 **2026-09-20:** Plaster **600.0** T1b `stop_group` tabela zamknięty (gate success). `/noc 21`.
