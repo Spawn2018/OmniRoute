@@ -14,6 +14,7 @@ from app.domain.stop import (
     require_stop_appointment_ref,
     require_stop_group_code,
     require_stop_kind,
+    require_stop_no_show_at,
     require_stop_packaging_code,
     require_stop_pod_quality,
     require_stop_quantity,
@@ -197,6 +198,23 @@ def test_stop_waiting_started_rejects_naive_and_non_text() -> None:
         require_stop_waiting_started_at("2026-09-09T12:00:00")
     with pytest.raises(InvalidStop, match="początek"):
         require_stop_waiting_started_at("nie-data")
+
+
+def test_stop_no_show_omits_blank_and_parses_iso() -> None:
+    assert require_stop_no_show_at(None) is None
+    assert require_stop_no_show_at("  ") is None
+    parsed = require_stop_no_show_at("2026-09-09T12:00:00+00:00")
+    assert parsed is not None
+    assert parsed.tzinfo is not None
+
+
+def test_stop_no_show_rejects_naive_and_non_text() -> None:
+    with pytest.raises(InvalidStop, match="niestawiennictwo"):
+        require_stop_no_show_at(12)
+    with pytest.raises(InvalidStop, match="niestawiennictwo"):
+        require_stop_no_show_at("2026-09-09T12:00:00")
+    with pytest.raises(InvalidStop, match="niestawiennictwo"):
+        require_stop_no_show_at("nie-data")
 
 
 def test_stop_pod_quality_omits_blank_and_allowlists() -> None:

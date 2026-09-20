@@ -41,6 +41,7 @@ class StopCreate(BaseModel):
     seal_out: str | None = None
     appointment_ref: str | None = None
     appointment_status: str | None = None
+    no_show_at: str | None = None
     waiting_free_minutes: int | str | float | bool | None = None
     waiting_started_at: str | None = None
     pod_quality: str | None = None
@@ -70,6 +71,7 @@ class StopResponse(BaseModel):
     seal_out: str | None
     appointment_ref: str | None
     appointment_status: str | None
+    no_show_at: datetime | None
     waiting_free_minutes: int | None
     waiting_started_at: datetime | None
     pod_quality: str | None
@@ -141,6 +143,7 @@ async def create_stop(
         seal_out=body.seal_out,
         appointment_ref=body.appointment_ref,
         appointment_status=body.appointment_status,
+        no_show_at=body.no_show_at,
         waiting_free_minutes=body.waiting_free_minutes,
         waiting_started_at=body.waiting_started_at,
         pod_quality=body.pod_quality,

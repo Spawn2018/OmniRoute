@@ -119,8 +119,9 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 
 - **148.0 leftover:** dwa `mail_draft` przy DAP `contact_exchange`; live HTTP S21. Tu tylko status na wierszu. Nie send.
 - **147.0 leftover:** tabela `document_dispatch` (batch mail + send S18). Tu tylko katalog adresata. Nie auto-send.
-- **603.0 leftover:** T1 EXP1 `appointment_status` DONE. Zostaje `no_show_at`; HW; UXCL. Tu tylko status awizacji HITL na punkcie. Nie dok. Nie auto-status.
-- **602.0 leftover:** T1b sync DONE. Zostaje HW; UXCL; `no_show_at`. Tu tylko fill kodu z FK. Nie auto-create.
+- **604.0 leftover:** T1 EXP1 `no_show_at` DONE. Zostaje `weigh_in_kg`/`weigh_out_kg`; HW; UXCL. Tu tylko chwila niestawiennictwa HITL na punkcie. Nie charge. Nie auto-status.
+- **603.0 leftover:** T1 EXP1 `appointment_status` DONE. `no_show_at` DONE 604.0. Zostaje weigh_in/out; HW; UXCL. Tu tylko status awizacji HITL na punkcie. Nie dok. Nie auto-status.
+- **602.0 leftover:** T1b sync DONE. Zostaje HW; UXCL; weigh. Tu tylko fill kodu z FK. Nie auto-create.
 - **601.0 leftover:** T1b bind DONE. Sync DONE 602.0. Zostaje HW; UXCL. Tu tylko opcjonalny FK grupy na punkcie. Nie mapa.
 - **600.0 leftover:** T1b tabela `stop_group` DONE. Bind DONE 601.0. Zostaje sync; HW; UXCL. Tu tylko HITL nagłówek grupy na zleceniu. Nie mapa. Nie członkostwo.
 - **150.0 leftover:** `stop_group` kolumna DONE 213.0. `notes_for_driver` DONE 215.0. T1b tabela DONE 600.0. Zostaje T1b bind; EXP1 `appointment_status`/`no_show_at`. ETA HITL DONE 194.0. Tu tylko punkt + location + strefa IANA + dwa ETA HITL + grupa + notatka. Nie mapa. `resource` = 151.0. `trip` = 152.0.

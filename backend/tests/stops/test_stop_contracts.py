@@ -76,6 +76,7 @@ def test_generated_api_types_include_stop() -> None:
     assert "waiting_free_minutes" in source
     assert "waiting_started_at" in source
     assert "pod_quality" in source
+    assert "no_show_at" in source
 
 
 def test_migration_152_adds_group_code_without_table() -> None:
@@ -233,3 +234,17 @@ def test_migration_191_adds_pod_quality_without_camera() -> None:
     assert "leaflet" not in source
     assert "def downgrade" in source
     assert "pod_quality" in source.split("def downgrade")[1]
+
+
+def test_migration_479_adds_no_show_without_charge() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "479_stop_no_show_at.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "479_stop_no_show_at"' in source
+    assert 'down_revision: str | None = "478_stop_appointment_status"' in source
+    assert "no_show_at" in source
+    assert "margin" not in source
+    assert "create_table" not in source
+    assert "leaflet" not in source
+    assert "def downgrade" in source
+    assert "no_show_at" in source.split("def downgrade")[1]

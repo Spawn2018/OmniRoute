@@ -1,22 +1,22 @@
 ﻿# Bieżący focus
 
-**Faza:** Oś pinu — po **603.0**; SH-R16-4 UXCL park; T2 HW park
+**Faza:** Oś pinu — po **604.0**; SH-R16-4 UXCL park; T2 HW park
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **603.0** T1 EXP1 `appointment_status` (gate success)
+**Ostatni plaster:** **604.0** T1 EXP1 `no_show_at` (lokalne; CI po push)
 
-**Etap:** Plaster — delta **604.0** zaakceptowana (`/noc`); wolno `/plaster`
+**Etap:** Plan — brak delty **605.0**; `/plan-modul`
 
 **Noc:** `/noc 8` do **2026-09-21T08:00:00+02:00**
 
 **Miejsce pracy:** produkt = to repo + GitHub.
 
-**Następny:** **604.0** T1 EXP1 `no_show_at` (delta open). `weigh_in_kg`/`weigh_out_kg` parked. **588.0** SH-R16-4 UXCL banner = park `/noc`. Job#2 po bannerze. Nie AI3. Nie G0-SH. Nie N3. Nie HW.
+**Następny:** **605.0** T1 EXP1 leftover `weigh_in_kg`. `weigh_out_kg` parked. **588.0** SH-R16-4 UXCL banner = park `/noc`. Job#2 po bannerze. Nie AI3. Nie G0-SH. Nie N3. Nie HW.
 
-**Park / czeka w PLAN:** HW · SH-R16-4 UXCL · AI3-payload · G0-SH · PUESC · MOS live · live FK UUID · N3 countdown · weigh_in/out · …
+**Park / czeka w PLAN:** HW · SH-R16-4 UXCL · AI3-payload · G0-SH · PUESC · MOS live · live FK UUID · N3 countdown · weigh_out · …
 
-**Spec (jedyna na sesję produktu):** brak — delta `docs/deltas/open/604.0-stop-no-show-at.md`
+**Spec (jedyna na sesję produktu):** brak — `/plan-modul`
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 
@@ -24,6 +24,7 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
+**2026-09-20:** Plaster **604.0** T1 EXP1 `no_show_at` zamknięty (lokalne; CI po push). `/noc 8`.
 **2026-09-20:** Plan **604.0** T1 EXP1 `no_show_at` (`/noc 8`). `weigh_in`/`weigh_out` parked.
 **2026-09-20:** Plaster **603.0** T1 EXP1 `appointment_status` zamknięty (gate success). `/noc 21`.
 **2026-09-20:** Plan **603.0** T1 EXP1 `appointment_status` (`/noc 21`). `no_show_at` parked.

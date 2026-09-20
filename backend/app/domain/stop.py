@@ -269,6 +269,17 @@ def require_stop_waiting_started_at(raw: object) -> datetime | None:
     return _require_eta_clock(token, "początek")
 
 
+def require_stop_no_show_at(raw: object) -> datetime | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidStop("niestawiennictwo musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        return None
+    return _require_eta_clock(token, "niestawiennictwo")
+
+
 def require_stop_pod_quality(raw: object) -> str | None:
     if raw is None:
         return None

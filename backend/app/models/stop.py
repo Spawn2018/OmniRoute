@@ -103,6 +103,10 @@ class Stop(Base, TimestampMixin):
     seal_out: Mapped[str | None] = mapped_column(String(32), nullable=True)
     appointment_ref: Mapped[str | None] = mapped_column(String(32), nullable=True)
     appointment_status: Mapped[str | None] = mapped_column(String(16), nullable=True)
+    no_show_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True),
+        nullable=True,
+    )
     waiting_free_minutes: Mapped[int | None] = mapped_column(Integer, nullable=True)
     waiting_started_at: Mapped[datetime | None] = mapped_column(
         DateTime(timezone=True),

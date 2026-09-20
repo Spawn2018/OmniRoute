@@ -15327,6 +15327,10 @@ export type StopCreate = {
      */
     stop_group_code?: string | null;
     /**
+     * Stop Group Id
+     */
+    stop_group_id?: string | null;
+    /**
      * Notes For Driver
      */
     notes_for_driver?: string | null;
@@ -15355,6 +15359,14 @@ export type StopCreate = {
      */
     appointment_ref?: string | null;
     /**
+     * Appointment Status
+     */
+    appointment_status?: string | null;
+    /**
+     * No Show At
+     */
+    no_show_at?: string | null;
+    /**
      * Waiting Free Minutes
      */
     waiting_free_minutes?: number | string | number | boolean | null;
@@ -15366,6 +15378,50 @@ export type StopCreate = {
      * Pod Quality
      */
     pod_quality?: string | null;
+};
+
+/**
+ * StopGroupCreate
+ */
+export type StopGroupCreate = {
+    /**
+     * Shipment Id
+     */
+    shipment_id?: string | boolean | null;
+    /**
+     * Group Code
+     */
+    group_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * StopGroupResponse
+ */
+export type StopGroupResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Shipment Id
+     */
+    shipment_id: string;
+    /**
+     * Group Code
+     */
+    group_code: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
 };
 
 /**
@@ -15421,6 +15477,10 @@ export type StopResponse = {
      */
     stop_group_code: string | null;
     /**
+     * Stop Group Id
+     */
+    stop_group_id: string | null;
+    /**
      * Notes For Driver
      */
     notes_for_driver: string | null;
@@ -15448,6 +15508,14 @@ export type StopResponse = {
      * Appointment Ref
      */
     appointment_ref: string | null;
+    /**
+     * Appointment Status
+     */
+    appointment_status: string | null;
+    /**
+     * No Show At
+     */
+    no_show_at: string | null;
     /**
      * Waiting Free Minutes
      */
@@ -22042,6 +22110,49 @@ export type CreateStopApiV1StopsPostResponses = {
 };
 
 export type CreateStopApiV1StopsPostResponse = CreateStopApiV1StopsPostResponses[keyof CreateStopApiV1StopsPostResponses];
+
+export type ListStopGroupsApiV1StopGroupsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/stop-groups';
+};
+
+export type ListStopGroupsApiV1StopGroupsGetResponses = {
+    /**
+     * Response List Stop Groups Api V1 Stop Groups Get
+     *
+     * Successful Response
+     */
+    200: Array<StopGroupResponse>;
+};
+
+export type ListStopGroupsApiV1StopGroupsGetResponse = ListStopGroupsApiV1StopGroupsGetResponses[keyof ListStopGroupsApiV1StopGroupsGetResponses];
+
+export type CreateStopGroupApiV1StopGroupsPostData = {
+    body: StopGroupCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/stop-groups';
+};
+
+export type CreateStopGroupApiV1StopGroupsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateStopGroupApiV1StopGroupsPostError = CreateStopGroupApiV1StopGroupsPostErrors[keyof CreateStopGroupApiV1StopGroupsPostErrors];
+
+export type CreateStopGroupApiV1StopGroupsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: StopGroupResponse;
+};
+
+export type CreateStopGroupApiV1StopGroupsPostResponse = CreateStopGroupApiV1StopGroupsPostResponses[keyof CreateStopGroupApiV1StopGroupsPostResponses];
 
 export type ListSubcontractEdgeMarksApiV1SubcontractEdgeMarksGetData = {
     body?: never;

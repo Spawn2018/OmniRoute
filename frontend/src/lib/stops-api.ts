@@ -23,6 +23,7 @@ export type StopRow = {
   seal_out: string | null
   appointment_ref: string | null
   appointment_status: string | null
+  no_show_at: string | null
   waiting_free_minutes: number | null
   waiting_started_at: string | null
   pod_quality: string | null
@@ -49,6 +50,7 @@ export type StopWrite = {
   seal_out: string | null
   appointment_ref: string | null
   appointment_status: string | null
+  no_show_at: string | null
   waiting_free_minutes: number | string | null
   waiting_started_at: string | null
   pod_quality: string | null
@@ -75,6 +77,7 @@ export function stopWrite(args: {
   sealOut: string
   appointmentRef: string
   appointmentStatus: string
+  noShowAt: string
   waitingFreeMinutes: string
   waitingStartedAt: string
   podQuality: string
@@ -88,6 +91,7 @@ export function stopWrite(args: {
   const outbound = args.sealOut.trim()
   const booking = args.appointmentRef.trim()
   const bookingState = args.appointmentStatus.trim()
+  const missed = args.noShowAt.trim()
   const waitStart = args.waitingStartedAt.trim()
   const pod = args.podQuality.trim()
   return {
@@ -109,6 +113,7 @@ export function stopWrite(args: {
     seal_out: outbound === "" ? null : outbound,
     appointment_ref: booking === "" ? null : booking,
     appointment_status: bookingState === "" ? null : bookingState,
+    no_show_at: missed === "" ? null : missed,
     waiting_free_minutes: optionalStopInt(args.waitingFreeMinutes),
     waiting_started_at: waitStart === "" ? null : waitStart,
     pod_quality: pod === "" ? null : pod,

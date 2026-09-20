@@ -17,6 +17,7 @@ from app.domain.stop import (
     require_stop_group_id,
     require_stop_kind,
     require_stop_location_id,
+    require_stop_no_show_at,
     require_stop_packaging_code,
     require_stop_pod_quality,
     require_stop_quantity,
@@ -53,6 +54,7 @@ class _PackedPoint:
     outbound_seal: str | None
     appointment: str | None
     appointment_state: str | None
+    no_show: datetime | None
     wait_free: int | None
     wait_start: datetime | None
     pod: str | None
@@ -72,6 +74,7 @@ class _HitlTail:
     outbound_seal: object = None
     appointment: object = None
     appointment_state: object = None
+    no_show: object = None
     wait_free: object = None
     wait_start: object = None
     pod: object = None
@@ -113,6 +116,7 @@ def _pack_point(
         outbound_seal=require_stop_seal_out(tail.outbound_seal),
         appointment=require_stop_appointment_ref(tail.appointment),
         appointment_state=require_stop_appointment_status(tail.appointment_state),
+        no_show=require_stop_no_show_at(tail.no_show),
         wait_free=require_stop_waiting_free_minutes(tail.wait_free),
         wait_start=require_stop_waiting_started_at(tail.wait_start),
         pod=require_stop_pod_quality(tail.pod),
@@ -138,6 +142,7 @@ def _same_point(current: Stop, packed: _PackedPoint) -> bool:
         and current.seal_out == packed.outbound_seal
         and current.appointment_ref == packed.appointment
         and current.appointment_status == packed.appointment_state
+        and current.no_show_at == packed.no_show
         and current.waiting_free_minutes == packed.wait_free
         and current.waiting_started_at == packed.wait_start
         and current.pod_quality == packed.pod
@@ -183,6 +188,7 @@ class StopService:
         seal_out: object = None,
         appointment_ref: object = None,
         appointment_status: object = None,
+        no_show_at: object = None,
         waiting_free_minutes: object = None,
         waiting_started_at: object = None,
         pod_quality: object = None,
@@ -190,7 +196,7 @@ class StopService:
         tail = _HitlTail(
             stop_group_code, stop_group_id, notes_for_driver, weight_kg, quantity,
             packaging_code, seal_in, seal_out, appointment_ref, appointment_status,
-            waiting_free_minutes, waiting_started_at, pod_quality,
+            no_show_at, waiting_free_minutes, waiting_started_at, pod_quality,
         )
         packed = _pack_point(
             shipment_id, location_id, stop_kind, sequence_no, time_zone, status, source_ref,
@@ -233,6 +239,7 @@ class StopService:
                 seal_out=packed.outbound_seal,
                 appointment_ref=packed.appointment,
                 appointment_status=packed.appointment_state,
+                no_show_at=packed.no_show,
                 waiting_free_minutes=packed.wait_free,
                 waiting_started_at=packed.wait_start,
                 pod_quality=packed.pod,

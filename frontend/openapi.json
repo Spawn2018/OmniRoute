@@ -6369,6 +6369,80 @@
         }
       }
     },
+    "/api/v1/stop-groups": {
+      "get": {
+        "tags": [
+          "stop-groups"
+        ],
+        "summary": "List Stop Groups",
+        "operationId": "list_stop_groups_api_v1_stop_groups_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/StopGroupResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Stop Groups Api V1 Stop Groups Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "stop-groups"
+        ],
+        "summary": "Create Stop Group",
+        "operationId": "create_stop_group_api_v1_stop_groups_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StopGroupCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StopGroupResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/subcontract-edge-marks": {
       "get": {
         "tags": [
@@ -52207,6 +52281,18 @@
             ],
             "title": "Stop Group Code"
           },
+          "stop_group_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Stop Group Id"
+          },
           "notes_for_driver": {
             "anyOf": [
               {
@@ -52293,6 +52379,28 @@
             ],
             "title": "Appointment Ref"
           },
+          "appointment_status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Appointment Status"
+          },
+          "no_show_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "No Show At"
+          },
           "waiting_free_minutes": {
             "anyOf": [
               {
@@ -52350,6 +52458,76 @@
           "eta_legal"
         ],
         "title": "StopCreate"
+      },
+      "StopGroupCreate": {
+        "properties": {
+          "shipment_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Shipment Id"
+          },
+          "group_code": {
+            "type": "string",
+            "title": "Group Code"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "group_code",
+          "source_ref"
+        ],
+        "title": "StopGroupCreate"
+      },
+      "StopGroupResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "shipment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Shipment Id"
+          },
+          "group_code": {
+            "type": "string",
+            "title": "Group Code"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "shipment_id",
+          "group_code",
+          "source_ref"
+        ],
+        "title": "StopGroupResponse"
       },
       "StopResponse": {
         "properties": {
@@ -52414,6 +52592,18 @@
             ],
             "title": "Stop Group Code"
           },
+          "stop_group_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Stop Group Id"
+          },
           "notes_for_driver": {
             "anyOf": [
               {
@@ -52491,6 +52681,29 @@
             ],
             "title": "Appointment Ref"
           },
+          "appointment_status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Appointment Status"
+          },
+          "no_show_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "No Show At"
+          },
           "waiting_free_minutes": {
             "anyOf": [
               {
@@ -52552,6 +52765,7 @@
           "eta_physical",
           "eta_legal",
           "stop_group_code",
+          "stop_group_id",
           "notes_for_driver",
           "weight_kg",
           "quantity",
@@ -52559,6 +52773,8 @@
           "seal_in",
           "seal_out",
           "appointment_ref",
+          "appointment_status",
+          "no_show_at",
           "waiting_free_minutes",
           "waiting_started_at",
           "pod_quality",
