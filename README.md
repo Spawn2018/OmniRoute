@@ -87,7 +87,7 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **600.0** T1b `stop_group` tabela (lokalne; CI po push)
+- **Ostatni plaster:** **600.0** T1b `stop_group` tabela (gate success)
 - **Etap:** Plan — brak delty **601.0**; `/plan-modul`
 - **Następny:** **601.0** T1b leftover bind (`stop.stop_group_id` / sync z `stop_group_code`). **588.0** SH-R16-4 UXCL banner = park `/noc`. Job#2 po bannerze. Nie AI3. Nie G0-SH. Nie N3. Nie HW.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
