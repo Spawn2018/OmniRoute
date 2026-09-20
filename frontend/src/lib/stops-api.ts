@@ -17,6 +17,7 @@ export type StopRow = {
   stop_group_id: string | null
   notes_for_driver: string | null
   weight_kg: string | null
+  weigh_in_kg: string | null
   quantity: number | null
   packaging_code: string | null
   seal_in: string | null
@@ -44,6 +45,7 @@ export type StopWrite = {
   stop_group_id: string | null
   notes_for_driver: string | null
   weight_kg: string | null
+  weigh_in_kg: string | null
   quantity: number | string | null
   packaging_code: string | null
   seal_in: string | null
@@ -71,6 +73,7 @@ export function stopWrite(args: {
   groupId: string
   driverNotes: string
   weightKg: string
+  weighInKg: string
   quantityHitl: string
   packagingCode: string
   sealIn: string
@@ -86,6 +89,7 @@ export function stopWrite(args: {
   const groupToken = args.groupId.trim()
   const notes = args.driverNotes.trim()
   const mass = args.weightKg.trim()
+  const gateMass = args.weighInKg.trim()
   const pack = args.packagingCode.trim()
   const inbound = args.sealIn.trim()
   const outbound = args.sealOut.trim()
@@ -107,6 +111,7 @@ export function stopWrite(args: {
     stop_group_id: groupToken === "" ? null : groupToken,
     notes_for_driver: notes === "" ? null : notes,
     weight_kg: mass === "" ? null : mass,
+    weigh_in_kg: gateMass === "" ? null : gateMass,
     quantity: optionalStopInt(args.quantityHitl),
     packaging_code: pack === "" ? null : pack,
     seal_in: inbound === "" ? null : inbound,

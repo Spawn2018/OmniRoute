@@ -20,6 +20,7 @@ export function StopPointPanel(args: { canWrite: boolean }) {
   const [groupId, setGroupId] = useState("")
   const [driverNotes, setDriverNotes] = useState("")
   const [weightKg, setWeightKg] = useState("")
+  const [weighInKg, setWeighInKg] = useState("")
   const [quantityHitl, setQuantityHitl] = useState("")
   const [packagingCode, setPackagingCode] = useState("")
   const [sealIn, setSealIn] = useState("")
@@ -52,6 +53,7 @@ export function StopPointPanel(args: { canWrite: boolean }) {
           groupId,
           driverNotes,
           weightKg,
+          weighInKg,
           quantityHitl,
           packagingCode,
           sealIn,
@@ -76,7 +78,8 @@ export function StopPointPanel(args: { canWrite: boolean }) {
       <p className="text-sm font-medium">Punkt załadunku i wyładunku</p>
       <p className="text-xs text-muted-foreground">
         Miejsce ze słownika lokalizacji. Strefa IANA. Dwa ETA HITL. Opcjonalny kod grupy.
-        Opcjonalny identyfikator grupy punktów (`stop_group_id`). Opcjonalna waga HITL. Opcjonalna ilość HITL. Opcjonalny kod opakowania HITL. Opcjonalna plomba
+        Opcjonalny identyfikator grupy punktów (`stop_group_id`). Opcjonalna waga HITL.
+        Opcjonalna waga wjazdu HITL. Opcjonalna ilość HITL. Opcjonalny kod opakowania HITL. Opcjonalna plomba
         wjazdu i wyjazdu HITL.         Opcjonalny numer awizacji HITL. Opcjonalny status awizacji HITL.
         Opcjonalna chwila niestawiennictwa HITL. Opcjonalne minuty wolnego oczekiwania
         HITL. Opcjonalny początek oczekiwania HITL. Opcjonalna jakość POD HITL.
@@ -141,6 +144,12 @@ export function StopPointPanel(args: { canWrite: boolean }) {
         placeholder="weight_kg"
         value={weightKg}
         onChange={(event) => setWeightKg(event.target.value)}
+      />
+      <Input
+        aria-label="Waga wjazdu w kilogramach"
+        placeholder="weigh_in_kg"
+        value={weighInKg}
+        onChange={(event) => setWeighInKg(event.target.value)}
       />
       <Input
         aria-label="Ilość na punkcie"
@@ -246,7 +255,8 @@ export function StopPointPanel(args: { canWrite: boolean }) {
         {rows.map((row) => (
           <li key={row.id} className="font-mono text-xs">
             {row.sequence_no} {row.stop_kind} {row.status} {row.stop_group_code ?? ""}{" "}
-            {row.notes_for_driver ?? ""} {row.weight_kg ?? ""} {row.quantity ?? ""}{" "}
+            {row.notes_for_driver ?? ""} {row.weight_kg ?? ""} {row.weigh_in_kg ?? ""}{" "}
+            {row.quantity ?? ""}{" "}
             {row.packaging_code ?? ""} {row.seal_in ?? ""} {row.seal_out ?? ""}{" "}
             {row.appointment_ref ?? ""} {row.appointment_status ?? ""}{" "}
             {row.no_show_at ?? ""} {row.waiting_free_minutes ?? ""}{" "}

@@ -52315,6 +52315,17 @@
             ],
             "title": "Weight Kg"
           },
+          "weigh_in_kg": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Weigh In Kg"
+          },
           "quantity": {
             "anyOf": [
               {
@@ -52626,6 +52637,17 @@
             ],
             "title": "Weight Kg"
           },
+          "weigh_in_kg": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Weigh In Kg"
+          },
           "quantity": {
             "anyOf": [
               {
@@ -52768,6 +52790,7 @@
           "stop_group_id",
           "notes_for_driver",
           "weight_kg",
+          "weigh_in_kg",
           "quantity",
           "packaging_code",
           "seal_in",

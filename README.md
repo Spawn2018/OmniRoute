@@ -87,10 +87,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **604.0** T1 EXP1 `no_show_at` (gate success)
-- **Etap:** Plaster — delta **605.0** zaakceptowana (`/noc`); wolno `/plaster`
-- **Następny:** **605.0** T1 EXP1 `weigh_in_kg` (delta open). `weigh_out_kg` parked. **588.0** SH-R16-4 UXCL banner = park `/noc`. Job#2 po bannerze. Nie AI3. Nie G0-SH. Nie N3. Nie HW.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **605.0** T1 EXP1 `weigh_in_kg` (lokalne; CI po push)
+- **Etap:** Plan — **606.0** T1 EXP1 `weigh_out_kg` (po gate 605)
+- **Następny:** **606.0** T1 EXP1 `weigh_out_kg` (po gate 605). **588.0** SH-R16-4 UXCL banner = park `/noc`. Job#2 po bannerze. Nie AI3. Nie G0-SH. Nie N3. Nie HW.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

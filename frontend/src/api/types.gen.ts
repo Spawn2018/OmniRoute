@@ -15339,6 +15339,10 @@ export type StopCreate = {
      */
     weight_kg?: string | null;
     /**
+     * Weigh In Kg
+     */
+    weigh_in_kg?: string | null;
+    /**
      * Quantity
      */
     quantity?: number | string | number | boolean | null;
@@ -15488,6 +15492,10 @@ export type StopResponse = {
      * Weight Kg
      */
     weight_kg: string | null;
+    /**
+     * Weigh In Kg
+     */
+    weigh_in_kg: string | null;
     /**
      * Quantity
      */

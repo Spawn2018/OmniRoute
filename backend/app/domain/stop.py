@@ -152,6 +152,24 @@ def require_stop_weight_kg(raw: object) -> Decimal | None:
     return parsed.quantize(_FOUR)
 
 
+def require_stop_weigh_in_kg(raw: object) -> Decimal | None:
+    if raw is None:
+        return None
+    if type(raw) is str and raw.strip() == "":
+        return None
+    if isinstance(raw, float) or isinstance(raw, bool):
+        raise InvalidStop("waga wjazdu nie może być float")
+    if not isinstance(raw, Decimal | str | int):
+        raise InvalidStop("waga wjazdu musi być liczbą dziesiętną")
+    try:
+        parsed = raw if isinstance(raw, Decimal) else Decimal(str(raw))
+    except InvalidOperation as exc:
+        raise InvalidStop("waga wjazdu musi być liczbą dziesiętną") from exc
+    if parsed < 0:
+        raise InvalidStop("waga wjazdu nie może być ujemna")
+    return parsed.quantize(_FOUR)
+
+
 def require_stop_quantity(raw: object) -> int | None:
     if raw is None:
         return None

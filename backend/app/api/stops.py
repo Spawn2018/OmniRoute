@@ -35,6 +35,7 @@ class StopCreate(BaseModel):
     stop_group_id: UUID | None = None
     notes_for_driver: str | None = None
     weight_kg: str | None = None
+    weigh_in_kg: str | None = None
     quantity: int | str | float | bool | None = None
     packaging_code: str | None = None
     seal_in: str | None = None
@@ -65,6 +66,7 @@ class StopResponse(BaseModel):
     stop_group_id: UUID | None
     notes_for_driver: str | None
     weight_kg: str | None
+    weigh_in_kg: str | None
     quantity: int | None
     packaging_code: str | None
     seal_in: str | None
@@ -81,6 +83,7 @@ class StopResponse(BaseModel):
 def _as_response(row: Stop) -> StopResponse:
     dumped = {name: getattr(row, name) for name in StopResponse.model_fields}
     dumped["weight_kg"] = None if row.weight_kg is None else format(row.weight_kg, "f")
+    dumped["weigh_in_kg"] = None if row.weigh_in_kg is None else format(row.weigh_in_kg, "f")
     return StopResponse.model_validate(dumped)
 
 
@@ -109,6 +112,30 @@ async def _resolve_stop_group(
     return group.id, code
 
 
+def _hitl_from_body(
+    body: StopCreate,
+    group_id: UUID | None,
+    group_code: str | None,
+) -> dict[str, object]:
+    return {
+        "stop_group_code": group_code,
+        "stop_group_id": group_id,
+        "notes_for_driver": body.notes_for_driver,
+        "weight_kg": body.weight_kg,
+        "weigh_in_kg": body.weigh_in_kg,
+        "quantity": body.quantity,
+        "packaging_code": body.packaging_code,
+        "seal_in": body.seal_in,
+        "seal_out": body.seal_out,
+        "appointment_ref": body.appointment_ref,
+        "appointment_status": body.appointment_status,
+        "no_show_at": body.no_show_at,
+        "waiting_free_minutes": body.waiting_free_minutes,
+        "waiting_started_at": body.waiting_started_at,
+        "pod_quality": body.pod_quality,
+    }
+
+
 @router.post("", response_model=StopResponse, status_code=status.HTTP_201_CREATED)
 async def create_stop(
     body: StopCreate,
@@ -133,20 +160,7 @@ async def create_stop(
         source_ref=body.source_ref,
         eta_physical=body.eta_physical,
         eta_legal=body.eta_legal,
-        stop_group_code=group_code,
-        stop_group_id=group_id,
-        notes_for_driver=body.notes_for_driver,
-        weight_kg=body.weight_kg,
-        quantity=body.quantity,
-        packaging_code=body.packaging_code,
-        seal_in=body.seal_in,
-        seal_out=body.seal_out,
-        appointment_ref=body.appointment_ref,
-        appointment_status=body.appointment_status,
-        no_show_at=body.no_show_at,
-        waiting_free_minutes=body.waiting_free_minutes,
-        waiting_started_at=body.waiting_started_at,
-        pod_quality=body.pod_quality,
+        **_hitl_from_body(body, group_id, group_code),
     )
     await session.commit()
     return _as_response(row)

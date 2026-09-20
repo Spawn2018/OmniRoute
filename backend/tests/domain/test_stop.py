@@ -23,6 +23,7 @@ from app.domain.stop import (
     require_stop_status,
     require_stop_waiting_free_minutes,
     require_stop_waiting_started_at,
+    require_stop_weigh_in_kg,
     require_stop_weight_kg,
     require_time_zone,
 )
@@ -100,6 +101,20 @@ def test_stop_weight_kg_rejects_float_and_negative() -> None:
         require_stop_weight_kg(12.5)
     with pytest.raises(InvalidStop, match="waga"):
         require_stop_weight_kg("-1")
+
+
+def test_stop_weigh_in_kg_omits_blank_and_keeps_decimal() -> None:
+    assert require_stop_weigh_in_kg(None) is None
+    assert require_stop_weigh_in_kg("  ") is None
+    assert require_stop_weigh_in_kg("18.25") == Decimal("18.2500")
+    assert require_stop_weigh_in_kg("0") == Decimal("0.0000")
+
+
+def test_stop_weigh_in_kg_rejects_float_and_negative() -> None:
+    with pytest.raises(InvalidStop, match="waga wjazdu"):
+        require_stop_weigh_in_kg(12.5)
+    with pytest.raises(InvalidStop, match="waga wjazdu"):
+        require_stop_weigh_in_kg("-1")
 
 
 def test_stop_quantity_omits_blank_and_keeps_int() -> None:

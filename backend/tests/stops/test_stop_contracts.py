@@ -68,6 +68,7 @@ def test_generated_api_types_include_stop() -> None:
     assert "StopResponse" in source
     assert "notes_for_driver" in source
     assert "weight_kg" in source
+    assert "weigh_in_kg" in source
     assert "quantity" in source
     assert "packaging_code" in source
     assert "seal_in" in source
@@ -248,3 +249,18 @@ def test_migration_479_adds_no_show_without_charge() -> None:
     assert "leaflet" not in source
     assert "def downgrade" in source
     assert "no_show_at" in source.split("def downgrade")[1]
+
+
+def test_migration_480_adds_weigh_in_without_vgm() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "480_stop_weigh_in.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "480_stop_weigh_in"' in source
+    assert 'down_revision: str | None = "479_stop_no_show_at"' in source
+    assert "weigh_in_kg" in source
+    assert "ck_stop_weigh_in" in source
+    assert "vgm_kg" not in source
+    assert "create_table" not in source
+    assert "leaflet" not in source
+    assert "def downgrade" in source
+    assert "weigh_in_kg" in source.split("def downgrade")[1]

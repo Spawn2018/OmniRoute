@@ -45,6 +45,10 @@ class Stop(Base, TimestampMixin):
             name="ck_stop_weight_kg",
         ),
         CheckConstraint(
+            "weigh_in_kg IS NULL OR weigh_in_kg >= 0",
+            name="ck_stop_weigh_in",
+        ),
+        CheckConstraint(
             "quantity IS NULL OR quantity >= 0",
             name="ck_stop_quantity",
         ),
@@ -97,6 +101,7 @@ class Stop(Base, TimestampMixin):
     stop_group_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)
     notes_for_driver: Mapped[str | None] = mapped_column(String(256), nullable=True)
     weight_kg: Mapped[Decimal | None] = mapped_column(Numeric(14, 4), nullable=True)
+    weigh_in_kg: Mapped[Decimal | None] = mapped_column(Numeric(14, 4), nullable=True)
     quantity: Mapped[int | None] = mapped_column(Integer, nullable=True)
     packaging_code: Mapped[str | None] = mapped_column(String(32), nullable=True)
     seal_in: Mapped[str | None] = mapped_column(String(32), nullable=True)
