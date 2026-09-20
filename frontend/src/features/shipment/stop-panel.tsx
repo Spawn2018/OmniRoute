@@ -25,6 +25,7 @@ export function StopPointPanel(args: { canWrite: boolean }) {
   const [sealIn, setSealIn] = useState("")
   const [sealOut, setSealOut] = useState("")
   const [appointmentRef, setAppointmentRef] = useState("")
+  const [appointmentStatus, setAppointmentStatus] = useState("")
   const [waitingFreeMinutes, setWaitingFreeMinutes] = useState("")
   const [waitingStartedAt, setWaitingStartedAt] = useState("")
   const [podQuality, setPodQuality] = useState("")
@@ -55,6 +56,7 @@ export function StopPointPanel(args: { canWrite: boolean }) {
           sealIn,
           sealOut,
           appointmentRef,
+          appointmentStatus,
           waitingFreeMinutes,
           waitingStartedAt,
           podQuality,
@@ -73,7 +75,8 @@ export function StopPointPanel(args: { canWrite: boolean }) {
       <p className="text-xs text-muted-foreground">
         Miejsce ze słownika lokalizacji. Strefa IANA. Dwa ETA HITL. Opcjonalny kod grupy.
         Opcjonalny identyfikator grupy punktów (`stop_group_id`). Opcjonalna waga HITL. Opcjonalna ilość HITL. Opcjonalny kod opakowania HITL. Opcjonalna plomba
-        wjazdu i wyjazdu HITL. Opcjonalny numer awizacji HITL. Opcjonalne minuty wolnego oczekiwania
+        wjazdu i wyjazdu HITL. Opcjonalny numer awizacji HITL. Opcjonalny status awizacji HITL.
+        Opcjonalne minuty wolnego oczekiwania
         HITL. Opcjonalny początek oczekiwania HITL. Opcjonalna jakość POD HITL.
         Nie mapa. Nie GPS. Nie pogoda. Nie odliczanie. Nie kamera.
       </p>
@@ -168,6 +171,12 @@ export function StopPointPanel(args: { canWrite: boolean }) {
         onChange={(event) => setAppointmentRef(event.target.value)}
       />
       <Input
+        aria-label="Status awizacji"
+        placeholder="appointment_status"
+        value={appointmentStatus}
+        onChange={(event) => setAppointmentStatus(event.target.value)}
+      />
+      <Input
         aria-label="Minuty wolnego oczekiwania"
         placeholder="waiting_free_minutes"
         value={waitingFreeMinutes}
@@ -231,7 +240,8 @@ export function StopPointPanel(args: { canWrite: boolean }) {
             {row.sequence_no} {row.stop_kind} {row.status} {row.stop_group_code ?? ""}{" "}
             {row.notes_for_driver ?? ""} {row.weight_kg ?? ""} {row.quantity ?? ""}{" "}
             {row.packaging_code ?? ""} {row.seal_in ?? ""} {row.seal_out ?? ""}{" "}
-            {row.appointment_ref ?? ""} {row.waiting_free_minutes ?? ""}{" "}
+            {row.appointment_ref ?? ""} {row.appointment_status ?? ""}{" "}
+            {row.waiting_free_minutes ?? ""}{" "}
             {row.waiting_started_at ?? ""} {row.pod_quality ?? ""} {row.eta_physical}{" "}
             {row.eta_legal}
           </li>

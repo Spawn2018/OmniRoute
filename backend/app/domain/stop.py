@@ -10,6 +10,7 @@ _KINDS = frozenset(
 )
 _STATUSES = frozenset({"pending", "at_stop", "completed", "failed"})
 _POD = frozenset({"ok", "retake", "missing"})
+_APPOINTMENT_STATUSES = frozenset({"noted", "advised", "confirmed", "cancelled"})
 _ZONE = re.compile(r"^[A-Za-z_]+/[A-Za-z0-9_+-]+(?:/[A-Za-z0-9_+-]+)?$")
 _GROUP = re.compile(r"^[A-Za-z0-9_-]{2,32}$")
 _MAX_REF = 256
@@ -278,4 +279,17 @@ def require_stop_pod_quality(raw: object) -> str | None:
         return None
     if token not in _POD:
         raise InvalidStop("nieznany pod")
+    return token
+
+
+def require_stop_appointment_status(raw: object) -> str | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidStop("status awizacji musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        return None
+    if token not in _APPOINTMENT_STATUSES:
+        raise InvalidStop("nieznany status awizacji")
     return token

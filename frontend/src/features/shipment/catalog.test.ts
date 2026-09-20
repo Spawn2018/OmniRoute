@@ -52,6 +52,7 @@ describe("shipment surface for 28.0 and 90.0", () => {
     expect(stop).toContain("seal_in")
     expect(stop).toContain("seal_out")
     expect(stop).toContain("appointment_ref")
+    expect(stop).toContain("appointment_status")
     expect(stop).toContain("waiting_free_minutes")
     expect(stop).toContain("waiting_started_at")
     expect(stop).toContain("pod_quality")

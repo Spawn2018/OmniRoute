@@ -13,6 +13,7 @@ from app.domain.stop import (
     require_notes_for_driver,
     require_sequence_no,
     require_stop_appointment_ref,
+    require_stop_appointment_status,
     require_stop_group_code,
     require_stop_kind,
     require_stop_packaging_code,
@@ -106,6 +107,7 @@ class StubStopService:
         seal_in: object = None,
         seal_out: object = None,
         appointment_ref: object = None,
+        appointment_status: object = None,
         waiting_free_minutes: object = None,
         waiting_started_at: object = None,
         pod_quality: object = None,
@@ -124,6 +126,7 @@ class StubStopService:
         inbound = require_stop_seal_in(seal_in)
         outbound = require_stop_seal_out(seal_out)
         booking = require_stop_appointment_ref(appointment_ref)
+        booking_state = require_stop_appointment_status(appointment_status)
         wait_free = require_stop_waiting_free_minutes(waiting_free_minutes)
         wait_start = require_stop_waiting_started_at(waiting_started_at)
         pod = require_stop_pod_quality(pod_quality)
@@ -159,6 +162,7 @@ class StubStopService:
             and current.seal_in == inbound
             and current.seal_out == outbound
             and current.appointment_ref == booking
+            and current.appointment_status == booking_state
             and current.waiting_free_minutes == wait_free
             and current.waiting_started_at == wait_start
             and current.pod_quality == pod
@@ -183,6 +187,7 @@ class StubStopService:
             seal_in=inbound,
             seal_out=outbound,
             appointment_ref=booking,
+            appointment_status=booking_state,
             waiting_free_minutes=wait_free,
             waiting_started_at=wait_start,
             pod_quality=pod,
@@ -408,6 +413,7 @@ def test_http_create_stop_with_notes_for_driver(catalog_client: object) -> None:
     assert created.json()["seal_in"] is None
     assert created.json()["seal_out"] is None
     assert created.json()["appointment_ref"] is None
+    assert created.json()["appointment_status"] is None
     assert created.json()["waiting_free_minutes"] is None
     assert created.json()["waiting_started_at"] is None
     assert created.json()["pod_quality"] is None
@@ -1006,3 +1012,53 @@ def test_http_rejects_unknown_stop_group_id(catalog_client: object) -> None:
         },
     )
     assert reply.status_code == 404
+
+
+def test_http_create_stop_with_appointment_status(catalog_client: object) -> None:
+    client, ships, places, _rows = catalog_client
+    assert ships.row is not None
+    assert places.row is not None
+    created = client.post(
+        "/api/v1/stops",
+        headers=bearer_auth_headers(),
+        json={
+            "shipment_id": str(ships.row.id),
+            "location_id": str(places.row.id),
+            "stop_kind": "loading",
+            "sequence_no": 27,
+            "time_zone": "Europe/Warsaw",
+            "status": "pending",
+            "source_ref": "tenant:manual",
+            "eta_physical": _HITL_ISO,
+            "eta_legal": _HITL_ISO,
+            "appointment_status": "confirmed",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["appointment_status"] == "confirmed"
+    assert created.json()["appointment_ref"] is None
+    assert "margin" not in created.json()
+
+
+def test_http_rejects_unknown_appointment_status(catalog_client: object) -> None:
+    client, ships, places, _rows = catalog_client
+    assert ships.row is not None
+    assert places.row is not None
+    reply = client.post(
+        "/api/v1/stops",
+        headers=bearer_auth_headers(),
+        json={
+            "shipment_id": str(ships.row.id),
+            "location_id": str(places.row.id),
+            "stop_kind": "loading",
+            "sequence_no": 28,
+            "time_zone": "Europe/Warsaw",
+            "status": "pending",
+            "source_ref": "tenant:manual",
+            "eta_physical": _HITL_ISO,
+            "eta_legal": _HITL_ISO,
+            "appointment_status": "no_show",
+        },
+    )
+    assert reply.status_code == 400
+    assert "status awizacji" in reply.json()["detail"]
