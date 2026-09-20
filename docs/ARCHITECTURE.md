@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **603.0** T1 EXP1 `appointment_status` (lokalne; CI po push). **Etap:** Plan — brak delty **604.0**; `/plan-modul`. **Następny:** **604.0** T1 EXP1 leftover `no_show_at`. **588.0** SH-R16-4 UXCL banner = park `/noc`. Job#2 po bannerze. Nie AI3. Nie G0-SH. Nie N3. Nie HW. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **603.0** T1 EXP1 `appointment_status` (gate success). **Etap:** Plan — brak delty **604.0**; `/plan-modul`. **Następny:** **604.0** T1 EXP1 leftover `no_show_at`. **588.0** SH-R16-4 UXCL banner = park `/noc`. Job#2 po bannerze. Nie AI3. Nie G0-SH. Nie N3. Nie HW. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

@@ -4,7 +4,7 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **603.0** T1 EXP1 `appointment_status` (lokalne; CI po push)
+**Ostatni plaster:** **603.0** T1 EXP1 `appointment_status` (gate success)
 
 **Etap:** Plan — brak delty **604.0**; `/plan-modul`
 
@@ -24,7 +24,7 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-20:** Plaster **603.0** T1 EXP1 `appointment_status` zamknięty (lokalne; CI po push). `/noc 21`.
+**2026-09-20:** Plaster **603.0** T1 EXP1 `appointment_status` zamknięty (gate success). `/noc 21`.
 **2026-09-20:** Plan **603.0** T1 EXP1 `appointment_status` (`/noc 21`). `no_show_at` parked.
 **2026-09-20:** Plaster **602.0** T1b sync kod←FK zamknięty (gate success). `/noc 21`.
 **2026-09-20:** Plan **602.0** T1b sync (`/noc 21`).
