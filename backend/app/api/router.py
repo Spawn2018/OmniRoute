@@ -277,6 +277,7 @@ from app.api import (
     slot_guarantee_marks,
     spend_marks,
     spot_contract_marks,
+    stop_groups,
     stops,
     style_cascade_marks,
     style_fidelity_marks,
@@ -396,6 +397,7 @@ api_router.include_router(shipper_round_marks.router)
 api_router.include_router(shipper_tender_marks.router)
 api_router.include_router(shipment_stakeholders.router)
 api_router.include_router(stops.router)
+api_router.include_router(stop_groups.router)
 api_router.include_router(subcontract_edge_marks.router)
 api_router.include_router(switch_bl_loi_marks.router)
 api_router.include_router(resource_documents.router)

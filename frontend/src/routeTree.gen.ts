@@ -283,6 +283,7 @@ import { Route as SlaClausesRouteImport } from './routes/sla-clauses'
 import { Route as SlotGuaranteeMarksRouteImport } from './routes/slot-guarantee-marks'
 import { Route as SpendMarksRouteImport } from './routes/spend-marks'
 import { Route as SpotContractMarksRouteImport } from './routes/spot-contract-marks'
+import { Route as StopGroupsRouteImport } from './routes/stop-groups'
 import { Route as StyleCascadeMarksRouteImport } from './routes/style-cascade-marks'
 import { Route as StyleFidelityMarksRouteImport } from './routes/style-fidelity-marks'
 import { Route as SubcontractEdgeMarksRouteImport } from './routes/subcontract-edge-marks'
@@ -1714,6 +1715,11 @@ const SpotContractMarksRoute = SpotContractMarksRouteImport.update({
   path: '/spot-contract-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StopGroupsRoute = StopGroupsRouteImport.update({
+  id: '/stop-groups',
+  path: '/stop-groups',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StyleCascadeMarksRoute = StyleCascadeMarksRouteImport.update({
   id: '/style-cascade-marks',
   path: '/style-cascade-marks',
@@ -2265,6 +2271,7 @@ export interface FileRoutesByFullPath {
   '/slot-guarantee-marks': typeof SlotGuaranteeMarksRoute
   '/spend-marks': typeof SpendMarksRoute
   '/spot-contract-marks': typeof SpotContractMarksRoute
+  '/stop-groups': typeof StopGroupsRoute
   '/style-cascade-marks': typeof StyleCascadeMarksRoute
   '/style-fidelity-marks': typeof StyleFidelityMarksRoute
   '/subcontract-edge-marks': typeof SubcontractEdgeMarksRoute
@@ -2596,6 +2603,7 @@ export interface FileRoutesByTo {
   '/slot-guarantee-marks': typeof SlotGuaranteeMarksRoute
   '/spend-marks': typeof SpendMarksRoute
   '/spot-contract-marks': typeof SpotContractMarksRoute
+  '/stop-groups': typeof StopGroupsRoute
   '/style-cascade-marks': typeof StyleCascadeMarksRoute
   '/style-fidelity-marks': typeof StyleFidelityMarksRoute
   '/subcontract-edge-marks': typeof SubcontractEdgeMarksRoute
@@ -2928,6 +2936,7 @@ export interface FileRoutesById {
   '/slot-guarantee-marks': typeof SlotGuaranteeMarksRoute
   '/spend-marks': typeof SpendMarksRoute
   '/spot-contract-marks': typeof SpotContractMarksRoute
+  '/stop-groups': typeof StopGroupsRoute
   '/style-cascade-marks': typeof StyleCascadeMarksRoute
   '/style-fidelity-marks': typeof StyleFidelityMarksRoute
   '/subcontract-edge-marks': typeof SubcontractEdgeMarksRoute
@@ -3261,6 +3270,7 @@ export interface FileRouteTypes {
     | '/slot-guarantee-marks'
     | '/spend-marks'
     | '/spot-contract-marks'
+    | '/stop-groups'
     | '/style-cascade-marks'
     | '/style-fidelity-marks'
     | '/subcontract-edge-marks'
@@ -3592,6 +3602,7 @@ export interface FileRouteTypes {
     | '/slot-guarantee-marks'
     | '/spend-marks'
     | '/spot-contract-marks'
+    | '/stop-groups'
     | '/style-cascade-marks'
     | '/style-fidelity-marks'
     | '/subcontract-edge-marks'
@@ -3923,6 +3934,7 @@ export interface FileRouteTypes {
     | '/slot-guarantee-marks'
     | '/spend-marks'
     | '/spot-contract-marks'
+    | '/stop-groups'
     | '/style-cascade-marks'
     | '/style-fidelity-marks'
     | '/subcontract-edge-marks'
@@ -4255,6 +4267,7 @@ export interface RootRouteChildren {
   SlotGuaranteeMarksRoute: typeof SlotGuaranteeMarksRoute
   SpendMarksRoute: typeof SpendMarksRoute
   SpotContractMarksRoute: typeof SpotContractMarksRoute
+  StopGroupsRoute: typeof StopGroupsRoute
   StyleCascadeMarksRoute: typeof StyleCascadeMarksRoute
   StyleFidelityMarksRoute: typeof StyleFidelityMarksRoute
   SubcontractEdgeMarksRoute: typeof SubcontractEdgeMarksRoute
@@ -6232,6 +6245,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SpotContractMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/stop-groups': {
+      id: '/stop-groups'
+      path: '/stop-groups'
+      fullPath: '/stop-groups'
+      preLoaderRoute: typeof StopGroupsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/style-cascade-marks': {
       id: '/style-cascade-marks'
       path: '/style-cascade-marks'
@@ -6895,6 +6915,7 @@ const rootRouteChildren: RootRouteChildren = {
   SlotGuaranteeMarksRoute: SlotGuaranteeMarksRoute,
   SpendMarksRoute: SpendMarksRoute,
   SpotContractMarksRoute: SpotContractMarksRoute,
+  StopGroupsRoute: StopGroupsRoute,
   StyleCascadeMarksRoute: StyleCascadeMarksRoute,
   StyleFidelityMarksRoute: StyleFidelityMarksRoute,
   SubcontractEdgeMarksRoute: SubcontractEdgeMarksRoute,

@@ -119,7 +119,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 
 - **148.0 leftover:** dwa `mail_draft` przy DAP `contact_exchange`; live HTTP S21. Tu tylko status na wierszu. Nie send.
 - **147.0 leftover:** tabela `document_dispatch` (batch mail + send S18). Tu tylko katalog adresata. Nie auto-send.
-- **150.0 leftover:** `stop_group` kolumna DONE 213.0. `notes_for_driver` DONE 215.0. Zostaje T1b tabela; EXP1 waga/plomba/awizacja. ETA HITL DONE 194.0. Tu tylko punkt + location + strefa IANA + dwa ETA HITL + grupa + notatka. Nie mapa. `resource` = 151.0. `trip` = 152.0.
+- **600.0 leftover:** T1b tabela `stop_group` DONE. Zostaje T1b bind (`stop.stop_group_id` / sync z `stop_group_code`); HW; UXCL. Tu tylko HITL nagłówek grupy na zleceniu. Nie mapa. Nie członkostwo.
+- **150.0 leftover:** `stop_group` kolumna DONE 213.0. `notes_for_driver` DONE 215.0. T1b tabela DONE 600.0. Zostaje T1b bind; EXP1 `appointment_status`/`no_show_at`. ETA HITL DONE 194.0. Tu tylko punkt + location + strefa IANA + dwa ETA HITL + grupa + notatka. Nie mapa. `resource` = 151.0. `trip` = 152.0.
 - **194.0 leftover:** Open-Meteo live HTTP / geometria trip DONE HITL 195.0 (`weather_observation`). `stop_group` kolumna DONE 213.0. Zostaje feed Open-Meteo / lat/lng; myto → `charge` (V2b); GPS/tacho / silnik ETA; T1b tabela. Tu tylko `eta_physical` + `eta_legal` HITL na `stop`. Nie GPS.
 - **197.0 leftover:** `position_event` katalog DONE 457.0. Zostaje lat/lng / poll; `credential_ciphertext`; `resource_telematics_link` + 3 dni robocze U4; V5b `exchange_message`. Tu tylko `telematics_connector` HITL `observation_kind` + `provider_code` + `source_ref`. Nie track. Nie sekrety.
 - **457.0 leftover:** współrzędne jako dane; `observed_at`; FK resource/trip; live poll. BR2.1 katalog DONE 458.0. Tu tylko `position_event` HITL `source_kind` + `source_ref`. Nie live GPS. Nie `tracking_event`.

@@ -20,6 +20,7 @@ const NAV = [
   { to: "/lcl", label: "Drobnica morska" },
   { to: "/ocean-bills", label: "Konosament LCL" },
   { to: "/consignments", label: "Przesyłki" },
+  { to: "/stop-groups", label: "Grupy punktów" },
   { to: "/air", label: "Lotniczy" },
   { to: "/groupage", label: "Linie drobnicy" },
   { to: "/groupage-tariffs", label: "Cennik drobnicy" },

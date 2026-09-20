@@ -24,6 +24,7 @@ modules =
     app.services.quotations
     app.services.organization_calendars
     app.services.stops
+    app.services.stop_groups
     app.services.resources
     app.services.resource_documents
     app.services.trips
@@ -81,6 +82,7 @@ modules =
     app.services.groupage_tariffs
     app.services.ocean_bills
     app.services.consignments
+    app.services.stop_groups
     app.services.pallet_balances
     app.services.document_templates
     app.services.rate_cards
@@ -381,6 +383,9 @@ forbidden_modules =
     app.services.stops
     app.repositories.stops
     app.models.stop
+    app.services.stop_groups
+    app.repositories.stop_groups
+    app.models.stop_group
     app.services.resources
     app.repositories.resources
     app.models.resource
@@ -547,6 +552,9 @@ forbidden_modules =
     app.services.consignments
     app.repositories.consignments
     app.models.consignment
+    app.services.stop_groups
+    app.repositories.stop_groups
+    app.models.stop_group
     app.services.pallet_balances
     app.repositories.pallet_balances
     app.models.pallet_balance

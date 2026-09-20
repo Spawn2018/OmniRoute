@@ -89,6 +89,11 @@ export const OPS_JOBS = [
     job: "zapis consignment na zleceniu",
   },
   {
+    route: BUSINESS_LISTS.stopGroup.route,
+    label: "Grupy punktów",
+    job: "HITL stop_group na zleceniu bez członkostwa",
+  },
+  {
     route: BUSINESS_LISTS.palletBalance.route,
     label: "Saldo palet",
     job: "saldo pallet_balance Chep/LPR bez giełdy",
@@ -1844,6 +1849,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "597.0": "/fleet",
   "598.0": "/fleet",
   "599.0": "/fleet",
+  "600.0": "/stop-groups",
   "142.0": "/mail",
   "143.0": "/networks",
   "144.0": "/quotations",

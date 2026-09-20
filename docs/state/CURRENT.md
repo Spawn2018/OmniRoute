@@ -1,22 +1,22 @@
 ﻿# Bieżący focus
 
-**Faza:** Oś pinu — **600.0** T1b `stop_group`; SH-R16-4 UXCL park; T2 HW park
+**Faza:** Oś pinu — po **600.0**; SH-R16-4 UXCL park; T2 HW park
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **599.0** T2 `resource.vehicle_profile` (gate success)
+**Ostatni plaster:** **600.0** T1b `stop_group` tabela (lokalne; CI po push)
 
-**Etap:** Plaster — delta **600.0** zaakceptowana (`/noc`); wolno `/plaster`
+**Etap:** Plan — brak delty **601.0**; `/plan-modul`
 
 **Noc:** `/noc 21` do **2026-09-20T21:00:00+02:00**
 
 **Miejsce pracy:** produkt = to repo + GitHub.
 
-**Następny:** **600.0** T1b tabela `stop_group` HITL (członkostwo = leftover). **588.0** SH-R16-4 UXCL banner = park `/noc`. Job#2 po bannerze. Nie AI3. Nie G0-SH. Nie N3. Nie HW.
+**Następny:** **601.0** T1b leftover bind (`stop.stop_group_id` / sync z `stop_group_code`). **588.0** SH-R16-4 UXCL banner = park `/noc`. Job#2 po bannerze. Nie AI3. Nie G0-SH. Nie N3. Nie HW.
 
 **Park / czeka w PLAN:** HW · SH-R16-4 UXCL · AI3-payload · G0-SH · PUESC · MOS live · live FK UUID · N3 countdown · …
 
-**Spec (jedyna na sesję produktu):** [docs/deltas/open/600.0-stop-group-table.md](../deltas/open/600.0-stop-group-table.md)
+**Spec (jedyna na sesję produktu):** brak — `/plan-modul`
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 
@@ -24,6 +24,7 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
+**2026-09-20:** Plaster **600.0** T1b `stop_group` tabela zamknięty (lokalne; CI po push). `/noc 21`.
 **2026-09-20:** Plan **600.0** T1b `stop_group` tabela (`/noc 21`). Członkostwo parked.
 **2026-09-20:** Plaster **599.0** `resource.vehicle_profile` zamknięty (gate success). `/noc 9`.
 **2026-09-20:** Plan **599.0** `resource.vehicle_profile` (`/noc 9`).

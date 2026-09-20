@@ -510,6 +510,10 @@ class InvalidStop(DomainError):
     """Punkt na zleceniu: kind + miejsce + strefa IANA — nie mapa."""
 
 
+class InvalidStopGroup(DomainError):
+    """Nagłówek grupy punktów HITL na zleceniu — nie członkostwo stop."""
+
+
 class InvalidResource(DomainError):
     """Katalog floty: pojazd / kierowca / naczepa — nie trip."""
 
