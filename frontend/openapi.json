@@ -49240,6 +49240,17 @@
             ],
             "title": "Driver Card No"
           },
+          "vehicle_profile": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Vehicle Profile"
+          },
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
@@ -49456,6 +49467,17 @@
             ],
             "title": "Driver Card No"
           },
+          "vehicle_profile": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Vehicle Profile"
+          },
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
@@ -49489,6 +49511,7 @@
           "tail_lift",
           "phone",
           "driver_card_no",
+          "vehicle_profile",
           "source_ref",
           "superseded_by"
         ],

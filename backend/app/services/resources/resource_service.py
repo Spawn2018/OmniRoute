@@ -18,6 +18,7 @@ from app.domain.resource import (
     require_resource_kind,
     require_resource_source_ref,
     require_tail_lift,
+    require_vehicle_profile,
 )
 from app.models.resource import Resource
 from app.repositories.resources.resource_repository import ResourceRepository
@@ -36,6 +37,7 @@ class _FleetDraft(NamedTuple):
     lift: bool | None
     phone: str | None
     card: str | None
+    profile: str | None
     origin: str
 
 
@@ -52,6 +54,7 @@ def _fleet_draft(
     tail_lift: object,
     phone: object,
     driver_card_no: object,
+    vehicle_profile: object,
     source_ref: object,
 ) -> _FleetDraft:
     return _FleetDraft(
@@ -67,6 +70,7 @@ def _fleet_draft(
         require_tail_lift(tail_lift),
         require_phone(phone),
         require_driver_card_no(driver_card_no),
+        require_vehicle_profile(vehicle_profile),
         require_resource_source_ref(source_ref),
     )
 
@@ -83,6 +87,7 @@ def _fleet_unchanged(current: Resource, draft: _FleetDraft) -> bool:
         and current.tail_lift == draft.lift
         and current.phone == draft.phone
         and current.driver_card_no == draft.card
+        and current.vehicle_profile == draft.profile
         and current.source_ref == draft.origin
     )
 
@@ -118,12 +123,13 @@ class ResourceService:
         tail_lift: object = None,
         phone: object = None,
         driver_card_no: object = None,
+        vehicle_profile: object = None,
         source_ref: object,
     ) -> Resource:
         draft = _fleet_draft(
             resource_kind, display_name, registration_no, inventory_no,
             capacity_kg, capacity_ldm, capacity_m3, adr_certified, reefer,
-            tail_lift, phone, driver_card_no, source_ref,
+            tail_lift, phone, driver_card_no, vehicle_profile, source_ref,
         )
         current = await self._rows.find_current(draft.kind, draft.label)
         if current is not None and _fleet_unchanged(current, draft):
@@ -150,6 +156,7 @@ def _new_resource(organization_id: UUID, user_id: UUID, draft: _FleetDraft) -> R
         tail_lift=draft.lift,
         phone=draft.phone,
         driver_card_no=draft.card,
+        vehicle_profile=draft.profile,
         source_ref=draft.origin,
         created_by=user_id,
     )

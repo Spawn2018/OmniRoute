@@ -118,6 +118,17 @@ def test_migration_474_adds_driver_card_no() -> None:
     assert "drop_column" in source.split("def downgrade")[1]
 
 
+def test_migration_475_adds_vehicle_profile() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "475_resource_vehicle_profile.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "475_resource_vehicle_profile"' in source
+    assert 'down_revision: str | None = "474_resource_driver_card_no"' in source
+    assert "vehicle_profile" in source
+    assert "String(length=64)" in source
+    assert "drop_column" in source.split("def downgrade")[1]
+
+
 def test_service_does_not_import_parents_or_trip() -> None:
     service = (_SERVICES / "resources" / "resource_service.py").read_text(encoding="utf-8")
     assert "app.services.shipments" not in service

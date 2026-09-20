@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **598.0** T2 `resource.driver_card_no` (gate success)
-- **Etap:** Plan — delta **599.0** zaakceptowana `/noc`; wolno `/plaster`
-- **Następny:** **599.0** T2 leftover HITL `resource.vehicle_profile` (delta w open). HW = park `/noc`. **588.0** SH-R16-4 UXCL banner = park `/noc`. Job#2 po bannerze. Nie AI3. Nie G0-SH. Nie N3.
+- **Ostatni plaster:** **599.0** T2 `resource.vehicle_profile` (lokalne; CI po push)
+- **Etap:** Plan — brak delty **600.0**; `/plan-modul`
+- **Następny:** **600.0** T1b leftover HITL (po T2: HW park). **588.0** SH-R16-4 UXCL banner = park `/noc`. Job#2 po bannerze. Nie AI3. Nie G0-SH. Nie N3. Nie HW.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

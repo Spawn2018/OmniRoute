@@ -11,6 +11,7 @@ from app.domain.resource import (
     require_display_name,
     require_driver_card_no,
     require_inventory_no,
+    require_vehicle_profile,
     require_phone,
     require_reefer,
     require_registration_no,
@@ -41,6 +42,9 @@ def test_resource_allowlists() -> None:
     assert require_driver_card_no(" CARD-1 ") == "CARD-1"
     assert require_driver_card_no("") is None
     assert require_driver_card_no(None) is None
+    assert require_vehicle_profile(" HERE ") == "HERE"
+    assert require_vehicle_profile("") is None
+    assert require_vehicle_profile(None) is None
     assert require_resource_source_ref("fixture://resource/man") == "fixture://resource/man"
     assert require_capacity_kg("24000") is not None
     assert require_capacity_ldm("13.6") is not None
@@ -77,6 +81,8 @@ def test_resource_rejects_truck_kind_and_foreign_ref() -> None:
         require_phone("1" * 65)
     with pytest.raises(InvalidResource, match="karta"):
         require_driver_card_no("1" * 33)
+    with pytest.raises(InvalidResource, match="profil"):
+        require_vehicle_profile("1" * 65)
 
 
 @given(st.sampled_from(["truck", "car", "fleet"]))

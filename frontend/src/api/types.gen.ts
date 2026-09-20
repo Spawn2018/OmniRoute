@@ -13379,6 +13379,10 @@ export type ResourceCreate = {
      */
     driver_card_no?: string | null;
     /**
+     * Vehicle Profile
+     */
+    vehicle_profile?: string | null;
+    /**
      * Source Ref
      */
     source_ref: string;
@@ -13496,6 +13500,10 @@ export type ResourceResponse = {
      * Driver Card No
      */
     driver_card_no: string | null;
+    /**
+     * Vehicle Profile
+     */
+    vehicle_profile: string | null;
     /**
      * Source Ref
      */

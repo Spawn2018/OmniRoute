@@ -29,6 +29,7 @@ class ResourceCreate(BaseModel):
     tail_lift: object | None = None
     phone: str | None = None
     driver_card_no: str | None = None
+    vehicle_profile: str | None = None
     source_ref: str
 
 
@@ -49,6 +50,7 @@ class ResourceResponse(BaseModel):
     tail_lift: bool | None
     phone: str | None
     driver_card_no: str | None
+    vehicle_profile: str | None
     source_ref: str
     superseded_by: UUID | None
 
@@ -94,6 +96,7 @@ async def create_resource(
         tail_lift=body.tail_lift,
         phone=body.phone,
         driver_card_no=body.driver_card_no,
+        vehicle_profile=body.vehicle_profile,
         source_ref=body.source_ref,
     )
     await session.commit()
