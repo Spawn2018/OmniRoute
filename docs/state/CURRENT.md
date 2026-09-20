@@ -4,7 +4,7 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **599.0** T2 `resource.vehicle_profile` (lokalne; CI po push)
+**Ostatni plaster:** **599.0** T2 `resource.vehicle_profile` (gate success)
 
 **Etap:** Plan — brak delty **600.0**; `/plan-modul`
 
@@ -24,7 +24,7 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-20:** Plaster **599.0** `resource.vehicle_profile` zamknięty (lokalne; CI po push). `/noc 9`.
+**2026-09-20:** Plaster **599.0** `resource.vehicle_profile` zamknięty (gate success). `/noc 9`.
 **2026-09-20:** Plan **599.0** `resource.vehicle_profile` (`/noc 9`).
 **2026-09-20:** Plaster **598.0** `resource.driver_card_no` zamknięty (gate success). `/noc 9`.
 **2026-09-20:** Plan **598.0** `resource.driver_card_no` (`/noc 9`).
