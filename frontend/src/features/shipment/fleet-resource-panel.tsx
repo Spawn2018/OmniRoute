@@ -25,6 +25,7 @@ export function FleetResourcePanel(args: { signedIn: boolean }) {
   const [cold, setCold] = useState("")
   const [lift, setLift] = useState("")
   const [phone, setPhone] = useState("")
+  const [driverCardNo, setDriverCardNo] = useState("")
   const listed = useQuery({
     queryKey: ["resources", ctx.organizationId, kind],
     queryFn: () => fetchResources(kind),
@@ -46,6 +47,7 @@ export function FleetResourcePanel(args: { signedIn: boolean }) {
           cold,
           lift,
           phone,
+          driverCardNo,
         }),
       ),
     onSuccess: () => {
@@ -107,6 +109,15 @@ export function FleetResourcePanel(args: { signedIn: boolean }) {
           placeholder="phone"
           value={phone}
           onChange={(event) => setPhone(event.target.value)}
+        />
+      </label>
+      <label className="flex flex-col gap-1 text-xs">
+        Karta kierowcy (opcjonalnie)
+        <Input
+          aria-label="driver_card_no"
+          placeholder="driver_card_no"
+          value={driverCardNo}
+          onChange={(event) => setDriverCardNo(event.target.value)}
         />
       </label>
       <label className="flex flex-col gap-1 text-xs">
@@ -190,6 +201,7 @@ export function FleetResourcePanel(args: { signedIn: boolean }) {
             {row.registration_no ? ` · ${row.registration_no}` : ""}
             {row.inventory_no ? ` · ${row.inventory_no}` : ""}
             {row.phone ? ` · ${row.phone}` : ""}
+            {row.driver_card_no ? ` · ${row.driver_card_no}` : ""}
             {row.adr_certified === true ? " · ADR" : ""}
             {row.reefer === true ? " · chłodnia" : ""}
             {row.tail_lift === true ? " · winda" : ""}

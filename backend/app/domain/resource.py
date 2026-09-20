@@ -6,6 +6,7 @@ _KINDS = frozenset({"vehicle", "driver", "trailer"})
 _MAX_NAME = 64
 _MAX_REG = 32
 _MAX_PHONE = 64
+_MAX_CARD = 32
 _MAX_REF = 256
 _FIXTURE = "fixture://resource/"
 _MANUAL = "tenant:manual"
@@ -92,6 +93,19 @@ def require_phone(raw: object) -> str | None:
         return None
     if len(token) > _MAX_PHONE:
         raise InvalidResource("telefon za długi")
+    return token
+
+
+def require_driver_card_no(raw: object) -> str | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidResource("karta kierowcy musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        return None
+    if len(token) > _MAX_CARD:
+        raise InvalidResource("karta kierowcy za długa")
     return token
 
 

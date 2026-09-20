@@ -13375,6 +13375,10 @@ export type ResourceCreate = {
      */
     phone?: string | null;
     /**
+     * Driver Card No
+     */
+    driver_card_no?: string | null;
+    /**
      * Source Ref
      */
     source_ref: string;
@@ -13488,6 +13492,10 @@ export type ResourceResponse = {
      * Phone
      */
     phone: string | null;
+    /**
+     * Driver Card No
+     */
+    driver_card_no: string | null;
     /**
      * Source Ref
      */

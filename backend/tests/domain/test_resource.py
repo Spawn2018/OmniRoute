@@ -9,6 +9,7 @@ from app.domain.resource import (
     require_capacity_ldm,
     require_capacity_m3,
     require_display_name,
+    require_driver_card_no,
     require_inventory_no,
     require_phone,
     require_reefer,
@@ -37,6 +38,9 @@ def test_resource_allowlists() -> None:
     assert require_phone(" +48 ") == "+48"
     assert require_phone("") is None
     assert require_phone(None) is None
+    assert require_driver_card_no(" CARD-1 ") == "CARD-1"
+    assert require_driver_card_no("") is None
+    assert require_driver_card_no(None) is None
     assert require_resource_source_ref("fixture://resource/man") == "fixture://resource/man"
     assert require_capacity_kg("24000") is not None
     assert require_capacity_ldm("13.6") is not None
@@ -71,6 +75,8 @@ def test_resource_rejects_truck_kind_and_foreign_ref() -> None:
         require_tail_lift("tak")
     with pytest.raises(InvalidResource, match="telefon"):
         require_phone("1" * 65)
+    with pytest.raises(InvalidResource, match="karta"):
+        require_driver_card_no("1" * 33)
 
 
 @given(st.sampled_from(["truck", "car", "fleet"]))

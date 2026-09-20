@@ -10,6 +10,7 @@ from app.domain.resource import (
     require_capacity_ldm,
     require_capacity_m3,
     require_display_name,
+    require_driver_card_no,
     require_inventory_no,
     require_phone,
     require_reefer,
@@ -34,6 +35,7 @@ class _FleetDraft(NamedTuple):
     cold: bool | None
     lift: bool | None
     phone: str | None
+    card: str | None
     origin: str
 
 
@@ -49,6 +51,7 @@ def _fleet_draft(
     reefer: object,
     tail_lift: object,
     phone: object,
+    driver_card_no: object,
     source_ref: object,
 ) -> _FleetDraft:
     return _FleetDraft(
@@ -63,6 +66,7 @@ def _fleet_draft(
         require_reefer(reefer),
         require_tail_lift(tail_lift),
         require_phone(phone),
+        require_driver_card_no(driver_card_no),
         require_resource_source_ref(source_ref),
     )
 
@@ -78,6 +82,7 @@ def _fleet_unchanged(current: Resource, draft: _FleetDraft) -> bool:
         and current.reefer == draft.cold
         and current.tail_lift == draft.lift
         and current.phone == draft.phone
+        and current.driver_card_no == draft.card
         and current.source_ref == draft.origin
     )
 
@@ -112,21 +117,13 @@ class ResourceService:
         reefer: object = None,
         tail_lift: object = None,
         phone: object = None,
+        driver_card_no: object = None,
         source_ref: object,
     ) -> Resource:
         draft = _fleet_draft(
-            resource_kind,
-            display_name,
-            registration_no,
-            inventory_no,
-            capacity_kg,
-            capacity_ldm,
-            capacity_m3,
-            adr_certified,
-            reefer,
-            tail_lift,
-            phone,
-            source_ref,
+            resource_kind, display_name, registration_no, inventory_no,
+            capacity_kg, capacity_ldm, capacity_m3, adr_certified, reefer,
+            tail_lift, phone, driver_card_no, source_ref,
         )
         current = await self._rows.find_current(draft.kind, draft.label)
         if current is not None and _fleet_unchanged(current, draft):
@@ -152,6 +149,7 @@ def _new_resource(organization_id: UUID, user_id: UUID, draft: _FleetDraft) -> R
         reefer=draft.cold,
         tail_lift=draft.lift,
         phone=draft.phone,
+        driver_card_no=draft.card,
         source_ref=draft.origin,
         created_by=user_id,
     )

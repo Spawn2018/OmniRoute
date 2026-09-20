@@ -49229,6 +49229,17 @@
             ],
             "title": "Phone"
           },
+          "driver_card_no": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Driver Card No"
+          },
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
@@ -49434,6 +49445,17 @@
             ],
             "title": "Phone"
           },
+          "driver_card_no": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Driver Card No"
+          },
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
@@ -49466,6 +49488,7 @@
           "reefer",
           "tail_lift",
           "phone",
+          "driver_card_no",
           "source_ref",
           "superseded_by"
         ],

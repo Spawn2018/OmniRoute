@@ -28,6 +28,7 @@ class ResourceCreate(BaseModel):
     reefer: object | None = None
     tail_lift: object | None = None
     phone: str | None = None
+    driver_card_no: str | None = None
     source_ref: str
 
 
@@ -47,6 +48,7 @@ class ResourceResponse(BaseModel):
     reefer: bool | None
     tail_lift: bool | None
     phone: str | None
+    driver_card_no: str | None
     source_ref: str
     superseded_by: UUID | None
 
@@ -91,6 +93,7 @@ async def create_resource(
         reefer=body.reefer,
         tail_lift=body.tail_lift,
         phone=body.phone,
+        driver_card_no=body.driver_card_no,
         source_ref=body.source_ref,
     )
     await session.commit()

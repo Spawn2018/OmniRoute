@@ -107,6 +107,17 @@ def test_migration_473_adds_phone() -> None:
     assert "drop_column" in source.split("def downgrade")[1]
 
 
+def test_migration_474_adds_driver_card_no() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "474_resource_driver_card_no.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "474_resource_driver_card_no"' in source
+    assert 'down_revision: str | None = "473_resource_phone"' in source
+    assert "driver_card_no" in source
+    assert "String(length=32)" in source
+    assert "drop_column" in source.split("def downgrade")[1]
+
+
 def test_service_does_not_import_parents_or_trip() -> None:
     service = (_SERVICES / "resources" / "resource_service.py").read_text(encoding="utf-8")
     assert "app.services.shipments" not in service

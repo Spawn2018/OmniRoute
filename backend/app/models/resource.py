@@ -43,6 +43,7 @@ class Resource(Base, TimestampMixin):
     reefer: Mapped[bool | None] = mapped_column(Boolean, nullable=True)
     tail_lift: Mapped[bool | None] = mapped_column(Boolean, nullable=True)
     phone: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    driver_card_no: Mapped[str | None] = mapped_column(String(32), nullable=True)
     capacity_kg: Mapped[Decimal | None] = mapped_column(Numeric(14, 4), nullable=True)
     capacity_ldm: Mapped[Decimal | None] = mapped_column(Numeric(14, 4), nullable=True)
     capacity_m3: Mapped[Decimal | None] = mapped_column(Numeric(14, 4), nullable=True)
