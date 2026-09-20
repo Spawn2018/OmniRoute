@@ -4,7 +4,7 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **601.0** T1b bind `stop.stop_group_id` (lokalne; CI po push)
+**Ostatni plaster:** **601.0** T1b bind `stop.stop_group_id` (gate success)
 
 **Etap:** Plan — brak delty **602.0**; `/plan-modul`
 
@@ -24,7 +24,7 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-20:** Plaster **601.0** T1b bind `stop_group_id` zamknięty (lokalne; CI po push). `/noc 21`.
+**2026-09-20:** Plaster **601.0** T1b bind `stop_group_id` zamknięty (gate success). `/noc 21`.
 **2026-09-20:** Plan **601.0** T1b bind `stop_group_id` (`/noc 21`). Sync kod parked.
 **2026-09-20:** Plaster **600.0** T1b `stop_group` tabela zamknięty (gate success). `/noc 21`.
 **2026-09-20:** Plan **600.0** T1b `stop_group` tabela (`/noc 21`). Członkostwo parked.
