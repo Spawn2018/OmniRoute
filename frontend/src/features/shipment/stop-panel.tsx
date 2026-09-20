@@ -17,6 +17,7 @@ export function StopPointPanel(args: { canWrite: boolean }) {
   const [etaPhysical, setEtaPhysical] = useState("2026-09-09T12:00:00+00:00")
   const [etaLegal, setEtaLegal] = useState("2026-09-09T12:00:00+00:00")
   const [groupCode, setGroupCode] = useState("")
+  const [groupId, setGroupId] = useState("")
   const [driverNotes, setDriverNotes] = useState("")
   const [weightKg, setWeightKg] = useState("")
   const [quantityHitl, setQuantityHitl] = useState("")
@@ -46,6 +47,7 @@ export function StopPointPanel(args: { canWrite: boolean }) {
           etaPhysical,
           etaLegal,
           groupCode,
+          groupId,
           driverNotes,
           weightKg,
           quantityHitl,
@@ -70,7 +72,7 @@ export function StopPointPanel(args: { canWrite: boolean }) {
       <p className="text-sm font-medium">Punkt załadunku i wyładunku</p>
       <p className="text-xs text-muted-foreground">
         Miejsce ze słownika lokalizacji. Strefa IANA. Dwa ETA HITL. Opcjonalny kod grupy.
-        Opcjonalna waga HITL. Opcjonalna ilość HITL. Opcjonalny kod opakowania HITL. Opcjonalna plomba
+        Opcjonalny identyfikator grupy punktów (`stop_group_id`). Opcjonalna waga HITL. Opcjonalna ilość HITL. Opcjonalny kod opakowania HITL. Opcjonalna plomba
         wjazdu i wyjazdu HITL. Opcjonalny numer awizacji HITL. Opcjonalne minuty wolnego oczekiwania
         HITL. Opcjonalny początek oczekiwania HITL. Opcjonalna jakość POD HITL.
         Nie mapa. Nie GPS. Nie pogoda. Nie odliczanie. Nie kamera.
@@ -116,6 +118,12 @@ export function StopPointPanel(args: { canWrite: boolean }) {
         placeholder="stop_group_code"
         value={groupCode}
         onChange={(event) => setGroupCode(event.target.value)}
+      />
+      <Input
+        aria-label="Identyfikator grupy punktów"
+        placeholder="stop_group_id"
+        value={groupId}
+        onChange={(event) => setGroupId(event.target.value)}
       />
       <Input
         aria-label="Notatka dla kierowcy"

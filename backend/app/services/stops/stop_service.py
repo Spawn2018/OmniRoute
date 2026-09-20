@@ -13,6 +13,7 @@ from app.domain.stop import (
     require_sequence_no,
     require_stop_appointment_ref,
     require_stop_group_code,
+    require_stop_group_id,
     require_stop_kind,
     require_stop_location_id,
     require_stop_packaging_code,
@@ -42,6 +43,7 @@ class _PackedPoint:
     state: str
     origin: str
     group_code: str | None
+    group_id: UUID | None
     driver_notes: str | None
     mass: Decimal | None
     count: int | None
@@ -59,6 +61,7 @@ class _PackedPoint:
 @dataclass(frozen=True)
 class _HitlTail:
     group_code: object = None
+    group_id: object = None
     driver_notes: object = None
     mass: object = None
     count: object = None
@@ -69,6 +72,12 @@ class _HitlTail:
     wait_free: object = None
     wait_start: object = None
     pod: object = None
+
+
+def _optional_group_id(raw: object) -> UUID | None:
+    if raw is None:
+        return None
+    return require_stop_group_id(raw)
 
 
 def _pack_point(
@@ -92,6 +101,7 @@ def _pack_point(
         state=require_stop_status(status),
         origin=require_stop_source_ref(source_ref),
         group_code=require_stop_group_code(tail.group_code),
+        group_id=_optional_group_id(tail.group_id),
         driver_notes=require_notes_for_driver(tail.driver_notes),
         mass=require_stop_weight_kg(tail.mass),
         count=require_stop_quantity(tail.count),
@@ -115,6 +125,7 @@ def _same_point(current: Stop, packed: _PackedPoint) -> bool:
         and current.status == packed.state
         and current.source_ref == packed.origin
         and current.stop_group_code == packed.group_code
+        and current.stop_group_id == packed.group_id
         and current.notes_for_driver == packed.driver_notes
         and current.weight_kg == packed.mass
         and current.quantity == packed.count
@@ -158,6 +169,7 @@ class StopService:
         eta_physical: object,
         eta_legal: object,
         stop_group_code: object = None,
+        stop_group_id: object = None,
         notes_for_driver: object = None,
         weight_kg: object = None,
         quantity: object = None,
@@ -170,9 +182,9 @@ class StopService:
         pod_quality: object = None,
     ) -> Stop:
         tail = _HitlTail(
-            stop_group_code, notes_for_driver, weight_kg, quantity, packaging_code,
-            seal_in, seal_out, appointment_ref, waiting_free_minutes, waiting_started_at,
-            pod_quality,
+            stop_group_code, stop_group_id, notes_for_driver, weight_kg, quantity,
+            packaging_code, seal_in, seal_out, appointment_ref, waiting_free_minutes,
+            waiting_started_at, pod_quality,
         )
         packed = _pack_point(
             shipment_id, location_id, stop_kind, sequence_no, time_zone, status, source_ref,
@@ -206,6 +218,7 @@ class StopService:
                 status=packed.state,
                 source_ref=packed.origin,
                 stop_group_code=packed.group_code,
+                stop_group_id=packed.group_id,
                 notes_for_driver=packed.driver_notes,
                 weight_kg=packed.mass,
                 quantity=packed.count,

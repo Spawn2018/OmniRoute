@@ -14,6 +14,7 @@ export type StopRow = {
   eta_physical: string
   eta_legal: string
   stop_group_code: string | null
+  stop_group_id: string | null
   notes_for_driver: string | null
   weight_kg: string | null
   quantity: number | null
@@ -38,6 +39,7 @@ export type StopWrite = {
   eta_physical: string
   eta_legal: string
   stop_group_code: string | null
+  stop_group_id: string | null
   notes_for_driver: string | null
   weight_kg: string | null
   quantity: number | string | null
@@ -62,6 +64,7 @@ export function stopWrite(args: {
   etaPhysical: string
   etaLegal: string
   groupCode: string
+  groupId: string
   driverNotes: string
   weightKg: string
   quantityHitl: string
@@ -74,6 +77,7 @@ export function stopWrite(args: {
   podQuality: string
 }): StopWrite {
   const group = args.groupCode.trim()
+  const groupToken = args.groupId.trim()
   const notes = args.driverNotes.trim()
   const mass = args.weightKg.trim()
   const pack = args.packagingCode.trim()
@@ -92,6 +96,7 @@ export function stopWrite(args: {
     eta_physical: args.etaPhysical.trim(),
     eta_legal: args.etaLegal.trim(),
     stop_group_code: group === "" ? null : group,
+    stop_group_id: groupToken === "" ? null : groupToken,
     notes_for_driver: notes === "" ? null : notes,
     weight_kg: mass === "" ? null : mass,
     quantity: optionalStopInt(args.quantityHitl),

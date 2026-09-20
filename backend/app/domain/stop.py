@@ -95,6 +95,20 @@ def require_stop_group_code(raw: object) -> str | None:
     return token
 
 
+def require_stop_group_id(raw: object) -> UUID:
+    if type(raw) is not UUID:
+        raise InvalidStop("grupa musi być UUID")
+    return raw
+
+
+def require_group_on_stop_shipment(
+    shipment_id: UUID,
+    group_shipment_id: UUID,
+) -> None:
+    if shipment_id != group_shipment_id:
+        raise InvalidStop("grupa spoza trasy zlecenia")
+
+
 def require_notes_for_driver(raw: object) -> str | None:
     if raw is None:
         return None

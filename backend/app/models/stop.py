@@ -64,6 +64,12 @@ class Stop(Base, TimestampMixin):
             name="fk_stop_location",
             ondelete="RESTRICT",
         ),
+        ForeignKeyConstraint(
+            ["organization_id", "shipment_id", "stop_group_id"],
+            ["stop_group.organization_id", "stop_group.shipment_id", "stop_group.id"],
+            name="fk_stop_stop_group",
+            ondelete="RESTRICT",
+        ),
         Index("ix_stop_org_shipment", "organization_id", "shipment_id"),
         UniqueConstraint(
             "organization_id",
@@ -88,6 +94,7 @@ class Stop(Base, TimestampMixin):
     status: Mapped[str] = mapped_column(String(12), nullable=False)
     source_ref: Mapped[str] = mapped_column(Text, nullable=False)
     stop_group_code: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    stop_group_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)
     notes_for_driver: Mapped[str | None] = mapped_column(String(256), nullable=True)
     weight_kg: Mapped[Decimal | None] = mapped_column(Numeric(14, 4), nullable=True)
     quantity: Mapped[int | None] = mapped_column(Integer, nullable=True)

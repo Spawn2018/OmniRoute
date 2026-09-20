@@ -2,6 +2,7 @@ from uuid import UUID, uuid4
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.domain.errors import ResourceNotFound
 from app.domain.stop_group import (
     require_stop_group_code,
     require_stop_group_shipment_id,
@@ -17,6 +18,12 @@ class StopGroupService:
 
     async def list_groups(self) -> list[StopGroup]:
         return await self._rows.list_all()
+
+    async def get_group(self, group_id: UUID) -> StopGroup:
+        row = await self._rows.get_by_id(group_id)
+        if row is None:
+            raise ResourceNotFound("nieznana grupa punktów")
+        return row
 
     async def record_group(
         self,

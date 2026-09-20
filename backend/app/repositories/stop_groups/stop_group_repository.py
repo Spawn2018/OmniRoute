@@ -17,6 +17,14 @@ class StopGroupRepository:
         )
         return list(result.all())
 
+    async def get_by_id(self, group_id: object) -> StopGroup | None:
+        loaded = await self._session.scalar(
+            select(StopGroup).where(StopGroup.id == group_id).limit(1),
+        )
+        if loaded is None:
+            return None
+        return loaded
+
     async def add(self, row: StopGroup) -> StopGroup:
         self._session.add(row)
         await self._session.flush()

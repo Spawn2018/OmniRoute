@@ -35,6 +35,12 @@ class StopGroup(Base, TimestampMixin):
             "source_ref",
             name="uq_stop_group_org_source",
         ),
+        UniqueConstraint(
+            "organization_id",
+            "shipment_id",
+            "id",
+            name="uq_stop_group_org_shipment_id",
+        ),
         CheckConstraint(
             "group_code ~ '^[A-Za-z0-9_-]{2,32}$'",
             name="ck_stop_group_group_code",

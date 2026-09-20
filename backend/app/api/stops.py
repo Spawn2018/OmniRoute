@@ -7,9 +7,11 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.deps import get_current_identity, require_permission, require_tenant_session
 from app.core.session_token import SessionIdentity
+from app.domain.stop import require_group_on_stop_shipment
 from app.models.stop import Stop
 from app.services.geography.location_service import LocationService
 from app.services.shipments.shipment_service import ShipmentService
+from app.services.stop_groups.stop_group_service import StopGroupService
 from app.services.stops.stop_service import StopService
 
 router = APIRouter(prefix="/stops", tags=["stops"])
@@ -30,6 +32,7 @@ class StopCreate(BaseModel):
     eta_physical: str
     eta_legal: str
     stop_group_code: str | None = None
+    stop_group_id: UUID | None = None
     notes_for_driver: str | None = None
     weight_kg: str | None = None
     quantity: int | str | float | bool | None = None
@@ -57,6 +60,7 @@ class StopResponse(BaseModel):
     eta_physical: datetime
     eta_legal: datetime
     stop_group_code: str | None
+    stop_group_id: UUID | None
     notes_for_driver: str | None
     weight_kg: str | None
     quantity: int | None
@@ -96,6 +100,11 @@ async def create_stop(
 ) -> StopResponse:
     shipment = await ShipmentService(session).get_shipment(body.shipment_id)
     place = await LocationService(session).get_location(body.location_id)
+    group_id: UUID | None = None
+    if body.stop_group_id is not None:
+        group = await StopGroupService(session).get_group(body.stop_group_id)
+        require_group_on_stop_shipment(shipment.id, group.shipment_id)
+        group_id = group.id
     row = await StopService(session).record_stop(
         organization_id=identity.organization_id,
         user_id=identity.user_id,
@@ -109,6 +118,7 @@ async def create_stop(
         eta_physical=body.eta_physical,
         eta_legal=body.eta_legal,
         stop_group_code=body.stop_group_code,
+        stop_group_id=group_id,
         notes_for_driver=body.notes_for_driver,
         weight_kg=body.weight_kg,
         quantity=body.quantity,

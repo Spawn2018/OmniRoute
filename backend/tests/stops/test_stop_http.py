@@ -1,3 +1,4 @@
+from types import SimpleNamespace
 from unittest.mock import AsyncMock
 from uuid import UUID, uuid4
 
@@ -97,6 +98,7 @@ class StubStopService:
         eta_physical: object,
         eta_legal: object,
         stop_group_code: object = None,
+        stop_group_id: object = None,
         notes_for_driver: object = None,
         weight_kg: object = None,
         quantity: object = None,
@@ -114,6 +116,7 @@ class StubStopService:
         state = require_stop_status(status)
         origin = require_stop_source_ref(source_ref)
         group = require_stop_group_code(stop_group_code)
+        group_token = stop_group_id if type(stop_group_id) is UUID else None
         notes = require_notes_for_driver(notes_for_driver)
         mass = require_stop_weight_kg(weight_kg)
         count = require_stop_quantity(quantity)
@@ -148,6 +151,7 @@ class StubStopService:
             and current.eta_physical == physical
             and current.eta_legal == legal
             and current.stop_group_code == group
+            and current.stop_group_id == group_token
             and current.notes_for_driver == notes
             and current.weight_kg == mass
             and current.quantity == count
@@ -171,6 +175,7 @@ class StubStopService:
             status=state,
             source_ref=origin,
             stop_group_code=group,
+            stop_group_id=group_token,
             notes_for_driver=notes,
             weight_kg=mass,
             quantity=count,
@@ -213,11 +218,29 @@ def _place() -> Location:
     )
 
 
+class StubStopGroupService:
+    def __init__(self, session: object) -> None:
+        self._session = session
+        self.row: object | None = None
+
+    async def get_group(self, group_id: UUID) -> object:
+        from types import SimpleNamespace
+
+        if self.row is None:
+            raise ResourceNotFound("nieznana grupa punktów")
+        group = self.row
+        assert isinstance(group, SimpleNamespace)
+        if group.id != group_id:
+            raise ResourceNotFound("nieznana grupa punktów")
+        return group
+
+
 @pytest.fixture
 def catalog_client(monkeypatch: pytest.MonkeyPatch) -> object:
     ships = StubShipmentService(object())
     places = StubLocationService(object())
     rows = StubStopService(object())
+    groups = StubStopGroupService(object())
 
     async def _fake_tenant_session() -> object:
         session = AsyncMock()
@@ -227,8 +250,10 @@ def catalog_client(monkeypatch: pytest.MonkeyPatch) -> object:
     monkeypatch.setattr("app.api.stops.ShipmentService", lambda _s: ships)
     monkeypatch.setattr("app.api.stops.LocationService", lambda _s: places)
     monkeypatch.setattr("app.api.stops.StopService", lambda _s: rows)
+    monkeypatch.setattr("app.api.stops.StopGroupService", lambda _s: groups)
     ships.row = _shipment()
     places.row = _place()
+    rows.groups = groups
     set_authz_checker(AllowAllAuthz())
     app.dependency_overrides[require_tenant_session] = _fake_tenant_session
     yield TestClient(app), ships, places, rows
@@ -255,6 +280,7 @@ def test_http_create_list_supersede_and_reject_pickup(catalog_client: object) ->
     first = client.post("/api/v1/stops", headers=headers, json=payload)
     assert first.status_code == 201
     assert first.json()["stop_group_code"] is None
+    assert first.json()["stop_group_id"] is None
     assert first.json()["notes_for_driver"] is None
     assert "amount" not in first.json()
     assert first.json()["eta_physical"].startswith("2026-09-09T12:00:00")
@@ -872,3 +898,83 @@ def test_http_rejects_unknown_pod_quality(catalog_client: object) -> None:
     )
     assert reply.status_code == 400
     assert "pod" in reply.json()["detail"]
+
+
+def test_http_create_stop_with_stop_group_id(catalog_client: object) -> None:
+    client, ships, places, rows = catalog_client
+    assert ships.row is not None
+    assert places.row is not None
+    group_id = uuid4()
+    rows.groups.row = SimpleNamespace(id=group_id, shipment_id=ships.row.id)
+    headers = bearer_auth_headers()
+    created = client.post(
+        "/api/v1/stops",
+        headers=headers,
+        json={
+            "shipment_id": str(ships.row.id),
+            "location_id": str(places.row.id),
+            "stop_kind": "loading",
+            "sequence_no": 24,
+            "time_zone": "Europe/Warsaw",
+            "status": "pending",
+            "source_ref": "tenant:manual",
+            "eta_physical": _HITL_ISO,
+            "eta_legal": _HITL_ISO,
+            "stop_group_id": str(group_id),
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["stop_group_id"] == str(group_id)
+    assert created.json()["stop_group_code"] is None
+
+
+def test_http_rejects_stop_group_other_shipment(catalog_client: object) -> None:
+    client, ships, places, rows = catalog_client
+    assert ships.row is not None
+    assert places.row is not None
+    group_id = uuid4()
+    rows.groups.row = SimpleNamespace(id=group_id, shipment_id=uuid4())
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/stops",
+        headers=headers,
+        json={
+            "shipment_id": str(ships.row.id),
+            "location_id": str(places.row.id),
+            "stop_kind": "loading",
+            "sequence_no": 25,
+            "time_zone": "Europe/Warsaw",
+            "status": "pending",
+            "source_ref": "tenant:manual",
+            "eta_physical": _HITL_ISO,
+            "eta_legal": _HITL_ISO,
+            "stop_group_id": str(group_id),
+        },
+    )
+    assert reply.status_code == 400
+    assert "grupa" in reply.json()["detail"]
+
+
+def test_http_rejects_unknown_stop_group_id(catalog_client: object) -> None:
+    client, ships, places, rows = catalog_client
+    assert ships.row is not None
+    assert places.row is not None
+    rows.groups.row = None
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/stops",
+        headers=headers,
+        json={
+            "shipment_id": str(ships.row.id),
+            "location_id": str(places.row.id),
+            "stop_kind": "loading",
+            "sequence_no": 26,
+            "time_zone": "Europe/Warsaw",
+            "status": "pending",
+            "source_ref": "tenant:manual",
+            "eta_physical": _HITL_ISO,
+            "eta_legal": _HITL_ISO,
+            "stop_group_id": str(uuid4()),
+        },
+    )
+    assert reply.status_code == 404
