@@ -49218,6 +49218,17 @@
             ],
             "title": "Tail Lift"
           },
+          "phone": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Phone"
+          },
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
@@ -49412,6 +49423,17 @@
             ],
             "title": "Tail Lift"
           },
+          "phone": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Phone"
+          },
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
@@ -49443,6 +49465,7 @@
           "adr_certified",
           "reefer",
           "tail_lift",
+          "phone",
           "source_ref",
           "superseded_by"
         ],

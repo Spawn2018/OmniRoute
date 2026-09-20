@@ -13371,6 +13371,10 @@ export type ResourceCreate = {
      */
     tail_lift?: unknown | null;
     /**
+     * Phone
+     */
+    phone?: string | null;
+    /**
      * Source Ref
      */
     source_ref: string;
@@ -13480,6 +13484,10 @@ export type ResourceResponse = {
      * Tail Lift
      */
     tail_lift: boolean | null;
+    /**
+     * Phone
+     */
+    phone: string | null;
     /**
      * Source Ref
      */

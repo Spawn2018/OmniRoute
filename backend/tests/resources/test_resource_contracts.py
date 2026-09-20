@@ -20,9 +20,9 @@ def test_migration_091_creates_table_and_forces_rls() -> None:
 
 
 def test_migration_465_adds_capacity_kg() -> None:
-    source = (
-        _ROOT / "backend" / "alembic" / "versions" / "465_resource_capacity_kg.py"
-    ).read_text(encoding="utf-8")
+    source = (_ROOT / "backend" / "alembic" / "versions" / "465_resource_capacity_kg.py").read_text(
+        encoding="utf-8"
+    )
     assert 'revision: str = "465_resource_capacity_kg"' in source
     assert 'down_revision: str | None = "464_container_release"' in source
     assert "capacity_kg" in source
@@ -42,9 +42,9 @@ def test_migration_466_adds_capacity_ldm() -> None:
 
 
 def test_migration_467_adds_capacity_m3() -> None:
-    source = (
-        _ROOT / "backend" / "alembic" / "versions" / "467_resource_capacity_m3.py"
-    ).read_text(encoding="utf-8")
+    source = (_ROOT / "backend" / "alembic" / "versions" / "467_resource_capacity_m3.py").read_text(
+        encoding="utf-8"
+    )
     assert 'revision: str = "467_resource_capacity_m3"' in source
     assert 'down_revision: str | None = "466_resource_capacity_ldm"' in source
     assert "capacity_m3" in source
@@ -75,9 +75,9 @@ def test_migration_470_adds_adr_certified() -> None:
 
 
 def test_migration_471_adds_reefer() -> None:
-    source = (
-        _ROOT / "backend" / "alembic" / "versions" / "471_resource_reefer.py"
-    ).read_text(encoding="utf-8")
+    source = (_ROOT / "backend" / "alembic" / "versions" / "471_resource_reefer.py").read_text(
+        encoding="utf-8"
+    )
     assert 'revision: str = "471_resource_reefer"' in source
     assert 'down_revision: str | None = "470_resource_adr_certified"' in source
     assert "reefer" in source
@@ -86,13 +86,24 @@ def test_migration_471_adds_reefer() -> None:
 
 
 def test_migration_472_adds_tail_lift() -> None:
-    source = (
-        _ROOT / "backend" / "alembic" / "versions" / "472_resource_tail_lift.py"
-    ).read_text(encoding="utf-8")
+    source = (_ROOT / "backend" / "alembic" / "versions" / "472_resource_tail_lift.py").read_text(
+        encoding="utf-8"
+    )
     assert 'revision: str = "472_resource_tail_lift"' in source
     assert 'down_revision: str | None = "471_resource_reefer"' in source
     assert "tail_lift" in source
     assert "Boolean" in source
+    assert "drop_column" in source.split("def downgrade")[1]
+
+
+def test_migration_473_adds_phone() -> None:
+    source = (_ROOT / "backend" / "alembic" / "versions" / "473_resource_phone.py").read_text(
+        encoding="utf-8"
+    )
+    assert 'revision: str = "473_resource_phone"' in source
+    assert 'down_revision: str | None = "472_resource_tail_lift"' in source
+    assert "phone" in source
+    assert "String(length=64)" in source
     assert "drop_column" in source.split("def downgrade")[1]
 
 

@@ -27,6 +27,7 @@ class ResourceCreate(BaseModel):
     adr_certified: object | None = None
     reefer: object | None = None
     tail_lift: object | None = None
+    phone: str | None = None
     source_ref: str
 
 
@@ -45,6 +46,7 @@ class ResourceResponse(BaseModel):
     adr_certified: bool | None
     reefer: bool | None
     tail_lift: bool | None
+    phone: str | None
     source_ref: str
     superseded_by: UUID | None
 
@@ -88,6 +90,7 @@ async def create_resource(
         adr_certified=body.adr_certified,
         reefer=body.reefer,
         tail_lift=body.tail_lift,
+        phone=body.phone,
         source_ref=body.source_ref,
     )
     await session.commit()

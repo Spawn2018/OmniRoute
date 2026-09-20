@@ -5,6 +5,7 @@ from app.domain.errors import InvalidResource
 _KINDS = frozenset({"vehicle", "driver", "trailer"})
 _MAX_NAME = 64
 _MAX_REG = 32
+_MAX_PHONE = 64
 _MAX_REF = 256
 _FIXTURE = "fixture://resource/"
 _MANUAL = "tenant:manual"
@@ -79,6 +80,19 @@ def require_tail_lift(raw: object) -> bool | None:
     if type(raw) is not bool:
         raise InvalidResource("winda")
     return raw
+
+
+def require_phone(raw: object) -> str | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidResource("telefon musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        return None
+    if len(token) > _MAX_PHONE:
+        raise InvalidResource("telefon za długi")
+    return token
 
 
 def require_resource_source_ref(raw: object) -> str:
