@@ -11,13 +11,13 @@ from app.domain.resource import (
     require_display_name,
     require_driver_card_no,
     require_inventory_no,
-    require_vehicle_profile,
     require_phone,
     require_reefer,
     require_registration_no,
     require_resource_kind,
     require_resource_source_ref,
     require_tail_lift,
+    require_vehicle_profile,
 )
 
 
