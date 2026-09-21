@@ -262,7 +262,7 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **259.0 leftover:** leftover T1b tabela; leftover pojemności DONE 589–591; `document_expiries` DONE 592.0; HW. Tu tylko trasa `/fleet` na `resource`. Nie GPS. Nie live HTTP.
 - **260.0 leftover:** leftover FTL=1 409; leftover D2b FK paczki na przesyłkę; leftover `stop` na consignment. Tu tylko tabela `consignment` N na `shipment`. Nie mapa. Nie live HTTP.
 - **261.0 leftover:** 4 widoki Timeline/Blocks/Table/Legs; N10; T6b–d select&drop/pre-planning/polygon; X8 podkłady; GET `stop` bez `shipment_id`. Tu tylko `/planning` + lazy overlay `trip`. Nie leaflet.
-- **262.0 leftover:** rollup SQL marży po `parent_shipment_id`. Klucz `charge.shipment_id` jest w 613.0. Widok drzewa zostaje — nie generated column, nie suma w Pythonie.
+- **262.0 leftover:** rollup SQL marży po `parent_shipment_id`. Klucz `charge.shipment_id` jest w 613.0. Plan 614.0: widok `shipment_tree_margin` (korzeń + bezpośrednie dzieci). Nie generated column, nie suma w Pythonie.
 - **263.0 leftover:** leftover outbox kind DONE 264.0. leftover instancja `task` (FK shipment/trip/stop, assignee, status); leftover matching SQL `applies_when`; leftover konsument. Tu tylko HITL `task_template` kod + warunek jako dane. Nie worker.
 - **264.0 leftover:** konsument / `processed` / Temporal; instancja `task`; matching SQL `applies_when`. Tu tylko kind `task_template_saved` na istniejącej `outbox_event`. Nie worker.
 - **215.0 leftover:** leftover T1b tabela `stop_group`; EXP1 waga/plomba/awizacja. Tu tylko `notes_for_driver` HITL. Nie waga. Nie mapa.
