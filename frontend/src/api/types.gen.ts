@@ -2849,6 +2849,10 @@ export type ContainerCreate = {
      */
     pod_unlocode?: string | null;
     /**
+     * Destination City
+     */
+    destination_city?: string | null;
+    /**
      * Remarks
      */
     remarks?: string | null;
@@ -3094,6 +3098,10 @@ export type ContainerResponse = {
      * Pod Unlocode
      */
     pod_unlocode: string | null;
+    /**
+     * Destination City
+     */
+    destination_city: string | null;
     /**
      * Remarks
      */

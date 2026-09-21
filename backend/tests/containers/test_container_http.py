@@ -619,6 +619,58 @@ def test_http_rejects_bad_pod_unlocode(box_client: object) -> None:
     assert "pod" in reply.json()["detail"]
 
 
+def test_http_create_container_with_destination_city(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    created = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "destination_city": "  Hamburg ",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["destination_city"] == "Hamburg"
+    assert created.json()["pod_unlocode"] is None
+
+
+def test_http_rejects_non_text_destination_city(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "destination_city": 1,
+        },
+    )
+    assert reply.status_code == 400
+    assert "miasto" in reply.json()["detail"]
+
+
+def test_http_rejects_long_destination_city(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "destination_city": "x" * 65,
+        },
+    )
+    assert reply.status_code == 400
+    assert "miasto" in reply.json()["detail"]
+
+
 def test_http_create_container_with_remarks(box_client: object) -> None:
     client, _boxes, _jobs = box_client
     headers = bearer_auth_headers()

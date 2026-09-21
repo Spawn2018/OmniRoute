@@ -1,3 +1,4 @@
+- **612.0 leftover:** HW · UXCL · N3 · AI3 · G0-SH. 612.0 = HITL `container.destination_city` (tekst do 64, nie geokoder).
 - **611.0 leftover:** `destination_city` · FK portu · HW · UXCL · N3. 611.0 = HITL `container.pod_unlocode` (5 znaków UN/LOCODE, nie resolve, nie mapa).
 - **610.0 leftover:** `pod_unlocode` · `destination_city` · FK portu · HW · UXCL · N3. 610.0 = HITL `container.pol_unlocode` (5 znaków UN/LOCODE, nie resolve, nie mapa).
 - **529.0 leftover:** wpis przekazania z polami S/B/A/R · wiązanie z tablicą T6 · N8. 529.0 = HITL `handover_sbar_mark` (znacznik; nie drugi czat).

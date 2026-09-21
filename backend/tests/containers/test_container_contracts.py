@@ -506,6 +506,21 @@ def test_migration_486_adds_pod_unlocode_without_port_fk() -> None:
     assert "pod_unlocode" in source.split("def downgrade")[1]
 
 
+def test_migration_487_adds_destination_city_without_geocoder() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "487_container_destination_city.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "487_container_destination_city"' in source
+    assert 'down_revision: str | None = "486_container_pod_unlocode"' in source
+    assert "destination_city" in source
+    assert "String(64)" in source
+    assert "ForeignKey" not in source
+    assert "httpx" not in source
+    assert "create_table" not in source
+    assert "def downgrade" in source
+    assert "destination_city" in source.split("def downgrade")[1]
+
+
 def test_migration_451_adds_payload_without_calculator() -> None:
     source = (
         _ROOT / "backend" / "alembic" / "versions" / "451_container_payload.py"
@@ -896,6 +911,7 @@ def test_generated_api_types_include_container() -> None:
     assert "alliance_service" in source
     assert "pol_unlocode" in source
     assert "pod_unlocode" in source
+    assert "destination_city" in source
     assert "ref_1" in source
     assert "ref_2" in source
     assert "ref_3" in source

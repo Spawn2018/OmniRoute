@@ -1,22 +1,22 @@
 ﻿# Bieżący focus
 
-**Faza:** Oś pinu — plan **612.0**
+**Faza:** Oś pinu — po **612.0** (CI po push)
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **611.0** T3 `pod_unlocode` (gate success)
+**Ostatni plaster:** **612.0** T3 `destination_city` (lokalne; CI po push)
 
-**Etap:** Plan — delta **612.0** zaakceptowana (`/noc`), wolno `/plaster`
+**Etap:** karta T3 POL/POD/miasto zamknięta — następny leftover poza parkami
 
 **Noc:** `/noc 17` do **2026-09-21T17:00:00+02:00**
 
 **Miejsce pracy:** produkt = to repo + GitHub.
 
-**Następny:** **612.0** T3 `destination_city` na `container`. **588.0** SH-R16-4 UXCL = park `/noc`.
+**Następny:** plan kolejnego Q z karty T3 poza HW, UXCL, N3, AI3, G0-SH. **588.0** SH-R16-4 UXCL = park `/noc`.
 
 **Park / czeka w PLAN:** HW · SH-R16-4 UXCL · AI3-payload · G0-SH · PUESC · MOS live · live FK UUID · N3 countdown · …
 
-**Spec (jedyna na sesję produktu):** [docs/deltas/open/612.0-container-destination-city.md](../deltas/open/612.0-container-destination-city.md)
+**Spec (jedyna na sesję produktu):** (brak — po zamknięciu 612)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 
@@ -24,6 +24,7 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
+**2026-09-21:** Plaster **612.0** T3 `destination_city` zamknięty (lokalne; CI po push). `/noc 17`.
 **2026-09-21:** Plan **612.0** T3 `destination_city` (`/noc 17`). 611.0 gate success.
 **2026-09-21:** Plaster **611.0** T3 `pod_unlocode` zamknięty (gate success). `/noc 17`.
 **2026-09-21:** Plan **611.0** T3 `pod_unlocode` (`/noc 17`). `destination_city` parked. 610.0 gate success.

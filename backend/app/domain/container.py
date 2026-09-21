@@ -16,6 +16,7 @@ _MAX_BOOK = 64
 _MAX_PIN = 64
 _MAX_IMO = 16
 _MAX_ALLIANCE = 32
+_MAX_CITY = 64
 _BL_KINDS = frozenset({"original", "seawaybill", "telex", "express"})
 _VGM_METHODS = frozenset({"method1", "method2"})
 _MAX_ORIGIN_H = 8760
@@ -208,6 +209,20 @@ def require_pod_unlocode(raw: object) -> str | None:
         return None
     if not _unlocode_shape(token):
         raise InvalidContainer("pod")
+    return token
+
+
+def require_destination_city(raw: object) -> str | None:
+    # Miasto to tekst operatora, nie geokoder i nie UN/LOCODE.
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidContainer("miasto musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        return None
+    if len(token) > _MAX_CITY:
+        raise InvalidContainer("miasto")
     return token
 
 

@@ -20,6 +20,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
   const [alliance, setAlliance] = useState("")
   const [pol, setPol] = useState("")
   const [pod, setPod] = useState("")
+  const [city, setCity] = useState("")
   const [note, setNote] = useState("")
   const [goods, setGoods] = useState("")
   const [pack, setPack] = useState("")
@@ -97,6 +98,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
         alliance_service: optionalToken(alliance),
         pol_unlocode: optionalToken(pol),
         pod_unlocode: optionalToken(pod),
+        destination_city: optionalToken(city),
         grade: optionalToken(grade),
         pickup_terminal: optionalToken(dock),
         return_terminal: optionalToken(yard),
@@ -251,6 +253,15 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
           placeholder="pod_unlocode"
           value={pod}
           onChange={(event) => setPod(event.target.value)}
+        />
+      </label>
+      <label className="flex flex-col gap-1 text-xs">
+        Miasto docelowe (opcjonalnie)
+        <Input
+          aria-label="Miasto docelowe kontenera"
+          placeholder="destination_city"
+          value={city}
+          onChange={(event) => setCity(event.target.value)}
         />
       </label>
       <label className="flex flex-col gap-1 text-xs">
@@ -677,6 +688,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
             {row.alliance_service !== null ? ` · ${row.alliance_service}` : ""}
             {row.pol_unlocode !== null ? ` · ${row.pol_unlocode}` : ""}
             {row.pod_unlocode !== null ? ` · ${row.pod_unlocode}` : ""}
+            {row.destination_city !== null ? ` · ${row.destination_city}` : ""}
             {row.remarks !== null ? ` · ${row.remarks}` : ""}
             {row.cargo_description !== null ? ` · ${row.cargo_description}` : ""}
             {row.packaging_code !== null ? ` · ${row.packaging_code}` : ""}

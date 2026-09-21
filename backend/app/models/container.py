@@ -76,6 +76,7 @@ class Container(Base, TimestampMixin):
     alliance_service: Mapped[str | None] = mapped_column(String(32), nullable=True)
     pol_unlocode: Mapped[str | None] = mapped_column(String(5), nullable=True)
     pod_unlocode: Mapped[str | None] = mapped_column(String(5), nullable=True)
+    destination_city: Mapped[str | None] = mapped_column(String(64), nullable=True)
     remarks: Mapped[str | None] = mapped_column(String(256), nullable=True)
     cargo_description: Mapped[str | None] = mapped_column(String(256), nullable=True)
     packaging_code: Mapped[str | None] = mapped_column(String(32), nullable=True)

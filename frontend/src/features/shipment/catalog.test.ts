@@ -134,6 +134,7 @@ describe("shipment surface for 28.0 and 90.0", () => {
     expect(box).toContain("alliance_service")
     expect(box).toContain("pol_unlocode")
     expect(box).toContain("pod_unlocode")
+    expect(box).toContain("destination_city")
     expect(box).toContain("pin_code")
     expect(box).toContain("payload_kg")
     expect(box).toContain("teu")

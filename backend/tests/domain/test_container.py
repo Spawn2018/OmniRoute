@@ -42,6 +42,7 @@ from app.domain.container import (
     require_container_weight_kg,
     require_cy_cutoff_at,
     require_demurrage_free_days,
+    require_destination_city,
     require_detention_free_days,
     require_free_time_dest_h,
     require_free_time_origin_h,
@@ -171,6 +172,16 @@ def test_pod_unlocode_uppercases_and_rejects_shape() -> None:
         require_pod_unlocode("DE-HA")
     with pytest.raises(InvalidContainer, match="pod"):
         require_pod_unlocode(1)
+
+
+def test_destination_city_trims_and_rejects_length() -> None:
+    assert require_destination_city(None) is None
+    assert require_destination_city("  ") is None
+    assert require_destination_city("  Hamburg ") == "Hamburg"
+    with pytest.raises(InvalidContainer, match="miasto"):
+        require_destination_city("x" * 65)
+    with pytest.raises(InvalidContainer, match="miasto"):
+        require_destination_city(1)
 
 
 def test_booking_no_omits_blank_and_keeps_token() -> None:

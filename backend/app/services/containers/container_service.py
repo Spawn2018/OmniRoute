@@ -42,6 +42,7 @@ from app.domain.container import (
     require_container_weight_kg,
     require_cy_cutoff_at,
     require_demurrage_free_days,
+    require_destination_city,
     require_detention_free_days,
     require_free_time_dest_h,
     require_free_time_origin_h,
@@ -86,6 +87,7 @@ class _WriteBox(NamedTuple):
     alliance: object
     pol: object
     pod: object
+    city: object
     note: object
     goods: object
     pack: object
@@ -147,6 +149,7 @@ class _BoxDraft(NamedTuple):
     alliance: str | None
     pol: str | None
     pod: str | None
+    city: str | None
     note: str | None
     goods: str | None
     pack: str | None
@@ -209,6 +212,7 @@ def _box_draft(write: _WriteBox) -> _BoxDraft:
         require_voyage_no(write.voyage), require_vessel_imo(write.imo),
         require_alliance_service(write.alliance), require_pol_unlocode(write.pol),
         require_pod_unlocode(write.pod),
+        require_destination_city(write.city),
         require_container_remarks(write.note),
         require_cargo_description(write.goods),
         require_packaging_code(write.pack), require_container_grade(write.grade),
@@ -299,7 +303,7 @@ def _box_unchanged(current: Container, draft: _BoxDraft) -> bool:
         and current.voyage_no == draft.voyage and current.vessel_imo == draft.imo
         and current.alliance_service == draft.alliance
         and current.pol_unlocode == draft.pol and current.pod_unlocode == draft.pod
-        and current.remarks == draft.note
+        and current.destination_city == draft.city and current.remarks == draft.note
         and current.cargo_description == draft.goods
         and current.packaging_code == draft.pack and current.grade == draft.grade
         and current.ref_1 == draft.mark
@@ -373,7 +377,7 @@ def _container_row(organization_id: UUID, user_id: UUID, draft: _BoxDraft) -> Co
         seal_no_1=draft.seal, seal_no_2=draft.seal2, seal_no_3=draft.seal3,
         vessel_name=draft.vessel, voyage_no=draft.voyage, vessel_imo=draft.imo,
         alliance_service=draft.alliance, pol_unlocode=draft.pol,
-        pod_unlocode=draft.pod, remarks=draft.note,
+        pod_unlocode=draft.pod, destination_city=draft.city, remarks=draft.note,
         cargo_description=draft.goods, packaging_code=draft.pack, grade=draft.grade,
         ref_1=draft.mark, ref_2=draft.mark2, ref_3=draft.mark3,
         ref_4=draft.mark4, ref_5=draft.mark5, reefer=draft.cold,
