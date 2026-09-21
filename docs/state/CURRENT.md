@@ -1,22 +1,22 @@
 ﻿# Bieżący focus
 
-**Faza:** Oś pinu — **614.0** lokalnie (CI po push)
+**Faza:** Oś pinu — **614.0** gate success
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **614.0** T4 `shipment_tree_margin` (testy lokalne; CI po push)
+**Ostatni plaster:** **614.0** T4 `shipment_tree_margin` (gate success)
 
-**Etap:** 614 zamknięty lokalnie. Po zielonym CI plan następnego Q z kolejki. Nie wnuki w tym commicie.
+**Etap:** 614 zamknięty. Plan następnego Q z kolejki. Nie wnuki.
 
 **Noc:** `/noc 7` do **2026-09-22T07:00:00+02:00**
 
 **Miejsce pracy:** produkt = to repo + GitHub.
 
-**Następny:** po gate success kolejny Q z PLAN poza HW, UXCL, N3, AI3, G0-SH. Wnuki rollup zostają. **588.0** SH-R16-4 UXCL = park `/noc`.
+**Następny:** plan kolejnego Q z PLAN poza HW, UXCL, N3, AI3, G0-SH. Wnuki rollup zostają. **588.0** SH-R16-4 UXCL = park `/noc`.
 
 **Park / czeka w PLAN:** wnuki rollup · HW · SH-R16-4 UXCL · AI3-payload · G0-SH · PUESC · MOS live · live FK UUID · N3 countdown · …
 
-**Spec (jedyna na sesję produktu):** `docs/deltas/archived/614.0-shipment-tree-margin.md`
+**Spec (jedyna na sesję produktu):** (brak — plan następnego Q)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 
@@ -24,6 +24,7 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
+**2026-09-21:** Plaster **614.0** T4 `shipment_tree_margin` zamknięty (gate success). `/noc 7`.
 **2026-09-21:** Plaster **614.0** T4 `shipment_tree_margin` zamknięty lokalnie (CI po push). `/noc 7`.
 **2026-09-21:** Plan **614.0** T4 widok `shipment_tree_margin` (`/noc 7`). 613.0 gate success.
 **2026-09-21:** Plaster **613.0** T4 `charge.shipment_id` zamknięty lokalnie (CI po push). `/noc 7`.

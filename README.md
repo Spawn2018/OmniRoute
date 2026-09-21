@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **614.0** T4 `shipment_tree_margin` (testy lokalne; CI po push)
-- **Etap:** 614 zamknięty lokalnie. Po zielonym CI plan następnego Q z kolejki. Nie wnuki w tym commicie.
-- **Następny:** po gate success kolejny Q z PLAN poza HW, UXCL, N3, AI3, G0-SH. Wnuki rollup zostają. **588.0** SH-R16-4 UXCL = park `/noc`.
+- **Ostatni plaster:** **614.0** T4 `shipment_tree_margin` (gate success)
+- **Etap:** 614 zamknięty. Plan następnego Q z kolejki. Nie wnuki.
+- **Następny:** plan kolejnego Q z PLAN poza HW, UXCL, N3, AI3, G0-SH. Wnuki rollup zostają. **588.0** SH-R16-4 UXCL = park `/noc`.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

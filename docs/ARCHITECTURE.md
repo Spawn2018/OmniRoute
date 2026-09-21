@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **614.0** T4 `shipment_tree_margin` (testy lokalne; CI po push). **Etap:** 614 zamknięty lokalnie. Po zielonym CI plan następnego Q z kolejki. Nie wnuki w tym commicie. **Następny:** po gate success kolejny Q z PLAN poza HW, UXCL, N3, AI3, G0-SH. Wnuki rollup zostają. **588.0** SH-R16-4 UXCL = park `/noc`. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **614.0** T4 `shipment_tree_margin` (gate success). **Etap:** 614 zamknięty. Plan następnego Q z kolejki. Nie wnuki. **Następny:** plan kolejnego Q z PLAN poza HW, UXCL, N3, AI3, G0-SH. Wnuki rollup zostają. **588.0** SH-R16-4 UXCL = park `/noc`. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
