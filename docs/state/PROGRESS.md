@@ -1,6 +1,7 @@
 # Historia plastrów
 
 | Data | Plaster | Moduł | Opis |
+| 2026-09-21 | Plan 609.0 | T3 EXP1 alliance_service | Plan `container.alliance_service` HITL (`/noc 8`). |
 | 2026-09-21 | 608.0 | T3 EXP1 vessel_imo | 2026-09-21 | PRZESZŁO | N/A | N/A | OK | OK | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 2026-09-21 | Plan 608.0 | T3 EXP1 vessel_imo | Plan `container.vessel_imo` HITL (`/noc 8`). `alliance_service` parked. |
 | 2026-09-21 | 607.0 | T3 EXP1 grade | 2026-09-21 | PRZESZŁO | N/A | N/A | OK | OK | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |

@@ -1,12 +1,12 @@
 ﻿# Bieżący focus
 
-**Faza:** Oś pinu — po **608.0** (lokalne; CI po push); plan **609.0** T3 EXP1 `alliance_service`
+**Faza:** Oś pinu — po **608.0** (gate success); plan **609.0** T3 EXP1 `alliance_service`
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **608.0** T3 EXP1 `vessel_imo` (lokalne; CI po push)
+**Ostatni plaster:** **608.0** T3 EXP1 `vessel_imo` (gate success)
 
-**Etap:** Plan — **609.0** T3 EXP1 `container.alliance_service` (wydmuszka / leftover HITL)
+**Etap:** Plan — **609.0** T3 EXP1 `container.alliance_service` (delta zaakceptowana, wolno `/plaster`)
 
 **Noc:** `/noc 8` do **2026-09-21T08:00:00+02:00**
 
@@ -16,7 +16,7 @@
 
 **Park / czeka w PLAN:** HW · SH-R16-4 UXCL · AI3-payload · G0-SH · PUESC · MOS live · live FK UUID · N3 countdown · …
 
-**Spec (jedyna na sesję produktu):** (brak — `/plan-modul` dla 609.0)
+**Spec (jedyna na sesję produktu):** [docs/deltas/open/609.0-container-alliance-service.md](../deltas/open/609.0-container-alliance-service.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 
@@ -24,7 +24,8 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-21:** Plaster **608.0** T3 EXP1 `vessel_imo` zamknięty (lokalne; CI po push). `/noc 8`.
+**2026-09-21:** Plan **609.0** T3 EXP1 `alliance_service` (`/noc 8`).
+**2026-09-21:** Plaster **608.0** T3 EXP1 `vessel_imo` zamknięty (gate success). `/noc 8`.
 **2026-09-21:** Plan **608.0** T3 EXP1 `vessel_imo` (`/noc 8`). `alliance_service` parked.
 **2026-09-21:** Plaster **607.0** T3 EXP1 `grade` zamknięty (gate success). `/noc 8`.
 **2026-09-21:** Plan **607.0** T3 EXP1 `grade` (`/noc 8`). `alliance_service` / `vessel_imo` parked.
