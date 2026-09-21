@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **607.0** T3 EXP1 `grade` (lokalne; CI po push). **Etap:** Plan — **608.0** (po gate 607); wybór z pinu (nie HW, nie UXCL, nie AI3, nie G0-SH, nie N3). **Następny:** **608.0** — po gate 607 wybór z pinu. Leftover T3 EXP1 `alliance_service` / `vessel_imo` = kandydat. **588.0** SH-R16-4 UXCL = park `/noc`. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **607.0** T3 EXP1 `grade` (gate success). **Etap:** Plan — **608.0** T3 EXP1 `container.vessel_imo` (delta zaakceptowana, wolno `/plaster`). **Następny:** **608.0** T3 EXP1 `vessel_imo` HITL na `container` (nie AIS). Leftover `alliance_service` parked. **588.0** SH-R16-4 UXCL = park `/noc`. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **608.0** — po gate 607 wybór z pinu. Leftover T3 EXP1 `alliance_service` / `vessel_imo` = kandydat. **588.0** SH-R16-4 UXCL = park `/noc`.
+**Następny:** **608.0** T3 EXP1 `vessel_imo` HITL na `container` (nie AIS). Leftover `alliance_service` parked. **588.0** SH-R16-4 UXCL = park `/noc`.
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).

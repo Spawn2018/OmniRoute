@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **607.0** T3 EXP1 `grade` (lokalne; CI po push)
-- **Etap:** Plan — **608.0** (po gate 607); wybór z pinu (nie HW, nie UXCL, nie AI3, nie G0-SH, nie N3)
-- **Następny:** **608.0** — po gate 607 wybór z pinu. Leftover T3 EXP1 `alliance_service` / `vessel_imo` = kandydat. **588.0** SH-R16-4 UXCL = park `/noc`.
+- **Ostatni plaster:** **607.0** T3 EXP1 `grade` (gate success)
+- **Etap:** Plan — **608.0** T3 EXP1 `container.vessel_imo` (delta zaakceptowana, wolno `/plaster`)
+- **Następny:** **608.0** T3 EXP1 `vessel_imo` HITL na `container` (nie AIS). Leftover `alliance_service` parked. **588.0** SH-R16-4 UXCL = park `/noc`.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

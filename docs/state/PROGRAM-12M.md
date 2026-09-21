@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **607.0** T3 EXP1 `grade` (lokalne; CI po push) **Następny:** **608.0** — po gate 607 wybór z pinu. Leftover T3 EXP1 `alliance_service` / `vessel_imo` = kandydat. **588.0** SH-R16-4 UXCL = park `/noc`.
+**Stan (z CURRENT.md):** **607.0** T3 EXP1 `grade` (gate success) **Następny:** **608.0** T3 EXP1 `vessel_imo` HITL na `container` (nie AIS). Leftover `alliance_service` parked. **588.0** SH-R16-4 UXCL = park `/noc`.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.
