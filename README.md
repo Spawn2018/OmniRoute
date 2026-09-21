@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **606.0** T1 EXP1 `weigh_out_kg` (lokalne; CI po push)
-- **Etap:** Plan — **607.0** (po gate 606); T1 EXP1 stop weigh para zamknięta
-- **Następny:** **607.0** — po gate 606 wybór z pinu (nie HW, nie UXCL, nie AI3, nie G0-SH, nie N3). T1 EXP1 stop (`weigh_in`/`weigh_out`) DONE. **588.0** SH-R16-4 UXCL = park `/noc`.
+- **Ostatni plaster:** **606.0** T1 EXP1 `weigh_out_kg` (gate success)
+- **Etap:** Plan — **607.0** T3 EXP1 `container.grade` (delta zaakceptowana, wolno `/plaster`)
+- **Następny:** **607.0** T3 EXP1 `grade` HITL na `container` (nie IICL live). Leftover `alliance_service` / `vessel_imo` parked. **588.0** SH-R16-4 UXCL = park `/noc`. HW / N3 / AI3 / G0-SH = park.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
