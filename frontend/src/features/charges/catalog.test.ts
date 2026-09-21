@@ -2,6 +2,12 @@ import { readFileSync } from "node:fs"
 import { describe, expect, it } from "vitest"
 import { chargeCreateBody, comparisonChargeBody } from "@/lib/charges-api"
 
+describe("charge catalog shipment field", () => {
+  it("shows an optional shipment id on the charge form", () => {
+    expect(page).toContain('aria-label="Zlecenie"')
+  })
+})
+
 const page = readFileSync(
   new URL("../../features/charges/catalog-page.tsx", import.meta.url),
   "utf8",
@@ -26,7 +32,22 @@ describe("chargeCreateBody", () => {
       sell_currency: "EUR",
       rate_line_id: null,
       source_ref: "tenant:manual",
+      shipment_id: null,
     })
+  })
+
+  it("sends optional shipment_id when the operator typed one", () => {
+    expect(
+      chargeCreateBody({
+        chargeCode: "THC",
+        buyAmount: "10",
+        sellAmount: "14",
+        currency: "EUR",
+        rateLineId: "",
+        sourceRef: "tenant:manual",
+        shipmentId: " 33333333-3333-3333-3333-333333333333 ",
+      }).shipment_id,
+    ).toBe("33333333-3333-3333-3333-333333333333")
   })
 
   it("keeps rate_line_id when provided", () => {

@@ -12,6 +12,7 @@ export type Charge = {
   margin_amount: string
   margin_currency: string
   rate_line_id: string | null
+  shipment_id: string | null
   source_ref: string | null
 }
 
@@ -110,6 +111,7 @@ export function chargeCreateBody(args: {
   originUnlocode?: string
   destinationUnlocode?: string
   floorDecisionId?: string
+  shipmentId?: string
 }): {
   charge_code: string
   buy_amount: string
@@ -118,6 +120,7 @@ export function chargeCreateBody(args: {
   sell_currency: string
   rate_line_id: string | null
   source_ref: string
+  shipment_id: string | null
   origin_unlocode?: string
   destination_unlocode?: string
   floor_decision_id?: string
@@ -127,6 +130,7 @@ export function chargeCreateBody(args: {
   const origin = (args.originUnlocode ?? "").trim().toUpperCase()
   const destination = (args.destinationUnlocode ?? "").trim().toUpperCase()
   const decision = (args.floorDecisionId ?? "").trim()
+  const shipment = (args.shipmentId ?? "").trim()
   const body: {
     charge_code: string
     buy_amount: string
@@ -135,6 +139,7 @@ export function chargeCreateBody(args: {
     sell_currency: string
     rate_line_id: string | null
     source_ref: string
+    shipment_id: string | null
     origin_unlocode?: string
     destination_unlocode?: string
     floor_decision_id?: string
@@ -146,6 +151,7 @@ export function chargeCreateBody(args: {
     sell_currency: currency,
     rate_line_id: linked === "" ? null : linked,
     source_ref: args.sourceRef.trim(),
+    shipment_id: shipment === "" ? null : shipment,
   }
   if (origin !== "") {
     body.origin_unlocode = origin
@@ -198,6 +204,7 @@ export async function createCharge(body: {
   sell_currency: string
   rate_line_id: string | null
   source_ref: string
+  shipment_id?: string | null
   origin_unlocode?: string
   destination_unlocode?: string
   floor_decision_id?: string

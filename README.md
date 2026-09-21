@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **612.0** T3 `destination_city` (gate success)
-- **Etap:** Plan **613.0** T4 `charge.shipment_id`. Delta zaakceptowana `/noc`. Wolno `/plaster`.
-- **Następny:** **613.0** opcjonalny `charge.shipment_id` (klucz pod rollup). Widok SQL drzewa zostaje. Nie FK portu. **588.0** SH-R16-4 UXCL = park `/noc`.
+- **Ostatni plaster:** **613.0** T4 `charge.shipment_id` (testy lokalne; CI po push)
+- **Etap:** 613 zamknięty lokalnie. Po zielonym CI plan widoku rollup. Nie kod rollup w tym commicie.
+- **Następny:** plan widoku SQL marży drzewa zleceń (klucz `charge.shipment_id` już jest). Nie generated column. Nie FK portu. **588.0** SH-R16-4 UXCL = park `/noc`.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

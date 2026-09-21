@@ -42,6 +42,10 @@ const columns = [
     header: "Pochodzenie",
     cell: ({ getValue }) => getValue() ?? "—",
   }),
+  helper.accessor("shipment_id", {
+    header: "Zlecenie",
+    cell: ({ getValue }) => getValue() ?? "—",
+  }),
 ]
 
 const COLUMN_LABELS = {
@@ -51,6 +55,7 @@ const COLUMN_LABELS = {
   margin_amount: "Marża",
   rate_line_id: "Stawka kupna",
   source_ref: "Pochodzenie",
+  shipment_id: "Zlecenie",
 }
 
 type Draft = {
@@ -63,6 +68,7 @@ type Draft = {
   originUnlocode: string
   destinationUnlocode: string
   floorDecisionId: string
+  shipmentId: string
 }
 
 const EMPTY_DRAFT: Draft = {
@@ -75,6 +81,7 @@ const EMPTY_DRAFT: Draft = {
   originUnlocode: "",
   destinationUnlocode: "",
   floorDecisionId: "",
+  shipmentId: "",
 }
 
 export function ChargeCatalogPage() {
@@ -106,7 +113,7 @@ export function ChargeCatalogPage() {
     <div className="space-y-3">
       <CatalogHeading
         title="Opłaty"
-        subtitle="charge M-08 · buy i sell na jednym wierszu · marża w kodzie · UN opcjonalnie pod margin_floor · nie accept HITL"
+        subtitle="charge M-08 · buy i sell na jednym wierszu · marża w kodzie · UN opcjonalnie pod margin_floor · opcjonalne zlecenie · nie accept HITL"
       />
 
       {signedIn ? null : <TenantSessionNotice />}
@@ -126,6 +133,7 @@ export function ChargeCatalogPage() {
         <Input aria-label="UN/LOCODE destination" placeholder="DEHAM (opcjonalnie)" value={draft.destinationUnlocode} onChange={setField("destinationUnlocode")} />
         <Input aria-label="Identyfikator decyzji podłogi" placeholder="floor_decision_id po S11" value={draft.floorDecisionId} onChange={setField("floorDecisionId")} />
         <Input aria-label="Identyfikator stawki kupna" placeholder="rate_line (opcjonalnie)" value={draft.rateLineId} onChange={setField("rateLineId")} />
+        <Input aria-label="Zlecenie" placeholder="shipment_id (opcjonalnie)" value={draft.shipmentId} onChange={setField("shipmentId")} />
         <Input aria-label="Pochodzenie" placeholder="tenant:manual albo fixture://charge/…" value={draft.sourceRef} onChange={setField("sourceRef")} required />
         <Button type="submit" disabled={createMutation.isPending || !signedIn}>
           Dodaj opłatę

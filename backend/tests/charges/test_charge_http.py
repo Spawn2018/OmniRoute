@@ -47,6 +47,7 @@ class StubChargeService:
         sell_currency: object,
         rate_line_id: UUID | None,
         source_ref: object,
+        shipment_id: UUID | None = None,
     ) -> Charge:
         if isinstance(buy_amount, float) or isinstance(sell_amount, float):
             raise MixedCurrencyCharge("kwota nie może być float")
@@ -66,6 +67,7 @@ class StubChargeService:
             sell_amount=sell.amount,
             sell_currency=sell.currency.code,
             rate_line_id=rate_line_id,
+            shipment_id=shipment_id,
             source_ref=source_ref.strip(),
             created_by=user_id,
         )
@@ -207,6 +209,7 @@ def test_http_create_and_list_charges(charges_client: TestClient) -> None:
     assert body["buy_currency"] == "EUR"
     assert body["organization_id"] == str(org_id)
     assert body["rate_line_id"] is None
+    assert body["shipment_id"] is None
     assert body["source_ref"] == "tenant:manual"
     assert isinstance(body["margin_amount"], str)
 
@@ -216,6 +219,45 @@ def test_http_create_and_list_charges(charges_client: TestClient) -> None:
     assert len(rows) == 1
     assert rows[0]["id"] == body["id"]
     assert rows[0]["margin_amount"] == "3.5000"
+    assert rows[0]["shipment_id"] is None
+
+
+def test_http_create_charge_stores_shipment_id(charges_client: TestClient) -> None:
+    shipment_id = uuid4()
+    headers = bearer_auth_headers()
+    created = charges_client.post(
+        "/api/v1/charges",
+        headers=headers,
+        json={
+            "charge_code": "THC",
+            "buy_amount": "10",
+            "buy_currency": "EUR",
+            "sell_amount": "14",
+            "sell_currency": "EUR",
+            "source_ref": "tenant:manual",
+            "shipment_id": str(shipment_id),
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["shipment_id"] == str(shipment_id)
+
+
+def test_http_rejects_bad_shipment_id(charges_client: TestClient) -> None:
+    headers = bearer_auth_headers()
+    reply = charges_client.post(
+        "/api/v1/charges",
+        headers=headers,
+        json={
+            "charge_code": "THC",
+            "buy_amount": "10",
+            "buy_currency": "EUR",
+            "sell_amount": "14",
+            "sell_currency": "EUR",
+            "source_ref": "tenant:manual",
+            "shipment_id": "nie-uuid",
+        },
+    )
+    assert reply.status_code == 422
 
 
 def test_http_rejects_mixed_currency(charges_client: TestClient) -> None:

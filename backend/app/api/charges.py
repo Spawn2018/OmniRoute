@@ -36,6 +36,7 @@ class ChargeCreate(BaseModel):
     sell_amount: str = Field(min_length=1, max_length=32)
     sell_currency: str = Field(min_length=3, max_length=3)
     rate_line_id: UUID | None = None
+    shipment_id: UUID | None = None
     source_ref: str = Field(min_length=1, max_length=512)
     # 539.0: tylko lookup margin_floor — nie kolumny na charge
     origin_unlocode: str | None = Field(default=None, max_length=5)
@@ -55,6 +56,7 @@ class ChargeResponse(BaseModel):
     margin_amount: str
     margin_currency: str
     rate_line_id: UUID | None
+    shipment_id: UUID | None
     source_ref: str | None
 
     @classmethod
@@ -91,6 +93,7 @@ class ChargeResponse(BaseModel):
             margin_amount=margin_text,
             margin_currency=margin_ccy,
             rate_line_id=row.rate_line_id,
+            shipment_id=row.shipment_id,
             source_ref=row.source_ref,
         )
 
@@ -208,6 +211,7 @@ async def create_charge(
         sell_currency=body.sell_currency,
         rate_line_id=body.rate_line_id,
         source_ref=body.source_ref,
+        shipment_id=body.shipment_id,
     )
     await session.commit()
     return ChargeResponse.from_row(row)

@@ -1,11 +1,17 @@
 from decimal import Decimal
 from uuid import UUID, uuid4
 
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.charge import margin
 from app.domain.charge_code import normalize_charge_code
-from app.domain.errors import ChargeRateMismatch, ResourceNotFound, UnknownChargeCode
+from app.domain.errors import (
+    ChargeRateMismatch,
+    InvalidShipment,
+    ResourceNotFound,
+    UnknownChargeCode,
+)
 from app.domain.money import Money
 from app.domain.rate_line import require_source_ref
 from app.models.charge import Charge
@@ -42,6 +48,7 @@ class ChargeService:
         sell_currency: object,
         rate_line_id: UUID | None,
         source_ref: object,
+        shipment_id: UUID | None = None,
     ) -> Charge:
         origin = require_source_ref(source_ref)
         buy = Money.of(buy_amount, buy_currency)
@@ -58,10 +65,16 @@ class ChargeService:
             sell_amount=sell.amount,
             sell_currency=sell.currency.code,
             rate_line_id=linked,
+            shipment_id=shipment_id,
             source_ref=origin,
             created_by=user_id,
         )
-        return await self._charges.add(row)
+        try:
+            return await self._charges.add(row)
+        except IntegrityError as exc:
+            if shipment_id is not None and "fk_charge_shipment" in str(exc.orig):
+                raise InvalidShipment("zlecenie") from exc
+            raise
 
     async def _require_catalog(self, charge_code: str) -> ChargeCode:
         token = normalize_charge_code(charge_code)

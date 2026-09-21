@@ -1,22 +1,22 @@
 ﻿# Bieżący focus
 
-**Faza:** Oś pinu — plan **613.0** (delta zaakceptowana, wolno `/plaster`)
+**Faza:** Oś pinu — **613.0** lokalnie (CI po push)
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **612.0** T3 `destination_city` (gate success)
+**Ostatni plaster:** **613.0** T4 `charge.shipment_id` (testy lokalne; CI po push)
 
-**Etap:** Plan **613.0** T4 `charge.shipment_id`. Delta zaakceptowana `/noc`. Wolno `/plaster`.
+**Etap:** 613 zamknięty lokalnie. Po zielonym CI plan widoku rollup. Nie kod rollup w tym commicie.
 
 **Noc:** `/noc 7` do **2026-09-22T07:00:00+02:00**
 
 **Miejsce pracy:** produkt = to repo + GitHub.
 
-**Następny:** **613.0** opcjonalny `charge.shipment_id` (klucz pod rollup). Widok SQL drzewa zostaje. Nie FK portu. **588.0** SH-R16-4 UXCL = park `/noc`.
+**Następny:** plan widoku SQL marży drzewa zleceń (klucz `charge.shipment_id` już jest). Nie generated column. Nie FK portu. **588.0** SH-R16-4 UXCL = park `/noc`.
 
 **Park / czeka w PLAN:** rollup drzewa · HW · SH-R16-4 UXCL · AI3-payload · G0-SH · PUESC · MOS live · live FK UUID · N3 countdown · …
 
-**Spec (jedyna na sesję produktu):** `docs/deltas/open/613.0-charge-shipment-id.md`
+**Spec (jedyna na sesję produktu):** `docs/deltas/archived/613.0-charge-shipment-id.md`
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 
@@ -24,6 +24,7 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
+**2026-09-21:** Plaster **613.0** T4 `charge.shipment_id` zamknięty lokalnie (CI po push). `/noc 7`.
 **2026-09-21:** Plan **613.0** T4 `charge.shipment_id` (`/noc 7`). Rollup SQL parked. 612.0 gate success.
 **2026-09-21:** Plaster **612.0** T3 `destination_city` zamknięty (gate success). `/noc 17` stop.
 **2026-09-21:** Plan **612.0** T3 `destination_city` (`/noc 17`). 611.0 gate success.
