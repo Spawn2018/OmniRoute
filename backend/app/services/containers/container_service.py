@@ -59,6 +59,7 @@ from app.domain.container import (
     require_tare_kg,
     require_teu,
     require_vessel_name,
+    require_vessel_imo,
     require_vgm_cutoff_at,
     require_vgm_kg,
     require_vgm_method,
@@ -78,6 +79,7 @@ class _WriteBox(NamedTuple):
     seal3: object
     vessel: object
     voyage: object
+    imo: object
     note: object
     goods: object
     pack: object
@@ -135,6 +137,7 @@ class _BoxDraft(NamedTuple):
     seal3: str | None
     vessel: str | None
     voyage: str | None
+    imo: str | None
     note: str | None
     goods: str | None
     pack: str | None
@@ -195,7 +198,7 @@ def _box_draft(write: _WriteBox) -> _BoxDraft:
         require_seal_no_2(write.seal2),
         require_seal_no_3(write.seal3),
         require_vessel_name(write.vessel),
-        require_voyage_no(write.voyage),
+        require_voyage_no(write.voyage), require_vessel_imo(write.imo),
         require_container_remarks(write.note),
         require_cargo_description(write.goods),
         require_packaging_code(write.pack), require_container_grade(write.grade),
@@ -282,15 +285,13 @@ def _box_unchanged(current: Container, draft: _BoxDraft) -> bool:
         current.iso_size_type == draft.size_type
         and current.shipment_id == draft.shipment_id
         and current.source_ref == draft.origin
-        and current.seal_no_1 == draft.seal
-        and current.seal_no_2 == draft.seal2
+        and current.seal_no_1 == draft.seal and current.seal_no_2 == draft.seal2
         and current.seal_no_3 == draft.seal3
         and current.vessel_name == draft.vessel
-        and current.voyage_no == draft.voyage
+        and current.voyage_no == draft.voyage and current.vessel_imo == draft.imo
         and current.remarks == draft.note
         and current.cargo_description == draft.goods
-        and current.packaging_code == draft.pack
-        and current.grade == draft.grade
+        and current.packaging_code == draft.pack and current.grade == draft.grade
         and current.ref_1 == draft.mark
         and current.ref_2 == draft.mark2
         and current.ref_3 == draft.mark3
@@ -360,7 +361,8 @@ def _container_row(organization_id: UUID, user_id: UUID, draft: _BoxDraft) -> Co
         shipment_id=draft.shipment_id,
         source_ref=draft.origin,
         seal_no_1=draft.seal, seal_no_2=draft.seal2, seal_no_3=draft.seal3,
-        vessel_name=draft.vessel, voyage_no=draft.voyage, remarks=draft.note,
+        vessel_name=draft.vessel, voyage_no=draft.voyage, vessel_imo=draft.imo,
+        remarks=draft.note,
         cargo_description=draft.goods, packaging_code=draft.pack, grade=draft.grade,
         ref_1=draft.mark, ref_2=draft.mark2, ref_3=draft.mark3,
         ref_4=draft.mark4, ref_5=draft.mark5, reefer=draft.cold,

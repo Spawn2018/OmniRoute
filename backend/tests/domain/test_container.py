@@ -58,6 +58,7 @@ from app.domain.container import (
     require_si_cutoff_at,
     require_tare_kg,
     require_teu,
+    require_vessel_imo,
     require_vessel_name,
     require_vgm_cutoff_at,
     require_vgm_kg,
@@ -121,6 +122,16 @@ def test_voyage_no_omits_blank_and_keeps_token() -> None:
     assert require_voyage_no(" 049W ") == "049W"
     with pytest.raises(InvalidContainer, match="rejs"):
         require_voyage_no("x" * 33)
+
+
+def test_vessel_imo_omits_blank_and_keeps_token() -> None:
+    assert require_vessel_imo(None) is None
+    assert require_vessel_imo("  ") is None
+    assert require_vessel_imo(" 9074729 ") == "9074729"
+    with pytest.raises(InvalidContainer, match="imo"):
+        require_vessel_imo("x" * 17)
+    with pytest.raises(InvalidContainer, match="imo"):
+        require_vessel_imo(9074729)
 
 
 def test_booking_no_omits_blank_and_keeps_token() -> None:

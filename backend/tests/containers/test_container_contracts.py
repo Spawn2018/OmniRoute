@@ -448,6 +448,20 @@ def test_migration_482_adds_grade_without_iicl_check() -> None:
     assert "grade" in source.split("def downgrade")[1]
 
 
+def test_migration_483_adds_vessel_imo_without_ais() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "483_container_vessel_imo.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "483_container_vessel_imo"' in source
+    assert 'down_revision: str | None = "482_container_grade"' in source
+    assert "vessel_imo" in source
+    assert "String(16)" in source
+    assert "httpx" not in source
+    assert "create_table" not in source
+    assert "def downgrade" in source
+    assert "vessel_imo" in source.split("def downgrade")[1]
+
+
 def test_migration_451_adds_payload_without_calculator() -> None:
     source = (
         _ROOT / "backend" / "alembic" / "versions" / "451_container_payload.py"
@@ -834,6 +848,7 @@ def test_generated_api_types_include_container() -> None:
     assert "cargo_description" in source
     assert "packaging_code" in source
     assert "grade" in source
+    assert "vessel_imo" in source
     assert "ref_1" in source
     assert "ref_2" in source
     assert "ref_3" in source

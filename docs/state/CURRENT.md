@@ -1,22 +1,22 @@
 ﻿# Bieżący focus
 
-**Faza:** Oś pinu — po **607.0** (gate success); plan **608.0** T3 EXP1 `vessel_imo`
+**Faza:** Oś pinu — po **608.0** (lokalne; CI po push); plan **609.0** T3 EXP1 `alliance_service`
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **607.0** T3 EXP1 `grade` (gate success)
+**Ostatni plaster:** **608.0** T3 EXP1 `vessel_imo` (lokalne; CI po push)
 
-**Etap:** Plan — **608.0** T3 EXP1 `container.vessel_imo` (delta zaakceptowana, wolno `/plaster`)
+**Etap:** Plan — **609.0** T3 EXP1 `container.alliance_service` (wydmuszka / leftover HITL)
 
 **Noc:** `/noc 8` do **2026-09-21T08:00:00+02:00**
 
 **Miejsce pracy:** produkt = to repo + GitHub.
 
-**Następny:** **608.0** T3 EXP1 `vessel_imo` HITL na `container` (nie AIS). Leftover `alliance_service` parked. **588.0** SH-R16-4 UXCL = park `/noc`.
+**Następny:** **609.0** T3 EXP1 `alliance_service` HITL na `container` (nie live alliance). Leftover HW/UXCL/N3 parked. **588.0** SH-R16-4 UXCL = park `/noc`.
 
-**Park / czeka w PLAN:** HW · SH-R16-4 UXCL · AI3-payload · G0-SH · PUESC · MOS live · live FK UUID · N3 countdown · alliance_service · …
+**Park / czeka w PLAN:** HW · SH-R16-4 UXCL · AI3-payload · G0-SH · PUESC · MOS live · live FK UUID · N3 countdown · …
 
-**Spec (jedyna na sesję produktu):** [docs/deltas/open/608.0-container-vessel-imo.md](../deltas/open/608.0-container-vessel-imo.md)
+**Spec (jedyna na sesję produktu):** (brak — `/plan-modul` dla 609.0)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 
@@ -24,6 +24,7 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
+**2026-09-21:** Plaster **608.0** T3 EXP1 `vessel_imo` zamknięty (lokalne; CI po push). `/noc 8`.
 **2026-09-21:** Plan **608.0** T3 EXP1 `vessel_imo` (`/noc 8`). `alliance_service` parked.
 **2026-09-21:** Plaster **607.0** T3 EXP1 `grade` zamknięty (gate success). `/noc 8`.
 **2026-09-21:** Plan **607.0** T3 EXP1 `grade` (`/noc 8`). `alliance_service` / `vessel_imo` parked.

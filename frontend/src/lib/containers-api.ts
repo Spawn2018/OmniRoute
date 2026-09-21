@@ -13,6 +13,7 @@ export type ContainerRow = {
   seal_no_3: string | null
   vessel_name: string | null
   voyage_no: string | null
+  vessel_imo: string | null
   remarks: string | null
   cargo_description: string | null
   packaging_code: string | null
@@ -71,6 +72,7 @@ export type ContainerWrite = {
   seal_no_3: string | null
   vessel_name: string | null
   voyage_no: string | null
+  vessel_imo?: string | null
   remarks: string | null
   cargo_description: string | null
   packaging_code: string | null

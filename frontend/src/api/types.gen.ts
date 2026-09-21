@@ -2833,6 +2833,10 @@ export type ContainerCreate = {
      */
     voyage_no?: string | null;
     /**
+     * Vessel Imo
+     */
+    vessel_imo?: string | null;
+    /**
      * Remarks
      */
     remarks?: string | null;
@@ -3062,6 +3066,10 @@ export type ContainerResponse = {
      * Voyage No
      */
     voyage_no: string | null;
+    /**
+     * Vessel Imo
+     */
+    vessel_imo: string | null;
     /**
      * Remarks
      */

@@ -16,6 +16,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
   const [seal3, setSeal3] = useState("")
   const [vessel, setVessel] = useState("")
   const [voyage, setVoyage] = useState("")
+  const [imo, setImo] = useState("")
   const [note, setNote] = useState("")
   const [goods, setGoods] = useState("")
   const [pack, setPack] = useState("")
@@ -89,6 +90,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
           mark5,
           cold,
         }),
+        vessel_imo: optionalToken(imo),
         grade: optionalToken(grade),
         pickup_terminal: optionalToken(dock),
         return_terminal: optionalToken(yard),
@@ -207,6 +209,15 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
           placeholder="voyage_no"
           value={voyage}
           onChange={(event) => setVoyage(event.target.value)}
+        />
+      </label>
+      <label className="flex flex-col gap-1 text-xs">
+        IMO (opcjonalnie)
+        <Input
+          aria-label="IMO statku kontenera"
+          placeholder="vessel_imo"
+          value={imo}
+          onChange={(event) => setImo(event.target.value)}
         />
       </label>
       <label className="flex flex-col gap-1 text-xs">
@@ -629,6 +640,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
             {row.seal_no_3 !== null ? ` · ${row.seal_no_3}` : ""}
             {row.vessel_name !== null ? ` · ${row.vessel_name}` : ""}
             {row.voyage_no !== null ? ` · ${row.voyage_no}` : ""}
+            {row.vessel_imo !== null ? ` · ${row.vessel_imo}` : ""}
             {row.remarks !== null ? ` · ${row.remarks}` : ""}
             {row.cargo_description !== null ? ` · ${row.cargo_description}` : ""}
             {row.packaging_code !== null ? ` · ${row.packaging_code}` : ""}
