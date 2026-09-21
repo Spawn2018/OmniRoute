@@ -150,6 +150,7 @@ def test_http_create_list_supersede_and_reject_check_digit(box_client: object) -
     assert first.json()["vessel_name"] is None
     assert first.json()["voyage_no"] is None
     assert first.json()["vessel_imo"] is None
+    assert first.json()["alliance_service"] is None
     assert first.json()["remarks"] is None
     assert first.json()["cargo_description"] is None
     assert first.json()["packaging_code"] is None
@@ -352,6 +353,7 @@ def test_http_create_container_with_vessel_name(box_client: object) -> None:
     assert created.json()["vessel_name"] == "MSC GULSUN"
     assert created.json()["voyage_no"] is None
     assert created.json()["vessel_imo"] is None
+    assert created.json()["alliance_service"] is None
     assert "pin" not in created.json()
 
 
@@ -459,6 +461,58 @@ def test_http_rejects_too_long_vessel_imo(box_client: object) -> None:
     )
     assert reply.status_code == 400
     assert "imo" in reply.json()["detail"]
+
+
+def test_http_create_container_with_alliance_service(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    created = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "alliance_service": " 2M ",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["alliance_service"] == "2M"
+    assert created.json()["vessel_imo"] is None
+
+
+def test_http_rejects_non_text_alliance_service(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "alliance_service": 2,
+        },
+    )
+    assert reply.status_code == 400
+    assert "alians" in reply.json()["detail"]
+
+
+def test_http_rejects_too_long_alliance_service(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "alliance_service": "x" * 33,
+        },
+    )
+    assert reply.status_code == 400
+    assert "alians" in reply.json()["detail"]
 
 
 def test_http_create_container_with_remarks(box_client: object) -> None:

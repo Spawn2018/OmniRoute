@@ -7,6 +7,7 @@ from hypothesis import given
 from hypothesis import strategies as st
 
 from app.domain.container import (
+    require_alliance_service,
     require_ams_cutoff_at,
     require_booking_no,
     require_cargo_description,
@@ -132,6 +133,16 @@ def test_vessel_imo_omits_blank_and_keeps_token() -> None:
         require_vessel_imo("x" * 17)
     with pytest.raises(InvalidContainer, match="imo"):
         require_vessel_imo(9074729)
+
+
+def test_alliance_service_omits_blank_and_keeps_token() -> None:
+    assert require_alliance_service(None) is None
+    assert require_alliance_service("  ") is None
+    assert require_alliance_service(" 2M ") == "2M"
+    with pytest.raises(InvalidContainer, match="alians"):
+        require_alliance_service("x" * 33)
+    with pytest.raises(InvalidContainer, match="alians"):
+        require_alliance_service(2)
 
 
 def test_booking_no_omits_blank_and_keeps_token() -> None:

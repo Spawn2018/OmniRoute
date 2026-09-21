@@ -2837,6 +2837,10 @@ export type ContainerCreate = {
      */
     vessel_imo?: string | null;
     /**
+     * Alliance Service
+     */
+    alliance_service?: string | null;
+    /**
      * Remarks
      */
     remarks?: string | null;
@@ -3070,6 +3074,10 @@ export type ContainerResponse = {
      * Vessel Imo
      */
     vessel_imo: string | null;
+    /**
+     * Alliance Service
+     */
+    alliance_service: string | null;
     /**
      * Remarks
      */

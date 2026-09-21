@@ -17,6 +17,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
   const [vessel, setVessel] = useState("")
   const [voyage, setVoyage] = useState("")
   const [imo, setImo] = useState("")
+  const [alliance, setAlliance] = useState("")
   const [note, setNote] = useState("")
   const [goods, setGoods] = useState("")
   const [pack, setPack] = useState("")
@@ -91,6 +92,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
           cold,
         }),
         vessel_imo: optionalToken(imo),
+        alliance_service: optionalToken(alliance),
         grade: optionalToken(grade),
         pickup_terminal: optionalToken(dock),
         return_terminal: optionalToken(yard),
@@ -218,6 +220,15 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
           placeholder="vessel_imo"
           value={imo}
           onChange={(event) => setImo(event.target.value)}
+        />
+      </label>
+      <label className="flex flex-col gap-1 text-xs">
+        Alians (opcjonalnie)
+        <Input
+          aria-label="Alians serwisu kontenera"
+          placeholder="alliance_service"
+          value={alliance}
+          onChange={(event) => setAlliance(event.target.value)}
         />
       </label>
       <label className="flex flex-col gap-1 text-xs">
@@ -641,6 +652,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
             {row.vessel_name !== null ? ` · ${row.vessel_name}` : ""}
             {row.voyage_no !== null ? ` · ${row.voyage_no}` : ""}
             {row.vessel_imo !== null ? ` · ${row.vessel_imo}` : ""}
+            {row.alliance_service !== null ? ` · ${row.alliance_service}` : ""}
             {row.remarks !== null ? ` · ${row.remarks}` : ""}
             {row.cargo_description !== null ? ` · ${row.cargo_description}` : ""}
             {row.packaging_code !== null ? ` · ${row.packaging_code}` : ""}

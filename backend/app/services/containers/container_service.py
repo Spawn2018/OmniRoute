@@ -6,6 +6,7 @@ from uuid import UUID, uuid4
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.container import (
+    require_alliance_service,
     require_ams_cutoff_at,
     require_booking_no,
     require_cargo_description,
@@ -80,6 +81,7 @@ class _WriteBox(NamedTuple):
     vessel: object
     voyage: object
     imo: object
+    alliance: object
     note: object
     goods: object
     pack: object
@@ -138,6 +140,7 @@ class _BoxDraft(NamedTuple):
     vessel: str | None
     voyage: str | None
     imo: str | None
+    alliance: str | None
     note: str | None
     goods: str | None
     pack: str | None
@@ -194,12 +197,11 @@ def _box_draft(write: _WriteBox) -> _BoxDraft:
         require_iso_size_type(write.size_type),
         require_container_shipment_id(write.shipment_id),
         require_container_source_ref(write.origin),
-        require_seal_no_1(write.seal),
-        require_seal_no_2(write.seal2),
+        require_seal_no_1(write.seal), require_seal_no_2(write.seal2),
         require_seal_no_3(write.seal3),
         require_vessel_name(write.vessel),
         require_voyage_no(write.voyage), require_vessel_imo(write.imo),
-        require_container_remarks(write.note),
+        require_alliance_service(write.alliance), require_container_remarks(write.note),
         require_cargo_description(write.goods),
         require_packaging_code(write.pack), require_container_grade(write.grade),
         require_container_ref_1(write.mark),
@@ -212,10 +214,8 @@ def _box_draft(write: _WriteBox) -> _BoxDraft:
         require_return_terminal(write.yard),
         require_container_bl_kind(write.bill),
         *clocks,
-        require_vgm_kg(write.mass),
-        require_vgm_method(write.weigh),
-        require_vgm_cutoff_at(write.vgm),
-        require_last_survey_at(write.survey),
+        require_vgm_kg(write.mass), require_vgm_method(write.weigh),
+        require_vgm_cutoff_at(write.vgm), require_last_survey_at(write.survey),
         require_booking_no(write.book),
         *parties,
         require_tare_kg(write.tare),
@@ -289,7 +289,7 @@ def _box_unchanged(current: Container, draft: _BoxDraft) -> bool:
         and current.seal_no_3 == draft.seal3
         and current.vessel_name == draft.vessel
         and current.voyage_no == draft.voyage and current.vessel_imo == draft.imo
-        and current.remarks == draft.note
+        and current.alliance_service == draft.alliance and current.remarks == draft.note
         and current.cargo_description == draft.goods
         and current.packaging_code == draft.pack and current.grade == draft.grade
         and current.ref_1 == draft.mark
@@ -362,7 +362,7 @@ def _container_row(organization_id: UUID, user_id: UUID, draft: _BoxDraft) -> Co
         source_ref=draft.origin,
         seal_no_1=draft.seal, seal_no_2=draft.seal2, seal_no_3=draft.seal3,
         vessel_name=draft.vessel, voyage_no=draft.voyage, vessel_imo=draft.imo,
-        remarks=draft.note,
+        alliance_service=draft.alliance, remarks=draft.note,
         cargo_description=draft.goods, packaging_code=draft.pack, grade=draft.grade,
         ref_1=draft.mark, ref_2=draft.mark2, ref_3=draft.mark3,
         ref_4=draft.mark4, ref_5=draft.mark5, reefer=draft.cold,

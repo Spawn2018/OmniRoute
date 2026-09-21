@@ -462,6 +462,20 @@ def test_migration_483_adds_vessel_imo_without_ais() -> None:
     assert "vessel_imo" in source.split("def downgrade")[1]
 
 
+def test_migration_484_adds_alliance_service_without_live_http() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "484_container_alliance_service.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "484_container_alliance_service"' in source
+    assert 'down_revision: str | None = "483_container_vessel_imo"' in source
+    assert "alliance_service" in source
+    assert "String(32)" in source
+    assert "httpx" not in source
+    assert "create_table" not in source
+    assert "def downgrade" in source
+    assert "alliance_service" in source.split("def downgrade")[1]
+
+
 def test_migration_451_adds_payload_without_calculator() -> None:
     source = (
         _ROOT / "backend" / "alembic" / "versions" / "451_container_payload.py"
@@ -849,6 +863,7 @@ def test_generated_api_types_include_container() -> None:
     assert "packaging_code" in source
     assert "grade" in source
     assert "vessel_imo" in source
+    assert "alliance_service" in source
     assert "ref_1" in source
     assert "ref_2" in source
     assert "ref_3" in source

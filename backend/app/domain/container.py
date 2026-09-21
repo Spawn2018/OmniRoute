@@ -15,6 +15,7 @@ _MAX_MARK = 64
 _MAX_BOOK = 64
 _MAX_PIN = 64
 _MAX_IMO = 16
+_MAX_ALLIANCE = 32
 _BL_KINDS = frozenset({"original", "seawaybill", "telex", "express"})
 _VGM_METHODS = frozenset({"method1", "method2"})
 _MAX_ORIGIN_H = 8760
@@ -166,6 +167,19 @@ def require_vessel_imo(raw: object) -> str | None:
         return None
     if len(token) > _MAX_IMO:
         raise InvalidContainer("imo za długi")
+    return token
+
+
+def require_alliance_service(raw: object) -> str | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidContainer("alians musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        return None
+    if len(token) > _MAX_ALLIANCE:
+        raise InvalidContainer("alians za długi")
     return token
 
 

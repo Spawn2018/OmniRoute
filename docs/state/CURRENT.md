@@ -1,22 +1,22 @@
 ﻿# Bieżący focus
 
-**Faza:** Oś pinu — po **608.0** (gate success); plan **609.0** T3 EXP1 `alliance_service`
+**Faza:** Oś pinu — po **609.0** (lokalne; CI po push)
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **608.0** T3 EXP1 `vessel_imo` (gate success)
+**Ostatni plaster:** **609.0** T3 EXP1 `alliance_service` (lokalne; CI po push)
 
-**Etap:** Plan — **609.0** T3 EXP1 `container.alliance_service` (delta zaakceptowana, wolno `/plaster`)
+**Etap:** po T3 EXP1 — kolejny leftover z PLAN po godzinie `/noc 8`
 
 **Noc:** `/noc 8` do **2026-09-21T08:00:00+02:00**
 
 **Miejsce pracy:** produkt = to repo + GitHub.
 
-**Następny:** **609.0** T3 EXP1 `alliance_service` HITL na `container` (nie live alliance). Leftover HW/UXCL/N3 parked. **588.0** SH-R16-4 UXCL = park `/noc`.
+**Następny:** po pushu 609.0 — kolejny leftover HITL z PLAN (nie HW, nie UXCL, nie N3). **588.0** SH-R16-4 UXCL = park `/noc`.
 
 **Park / czeka w PLAN:** HW · SH-R16-4 UXCL · AI3-payload · G0-SH · PUESC · MOS live · live FK UUID · N3 countdown · …
 
-**Spec (jedyna na sesję produktu):** [docs/deltas/open/609.0-container-alliance-service.md](../deltas/open/609.0-container-alliance-service.md)
+**Spec (jedyna na sesję produktu):** (brak — po zamknięciu 609)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 
@@ -24,8 +24,8 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
+**2026-09-21:** Plaster **609.0** T3 EXP1 `alliance_service` zamknięty (lokalne; CI po push). `/noc 8`.
 **2026-09-21:** Plan **609.0** T3 EXP1 `alliance_service` (`/noc 8`).
-**2026-09-21:** Plaster **608.0** T3 EXP1 `vessel_imo` zamknięty (gate success). `/noc 8`.
 **2026-09-21:** Plan **608.0** T3 EXP1 `vessel_imo` (`/noc 8`). `alliance_service` parked.
 **2026-09-21:** Plaster **607.0** T3 EXP1 `grade` zamknięty (gate success). `/noc 8`.
 **2026-09-21:** Plan **607.0** T3 EXP1 `grade` (`/noc 8`). `alliance_service` / `vessel_imo` parked.
