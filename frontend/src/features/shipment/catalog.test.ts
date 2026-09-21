@@ -128,6 +128,8 @@ describe("shipment surface for 28.0 and 90.0", () => {
     expect(box).not.toContain("parseFloat")
     expect(box).toContain("vgm_kg")
     expect(box).toContain("tare_kg")
+    expect(box).toContain("packaging_code")
+    expect(box).toContain("grade")
     expect(box).toContain("pin_code")
     expect(box).toContain("payload_kg")
     expect(box).toContain("teu")

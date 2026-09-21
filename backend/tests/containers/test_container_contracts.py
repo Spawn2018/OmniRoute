@@ -433,6 +433,21 @@ def test_migration_450_adds_pin_without_ciphertext() -> None:
     assert "pin_code" in source.split("def downgrade")[1]
 
 
+def test_migration_482_adds_grade_without_iicl_check() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "482_container_grade.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "482_container_grade"' in source
+    assert 'down_revision: str | None = "481_stop_weigh_out"' in source
+    assert "grade" in source
+    assert "String(32)" in source
+    assert "ck_container_grade" not in source
+    assert "httpx" not in source
+    assert "create_table" not in source
+    assert "def downgrade" in source
+    assert "grade" in source.split("def downgrade")[1]
+
+
 def test_migration_451_adds_payload_without_calculator() -> None:
     source = (
         _ROOT / "backend" / "alembic" / "versions" / "451_container_payload.py"
@@ -818,6 +833,7 @@ def test_generated_api_types_include_container() -> None:
     assert "remarks" in source
     assert "cargo_description" in source
     assert "packaging_code" in source
+    assert "grade" in source
     assert "ref_1" in source
     assert "ref_2" in source
     assert "ref_3" in source

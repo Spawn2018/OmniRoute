@@ -194,6 +194,19 @@ def require_packaging_code(raw: object) -> str | None:
     return token
 
 
+def require_container_grade(raw: object) -> str | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidContainer("stopień musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        return None
+    if len(token) > _MAX_SEAL:
+        raise InvalidContainer("stopień za długi")
+    return token
+
+
 def require_pickup_terminal(raw: object) -> str | None:
     if raw is None:
         return None

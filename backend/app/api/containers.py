@@ -33,6 +33,7 @@ class ContainerCreate(BaseModel):
     remarks: str | None = None
     cargo_description: str | None = None
     packaging_code: str | None = None
+    grade: object | None = None
     ref_1: str | None = None
     ref_2: str | None = None
     ref_3: str | None = None
@@ -93,6 +94,7 @@ class ContainerResponse(BaseModel):
     remarks: str | None
     cargo_description: str | None
     packaging_code: str | None
+    grade: str | None
     ref_1: str | None
     ref_2: str | None
     ref_3: str | None
@@ -169,7 +171,7 @@ def _write_from_body(
         body.voyage_no,
         body.remarks,
         body.cargo_description,
-        body.packaging_code,
+        body.packaging_code, body.grade,
         body.ref_1,
         body.ref_2,
         body.ref_3,

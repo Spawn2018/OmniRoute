@@ -19,6 +19,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
   const [note, setNote] = useState("")
   const [goods, setGoods] = useState("")
   const [pack, setPack] = useState("")
+  const [grade, setGrade] = useState("")
   const [mark, setMark] = useState("")
   const [mark2, setMark2] = useState("")
   const [mark3, setMark3] = useState("")
@@ -88,6 +89,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
           mark5,
           cold,
         }),
+        grade: optionalToken(grade),
         pickup_terminal: optionalToken(dock),
         return_terminal: optionalToken(yard),
         bl_kind: optionalToken(bill),
@@ -232,6 +234,15 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
           placeholder="packaging_code"
           value={pack}
           onChange={(event) => setPack(event.target.value)}
+        />
+      </label>
+      <label className="flex flex-col gap-1 text-xs">
+        Stopień (opcjonalnie)
+        <Input
+          aria-label="Stopień kontenera"
+          placeholder="grade"
+          value={grade}
+          onChange={(event) => setGrade(event.target.value)}
         />
       </label>
       <label className="flex flex-col gap-1 text-xs">
@@ -621,6 +632,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
             {row.remarks !== null ? ` · ${row.remarks}` : ""}
             {row.cargo_description !== null ? ` · ${row.cargo_description}` : ""}
             {row.packaging_code !== null ? ` · ${row.packaging_code}` : ""}
+            {row.grade !== null ? ` · ${row.grade}` : ""}
             {row.ref_1 !== null ? ` · ${row.ref_1}` : ""}
             {row.ref_2 !== null ? ` · ${row.ref_2}` : ""}
             {row.ref_3 !== null ? ` · ${row.ref_3}` : ""}

@@ -152,6 +152,7 @@ def test_http_create_list_supersede_and_reject_check_digit(box_client: object) -
     assert first.json()["remarks"] is None
     assert first.json()["cargo_description"] is None
     assert first.json()["packaging_code"] is None
+    assert first.json()["grade"] is None
     assert first.json()["ref_1"] is None
     assert first.json()["ref_2"] is None
     assert first.json()["ref_3"] is None
@@ -1079,6 +1080,58 @@ def test_http_create_container_with_pin_code(box_client: object) -> None:
     assert created.json()["tare_kg"] is None
     assert created.json()["booking_no"] is None
     assert "ciphertext" not in created.json()
+
+
+def test_http_create_container_with_grade(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    created = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "grade": " IICL ",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["grade"] == "IICL"
+    assert created.json()["packaging_code"] is None
+
+
+def test_http_rejects_non_text_grade(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "grade": 12,
+        },
+    )
+    assert reply.status_code == 400
+    assert "stopień" in reply.json()["detail"]
+
+
+def test_http_rejects_too_long_grade(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "grade": "x" * 33,
+        },
+    )
+    assert reply.status_code == 400
+    assert "stopień" in reply.json()["detail"]
 
 
 def test_http_rejects_non_text_pin_code(box_client: object) -> None:

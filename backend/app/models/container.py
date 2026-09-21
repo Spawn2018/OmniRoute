@@ -75,6 +75,7 @@ class Container(Base, TimestampMixin):
     remarks: Mapped[str | None] = mapped_column(String(256), nullable=True)
     cargo_description: Mapped[str | None] = mapped_column(String(256), nullable=True)
     packaging_code: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    grade: Mapped[str | None] = mapped_column(String(32), nullable=True)
     ref_1: Mapped[str | None] = mapped_column(String(64), nullable=True)
     ref_2: Mapped[str | None] = mapped_column(String(64), nullable=True)
     ref_3: Mapped[str | None] = mapped_column(String(64), nullable=True)

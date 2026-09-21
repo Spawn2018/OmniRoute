@@ -38,6 +38,7 @@ from app.domain.container import (
     require_container_unload_date,
     require_container_volume_m3,
     require_container_weight_kg,
+    require_container_grade,
     require_cy_cutoff_at,
     require_demurrage_free_days,
     require_detention_free_days,
@@ -186,6 +187,16 @@ def test_packaging_code_omits_blank_and_keeps_token() -> None:
     assert require_packaging_code(" CT ") == "CT"
     with pytest.raises(InvalidContainer, match="opakowanie"):
         require_packaging_code("x" * 33)
+
+
+def test_container_grade_omits_blank_and_keeps_token() -> None:
+    assert require_container_grade(None) is None
+    assert require_container_grade("  ") is None
+    assert require_container_grade(" IICL ") == "IICL"
+    with pytest.raises(InvalidContainer, match="stopień"):
+        require_container_grade("x" * 33)
+    with pytest.raises(InvalidContainer, match="stopień"):
+        require_container_grade(12)
 
 
 def test_container_ref_1_omits_blank_and_keeps_token() -> None:

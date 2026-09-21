@@ -38,6 +38,7 @@ from app.domain.container import (
     require_container_unload_date,
     require_container_volume_m3,
     require_container_weight_kg,
+    require_container_grade,
     require_cy_cutoff_at,
     require_demurrage_free_days,
     require_detention_free_days,
@@ -80,6 +81,7 @@ class _WriteBox(NamedTuple):
     note: object
     goods: object
     pack: object
+    grade: object
     mark: object
     mark2: object
     mark3: object
@@ -136,6 +138,7 @@ class _BoxDraft(NamedTuple):
     note: str | None
     goods: str | None
     pack: str | None
+    grade: str | None
     mark: str | None
     mark2: str | None
     mark3: str | None
@@ -195,7 +198,7 @@ def _box_draft(write: _WriteBox) -> _BoxDraft:
         require_voyage_no(write.voyage),
         require_container_remarks(write.note),
         require_cargo_description(write.goods),
-        require_packaging_code(write.pack),
+        require_packaging_code(write.pack), require_container_grade(write.grade),
         require_container_ref_1(write.mark),
         require_container_ref_2(write.mark2),
         require_container_ref_3(write.mark3),
@@ -287,6 +290,7 @@ def _box_unchanged(current: Container, draft: _BoxDraft) -> bool:
         and current.remarks == draft.note
         and current.cargo_description == draft.goods
         and current.packaging_code == draft.pack
+        and current.grade == draft.grade
         and current.ref_1 == draft.mark
         and current.ref_2 == draft.mark2
         and current.ref_3 == draft.mark3
@@ -357,7 +361,7 @@ def _container_row(organization_id: UUID, user_id: UUID, draft: _BoxDraft) -> Co
         source_ref=draft.origin,
         seal_no_1=draft.seal, seal_no_2=draft.seal2, seal_no_3=draft.seal3,
         vessel_name=draft.vessel, voyage_no=draft.voyage, remarks=draft.note,
-        cargo_description=draft.goods, packaging_code=draft.pack,
+        cargo_description=draft.goods, packaging_code=draft.pack, grade=draft.grade,
         ref_1=draft.mark, ref_2=draft.mark2, ref_3=draft.mark3,
         ref_4=draft.mark4, ref_5=draft.mark5, reefer=draft.cold,
         pickup_terminal=draft.dock, return_terminal=draft.yard, bl_kind=draft.bill,

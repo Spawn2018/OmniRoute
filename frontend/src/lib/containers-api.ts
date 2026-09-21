@@ -16,6 +16,7 @@ export type ContainerRow = {
   remarks: string | null
   cargo_description: string | null
   packaging_code: string | null
+  grade: string | null
   ref_1: string | null
   ref_2: string | null
   ref_3: string | null
@@ -73,6 +74,7 @@ export type ContainerWrite = {
   remarks: string | null
   cargo_description: string | null
   packaging_code: string | null
+  grade?: string | null
   ref_1: string | null
   ref_2: string | null
   ref_3: string | null

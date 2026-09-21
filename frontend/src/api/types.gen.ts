@@ -2845,6 +2845,10 @@ export type ContainerCreate = {
      */
     packaging_code?: string | null;
     /**
+     * Grade
+     */
+    grade?: string | null;
+    /**
      * Ref 1
      */
     ref_1?: string | null;
@@ -3070,6 +3074,10 @@ export type ContainerResponse = {
      * Packaging Code
      */
     packaging_code: string | null;
+    /**
+     * Grade
+     */
+    grade: string | null;
     /**
      * Ref 1
      */
