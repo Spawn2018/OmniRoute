@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** po gate success kolejny Q z PLAN poza HW, UXCL, N3, AI3, G0-SH. T7c zostaje. **588.0** SH-R16-4 UXCL = park `/noc`.
+**Następny:** plan kolejnego Q z PLAN poza HW, UXCL, N3, AI3, G0-SH. T7c zostaje. **588.0** SH-R16-4 UXCL = park `/noc`.
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
