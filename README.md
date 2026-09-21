@@ -88,8 +88,8 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **615.0** T7b `fx_rate_*` na `charge` (gate success)
-- **Etap:** 615 zamknięty. Plan następnego Q z kolejki.
-- **Następny:** plan kolejnego Q z PLAN poza HW, UXCL, N3, AI3, G0-SH. T7c zostaje. **588.0** SH-R16-4 UXCL = park `/noc`.
+- **Etap:** Plan **616.0** T5 `task` HITL. Delta zaakceptowana `/noc`. Wolno `/plaster`.
+- **Następny:** **616.0** tabela `task` HITL (kod + template_code + status). Nie matching. Nie FK shipment. **588.0** SH-R16-4 UXCL = park `/noc`.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

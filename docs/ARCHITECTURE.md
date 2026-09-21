@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **615.0** T7b `fx_rate_*` na `charge` (gate success). **Etap:** 615 zamknięty. Plan następnego Q z kolejki. **Następny:** plan kolejnego Q z PLAN poza HW, UXCL, N3, AI3, G0-SH. T7c zostaje. **588.0** SH-R16-4 UXCL = park `/noc`. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **615.0** T7b `fx_rate_*` na `charge` (gate success). **Etap:** Plan **616.0** T5 `task` HITL. Delta zaakceptowana `/noc`. Wolno `/plaster`. **Następny:** **616.0** tabela `task` HITL (kod + template_code + status). Nie matching. Nie FK shipment. **588.0** SH-R16-4 UXCL = park `/noc`. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

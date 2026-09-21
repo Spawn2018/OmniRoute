@@ -1,22 +1,22 @@
 ﻿# Bieżący focus
 
-**Faza:** Oś pinu — **615.0** gate success
+**Faza:** Oś pinu — plan **616.0** (delta zaakceptowana, wolno `/plaster`)
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 **Ostatni plaster:** **615.0** T7b `fx_rate_*` na `charge` (gate success)
 
-**Etap:** 615 zamknięty. Plan następnego Q z kolejki.
+**Etap:** Plan **616.0** T5 `task` HITL. Delta zaakceptowana `/noc`. Wolno `/plaster`.
 
 **Noc:** `/noc 7` do **2026-09-22T07:00:00+02:00**
 
 **Miejsce pracy:** produkt = to repo + GitHub.
 
-**Następny:** plan kolejnego Q z PLAN poza HW, UXCL, N3, AI3, G0-SH. T7c zostaje. **588.0** SH-R16-4 UXCL = park `/noc`.
+**Następny:** **616.0** tabela `task` HITL (kod + template_code + status). Nie matching. Nie FK shipment. **588.0** SH-R16-4 UXCL = park `/noc`.
 
-**Park / czeka w PLAN:** T7c U4 · wnuki rollup · HW · SH-R16-4 UXCL · AI3-payload · G0-SH · PUESC · MOS live · N3 countdown · …
+**Park / czeka w PLAN:** matching T5 · FK kontekstu · T7c U4 · wnuki · HW · SH-R16-4 UXCL · AI3 · G0-SH · N3 · …
 
-**Spec (jedyna na sesję produktu):** (brak — plan następnego Q)
+**Spec (jedyna na sesję produktu):** `docs/deltas/open/616.0-task.md`
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 
@@ -24,6 +24,7 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
+**2026-09-21:** Plan **616.0** T5 `task` HITL (`/noc 7`). 615.0 gate success.
 **2026-09-21:** Plaster **615.0** T7b `fx_rate_*` na `charge` zamknięty (gate success). `/noc 7`.
 **2026-09-21:** Plaster **615.0** T7b `fx_rate_*` na `charge` zamknięty lokalnie (CI po push). `/noc 7`.
 **2026-09-21:** Plan **615.0** T7b `fx_rate_*` na `charge` (`/noc 7`). 614.0 gate success.
