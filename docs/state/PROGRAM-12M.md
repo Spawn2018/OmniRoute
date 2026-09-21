@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **614.0** T4 `shipment_tree_margin` (gate success) **Następny:** plan kolejnego Q z PLAN poza HW, UXCL, N3, AI3, G0-SH. Wnuki rollup zostają. **588.0** SH-R16-4 UXCL = park `/noc`.
+**Stan (z CURRENT.md):** **614.0** T4 `shipment_tree_margin` (gate success) **Następny:** **615.0** opcjonalne nadpisanie kursu na opłacie (tokeny jak 211.0). Nie mnożenie NBP. Nie T7c. **588.0** SH-R16-4 UXCL = park `/noc`.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.
