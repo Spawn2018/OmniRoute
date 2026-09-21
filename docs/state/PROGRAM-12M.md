@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **612.0** T3 `destination_city` (gate success) **Następny:** rano plan kolejnego Q poza HW, UXCL, N3, AI3, G0-SH. Nie FK portu w serwisie kontenera. **588.0** SH-R16-4 UXCL = park `/noc`.
+**Stan (z CURRENT.md):** **612.0** T3 `destination_city` (gate success) **Następny:** **613.0** opcjonalny `charge.shipment_id` (klucz pod rollup). Widok SQL drzewa zostaje. Nie FK portu. **588.0** SH-R16-4 UXCL = park `/noc`.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.
