@@ -87,10 +87,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **610.0** T3 `pol_unlocode` (lokalne; CI po push)
-- **Etap:** po T3 `pol_unlocode` — następny leftover `pod_unlocode`
-- **Następny:** plan **611.0** T3 `pod_unlocode` (nie HW, nie UXCL, nie N3). `destination_city` parked. **588.0** SH-R16-4 UXCL = park `/noc`.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **610.0** T3 `pol_unlocode` (gate success)
+- **Etap:** Plan — delta **611.0** zaakceptowana (`/noc`), wolno `/plaster`
+- **Następny:** **611.0** T3 `pod_unlocode` na `container`. `destination_city` parked. **588.0** SH-R16-4 UXCL = park `/noc`.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 
