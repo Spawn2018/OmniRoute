@@ -46,6 +46,18 @@ const columns = [
     header: "Zlecenie",
     cell: ({ getValue }) => getValue() ?? "—",
   }),
+  helper.accessor("fx_rate_basis", {
+    header: "Kurs data",
+    cell: ({ getValue }) => getValue() ?? "—",
+  }),
+  helper.accessor("fx_rate_offset_days", {
+    header: "Kurs offset",
+    cell: ({ getValue }) => getValue() ?? "—",
+  }),
+  helper.accessor("fx_rate_table", {
+    header: "Kurs tabela",
+    cell: ({ getValue }) => getValue() ?? "—",
+  }),
 ]
 
 const treeHelper = createColumnHelper<ShipmentTreeMargin>()
@@ -85,6 +97,9 @@ const COLUMN_LABELS = {
   rate_line_id: "Stawka kupna",
   source_ref: "Pochodzenie",
   shipment_id: "Zlecenie",
+  fx_rate_basis: "Kurs data",
+  fx_rate_offset_days: "Kurs offset",
+  fx_rate_table: "Kurs tabela",
 }
 
 type Draft = {
@@ -98,6 +113,9 @@ type Draft = {
   destinationUnlocode: string
   floorDecisionId: string
   shipmentId: string
+  fxRateBasis: string
+  fxRateOffsetDays: string
+  fxRateTable: string
 }
 
 const EMPTY_DRAFT: Draft = {
@@ -111,6 +129,9 @@ const EMPTY_DRAFT: Draft = {
   destinationUnlocode: "",
   floorDecisionId: "",
   shipmentId: "",
+  fxRateBasis: "",
+  fxRateOffsetDays: "",
+  fxRateTable: "",
 }
 
 export function ChargeCatalogPage() {
@@ -149,7 +170,7 @@ export function ChargeCatalogPage() {
     <div className="space-y-3">
       <CatalogHeading
         title="Opłaty"
-        subtitle="charge M-08 · buy i sell na jednym wierszu · marża w kodzie · UN opcjonalnie pod margin_floor · opcjonalne zlecenie · marża drzewa z SQL · nie accept HITL"
+        subtitle="charge M-08 · buy i sell na jednym wierszu · marża w kodzie · UN opcjonalnie pod margin_floor · opcjonalne zlecenie · opcjonalny kurs · marża drzewa z SQL · nie accept HITL"
       />
 
       {signedIn ? null : <TenantSessionNotice />}
@@ -170,6 +191,9 @@ export function ChargeCatalogPage() {
         <Input aria-label="Identyfikator decyzji podłogi" placeholder="floor_decision_id po S11" value={draft.floorDecisionId} onChange={setField("floorDecisionId")} />
         <Input aria-label="Identyfikator stawki kupna" placeholder="rate_line (opcjonalnie)" value={draft.rateLineId} onChange={setField("rateLineId")} />
         <Input aria-label="Zlecenie" placeholder="shipment_id (opcjonalnie)" value={draft.shipmentId} onChange={setField("shipmentId")} />
+        <Input aria-label="Kurs data" placeholder="etd / loading_date…" value={draft.fxRateBasis} onChange={setField("fxRateBasis")} />
+        <Input aria-label="Kurs offset" placeholder="0 albo -1" value={draft.fxRateOffsetDays} onChange={setField("fxRateOffsetDays")} />
+        <Input aria-label="Kurs tabela" placeholder="nbp_a / nbp_b" value={draft.fxRateTable} onChange={setField("fxRateTable")} />
         <Input aria-label="Pochodzenie" placeholder="tenant:manual albo fixture://charge/…" value={draft.sourceRef} onChange={setField("sourceRef")} required />
         <Button type="submit" disabled={createMutation.isPending || !signedIn}>
           Dodaj opłatę

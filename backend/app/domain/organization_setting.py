@@ -1,3 +1,4 @@
+from collections.abc import Callable
 from decimal import Decimal, InvalidOperation
 
 from app.domain.errors import InvalidMoney, InvalidOrganizationSetting
@@ -97,6 +98,16 @@ def normalize_fx_rate_table(raw: str) -> str:
     if token not in _FX_TABLE:
         raise InvalidOrganizationSetting("kurs: tabela spoza zbioru")
     return token
+
+
+def optional_fx_token(raw: object | None, normalize: Callable[[str], str]) -> str | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidOrganizationSetting("kurs: wartość musi być tekstem")
+    if raw.strip() == "":
+        return None
+    return normalize(raw)
 
 
 def normalize_hitl_confidence_min(raw: str) -> str:

@@ -37,6 +37,9 @@ class ChargeCreate(BaseModel):
     sell_currency: str = Field(min_length=3, max_length=3)
     rate_line_id: UUID | None = None
     shipment_id: UUID | None = None
+    fx_rate_basis: str | None = Field(default=None, max_length=32)
+    fx_rate_offset_days: str | None = Field(default=None, max_length=8)
+    fx_rate_table: str | None = Field(default=None, max_length=16)
     source_ref: str = Field(min_length=1, max_length=512)
     # 539.0: tylko lookup margin_floor — nie kolumny na charge
     origin_unlocode: str | None = Field(default=None, max_length=5)
@@ -57,6 +60,9 @@ class ChargeResponse(BaseModel):
     margin_currency: str
     rate_line_id: UUID | None
     shipment_id: UUID | None
+    fx_rate_basis: str | None
+    fx_rate_offset_days: str | None
+    fx_rate_table: str | None
     source_ref: str | None
 
     @classmethod
@@ -94,6 +100,9 @@ class ChargeResponse(BaseModel):
             margin_currency=margin_ccy,
             rate_line_id=row.rate_line_id,
             shipment_id=row.shipment_id,
+            fx_rate_basis=row.fx_rate_basis,
+            fx_rate_offset_days=row.fx_rate_offset_days,
+            fx_rate_table=row.fx_rate_table,
             source_ref=row.source_ref,
         )
 
@@ -249,6 +258,9 @@ async def create_charge(
         rate_line_id=body.rate_line_id,
         source_ref=body.source_ref,
         shipment_id=body.shipment_id,
+        fx_rate_basis=body.fx_rate_basis,
+        fx_rate_offset_days=body.fx_rate_offset_days,
+        fx_rate_table=body.fx_rate_table,
     )
     await session.commit()
     return ChargeResponse.from_row(row)

@@ -4,10 +4,11 @@ Marża, kurs NBP i limit kontrahenta to fakty z katalogów. Faktura sprzedaży t
 
 1. Wejdź na `/finance`. Tabela opłat pokazuje `margin_amount` z GET `/charges` (różnica sell−buy w SQL). Przeglądarka nie odejmuje kupna od sprzedaży.
 2. Na `/charges` pole „Zlecenie” jest opcjonalne: wklejasz identyfikator zlecenia tego tenanta albo zostawiasz puste. Puste zostaje puste. Obce zlecenie nie wchodzi.
-3. Tabela „Marża drzewa” na `/charges` czyta GET `/charges/tree-margins`. To suma kupna, sprzedaży i marży zlecenia głównego oraz jego bezpośrednich podzleceń, policzona w SQL, osobno dla każdej waluty. Przeglądarka nie dodaje kwot. Wnuki i opłata bez zlecenia nie wchodzą.
-4. Blok „Faktury” listuje `invoice_ref`, `invoice_kind` i `ksef_ref`. Nie ma tu kwoty ani sumy.
-5. Nowy dokument albo numer sesji zapisujesz na `/invoices`. Link z tablicy prowadzi tam.
-6. „Narracja po SQL” składa zdania z tych samych wierszy. Nie ma sumy faktur i nie ma komentarza modelu.
+3. Pola „Kurs data”, „Kurs offset” i „Kurs tabela” na `/charges` nadpisują politykę tenanta dla tej jednej opłaty. Tokeny jak w ustawieniach (`etd`, `0`/`-1`, `nbp_a`). Puste zostaje puste. Tu nie ma mnożenia kursem NBP.
+4. Tabela „Marża drzewa” na `/charges` czyta GET `/charges/tree-margins`. To suma kupna, sprzedaży i marży zlecenia głównego oraz jego bezpośrednich podzleceń, policzona w SQL, osobno dla każdej waluty. Przeglądarka nie dodaje kwot. Wnuki i opłata bez zlecenia nie wchodzą.
+5. Blok „Faktury” listuje `invoice_ref`, `invoice_kind` i `ksef_ref`. Nie ma tu kwoty ani sumy.
+6. Nowy dokument albo numer sesji zapisujesz na `/invoices`. Link z tablicy prowadzi tam.
+7. „Narracja po SQL” składa zdania z tych samych wierszy. Nie ma sumy faktur i nie ma komentarza modelu.
 
 Czego tu nie ma: suma faktur, asystent liczący, silnik limitu, zbiorcze członki. Sprzedaż zostaje na `/charges`. Zapis FV zostaje na `/invoices`.
 

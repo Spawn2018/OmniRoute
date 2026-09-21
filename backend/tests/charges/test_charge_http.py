@@ -10,6 +10,12 @@ from app.api.deps import require_tenant_session, set_authz_checker
 from app.domain.charge import margin
 from app.domain.errors import InvalidSourceRef, MixedCurrencyCharge, UnknownChargeCode
 from app.domain.money import Money
+from app.domain.organization_setting import (
+    normalize_fx_rate_basis,
+    normalize_fx_rate_offset_days,
+    normalize_fx_rate_table,
+    optional_fx_token,
+)
 from app.main import app
 from app.models.charge import Charge, ShipmentTreeMargin
 from tests.http_auth import bearer_auth_headers
@@ -52,6 +58,9 @@ class StubChargeService:
         rate_line_id: UUID | None,
         source_ref: object,
         shipment_id: UUID | None = None,
+        fx_rate_basis: object | None = None,
+        fx_rate_offset_days: object | None = None,
+        fx_rate_table: object | None = None,
     ) -> Charge:
         if isinstance(buy_amount, float) or isinstance(sell_amount, float):
             raise MixedCurrencyCharge("kwota nie może być float")
@@ -62,6 +71,9 @@ class StubChargeService:
         margin(buy, sell)
         if charge_code.strip().upper() == "LOOSE":
             raise UnknownChargeCode("nieznany kod opłaty: LOOSE")
+        basis = optional_fx_token(fx_rate_basis, normalize_fx_rate_basis)
+        offset = optional_fx_token(fx_rate_offset_days, normalize_fx_rate_offset_days)
+        table = optional_fx_token(fx_rate_table, normalize_fx_rate_table)
         row = Charge(
             id=uuid4(),
             organization_id=organization_id,
@@ -72,6 +84,9 @@ class StubChargeService:
             sell_currency=sell.currency.code,
             rate_line_id=rate_line_id,
             shipment_id=shipment_id,
+            fx_rate_basis=basis,
+            fx_rate_offset_days=offset,
+            fx_rate_table=table,
             source_ref=source_ref.strip(),
             created_by=user_id,
         )
@@ -187,6 +202,48 @@ def charges_client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
     set_authz_checker(None)
     app.dependency_overrides.clear()
     set_authz_checker(None)
+
+
+def test_http_create_charge_stores_fx_rate(charges_client: TestClient) -> None:
+    org_id = uuid4()
+    reply = charges_client.post(
+        "/api/v1/charges",
+        headers=bearer_auth_headers(organization_id=org_id),
+        json={
+            "charge_code": "THC",
+            "buy_amount": "10",
+            "buy_currency": "EUR",
+            "sell_amount": "14",
+            "sell_currency": "EUR",
+            "source_ref": "tenant:manual",
+            "fx_rate_basis": "etd",
+            "fx_rate_offset_days": "-1",
+            "fx_rate_table": "nbp_a",
+        },
+    )
+    assert reply.status_code == 201
+    body = reply.json()
+    assert body["fx_rate_basis"] == "etd"
+    assert body["fx_rate_offset_days"] == "-1"
+    assert body["fx_rate_table"] == "nbp_a"
+
+
+def test_http_rejects_bad_fx_rate_basis(charges_client: TestClient) -> None:
+    reply = charges_client.post(
+        "/api/v1/charges",
+        headers=bearer_auth_headers(),
+        json={
+            "charge_code": "THC",
+            "buy_amount": "10",
+            "buy_currency": "EUR",
+            "sell_amount": "14",
+            "sell_currency": "EUR",
+            "source_ref": "tenant:manual",
+            "fx_rate_basis": "tomorrow",
+        },
+    )
+    assert reply.status_code == 400
+    assert "kurs" in reply.json()["detail"]
 
 
 def test_http_lists_tree_margin(charges_client: TestClient) -> None:

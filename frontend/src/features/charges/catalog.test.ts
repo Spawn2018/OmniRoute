@@ -6,6 +6,7 @@ describe("charge catalog shipment field", () => {
   it("shows an optional shipment id on the charge form", () => {
     expect(page).toContain('aria-label="Zlecenie"')
     expect(page).toContain("Marża drzewa")
+    expect(page).toContain('aria-label="Kurs data"')
   })
 })
 
@@ -34,6 +35,29 @@ describe("chargeCreateBody", () => {
       rate_line_id: null,
       source_ref: "tenant:manual",
       shipment_id: null,
+      fx_rate_basis: null,
+      fx_rate_offset_days: null,
+      fx_rate_table: null,
+    })
+  })
+
+  it("sends optional fx rate tokens when the operator typed them", () => {
+    expect(
+      chargeCreateBody({
+        chargeCode: "thc",
+        buyAmount: "10",
+        sellAmount: "14",
+        currency: "EUR",
+        rateLineId: "",
+        sourceRef: "tenant:manual",
+        fxRateBasis: " ETD ",
+        fxRateOffsetDays: " -1 ",
+        fxRateTable: " NBP_A ",
+      }),
+    ).toMatchObject({
+      fx_rate_basis: "etd",
+      fx_rate_offset_days: "-1",
+      fx_rate_table: "nbp_a",
     })
   })
 

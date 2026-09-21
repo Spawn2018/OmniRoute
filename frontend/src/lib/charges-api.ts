@@ -13,6 +13,9 @@ export type Charge = {
   margin_currency: string
   rate_line_id: string | null
   shipment_id: string | null
+  fx_rate_basis: string | null
+  fx_rate_offset_days: string | null
+  fx_rate_table: string | null
   source_ref: string | null
 }
 
@@ -112,6 +115,9 @@ export function chargeCreateBody(args: {
   destinationUnlocode?: string
   floorDecisionId?: string
   shipmentId?: string
+  fxRateBasis?: string
+  fxRateOffsetDays?: string
+  fxRateTable?: string
 }): {
   charge_code: string
   buy_amount: string
@@ -121,6 +127,9 @@ export function chargeCreateBody(args: {
   rate_line_id: string | null
   source_ref: string
   shipment_id: string | null
+  fx_rate_basis: string | null
+  fx_rate_offset_days: string | null
+  fx_rate_table: string | null
   origin_unlocode?: string
   destination_unlocode?: string
   floor_decision_id?: string
@@ -131,6 +140,9 @@ export function chargeCreateBody(args: {
   const destination = (args.destinationUnlocode ?? "").trim().toUpperCase()
   const decision = (args.floorDecisionId ?? "").trim()
   const shipment = (args.shipmentId ?? "").trim()
+  const basis = (args.fxRateBasis ?? "").trim().toLowerCase()
+  const offset = (args.fxRateOffsetDays ?? "").trim()
+  const table = (args.fxRateTable ?? "").trim().toLowerCase()
   const body: {
     charge_code: string
     buy_amount: string
@@ -140,6 +152,9 @@ export function chargeCreateBody(args: {
     rate_line_id: string | null
     source_ref: string
     shipment_id: string | null
+    fx_rate_basis: string | null
+    fx_rate_offset_days: string | null
+    fx_rate_table: string | null
     origin_unlocode?: string
     destination_unlocode?: string
     floor_decision_id?: string
@@ -152,6 +167,9 @@ export function chargeCreateBody(args: {
     rate_line_id: linked === "" ? null : linked,
     source_ref: args.sourceRef.trim(),
     shipment_id: shipment === "" ? null : shipment,
+    fx_rate_basis: basis === "" ? null : basis,
+    fx_rate_offset_days: offset === "" ? null : offset,
+    fx_rate_table: table === "" ? null : table,
   }
   if (origin !== "") {
     body.origin_unlocode = origin
@@ -226,6 +244,9 @@ export async function createCharge(body: {
   rate_line_id: string | null
   source_ref: string
   shipment_id?: string | null
+  fx_rate_basis?: string | null
+  fx_rate_offset_days?: string | null
+  fx_rate_table?: string | null
   origin_unlocode?: string
   destination_unlocode?: string
   floor_decision_id?: string

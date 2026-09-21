@@ -13,6 +13,12 @@ from app.domain.errors import (
     UnknownChargeCode,
 )
 from app.domain.money import Money
+from app.domain.organization_setting import (
+    normalize_fx_rate_basis,
+    normalize_fx_rate_offset_days,
+    normalize_fx_rate_table,
+    optional_fx_token,
+)
 from app.domain.rate_line import require_source_ref
 from app.models.charge import Charge, ShipmentTreeMargin
 from app.models.charge_code import ChargeCode
@@ -52,6 +58,9 @@ class ChargeService:
         rate_line_id: UUID | None,
         source_ref: object,
         shipment_id: UUID | None = None,
+        fx_rate_basis: object | None = None,
+        fx_rate_offset_days: object | None = None,
+        fx_rate_table: object | None = None,
     ) -> Charge:
         origin = require_source_ref(source_ref)
         buy = Money.of(buy_amount, buy_currency)
@@ -59,18 +68,16 @@ class ChargeService:
         margin(buy, sell)
         catalog = await self._require_catalog(charge_code)
         linked = await self._optional_buy_rate(rate_line_id, catalog.code)
-        row = Charge(
-            id=uuid4(),
+        row = self._new_charge(
             organization_id=organization_id,
-            charge_code=catalog.code,
-            buy_amount=buy.amount,
-            buy_currency=buy.currency.code,
-            sell_amount=sell.amount,
-            sell_currency=sell.currency.code,
+            user_id=user_id,
+            catalog_code=catalog.code,
+            buy=buy,
+            sell=sell,
             rate_line_id=linked,
             shipment_id=shipment_id,
             source_ref=origin,
-            created_by=user_id,
+            fx=(fx_rate_basis, fx_rate_offset_days, fx_rate_table),
         )
         try:
             return await self._charges.add(row)
@@ -78,6 +85,37 @@ class ChargeService:
             if shipment_id is not None and "fk_charge_shipment" in str(exc.orig):
                 raise InvalidShipment("zlecenie") from exc
             raise
+
+    def _new_charge(
+        self,
+        *,
+        organization_id: UUID,
+        user_id: UUID,
+        catalog_code: str,
+        buy: Money,
+        sell: Money,
+        rate_line_id: UUID | None,
+        shipment_id: UUID | None,
+        source_ref: str,
+        fx: tuple[object | None, object | None, object | None],
+    ) -> Charge:
+        basis, offset, table = fx
+        return Charge(
+            id=uuid4(),
+            organization_id=organization_id,
+            charge_code=catalog_code,
+            buy_amount=buy.amount,
+            buy_currency=buy.currency.code,
+            sell_amount=sell.amount,
+            sell_currency=sell.currency.code,
+            rate_line_id=rate_line_id,
+            shipment_id=shipment_id,
+            fx_rate_basis=optional_fx_token(basis, normalize_fx_rate_basis),
+            fx_rate_offset_days=optional_fx_token(offset, normalize_fx_rate_offset_days),
+            fx_rate_table=optional_fx_token(table, normalize_fx_rate_table),
+            source_ref=source_ref,
+            created_by=user_id,
+        )
 
     async def _require_catalog(self, charge_code: str) -> ChargeCode:
         token = normalize_charge_code(charge_code)

@@ -28,6 +28,19 @@ class Charge(Base, TimestampMixin):
             name="fk_charge_shipment",
             ondelete="RESTRICT",
         ),
+        CheckConstraint(
+            "fx_rate_basis IS NULL OR fx_rate_basis IN "
+            "('etd', 'loading_date', 'unloading_date', 'invoice_date')",
+            name="ck_charge_fx_rate_basis",
+        ),
+        CheckConstraint(
+            "fx_rate_offset_days IS NULL OR fx_rate_offset_days IN ('0', '-1')",
+            name="ck_charge_fx_rate_offset_days",
+        ),
+        CheckConstraint(
+            "fx_rate_table IS NULL OR fx_rate_table IN ('nbp_a', 'nbp_b')",
+            name="ck_charge_fx_rate_table",
+        ),
     )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
@@ -44,6 +57,9 @@ class Charge(Base, TimestampMixin):
         UUID(as_uuid=True), ForeignKey("rate_line.id", ondelete="RESTRICT"), nullable=True
     )
     shipment_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)
+    fx_rate_basis: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    fx_rate_offset_days: Mapped[str | None] = mapped_column(String(8), nullable=True)
+    fx_rate_table: Mapped[str | None] = mapped_column(String(16), nullable=True)
     source_ref: Mapped[str | None] = mapped_column(String(512), nullable=True)
 
 
