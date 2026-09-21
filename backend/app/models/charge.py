@@ -3,6 +3,7 @@ from decimal import Decimal
 
 from sqlalchemy import (
     CHAR,
+    BigInteger,
     CheckConstraint,
     ForeignKey,
     ForeignKeyConstraint,
@@ -44,3 +45,17 @@ class Charge(Base, TimestampMixin):
     )
     shipment_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)
     source_ref: Mapped[str | None] = mapped_column(String(512), nullable=True)
+
+
+class ShipmentTreeMargin(Base):
+    """Odczyt sumy SQL. Nie tabela magazynu marży."""
+
+    __tablename__ = "shipment_tree_margin"
+
+    organization_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True)
+    shipment_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True)
+    currency: Mapped[str] = mapped_column(CHAR(3), primary_key=True)
+    buy_amount: Mapped[Decimal] = mapped_column(Numeric(14, 4), nullable=False)
+    sell_amount: Mapped[Decimal] = mapped_column(Numeric(14, 4), nullable=False)
+    margin_amount: Mapped[Decimal] = mapped_column(Numeric(14, 4), nullable=False)
+    charge_count: Mapped[int] = mapped_column(BigInteger, nullable=False)

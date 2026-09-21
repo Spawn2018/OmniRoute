@@ -11,7 +11,7 @@ from app.domain.charge import margin
 from app.domain.errors import InvalidSourceRef, MixedCurrencyCharge, UnknownChargeCode
 from app.domain.money import Money
 from app.main import app
-from app.models.charge import Charge
+from app.models.charge import Charge, ShipmentTreeMargin
 from tests.http_auth import bearer_auth_headers
 
 
@@ -31,9 +31,13 @@ class StubChargeService:
     def __init__(self, session: object) -> None:
         self._session = session
         self.rows: list[Charge] = []
+        self.tree_rows: list[ShipmentTreeMargin] = []
 
     async def list_charges(self) -> list[tuple[Charge, Decimal]]:
         return [(row, row.sell_amount - row.buy_amount) for row in self.rows]
+
+    async def list_tree_margins(self) -> list[ShipmentTreeMargin]:
+        return self.tree_rows
 
     async def create_charge(
         self,
@@ -177,11 +181,38 @@ def charges_client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
     client = TestClient(app)
     client.floor_stub = floor_stub  # type: ignore[attr-defined]
     client.decision_stub = decision_stub  # type: ignore[attr-defined]
+    client.charge_stub = stub  # type: ignore[attr-defined]
     yield client
     app.dependency_overrides.clear()
     set_authz_checker(None)
     app.dependency_overrides.clear()
     set_authz_checker(None)
+
+
+def test_http_lists_tree_margin(charges_client: TestClient) -> None:
+    org_id = uuid4()
+    shipment_id = uuid4()
+    charges_client.charge_stub.tree_rows = [  # type: ignore[attr-defined]
+        ShipmentTreeMargin(
+            organization_id=org_id,
+            shipment_id=shipment_id,
+            currency="EUR",
+            buy_amount=Decimal("12.0000"),
+            sell_amount=Decimal("19.0000"),
+            margin_amount=Decimal("7.0000"),
+            charge_count=2,
+        ),
+    ]
+    reply = charges_client.get(
+        "/api/v1/charges/tree-margins",
+        headers=bearer_auth_headers(organization_id=org_id),
+    )
+    assert reply.status_code == 200
+    body = reply.json()
+    assert body[0]["shipment_id"] == str(shipment_id)
+    assert body[0]["currency"] == "EUR"
+    assert body[0]["margin_amount"] == "7.0000"
+    assert body[0]["charge_count"] == 2
 
 
 def test_http_create_and_list_charges(charges_client: TestClient) -> None:

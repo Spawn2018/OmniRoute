@@ -188,6 +188,27 @@ async function readCharge(response: Response, fallback: string): Promise<Charge>
   return (await response.json()) as Charge
 }
 
+export type ShipmentTreeMargin = {
+  organization_id: string
+  shipment_id: string
+  currency: string
+  buy_amount: string
+  sell_amount: string
+  margin_amount: string
+  charge_count: number
+}
+
+export async function fetchShipmentTreeMargins(): Promise<ShipmentTreeMargin[]> {
+  const response = await fetch("/api/v1/charges/tree-margins", { headers: requireAuthHeaders() })
+  if (!response.ok) {
+    throw new ApiError(
+      await readApiDetail(response, "Błąd marży drzewa"),
+      httpErrorStatus(response),
+    )
+  }
+  return (await response.json()) as ShipmentTreeMargin[]
+}
+
 export async function fetchCharges(): Promise<Charge[]> {
   const response = await fetch("/api/v1/charges", { headers: requireAuthHeaders() })
   if (!response.ok) {

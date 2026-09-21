@@ -4,7 +4,7 @@ from uuid import UUID
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.models.charge import Charge
+from app.models.charge import Charge, ShipmentTreeMargin
 
 
 class ChargeRepository:
@@ -21,6 +21,15 @@ class ChargeRepository:
         for row, sql_margin in result.all():
             listed.append((row, Decimal(str(sql_margin))))
         return listed
+
+    async def list_tree_margins(self) -> list[ShipmentTreeMargin]:
+        loaded = await self._session.scalars(
+            select(ShipmentTreeMargin).order_by(
+                ShipmentTreeMargin.shipment_id,
+                ShipmentTreeMargin.currency,
+            ),
+        )
+        return list(loaded.all())
 
     async def get(self, charge_id: UUID) -> Charge | None:
         found = await self._session.get(Charge, charge_id)

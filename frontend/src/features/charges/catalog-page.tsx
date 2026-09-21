@@ -11,7 +11,7 @@ import { Money } from "@/components/money"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { BUSINESS_LISTS } from "@/lib/business-lists"
-import { chargeCreateBody, createCharge, fetchCharges, type Charge } from "@/lib/charges-api"
+import { chargeCreateBody, createCharge, fetchCharges, fetchShipmentTreeMargins, type Charge, type ShipmentTreeMargin } from "@/lib/charges-api"
 import { getTenantContext } from "@/lib/tenant"
 
 const helper = createColumnHelper<Charge>()
@@ -47,6 +47,35 @@ const columns = [
     cell: ({ getValue }) => getValue() ?? "—",
   }),
 ]
+
+const treeHelper = createColumnHelper<ShipmentTreeMargin>()
+
+const treeColumns = [
+  treeHelper.accessor("shipment_id", { header: "Zlecenie główne" }),
+  treeHelper.accessor("currency", { header: "Waluta" }),
+  treeHelper.accessor("buy_amount", {
+    header: "Kupno",
+    cell: ({ row }) => moneyCell(row.original.buy_amount, row.original.currency),
+  }),
+  treeHelper.accessor("sell_amount", {
+    header: "Sprzedaż",
+    cell: ({ row }) => moneyCell(row.original.sell_amount, row.original.currency),
+  }),
+  treeHelper.accessor("margin_amount", {
+    header: "Marża",
+    cell: ({ row }) => moneyCell(row.original.margin_amount, row.original.currency),
+  }),
+  treeHelper.accessor("charge_count", { header: "Opłaty" }),
+]
+
+const TREE_LABELS = {
+  shipment_id: "Zlecenie główne",
+  currency: "Waluta",
+  buy_amount: "Kupno",
+  sell_amount: "Sprzedaż",
+  margin_amount: "Marża",
+  charge_count: "Opłaty",
+}
 
 const COLUMN_LABELS = {
   charge_code: "Kod opłaty",
@@ -97,6 +126,13 @@ export function ChargeCatalogPage() {
     retry: false,
   })
 
+  const treeQuery = useQuery({
+    queryKey: ["shipment-tree-margin", ctx.organizationId],
+    queryFn: fetchShipmentTreeMargins,
+    enabled: signedIn,
+    retry: false,
+  })
+
   const createMutation = useMutation({
     mutationFn: () => createCharge(chargeCreateBody(draft)),
     onSuccess: () => {
@@ -113,7 +149,7 @@ export function ChargeCatalogPage() {
     <div className="space-y-3">
       <CatalogHeading
         title="Opłaty"
-        subtitle="charge M-08 · buy i sell na jednym wierszu · marża w kodzie · UN opcjonalnie pod margin_floor · opcjonalne zlecenie · nie accept HITL"
+        subtitle="charge M-08 · buy i sell na jednym wierszu · marża w kodzie · UN opcjonalnie pod margin_floor · opcjonalne zlecenie · marża drzewa z SQL · nie accept HITL"
       />
 
       {signedIn ? null : <TenantSessionNotice />}
@@ -150,6 +186,17 @@ export function ChargeCatalogPage() {
         columns={columns}
         columnLabels={COLUMN_LABELS}
         globalFilterPlaceholder="Szukaj opłaty…"
+      />
+
+      <h2 className="text-sm font-medium">Marża drzewa</h2>
+      <CatalogLoadedTable
+        loading={treeQuery.isLoading}
+        error={treeQuery.error}
+        data={treeQuery.data}
+        tableKey="shipment_tree_margin"
+        columns={treeColumns}
+        columnLabels={TREE_LABELS}
+        globalFilterPlaceholder="Szukaj zlecenia…"
       />
     </div>
   )

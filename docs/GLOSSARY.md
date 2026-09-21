@@ -8,7 +8,7 @@ kolumn. Nie 468.0.
 | PL | EN (kod) | Uwagi |
 |---|---|---|
 | stawka | rate_line | niemutowalna, source_ref |
-| opłata / charge | charge / shipment_charge | jedyne miejsce prawdy o marży; buy+sell na jednym wierszu; 613.0 opcjonalny `shipment_id` (FK tenanta, nie widok rollup) |
+| opłata / charge | charge / shipment_charge | jedyne miejsce prawdy o marży; buy+sell na jednym wierszu; 613.0 opcjonalny `shipment_id` (FK tenanta); 614.0 widok `shipment_tree_margin` (SQL korzeń+dzieci, nie magazyn marży) |
 | kupno | buy | kwota zakupu na `charge` |
 | sprzedaż | sell | kwota sprzedaży na `charge` |
 | marża | margin | sell − buy, ta sama waluta; zapis: `margin()`; GET lista: SQL; nie kolumna magazynu |

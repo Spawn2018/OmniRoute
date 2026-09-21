@@ -15,7 +15,7 @@ from app.domain.errors import (
 )
 from app.domain.margin_floor import parse_optional_floor_lane, require_margin_above_floor
 from app.domain.money import Money
-from app.models.charge import Charge
+from app.models.charge import Charge, ShipmentTreeMargin
 from app.models.margin_floor import MarginFloor
 from app.models.operator_decision import OperatorDecision
 from app.repositories.margin_floors.margin_floor_repository import MarginFloorRepository
@@ -169,6 +169,43 @@ async def _enforce_margin_floor(
             source_ref=body.source_ref,
         )
         raise MarginFloorBreach(str(breach), decision_id=pending.id) from breach
+
+
+class ShipmentTreeMarginResponse(BaseModel):
+    organization_id: UUID
+    shipment_id: UUID
+    currency: str
+    buy_amount: str
+    sell_amount: str
+    margin_amount: str
+    charge_count: int
+
+
+def _amount_text(amount: Decimal, currency: str) -> str:
+    text, _currency = Money.of(amount, currency).as_pair()
+    return text
+
+
+def _tree_row(row: ShipmentTreeMargin) -> ShipmentTreeMarginResponse:
+    currency = row.currency.strip()
+    return ShipmentTreeMarginResponse(
+        organization_id=row.organization_id,
+        shipment_id=row.shipment_id,
+        currency=currency,
+        buy_amount=_amount_text(row.buy_amount, currency),
+        sell_amount=_amount_text(row.sell_amount, currency),
+        margin_amount=_amount_text(row.margin_amount, currency),
+        charge_count=row.charge_count,
+    )
+
+
+@router.get("/tree-margins", response_model=list[ShipmentTreeMarginResponse])
+async def list_tree_margins(
+    _authz: None = Depends(require_permission("can_manage_charges", "organization")),
+    session: AsyncSession = Depends(require_tenant_session),
+) -> list[ShipmentTreeMarginResponse]:
+    rows = await ChargeService(session).list_tree_margins()
+    return [_tree_row(row) for row in rows]
 
 
 @router.get("", response_model=list[ChargeResponse])

@@ -1,6 +1,7 @@
 # Historia plastrów
 
 | Data | Plaster | Moduł | Opis |
+| 2026-09-21 | 614.0 | T4 shipment_tree_margin | 2026-09-21 | PRZESZŁO | N/A | OK | OK | OK | 5-15 | PRZESZŁO | N/A | N/A | CI po push |
 | 2026-09-21 | Plan 614.0 | T4 shipment_tree_margin | Plan widoku SQL marży korzenia i dzieci (`/noc 7`). 613.0 gate success. |
 | 2026-09-21 | 613.0 | T4 charge.shipment_id | 2026-09-21 | PRZESZŁO | N/A | N/A | OK | OK | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 2026-09-21 | Plan 613.0 | T4 charge.shipment_id | Plan opcjonalnego `charge.shipment_id` (`/noc 7`). Widok rollup parked. |

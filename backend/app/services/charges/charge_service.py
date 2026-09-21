@@ -14,7 +14,7 @@ from app.domain.errors import (
 )
 from app.domain.money import Money
 from app.domain.rate_line import require_source_ref
-from app.models.charge import Charge
+from app.models.charge import Charge, ShipmentTreeMargin
 from app.models.charge_code import ChargeCode
 from app.repositories.charge_codes.charge_code_repository import ChargeCodeRepository
 from app.repositories.charges.charge_repository import ChargeRepository
@@ -29,6 +29,9 @@ class ChargeService:
 
     async def list_charges(self) -> list[tuple[Charge, Decimal]]:
         return await self._charges.list_with_sql_margin()
+
+    async def list_tree_margins(self) -> list[ShipmentTreeMargin]:
+        return await self._charges.list_tree_margins()
 
     async def get_charge(self, charge_id: UUID) -> Charge:
         found = await self._charges.get(charge_id)

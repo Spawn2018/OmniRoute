@@ -5,6 +5,7 @@ import { chargeCreateBody, comparisonChargeBody } from "@/lib/charges-api"
 describe("charge catalog shipment field", () => {
   it("shows an optional shipment id on the charge form", () => {
     expect(page).toContain('aria-label="Zlecenie"')
+    expect(page).toContain("Marża drzewa")
   })
 })
 

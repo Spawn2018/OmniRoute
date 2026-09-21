@@ -151,7 +151,15 @@ def _party(*, organization_id, legal_name: str, created_by) -> Party:
     )
 
 
-async def _shipment(session, *, organization_id, user_id, suffix: str) -> Shipment:
+async def _shipment(
+    session,
+    *,
+    organization_id,
+    user_id,
+    suffix: str,
+    parent_shipment_id=None,
+    relation_kind: str | None = None,
+) -> Shipment:
     rate = _buy_rate(
         organization_id=organization_id,
         created_by=user_id,
@@ -183,6 +191,8 @@ async def _shipment(session, *, organization_id, user_id, suffix: str) -> Shipme
         party_id=party.id,
         source_ref=f"fixture://shipment/{suffix}",
         status="draft",
+        parent_shipment_id=parent_shipment_id,
+        relation_kind=relation_kind,
         created_by=user_id,
     )
     session.add(ship)
