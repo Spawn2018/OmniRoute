@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **617.0** T7c `fx_rate_day` (testy lokalne; CI po push)
-- **Etap:** 617 zamknięty lokalnie. Po zielonym CI plan **618.0**. Nie mnożenie NBP w tym plasterze.
-- **Następny:** po gate success plan **618.0** T7d SQL przy FV. Matching T5 / FK kontekstu = park. **588.0** SH-R16-4 UXCL = park `/noc`.
+- **Ostatni plaster:** **617.0** T7c `fx_rate_day` (gate success)
+- **Etap:** Plan **618.0** zaakceptowany (`/noc`). Wolno `/plaster`.
+- **Następny:** **618.0** T7d SQL `charge_sell_in_pln`. Daty bazowe zlecenia = park. Matching T5 / FK kontekstu = park. **588.0** SH-R16-4 UXCL = park `/noc`.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
