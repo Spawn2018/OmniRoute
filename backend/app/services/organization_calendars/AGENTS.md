@@ -1,7 +1,8 @@
 # BC organization_calendar (U4)
 
-Katalog dni roboczych i świąt per tenant. `is_working_day` liczy Postgres.
-Nie GPS. Nie V5. Nie +3 kalendarzowe.
+Katalog dni roboczych i świąt per tenant. `is_working_day` i `fx_rate_day`
+liczy Postgres. Offset −1 = poprzedni dzień roboczy (NBP D-1).
+Nie GPS. Nie V5. Nie +3 kalendarzowe. Nie mnożenie kursem.
 
 ## Dozwolone zależności
 - `app.models.organization_calendar`

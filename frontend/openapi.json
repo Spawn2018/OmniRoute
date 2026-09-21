@@ -23065,6 +23065,72 @@
         }
       }
     },
+    "/api/v1/organization-calendars/fx-rate-day": {
+      "get": {
+        "tags": [
+          "organization-calendars"
+        ],
+        "summary": "Get Fx Rate Day",
+        "operationId": "get_fx_rate_day_api_v1_organization_calendars_fx_rate_day_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "country_code",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Country Code"
+            }
+          },
+          {
+            "name": "anchor",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "title": "Anchor"
+            }
+          },
+          {
+            "name": "offset_days",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Offset Days"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FxRateDayResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/organization-settings": {
       "get": {
         "tags": [
@@ -39404,6 +39470,36 @@
           "source_ref"
         ],
         "title": "FxDifferenceResponse"
+      },
+      "FxRateDayResponse": {
+        "properties": {
+          "country_code": {
+            "type": "string",
+            "title": "Country Code"
+          },
+          "anchor": {
+            "type": "string",
+            "format": "date",
+            "title": "Anchor"
+          },
+          "offset_days": {
+            "type": "string",
+            "title": "Offset Days"
+          },
+          "fx_rate_day": {
+            "type": "string",
+            "format": "date",
+            "title": "Fx Rate Day"
+          }
+        },
+        "type": "object",
+        "required": [
+          "country_code",
+          "anchor",
+          "offset_days",
+          "fx_rate_day"
+        ],
+        "title": "FxRateDayResponse"
       },
       "GdprRequestCreate": {
         "properties": {

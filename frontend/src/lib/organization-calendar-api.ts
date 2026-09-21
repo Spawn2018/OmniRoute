@@ -43,6 +43,24 @@ export async function fetchCalendarDays(country: string): Promise<OrganizationCa
   return payload as OrganizationCalendarRow[]
 }
 
+export async function fetchFxRateDay(args: {
+  country: string
+  anchor: string
+  offsetDays: string
+}): Promise<{ fx_rate_day: string }> {
+  const query = new URLSearchParams({
+    country_code: args.country,
+    anchor: args.anchor,
+    offset_days: args.offsetDays,
+  })
+  const reply = await fetch(`${PATH}/fx-rate-day?${query}`, { headers: requireAuthHeaders() })
+  if (reply.status >= 400) {
+    throw new ApiError(await readApiDetail(reply, "Błąd dnia kursu"), httpErrorStatus(reply))
+  }
+  const payload: unknown = await reply.json()
+  return payload as { fx_rate_day: string }
+}
+
 export async function fetchWorkingDay(args: {
   country: string
   day: string

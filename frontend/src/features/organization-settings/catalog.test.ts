@@ -57,6 +57,8 @@ describe("organization calendar panel", () => {
     const panel = readFileSync(new URL("./calendar-panel.tsx", import.meta.url), "utf8")
     expect(panel).toContain('data-organization-calendar="days"')
     expect(panel).toContain("is_working_day")
+    expect(panel).toContain("fx_rate_day")
+    expect(panel).not.toContain("getDay")
     expect(panel).not.toContain("observation_ends_at")
   })
 })

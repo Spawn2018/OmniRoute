@@ -6697,6 +6697,28 @@ export type FxDifferenceResponse = {
 };
 
 /**
+ * FxRateDayResponse
+ */
+export type FxRateDayResponse = {
+    /**
+     * Country Code
+     */
+    country_code: string;
+    /**
+     * Anchor
+     */
+    anchor: string;
+    /**
+     * Offset Days
+     */
+    offset_days: string;
+    /**
+     * Fx Rate Day
+     */
+    fx_rate_day: string;
+};
+
+/**
  * GdprRequestCreate
  */
 export type GdprRequestCreate = {
@@ -31986,6 +32008,44 @@ export type GetWorkingDayApiV1OrganizationCalendarsWorkingDayGetResponses = {
 };
 
 export type GetWorkingDayApiV1OrganizationCalendarsWorkingDayGetResponse = GetWorkingDayApiV1OrganizationCalendarsWorkingDayGetResponses[keyof GetWorkingDayApiV1OrganizationCalendarsWorkingDayGetResponses];
+
+export type GetFxRateDayApiV1OrganizationCalendarsFxRateDayGetData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * Country Code
+         */
+        country_code: string;
+        /**
+         * Anchor
+         */
+        anchor: string;
+        /**
+         * Offset Days
+         */
+        offset_days: string;
+    };
+    url: '/api/v1/organization-calendars/fx-rate-day';
+};
+
+export type GetFxRateDayApiV1OrganizationCalendarsFxRateDayGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type GetFxRateDayApiV1OrganizationCalendarsFxRateDayGetError = GetFxRateDayApiV1OrganizationCalendarsFxRateDayGetErrors[keyof GetFxRateDayApiV1OrganizationCalendarsFxRateDayGetErrors];
+
+export type GetFxRateDayApiV1OrganizationCalendarsFxRateDayGetResponses = {
+    /**
+     * Successful Response
+     */
+    200: FxRateDayResponse;
+};
+
+export type GetFxRateDayApiV1OrganizationCalendarsFxRateDayGetResponse = GetFxRateDayApiV1OrganizationCalendarsFxRateDayGetResponses[keyof GetFxRateDayApiV1OrganizationCalendarsFxRateDayGetResponses];
 
 export type ListOrganizationSettingsApiV1OrganizationSettingsGetData = {
     body?: never;

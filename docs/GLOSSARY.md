@@ -131,7 +131,7 @@ kolumn. Nie 468.0.
 | odcisk układu | layout_fingerprint | pdf vs text przed parserem |
 | delta A/B parsera | ab_delta_chars | różnica długości tekstu A vs B (0.9) |
 | kurs NBP | nbp_rate | D-1 roboczy; 16.0 odczyt przy wycenie; nie drugi katalog; nie mnożenie kwoty |
-| polityka kursu | fx_rate_basis | T7 HITL 211.0 w `organization_setting`; offset 0/−1; tabela nbp_a/nbp_b; nie mnożenie |
+| polityka kursu | fx_rate_basis | T7 HITL 211.0 w `organization_setting`; offset 0/−1; tabela nbp_a/nbp_b; 617.0 `fx_rate_day` = dzień roboczy U4, nie mnożenie |
 | ryzyko oferty | offer_risk | 17.0 odczyt; 87.0 wskazanie recenzji na wycenie; nie scoring |
 | negocjacja oferty | offer_negotiation | 18.0 odczyt; 85.0 wskazanie `channel_quote` na wycenie; nie nowa kwota; nie spread w JS |
 | dokument oferty | offer_document | 19.0 podgląd; 72.0 `document_number` + druk 57.0; nie PDF; nie send |
@@ -249,7 +249,7 @@ kolumn. Nie 468.0.
 | znacznik CAPA | capa_mark | CT12 HITL 282.0 `mark_code` + kind capa\|eight_d\|recurrence; nie workflow |
 | konektor SAP/Oracle | sap_connector | CT6 HITL 281.0 kod + kind `sap`\|`oracle`; nie live SOAP; nie sekrety |
 | awizacja terminalu | terminal_appointment | T8; requested/confirmed/rejected; `source_ref` |
-| kalendarz organizacji | organization_calendar | U4; dni robocze; grace GPS |
+| kalendarz organizacji | organization_calendar | U4; dni robocze; grace GPS; 617.0 `fx_rate_day` w SQL |
 | przeniesienie pól | field_carry_forward | U1; oferta→zlecenie; nie cichy overwrite |
 | reguła checklisty dokumentów | document_checklist_rule | U5; incoterm×strona×mode → rodzaj + blocks_dispatch |
 | przesyłka | consignment | N1; 260.0 tabela na shipment; LTL/LCL=N; nie paczka; nie FTL unique |

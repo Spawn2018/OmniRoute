@@ -1,3 +1,4 @@
+- **617.0 leftover:** przeliczenie SQL przy FV · odczyt kwoty `nbp_rate`. 617.0 = `fx_rate_day` (offset −1 = poprzedni dzień roboczy U4, nie mnożenie).
 - **612.0 leftover:** HW · UXCL · N3 · AI3 · G0-SH. 612.0 = HITL `container.destination_city` (tekst do 64, nie geokoder).
 - **611.0 leftover:** `destination_city` · FK portu · HW · UXCL · N3. 611.0 = HITL `container.pod_unlocode` (5 znaków UN/LOCODE, nie resolve, nie mapa).
 - **610.0 leftover:** `pod_unlocode` · `destination_city` · FK portu · HW · UXCL · N3. 610.0 = HITL `container.pol_unlocode` (5 znaków UN/LOCODE, nie resolve, nie mapa).

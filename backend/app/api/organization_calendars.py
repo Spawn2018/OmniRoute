@@ -57,6 +57,13 @@ class WorkingDayResponse(BaseModel):
     is_working_day: bool
 
 
+class FxRateDayResponse(BaseModel):
+    country_code: str
+    anchor: date
+    offset_days: str
+    fx_rate_day: date
+
+
 @router.get("", response_model=list[OrganizationCalendarResponse])
 async def list_organization_calendars(
     country_code: str = Query(...),
@@ -83,6 +90,28 @@ async def get_working_day(
         country_code=code,
         calendar_day=calendar_day,
         is_working_day=flagged,
+    )
+
+
+@router.get("/fx-rate-day", response_model=FxRateDayResponse)
+async def get_fx_rate_day(
+    country_code: str = Query(...),
+    anchor: date = Query(...),
+    offset_days: str = Query(...),
+    _authz: None = Depends(require_permission(_SETTINGS, "organization")),
+    session: AsyncSession = Depends(require_tenant_session),
+) -> FxRateDayResponse:
+    code = require_country_code(country_code)
+    resolved = await OrganizationCalendarService(session).fx_rate_day(
+        country_code=code,
+        anchor=anchor,
+        offset_days=offset_days,
+    )
+    return FxRateDayResponse(
+        country_code=code,
+        anchor=anchor,
+        offset_days=offset_days.strip(),
+        fx_rate_day=resolved,
     )
 
 

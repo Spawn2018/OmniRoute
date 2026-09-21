@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input"
 import {
   calendarDayWrite,
   fetchCalendarDays,
+  fetchFxRateDay,
   fetchWorkingDay,
   saveCalendarDay,
 } from "@/lib/organization-calendar-api"
@@ -17,6 +18,8 @@ export function CalendarOverridePanel(args: { canWrite: boolean }) {
   const [day, setDay] = useState("2026-09-04")
   const [kind, setKind] = useState("holiday")
   const [probe, setProbe] = useState<boolean | null>(null)
+  const [offset, setOffset] = useState("-1")
+  const [fxRateDay, setFxRateDay] = useState<string | null>(null)
   const listQuery = useQuery({
     queryKey: ["organization-calendars", ctx.organizationId, country],
     queryFn: () => fetchCalendarDays(country),
@@ -36,6 +39,12 @@ export function CalendarOverridePanel(args: { canWrite: boolean }) {
     mutationFn: () => fetchWorkingDay({ country, day }),
     onSuccess: (body) => {
       setProbe(body.is_working_day)
+    },
+  })
+  const fxDay = useMutation({
+    mutationFn: () => fetchFxRateDay({ country, anchor: day, offsetDays: offset }),
+    onSuccess: (body) => {
+      setFxRateDay(body.fx_rate_day)
     },
   })
   const rows = listQuery.data ?? []
@@ -102,11 +111,47 @@ export function CalendarOverridePanel(args: { canWrite: boolean }) {
         >
           Sprawdź dzień roboczy
         </Button>
+        <Button
+          type="button"
+          disabled={!args.canWrite || fxDay.isPending}
+          onClick={() => fxDay.mutate()}
+        >
+          Dzień kursu
+        </Button>
       </div>
+      <fieldset className="space-y-1 text-xs">
+        <legend>Offset kursu</legend>
+        <label className="inline-flex items-center gap-1">
+          <input
+            checked={offset === "0"}
+            name="fx-rate-offset"
+            type="radio"
+            value="0"
+            onChange={() => setOffset("0")}
+          />
+          0
+        </label>
+        <label className="ml-3 inline-flex items-center gap-1">
+          <input
+            checked={offset === "-1"}
+            name="fx-rate-offset"
+            type="radio"
+            value="-1"
+            onChange={() => setOffset("-1")}
+          />
+          −1 dzień roboczy
+        </label>
+      </fieldset>
       {save.isError ? <p className="text-sm text-destructive">{(save.error as Error).message}</p> : null}
       {check.isError ? <p className="text-sm text-destructive">{(check.error as Error).message}</p> : null}
+      {fxDay.isError ? <p className="text-sm text-destructive">{(fxDay.error as Error).message}</p> : null}
       {probe === null ? null : (
         <p className="text-sm">{probe ? "dzień roboczy" : "dzień wolny"}</p>
+      )}
+      {fxRateDay === null ? null : (
+        <p className="text-sm" data-fx-rate-day={fxRateDay}>
+          fx_rate_day {fxRateDay}
+        </p>
       )}
       <ul className="space-y-1">
         {rows.map((row) => (

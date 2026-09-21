@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **617.0** T7c U4 D-1 przy kursie. Matching T5 / FK kontekstu = park. **588.0** SH-R16-4 UXCL = park `/noc`.
+**Następny:** po gate success plan **618.0** T7d SQL przy FV. Matching T5 / FK kontekstu = park. **588.0** SH-R16-4 UXCL = park `/noc`.
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -509,7 +509,7 @@ Przy `/plan-modul`: karta T + [EXP1](analysis/karty-pol-fala-exp.md) (stop/konte
 | T5 | task engine (warunki = dane) | zamknięty HITL szablon ([263.0](deltas/archived/263.0-task-template.md); leftover outbox kind ([264.0](deltas/archived/264.0-outbox-task-template.md)); HITL instancja `task` [616.0](deltas/archived/616.0-task.md); leftover matching SQL / FK kontekstu / konsument) | po T2 | async po konsumencie outboxa (leftover M-02) |
 | T6 | planning board 4 widoki + mapa lazy + klawiatura N10 | zamknięty HITL mapa ([261.0](deltas/archived/261.0-planning-map.md); leftover 4 widoki / N10 / T6b–d / X8) | po T2 | mapa poza 250 kB |
 | **N11** | handover SBAR zmiany | zamknięty HITL ([529.0](deltas/archived/529.0-handover-sbar-mark.md); notatka S/B/A/R [543.0](deltas/archived/543.0-handover-note.md); leftover T6 bind · N8) | po T6 | leftover T6 bind · N8 |
-| T7 | `fx_rate_basis` SQL; kalendarz U4 | zamknięty HITL ([211.0](deltas/archived/211.0-fx-rate-basis.md); leftover T7b override/`charge` [615.0](deltas/archived/615.0-charge-fx-rate.md); T7c plan [617.0](deltas/open/617.0-fx-working-day.md)) | po T1+U4 | LLM/JS nie liczą |
+| T7 | `fx_rate_basis` SQL; kalendarz U4 | zamknięty HITL ([211.0](deltas/archived/211.0-fx-rate-basis.md); leftover T7b override/`charge` [615.0](deltas/archived/615.0-charge-fx-rate.md); T7c `fx_rate_day` [617.0](deltas/archived/617.0-fx-working-day.md); leftover SQL przy FV) | po T1+U4 | LLM/JS nie liczą |
 | T8 | slot capability + godziny terminalu N4; **confirmed tylko z API** | zamknięty HITL ([269.0](deltas/archived/269.0-terminal-slot-connector.md); leftover live API / `terminal_appointment` / confirmed z adaptera) | po T3 | nie gwarancja prawna; nie Selenium |
 
 **B0b** (po T2): zamknięty HITL `prediction_ledger` + N7 ([193.0](deltas/archived/193.0-prediction-ledger.md)); zamknięty HITL `plan_snapshot` ([265.0](deltas/archived/265.0-plan-snapshot.md)); zamknięty HITL `circle_sim` ([266.0](deltas/archived/266.0-circle-sim.md)); zamknięty HITL `lane_km` ([267.0](deltas/archived/267.0-lane-km.md)); leftover TT z actuals — karta [karty-pol-fala-v.md](analysis/karty-pol-fala-v.md). Indeks paliwa = P3 `fuel_index`.

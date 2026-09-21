@@ -1,13 +1,16 @@
+from datetime import date
 from uuid import UUID, uuid4
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.domain.errors import InvalidOrganizationCalendar, InvalidOrganizationSetting
 from app.domain.organization_calendar import (
     require_calendar_day,
     require_calendar_source_ref,
     require_country_code,
     require_day_kind,
 )
+from app.domain.organization_setting import normalize_fx_rate_offset_days
 from app.models.organization_calendar import OrganizationCalendar
 from app.repositories.organization_calendars.organization_calendar_repository import (
     OrganizationCalendarRepository,
@@ -26,6 +29,25 @@ class OrganizationCalendarService:
             require_country_code(country_code),
             require_calendar_day(calendar_day),
         )
+
+    async def fx_rate_day(
+        self,
+        *,
+        country_code: object,
+        anchor: object,
+        offset_days: object,
+    ) -> date:
+        if type(offset_days) is not str:
+            raise InvalidOrganizationSetting("dni: tylko 0 albo -1")
+        offset = normalize_fx_rate_offset_days(offset_days)
+        resolved = await self._rows.fx_rate_day(
+            require_country_code(country_code),
+            require_calendar_day(anchor),
+            offset,
+        )
+        if resolved is None:
+            raise InvalidOrganizationCalendar("dni: brak dnia roboczego w oknie")
+        return resolved
 
     async def record_day(
         self,

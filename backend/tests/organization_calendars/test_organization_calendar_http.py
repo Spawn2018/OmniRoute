@@ -1,3 +1,5 @@
+from datetime import timedelta
+from pathlib import Path
 from unittest.mock import AsyncMock
 from uuid import UUID, uuid4
 
@@ -5,6 +7,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 from app.api.deps import require_tenant_session, set_authz_checker
+from app.domain.errors import InvalidOrganizationCalendar, InvalidOrganizationSetting
 from app.domain.organization_calendar import (
     require_calendar_day,
     require_calendar_source_ref,
@@ -57,6 +60,40 @@ class StubOrganizationCalendarService:
         if current is not None:
             return current.day_kind == "working"
         return day.isoweekday() < 6
+
+    async def fx_rate_day(
+        self,
+        *,
+        country_code: object,
+        anchor: object,
+        offset_days: object,
+    ) -> object:
+        code = require_country_code(country_code)
+        day = require_calendar_day(anchor)
+        if type(offset_days) is not str or offset_days.strip() not in {"0", "-1"}:
+            raise InvalidOrganizationSetting("dni: tylko 0 albo -1")
+        if offset_days.strip() == "0":
+            return day
+        cursor = day
+        for _step in range(14):
+            cursor = cursor - timedelta(days=1)
+            current = next(
+                (
+                    row
+                    for row in self.rows
+                    if row.country_code == code
+                    and row.calendar_day == cursor
+                    and row.superseded_by is None
+                ),
+                None,
+            )
+            if current is not None:
+                if current.day_kind == "working":
+                    return cursor
+                continue
+            if cursor.isoweekday() < 6:
+                return cursor
+        raise InvalidOrganizationCalendar("dni: brak dnia roboczego w oknie")
 
     async def record_day(
         self,
@@ -230,3 +267,65 @@ def test_http_working_day_uses_override_not_python_grace(catalog_client: object)
         params={"country_code": "PL", "calendar_day": "2026-09-06"},
     )
     assert sunday_open.json()["is_working_day"] is True
+
+
+def test_http_fx_rate_day_is_previous_working_day(catalog_client: object) -> None:
+    client, _days = catalog_client
+    headers = bearer_auth_headers()
+    sunday = client.get(
+        "/api/v1/organization-calendars/fx-rate-day",
+        headers=headers,
+        params={"country_code": "PL", "anchor": "2026-09-06", "offset_days": "-1"},
+    )
+    assert sunday.status_code == 200
+    assert sunday.json()["fx_rate_day"] == "2026-09-04"
+    same = client.get(
+        "/api/v1/organization-calendars/fx-rate-day",
+        headers=headers,
+        params={"country_code": "PL", "anchor": "2026-09-06", "offset_days": "0"},
+    )
+    assert same.json()["fx_rate_day"] == "2026-09-06"
+    bad = client.get(
+        "/api/v1/organization-calendars/fx-rate-day",
+        headers=headers,
+        params={"country_code": "PL", "anchor": "2026-09-06", "offset_days": "2"},
+    )
+    assert bad.status_code == 400
+    assert "dni" in bad.json()["detail"]
+    client.post(
+        "/api/v1/organization-calendars",
+        headers=headers,
+        json={
+            "country_code": "PL",
+            "calendar_day": "2026-09-04",
+            "day_kind": "holiday",
+            "source_ref": "tenant:manual",
+        },
+    )
+    shifted = client.get(
+        "/api/v1/organization-calendars/fx-rate-day",
+        headers=headers,
+        params={"country_code": "PL", "anchor": "2026-09-07", "offset_days": "-1"},
+    )
+    assert shifted.json()["fx_rate_day"] == "2026-09-03"
+
+
+def test_fx_rate_day_stays_in_sql() -> None:
+    root = Path(__file__).resolve().parents[2]
+    service = (
+        root / "app" / "services" / "organization_calendars" / "organization_calendar_service.py"
+    ).read_text(encoding="utf-8")
+    repository = (
+        root
+        / "app"
+        / "repositories"
+        / "organization_calendars"
+        / "organization_calendar_repository.py"
+    ).read_text(encoding="utf-8")
+    assert ".weekday(" not in service
+    assert "isoweekday(" not in service
+    assert ".weekday(" not in repository
+    assert "isoweekday(" not in repository
+    assert "app.services.charges" not in service
+    assert "app.services.nbp_rates" not in service
+    assert "generate_series(1, 14)" in repository
