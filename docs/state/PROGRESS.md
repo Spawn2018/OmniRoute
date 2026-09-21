@@ -1,6 +1,7 @@
 # Historia plastrów
 
 | Data | Plaster | Moduł | Opis |
+| 2026-09-21 | 616.0 | T5 task HITL | 2026-09-21 | PRZESZŁO (lokalne) | N/A | EXPLAIN | OK | OK | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 2026-09-21 | Plan 616.0 | T5 task HITL | Plan tabeli `task` HITL (`/noc 7`). 615.0 gate success. |
 | 2026-09-21 | 615.0 | T7b charge fx_rate | 2026-09-21 | PRZESZŁO | N/A | N/A | OK | OK | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 2026-09-21 | Plan 615.0 | T7b charge fx_rate | Plan opcjonalnego nadpisania kursu na `charge` (`/noc 7`). 614.0 gate success. |

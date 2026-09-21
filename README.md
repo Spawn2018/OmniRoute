@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **615.0** T7b `fx_rate_*` na `charge` (gate success)
-- **Etap:** Plan **616.0** T5 `task` HITL. Delta zaakceptowana `/noc`. Wolno `/plaster`.
-- **Następny:** **616.0** tabela `task` HITL (kod + template_code + status). Nie matching. Nie FK shipment. **588.0** SH-R16-4 UXCL = park `/noc`.
+- **Ostatni plaster:** **616.0** T5 `task` HITL (lokalne; CI po push)
+- **Etap:** Plan **617.0** T7c kalendarz U4 przy `fx_rate`. Komenda `/plan-modul`.
+- **Następny:** **617.0** T7c U4 D-1 przy kursie. Matching T5 / FK kontekstu = park. **588.0** SH-R16-4 UXCL = park `/noc`.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

@@ -293,6 +293,7 @@ import { Route as SwitchBlLoiMarksRouteImport } from './routes/switch-bl-loi-mar
 import { Route as TachoOfficeMarksRouteImport } from './routes/tacho-office-marks'
 import { Route as TachoPlanMarksRouteImport } from './routes/tacho-plan-marks'
 import { Route as TaskTemplatesRouteImport } from './routes/task-templates'
+import { Route as TasksRouteImport } from './routes/tasks'
 import { Route as TelematicsConnectorsRouteImport } from './routes/telematics-connectors'
 import { Route as TelematicsDevicesRouteImport } from './routes/telematics-devices'
 import { Route as TenantContractKeksRouteImport } from './routes/tenant-contract-keks'
@@ -1765,6 +1766,11 @@ const TaskTemplatesRoute = TaskTemplatesRouteImport.update({
   path: '/task-templates',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TasksRoute = TasksRouteImport.update({
+  id: '/tasks',
+  path: '/tasks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TelematicsConnectorsRoute = TelematicsConnectorsRouteImport.update({
   id: '/telematics-connectors',
   path: '/telematics-connectors',
@@ -2281,6 +2287,7 @@ export interface FileRoutesByFullPath {
   '/tacho-office-marks': typeof TachoOfficeMarksRoute
   '/tacho-plan-marks': typeof TachoPlanMarksRoute
   '/task-templates': typeof TaskTemplatesRoute
+  '/tasks': typeof TasksRoute
   '/telematics-connectors': typeof TelematicsConnectorsRoute
   '/telematics-devices': typeof TelematicsDevicesRoute
   '/tenant-contract-keks': typeof TenantContractKeksRoute
@@ -2613,6 +2620,7 @@ export interface FileRoutesByTo {
   '/tacho-office-marks': typeof TachoOfficeMarksRoute
   '/tacho-plan-marks': typeof TachoPlanMarksRoute
   '/task-templates': typeof TaskTemplatesRoute
+  '/tasks': typeof TasksRoute
   '/telematics-connectors': typeof TelematicsConnectorsRoute
   '/telematics-devices': typeof TelematicsDevicesRoute
   '/tenant-contract-keks': typeof TenantContractKeksRoute
@@ -2946,6 +2954,7 @@ export interface FileRoutesById {
   '/tacho-office-marks': typeof TachoOfficeMarksRoute
   '/tacho-plan-marks': typeof TachoPlanMarksRoute
   '/task-templates': typeof TaskTemplatesRoute
+  '/tasks': typeof TasksRoute
   '/telematics-connectors': typeof TelematicsConnectorsRoute
   '/telematics-devices': typeof TelematicsDevicesRoute
   '/tenant-contract-keks': typeof TenantContractKeksRoute
@@ -3280,6 +3289,7 @@ export interface FileRouteTypes {
     | '/tacho-office-marks'
     | '/tacho-plan-marks'
     | '/task-templates'
+    | '/tasks'
     | '/telematics-connectors'
     | '/telematics-devices'
     | '/tenant-contract-keks'
@@ -3612,6 +3622,7 @@ export interface FileRouteTypes {
     | '/tacho-office-marks'
     | '/tacho-plan-marks'
     | '/task-templates'
+    | '/tasks'
     | '/telematics-connectors'
     | '/telematics-devices'
     | '/tenant-contract-keks'
@@ -3944,6 +3955,7 @@ export interface FileRouteTypes {
     | '/tacho-office-marks'
     | '/tacho-plan-marks'
     | '/task-templates'
+    | '/tasks'
     | '/telematics-connectors'
     | '/telematics-devices'
     | '/tenant-contract-keks'
@@ -4277,6 +4289,7 @@ export interface RootRouteChildren {
   TachoOfficeMarksRoute: typeof TachoOfficeMarksRoute
   TachoPlanMarksRoute: typeof TachoPlanMarksRoute
   TaskTemplatesRoute: typeof TaskTemplatesRoute
+  TasksRoute: typeof TasksRoute
   TelematicsConnectorsRoute: typeof TelematicsConnectorsRoute
   TelematicsDevicesRoute: typeof TelematicsDevicesRoute
   TenantContractKeksRoute: typeof TenantContractKeksRoute
@@ -6315,6 +6328,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TaskTemplatesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tasks': {
+      id: '/tasks'
+      path: '/tasks'
+      fullPath: '/tasks'
+      preLoaderRoute: typeof TasksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/telematics-connectors': {
       id: '/telematics-connectors'
       path: '/telematics-connectors'
@@ -6925,6 +6945,7 @@ const rootRouteChildren: RootRouteChildren = {
   TachoOfficeMarksRoute: TachoOfficeMarksRoute,
   TachoPlanMarksRoute: TachoPlanMarksRoute,
   TaskTemplatesRoute: TaskTemplatesRoute,
+  TasksRoute: TasksRoute,
   TelematicsConnectorsRoute: TelematicsConnectorsRoute,
   TelematicsDevicesRoute: TelematicsDevicesRoute,
   TenantContractKeksRoute: TenantContractKeksRoute,

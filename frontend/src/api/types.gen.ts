@@ -1943,6 +1943,22 @@ export type ChargeCreate = {
      */
     rate_line_id?: string | null;
     /**
+     * Shipment Id
+     */
+    shipment_id?: string | null;
+    /**
+     * Fx Rate Basis
+     */
+    fx_rate_basis?: string | null;
+    /**
+     * Fx Rate Offset Days
+     */
+    fx_rate_offset_days?: string | null;
+    /**
+     * Fx Rate Table
+     */
+    fx_rate_table?: string | null;
+    /**
      * Source Ref
      */
     source_ref: string;
@@ -2072,6 +2088,22 @@ export type ChargeResponse = {
      * Rate Line Id
      */
     rate_line_id: string | null;
+    /**
+     * Shipment Id
+     */
+    shipment_id: string | null;
+    /**
+     * Fx Rate Basis
+     */
+    fx_rate_basis: string | null;
+    /**
+     * Fx Rate Offset Days
+     */
+    fx_rate_offset_days: string | null;
+    /**
+     * Fx Rate Table
+     */
+    fx_rate_table: string | null;
     /**
      * Source Ref
      */
@@ -2835,23 +2867,23 @@ export type ContainerCreate = {
     /**
      * Vessel Imo
      */
-    vessel_imo?: string | null;
+    vessel_imo?: unknown | null;
     /**
      * Alliance Service
      */
-    alliance_service?: string | null;
+    alliance_service?: unknown | null;
     /**
      * Pol Unlocode
      */
-    pol_unlocode?: string | null;
+    pol_unlocode?: unknown | null;
     /**
      * Pod Unlocode
      */
-    pod_unlocode?: string | null;
+    pod_unlocode?: unknown | null;
     /**
      * Destination City
      */
-    destination_city?: string | null;
+    destination_city?: unknown | null;
     /**
      * Remarks
      */
@@ -2867,7 +2899,7 @@ export type ContainerCreate = {
     /**
      * Grade
      */
-    grade?: string | null;
+    grade?: unknown | null;
     /**
      * Ref 1
      */
@@ -14825,6 +14857,40 @@ export type ShipmentStakeholderResponse = {
 };
 
 /**
+ * ShipmentTreeMarginResponse
+ */
+export type ShipmentTreeMarginResponse = {
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Shipment Id
+     */
+    shipment_id: string;
+    /**
+     * Currency
+     */
+    currency: string;
+    /**
+     * Buy Amount
+     */
+    buy_amount: string;
+    /**
+     * Sell Amount
+     */
+    sell_amount: string;
+    /**
+     * Margin Amount
+     */
+    margin_amount: string;
+    /**
+     * Charge Count
+     */
+    charge_count: number;
+};
+
+/**
  * ShipperAwardMarkCreate
  */
 export type ShipperAwardMarkCreate = {
@@ -16086,6 +16152,58 @@ export type TachoPlanMarkResponse = {
      * Constraint Kind
      */
     constraint_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * TaskCreate
+ */
+export type TaskCreate = {
+    /**
+     * Task Code
+     */
+    task_code: string;
+    /**
+     * Template Code
+     */
+    template_code: string;
+    /**
+     * Status Kind
+     */
+    status_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * TaskResponse
+ */
+export type TaskResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Task Code
+     */
+    task_code: string;
+    /**
+     * Template Code
+     */
+    template_code: string;
+    /**
+     * Status Kind
+     */
+    status_kind: string;
     /**
      * Source Ref
      */
@@ -20850,6 +20968,49 @@ export type CreateTaskTemplateApiV1TaskTemplatesPostResponses = {
 
 export type CreateTaskTemplateApiV1TaskTemplatesPostResponse = CreateTaskTemplateApiV1TaskTemplatesPostResponses[keyof CreateTaskTemplateApiV1TaskTemplatesPostResponses];
 
+export type ListTasksApiV1TasksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tasks';
+};
+
+export type ListTasksApiV1TasksGetResponses = {
+    /**
+     * Response List Tasks Api V1 Tasks Get
+     *
+     * Successful Response
+     */
+    200: Array<TaskResponse>;
+};
+
+export type ListTasksApiV1TasksGetResponse = ListTasksApiV1TasksGetResponses[keyof ListTasksApiV1TasksGetResponses];
+
+export type CreateTaskApiV1TasksPostData = {
+    body: TaskCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/tasks';
+};
+
+export type CreateTaskApiV1TasksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateTaskApiV1TasksPostError = CreateTaskApiV1TasksPostErrors[keyof CreateTaskApiV1TasksPostErrors];
+
+export type CreateTaskApiV1TasksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: TaskResponse;
+};
+
+export type CreateTaskApiV1TasksPostResponse = CreateTaskApiV1TasksPostResponses[keyof CreateTaskApiV1TasksPostResponses];
+
 export type ListOutboxEventsApiV1OutboxEventsGetData = {
     body?: never;
     path?: never;
@@ -21442,6 +21603,24 @@ export type ResolveNbpRateApiV1NbpRatesResolveGetResponses = {
 };
 
 export type ResolveNbpRateApiV1NbpRatesResolveGetResponse = ResolveNbpRateApiV1NbpRatesResolveGetResponses[keyof ResolveNbpRateApiV1NbpRatesResolveGetResponses];
+
+export type ListTreeMarginsApiV1ChargesTreeMarginsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/charges/tree-margins';
+};
+
+export type ListTreeMarginsApiV1ChargesTreeMarginsGetResponses = {
+    /**
+     * Response List Tree Margins Api V1 Charges Tree Margins Get
+     *
+     * Successful Response
+     */
+    200: Array<ShipmentTreeMarginResponse>;
+};
+
+export type ListTreeMarginsApiV1ChargesTreeMarginsGetResponse = ListTreeMarginsApiV1ChargesTreeMarginsGetResponses[keyof ListTreeMarginsApiV1ChargesTreeMarginsGetResponses];
 
 export type ListChargesApiV1ChargesGetData = {
     body?: never;

@@ -321,6 +321,7 @@ from app.models.memory_edge import MemoryEdge  # noqa: F401
 from app.models.executive_mark import ExecutiveMark  # noqa: F401
 from app.models.rank_mark import RankMark  # noqa: F401
 from app.models.task_template import TaskTemplate  # noqa: F401
+from app.models.task import Task  # noqa: F401
 from app.models.cash_discount import CashDiscount  # noqa: F401
 from app.models.tender_ted_notice import TenderTedNotice  # noqa: F401
 from app.models.tender_prospect import TenderProspect  # noqa: F401

@@ -289,6 +289,7 @@ from app.api import (
     tacho_office_marks,
     tacho_plan_marks,
     task_templates,
+    tasks,
     telematics_connectors,
     telematics_devices,
     tenancy,
@@ -373,6 +374,7 @@ api_router.include_router(rail_cim_marks.router)
 api_router.include_router(rail_uic_marks.router)
 api_router.include_router(rank_marks.router)
 api_router.include_router(task_templates.router)
+api_router.include_router(tasks.router)
 api_router.include_router(outbox_events.router)
 api_router.include_router(empty_depot_marks.router)
 api_router.include_router(nvocc_marks.router)

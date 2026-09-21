@@ -4034,6 +4034,80 @@
         ]
       }
     },
+    "/api/v1/tasks": {
+      "get": {
+        "tags": [
+          "tasks"
+        ],
+        "summary": "List Tasks",
+        "operationId": "list_tasks_api_v1_tasks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TaskResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Tasks Api V1 Tasks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "tasks"
+        ],
+        "summary": "Create Task",
+        "operationId": "create_task_api_v1_tasks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/outbox-events": {
       "get": {
         "tags": [
@@ -5053,6 +5127,36 @@
             }
           }
         }
+      }
+    },
+    "/api/v1/charges/tree-margins": {
+      "get": {
+        "tags": [
+          "charges"
+        ],
+        "summary": "List Tree Margins",
+        "operationId": "list_tree_margins_api_v1_charges_tree_margins_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ShipmentTreeMarginResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Tree Margins Api V1 Charges Tree Margins Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
       }
     },
     "/api/v1/charges": {
@@ -31742,6 +31846,54 @@
             ],
             "title": "Rate Line Id"
           },
+          "shipment_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Shipment Id"
+          },
+          "fx_rate_basis": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 32
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fx Rate Basis"
+          },
+          "fx_rate_offset_days": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 8
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fx Rate Offset Days"
+          },
+          "fx_rate_table": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 16
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fx Rate Table"
+          },
           "source_ref": {
             "type": "string",
             "maxLength": 512,
@@ -31974,6 +32126,51 @@
             ],
             "title": "Rate Line Id"
           },
+          "shipment_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Shipment Id"
+          },
+          "fx_rate_basis": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fx Rate Basis"
+          },
+          "fx_rate_offset_days": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fx Rate Offset Days"
+          },
+          "fx_rate_table": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fx Rate Table"
+          },
           "source_ref": {
             "anyOf": [
               {
@@ -31998,6 +32195,10 @@
           "margin_amount",
           "margin_currency",
           "rate_line_id",
+          "shipment_id",
+          "fx_rate_basis",
+          "fx_rate_offset_days",
+          "fx_rate_table",
           "source_ref"
         ],
         "title": "ChargeResponse"
@@ -33132,6 +33333,51 @@
             ],
             "title": "Voyage No"
           },
+          "vessel_imo": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Vessel Imo"
+          },
+          "alliance_service": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Alliance Service"
+          },
+          "pol_unlocode": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pol Unlocode"
+          },
+          "pod_unlocode": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pod Unlocode"
+          },
+          "destination_city": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Destination City"
+          },
           "remarks": {
             "anyOf": [
               {
@@ -33164,6 +33410,15 @@
               }
             ],
             "title": "Packaging Code"
+          },
+          "grade": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Grade"
           },
           "ref_1": {
             "anyOf": [
@@ -33650,6 +33905,61 @@
             ],
             "title": "Voyage No"
           },
+          "vessel_imo": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Vessel Imo"
+          },
+          "alliance_service": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Alliance Service"
+          },
+          "pol_unlocode": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pol Unlocode"
+          },
+          "pod_unlocode": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pod Unlocode"
+          },
+          "destination_city": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Destination City"
+          },
           "remarks": {
             "anyOf": [
               {
@@ -33682,6 +33992,17 @@
               }
             ],
             "title": "Packaging Code"
+          },
+          "grade": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Grade"
           },
           "ref_1": {
             "anyOf": [
@@ -34160,9 +34481,15 @@
           "seal_no_3",
           "vessel_name",
           "voyage_no",
+          "vessel_imo",
+          "alliance_service",
+          "pol_unlocode",
+          "pod_unlocode",
+          "destination_city",
           "remarks",
           "cargo_description",
           "packaging_code",
+          "grade",
           "ref_1",
           "ref_2",
           "ref_3",
@@ -51544,6 +51871,51 @@
         ],
         "title": "ShipmentStakeholderResponse"
       },
+      "ShipmentTreeMarginResponse": {
+        "properties": {
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "shipment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Shipment Id"
+          },
+          "currency": {
+            "type": "string",
+            "title": "Currency"
+          },
+          "buy_amount": {
+            "type": "string",
+            "title": "Buy Amount"
+          },
+          "sell_amount": {
+            "type": "string",
+            "title": "Sell Amount"
+          },
+          "margin_amount": {
+            "type": "string",
+            "title": "Margin Amount"
+          },
+          "charge_count": {
+            "type": "integer",
+            "title": "Charge Count"
+          }
+        },
+        "type": "object",
+        "required": [
+          "organization_id",
+          "shipment_id",
+          "currency",
+          "buy_amount",
+          "sell_amount",
+          "margin_amount",
+          "charge_count"
+        ],
+        "title": "ShipmentTreeMarginResponse"
+      },
       "ShipperAwardMarkCreate": {
         "properties": {
           "mark_code": {
@@ -53533,6 +53905,75 @@
           "source_ref"
         ],
         "title": "TachoPlanMarkResponse"
+      },
+      "TaskCreate": {
+        "properties": {
+          "task_code": {
+            "type": "string",
+            "title": "Task Code"
+          },
+          "template_code": {
+            "type": "string",
+            "title": "Template Code"
+          },
+          "status_kind": {
+            "type": "string",
+            "title": "Status Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "task_code",
+          "template_code",
+          "status_kind",
+          "source_ref"
+        ],
+        "title": "TaskCreate"
+      },
+      "TaskResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "task_code": {
+            "type": "string",
+            "title": "Task Code"
+          },
+          "template_code": {
+            "type": "string",
+            "title": "Template Code"
+          },
+          "status_kind": {
+            "type": "string",
+            "title": "Status Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "task_code",
+          "template_code",
+          "status_kind",
+          "source_ref"
+        ],
+        "title": "TaskResponse"
       },
       "TaskTemplateCreate": {
         "properties": {

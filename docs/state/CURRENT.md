@@ -1,22 +1,22 @@
 ﻿# Bieżący focus
 
-**Faza:** Oś pinu — plan **616.0** (delta zaakceptowana, wolno `/plaster`)
+**Faza:** Oś pinu — plan **617.0** (T7c U4 przy fx)
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **615.0** T7b `fx_rate_*` na `charge` (gate success)
+**Ostatni plaster:** **616.0** T5 `task` HITL (lokalne; CI po push)
 
-**Etap:** Plan **616.0** T5 `task` HITL. Delta zaakceptowana `/noc`. Wolno `/plaster`.
+**Etap:** Plan **617.0** T7c kalendarz U4 przy `fx_rate`. Komenda `/plan-modul`.
 
 **Noc:** `/noc 7` do **2026-09-22T07:00:00+02:00**
 
 **Miejsce pracy:** produkt = to repo + GitHub.
 
-**Następny:** **616.0** tabela `task` HITL (kod + template_code + status). Nie matching. Nie FK shipment. **588.0** SH-R16-4 UXCL = park `/noc`.
+**Następny:** **617.0** T7c U4 D-1 przy kursie. Matching T5 / FK kontekstu = park. **588.0** SH-R16-4 UXCL = park `/noc`.
 
-**Park / czeka w PLAN:** matching T5 · FK kontekstu · T7c U4 · wnuki · HW · SH-R16-4 UXCL · AI3 · G0-SH · N3 · …
+**Park / czeka w PLAN:** matching T5 · FK kontekstu · wnuki · HW · SH-R16-4 UXCL · AI3 · G0-SH · N3 · …
 
-**Spec (jedyna na sesję produktu):** `docs/deltas/open/616.0-task.md`
+**Spec (jedyna na sesję produktu):** (brak — Etap Plan 617.0)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 
@@ -24,55 +24,11 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
+**2026-09-21:** Plaster **616.0** T5 `task` HITL zamknięty lokalnie (CI po push). `/noc 7`.
 **2026-09-21:** Plan **616.0** T5 `task` HITL (`/noc 7`). 615.0 gate success.
 **2026-09-21:** Plaster **615.0** T7b `fx_rate_*` na `charge` zamknięty (gate success). `/noc 7`.
-**2026-09-21:** Plaster **615.0** T7b `fx_rate_*` na `charge` zamknięty lokalnie (CI po push). `/noc 7`.
 **2026-09-21:** Plan **615.0** T7b `fx_rate_*` na `charge` (`/noc 7`). 614.0 gate success.
 **2026-09-21:** Plaster **614.0** T4 `shipment_tree_margin` zamknięty (gate success). `/noc 7`.
-**2026-09-21:** Plaster **614.0** T4 `shipment_tree_margin` zamknięty lokalnie (CI po push). `/noc 7`.
 **2026-09-21:** Plan **614.0** T4 widok `shipment_tree_margin` (`/noc 7`). 613.0 gate success.
 **2026-09-21:** Plaster **613.0** T4 `charge.shipment_id` zamknięty lokalnie (CI po push). `/noc 7`.
 **2026-09-21:** Plan **613.0** T4 `charge.shipment_id` (`/noc 7`). Rollup SQL parked. 612.0 gate success.
-**2026-09-21:** Plaster **612.0** T3 `destination_city` zamknięty (gate success). `/noc 17` stop.
-**2026-09-21:** Plan **612.0** T3 `destination_city` (`/noc 17`). 611.0 gate success.
-**2026-09-21:** Plaster **611.0** T3 `pod_unlocode` zamknięty (gate success). `/noc 17`.
-**2026-09-21:** Plan **611.0** T3 `pod_unlocode` (`/noc 17`). `destination_city` parked. 610.0 gate success.
-**2026-09-21:** Plaster **610.0** T3 `pol_unlocode` zamknięty (gate success). `/noc 17`.
-**2026-09-21:** Plan **610.0** T3 `pol_unlocode` (`/noc 17`). `pod_unlocode` / `destination_city` parked.
-**2026-09-21:** Plaster **609.0** T3 EXP1 `alliance_service` zamknięty (gate success). `/noc 17`.
-**2026-09-21:** Plan **609.0** T3 EXP1 `alliance_service` (`/noc 8`).
-**2026-09-21:** Plan **608.0** T3 EXP1 `vessel_imo` (`/noc 8`). `alliance_service` parked.
-**2026-09-21:** Plaster **607.0** T3 EXP1 `grade` zamknięty (gate success). `/noc 8`.
-**2026-09-21:** Plan **607.0** T3 EXP1 `grade` (`/noc 8`). `alliance_service` / `vessel_imo` parked.
-**2026-09-21:** Plaster **606.0** T1 EXP1 `weigh_out_kg` zamknięty (gate success). `/noc 8`.
-**2026-09-20:** Plaster **605.0** T1 EXP1 `weigh_in_kg` zamknięty (gate success). `/noc 8`.
-**2026-09-20:** Plan **605.0** T1 EXP1 `weigh_in_kg` (`/noc 8`). `weigh_out` parked.
-**2026-09-20:** Plaster **604.0** T1 EXP1 `no_show_at` zamknięty (gate success). `/noc 8`.
-**2026-09-20:** Plan **604.0** T1 EXP1 `no_show_at` (`/noc 8`). `weigh_in`/`weigh_out` parked.
-**2026-09-20:** Plaster **603.0** T1 EXP1 `appointment_status` zamknięty (gate success). `/noc 21`.
-**2026-09-20:** Plan **603.0** T1 EXP1 `appointment_status` (`/noc 21`). `no_show_at` parked.
-**2026-09-20:** Plaster **602.0** T1b sync kod←FK zamknięty (gate success). `/noc 21`.
-**2026-09-20:** Plan **602.0** T1b sync (`/noc 21`).
-**2026-09-20:** Plaster **601.0** T1b bind `stop_group_id` zamknięty (gate success). `/noc 21`.
-**2026-09-20:** Plan **601.0** T1b bind `stop_group_id` (`/noc 21`). Sync kod parked.
-**2026-09-20:** Plaster **600.0** T1b `stop_group` tabela zamknięty (gate success). `/noc 21`.
-**2026-09-20:** Plan **600.0** T1b `stop_group` tabela (`/noc 21`). Członkostwo parked.
-**2026-09-20:** Plaster **599.0** `resource.vehicle_profile` zamknięty (gate success). `/noc 9`.
-**2026-09-20:** Plan **599.0** `resource.vehicle_profile` (`/noc 9`).
-**2026-09-20:** Plaster **598.0** `resource.driver_card_no` zamknięty (gate success). `/noc 9`.
-**2026-09-20:** Plan **598.0** `resource.driver_card_no` (`/noc 9`).
-**2026-09-20:** Plaster **597.0** `resource.phone` zamknięty (gate success). `/noc 9`.
-**2026-09-20:** Plan **597.0** `resource.phone` (`/noc 9`).
-**2026-09-20:** Plaster **596.0** `resource.tail_lift` zamknięty (gate success). `/noc 9`.
-**2026-09-20:** Plan **596.0** `resource.tail_lift` (`/noc 9`).
-**2026-09-19:** Plaster **595.0** `resource.reefer` zamknięty (gate success). `/noc 9`.
-**2026-09-19:** Plan **595.0** `resource.reefer` (`/noc 9`).
-**2026-09-19:** Plaster **594.0** `resource.adr_certified` zamknięty (gate success). `/noc 9`.
-**2026-09-19:** Plan **594.0** `resource.adr_certified` (`/noc 9`).
-**2026-09-19:** Plaster **593.0** `resource.inventory_no` zamknięty (lokalne; CI po push). `/noc 9`.
-**2026-09-19:** Plan **593.0** `resource.inventory_no` (`/noc 9`). Floating trailer odrzucony — `trip.trailer_id` od 152.0.
-**2026-09-19:** Plaster **592.0** `resource_document` zamknięty (lokalne; CI po push). `/noc 9`.
-**2026-09-19:** Plan **592.0** `resource_document` (`/noc 9`).
-**2026-09-19:** Plaster **591.0** `resource.capacity_m3` zamknięty (gate success). `/noc 9`.
-**2026-09-19:** Plaster **590.0** `resource.capacity_ldm` zamknięty (gate success). `/noc 9`.
-**2026-09-19:** Plaster **589.0** `resource.capacity_kg` zamknięty (gate success). `/noc 9`.

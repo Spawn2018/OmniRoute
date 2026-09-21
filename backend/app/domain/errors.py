@@ -762,6 +762,10 @@ class InvalidTaskTemplate(DomainError):
     """T5: HITL szablon zadania — nie instancja, nie matching i nie outbox."""
 
 
+class InvalidTask(DomainError):
+    """T5: HITL wpis zadania — nie matching, nie FK shipment i nie outbox."""
+
+
 class InvalidPlanSnapshot(DomainError):
     """B0b: HITL wersja planu — nie silnik, nie kółka. FK trójki od 452.0."""
 

@@ -554,6 +554,11 @@ export const OPS_JOBS = [
     job: "katalog task_template HITL",
   },
   {
+    route: BUSINESS_LISTS.task.route,
+    label: "Zadanie",
+    job: "katalog task HITL",
+  },
+  {
     route: BUSINESS_LISTS.planSnapshot.route,
     label: "Migawka planu",
     job: "katalog plan_snapshot HITL",
@@ -1865,6 +1870,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "613.0": "/charges",
   "614.0": "/charges",
   "615.0": "/charges",
+  "616.0": "/tasks",
   "142.0": "/mail",
   "143.0": "/networks",
   "144.0": "/quotations",

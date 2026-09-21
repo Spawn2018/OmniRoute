@@ -340,6 +340,7 @@ modules =
     app.services.executive_marks
     app.services.rank_marks
     app.services.task_templates
+    app.services.tasks
     app.services.tender_award_reviews
     app.services.tender_ted_notices
     app.services.tender_rfp_intakes
@@ -1414,6 +1415,9 @@ forbidden_modules =
     app.services.task_templates
     app.repositories.task_templates
     app.models.task_template
+    app.services.tasks
+    app.repositories.tasks
+    app.models.task
     app.services.tender_award_reviews
     app.repositories.tender_award_reviews
     app.models.tender_award_review
