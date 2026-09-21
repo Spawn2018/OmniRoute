@@ -87,10 +87,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **612.0** T3 `destination_city` (lokalne; CI po push)
-- **Etap:** karta T3 POL/POD/miasto zamknięta — następny leftover poza parkami
-- **Następny:** plan kolejnego Q z karty T3 poza HW, UXCL, N3, AI3, G0-SH. **588.0** SH-R16-4 UXCL = park `/noc`.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **612.0** T3 `destination_city` (gate success)
+- **Etap:** karta T3 POL/POD/miasto zamknięta. `/noc 17` stop — bez nowego planu po 16:00.
+- **Następny:** rano plan kolejnego Q poza HW, UXCL, N3, AI3, G0-SH. Nie FK portu w serwisie kontenera. **588.0** SH-R16-4 UXCL = park `/noc`.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

@@ -1,7 +1,7 @@
 # Historia plastrów
 
 | Data | Plaster | Moduł | Opis |
-| 2026-09-21 | 612.0 | T3 destination_city | 2026-09-21 | CI po push | N/A | N/A | OK | OK | 5-15 | PRZESZŁO | N/A | N/A | po close |
+| 2026-09-21 | 612.0 | T3 destination_city | 2026-09-21 | PRZESZŁO | N/A | N/A | OK | OK | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 2026-09-21 | Plan 612.0 | T3 destination_city | Plan `container.destination_city` HITL (`/noc 17`). |
 | 2026-09-21 | 611.0 | T3 pod_unlocode | 2026-09-21 | PRZESZŁO | N/A | N/A | OK | OK | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 2026-09-21 | Plan 611.0 | T3 pod_unlocode | Plan `container.pod_unlocode` HITL (`/noc 17`). `destination_city` parked. |

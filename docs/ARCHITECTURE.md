@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **612.0** T3 `destination_city` (lokalne; CI po push). **Etap:** karta T3 POL/POD/miasto zamknięta — następny leftover poza parkami. **Następny:** plan kolejnego Q z karty T3 poza HW, UXCL, N3, AI3, G0-SH. **588.0** SH-R16-4 UXCL = park `/noc`. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **612.0** T3 `destination_city` (gate success). **Etap:** karta T3 POL/POD/miasto zamknięta. `/noc 17` stop — bez nowego planu po 16:00. **Następny:** rano plan kolejnego Q poza HW, UXCL, N3, AI3, G0-SH. Nie FK portu w serwisie kontenera. **588.0** SH-R16-4 UXCL = park `/noc`. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
