@@ -2841,6 +2841,10 @@ export type ContainerCreate = {
      */
     alliance_service?: string | null;
     /**
+     * Pol Unlocode
+     */
+    pol_unlocode?: string | null;
+    /**
      * Remarks
      */
     remarks?: string | null;
@@ -3078,6 +3082,10 @@ export type ContainerResponse = {
      * Alliance Service
      */
     alliance_service: string | null;
+    /**
+     * Pol Unlocode
+     */
+    pol_unlocode: string | null;
     /**
      * Remarks
      */

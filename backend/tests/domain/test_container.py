@@ -52,6 +52,7 @@ from app.domain.container import (
     require_payload_kg,
     require_pickup_terminal,
     require_pin_code,
+    require_pol_unlocode,
     require_return_terminal,
     require_seal_no_1,
     require_seal_no_2,
@@ -143,6 +144,19 @@ def test_alliance_service_omits_blank_and_keeps_token() -> None:
         require_alliance_service("x" * 33)
     with pytest.raises(InvalidContainer, match="alians"):
         require_alliance_service(2)
+
+
+def test_pol_unlocode_uppercases_and_rejects_shape() -> None:
+    assert require_pol_unlocode(None) is None
+    assert require_pol_unlocode("  ") is None
+    assert require_pol_unlocode(" plgdn ") == "PLGDN"
+    assert require_pol_unlocode("us2ny") == "US2NY"
+    with pytest.raises(InvalidContainer, match="pol"):
+        require_pol_unlocode("PLGD")
+    with pytest.raises(InvalidContainer, match="pol"):
+        require_pol_unlocode("PL-GD")
+    with pytest.raises(InvalidContainer, match="pol"):
+        require_pol_unlocode(1)
 
 
 def test_booking_no_omits_blank_and_keeps_token() -> None:

@@ -32,6 +32,7 @@ class ContainerCreate(BaseModel):
     voyage_no: str | None = None
     vessel_imo: object | None = None
     alliance_service: object | None = None
+    pol_unlocode: object | None = None
     remarks: str | None = None
     cargo_description: str | None = None
     packaging_code: str | None = None
@@ -95,6 +96,7 @@ class ContainerResponse(BaseModel):
     voyage_no: str | None
     vessel_imo: str | None
     alliance_service: str | None
+    pol_unlocode: str | None
     remarks: str | None
     cargo_description: str | None
     packaging_code: str | None
@@ -170,7 +172,7 @@ def _write_from_body(
         body.source_ref,
         body.seal_no_1, body.seal_no_2, body.seal_no_3,
         body.vessel_name,
-        body.voyage_no, body.vessel_imo, body.alliance_service,
+        body.voyage_no, body.vessel_imo, body.alliance_service, body.pol_unlocode,
         body.remarks, body.cargo_description,
         body.packaging_code, body.grade,
         body.ref_1, body.ref_2, body.ref_3, body.ref_4, body.ref_5,

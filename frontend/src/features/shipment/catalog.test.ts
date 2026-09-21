@@ -132,6 +132,7 @@ describe("shipment surface for 28.0 and 90.0", () => {
     expect(box).toContain("grade")
     expect(box).toContain("vessel_imo")
     expect(box).toContain("alliance_service")
+    expect(box).toContain("pol_unlocode")
     expect(box).toContain("pin_code")
     expect(box).toContain("payload_kg")
     expect(box).toContain("teu")

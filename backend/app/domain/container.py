@@ -183,6 +183,31 @@ def require_alliance_service(raw: object) -> str | None:
     return token
 
 
+def require_pol_unlocode(raw: object) -> str | None:
+    # UN/LOCODE = 5 znaków; resolve portu zostaje leftoverem FK, nie tu.
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidContainer("pol musi być tekstem")
+    token = raw.strip().upper()
+    if token == "":
+        return None
+    if not _unlocode_shape(token):
+        raise InvalidContainer("pol")
+    return token
+
+
+def _unlocode_shape(token: str) -> bool:
+    if len(token) != 5:
+        return False
+    for index, char in enumerate(token):
+        if index < 2 and not "A" <= char <= "Z":
+            return False
+        if index >= 2 and not ("A" <= char <= "Z" or "0" <= char <= "9"):
+            return False
+    return True
+
+
 def require_container_remarks(raw: object) -> str | None:
     if raw is None:
         return None

@@ -515,6 +515,58 @@ def test_http_rejects_too_long_alliance_service(box_client: object) -> None:
     assert "alians" in reply.json()["detail"]
 
 
+def test_http_create_container_with_pol_unlocode(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    created = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "pol_unlocode": " plgdn ",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["pol_unlocode"] == "PLGDN"
+    assert created.json()["alliance_service"] is None
+
+
+def test_http_rejects_non_text_pol_unlocode(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "pol_unlocode": 1,
+        },
+    )
+    assert reply.status_code == 400
+    assert "pol" in reply.json()["detail"]
+
+
+def test_http_rejects_bad_pol_unlocode(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "pol_unlocode": "PL-GD",
+        },
+    )
+    assert reply.status_code == 400
+    assert "pol" in reply.json()["detail"]
+
+
 def test_http_create_container_with_remarks(box_client: object) -> None:
     client, _boxes, _jobs = box_client
     headers = bearer_auth_headers()
