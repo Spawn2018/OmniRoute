@@ -29,6 +29,7 @@ from app.domain.stop import (
     require_stop_waiting_free_minutes,
     require_stop_waiting_started_at,
     require_stop_weigh_in_kg,
+    require_stop_weigh_out_kg,
     require_stop_weight_kg,
     require_time_zone,
 )
@@ -50,6 +51,7 @@ class _PackedPoint:
     driver_notes: str | None
     mass: Decimal | None
     weigh_in: Decimal | None
+    weigh_out: Decimal | None
     count: int | None
     pack: str | None
     inbound_seal: str | None
@@ -71,6 +73,7 @@ class _HitlTail:
     driver_notes: object = None
     mass: object = None
     weigh_in: object = None
+    weigh_out: object = None
     count: object = None
     pack: object = None
     inbound_seal: object = None
@@ -114,6 +117,7 @@ def _pack_point(
         driver_notes=require_notes_for_driver(tail.driver_notes),
         mass=require_stop_weight_kg(tail.mass),
         weigh_in=require_stop_weigh_in_kg(tail.weigh_in),
+        weigh_out=require_stop_weigh_out_kg(tail.weigh_out),
         count=require_stop_quantity(tail.count),
         pack=require_stop_packaging_code(tail.pack),
         inbound_seal=require_stop_seal_in(tail.inbound_seal),
@@ -141,6 +145,7 @@ def _same_point(current: Stop, packed: _PackedPoint) -> bool:
         and current.notes_for_driver == packed.driver_notes
         and current.weight_kg == packed.mass
         and current.weigh_in_kg == packed.weigh_in
+        and current.weigh_out_kg == packed.weigh_out
         and current.quantity == packed.count
         and current.packaging_code == packed.pack
         and current.seal_in == packed.inbound_seal
@@ -188,6 +193,7 @@ class StopService:
         notes_for_driver: object = None,
         weight_kg: object = None,
         weigh_in_kg: object = None,
+        weigh_out_kg: object = None,
         quantity: object = None,
         packaging_code: object = None,
         seal_in: object = None,
@@ -201,9 +207,8 @@ class StopService:
     ) -> Stop:
         tail = _HitlTail(
             stop_group_code, stop_group_id, notes_for_driver, weight_kg, weigh_in_kg,
-            quantity, packaging_code, seal_in, seal_out, appointment_ref,
-            appointment_status, no_show_at, waiting_free_minutes, waiting_started_at,
-            pod_quality,
+            weigh_out_kg, quantity, packaging_code, seal_in, seal_out, appointment_ref,
+            appointment_status, no_show_at, waiting_free_minutes, waiting_started_at, pod_quality,
         )
         packed = _pack_point(
             shipment_id, location_id, stop_kind, sequence_no, time_zone, status, source_ref,
@@ -241,6 +246,7 @@ class StopService:
                 notes_for_driver=packed.driver_notes,
                 weight_kg=packed.mass,
                 weigh_in_kg=packed.weigh_in,
+                weigh_out_kg=packed.weigh_out,
                 quantity=packed.count,
                 packaging_code=packed.pack,
                 seal_in=packed.inbound_seal,

@@ -52326,6 +52326,17 @@
             ],
             "title": "Weigh In Kg"
           },
+          "weigh_out_kg": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Weigh Out Kg"
+          },
           "quantity": {
             "anyOf": [
               {
@@ -52648,6 +52659,17 @@
             ],
             "title": "Weigh In Kg"
           },
+          "weigh_out_kg": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Weigh Out Kg"
+          },
           "quantity": {
             "anyOf": [
               {
@@ -52791,6 +52813,7 @@
           "notes_for_driver",
           "weight_kg",
           "weigh_in_kg",
+          "weigh_out_kg",
           "quantity",
           "packaging_code",
           "seal_in",

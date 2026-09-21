@@ -36,6 +36,7 @@ class StopCreate(BaseModel):
     notes_for_driver: str | None = None
     weight_kg: str | None = None
     weigh_in_kg: str | None = None
+    weigh_out_kg: str | None = None
     quantity: int | str | float | bool | None = None
     packaging_code: str | None = None
     seal_in: str | None = None
@@ -67,6 +68,7 @@ class StopResponse(BaseModel):
     notes_for_driver: str | None
     weight_kg: str | None
     weigh_in_kg: str | None
+    weigh_out_kg: str | None
     quantity: int | None
     packaging_code: str | None
     seal_in: str | None
@@ -84,6 +86,7 @@ def _as_response(row: Stop) -> StopResponse:
     dumped = {name: getattr(row, name) for name in StopResponse.model_fields}
     dumped["weight_kg"] = None if row.weight_kg is None else format(row.weight_kg, "f")
     dumped["weigh_in_kg"] = None if row.weigh_in_kg is None else format(row.weigh_in_kg, "f")
+    dumped["weigh_out_kg"] = None if row.weigh_out_kg is None else format(row.weigh_out_kg, "f")
     return StopResponse.model_validate(dumped)
 
 
@@ -123,6 +126,7 @@ def _hitl_from_body(
         "notes_for_driver": body.notes_for_driver,
         "weight_kg": body.weight_kg,
         "weigh_in_kg": body.weigh_in_kg,
+        "weigh_out_kg": body.weigh_out_kg,
         "quantity": body.quantity,
         "packaging_code": body.packaging_code,
         "seal_in": body.seal_in,

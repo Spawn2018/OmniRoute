@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **605.0** T1 EXP1 `weigh_in_kg` (lokalne; CI po push) **Następny:** **606.0** T1 EXP1 `weigh_out_kg` (po gate 605). **588.0** SH-R16-4 UXCL banner = park `/noc`. Job#2 po bannerze. Nie AI3. Nie G0-SH. Nie N3. Nie HW.
+**Stan (z CURRENT.md):** **606.0** T1 EXP1 `weigh_out_kg` (lokalne; CI po push) **Następny:** **607.0** — po gate 606 wybór z pinu (nie HW, nie UXCL, nie AI3, nie G0-SH, nie N3). T1 EXP1 stop (`weigh_in`/`weigh_out`) DONE. **588.0** SH-R16-4 UXCL = park `/noc`.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

@@ -119,7 +119,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 
 - **148.0 leftover:** dwa `mail_draft` przy DAP `contact_exchange`; live HTTP S21. Tu tylko status na wierszu. Nie send.
 - **147.0 leftover:** tabela `document_dispatch` (batch mail + send S18). Tu tylko katalog adresata. Nie auto-send.
-- **605.0 leftover:** T1 EXP1 `weigh_in_kg` DONE. Zostaje `weigh_out_kg`; HW; UXCL. Tu tylko waga wjazdu HITL na punkcie. Nie VGM. Nie waga wyjazdu.
+- **606.0 leftover:** T1 EXP1 `weigh_out_kg` DONE. Para wjazd/wyjazd na `stop` zamknięta. Zostaje HW; UXCL. Tu tylko waga wyjazdu HITL. Nie VGM. Nie wymóg pary.
+- **605.0 leftover:** T1 EXP1 `weigh_in_kg` DONE. `weigh_out_kg` DONE 606.0. Zostaje HW; UXCL. Tu tylko waga wjazdu HITL na punkcie. Nie VGM. Nie waga wyjazdu.
 - **604.0 leftover:** T1 EXP1 `no_show_at` DONE. `weigh_in_kg` DONE 605.0. Zostaje `weigh_out_kg`; HW; UXCL. Tu tylko chwila niestawiennictwa HITL na punkcie. Nie charge. Nie auto-status.
 - **603.0 leftover:** T1 EXP1 `appointment_status` DONE. `no_show_at` DONE 604.0. Zostaje weigh_in/out; HW; UXCL. Tu tylko status awizacji HITL na punkcie. Nie dok. Nie auto-status.
 - **602.0 leftover:** T1b sync DONE. Zostaje HW; UXCL; weigh. Tu tylko fill kodu z FK. Nie auto-create.

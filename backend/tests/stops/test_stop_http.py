@@ -27,6 +27,7 @@ from app.domain.stop import (
     require_stop_waiting_free_minutes,
     require_stop_waiting_started_at,
     require_stop_weigh_in_kg,
+    require_stop_weigh_out_kg,
     require_stop_weight_kg,
     require_time_zone,
 )
@@ -105,6 +106,7 @@ class StubStopService:
         notes_for_driver: object = None,
         weight_kg: object = None,
         weigh_in_kg: object = None,
+        weigh_out_kg: object = None,
         quantity: object = None,
         packaging_code: object = None,
         seal_in: object = None,
@@ -126,6 +128,7 @@ class StubStopService:
         notes = require_notes_for_driver(notes_for_driver)
         mass = require_stop_weight_kg(weight_kg)
         gate_mass = require_stop_weigh_in_kg(weigh_in_kg)
+        exit_mass = require_stop_weigh_out_kg(weigh_out_kg)
         count = require_stop_quantity(quantity)
         pack = require_stop_packaging_code(packaging_code)
         inbound = require_stop_seal_in(seal_in)
@@ -164,6 +167,7 @@ class StubStopService:
             and current.notes_for_driver == notes
             and current.weight_kg == mass
             and current.weigh_in_kg == gate_mass
+            and current.weigh_out_kg == exit_mass
             and current.quantity == count
             and current.packaging_code == pack
             and current.seal_in == inbound
@@ -191,6 +195,7 @@ class StubStopService:
             notes_for_driver=notes,
             weight_kg=mass,
             weigh_in_kg=gate_mass,
+            weigh_out_kg=exit_mass,
             quantity=count,
             packaging_code=pack,
             seal_in=inbound,
@@ -419,6 +424,7 @@ def test_http_create_stop_with_notes_for_driver(catalog_client: object) -> None:
     assert created.json()["notes_for_driver"] == "brama B, dzwonek 2"
     assert created.json()["weight_kg"] is None
     assert created.json()["weigh_in_kg"] is None
+    assert created.json()["weigh_out_kg"] is None
     assert created.json()["quantity"] is None
     assert created.json()["packaging_code"] is None
     assert created.json()["seal_in"] is None
@@ -1172,3 +1178,51 @@ def test_http_rejects_float_and_negative_weigh_in_kg(catalog_client: object) -> 
     negative = client.post("/api/v1/stops", headers=headers, json=payload)
     assert negative.status_code == 400
     assert "waga wjazdu" in negative.json()["detail"]
+
+
+def test_http_create_stop_with_weigh_out_kg(catalog_client: object) -> None:
+    client, ships, places, _rows = catalog_client
+    assert ships.row is not None
+    assert places.row is not None
+    created = client.post(
+        "/api/v1/stops",
+        headers=bearer_auth_headers(),
+        json={
+            "shipment_id": str(ships.row.id),
+            "location_id": str(places.row.id),
+            "stop_kind": "loading",
+            "sequence_no": 33,
+            "time_zone": "Europe/Warsaw",
+            "status": "pending",
+            "source_ref": "tenant:manual",
+            "eta_physical": _HITL_ISO,
+            "eta_legal": _HITL_ISO,
+            "weigh_out_kg": "17.5",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["weigh_out_kg"] == "17.5000"
+    assert created.json()["weigh_in_kg"] is None
+    assert "margin" not in created.json()
+
+
+def test_http_rejects_float_and_negative_weigh_out_kg(catalog_client: object) -> None:
+    client, ships, places, _rows = catalog_client
+    assert ships.row is not None
+    assert places.row is not None
+    headers = bearer_auth_headers()
+    payload = {
+        "shipment_id": str(ships.row.id),
+        "location_id": str(places.row.id),
+        "stop_kind": "loading",
+        "sequence_no": 34,
+        "time_zone": "Europe/Warsaw",
+        "status": "pending",
+        "source_ref": "tenant:manual",
+        "eta_physical": _HITL_ISO,
+        "eta_legal": _HITL_ISO,
+        "weigh_out_kg": "-1",
+    }
+    negative = client.post("/api/v1/stops", headers=headers, json=payload)
+    assert negative.status_code == 400
+    assert "waga wyjazdu" in negative.json()["detail"]
