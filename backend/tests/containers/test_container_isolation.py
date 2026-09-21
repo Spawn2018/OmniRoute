@@ -775,6 +775,30 @@ async def test_container_pol_unlocode_same_tenant(session, two_tenants) -> None:
 
 @pytest.mark.integration
 @pytest.mark.asyncio
+async def test_container_pod_unlocode_same_tenant(session, two_tenants) -> None:
+    org_a = two_tenants["org_a"]
+    user_a = two_tenants["user_a"]
+    await bind_tenant(session, org_a.id)
+    session.add(
+        Container(
+            id=uuid4(),
+            organization_id=org_a.id,
+            container_no="CSQU3054383",
+            iso_size_type="22G1",
+            source_ref="fixture://container/pod",
+            pod_unlocode="DEHAM",
+            created_by=user_a.id,
+        ),
+    )
+    await session.flush()
+    session.expunge_all()
+    await bind_tenant(session, org_a.id)
+    loaded = list((await session.scalars(select(Container))).all())
+    assert loaded[0].pod_unlocode == "DEHAM"
+
+
+@pytest.mark.integration
+@pytest.mark.asyncio
 async def test_container_payload_kg_same_tenant(session, two_tenants) -> None:
     org_a = two_tenants["org_a"]
     user_a = two_tenants["user_a"]

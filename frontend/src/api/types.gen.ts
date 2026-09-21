@@ -2845,6 +2845,10 @@ export type ContainerCreate = {
      */
     pol_unlocode?: string | null;
     /**
+     * Pod Unlocode
+     */
+    pod_unlocode?: string | null;
+    /**
      * Remarks
      */
     remarks?: string | null;
@@ -3086,6 +3090,10 @@ export type ContainerResponse = {
      * Pol Unlocode
      */
     pol_unlocode: string | null;
+    /**
+     * Pod Unlocode
+     */
+    pod_unlocode: string | null;
     /**
      * Remarks
      */

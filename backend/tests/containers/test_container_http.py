@@ -567,6 +567,58 @@ def test_http_rejects_bad_pol_unlocode(box_client: object) -> None:
     assert "pol" in reply.json()["detail"]
 
 
+def test_http_create_container_with_pod_unlocode(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    created = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "pod_unlocode": " deham ",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["pod_unlocode"] == "DEHAM"
+    assert created.json()["pol_unlocode"] is None
+
+
+def test_http_rejects_non_text_pod_unlocode(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "pod_unlocode": 1,
+        },
+    )
+    assert reply.status_code == 400
+    assert "pod" in reply.json()["detail"]
+
+
+def test_http_rejects_bad_pod_unlocode(box_client: object) -> None:
+    client, _boxes, _jobs = box_client
+    headers = bearer_auth_headers()
+    reply = client.post(
+        "/api/v1/containers",
+        headers=headers,
+        json={
+            "container_no": _GOOD,
+            "iso_size_type": "22G1",
+            "source_ref": "tenant:manual",
+            "pod_unlocode": "DE-HA",
+        },
+    )
+    assert reply.status_code == 400
+    assert "pod" in reply.json()["detail"]
+
+
 def test_http_create_container_with_remarks(box_client: object) -> None:
     client, _boxes, _jobs = box_client
     headers = bearer_auth_headers()

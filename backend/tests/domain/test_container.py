@@ -53,6 +53,7 @@ from app.domain.container import (
     require_pickup_terminal,
     require_pin_code,
     require_pol_unlocode,
+    require_pod_unlocode,
     require_return_terminal,
     require_seal_no_1,
     require_seal_no_2,
@@ -157,6 +158,19 @@ def test_pol_unlocode_uppercases_and_rejects_shape() -> None:
         require_pol_unlocode("PL-GD")
     with pytest.raises(InvalidContainer, match="pol"):
         require_pol_unlocode(1)
+
+
+def test_pod_unlocode_uppercases_and_rejects_shape() -> None:
+    assert require_pod_unlocode(None) is None
+    assert require_pod_unlocode("  ") is None
+    assert require_pod_unlocode(" deham ") == "DEHAM"
+    assert require_pod_unlocode("us2ny") == "US2NY"
+    with pytest.raises(InvalidContainer, match="pod"):
+        require_pod_unlocode("DEHA")
+    with pytest.raises(InvalidContainer, match="pod"):
+        require_pod_unlocode("DE-HA")
+    with pytest.raises(InvalidContainer, match="pod"):
+        require_pod_unlocode(1)
 
 
 def test_booking_no_omits_blank_and_keeps_token() -> None:

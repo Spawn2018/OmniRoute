@@ -16,6 +16,7 @@ export type ContainerRow = {
   vessel_imo: string | null
   alliance_service: string | null
   pol_unlocode: string | null
+  pod_unlocode: string | null
   remarks: string | null
   cargo_description: string | null
   packaging_code: string | null
@@ -77,6 +78,7 @@ export type ContainerWrite = {
   vessel_imo?: string | null
   alliance_service?: string | null
   pol_unlocode?: string | null
+  pod_unlocode?: string | null
   remarks: string | null
   cargo_description: string | null
   packaging_code: string | null

@@ -19,6 +19,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
   const [imo, setImo] = useState("")
   const [alliance, setAlliance] = useState("")
   const [pol, setPol] = useState("")
+  const [pod, setPod] = useState("")
   const [note, setNote] = useState("")
   const [goods, setGoods] = useState("")
   const [pack, setPack] = useState("")
@@ -95,6 +96,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
         vessel_imo: optionalToken(imo),
         alliance_service: optionalToken(alliance),
         pol_unlocode: optionalToken(pol),
+        pod_unlocode: optionalToken(pod),
         grade: optionalToken(grade),
         pickup_terminal: optionalToken(dock),
         return_terminal: optionalToken(yard),
@@ -232,12 +234,23 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
           value={alliance}
           onChange={(event) => setAlliance(event.target.value)}
         />
+      </label>
+      <label className="flex flex-col gap-1 text-xs">
         Port załadunku (opcjonalnie)
         <Input
           aria-label="Kod UN/LOCODE portu załadunku"
           placeholder="pol_unlocode"
           value={pol}
           onChange={(event) => setPol(event.target.value)}
+        />
+      </label>
+      <label className="flex flex-col gap-1 text-xs">
+        Port wyładunku (opcjonalnie)
+        <Input
+          aria-label="Kod UN/LOCODE portu wyładunku"
+          placeholder="pod_unlocode"
+          value={pod}
+          onChange={(event) => setPod(event.target.value)}
         />
       </label>
       <label className="flex flex-col gap-1 text-xs">
@@ -663,6 +676,7 @@ export function IsoContainerPanel(args: { signedIn: boolean }) {
             {row.vessel_imo !== null ? ` · ${row.vessel_imo}` : ""}
             {row.alliance_service !== null ? ` · ${row.alliance_service}` : ""}
             {row.pol_unlocode !== null ? ` · ${row.pol_unlocode}` : ""}
+            {row.pod_unlocode !== null ? ` · ${row.pod_unlocode}` : ""}
             {row.remarks !== null ? ` · ${row.remarks}` : ""}
             {row.cargo_description !== null ? ` · ${row.cargo_description}` : ""}
             {row.packaging_code !== null ? ` · ${row.packaging_code}` : ""}

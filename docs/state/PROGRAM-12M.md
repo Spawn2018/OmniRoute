@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **610.0** T3 `pol_unlocode` (gate success) **Następny:** **611.0** T3 `pod_unlocode` na `container`. `destination_city` parked. **588.0** SH-R16-4 UXCL = park `/noc`.
+**Stan (z CURRENT.md):** **611.0** T3 `pod_unlocode` (lokalne; CI po push) **Następny:** plan **612.0** T3 `destination_city` (nie HW, nie UXCL, nie N3). **588.0** SH-R16-4 UXCL = park `/noc`.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.
