@@ -139,6 +139,7 @@ type organization
     define can_manage_kpi_definition_marks: member
     define can_manage_margin_floors: member
     define can_manage_shipment_clone_marks: member
+    define can_manage_clone_carry_marks: member
     define can_manage_handover_sbar_marks: member
     define can_manage_handover_notes: member
     define can_manage_trip_bill_marks: member

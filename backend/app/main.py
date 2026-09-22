@@ -7,6 +7,7 @@ from app.core.request_id import RequestIdMiddleware
 from app.domain.errors import (
     BulkAcceptConfidenceBelow,
     ChannelQuoteConflict,
+    CloneCarryMarkConflict,
     ConsignmentFtlLimit,
     ContainerReeferRequired,
     DomainError,
@@ -163,6 +164,14 @@ async def pallet_ledger_conflict_handler(
 async def pallet_synchro_mark_conflict_handler(
     _request: Request,
     exc: PalletSynchroMarkConflict,
+) -> JSONResponse:
+    return JSONResponse(status_code=409, content={"detail": str(exc)})
+
+
+@app.exception_handler(CloneCarryMarkConflict)
+async def clone_carry_mark_conflict_handler(
+    _request: Request,
+    exc: CloneCarryMarkConflict,
 ) -> JSONResponse:
     return JSONResponse(status_code=409, content={"detail": str(exc)})
 

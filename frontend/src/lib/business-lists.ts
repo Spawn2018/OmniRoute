@@ -122,6 +122,10 @@ export const BUSINESS_LISTS = {
     route: "/shipment-clone-marks",
     tableKey: "shipment_clone_mark",
   },
+  cloneCarryMark: {
+    route: "/clone-carry-marks",
+    tableKey: "clone_carry_mark",
+  },
   handoverSbarMark: {
     route: "/handover-sbar-marks",
     tableKey: "handover_sbar_mark",
@@ -674,6 +678,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/kpi-definition-marks",
   "/margin-floors",
   "/shipment-clone-marks",
+  "/clone-carry-marks",
   "/handover-sbar-marks",
   "/handover-notes",
   "/trip-bill-marks",

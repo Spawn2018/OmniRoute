@@ -9917,6 +9917,80 @@
         ]
       }
     },
+    "/api/v1/clone-carry-marks": {
+      "get": {
+        "tags": [
+          "clone-carry-marks"
+        ],
+        "summary": "List Clone Carry Marks",
+        "operationId": "list_clone_carry_marks_api_v1_clone_carry_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CloneCarryMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Clone Carry Marks Api V1 Clone Carry Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "clone-carry-marks"
+        ],
+        "summary": "Create Clone Carry Mark",
+        "operationId": "create_clone_carry_mark_api_v1_clone_carry_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CloneCarryMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CloneCarryMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/calibration-marks": {
       "get": {
         "tags": [
@@ -33108,6 +33182,65 @@
           "source_ref"
         ],
         "title": "ClauseNoticeResponse"
+      },
+      "CloneCarryMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "carry_kind": {
+            "type": "string",
+            "title": "Carry Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "carry_kind",
+          "source_ref"
+        ],
+        "title": "CloneCarryMarkCreate"
+      },
+      "CloneCarryMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "carry_kind": {
+            "type": "string",
+            "title": "Carry Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "carry_kind",
+          "source_ref"
+        ],
+        "title": "CloneCarryMarkResponse"
       },
       "CmmsMarkCreate": {
         "properties": {

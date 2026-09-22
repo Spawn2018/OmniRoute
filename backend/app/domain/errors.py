@@ -582,6 +582,14 @@ class PalletSynchroMarkConflict(DomainError):
     """Duplikat kodu synchro palet w tenancie."""
 
 
+class InvalidCloneCarryMark(DomainError):
+    """Leftover 528: HITL stance U1 carry przy klonie — nie auto-copy."""
+
+
+class CloneCarryMarkConflict(DomainError):
+    """Duplikat kodu carry przy klonie w tenancie."""
+
+
 class InvalidDocumentTemplate(DomainError):
     """Szablon wydruku jako dane — nie PDF, nie etykieta sieci."""
 

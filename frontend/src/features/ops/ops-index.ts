@@ -714,6 +714,11 @@ export const OPS_JOBS = [
     job: "katalog shipment_clone_mark HITL",
   },
   {
+    route: BUSINESS_LISTS.cloneCarryMark.route,
+    label: "Carry przy klonie",
+    job: "HITL clone_carry_mark stance U1 bez auto-copy",
+  },
+  {
     route: BUSINESS_LISTS.handoverSbarMark.route,
     label: "Przekazanie SBAR",
     job: "katalog handover_sbar_mark HITL",
@@ -1900,6 +1905,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "628.0": "/shipments",
   "629.0": "/pallet-ledgers",
   "630.0": "/pallet-synchro-marks",
+  "631.0": "/clone-carry-marks",
   "142.0": "/mail",
   "143.0": "/networks",
   "144.0": "/quotations",

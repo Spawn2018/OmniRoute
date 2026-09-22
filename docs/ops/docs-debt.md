@@ -8,8 +8,8 @@
 - **611.0 leftover:** `destination_city` · FK portu · HW · UXCL · N3. 611.0 = HITL `container.pod_unlocode` (5 znaków UN/LOCODE, nie resolve, nie mapa).
 - **610.0 leftover:** `pod_unlocode` · `destination_city` · FK portu · HW · UXCL · N3. 610.0 = HITL `container.pol_unlocode` (5 znaków UN/LOCODE, nie resolve, nie mapa).
 - **529.0 leftover:** wpis przekazania z polami S/B/A/R · wiązanie z tablicą T6 · N8. 529.0 = HITL `handover_sbar_mark` (znacznik; nie drugi czat).
-- **631.0 PLAN:** `clone_carry_mark` HITL stance carry|held|skip przy klonie (leftover 528 U1). Nie auto-copy. Nie similar SQL. Nie F2b.
-- **528.0 leftover (po 631):** auto-copy allowlisty U1 przy klonie (compose) · silnik similar SQL · F2b Decimal na skonto przy klonie FV. 528.0 = HITL `shipment_clone_mark` (intencja; nie drugi SoR).
+- **631.0 DONE:** `clone_carry_mark` HITL stance carry|held|skip przy klonie (leftover 528 U1). Nie auto-copy. Nie similar SQL. Nie F2b.
+- **528.0 leftover (po 631):** auto-copy allowlisty U1 przy klonie (compose) · silnik similar SQL · F2b Decimal na skonto przy klonie FV. 528.0 = HITL `shipment_clone_mark` (intencja; nie drugi SoR). 631.0 = HITL stance DONE.
 - **527.0 leftover:** 409 gdy sell−buy < floor na POST charge · S11 · matching lane. 527.0 = HITL `margin_floor` Decimal + UN/LOCODE.
 - **499.0 leftover:** Alpega live park · auto-award SQL. 499.0 = HITL `shipper_award_mark`.
 - **498.0 leftover:** Alpega live park · FK UUID · auto-award. 498.0 = HITL `shipper_bind_mark`. **499.0** = award stance (DONE).

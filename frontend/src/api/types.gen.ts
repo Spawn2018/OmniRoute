@@ -2375,6 +2375,50 @@ export type ClauseNoticeResponse = {
 };
 
 /**
+ * CloneCarryMarkCreate
+ */
+export type CloneCarryMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Carry Kind
+     */
+    carry_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * CloneCarryMarkResponse
+ */
+export type CloneCarryMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Carry Kind
+     */
+    carry_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * CmmsMarkCreate
  */
 export type CmmsMarkCreate = {
@@ -24598,6 +24642,49 @@ export type CreateClauseNoticeApiV1ClauseNoticesPostResponses = {
 };
 
 export type CreateClauseNoticeApiV1ClauseNoticesPostResponse = CreateClauseNoticeApiV1ClauseNoticesPostResponses[keyof CreateClauseNoticeApiV1ClauseNoticesPostResponses];
+
+export type ListCloneCarryMarksApiV1CloneCarryMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/clone-carry-marks';
+};
+
+export type ListCloneCarryMarksApiV1CloneCarryMarksGetResponses = {
+    /**
+     * Response List Clone Carry Marks Api V1 Clone Carry Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<CloneCarryMarkResponse>;
+};
+
+export type ListCloneCarryMarksApiV1CloneCarryMarksGetResponse = ListCloneCarryMarksApiV1CloneCarryMarksGetResponses[keyof ListCloneCarryMarksApiV1CloneCarryMarksGetResponses];
+
+export type CreateCloneCarryMarkApiV1CloneCarryMarksPostData = {
+    body: CloneCarryMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/clone-carry-marks';
+};
+
+export type CreateCloneCarryMarkApiV1CloneCarryMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCloneCarryMarkApiV1CloneCarryMarksPostError = CreateCloneCarryMarkApiV1CloneCarryMarksPostErrors[keyof CreateCloneCarryMarkApiV1CloneCarryMarksPostErrors];
+
+export type CreateCloneCarryMarkApiV1CloneCarryMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: CloneCarryMarkResponse;
+};
+
+export type CreateCloneCarryMarkApiV1CloneCarryMarksPostResponse = CreateCloneCarryMarkApiV1CloneCarryMarksPostResponses[keyof CreateCloneCarryMarkApiV1CloneCarryMarksPostResponses];
 
 export type ListCalibrationMarksApiV1CalibrationMarksGetData = {
     body?: never;

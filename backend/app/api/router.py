@@ -40,6 +40,7 @@ from app.api import (
     chassis_marks,
     circle_sims,
     clause_notices,
+    clone_carry_marks,
     cmms_marks,
     cod_instructions,
     collaboration_marks,
@@ -445,6 +446,7 @@ api_router.include_router(ncts_drafts.router)
 api_router.include_router(circle_sims.router)
 api_router.include_router(circle_sims.pair_router)
 api_router.include_router(clause_notices.router)
+api_router.include_router(clone_carry_marks.router)
 api_router.include_router(calibration_marks.router)
 api_router.include_router(campaign_marks.router)
 api_router.include_router(repair_playbooks.router)

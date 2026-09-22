@@ -139,6 +139,7 @@ const NAV = [
   { to: "/kpi-definition-marks", label: "Definicja KPI" },
   { to: "/margin-floors", label: "Podłoga marży" },
   { to: "/shipment-clone-marks", label: "Intencja klonu" },
+  { to: "/clone-carry-marks", label: "Carry przy klonie" },
   { to: "/handover-sbar-marks", label: "Przekazanie SBAR" },
   { to: "/handover-notes", label: "Notatka SBAR" },
   { to: "/trip-bill-marks", label: "Gotowość do FV" },
