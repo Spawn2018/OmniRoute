@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **626.0** D9c `network_print_requirement` (gate po push). **Etap:** Plan **627.0**. Leftover D9f `branding_ref` HITL na szablonie (nie PDF/ZPL). **Następny:** **627.0** D9f branding HITL (nie PDF). D9c 409 / D9d PDF-QR / D9e skan / daty bazowe / matching T5 / FK kontekstu / T8 live / D6b / D7b = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **626.0** D9c `network_print_requirement` (gate po push). **Etap:** Plaster **627.0**. Delta zaakceptowana (`/noc 7`). Leftover D9f `branding_ref` HITL na szablonie (nie PDF/ZPL). **Następny:** **627.0** D9f branding HITL (nie PDF). D9c 409 / D9d PDF-QR / D9e skan / daty bazowe / matching T5 / FK kontekstu / T8 live / D6b / D7b = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

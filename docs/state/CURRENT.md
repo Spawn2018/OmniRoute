@@ -6,9 +6,9 @@
 
 **Ostatni plaster:** **626.0** D9c `network_print_requirement` (gate po push)
 
-**Etap:** Plan **627.0**. Leftover D9f `branding_ref` HITL na szablonie (nie PDF/ZPL).
+**Etap:** Plaster **627.0**. Delta zaakceptowana (`/noc 7`). Leftover D9f `branding_ref` HITL na szablonie (nie PDF/ZPL).
 
-**Noc:** `/noc 17` do **2026-09-22T17:00:00+02:00**
+**Noc:** `/noc 7` do **2026-09-23T07:00:00+02:00**
 
 **Miejsce pracy:** produkt = to repo + GitHub.
 
@@ -16,7 +16,7 @@
 
 **Park / czeka w PLAN:** D9c 409 · D9d · D9e · daty bazowe · fx×FV · matching T5 · FK kontekstu · T8 live · D6b · HW · SH-R16-4 UXCL · AI3 · G0-SH · N3 · …
 
-**Spec (jedyna na sesję produktu):** brak — najpierw `/plan-modul` → delta `627.0`.
+**Spec (jedyna na sesję produktu):** [docs/deltas/open/627.0-document-template-branding.md](../deltas/open/627.0-document-template-branding.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 
@@ -24,6 +24,7 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
+**2026-09-22:** Plan **627.0** D9f `branding_ref` HITL na szablonie (`/noc 7`). 626.0 gate po push.
 **2026-09-22:** Plaster **626.0** D9c katalog `network_print_requirement` zamknięty lokalnie (CI po push). `/noc 17`.
 **2026-09-22:** Plan **626.0** D9c katalog `network_print_requirement` bez 409 (`/noc 17`). 625.0 gate success.
 **2026-09-22:** Plaster **625.0** D5b `volume_m3` na cenniku drobnicy zamknięty (gate success). `/noc 17`.

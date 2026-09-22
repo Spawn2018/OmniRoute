@@ -29,6 +29,7 @@ zostają w badaniach `04`).
 
 | Data | Co |
 |---|---|
+| 2026-09-22 | **627.0** D9f leftover `branding_ref` HITL na `document_template`: opcjonalny snake wskazania marki (`REQUIREMENT`). `output_kind` `pdf`/`zpl`, bajty i upload `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-22 | **626.0** D9c leftover katalog `network_print_requirement` zamknięty: kod + etykieta sieci + `source_ref` (`CONFIRMED`). HTTP 409, PDF i QR nadal `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-22 | **625.0** D5b leftover objętość na cenniku drobnicy: opcjonalne `volume_m3` Decimal, nie zmienia `chargeable_weight` ani `amount` (`REQUIREMENT`). Paleta i FSC `REJECTED` w tym plasterze. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-22 | **624.0** D4b leftover rodzaj dokumentu: `document_kind` `rod` obok `noted`|`attached`|`other` (`REQUIREMENT`). Token `pod` `REJECTED` — POD w słowniku to port wyładunku. Skan i bajty `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |

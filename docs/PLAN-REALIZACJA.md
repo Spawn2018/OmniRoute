@@ -522,7 +522,7 @@ Przy `/plan-modul`: karta T + [EXP1](analysis/karty-pol-fala-exp.md) (stop/konte
 |---|---|---|---|
 | D1–D7 | linie, paczka, cross-dock, COD, cennik LTL, LCL/HBL, palety Chep/LPR (EXP2.17) | D1 zamknięty ([155.0](deltas/archived/155.0-groupage-line.md); leftover OR hubów); D2 zamknięty ([156.0](deltas/archived/156.0-shipment-package.md); leftover kamera/WMS/SSCC); D3 zamknięty ([157.0](deltas/archived/157.0-dock-appointment.md); leftover D3b/G15/T8); D4 zamknięty ([158.0](deltas/archived/158.0-cod-instruction.md); leftover D4b POD/ROD [624.0](deltas/archived/624.0-shipment-document-rod.md)); D5 zamknięty ([159.0](deltas/archived/159.0-groupage-tariff.md); leftover D5b objętość [625.0](deltas/archived/625.0-groupage-tariff-volume.md) / P1); D6 zamknięty ([160.0](deltas/archived/160.0-ocean-bill.md); leftover D6b; leftover D6c pule M-03 [621.0](deltas/archived/621.0-ocean-bill-pools.md)); D7 zamknięty ([161.0](deltas/archived/161.0-pallet-balance.md); leftover D7b giełda park live; leftover D7c ledger; leftover D7d EPAL [623.0](deltas/archived/623.0-pallet-balance-epal.md)) | po U3+T2; nie WMS; karta [karty-pol-fala-d.md](analysis/karty-pol-fala-d.md) |
 | D8 | etykieta sieci po oficjalnym API | parked aż TO_VERIFY API | zakaz generatora Palletforce |
-| D9 | silnik wydruków + QR `shipment_ref` | zamknięty ([162.0](deltas/archived/162.0-document-template.md); leftover D9b HITL numer ([204.0](deltas/archived/204.0-shipment-ref.md)); leftover D9c katalog ([626.0](deltas/archived/626.0-network-print-requirement.md)); leftover D9c 409 / D9d–f) | 409 bez etykiety sieci = leftover D9c; D8 parked |
+| D9 | silnik wydruków + QR `shipment_ref` | zamknięty ([162.0](deltas/archived/162.0-document-template.md); leftover D9b HITL numer ([204.0](deltas/archived/204.0-shipment-ref.md)); leftover D9c katalog ([626.0](deltas/archived/626.0-network-print-requirement.md)); leftover D9f branding ([627.0](deltas/open/627.0-document-template-branding.md) delta); leftover D9c 409 / D9d–e / D9f pdf-zpl) | 409 bez etykiety sieci = leftover D9c; D8 parked |
 
 ### Fala P — pricing (P1–P6; P0 wyżej)
 
@@ -892,13 +892,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plan-modul` (Etap z CURRENT.md).
+**Teraz:** `/plaster` (Etap z CURRENT.md).
 
 ```
-/plan-modul
+/plaster
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->
