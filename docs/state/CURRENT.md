@@ -1,22 +1,22 @@
 ﻿# Bieżący focus
 
-**Faza:** Oś pinu — plaster **621.0** (D6c pule HBL/MBL)
+**Faza:** Oś pinu — plan **622.0** (U3 leftover cyfra kontrolna IATA)
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **620.0** U3 e-rates air na `channel_quote` (gate success)
+**Ostatni plaster:** **621.0** D6c pule HBL/MBL z M-03 (gate po push)
 
-**Etap:** Plaster **621.0**. Delta zaakceptowana (`/noc`). Komenda `/plaster`.
+**Etap:** Plan **622.0**. Komenda `/plan-modul`.
 
 **Noc:** `/noc 7` do **2026-09-22T07:00:00+02:00**
 
 **Miejsce pracy:** produkt = to repo + GitHub.
 
-**Następny:** **621.0** D6 leftover pule numerów HBL/MBL z M-03 (`ocean_bill`, analog 619.0). Daty bazowe zlecenia / matching T5 / FK kontekstu / T8 live / cyfra kontrolna IATA / D6b konsolidacja = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
+**Następny:** **622.0** U3 leftover cyfra kontrolna IATA (HITL, nie live). Daty bazowe zlecenia / matching T5 / FK kontekstu / T8 live / D6b konsolidacja = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
 
-**Park / czeka w PLAN:** daty bazowe · fx×FV compose · matching T5 · FK kontekstu · T8 live · cyfra kontrolna IATA · D6b · HW · SH-R16-4 UXCL · AI3 · G0-SH · N3 · …
+**Park / czeka w PLAN:** daty bazowe · fx×FV compose · matching T5 · FK kontekstu · T8 live · D6b · HW · SH-R16-4 UXCL · AI3 · G0-SH · N3 · …
 
-**Spec (jedyna na sesję produktu):** [docs/deltas/open/621.0-ocean-bill-pools.md](../deltas/open/621.0-ocean-bill-pools.md)
+**Spec (jedyna na sesję produktu):** brak — `/plan-modul` przed kodem.
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 
@@ -24,6 +24,7 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
+**2026-09-22:** Plaster **621.0** D6c pule HBL/MBL zamknięty (`/noc 7`).
 **2026-09-22:** Plan **621.0** D6c pule HBL/MBL z M-03 (`/noc 7`). 620.0 gate success.
 **2026-09-22:** Plaster **620.0** U3 e-rates air zamknięty (gate success). `/noc 7`.
 **2026-09-22:** Plan **620.0** U3 e-rates air na `channel_quote` (`/noc 7`). 619.0 gate success.

@@ -38,6 +38,8 @@ export function OrganizationSettingCatalogPage() {
   const [prefix, setPrefix] = useState("OR-Q")
   const [hawbPrefix, setHawbPrefix] = useState("HAWB-")
   const [mawbPrefix, setMawbPrefix] = useState("MAWB-")
+  const [hblPrefix, setHblPrefix] = useState("HBL-")
+  const [mblPrefix, setMblPrefix] = useState("MBL-")
   const [template, setTemplate] = useState("plain")
   const [defaultN, setDefaultN] = useState("3")
   const [laneWindow, setLaneWindow] = useState("90")
@@ -105,6 +107,36 @@ export function OrganizationSettingCatalogPage() {
         organizationSettingUpsertBody({
           settingKey: "mawb_number_prefix",
           settingValue: mawbPrefix,
+        }),
+      ),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({
+        queryKey: ["organization-settings", ctx.organizationId],
+      })
+    },
+  })
+
+  const saveHblPrefix = useMutation({
+    mutationFn: () =>
+      upsertOrganizationSetting(
+        organizationSettingUpsertBody({
+          settingKey: "hbl_number_prefix",
+          settingValue: hblPrefix,
+        }),
+      ),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({
+        queryKey: ["organization-settings", ctx.organizationId],
+      })
+    },
+  })
+
+  const saveMblPrefix = useMutation({
+    mutationFn: () =>
+      upsertOrganizationSetting(
+        organizationSettingUpsertBody({
+          settingKey: "mbl_number_prefix",
+          settingValue: mblPrefix,
         }),
       ),
     onSuccess: () => {
@@ -295,6 +327,44 @@ export function OrganizationSettingCatalogPage() {
         />
         <Button type="submit" disabled={saveMawbPrefix.isPending || !signedIn}>
           Zapisz mawb_number_prefix
+        </Button>
+      </form>
+
+      <form
+        className="flex flex-col gap-2 rounded-md border border-border bg-card p-3 md:flex-row md:flex-wrap"
+        onSubmit={(event) => {
+          event.preventDefault()
+          saveHblPrefix.mutate()
+        }}
+      >
+        <Input
+          aria-label="Prefiks numeru HBL"
+          placeholder="HBL-"
+          value={hblPrefix}
+          onChange={(event) => setHblPrefix(event.target.value)}
+          required
+        />
+        <Button type="submit" disabled={saveHblPrefix.isPending || !signedIn}>
+          Zapisz hbl_number_prefix
+        </Button>
+      </form>
+
+      <form
+        className="flex flex-col gap-2 rounded-md border border-border bg-card p-3 md:flex-row md:flex-wrap"
+        onSubmit={(event) => {
+          event.preventDefault()
+          saveMblPrefix.mutate()
+        }}
+      >
+        <Input
+          aria-label="Prefiks numeru MBL"
+          placeholder="MBL-"
+          value={mblPrefix}
+          onChange={(event) => setMblPrefix(event.target.value)}
+          required
+        />
+        <Button type="submit" disabled={saveMblPrefix.isPending || !signedIn}>
+          Zapisz mbl_number_prefix
         </Button>
       </form>
 

@@ -7,6 +7,7 @@ from sqlalchemy import (
     Index,
     String,
     UniqueConstraint,
+    text,
 )
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
@@ -29,6 +30,13 @@ class OceanBill(Base, TimestampMixin):
             name="ck_ocean_bill_kind",
         ),
         Index("ix_ocean_bill_org_shipment", "organization_id", "shipment_id"),
+        Index(
+            "uq_ocean_bill_org_bill_no",
+            "organization_id",
+            "bill_no",
+            unique=True,
+            postgresql_where=text("bill_no IS NOT NULL"),
+        ),
     )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True)
@@ -40,6 +48,6 @@ class OceanBill(Base, TimestampMixin):
         index=True,
     )
     shipment_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), nullable=False)
-    bill_no: Mapped[str] = mapped_column(String(32), nullable=False)
+    bill_no: Mapped[str | None] = mapped_column(String(32), nullable=True)
     bill_kind: Mapped[str] = mapped_column(String(8), nullable=False)
     source_ref: Mapped[str] = mapped_column(String(256), nullable=False)

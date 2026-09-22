@@ -3,7 +3,13 @@ import { Link } from "@tanstack/react-router"
 import { type FormEvent, useState } from "react"
 import { CatalogError } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
-import { ladingWrite, listHouseMarks, persistHouseMark } from "@/lib/ocean-bills-api"
+import {
+  issueHblNumber,
+  issueMblNumber,
+  ladingWrite,
+  listHouseMarks,
+  persistHouseMark,
+} from "@/lib/ocean-bills-api"
 
 const KINDS = ["hbl", "mbl"] as const
 
@@ -41,8 +47,8 @@ function KindSave(args: { organizationId: string | null }) {
       }}
     >
       <p className="text-xs text-muted-foreground">
-        Numer HBL albo MBL na zleceniu. To nie PDF i nie booking armatora. Konsolidacja
-        wielu house zostaje leftover D6b.
+        Numer HBL albo MBL na zleceniu, albo pusty — potem „Nadaj” z prefiksu M-03. To nie PDF i nie
+        booking armatora. Konsolidacja wielu house zostaje leftover D6b.
       </p>
       <label className="flex flex-col gap-1 text-xs">
         Identyfikator zlecenia konosamentu
@@ -55,13 +61,12 @@ function KindSave(args: { organizationId: string | null }) {
         />
       </label>
       <label className="flex flex-col gap-1 text-xs">
-        Numer listu HBL/MBL
+        Numer listu HBL/MBL (opcjonalnie)
         <input
           aria-label="Numer listu HBL/MBL"
           className="h-9 rounded-md border bg-background px-2 font-mono"
           value={draft.houseToken}
           onChange={(change) => setDraft({ ...draft, houseToken: change.target.value })}
-          required
         />
       </label>
       <label className="flex flex-col gap-1 text-xs">
@@ -97,6 +102,56 @@ function KindSave(args: { organizationId: string | null }) {
   )
 }
 
+function BillIssueButtons(args: {
+  billId: string
+  billKind: string
+  billNo: string | null
+  organizationId: string | null
+}) {
+  const cache = useQueryClient()
+  const issueHbl = useMutation({
+    mutationFn: () => issueHblNumber(args.billId),
+    onSuccess: () => {
+      void cache.invalidateQueries({ queryKey: ["house-marks", args.organizationId] })
+    },
+  })
+  const issueMbl = useMutation({
+    mutationFn: () => issueMblNumber(args.billId),
+    onSuccess: () => {
+      void cache.invalidateQueries({ queryKey: ["house-marks", args.organizationId] })
+    },
+  })
+  if (args.billNo != null) return null
+  return (
+    <span className="inline-flex flex-wrap gap-1" data-ocean-bill="issue-numbers">
+      {args.billKind === "hbl" ? (
+        <Button
+          type="button"
+          size="sm"
+          variant="outline"
+          disabled={issueHbl.isPending || !args.organizationId}
+          onClick={() => issueHbl.mutate()}
+        >
+          Nadaj HBL
+        </Button>
+      ) : null}
+      {args.billKind === "mbl" ? (
+        <Button
+          type="button"
+          size="sm"
+          variant="outline"
+          disabled={issueMbl.isPending || !args.organizationId}
+          onClick={() => issueMbl.mutate()}
+        >
+          Nadaj MBL
+        </Button>
+      ) : null}
+      {issueHbl.isError ? <CatalogError error={issueHbl.error} /> : null}
+      {issueMbl.isError ? <CatalogError error={issueMbl.error} /> : null}
+    </span>
+  )
+}
+
 function KindRows(args: { organizationId: string | null }) {
   const listed = useQuery({
     queryKey: ["house-marks", args.organizationId],
@@ -109,9 +164,15 @@ function KindRows(args: { organizationId: string | null }) {
       {listed.isError ? <CatalogError error={listed.error} /> : null}
       <ul data-ocean-bill="rows" className="flex flex-col gap-1 text-xs">
         {(listed.data ?? []).map((row) => (
-          <li key={row.id} className="flex flex-wrap gap-2 font-mono">
+          <li key={row.id} className="flex flex-wrap items-center gap-2 font-mono">
             <span>{row.bill_kind}</span>
-            <span>{row.bill_no}</span>
+            <span>{row.bill_no ?? "—"}</span>
+            <BillIssueButtons
+              billId={row.id}
+              billKind={row.bill_kind}
+              billNo={row.bill_no}
+              organizationId={args.organizationId}
+            />
             <Link className="underline" to="/shipments">
               zlecenie
             </Link>

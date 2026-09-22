@@ -29,6 +29,7 @@ zostają w badaniach `04`).
 
 | Data | Co |
 |---|---|
+| 2026-09-22 | **621.0** D6c leftover pule HBL/MBL: `hbl_number_prefix`/`mbl_number_prefix` w M-03; `ocean_bill.bill_no` nullable; nadanie SQL `MAX`+1 (`REQUIREMENT`). D6b konsolidacja / PDF / live booking `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-22 | **620.0** U3 leftover e-rates air: `channel_quote.transport_mode` `air`\|`other`; przy `air` oba porty z `airport` (`REQUIREMENT`). Live IATA / cyfra kontrolna / druga tabela e-rate `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-13 | Utworzenie 0.1 |
 | 2026-09-13 | Rozbicie na 08a–e; Q1–Q13 wiążące (HC-04 L0–2/L3–5; FK plan_snapshot; nauka per tenant + SuperAdmin na całości; start HHL BR3.0/BR6.0/BR2.0; inwestorowi zero liczb skali) |

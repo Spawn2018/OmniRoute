@@ -19,6 +19,17 @@ def require_bill_no(raw: object) -> str:
     return token
 
 
+def optional_bill_no(raw: object) -> str | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidOceanBill("bill_no musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        return None
+    return require_bill_no(token)
+
+
 def require_bill_shipment_id(raw: object) -> UUID:
     if type(raw) is not UUID:
         raise InvalidOceanBill("shipment_id musi być UUID")
@@ -31,6 +42,17 @@ def require_bill_kind(raw: object) -> str:
     token = raw.strip()
     if token not in _KINDS:
         raise InvalidOceanBill("nieznany rodzaj konosamentu")
+    return token
+
+
+def require_bill_number_prefix(raw: str | None) -> str:
+    if raw is None:
+        raise InvalidOceanBill("prefiks: nadanie numeru wymaga prefiksu w ustawieniach")
+    if type(raw) is not str:
+        raise InvalidOceanBill("prefiks: nadanie numeru wymaga prefiksu w ustawieniach")
+    token = raw.strip()
+    if token == "":
+        raise InvalidOceanBill("prefiks: nadanie numeru wymaga prefiksu w ustawieniach")
     return token
 
 

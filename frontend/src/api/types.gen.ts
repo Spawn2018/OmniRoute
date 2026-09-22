@@ -10173,7 +10173,7 @@ export type OceanBillCreate = {
     /**
      * Bill No
      */
-    bill_no: string;
+    bill_no?: string | null;
     /**
      * Bill Kind
      */
@@ -10203,7 +10203,7 @@ export type OceanBillResponse = {
     /**
      * Bill No
      */
-    bill_no: string;
+    bill_no: string | null;
     /**
      * Bill Kind
      */

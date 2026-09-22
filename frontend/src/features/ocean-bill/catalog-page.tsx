@@ -10,7 +10,7 @@ export function OceanBillBoard() {
     <section className="flex flex-col gap-4" data-ocean-bill="board">
       <CatalogHeading
         title="Konosament LCL"
-        subtitle="D6 ocean_bill · HBL/MBL na zleceniu · nie PDF · nie booking"
+        subtitle="D6 ocean_bill · HBL/MBL · pule M-03 · nie PDF · nie booking"
       />
       {!ready ? <TenantSessionNotice /> : null}
       {ready ? <HouseKindPanel organizationId={ctx.organizationId} /> : null}

@@ -7,14 +7,14 @@ export type HouseMark = {
   id: string
   organization_id: string
   shipment_id: string
-  bill_no: string
+  bill_no: string | null
   bill_kind: string
   source_ref: string
 }
 
 export type HouseMarkWrite = {
   shipment_id: string
-  bill_no: string
+  bill_no?: string
   bill_kind: string
   source_ref: string
 }
@@ -25,9 +25,10 @@ export function ladingWrite(args: {
   kindToken: string
   originStamp: string
 }): HouseMarkWrite {
+  const house = args.houseToken.trim()
   return {
     shipment_id: args.consignmentToken.trim(),
-    bill_no: args.houseToken.trim(),
+    ...(house !== "" ? { bill_no: house } : {}),
     bill_kind: args.kindToken.trim(),
     source_ref: args.originStamp.trim(),
   }
@@ -57,4 +58,28 @@ export async function persistHouseMark(payload: HouseMarkWrite): Promise<HouseMa
   }
   const saved: unknown = await reply.json()
   return saved as HouseMark
+}
+
+async function issueBillNumber(
+  billId: string,
+  kind: "hbl" | "mbl",
+): Promise<HouseMark> {
+  const suffix = kind === "hbl" ? "hbl-number" : "mbl-number"
+  const reply = await fetch(`${PATH}/${billId}/${suffix}`, {
+    method: "POST",
+    headers: requireAuthHeaders(),
+  })
+  if (reply.status >= 400) {
+    throw new ApiError(await readApiDetail(reply, "Błąd nadania numeru"), httpErrorStatus(reply))
+  }
+  const saved: unknown = await reply.json()
+  return saved as HouseMark
+}
+
+export function issueHblNumber(billId: string): Promise<HouseMark> {
+  return issueBillNumber(billId, "hbl")
+}
+
+export function issueMblNumber(billId: string): Promise<HouseMark> {
+  return issueBillNumber(billId, "mbl")
 }

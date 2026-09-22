@@ -7,8 +7,8 @@ from fastapi.testclient import TestClient
 from app.api.deps import require_tenant_session, set_authz_checker
 from app.domain.errors import ResourceNotFound
 from app.domain.ocean_bill import (
+    optional_bill_no,
     require_bill_kind,
-    require_bill_no,
     require_bill_source_ref,
 )
 from app.main import app
@@ -54,7 +54,7 @@ class StubOceanBillService:
         organization_id: UUID,
         user_id: UUID,
         shipment_id: UUID,
-        bill_no: str,
+        bill_no: str | None,
         bill_kind: str,
         source_ref: str,
     ) -> OceanBill:
@@ -62,7 +62,7 @@ class StubOceanBillService:
             id=uuid4(),
             organization_id=organization_id,
             shipment_id=shipment_id,
-            bill_no=require_bill_no(bill_no),
+            bill_no=optional_bill_no(bill_no),
             bill_kind=require_bill_kind(bill_kind),
             source_ref=require_bill_source_ref(source_ref),
             created_by=user_id,
@@ -168,7 +168,7 @@ def test_http_create_ocean_bill_unknown_kind_is_400(catalog_client: object) -> N
     assert "rodzaj" in response.json()["detail"]
 
 
-def test_http_create_ocean_bill_empty_no_is_400(catalog_client: object) -> None:
+def test_http_create_ocean_bill_empty_no_is_null(catalog_client: object) -> None:
     client, ships, _rows = catalog_client
     assert ships.row is not None
     response = client.post(
@@ -181,8 +181,8 @@ def test_http_create_ocean_bill_empty_no_is_400(catalog_client: object) -> None:
             "source_ref": "fixture://ocean-bill/1",
         },
     )
-    assert response.status_code == 400
-    assert "numer" in response.json()["detail"]
+    assert response.status_code == 201
+    assert response.json()["bill_no"] is None
 
 
 def test_http_create_ocean_bill_foreign_source_ref_is_400(catalog_client: object) -> None:

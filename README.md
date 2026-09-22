@@ -87,10 +87,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **620.0** U3 e-rates air na `channel_quote` (gate success)
-- **Etap:** Plaster **621.0**. Delta zaakceptowana (`/noc`). Komenda `/plaster`.
-- **Następny:** **621.0** D6 leftover pule numerów HBL/MBL z M-03 (`ocean_bill`, analog 619.0). Daty bazowe zlecenia / matching T5 / FK kontekstu / T8 live / cyfra kontrolna IATA / D6b konsolidacja = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **621.0** D6c pule HBL/MBL z M-03 (gate po push)
+- **Etap:** Plan **622.0**. Komenda `/plan-modul`.
+- **Następny:** **622.0** U3 leftover cyfra kontrolna IATA (HITL, nie live). Daty bazowe zlecenia / matching T5 / FK kontekstu / T8 live / D6b konsolidacja = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

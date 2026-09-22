@@ -40,6 +40,8 @@ describe("organization settings catalog screen", () => {
     expect(page).toContain("quotation_number_prefix")
     expect(page).toContain("hawb_number_prefix")
     expect(page).toContain("mawb_number_prefix")
+    expect(page).toContain("hbl_number_prefix")
+    expect(page).toContain("mbl_number_prefix")
     expect(page).toContain("quotation_print_template")
     expect(page).toContain("inquiry_default_n")
     expect(page).toContain("lane_scorecard_window_days")
