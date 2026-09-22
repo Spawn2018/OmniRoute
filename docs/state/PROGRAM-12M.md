@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **618.0** T7d `charge_sell_in_pln` (lokalnie; CI po push) **Następny:** **619.0** U3c leftover pule IATA/air. Daty bazowe zlecenia / matching T5 / FK kontekstu / T8 live = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
+**Stan (z CURRENT.md):** **618.0** T7d `charge_sell_in_pln` (gate success) **Następny:** **619.0** U3c leftover pule IATA/air (delta otwarta). Daty bazowe zlecenia / matching T5 / FK kontekstu / T8 live = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.
