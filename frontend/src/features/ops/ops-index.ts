@@ -104,6 +104,11 @@ export const OPS_JOBS = [
     job: "katalog document_template layout bez PDF",
   },
   {
+    route: BUSINESS_LISTS.networkPrintRequirement.route,
+    label: "Wydruk sieci",
+    job: "katalog network_print_requirement bez 409",
+  },
+  {
     route: BUSINESS_LISTS.rateCard.route,
     label: "Karty stawek",
     job: "katalog rate_card applies_when bez matching",

@@ -724,6 +724,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/un-segregation-marks",
   "/dual-ledger-marks",
   "/named-place-marks",
+  "/network-print-requirements",
   "/slot-guarantee-marks",
   "/freight-term-marks",
   "/customer-po-marks",
