@@ -11,7 +11,7 @@ import { Money } from "@/components/money"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { BUSINESS_LISTS } from "@/lib/business-lists"
-import { chargeCreateBody, createCharge, fetchCharges, fetchShipmentTreeMargins, type Charge, type ShipmentTreeMargin } from "@/lib/charges-api"
+import { chargeCreateBody, createCharge, fetchChargeSellInPln, fetchCharges, fetchShipmentTreeMargins, type Charge, type ChargeSellInPln, type ShipmentTreeMargin } from "@/lib/charges-api"
 import { getTenantContext } from "@/lib/tenant"
 
 const helper = createColumnHelper<Charge>()
@@ -134,6 +134,59 @@ const EMPTY_DRAFT: Draft = {
   fxRateTable: "",
 }
 
+function SellInPlnPanel({ signedIn }: { signedIn: boolean }) {
+  const [chargeId, setChargeId] = useState("")
+  const [onDate, setOnDate] = useState("2026-09-01")
+  const [result, setResult] = useState<ChargeSellInPln | null>(null)
+  const query = useQuery({
+    queryKey: ["charge-sell-in-pln", chargeId, onDate],
+    queryFn: () => fetchChargeSellInPln(chargeId.trim(), onDate.trim()),
+    enabled: false,
+    retry: false,
+  })
+
+  return (
+    <aside className="space-y-2 rounded-md border border-border bg-card p-3" data-charge-sell-in-pln="panel">
+      <p className="text-sm text-muted-foreground">
+        Sprzedaż w PLN z kursu NBP w bazie — nie mnożenie w przeglądarce.
+      </p>
+      <div className="flex flex-col gap-2 md:flex-row md:flex-wrap">
+        <Input
+          aria-label="Identyfikator opłaty do PLN"
+          placeholder="charge_id"
+          value={chargeId}
+          onChange={(event) => setChargeId(event.target.value)}
+        />
+        <Input
+          aria-label="Data kursu NBP"
+          type="date"
+          value={onDate}
+          onChange={(event) => setOnDate(event.target.value)}
+        />
+        <Button
+          type="button"
+          disabled={!signedIn || chargeId.trim() === "" || onDate.trim() === "" || query.isFetching}
+          onClick={() => {
+            void query.refetch().then((reply) => {
+              if (reply.data !== undefined) {
+                setResult(reply.data)
+              }
+            })
+          }}
+        >
+          Policz sprzedaż w PLN
+        </Button>
+      </div>
+      {query.isError ? <CatalogError error={query.error} /> : null}
+      {result !== null ? (
+        <p className="text-sm" data-sell-amount-pln={result.sell_amount_pln}>
+          {result.sell_amount_pln} {result.currency} · data {result.on_date}
+        </p>
+      ) : null}
+    </aside>
+  )
+}
+
 export function ChargeCatalogPage() {
   const ctx = getTenantContext()
   const queryClient = useQueryClient()
@@ -170,10 +223,12 @@ export function ChargeCatalogPage() {
     <div className="space-y-3">
       <CatalogHeading
         title="Opłaty"
-        subtitle="charge M-08 · buy i sell na jednym wierszu · marża w kodzie · UN opcjonalnie pod margin_floor · opcjonalne zlecenie · opcjonalny kurs · marża drzewa z SQL · nie accept HITL"
+        subtitle="charge M-08 · buy i sell na jednym wierszu · marża w kodzie · UN opcjonalnie pod margin_floor · opcjonalne zlecenie · opcjonalny kurs · marża drzewa z SQL · sprzedaż w PLN liczy baza (kurs NBP) · nie accept HITL"
       />
 
       {signedIn ? null : <TenantSessionNotice />}
+
+      <SellInPlnPanel signedIn={signedIn} />
 
       <form
         className="flex flex-col gap-2 rounded-md border border-border bg-card p-3 md:flex-row md:flex-wrap"

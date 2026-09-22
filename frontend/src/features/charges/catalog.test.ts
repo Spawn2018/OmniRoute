@@ -10,6 +10,17 @@ describe("charge catalog shipment field", () => {
   })
 })
 
+describe("charge catalog sell-in-pln", () => {
+  it("exposes SQL PLN conversion without multiplying in the browser", () => {
+    expect(page).toContain('data-charge-sell-in-pln="panel"')
+    expect(page).toContain('aria-label="Identyfikator opłaty do PLN"')
+    expect(page).toContain('aria-label="Data kursu NBP"')
+    expect(page).toContain("sprzedaż w PLN liczy baza")
+    expect(page).not.toContain("parseFloat")
+    expect(page).not.toContain(" * mid")
+  })
+})
+
 const page = readFileSync(
   new URL("../../features/charges/catalog-page.tsx", import.meta.url),
   "utf8",

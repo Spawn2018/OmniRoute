@@ -1,7 +1,8 @@
+from datetime import date
 from decimal import Decimal
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, status
+from fastapi import APIRouter, Depends, Query, status
 from pydantic import BaseModel, Field
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -190,6 +191,13 @@ class ShipmentTreeMarginResponse(BaseModel):
     charge_count: int
 
 
+class ChargeSellInPlnResponse(BaseModel):
+    charge_id: UUID
+    on_date: date
+    sell_amount_pln: str
+    currency: str = "PLN"
+
+
 def _amount_text(amount: Decimal, currency: str) -> str:
     text, _currency = Money.of(amount, currency).as_pair()
     return text
@@ -215,6 +223,24 @@ async def list_tree_margins(
 ) -> list[ShipmentTreeMarginResponse]:
     rows = await ChargeService(session).list_tree_margins()
     return [_tree_row(row) for row in rows]
+
+
+@router.get("/{charge_id}/sell-in-pln", response_model=ChargeSellInPlnResponse)
+async def get_charge_sell_in_pln(
+    charge_id: UUID,
+    on_date: date = Query(...),
+    _authz: None = Depends(require_permission("can_manage_charges", "organization")),
+    session: AsyncSession = Depends(require_tenant_session),
+) -> ChargeSellInPlnResponse:
+    amount = await ChargeService(session).sell_in_pln(
+        charge_id=charge_id,
+        on_date=on_date,
+    )
+    return ChargeSellInPlnResponse(
+        charge_id=charge_id,
+        on_date=on_date,
+        sell_amount_pln=_amount_text(amount, "PLN"),
+    )
 
 
 @router.get("", response_model=list[ChargeResponse])

@@ -1872,6 +1872,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "615.0": "/charges",
   "616.0": "/tasks",
   "617.0": "/organization-settings",
+  "618.0": "/charges",
   "142.0": "/mail",
   "143.0": "/networks",
   "144.0": "/quotations",

@@ -227,6 +227,31 @@ export async function fetchShipmentTreeMargins(): Promise<ShipmentTreeMargin[]> 
   return (await response.json()) as ShipmentTreeMargin[]
 }
 
+export type ChargeSellInPln = {
+  charge_id: string
+  on_date: string
+  sell_amount_pln: string
+  currency: string
+}
+
+export async function fetchChargeSellInPln(
+  chargeId: string,
+  onDate: string,
+): Promise<ChargeSellInPln> {
+  const query = new URLSearchParams({ on_date: onDate })
+  const response = await fetch(
+    `/api/v1/charges/${encodeURIComponent(chargeId)}/sell-in-pln?${query}`,
+    { headers: requireAuthHeaders() },
+  )
+  if (!response.ok) {
+    throw new ApiError(
+      await readApiDetail(response, "Błąd przeliczenia sprzedaży na PLN"),
+      httpErrorStatus(response),
+    )
+  }
+  return (await response.json()) as ChargeSellInPln
+}
+
 export async function fetchCharges(): Promise<Charge[]> {
   const response = await fetch("/api/v1/charges", { headers: requireAuthHeaders() })
   if (!response.ok) {

@@ -45,6 +45,20 @@ class StubChargeService:
     async def list_tree_margins(self) -> list[ShipmentTreeMargin]:
         return self.tree_rows
 
+    async def sell_in_pln(self, *, charge_id: UUID, on_date: object) -> Decimal:
+        from datetime import date as date_cls
+
+        from app.domain.errors import InvalidNbpRate, ResourceNotFound
+
+        if type(on_date) is not date_cls:
+            raise InvalidNbpRate("kurs: data musi być dniem")
+        for row in self.rows:
+            if row.id == charge_id:
+                if row.sell_currency == "PLN":
+                    return row.sell_amount
+                raise InvalidNbpRate("kurs: brak kursu NBP na dzień")
+        raise ResourceNotFound("nieznana opłata")
+
     async def create_charge(
         self,
         *,
@@ -270,6 +284,63 @@ def test_http_lists_tree_margin(charges_client: TestClient) -> None:
     assert body[0]["currency"] == "EUR"
     assert body[0]["margin_amount"] == "7.0000"
     assert body[0]["charge_count"] == 2
+
+
+def test_http_sell_in_pln_for_pln_charge(charges_client: TestClient) -> None:
+    org_id = uuid4()
+    user_id = uuid4()
+    headers = bearer_auth_headers(organization_id=org_id, user_id=user_id)
+    created = charges_client.post(
+        "/api/v1/charges",
+        headers=headers,
+        json={
+            "charge_code": "THC",
+            "buy_amount": "10.0000",
+            "buy_currency": "PLN",
+            "sell_amount": "14.0000",
+            "sell_currency": "PLN",
+            "source_ref": "fixture://charge/pln",
+        },
+    )
+    assert created.status_code == 201
+    charge_id = created.json()["id"]
+    reply = charges_client.get(
+        f"/api/v1/charges/{charge_id}/sell-in-pln",
+        headers=headers,
+        params={"on_date": "2026-09-01"},
+    )
+    assert reply.status_code == 200
+    body = reply.json()
+    assert body["charge_id"] == charge_id
+    assert body["on_date"] == "2026-09-01"
+    assert body["sell_amount_pln"] == "14.0000"
+    assert body["currency"] == "PLN"
+
+
+def test_http_sell_in_pln_missing_rate_is_kurs(charges_client: TestClient) -> None:
+    org_id = uuid4()
+    headers = bearer_auth_headers(organization_id=org_id)
+    created = charges_client.post(
+        "/api/v1/charges",
+        headers=headers,
+        json={
+            "charge_code": "THC",
+            "buy_amount": "10.0000",
+            "buy_currency": "EUR",
+            "sell_amount": "14.0000",
+            "sell_currency": "EUR",
+            "source_ref": "fixture://charge/eur",
+        },
+    )
+    assert created.status_code == 201
+    charge_id = created.json()["id"]
+    reply = charges_client.get(
+        f"/api/v1/charges/{charge_id}/sell-in-pln",
+        headers=headers,
+        params={"on_date": "2026-09-01"},
+    )
+    assert reply.status_code == 400
+    assert "kurs" in reply.json()["detail"]
 
 
 def test_http_create_and_list_charges(charges_client: TestClient) -> None:

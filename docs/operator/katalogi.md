@@ -6,7 +6,7 @@ Ekrany, które **zapisują** (INSERT/upsert), nie tablice-odczyty:
 
 - kody opłat, kody HS/CN, numery UN (tunel ADR + grupa SG), sieci — kod / nazwa / aliasy
 - stawki kupna — niemutowalne, `source_ref`; zmiana = nowy wiersz
-- opłaty — kupno i sprzedaż na jednym wierszu; marża z pary, nie z arkusza. Przy zapisie podajesz pochodzenie (`source_ref`: `tenant:manual`, `fixture://charge/…`). Stare wiersze mogą nie mieć pochodzenia. Porównanie na wycenie zapisuje `tenant:manual:comparison`.
+- opłaty — kupno i sprzedaż na jednym wierszu; marża z pary, nie z arkusza. Przy zapisie podajesz pochodzenie (`source_ref`: `tenant:manual`, `fixture://charge/…`). Stare wiersze mogą nie mieć pochodzenia. Porównanie na wycenie zapisuje `tenant:manual:comparison`. Sprzedaż w PLN na `/charges` liczy baza z kursu NBP na podaną datę — nie przeglądarka.
 - kurs NBP, extra portowe, oferty kanału — katalog, nie live HTTP. Na extra portowych „Dopasuj warunek” pokazuje wiersze, których `applies_when` jest dokładnie taki jak wpisałeś. To nie dopisuje opłaty ani marży.
 - porty, strefy taryfowe, terminale — UN/LOCODE / zakres pocztowy / ISPS
 - sieci `/networks` — katalog sieci oraz ręczny członek (`member_code` + nazwa + `party_id` kontrahenta) w wybranej sieci. Stary członek może nie mieć kontrahenta. „Zapisz zapytanie” dopisuje `carrier_inquiry` (`draft`). „Zapisz paczkę” — 1/wielu/wszyscy, status `queued`, opcjonalna trasa. Kwota tylko przy odpowiedzi. Top N z rankingu `answered` + „Zapisz szkice” (`mail_draft` / `carrier_inquiry`). Filtr kraju ISO na członkach (`party.country_code`). Data ciszy (`no_reply_after`) + lista overdue; notice `no_reply` tylko ręcznie. Nie U4. Nie portal. Nie live HTTP.

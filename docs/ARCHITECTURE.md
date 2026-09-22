@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **617.0** T7c `fx_rate_day` (gate success). **Etap:** Plan **618.0** zaakceptowany (`/noc`). Wolno `/plaster`. **Następny:** **618.0** T7d SQL `charge_sell_in_pln`. Daty bazowe zlecenia = park. Matching T5 / FK kontekstu = park. **588.0** SH-R16-4 UXCL = park `/noc`. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **618.0** T7d `charge_sell_in_pln` (lokalnie; CI po push). **Etap:** Plan **619.0**. Komenda `/plan-modul`. **Następny:** **619.0** U3c leftover pule IATA/air. Daty bazowe zlecenia / matching T5 / FK kontekstu / T8 live = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

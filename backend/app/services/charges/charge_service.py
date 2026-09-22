@@ -1,3 +1,4 @@
+from datetime import date
 from decimal import Decimal
 from uuid import UUID, uuid4
 
@@ -8,6 +9,7 @@ from app.domain.charge import margin
 from app.domain.charge_code import normalize_charge_code
 from app.domain.errors import (
     ChargeRateMismatch,
+    InvalidNbpRate,
     InvalidShipment,
     ResourceNotFound,
     UnknownChargeCode,
@@ -44,6 +46,15 @@ class ChargeService:
         if found is None:
             raise ResourceNotFound("nieznana opłata")
         return found
+
+    async def sell_in_pln(self, *, charge_id: UUID, on_date: object) -> Decimal:
+        if type(on_date) is not date:
+            raise InvalidNbpRate("kurs: data musi być dniem")
+        await self.get_charge(charge_id)
+        amount = await self._charges.sell_in_pln(charge_id, on_date)
+        if amount is None:
+            raise InvalidNbpRate("kurs: brak kursu NBP na dzień")
+        return amount
 
     async def create_charge(
         self,

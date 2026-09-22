@@ -1,10 +1,20 @@
 from decimal import Decimal
 from uuid import UUID
 
-from sqlalchemy import select
+from sqlalchemy import Date as SqlDate
+from sqlalchemy import bindparam, select, text
+from sqlalchemy.dialects.postgresql import UUID as PGUUID
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models.charge import Charge, ShipmentTreeMargin
+
+# T7d: mnożenie mid w Postgres — HC-11, nie float w Pythonie.
+_SELL_IN_PLN = text(
+    "SELECT charge_sell_in_pln(:charge_id, CAST(:on_date AS date))",
+).bindparams(
+    bindparam("charge_id", type_=PGUUID(as_uuid=True)),
+    bindparam("on_date", type_=SqlDate),
+)
 
 
 class ChargeRepository:
@@ -34,6 +44,15 @@ class ChargeRepository:
     async def get(self, charge_id: UUID) -> Charge | None:
         found = await self._session.get(Charge, charge_id)
         return found if isinstance(found, Charge) else None
+
+    async def sell_in_pln(self, charge_id: UUID, on_date: object) -> Decimal | None:
+        raw = await self._session.scalar(
+            _SELL_IN_PLN,
+            {"charge_id": charge_id, "on_date": on_date},
+        )
+        if raw is None:
+            return None
+        return Decimal(str(raw))
 
     async def add(self, row: Charge) -> Charge:
         self._session.add(row)
