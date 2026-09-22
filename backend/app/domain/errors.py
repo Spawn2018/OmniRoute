@@ -566,6 +566,14 @@ class InvalidPalletBalance(DomainError):
     """Saldo palet Chep/LPR na kontrahencie — nie giełda, nie depozyt."""
 
 
+class InvalidPalletLedger(DomainError):
+    """Ledger ruchu palet — nie giełda, nie mutacja salda."""
+
+
+class PalletLedgerConflict(DomainError):
+    """Duplikat kodu ruchu palet w tenancie."""
+
+
 class InvalidDocumentTemplate(DomainError):
     """Szablon wydruku jako dane — nie PDF, nie etykieta sieci."""
 

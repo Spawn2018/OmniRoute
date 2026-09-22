@@ -29,6 +29,7 @@ zostają w badaniach `04`).
 
 | Data | Co |
 |---|---|
+| 2026-09-22 | **629.0** D7c leftover ledger ruchu palet HITL zamknięty: tabela `pallet_ledger` z `delta_count` integer ze znakiem (`CONFIRMED`). Auto-UPDATE salda, giełda live i kwota nadal `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-22 | **629.0** D7c leftover ledger ruchu palet HITL: tabela `pallet_ledger` z `delta_count` integer ze znakiem (`REQUIREMENT`). Auto-UPDATE salda, giełda live i kwota `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-22 | **628.0** T7 leftover daty bazowe HITL na `shipment` zamknięty: opcjonalne `etd` / `loading_date` / `unloading_date` / `invoice_date` (`CONFIRMED`). fx×FV SQL i mnożenie przy FV nadal `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-22 | **628.0** T7 leftover daty bazowe HITL na `shipment`: opcjonalne `etd` / `loading_date` / `unloading_date` / `invoice_date` (`REQUIREMENT`). fx×FV SQL i mnożenie przy FV `REJECTED` w tym plasterze. Marża zostaje na `charge` (`CONFIRMED`). |

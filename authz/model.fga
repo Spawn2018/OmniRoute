@@ -59,6 +59,7 @@ type organization
     define can_manage_ocean_bills: member
     define can_manage_consignments: member
     define can_manage_pallet_balances: member
+    define can_manage_pallet_ledgers: member
     define can_manage_document_templates: member
     define can_manage_network_print_requirements: member
     define can_manage_rate_cards: member

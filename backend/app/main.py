@@ -13,6 +13,7 @@ from app.domain.errors import (
     DraftNotPending,
     ExtractionCandidatesNotEditable,
     MarginFloorBreach,
+    PalletLedgerConflict,
     PartyConflict,
     PermissionDenied,
     ProductTicketOwnerRequired,
@@ -147,6 +148,14 @@ async def party_conflict_handler(_request: Request, exc: PartyConflict) -> JSONR
             "href": f"/parties/{existing}",
         },
     )
+
+
+@app.exception_handler(PalletLedgerConflict)
+async def pallet_ledger_conflict_handler(
+    _request: Request,
+    exc: PalletLedgerConflict,
+) -> JSONResponse:
+    return JSONResponse(status_code=409, content={"detail": str(exc)})
 
 
 @app.exception_handler(TenantContextMissing)

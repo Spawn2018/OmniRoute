@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **628.0** T7 daty bazowe HITL na `shipment` (gate success). **Etap:** Plan **629.0** — delta zaakceptowana, wolno `/plaster`. Leftover D7c ledger ruchu palet HITL (nie giełda live). **Następny:** **629.0** D7c ledger ruchu palet HITL. D9c 409 / D9d PDF-QR / D9e skan / D9f pdf-zpl / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **629.0** D7c `pallet_ledger` HITL (gate po push). **Etap:** Plan **630.0**. Leftover synchro salda↔ledger HITL stance (nie auto-UPDATE, nie giełda). **Następny:** **630.0** D7c leftover synchro stance HITL. D9c 409 / D9d PDF-QR / D9e skan / D9f pdf-zpl / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-UPDATE salda = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

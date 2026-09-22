@@ -8497,6 +8497,80 @@
         ]
       }
     },
+    "/api/v1/pallet-ledgers": {
+      "get": {
+        "tags": [
+          "pallet-ledgers"
+        ],
+        "summary": "List Pallet Ledgers",
+        "operationId": "list_pallet_ledgers_api_v1_pallet_ledgers_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/PalletLedgerResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Pallet Ledgers Api V1 Pallet Ledgers Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "pallet-ledgers"
+        ],
+        "summary": "Create Pallet Ledger",
+        "operationId": "create_pallet_ledger_api_v1_pallet_ledgers_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PalletLedgerCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PalletLedgerResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/document-templates": {
       "get": {
         "tags": [
@@ -46141,6 +46215,87 @@
         ],
         "title": "PalletBalanceResponse"
       },
+      "PalletLedgerCreate": {
+        "properties": {
+          "party_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Party Id"
+          },
+          "movement_code": {
+            "type": "string",
+            "title": "Movement Code"
+          },
+          "pallet_kind": {
+            "type": "string",
+            "title": "Pallet Kind"
+          },
+          "delta_count": {
+            "type": "integer",
+            "title": "Delta Count"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "party_id",
+          "movement_code",
+          "pallet_kind",
+          "delta_count",
+          "source_ref"
+        ],
+        "title": "PalletLedgerCreate"
+      },
+      "PalletLedgerResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "party_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Party Id"
+          },
+          "movement_code": {
+            "type": "string",
+            "title": "Movement Code"
+          },
+          "pallet_kind": {
+            "type": "string",
+            "title": "Pallet Kind"
+          },
+          "delta_count": {
+            "type": "integer",
+            "title": "Delta Count"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "party_id",
+          "movement_code",
+          "pallet_kind",
+          "delta_count",
+          "source_ref"
+        ],
+        "title": "PalletLedgerResponse"
+      },
       "PalletPoolMarkCreate": {
         "properties": {
           "mark_code": {
@@ -51861,6 +52016,42 @@
               }
             ],
             "title": "Is Waste"
+          },
+          "etd": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Etd"
+          },
+          "loading_date": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Loading Date"
+          },
+          "unloading_date": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Unloading Date"
+          },
+          "invoice_date": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Invoice Date"
           }
         },
         "additionalProperties": false,
@@ -52349,6 +52540,54 @@
             "type": "boolean",
             "title": "Is Waste"
           },
+          "etd": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Etd"
+          },
+          "loading_date": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Loading Date"
+          },
+          "unloading_date": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Unloading Date"
+          },
+          "invoice_date": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Invoice Date"
+          },
           "status": {
             "type": "string",
             "title": "Status"
@@ -52369,6 +52608,10 @@
           "carrier_label",
           "asn_id",
           "is_waste",
+          "etd",
+          "loading_date",
+          "unloading_date",
+          "invoice_date",
           "status"
         ],
         "title": "ShipmentResponse"

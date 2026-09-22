@@ -11027,6 +11027,66 @@ export type PalletBalanceResponse = {
 };
 
 /**
+ * PalletLedgerCreate
+ */
+export type PalletLedgerCreate = {
+    /**
+     * Party Id
+     */
+    party_id: string;
+    /**
+     * Movement Code
+     */
+    movement_code: string;
+    /**
+     * Pallet Kind
+     */
+    pallet_kind: string;
+    /**
+     * Delta Count
+     */
+    delta_count: number;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * PalletLedgerResponse
+ */
+export type PalletLedgerResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Party Id
+     */
+    party_id: string;
+    /**
+     * Movement Code
+     */
+    movement_code: string;
+    /**
+     * Pallet Kind
+     */
+    pallet_kind: string;
+    /**
+     * Delta Count
+     */
+    delta_count: number;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * PalletPoolMarkCreate
  */
 export type PalletPoolMarkCreate = {
@@ -14608,6 +14668,22 @@ export type ShipmentCreate = {
      * Is Waste
      */
     is_waste?: boolean | null;
+    /**
+     * Etd
+     */
+    etd?: unknown | null;
+    /**
+     * Loading Date
+     */
+    loading_date?: unknown | null;
+    /**
+     * Unloading Date
+     */
+    unloading_date?: unknown | null;
+    /**
+     * Invoice Date
+     */
+    invoice_date?: unknown | null;
 };
 
 /**
@@ -14906,6 +14982,22 @@ export type ShipmentResponse = {
      * Is Waste
      */
     is_waste: boolean;
+    /**
+     * Etd
+     */
+    etd: string | null;
+    /**
+     * Loading Date
+     */
+    loading_date: string | null;
+    /**
+     * Unloading Date
+     */
+    unloading_date: string | null;
+    /**
+     * Invoice Date
+     */
+    invoice_date: string | null;
     /**
      * Status
      */
@@ -23638,6 +23730,49 @@ export type CreatePalletBalanceApiV1PalletBalancesPostResponses = {
 };
 
 export type CreatePalletBalanceApiV1PalletBalancesPostResponse = CreatePalletBalanceApiV1PalletBalancesPostResponses[keyof CreatePalletBalanceApiV1PalletBalancesPostResponses];
+
+export type ListPalletLedgersApiV1PalletLedgersGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/pallet-ledgers';
+};
+
+export type ListPalletLedgersApiV1PalletLedgersGetResponses = {
+    /**
+     * Response List Pallet Ledgers Api V1 Pallet Ledgers Get
+     *
+     * Successful Response
+     */
+    200: Array<PalletLedgerResponse>;
+};
+
+export type ListPalletLedgersApiV1PalletLedgersGetResponse = ListPalletLedgersApiV1PalletLedgersGetResponses[keyof ListPalletLedgersApiV1PalletLedgersGetResponses];
+
+export type CreatePalletLedgerApiV1PalletLedgersPostData = {
+    body: PalletLedgerCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/pallet-ledgers';
+};
+
+export type CreatePalletLedgerApiV1PalletLedgersPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreatePalletLedgerApiV1PalletLedgersPostError = CreatePalletLedgerApiV1PalletLedgersPostErrors[keyof CreatePalletLedgerApiV1PalletLedgersPostErrors];
+
+export type CreatePalletLedgerApiV1PalletLedgersPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: PalletLedgerResponse;
+};
+
+export type CreatePalletLedgerApiV1PalletLedgersPostResponse = CreatePalletLedgerApiV1PalletLedgersPostResponses[keyof CreatePalletLedgerApiV1PalletLedgersPostResponses];
 
 export type ListDocumentTemplatesApiV1DocumentTemplatesGetData = {
     body?: never;

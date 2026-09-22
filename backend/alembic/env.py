@@ -96,6 +96,7 @@ from app.models.ocean_bill import OceanBill  # noqa: F401
 from app.models.consignment import Consignment  # noqa: F401
 from app.models.stop_group import StopGroup  # noqa: F401
 from app.models.pallet_balance import PalletBalance  # noqa: F401
+from app.models.pallet_ledger import PalletLedger  # noqa: F401
 from app.models.document_template import DocumentTemplate  # noqa: F401
 from app.models.network_print_requirement import NetworkPrintRequirement  # noqa: F401
 from app.models.rate_card import RateCard  # noqa: F401

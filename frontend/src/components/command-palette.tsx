@@ -31,6 +31,7 @@ const NAV_ACTIONS = [
   { id: "nav-ocean-bills", label: "Idź do konosamentu LCL", to: "/ocean-bills" },
   { id: "nav-consignments", label: "Idź do przesyłek", to: "/consignments" },
   { id: "nav-pallet-balances", label: "Idź do salda palet", to: "/pallet-balances" },
+  { id: "nav-pallet-ledgers", label: "Idź do ledgeru ruchu palet", to: "/pallet-ledgers" },
   { id: "nav-document-templates", label: "Idź do szablonów wydruku", to: "/document-templates" },
   { id: "nav-air", label: "Idź do lotniczego", to: "/air" },
   { id: "nav-groupage", label: "Idź do linii drobnicy", to: "/groupage" },

@@ -198,6 +198,7 @@ from app.api import (
     outcome_kinds,
     outcome_ledgers,
     pallet_balances,
+    pallet_ledgers,
     pallet_pool_marks,
     parties,
     partner_exchange_marks,
@@ -424,6 +425,7 @@ api_router.include_router(oog_marks.router)
 api_router.include_router(oog_permit_marks.router)
 api_router.include_router(consignments.router)
 api_router.include_router(pallet_balances.router)
+api_router.include_router(pallet_ledgers.router)
 api_router.include_router(document_templates.router)
 api_router.include_router(dual_ledger_marks.router)
 api_router.include_router(rate_cards.router)
