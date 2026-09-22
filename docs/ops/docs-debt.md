@@ -208,7 +208,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **162.0 leftover:** D9b `shipment_ref` HITL DONE 204.0. Zostaje: `network_print_requirement` / 409 (D9c; nie C8); PDF/ZPL/QR bitmap (D9d); skan HITL bez kodu Omni (D9e); `branding_ref` / `pdf`/`zpl` (D9f). Tu katalog `own_label`/`cmr` + `html_print` + numer HITL. Nie D8.
 - **161.0 leftover:** giełda/HTTP Chep/LPR (D7b); ledger ujemny (D7c); euro/EPAL (D7d). Tu tylko integer sztuk `chep`/`lpr` na `party`. Nie depozyt.
 - **621.0 DONE:** `/ocean-bills` pule HBL/MBL z M-03 (`hbl_number_prefix`/`mbl_number_prefix`); `bill_no` nullable; Nadaj SQL. Leftover: D6b konsolidacja · PDF · live booking.
-- **620.0 DONE:** `/channel-quotes` `transport_mode` air|other; air wymaga `airport`. Leftover: cyfra kontrolna IATA · live booking / e-rates API.
+- **622.0 DONE:** wklejony MAWB w kształcie IATA — cyfra = seria modulo 7. Leftover: live booking / e-rates API. Pula M-03 bez cyfry.
+- **620.0 DONE:** `/channel-quotes` `transport_mode` air|other; air wymaga `airport`. Leftover: live booking / e-rates API. Cyfra IATA = 622.0.
 - **160.0 leftover:** konsolidacja wielu house pod jeden MBL (D6b); pula numerów M-03 (D6c → **621.0** DONE). Tu tylko znacznik HBL/MBL na `shipment`. Nie PDF. Nie booking.
 - **159.0 leftover:** objętość / paleta / FSC (D5b, P3); silnik dopasowania WHEN/IF (P1). Tu tylko próg `chargeable_weight` na `postal_zone` + Decimal. Nie T-SQL.
 - **158.0 leftover:** POD/ROD jako `shipment_document` (D4b; `pod` koliduje z portem wyładunku); Decimal / rozliczenie pobrań = Fala F. Tu tylko znacznik `collection_status` bez kwoty.
@@ -218,7 +219,7 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 
 - **210.0 leftover:** rentowność SQL główne+podzlecenia na `charge` (T4b). Tu tylko `parent_shipment_id` + `relation_kind` HITL. Nie N1. Nie suma.
 
-- **154.0 leftover:** e-rates IATA; live IATA; cyfra kontrolna. HAWB/MAWB = 209.0 token; pule M-03 = 619.0. Tu `leg_kind=air` + `airport` w flags.
+- **154.0 leftover:** e-rates IATA; live IATA. Cyfra IATA = 622.0. HAWB/MAWB = 209.0 token; pule M-03 = 619.0. Tu `leg_kind=air` + `airport` w flags.
 - **216.0 leftover:** `seal_no_2` DONE 217.0. Zostaje leftover T3 `seal_no_3`; PIN; VGM/cutoffy. Tu tylko `seal_no_1` HITL. Nie sekret. Nie waga.
 - **217.0 leftover:** `seal_no_3` DONE 218.0. Zostaje leftover T3 `vessel_name`/`voyage_no`; PIN; VGM/cutoffy. Tu tylko `seal_no_2` HITL. Nie sekret. Nie waga.
 - **218.0 leftover:** `vessel_name` DONE 219.0. Zostaje leftover T3 `voyage_no`; PIN; VGM/cutoffy. Tu tylko `seal_no_3` HITL. Nie sekret. Nie waga.

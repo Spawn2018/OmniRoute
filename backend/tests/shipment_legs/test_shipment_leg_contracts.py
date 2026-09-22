@@ -23,6 +23,20 @@ def test_migration_065_creates_shipment_leg_and_forces_rls() -> None:
     assert "drop_table" in source.split("def downgrade")[1]
 
 
+def test_record_leg_checks_mawb_iata_digit_and_issue_does_not() -> None:
+    service = (_SERVICES / "shipment_legs" / "shipment_leg_service.py").read_text(
+        encoding="utf-8",
+    )
+    record = service.split("async def record_leg", 1)[1].split("async def issue_hawb", 1)[0]
+    issue = service.split("async def issue_mawb", 1)[1]
+    assert "require_mawb_iata_check" in record
+    assert "require_mawb_iata_check" not in issue
+    repo = (
+        _ROOT / "backend" / "app" / "repositories" / "shipment_legs" / "shipment_leg_repository.py"
+    ).read_text(encoding="utf-8")
+    assert "require_mawb_iata_check" not in repo
+
+
 def test_shipment_leg_service_does_not_import_parents() -> None:
     service = (_SERVICES / "shipment_legs" / "shipment_leg_service.py").read_text(
         encoding="utf-8",

@@ -10,6 +10,7 @@ from app.domain.shipment_leg import (
     require_air_waybill_kind,
     require_air_waybill_no,
     require_leg_source_ref,
+    require_mawb_iata_check,
 )
 from app.main import app
 from app.models.shipment_leg import ShipmentLeg
@@ -122,7 +123,7 @@ class StubShipmentLegService:
             destination_location_id=destination_location_id,
             leg_kind=leg_kind,
             hawb_no=require_air_waybill_no(hawb_no),
-            mawb_no=require_air_waybill_no(mawb_no),
+            mawb_no=require_mawb_iata_check(require_air_waybill_no(mawb_no)),
             source_ref=require_leg_source_ref(source_ref),
             created_by=user_id,
         )
@@ -511,6 +512,25 @@ def test_http_create_air_with_waybill_tokens(catalog_client: object) -> None:
     assert created.status_code == 201
     assert created.json()["hawb_no"] == "HAWB-1"
     assert created.json()["mawb_no"] == "020-12345675"
+
+
+def test_http_create_air_bad_iata_check_digit_is_400(catalog_client: object) -> None:
+    client, ship, _origin, _dest, _port_loc, _rail_o, _rail_d, _cn_o, _cn_d = catalog_client
+    response = client.post(
+        "/api/v1/shipment-legs",
+        headers=bearer_auth_headers(),
+        json={
+            "shipment_id": str(ship.id),
+            "origin_location_id": str(ship.air_origin_id),
+            "destination_location_id": str(ship.air_dest_id),
+            "source_ref": "fixture://shipment-leg/air",
+            "leg_kind": "air",
+            "mawb_no": "020-12345676",
+            "hawb_no": "020-12345676",
+        },
+    )
+    assert response.status_code == 400
+    assert "cyfra" in response.json()["detail"]
 
 
 def test_http_create_air_bad_waybill_is_400(catalog_client: object) -> None:

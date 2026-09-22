@@ -15,6 +15,7 @@ from app.domain.shipment_leg import (
     require_leg_location_id,
     require_leg_shipment_id,
     require_leg_source_ref,
+    require_mawb_iata_check,
     require_ocean_seaport,
     require_rail_location_kind,
     require_rail_port_flag,
@@ -115,6 +116,45 @@ def test_air_waybill_keeps_carrier_token(raw: str) -> None:
 def test_air_waybill_rejects_non_carrier_token(raw: str) -> None:
     with pytest.raises(InvalidShipmentLeg, match="numer"):
         require_air_waybill_no(raw)
+
+
+@given(
+    prefix=st.integers(min_value=0, max_value=999),
+    serial=st.integers(min_value=0, max_value=9_999_999),
+    hyphen=st.booleans(),
+)
+def test_mawb_iata_check_accepts_serial_modulo_seven(
+    prefix: int,
+    serial: int,
+    hyphen: bool,
+) -> None:
+    body = f"{serial:07d}{serial % 7}"
+    token = f"{prefix:03d}-{body}" if hyphen else f"{prefix:03d}{body}"
+    assert require_mawb_iata_check(token) == token
+
+
+@given(
+    prefix=st.integers(min_value=0, max_value=999),
+    serial=st.integers(min_value=0, max_value=9_999_999),
+    hyphen=st.booleans(),
+)
+def test_mawb_iata_check_rejects_wrong_digit(
+    prefix: int,
+    serial: int,
+    hyphen: bool,
+) -> None:
+    bad = (serial % 7 + 1) % 7
+    body = f"{serial:07d}{bad}"
+    token = f"{prefix:03d}-{body}" if hyphen else f"{prefix:03d}{body}"
+    with pytest.raises(InvalidShipmentLeg, match="cyfra"):
+        require_mawb_iata_check(token)
+
+
+@given(st.sampled_from(["HAWB-1", "MAWB0001", "awb9", "020-1234567", ""]))
+def test_mawb_iata_check_leaves_non_iata_token(raw: str) -> None:
+    expected = None if raw == "" else raw
+    assert require_mawb_iata_check(expected) == expected
+    assert require_air_waybill_no("020-12345676") == "020-12345676"
 
 
 def test_air_waybill_rejects_non_air_kind() -> None:

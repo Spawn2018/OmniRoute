@@ -11,6 +11,7 @@ from app.domain.shipment_leg import (
     require_leg_location_id,
     require_leg_shipment_id,
     require_leg_source_ref,
+    require_mawb_iata_check,
     require_waybill_number_prefix,
 )
 from app.models.shipment_leg import ShipmentLeg
@@ -45,7 +46,7 @@ class ShipmentLegService:
     ) -> ShipmentLeg:
         kind = require_leg_kind(leg_kind)
         house = require_air_waybill_no(hawb_no)
-        master = require_air_waybill_no(mawb_no)
+        master = require_mawb_iata_check(require_air_waybill_no(mawb_no))
         require_air_waybill_kind(kind, house, master)
         row = ShipmentLeg(
             id=uuid4(),

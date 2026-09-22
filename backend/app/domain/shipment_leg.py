@@ -18,6 +18,8 @@ _LAND = frozenset({LocationKind.POSTAL_ZONE.value, LocationKind.ADDRESS.value})
 _RAIL_FLAG = "rail"
 _AIR_FLAG = "airport"
 _WAYBILL = re.compile(r"^[A-Za-z0-9-]{2,32}$")
+# IATA Resolution 600a: ostatnia cyfra = seria 7 cyfr modulo 7. Prefiks linii nie wchodzi.
+_IATA_MAWB = re.compile(r"^\d{3}-?(\d{7})(\d)$")
 
 
 def require_leg_shipment_id(raw: object) -> UUID:
@@ -113,6 +115,18 @@ def require_air_waybill_no(raw: object) -> str | None:
     if _WAYBILL.fullmatch(token) is None:
         raise InvalidShipmentLeg("numer listu lotniczego: 2–32 litery cyfry myślnik")
     return token
+
+
+def require_mawb_iata_check(raw: str | None) -> str | None:
+    if raw is None:
+        return None
+    match = _IATA_MAWB.fullmatch(raw)
+    if match is None:
+        return raw
+    serial = int(match.group(1))
+    if serial % 7 != int(match.group(2)):
+        raise InvalidShipmentLeg("cyfra kontrolna IATA")
+    return raw
 
 
 def require_air_waybill_kind(

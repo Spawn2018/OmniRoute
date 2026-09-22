@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **622.0** U3 leftover cyfra kontrolna IATA (HITL, nie live). Daty bazowe zlecenia / matching T5 / FK kontekstu / T8 live / D6b konsolidacja = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
+**Następny:** **623.0** D7d `pallet_kind` `epal` na saldzie palet (HITL, nie giełda). Daty bazowe zlecenia / matching T5 / FK kontekstu / T8 live / D6b konsolidacja = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -481,7 +481,7 @@ Karta: [karty-pol-fala-u.md](analysis/karty-pol-fala-u.md). **U6** + **M-72** = 
 | **U1** | `field_carry_forward` oferta→zlecenie→booking→FV; diff przy POST | zamknięty (`docs/deltas/archived/144.0-u1-u5-carry-checklist.md`) | po O8, przed I1 | mutacja = nowy wiersz / `superseded_by` |
 | **U5** | `document_checklist_rule` (incoterm×side×mode) + `blocks_dispatch` | zamknięty (z U1, 144.0) | z U1 | ≠ C8 polisa podwykonawcy |
 | **U4** | `organization_calendar` + `is_working_day`; grace V5 = 3 dni **robocze** | zamknięty (`docs/deltas/archived/149.0-organization-calendar.md`) | po I4, przed T1 | nie `+3` kalendarzowe |
-| **U3** | `shipment_leg.kind=air` HAWB/MAWB + pule; lotnisko = `port` air | zamknięty ([154.0](deltas/archived/154.0-air.md); leftover U3b HAWB/MAWB [209.0](deltas/archived/209.0-air-hawb.md); leftover U3c pule [619.0](deltas/archived/619.0-air-waybill-pools.md); leftover e-rates [620.0](deltas/archived/620.0-air-channel-erate.md); leftover cyfra kontrolna IATA [622.0](deltas/open/622.0-mawb-iata-check.md)) | po T, przed D | nie live IATA bez umowy |
+| **U3** | `shipment_leg.kind=air` HAWB/MAWB + pule; lotnisko = `port` air | zamknięty ([154.0](deltas/archived/154.0-air.md); leftover U3b HAWB/MAWB [209.0](deltas/archived/209.0-air-hawb.md); leftover U3c pule [619.0](deltas/archived/619.0-air-waybill-pools.md); leftover e-rates [620.0](deltas/archived/620.0-air-channel-erate.md); leftover cyfra kontrolna IATA [622.0](deltas/archived/622.0-mawb-iata-check.md)) | po T, przed D | nie live IATA bez umowy |
 | **N9** | F2 + klon ostatniego podobnego zlecenia | zamknięty HITL intencja ([528.0](deltas/archived/528.0-shipment-clone-mark.md); leftover copy/U1 / similar SQL / F2b) | z U1 | nie drugi SoR |
 
 ### Fala I — Incoterms, booking, odprawa (po U1; zlecenie już jest)
@@ -520,7 +520,7 @@ Przy `/plan-modul`: karta T + [EXP1](analysis/karty-pol-fala-exp.md) (stop/konte
 
 | ID | Co | Status | Uwagi |
 |---|---|---|---|
-| D1–D7 | linie, paczka, cross-dock, COD, cennik LTL, LCL/HBL, palety Chep/LPR (EXP2.17) | D1 zamknięty ([155.0](deltas/archived/155.0-groupage-line.md); leftover OR hubów); D2 zamknięty ([156.0](deltas/archived/156.0-shipment-package.md); leftover kamera/WMS/SSCC); D3 zamknięty ([157.0](deltas/archived/157.0-dock-appointment.md); leftover D3b/G15/T8); D4 zamknięty ([158.0](deltas/archived/158.0-cod-instruction.md); leftover D4b POD/ROD); D5 zamknięty ([159.0](deltas/archived/159.0-groupage-tariff.md); leftover D5b/P1); D6 zamknięty ([160.0](deltas/archived/160.0-ocean-bill.md); leftover D6b; leftover D6c pule M-03 [621.0](deltas/archived/621.0-ocean-bill-pools.md)); D7 zamknięty ([161.0](deltas/archived/161.0-pallet-balance.md); leftover D7b–d) | po U3+T2; nie WMS; karta [karty-pol-fala-d.md](analysis/karty-pol-fala-d.md) |
+| D1–D7 | linie, paczka, cross-dock, COD, cennik LTL, LCL/HBL, palety Chep/LPR (EXP2.17) | D1 zamknięty ([155.0](deltas/archived/155.0-groupage-line.md); leftover OR hubów); D2 zamknięty ([156.0](deltas/archived/156.0-shipment-package.md); leftover kamera/WMS/SSCC); D3 zamknięty ([157.0](deltas/archived/157.0-dock-appointment.md); leftover D3b/G15/T8); D4 zamknięty ([158.0](deltas/archived/158.0-cod-instruction.md); leftover D4b POD/ROD); D5 zamknięty ([159.0](deltas/archived/159.0-groupage-tariff.md); leftover D5b/P1); D6 zamknięty ([160.0](deltas/archived/160.0-ocean-bill.md); leftover D6b; leftover D6c pule M-03 [621.0](deltas/archived/621.0-ocean-bill-pools.md)); D7 zamknięty ([161.0](deltas/archived/161.0-pallet-balance.md); leftover D7b giełda park live; leftover D7c ledger; leftover D7d EPAL → **623.0**) | po U3+T2; nie WMS; karta [karty-pol-fala-d.md](analysis/karty-pol-fala-d.md) |
 | D8 | etykieta sieci po oficjalnym API | parked aż TO_VERIFY API | zakaz generatora Palletforce |
 | D9 | silnik wydruków + QR `shipment_ref` | zamknięty ([162.0](deltas/archived/162.0-document-template.md); leftover D9b HITL numer ([204.0](deltas/archived/204.0-shipment-ref.md)); leftover D9c–f) | 409 bez etykiety sieci = D9c; D8 parked |
 
@@ -892,13 +892,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->
