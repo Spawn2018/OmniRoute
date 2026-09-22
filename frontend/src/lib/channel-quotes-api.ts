@@ -25,7 +25,7 @@ export type ChannelQuoteDraft = {
   amount: string
   currency: string
   transitDays?: string
-  transportMode: string
+  transportMode?: string
 }
 
 export const EMPTY_QUOTE_DRAFT: ChannelQuoteDraft = {
@@ -65,7 +65,7 @@ export function channelQuoteCreateBody(draft: ChannelQuoteDraft): {
     quote_date: draft.quoteDate,
     amount: draft.amount.trim(),
     currency: draft.currency.trim().toUpperCase(),
-    transport_mode: draft.transportMode.trim() || "other",
+    transport_mode: (draft.transportMode ?? "").trim() || "other",
   }
   if (days !== "") {
     body.transit_days = Number(days)
