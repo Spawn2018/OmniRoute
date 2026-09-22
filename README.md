@@ -87,10 +87,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **622.0** U3 cyfra kontrolna IATA na MAWB (CI po push)
-- **Etap:** Plan **623.0**. Komenda `/plan-modul`.
+- **Ostatni plaster:** **622.0** U3 cyfra kontrolna IATA na MAWB (gate success, rerun po utracie runnera)
+- **Etap:** Plaster **623.0**. Delta zaakceptowana. Wolno `/plaster`.
 - **Następny:** **623.0** D7d `pallet_kind` `epal` na saldzie palet (HITL, nie giełda). Daty bazowe zlecenia / matching T5 / FK kontekstu / T8 live / D6b konsolidacja = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
-- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

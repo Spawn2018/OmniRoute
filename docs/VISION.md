@@ -29,6 +29,7 @@ zostają w badaniach `04`).
 
 | Data | Co |
 |---|---|
+| 2026-09-22 | **623.0** D7d leftover saldo palet: `pallet_kind` `epal` obok `chep`|`lpr` (`REQUIREMENT`). Giełda, ledger ujemny i kind `euro` `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-22 | **622.0** U3 leftover cyfra kontrolna IATA: wklejony `mawb_no` w kształcie 3+8 cyfr, ostatnia = seria 7 cyfr modulo 7 (`REQUIREMENT`, IATA Resolution 600a). Token spoza kształtu, HAWB, pula M-03 i live IATA `REJECTED` w tym plasterze. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-22 | **621.0** D6c leftover pule HBL/MBL: `hbl_number_prefix`/`mbl_number_prefix` w M-03; `ocean_bill.bill_no` nullable; nadanie SQL `MAX`+1 (`REQUIREMENT`). D6b konsolidacja / PDF / live booking `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-22 | **620.0** U3 leftover e-rates air: `channel_quote.transport_mode` `air`\|`other`; przy `air` oba porty z `airport` (`REQUIREMENT`). Live IATA / cyfra kontrolna / druga tabela e-rate `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
