@@ -11,6 +11,7 @@ from app.domain.shipment_leg import (
     require_leg_location_id,
     require_leg_shipment_id,
     require_leg_source_ref,
+    require_waybill_number_prefix,
 )
 from app.models.shipment_leg import ShipmentLeg
 from app.repositories.shipment_legs.shipment_leg_repository import ShipmentLegRepository
@@ -66,3 +67,33 @@ class ShipmentLegService:
             return await self._rows.add(row)
         except IntegrityError as orig:
             raise InvalidShipmentLeg("odcinek tego rodzaju już zapisany") from orig
+
+    async def issue_hawb(self, *, leg_id: UUID, prefix: str | None) -> ShipmentLeg:
+        token = require_waybill_number_prefix(prefix)
+        current = await self.get_leg(leg_id)
+        if current.leg_kind != "air":
+            raise InvalidShipmentLeg("list lotniczy tylko na odcinku air")
+        if current.hawb_no is not None:
+            return current
+        issued = await self._rows.issue_hawb(leg_id=leg_id, prefix=token)
+        if issued is None:
+            again = await self.get_leg(leg_id)
+            if again.hawb_no is not None:
+                return again
+            raise InvalidShipmentLeg("nie udało się nadać numeru HAWB")
+        return issued
+
+    async def issue_mawb(self, *, leg_id: UUID, prefix: str | None) -> ShipmentLeg:
+        token = require_waybill_number_prefix(prefix)
+        current = await self.get_leg(leg_id)
+        if current.leg_kind != "air":
+            raise InvalidShipmentLeg("list lotniczy tylko na odcinku air")
+        if current.mawb_no is not None:
+            return current
+        issued = await self._rows.issue_mawb(leg_id=leg_id, prefix=token)
+        if issued is None:
+            again = await self.get_leg(leg_id)
+            if again.mawb_no is not None:
+                return again
+            raise InvalidShipmentLeg("nie udało się nadać numeru MAWB")
+        return issued

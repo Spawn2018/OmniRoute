@@ -36,6 +36,8 @@ export function OrganizationSettingCatalogPage() {
   const queryClient = useQueryClient()
   const [currency, setCurrency] = useState("EUR")
   const [prefix, setPrefix] = useState("OR-Q")
+  const [hawbPrefix, setHawbPrefix] = useState("HAWB-")
+  const [mawbPrefix, setMawbPrefix] = useState("MAWB-")
   const [template, setTemplate] = useState("plain")
   const [defaultN, setDefaultN] = useState("3")
   const [laneWindow, setLaneWindow] = useState("90")
@@ -73,6 +75,36 @@ export function OrganizationSettingCatalogPage() {
         organizationSettingUpsertBody({
           settingKey: "quotation_number_prefix",
           settingValue: prefix,
+        }),
+      ),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({
+        queryKey: ["organization-settings", ctx.organizationId],
+      })
+    },
+  })
+
+  const saveHawbPrefix = useMutation({
+    mutationFn: () =>
+      upsertOrganizationSetting(
+        organizationSettingUpsertBody({
+          settingKey: "hawb_number_prefix",
+          settingValue: hawbPrefix,
+        }),
+      ),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({
+        queryKey: ["organization-settings", ctx.organizationId],
+      })
+    },
+  })
+
+  const saveMawbPrefix = useMutation({
+    mutationFn: () =>
+      upsertOrganizationSetting(
+        organizationSettingUpsertBody({
+          settingKey: "mawb_number_prefix",
+          settingValue: mawbPrefix,
         }),
       ),
     onSuccess: () => {
@@ -225,6 +257,44 @@ export function OrganizationSettingCatalogPage() {
         />
         <Button type="submit" disabled={savePrefix.isPending || !signedIn}>
           Zapisz prefiks numeru
+        </Button>
+      </form>
+
+      <form
+        className="flex flex-col gap-2 rounded-md border border-border bg-card p-3 md:flex-row md:flex-wrap"
+        onSubmit={(event) => {
+          event.preventDefault()
+          saveHawbPrefix.mutate()
+        }}
+      >
+        <Input
+          aria-label="Prefiks numeru HAWB"
+          placeholder="HAWB-"
+          value={hawbPrefix}
+          onChange={(event) => setHawbPrefix(event.target.value)}
+          required
+        />
+        <Button type="submit" disabled={saveHawbPrefix.isPending || !signedIn}>
+          Zapisz hawb_number_prefix
+        </Button>
+      </form>
+
+      <form
+        className="flex flex-col gap-2 rounded-md border border-border bg-card p-3 md:flex-row md:flex-wrap"
+        onSubmit={(event) => {
+          event.preventDefault()
+          saveMawbPrefix.mutate()
+        }}
+      >
+        <Input
+          aria-label="Prefiks numeru MAWB"
+          placeholder="MAWB-"
+          value={mawbPrefix}
+          onChange={(event) => setMawbPrefix(event.target.value)}
+          required
+        />
+        <Button type="submit" disabled={saveMawbPrefix.isPending || !signedIn}>
+          Zapisz mawb_number_prefix
         </Button>
       </form>
 

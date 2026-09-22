@@ -87,10 +87,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **618.0** T7d `charge_sell_in_pln` (gate success)
-- **Etap:** Plaster **619.0**. Delta zaakceptowana (`/noc`). Komenda `/plaster`.
-- **Następny:** **619.0** U3c leftover pule IATA/air (delta otwarta). Daty bazowe zlecenia / matching T5 / FK kontekstu / T8 live = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **619.0** U3c pule HAWB/MAWB (lokalnie; CI po push)
+- **Etap:** Plan **620.0**. Komenda `/plan-modul`.
+- **Następny:** **620.0** U3 leftover e-rates IATA HITL (`channel_quote` + `source_ref`). Daty bazowe zlecenia / matching T5 / FK kontekstu / T8 live / cyfra kontrolna IATA = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

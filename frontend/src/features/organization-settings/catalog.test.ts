@@ -38,6 +38,8 @@ describe("organization settings catalog screen", () => {
   it("offers prefix and template save on the same settings page", () => {
     const page = readFileSync(new URL("./catalog-page.tsx", import.meta.url), "utf8")
     expect(page).toContain("quotation_number_prefix")
+    expect(page).toContain("hawb_number_prefix")
+    expect(page).toContain("mawb_number_prefix")
     expect(page).toContain("quotation_print_template")
     expect(page).toContain("inquiry_default_n")
     expect(page).toContain("lane_scorecard_window_days")

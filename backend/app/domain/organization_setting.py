@@ -8,6 +8,8 @@ ALLOWED_SETTING_KEYS = frozenset(
     {
         "default_currency",
         "quotation_number_prefix",
+        "hawb_number_prefix",
+        "mawb_number_prefix",
         "quotation_print_template",
         "inquiry_default_n",
         "lane_scorecard_window_days",
@@ -124,6 +126,8 @@ def normalize_hitl_confidence_min(raw: str) -> str:
 _VALUE_PARSERS = {
     "default_currency": normalize_default_currency,
     "quotation_number_prefix": normalize_quotation_number_prefix,
+    "hawb_number_prefix": normalize_quotation_number_prefix,
+    "mawb_number_prefix": normalize_quotation_number_prefix,
     "quotation_print_template": normalize_quotation_print_template,
     "inquiry_default_n": normalize_inquiry_default_n,
     "lane_scorecard_window_days": normalize_lane_scorecard_window_days,

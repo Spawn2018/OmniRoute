@@ -216,7 +216,7 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 
 - **210.0 leftover:** rentowność SQL główne+podzlecenia na `charge` (T4b). Tu tylko `parent_shipment_id` + `relation_kind` HITL. Nie N1. Nie suma.
 
-- **154.0 leftover:** pule M-03; e-rates IATA; live IATA. HAWB/MAWB = 209.0 token na `air`. Tu `leg_kind=air` + `airport` w flags.
+- **154.0 leftover:** e-rates IATA; live IATA; cyfra kontrolna. HAWB/MAWB = 209.0 token; pule M-03 = 619.0. Tu `leg_kind=air` + `airport` w flags.
 - **216.0 leftover:** `seal_no_2` DONE 217.0. Zostaje leftover T3 `seal_no_3`; PIN; VGM/cutoffy. Tu tylko `seal_no_1` HITL. Nie sekret. Nie waga.
 - **217.0 leftover:** `seal_no_3` DONE 218.0. Zostaje leftover T3 `vessel_name`/`voyage_no`; PIN; VGM/cutoffy. Tu tylko `seal_no_2` HITL. Nie sekret. Nie waga.
 - **218.0 leftover:** `vessel_name` DONE 219.0. Zostaje leftover T3 `voyage_no`; PIN; VGM/cutoffy. Tu tylko `seal_no_3` HITL. Nie sekret. Nie waga.

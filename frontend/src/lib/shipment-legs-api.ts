@@ -48,3 +48,30 @@ export async function saveShipmentLeg(payload: {
   }
   return (await reply.json()) as ShipmentLegRow
 }
+
+async function issueWaybillNumber(
+  legId: string,
+  kind: "hawb" | "mawb",
+): Promise<ShipmentLegRow> {
+  const auth = requireAuthHeaders()
+  const suffix = kind === "hawb" ? "hawb-number" : "mawb-number"
+  const reply = await fetch(`${LEGS_PATH}/${encodeURIComponent(legId)}/${suffix}`, {
+    method: "POST",
+    headers: auth,
+  })
+  if (!reply.ok) {
+    throw new ApiError(
+      await readApiDetail(reply, "Błąd nadania numeru listu lotniczego"),
+      httpErrorStatus(reply),
+    )
+  }
+  return (await reply.json()) as ShipmentLegRow
+}
+
+export function issueHawbNumber(legId: string): Promise<ShipmentLegRow> {
+  return issueWaybillNumber(legId, "hawb")
+}
+
+export function issueMawbNumber(legId: string): Promise<ShipmentLegRow> {
+  return issueWaybillNumber(legId, "mawb")
+}

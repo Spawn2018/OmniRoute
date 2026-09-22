@@ -1,7 +1,9 @@
 # Historia plastrów
 
 | Data | Plaster | Moduł | Opis |
-| 2026-09-22 | 618.0 | T7d charge_sell_in_pln | 2026-09-22 | PRZESZŁO (lokalne; CI po push) | N/A | EXPLAIN | OK | OK | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
+| 2026-09-22 | 619.0 | U3c air waybill pools | 2026-09-22 | PRZESZŁO (lokalne; CI po push) | N/A | EXPLAIN | OK | OK | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
+| 2026-09-22 | Plan 619.0 | U3c air waybill pools | Plan puli HAWB/MAWB z M-03 (`/noc 7`). 618.0 gate success. |
+| 2026-09-22 | 618.0 | T7d charge_sell_in_pln | 2026-09-22 | PRZESZŁO | N/A | EXPLAIN | OK | OK | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 2026-09-22 | Plan 618.0 | T7d charge fx SQL | Plan funkcji SQL `charge_sell_in_pln` (`/noc 7`). 617.0 gate success. |
 | 2026-09-22 | 617.0 | T7c fx_rate_day | 2026-09-22 | PRZESZŁO | N/A | EXPLAIN | OK | OK | N/A | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 2026-09-21 | Plan 617.0 | T7c fx working day | Plan dnia roboczego U4 dla offsetu kursu −1 (`/noc 7`). 616.0 gate success. |

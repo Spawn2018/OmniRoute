@@ -3,7 +3,12 @@ import { Link } from "@tanstack/react-router"
 import { type FormEvent, useState } from "react"
 import { CatalogError } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
-import { listShipmentLegs, saveShipmentLeg } from "@/lib/shipment-legs-api"
+import {
+  issueHawbNumber,
+  issueMawbNumber,
+  listShipmentLegs,
+  saveShipmentLeg,
+} from "@/lib/shipment-legs-api"
 
 type AirDraft = {
   shipmentId: string
@@ -141,7 +146,8 @@ function AirwaySaveForm(args: { organizationId: string | null }) {
       }}
     >
       <p className="text-xs text-muted-foreground">
-        Dwa lotniska z flagą airport. Opcjonalny HAWB/MAWB. Nie pula. Nie IATA.
+        Dwa lotniska z flagą airport. Opcjonalny HAWB/MAWB albo nadanie z prefiksu w
+        ustawieniach. Nie cyfra kontrolna IATA.
       </p>
       <AirwayFields draft={draft} patch={setDraft} />
       <Button type="submit" disabled={persist.isPending || !args.organizationId}>
@@ -149,6 +155,55 @@ function AirwaySaveForm(args: { organizationId: string | null }) {
       </Button>
       {persist.isError ? <CatalogError error={persist.error} /> : null}
     </form>
+  )
+}
+
+function AirwayIssueButtons(args: {
+  legId: string
+  organizationId: string | null
+  hawbNo: string | null
+  mawbNo: string | null
+}) {
+  const cache = useQueryClient()
+  const issueHawb = useMutation({
+    mutationFn: () => issueHawbNumber(args.legId),
+    onSuccess: () => {
+      void cache.invalidateQueries({ queryKey: ["airway-legs", args.organizationId] })
+    },
+  })
+  const issueMawb = useMutation({
+    mutationFn: () => issueMawbNumber(args.legId),
+    onSuccess: () => {
+      void cache.invalidateQueries({ queryKey: ["airway-legs", args.organizationId] })
+    },
+  })
+  return (
+    <span className="inline-flex flex-wrap gap-1" data-air="issue-numbers">
+      {args.hawbNo == null ? (
+        <Button
+          type="button"
+          size="sm"
+          variant="outline"
+          disabled={issueHawb.isPending || !args.organizationId}
+          onClick={() => issueHawb.mutate()}
+        >
+          Nadaj HAWB
+        </Button>
+      ) : null}
+      {args.mawbNo == null ? (
+        <Button
+          type="button"
+          size="sm"
+          variant="outline"
+          disabled={issueMawb.isPending || !args.organizationId}
+          onClick={() => issueMawb.mutate()}
+        >
+          Nadaj MAWB
+        </Button>
+      ) : null}
+      {issueHawb.isError ? <CatalogError error={issueHawb.error} /> : null}
+      {issueMawb.isError ? <CatalogError error={issueMawb.error} /> : null}
+    </span>
   )
 }
 
@@ -169,6 +224,12 @@ function AirwayLegRows(args: { organizationId: string | null }) {
             {row.shipment_id} · {row.origin_location_id} → {row.destination_location_id}
             {row.hawb_no ? ` · HAWB ${row.hawb_no}` : ""}
             {row.mawb_no ? ` · MAWB ${row.mawb_no}` : ""}{" "}
+            <AirwayIssueButtons
+              legId={row.id}
+              organizationId={args.organizationId}
+              hawbNo={row.hawb_no}
+              mawbNo={row.mawb_no}
+            />{" "}
             <Link className="underline" to="/shipments">
               zlecenie
             </Link>

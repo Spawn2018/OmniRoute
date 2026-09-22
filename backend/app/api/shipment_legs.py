@@ -21,6 +21,9 @@ from app.models.location import Location
 from app.models.port import Port
 from app.services.geography.location_service import LocationService
 from app.services.geography.port_service import PortService
+from app.services.organization_settings.organization_setting_service import (
+    OrganizationSettingService,
+)
 from app.services.shipment_legs.shipment_leg_service import ShipmentLegService
 from app.services.shipments.shipment_service import ShipmentService
 
@@ -84,6 +87,41 @@ async def create_shipment_leg(
         leg_kind=kind,
         hawb_no=body.hawb_no,
         mawb_no=body.mawb_no,
+    )
+    await session.commit()
+    return ShipmentLegResponse.model_validate(row)
+
+
+async def _waybill_prefix(session: AsyncSession, setting_key: str) -> str | None:
+    row = await OrganizationSettingService(session).get_setting(setting_key)
+    if row is None:
+        return None
+    return row.setting_value
+
+
+@router.post("/{leg_id}/hawb-number", response_model=ShipmentLegResponse)
+async def issue_shipment_leg_hawb(
+    leg_id: UUID,
+    _authz: None = Depends(require_permission("can_manage_shipment_legs", "organization")),
+    session: AsyncSession = Depends(require_tenant_session),
+) -> ShipmentLegResponse:
+    row = await ShipmentLegService(session).issue_hawb(
+        leg_id=leg_id,
+        prefix=await _waybill_prefix(session, "hawb_number_prefix"),
+    )
+    await session.commit()
+    return ShipmentLegResponse.model_validate(row)
+
+
+@router.post("/{leg_id}/mawb-number", response_model=ShipmentLegResponse)
+async def issue_shipment_leg_mawb(
+    leg_id: UUID,
+    _authz: None = Depends(require_permission("can_manage_shipment_legs", "organization")),
+    session: AsyncSession = Depends(require_tenant_session),
+) -> ShipmentLegResponse:
+    row = await ShipmentLegService(session).issue_mawb(
+        leg_id=leg_id,
+        prefix=await _waybill_prefix(session, "mawb_number_prefix"),
     )
     await session.commit()
     return ShipmentLegResponse.model_validate(row)

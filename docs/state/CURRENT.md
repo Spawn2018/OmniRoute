@@ -1,22 +1,22 @@
 ﻿# Bieżący focus
 
-**Faza:** Oś pinu — plaster **619.0** (U3c pule air)
+**Faza:** Oś pinu — plan **620.0** (U3 leftover e-rates)
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **618.0** T7d `charge_sell_in_pln` (gate success)
+**Ostatni plaster:** **619.0** U3c pule HAWB/MAWB (lokalnie; CI po push)
 
-**Etap:** Plaster **619.0**. Delta zaakceptowana (`/noc`). Komenda `/plaster`.
+**Etap:** Plan **620.0**. Komenda `/plan-modul`.
 
 **Noc:** `/noc 7` do **2026-09-22T07:00:00+02:00**
 
 **Miejsce pracy:** produkt = to repo + GitHub.
 
-**Następny:** **619.0** U3c leftover pule IATA/air (delta otwarta). Daty bazowe zlecenia / matching T5 / FK kontekstu / T8 live = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
+**Następny:** **620.0** U3 leftover e-rates IATA HITL (`channel_quote` + `source_ref`). Daty bazowe zlecenia / matching T5 / FK kontekstu / T8 live / cyfra kontrolna IATA = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
 
-**Park / czeka w PLAN:** daty bazowe · fx×FV compose · matching T5 · FK kontekstu · T8 live · HW · SH-R16-4 UXCL · AI3 · G0-SH · N3 · …
+**Park / czeka w PLAN:** daty bazowe · fx×FV compose · matching T5 · FK kontekstu · T8 live · cyfra kontrolna IATA · HW · SH-R16-4 UXCL · AI3 · G0-SH · N3 · …
 
-**Spec (jedyna na sesję produktu):** [docs/deltas/open/619.0-air-waybill-pools.md](../deltas/open/619.0-air-waybill-pools.md)
+**Spec (jedyna na sesję produktu):** brak — najpierw delta **620.0** (`/plan-modul`).
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 
@@ -24,6 +24,7 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
+**2026-09-22:** Plaster **619.0** U3c pule HAWB/MAWB zamknięty lokalnie (CI po push). `/noc 7`.
 **2026-09-22:** Plan **619.0** U3c pule HAWB/MAWB z M-03 (`/noc 7`). 618.0 gate success.
 **2026-09-22:** Plaster **618.0** T7d `charge_sell_in_pln` zamknięty (gate success). `/noc 7`.
 **2026-09-22:** Plan **618.0** T7d przeliczenie kursu w SQL (`/noc 7`). 617.0 gate success.

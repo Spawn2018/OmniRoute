@@ -126,6 +126,17 @@ def require_air_waybill_kind(
         raise InvalidShipmentLeg("list lotniczy tylko na odcinku air")
 
 
+def require_waybill_number_prefix(raw: str | None) -> str:
+    if raw is None:
+        raise InvalidShipmentLeg("prefiks: nadanie numeru wymaga prefiksu w ustawieniach")
+    if type(raw) is not str:
+        raise InvalidShipmentLeg("prefiks: nadanie numeru wymaga prefiksu w ustawieniach")
+    token = raw.strip()
+    if token == "":
+        raise InvalidShipmentLeg("prefiks: nadanie numeru wymaga prefiksu w ustawieniach")
+    return token
+
+
 def require_leg_source_ref(raw: object) -> str:
     if type(raw) is not str:
         raise InvalidShipmentLeg("source_ref musi być tekstem")

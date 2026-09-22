@@ -36,5 +36,18 @@ describe("air surface for 154.0", () => {
     expect(panel).not.toContain("CatalogCreateForm")
     expect(src("features/ops/ops-index.ts")).toContain('"154.0": "/air"')
     expect(src("features/ops/ops-index.ts")).toContain('"209.0": "/air"')
+    expect(src("features/ops/ops-index.ts")).toContain('"619.0": "/air"')
+  })
+
+  it("issues HAWB/MAWB from M-03 prefix without IATA check digit", () => {
+    const panel = src("features/air-freight/airway-leg-panel.tsx")
+    const api = src("lib/shipment-legs-api.ts")
+    expect(panel).toContain("Nadaj HAWB")
+    expect(panel).toContain("Nadaj MAWB")
+    expect(panel).toContain("issueHawbNumber")
+    expect(panel).toContain("issueMawbNumber")
+    expect(panel).not.toContain("checkDigit")
+    expect(api).toContain("hawb-number")
+    expect(api).toContain("mawb-number")
   })
 })
