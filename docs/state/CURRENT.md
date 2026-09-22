@@ -1,12 +1,12 @@
 ﻿# Bieżący focus
 
-**Faza:** Oś pinu — plan **621.0** (D6c pule HBL/MBL)
+**Faza:** Oś pinu — plaster **621.0** (D6c pule HBL/MBL)
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **620.0** U3 e-rates air na `channel_quote` (lokalne; CI po push)
+**Ostatni plaster:** **620.0** U3 e-rates air na `channel_quote` (gate success)
 
-**Etap:** Plan **621.0**. Komenda `/plan-modul`.
+**Etap:** Plaster **621.0**. Delta zaakceptowana (`/noc`). Komenda `/plaster`.
 
 **Noc:** `/noc 7` do **2026-09-22T07:00:00+02:00**
 
@@ -16,7 +16,7 @@
 
 **Park / czeka w PLAN:** daty bazowe · fx×FV compose · matching T5 · FK kontekstu · T8 live · cyfra kontrolna IATA · D6b · HW · SH-R16-4 UXCL · AI3 · G0-SH · N3 · …
 
-**Spec (jedyna na sesję produktu):** brak — najpierw delta `/plan-modul` dla 621.0.
+**Spec (jedyna na sesję produktu):** [docs/deltas/open/621.0-ocean-bill-pools.md](../deltas/open/621.0-ocean-bill-pools.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 
@@ -24,7 +24,8 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-22:** Plaster **620.0** U3 e-rates air zamknięty lokalnie (CI po push). `/noc 7`.
+**2026-09-22:** Plan **621.0** D6c pule HBL/MBL z M-03 (`/noc 7`). 620.0 gate success.
+**2026-09-22:** Plaster **620.0** U3 e-rates air zamknięty (gate success). `/noc 7`.
 **2026-09-22:** Plan **620.0** U3 e-rates air na `channel_quote` (`/noc 7`). 619.0 gate success.
 **2026-09-22:** Plaster **619.0** U3c pule HAWB/MAWB zamknięty (gate success). `/noc 7`.
 **2026-09-22:** Plan **619.0** U3c pule HAWB/MAWB z M-03 (`/noc 7`). 618.0 gate success.

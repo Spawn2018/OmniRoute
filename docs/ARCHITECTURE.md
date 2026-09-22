@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **620.0** U3 e-rates air na `channel_quote` (lokalne; CI po push). **Etap:** Plan **621.0**. Komenda `/plan-modul`. **Następny:** **621.0** D6 leftover pule numerów HBL/MBL z M-03 (`ocean_bill`, analog 619.0). Daty bazowe zlecenia / matching T5 / FK kontekstu / T8 live / cyfra kontrolna IATA / D6b konsolidacja = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **620.0** U3 e-rates air na `channel_quote` (gate success). **Etap:** Plaster **621.0**. Delta zaakceptowana (`/noc`). Komenda `/plaster`. **Następny:** **621.0** D6 leftover pule numerów HBL/MBL z M-03 (`ocean_bill`, analog 619.0). Daty bazowe zlecenia / matching T5 / FK kontekstu / T8 live / cyfra kontrolna IATA / D6b konsolidacja = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
