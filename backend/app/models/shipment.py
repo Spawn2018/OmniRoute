@@ -1,8 +1,10 @@
 import uuid
+from datetime import date
 
 from sqlalchemy import (
     Boolean,
     CheckConstraint,
+    Date,
     ForeignKey,
     ForeignKeyConstraint,
     Index,
@@ -115,4 +117,9 @@ class Shipment(Base, TimestampMixin):
     asn_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)
     # HITL flaga odpadu — nie MOS live i nie auto z waste_mark.
     is_waste: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+    # HITL kotwice kursu T7 — nie fx×FV i nie mnożenie NBP.
+    etd: Mapped[date | None] = mapped_column(Date(), nullable=True)
+    loading_date: Mapped[date | None] = mapped_column(Date(), nullable=True)
+    unloading_date: Mapped[date | None] = mapped_column(Date(), nullable=True)
+    invoice_date: Mapped[date | None] = mapped_column(Date(), nullable=True)
     status: Mapped[str] = mapped_column(String(8), nullable=False)

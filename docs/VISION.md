@@ -29,6 +29,7 @@ zostają w badaniach `04`).
 
 | Data | Co |
 |---|---|
+| 2026-09-22 | **628.0** T7 leftover daty bazowe HITL na `shipment` zamknięty: opcjonalne `etd` / `loading_date` / `unloading_date` / `invoice_date` (`CONFIRMED`). fx×FV SQL i mnożenie przy FV nadal `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-22 | **628.0** T7 leftover daty bazowe HITL na `shipment`: opcjonalne `etd` / `loading_date` / `unloading_date` / `invoice_date` (`REQUIREMENT`). fx×FV SQL i mnożenie przy FV `REJECTED` w tym plasterze. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-22 | **627.0** D9f leftover `branding_ref` HITL na `document_template` zamknięty: opcjonalny snake wskazania marki (`CONFIRMED`). `output_kind` `pdf`/`zpl`, bajty i upload nadal `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-22 | **627.0** D9f leftover `branding_ref` HITL na `document_template`: opcjonalny snake wskazania marki (`REQUIREMENT`). `output_kind` `pdf`/`zpl`, bajty i upload `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |

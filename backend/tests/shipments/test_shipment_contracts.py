@@ -28,6 +28,8 @@ def test_shipment_service_does_not_import_quotations_or_charges() -> None:
     assert "app.models.quotation" not in service
     assert "app.services.document_templates" not in service
     assert "app.services.charges" not in service
+    assert "app.services.nbp_rates" not in service
+    assert "app.services.organization_calendars" not in service
     assert "app.services.operator_decisions" not in service
     assert "rate_line" not in service
     assert "amount" not in service
@@ -76,6 +78,24 @@ def test_migration_444_adds_is_waste_without_mos() -> None:
     assert 'down_revision: str | None = "443_waste_mark"' in source
     assert "is_waste" in source
     assert "Boolean" in source
+    assert "httpx" not in source
+    assert "Numeric" not in source
+    assert "def downgrade" in source
+
+
+def test_migration_500_adds_fx_anchor_dates_without_fx_sql() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "500_shipment_fx_anchor_dates.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "500_shipment_fx_anchor_dates"' in source
+    assert 'down_revision: str | None = "499_document_template_branding"' in source
+    assert "etd" in source
+    assert "loading_date" in source
+    assert "unloading_date" in source
+    assert "invoice_date" in source
+    assert "sa.Date()" in source
+    assert "charge_sell_in_pln" not in source
+    assert "nbp_rate" not in source
     assert "httpx" not in source
     assert "Numeric" not in source
     assert "def downgrade" in source

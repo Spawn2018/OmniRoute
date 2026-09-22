@@ -22,7 +22,7 @@ kolumn. Nie 468.0.
 | luka wyceny | quotation_gap | brakująca dopłata |
 | port załadunku | origin_port_id | POL na `quotation`; FK do `port` |
 | port wyładunku | destination_port_id | POD na `quotation`; FK do `port` |
-| zlecenie | shipment | 90.0 tabela z wyceny z `party_id`; nie tracking |
+| zlecenie | shipment | 90.0 tabela z wyceny z `party_id`; 628.0 opcjonalne `etd`/`loading_date`/`unloading_date`/`invoice_date` (HITL kotwice T7, nie fx×FV); nie tracking |
 | zlecenie główne | parent_shipment_id | T4 HITL 210.0 FK na `shipment` + `relation_kind`; nie SQL marży |
 | numer zlecenia | shipment_ref | D9b HITL 204.0 twardy numer na zleceniu; nie QR; nie PDF; nie generator GD |
 | śledzenie | tracking | 91.0 `tracking_event` na zleceniu; nie AIS; nie mapa |

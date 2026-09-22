@@ -22,7 +22,7 @@ from app.services.routing_guide_matches.routing_guide_match_service import (
     RoutingGuideMatchService,
 )
 from app.services.routing_guides.routing_guide_service import RoutingGuideService
-from app.services.shipments.shipment_service import ShipmentService
+from app.services.shipments.shipment_service import ShipmentHitlFields, ShipmentService
 
 router = APIRouter(prefix="/asns", tags=["asns"])
 
@@ -175,10 +175,12 @@ async def promote_asn_to_shipment(
         quotation_id=quote.id,
         party_id=require_party_on_quotation(quote.party_id),
         source_ref=body.source_ref,
-        guide_code=notice.guide_code,
-        plant_label=notice.plant_label,
-        carrier_label=notice.carrier_label,
-        asn_id=notice.id,
+        hitl=ShipmentHitlFields(
+            guide_code=notice.guide_code,
+            plant_label=notice.plant_label,
+            carrier_label=notice.carrier_label,
+            asn_id=notice.id,
+        ),
     )
     await session.commit()
     return ShipmentResponse.model_validate(row)

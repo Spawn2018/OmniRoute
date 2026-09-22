@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **627.0** D9f `branding_ref` na `document_template` (gate success)
-- **Etap:** Plan **628.0** zaakceptowany (`/noc 7`). Wolno `/plaster`. Leftover T7 daty bazowe HITL (nie fx×FV SQL).
-- **Następny:** **628.0** T7 daty bazowe HITL → plaster. D9c 409 / D9d PDF-QR / D9e skan / D9f pdf-zpl / matching T5 / FK kontekstu / T8 live / D6b / D7b = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
+- **Ostatni plaster:** **628.0** T7 daty bazowe HITL na `shipment` (gate po push)
+- **Etap:** Plan **629.0**. Leftover D7c ledger ruchu palet HITL (nie giełda live).
+- **Następny:** **629.0** D7c ledger ruchu palet HITL. D9c 409 / D9d PDF-QR / D9e skan / D9f pdf-zpl / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

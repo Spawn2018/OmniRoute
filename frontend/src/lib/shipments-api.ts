@@ -15,6 +15,10 @@ export type Shipment = {
   carrier_label: string | null
   asn_id: string | null
   is_waste: boolean
+  etd: string | null
+  loading_date: string | null
+  unloading_date: string | null
+  invoice_date: string | null
   status: string
 }
 
@@ -41,6 +45,10 @@ export async function createShipment(input: {
   plant_label?: string | null
   carrier_label?: string | null
   is_waste?: boolean | null
+  etd?: string | null
+  loading_date?: string | null
+  unloading_date?: string | null
+  invoice_date?: string | null
 }): Promise<Shipment> {
   const response = await fetch("/api/v1/shipments", {
     method: "POST",

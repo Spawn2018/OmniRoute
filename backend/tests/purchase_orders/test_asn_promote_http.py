@@ -75,7 +75,9 @@ def _bind_promote(
 
     class _ShipDesk:
         async def create_shipment(self, **kwargs: object) -> Shipment:
-            if any(row.asn_id == kwargs.get("asn_id") for row in shipments):
+            hitl = kwargs.get("hitl")
+            asn_id = getattr(hitl, "asn_id", None) if hitl is not None else None
+            if any(row.asn_id == asn_id for row in shipments):
                 raise ShipmentConflict("to awizo już ma zlecenie")
             row = Shipment(
                 id=uuid4(),
@@ -86,10 +88,10 @@ def _bind_promote(
                 shipment_ref=None,
                 parent_shipment_id=None,
                 relation_kind=None,
-                guide_code=kwargs.get("guide_code"),  # type: ignore[arg-type]
-                plant_label=kwargs.get("plant_label"),  # type: ignore[arg-type]
-                carrier_label=kwargs.get("carrier_label"),  # type: ignore[arg-type]
-                asn_id=kwargs.get("asn_id"),  # type: ignore[arg-type]
+                guide_code=getattr(hitl, "guide_code", None),  # type: ignore[arg-type]
+                plant_label=getattr(hitl, "plant_label", None),  # type: ignore[arg-type]
+                carrier_label=getattr(hitl, "carrier_label", None),  # type: ignore[arg-type]
+                asn_id=asn_id,  # type: ignore[arg-type]
                 is_waste=False,
                 status="draft",
                 created_by=kwargs["user_id"],  # type: ignore[arg-type]

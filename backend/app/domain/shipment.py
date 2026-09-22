@@ -1,4 +1,5 @@
 import re
+from datetime import date
 from uuid import UUID
 
 from app.domain.errors import InvalidShipment
@@ -138,3 +139,19 @@ def require_parent_pair(
         raise InvalidShipment("rodzaj relacji wymagany przy zleceniu głównym")
     if parent_id == child_id:
         raise InvalidShipment("główne zlecenie nie może być tym samym wierszem")
+
+
+def require_shipment_anchor_date(raw: object) -> date | None:
+    if raw is None:
+        return None
+    if type(raw) is date:
+        return raw
+    if type(raw) is not str:
+        raise InvalidShipment("data")
+    token = raw.strip()
+    if token == "":
+        return None
+    try:
+        return date.fromisoformat(token)
+    except ValueError as exc:
+        raise InvalidShipment("data") from exc

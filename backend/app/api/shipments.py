@@ -1,3 +1,4 @@
+from datetime import date
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, status
@@ -19,7 +20,7 @@ from app.services.routing_guide_matches.routing_guide_match_service import (
     RoutingGuideMatchService,
 )
 from app.services.routing_guides.routing_guide_service import RoutingGuideService
-from app.services.shipments.shipment_service import ShipmentService
+from app.services.shipments.shipment_service import ShipmentHitlFields, ShipmentService
 
 router = APIRouter(prefix="/shipments", tags=["shipments"])
 
@@ -36,6 +37,10 @@ class ShipmentCreate(BaseModel):
     plant_label: str | None = None
     carrier_label: str | None = None
     is_waste: bool | None = None
+    etd: object | None = None
+    loading_date: object | None = None
+    unloading_date: object | None = None
+    invoice_date: object | None = None
 
 
 class ShipmentResponse(BaseModel):
@@ -54,6 +59,10 @@ class ShipmentResponse(BaseModel):
     carrier_label: str | None
     asn_id: UUID | None
     is_waste: bool
+    etd: date | None
+    loading_date: date | None
+    unloading_date: date | None
+    invoice_date: date | None
     status: str
 
 async def _enforce_guide_if_blocking(
@@ -121,13 +130,19 @@ async def create_shipment(
         quotation_id=quote.id,
         party_id=require_party_on_quotation(quote.party_id),
         source_ref=body.source_ref,
-        shipment_ref=body.shipment_ref,
-        parent_shipment_id=body.parent_shipment_id,
-        relation_kind=body.relation_kind,
-        guide_code=body.guide_code,
-        plant_label=body.plant_label,
-        carrier_label=body.carrier_label,
-        is_waste=body.is_waste,
+        hitl=ShipmentHitlFields(
+            shipment_ref=body.shipment_ref,
+            parent_shipment_id=body.parent_shipment_id,
+            relation_kind=body.relation_kind,
+            guide_code=body.guide_code,
+            plant_label=body.plant_label,
+            carrier_label=body.carrier_label,
+            is_waste=body.is_waste,
+            etd=body.etd,
+            loading_date=body.loading_date,
+            unloading_date=body.unloading_date,
+            invoice_date=body.invoice_date,
+        ),
     )
     await session.commit()
     return ShipmentResponse.model_validate(row)

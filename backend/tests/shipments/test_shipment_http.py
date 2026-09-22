@@ -10,11 +10,13 @@ from app.domain.shipment import (
     require_parent_pair,
     require_parent_shipment_id,
     require_relation_kind,
+    require_shipment_anchor_date,
     require_shipment_ref,
 )
 from app.main import app
 from app.models.quotation import Quotation
 from app.models.shipment import Shipment
+from app.services.shipments.shipment_service import ShipmentHitlFields
 from tests.http_auth import bearer_auth_headers
 
 
@@ -57,50 +59,49 @@ class StubShipmentService:
         quotation_id: UUID,
         party_id: UUID,
         source_ref: str,
-        shipment_ref: object = None,
-        parent_shipment_id: object = None,
-        relation_kind: object = None,
-        guide_code: object = None,
-        plant_label: object = None,
-        carrier_label: object = None,
-        is_waste: object = None,
+        hitl: ShipmentHitlFields | None = None,
     ) -> Shipment:
+        fields = hitl or ShipmentHitlFields()
         if any(row.quotation_id == quotation_id for row in self.rows):
             raise ShipmentConflict("to zlecenie już istnieje dla tej wyceny")
         if source_ref.strip() == "":
             raise InvalidShipment("wskazanie zapisu zlecenia")
         row_id = uuid4()
-        parent = require_parent_shipment_id(parent_shipment_id)
-        kind = require_relation_kind(relation_kind)
+        parent = require_parent_shipment_id(fields.parent_shipment_id)
+        kind = require_relation_kind(fields.relation_kind)
         require_parent_pair(parent, kind, child_id=row_id)
         token = None
-        if type(guide_code) is str:
-            stripped = guide_code.strip()
+        if type(fields.guide_code) is str:
+            stripped = fields.guide_code.strip()
             token = stripped or None
         plant = None
-        if type(plant_label) is str:
-            plant = plant_label.strip() or None
+        if type(fields.plant_label) is str:
+            plant = fields.plant_label.strip() or None
         carrier = None
-        if type(carrier_label) is str:
-            carrier = carrier_label.strip() or None
+        if type(fields.carrier_label) is str:
+            carrier = fields.carrier_label.strip() or None
         waste = False
-        if is_waste is not None:
-            if type(is_waste) is not bool:
+        if fields.is_waste is not None:
+            if type(fields.is_waste) is not bool:
                 raise InvalidShipment("is_waste musi być true albo false")
-            waste = is_waste
+            waste = fields.is_waste
         row = Shipment(
             id=row_id,
             organization_id=organization_id,
             quotation_id=quotation_id,
             party_id=party_id,
             source_ref=source_ref,
-            shipment_ref=require_shipment_ref(shipment_ref),
+            shipment_ref=require_shipment_ref(fields.shipment_ref),
             parent_shipment_id=parent,
             relation_kind=kind,
             guide_code=token,
             plant_label=plant,
             carrier_label=carrier,
             is_waste=waste,
+            etd=require_shipment_anchor_date(fields.etd),
+            loading_date=require_shipment_anchor_date(fields.loading_date),
+            unloading_date=require_shipment_anchor_date(fields.unloading_date),
+            invoice_date=require_shipment_anchor_date(fields.invoice_date),
             status="draft",
             created_by=user_id,
         )
@@ -221,6 +222,10 @@ def test_http_create_and_list_shipment(catalog_client: object) -> None:
     assert body["parent_shipment_id"] is None
     assert body["relation_kind"] is None
     assert body["is_waste"] is False
+    assert body["etd"] is None
+    assert body["loading_date"] is None
+    assert body["unloading_date"] is None
+    assert body["invoice_date"] is None
     assert body["status"] == "draft"
     assert "amount" not in body
     assert "margin" not in body
@@ -306,6 +311,45 @@ def test_http_create_shipment_is_waste_true(catalog_client: object) -> None:
     )
     assert created.status_code == 201
     assert created.json()["is_waste"] is True
+
+
+def test_http_create_shipment_fx_anchor_dates(catalog_client: object) -> None:
+    client, quotes, _shipments, _guides, _enf, _matches = catalog_client
+    assert quotes.row is not None
+    created = client.post(
+        "/api/v1/shipments",
+        headers=bearer_auth_headers(),
+        json={
+            "quotation_id": str(quotes.row.id),
+            "source_ref": "fixture://shipment/1",
+            "etd": "2026-09-20",
+            "loading_date": "2026-09-21",
+            "unloading_date": "2026-09-22",
+            "invoice_date": "2026-09-23",
+        },
+    )
+    assert created.status_code == 201
+    body = created.json()
+    assert body["etd"] == "2026-09-20"
+    assert body["loading_date"] == "2026-09-21"
+    assert body["unloading_date"] == "2026-09-22"
+    assert body["invoice_date"] == "2026-09-23"
+
+
+def test_http_create_shipment_bad_anchor_date_is_400(catalog_client: object) -> None:
+    client, quotes, _shipments, _guides, _enf, _matches = catalog_client
+    assert quotes.row is not None
+    response = client.post(
+        "/api/v1/shipments",
+        headers=bearer_auth_headers(),
+        json={
+            "quotation_id": str(quotes.row.id),
+            "source_ref": "fixture://shipment/1",
+            "etd": "22-09-2026",
+        },
+    )
+    assert response.status_code == 400
+    assert "data" in response.json()["detail"]
 
 
 def test_http_create_shipment_bad_is_waste_is_422(catalog_client: object) -> None:

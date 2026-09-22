@@ -28,6 +28,10 @@ function ShipmentCreateForm(args: { organizationId: string | null }) {
   const [plantLabel, setPlantLabel] = useState("")
   const [carrierLabel, setCarrierLabel] = useState("")
   const [isWaste, setIsWaste] = useState(false)
+  const [etd, setEtd] = useState("")
+  const [loadingDate, setLoadingDate] = useState("")
+  const [unloadingDate, setUnloadingDate] = useState("")
+  const [invoiceDate, setInvoiceDate] = useState("")
   const save = useMutation({
     mutationFn: () =>
       createShipment({
@@ -40,6 +44,10 @@ function ShipmentCreateForm(args: { organizationId: string | null }) {
         plant_label: plantLabel.trim() === "" ? null : plantLabel.trim(),
         carrier_label: carrierLabel.trim() === "" ? null : carrierLabel.trim(),
         is_waste: isWaste,
+        etd: etd.trim() === "" ? null : etd.trim(),
+        loading_date: loadingDate.trim() === "" ? null : loadingDate.trim(),
+        unloading_date: unloadingDate.trim() === "" ? null : unloadingDate.trim(),
+        invoice_date: invoiceDate.trim() === "" ? null : invoiceDate.trim(),
       }),
     onSuccess: () => {
       setQuotationId("")
@@ -50,6 +58,10 @@ function ShipmentCreateForm(args: { organizationId: string | null }) {
       setPlantLabel("")
       setCarrierLabel("")
       setIsWaste(false)
+      setEtd("")
+      setLoadingDate("")
+      setUnloadingDate("")
+      setInvoiceDate("")
       void client.invalidateQueries({ queryKey: ["shipments", args.organizationId] })
     },
   })
@@ -108,6 +120,30 @@ function ShipmentCreateForm(args: { organizationId: string | null }) {
         />
         is_waste (HITL · nie MOS)
       </label>
+      <Input
+        aria-label="Data ETD etd"
+        placeholder="etd YYYY-MM-DD albo puste"
+        value={etd}
+        onChange={(event) => setEtd(event.target.value)}
+      />
+      <Input
+        aria-label="Data załadunku loading_date"
+        placeholder="loading_date YYYY-MM-DD albo puste"
+        value={loadingDate}
+        onChange={(event) => setLoadingDate(event.target.value)}
+      />
+      <Input
+        aria-label="Data wyładunku unloading_date"
+        placeholder="unloading_date YYYY-MM-DD albo puste"
+        value={unloadingDate}
+        onChange={(event) => setUnloadingDate(event.target.value)}
+      />
+      <Input
+        aria-label="Data faktury invoice_date"
+        placeholder="invoice_date YYYY-MM-DD albo puste"
+        value={invoiceDate}
+        onChange={(event) => setInvoiceDate(event.target.value)}
+      />
       <Button type="submit" disabled={save.isPending || !args.organizationId}>
         Zapisz zlecenie
       </Button>
@@ -146,6 +182,8 @@ export function ShipmentPage() {
           {row.status} {row.source_ref} {row.shipment_ref ?? "bez numeru"}{" "}
           {row.parent_shipment_id ?? "bez rodzica"} {row.relation_kind ?? ""}{" "}
           {row.is_waste ? "odpad" : "bez odpadu"}{" "}
+          {row.etd ?? "bez etd"} {row.loading_date ?? "bez załadunku"}{" "}
+          {row.unloading_date ?? "bez wyładunku"} {row.invoice_date ?? "bez FV"}{" "}
           <Link className="underline" to="/quotations">
             wycena
           </Link>
