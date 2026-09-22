@@ -207,7 +207,8 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **163.0 leftover:** P1b matching GET DONE 205.0. Zostaje parser WHEN/IF/CALC (P1c); daty ważności (P1d). Tu `applies_when` tekst + Decimal + równość SQL. Nie `rate_line`. Nie `charge`.
 - **162.0 leftover:** D9b `shipment_ref` HITL DONE 204.0. Zostaje: `network_print_requirement` / 409 (D9c; nie C8); PDF/ZPL/QR bitmap (D9d); skan HITL bez kodu Omni (D9e); `branding_ref` / `pdf`/`zpl` (D9f). Tu katalog `own_label`/`cmr` + `html_print` + numer HITL. Nie D8.
 - **161.0 leftover:** giełda/HTTP Chep/LPR (D7b); ledger ujemny (D7c); euro/EPAL (D7d). Tu tylko integer sztuk `chep`/`lpr` na `party`. Nie depozyt.
-- **160.0 leftover:** konsolidacja wielu house pod jeden MBL (D6b); pula numerów M-03 (D6c); unikat `bill_no`. Tu tylko znacznik HBL/MBL na `shipment`. Nie PDF. Nie booking.
+- **620.0 DONE:** `/channel-quotes` `transport_mode` air|other; air wymaga `airport`. Leftover: cyfra kontrolna IATA · live booking / e-rates API.
+- **160.0 leftover:** konsolidacja wielu house pod jeden MBL (D6b); pula numerów M-03 (D6c → **621.0**). Tu tylko znacznik HBL/MBL na `shipment`. Nie PDF. Nie booking.
 - **159.0 leftover:** objętość / paleta / FSC (D5b, P3); silnik dopasowania WHEN/IF (P1). Tu tylko próg `chargeable_weight` na `postal_zone` + Decimal. Nie T-SQL.
 - **158.0 leftover:** POD/ROD jako `shipment_document` (D4b; `pod` koliduje z portem wyładunku); Decimal / rozliczenie pobrań = Fala F. Tu tylko znacznik `collection_status` bez kwoty.
 - **157.0 leftover:** sloty/drzwi doków / overnight (D3b); yard/EIR (G15); T8 `terminal_appointment` (capability HITL DONE 269.0). Tu tylko okno TIME na `stop` magazynu (`postal_zone`/`address`). Nie WMS.

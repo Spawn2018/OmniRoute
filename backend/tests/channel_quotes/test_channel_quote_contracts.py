@@ -43,3 +43,14 @@ def test_generated_api_types_include_channel_quote() -> None:
     source = (_ROOT / "frontend" / "src" / "api" / "types.gen.ts").read_text(encoding="utf-8")
     assert "ChannelQuoteResponse" in source
     assert "ChannelQuoteCreate" in source
+
+
+def test_migration_493_adds_transport_mode() -> None:
+    path = _ROOT / "backend" / "alembic" / "versions" / "493_channel_quote_transport_mode.py"
+    source = path.read_text(encoding="utf-8")
+    assert 'revision: str = "493_channel_quote_transport_mode"' in source
+    assert "transport_mode" in source
+    assert "uq_channel_quote_org_lane_day_mode" in source
+    assert "ck_channel_quote_transport_mode" in source
+    assert "air" in source and "other" in source
+    assert "def downgrade" in source

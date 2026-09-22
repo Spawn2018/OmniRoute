@@ -33,6 +33,7 @@ class ChannelQuoteRepository:
             ChannelQuote.destination_port_id,
             ChannelQuote.quote_date,
             ChannelQuote.currency,
+            ChannelQuote.transport_mode,
         )
         min_amount = func.min(ChannelQuote.amount).over(partition_by=lane)
         min_tt = func.min(ChannelQuote.transit_days).over(partition_by=lane)
@@ -75,6 +76,7 @@ class ChannelQuoteRepository:
         origin_port_id: UUID,
         destination_port_id: UUID,
         on_date: date,
+        transport_mode: str = "other",
     ) -> ChannelQuote | None:
         stmt = (
             select(ChannelQuote)
@@ -83,6 +85,7 @@ class ChannelQuoteRepository:
                 ChannelQuote.origin_port_id == origin_port_id,
                 ChannelQuote.destination_port_id == destination_port_id,
                 ChannelQuote.quote_date <= on_date,
+                ChannelQuote.transport_mode == transport_mode,
             )
             .order_by(ChannelQuote.quote_date.desc())
             .limit(1)

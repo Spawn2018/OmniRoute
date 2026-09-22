@@ -26,6 +26,7 @@ class ChannelQuoteCreate(BaseModel):
     amount: str = Field(min_length=1, max_length=32)
     currency: str = Field(min_length=3, max_length=3)
     transit_days: int | None = None
+    transport_mode: str = "other"
 
 
 class ChannelQuoteResponse(BaseModel):
@@ -40,6 +41,7 @@ class ChannelQuoteResponse(BaseModel):
     amount: str
     currency: str
     transit_days: int | None
+    transport_mode: str
     source_ref: str
     is_cheapest: bool
     is_fastest_tt: bool
@@ -62,6 +64,7 @@ class ChannelQuoteResponse(BaseModel):
             amount=format(row.amount, "f"),
             currency=str(row.currency).strip(),
             transit_days=row.transit_days,
+            transport_mode=row.transport_mode,
             source_ref=row.source_ref,
             is_cheapest=is_cheapest,
             is_fastest_tt=is_fastest_tt,
@@ -92,6 +95,7 @@ async def resolve_channel_quote(
     origin_port_id: UUID = Query(...),
     destination_port_id: UUID = Query(...),
     on_date: date = Query(...),
+    transport_mode: str = Query("other"),
     _authz: None = Depends(_RATES),
     session: AsyncSession = Depends(require_tenant_session),
 ) -> ChannelQuoteResponse:
@@ -101,6 +105,7 @@ async def resolve_channel_quote(
         origin_port_id=origin_port_id,
         destination_port_id=destination_port_id,
         on_date=on_date,
+        transport_mode=transport_mode,
     )
     return ChannelQuoteResponse.from_row(row)
 
@@ -123,6 +128,7 @@ async def create_channel_quote(
         amount=body.amount,
         currency=body.currency,
         transit_days=body.transit_days,
+        transport_mode=body.transport_mode,
     )
     await session.commit()
     return ChannelQuoteResponse.from_row(row)

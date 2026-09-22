@@ -1,6 +1,8 @@
 # Historia plastrów
 
 | Data | Plaster | Moduł | Opis |
+| 2026-09-22 | 620.0 | U3 e-rates air | 2026-09-22 | PRZESZŁO (lokalne; CI po push) | N/A | EXPLAIN | OK | OK | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
+| 2026-09-22 | Plan 620.0 | U3 e-rates air | Plan `transport_mode` air na `channel_quote` (`/noc 7`). 619.0 gate success. |
 | 2026-09-22 | 619.0 | U3c air waybill pools | 2026-09-22 | PRZESZŁO (lokalne; CI po push) | N/A | EXPLAIN | OK | OK | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 2026-09-22 | Plan 619.0 | U3c air waybill pools | Plan puli HAWB/MAWB z M-03 (`/noc 7`). 618.0 gate success. |
 | 2026-09-22 | 618.0 | T7d charge_sell_in_pln | 2026-09-22 | PRZESZŁO | N/A | EXPLAIN | OK | OK | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |

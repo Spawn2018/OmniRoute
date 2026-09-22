@@ -12,6 +12,8 @@ from app.domain.channel_quote import (
     normalize_quote_currency,
     normalize_quote_date,
     normalize_transit_days,
+    require_air_channel_ports,
+    require_transport_mode,
 )
 from app.domain.errors import InvalidChannelQuote
 
@@ -52,6 +54,19 @@ def test_normalize_transit_days_rejects_zero() -> None:
         normalize_transit_days(0)
     assert normalize_transit_days(None) is None
     assert normalize_transit_days(12) == 12
+
+
+def test_require_transport_mode_defaults_and_rejects() -> None:
+    assert require_transport_mode(None) == "other"
+    assert require_transport_mode(" AIR ") == "air"
+    with pytest.raises(InvalidChannelQuote, match="tryb"):
+        require_transport_mode("rail")
+
+
+def test_require_air_channel_ports_needs_airport_flag() -> None:
+    require_air_channel_ports(["airport"], ["airport", "port"])
+    with pytest.raises(InvalidChannelQuote, match="lotnisko"):
+        require_air_channel_ports(["port"], ["airport"])
 
 
 def test_normalize_quote_date_accepts_date() -> None:

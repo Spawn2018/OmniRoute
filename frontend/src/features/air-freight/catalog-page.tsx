@@ -24,9 +24,16 @@ export function AirPage() {
     <section className="flex flex-col gap-3" data-air="run">
       <CatalogHeading
         title="Lotniczy"
-        subtitle="air U3 · odcinek shipment_leg air · opcjonalny HAWB/MAWB · nie pula IATA"
+        subtitle="air U3 · odcinek shipment_leg air · e-rates HITL na channel_quote · opcjonalny HAWB/MAWB · nie live IATA"
       />
       {!ready ? <TenantSessionNotice /> : null}
+      <p className="text-sm text-muted-foreground">
+        E-rates air zapisujesz w katalogu{" "}
+        <Link className="underline" to="/channel-quotes">
+          ofert z kanału
+        </Link>{" "}
+        (tryb air, oba porty z flagą airport).
+      </p>
       {listed.isError ? <CatalogError error={listed.error} /> : null}
       <table className="w-full text-xs">
         <tbody>

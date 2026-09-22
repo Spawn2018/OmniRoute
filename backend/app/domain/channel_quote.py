@@ -58,3 +58,25 @@ def normalize_transit_days(raw: object) -> int | None:
     if days < 1:
         raise InvalidChannelQuote("czas tranzytu: co najmniej 1 dzień")
     return days
+
+
+_TRANSPORT_MODES = frozenset({"air", "other"})
+_AIR_FLAG = "airport"
+
+
+def require_transport_mode(raw: object) -> str:
+    if raw is None:
+        return "other"
+    if type(raw) is not str:
+        raise InvalidChannelQuote("tryb: musi być tekstem")
+    token = raw.strip().lower()
+    if token not in _TRANSPORT_MODES:
+        raise InvalidChannelQuote("tryb: air albo other")
+    return token
+
+
+def require_air_channel_ports(origin_flags: object, destination_flags: object) -> None:
+    if type(origin_flags) is not list or type(destination_flags) is not list:
+        raise InvalidChannelQuote("lotnisko: flagi portu muszą być listą")
+    if _AIR_FLAG not in origin_flags or _AIR_FLAG not in destination_flags:
+        raise InvalidChannelQuote("lotnisko: e-rate air wymaga flagi airport na obu końcach")

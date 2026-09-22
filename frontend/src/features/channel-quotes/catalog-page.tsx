@@ -48,6 +48,11 @@ const columns = [
     header: "TT",
     cell: (info) => info.getValue() ?? "—",
   }),
+  columnHelper.accessor("transport_mode", {
+    id: "transport_mode",
+    header: "Tryb",
+    cell: (info) => <span className="font-mono text-xs">{info.getValue()}</span>,
+  }),
   columnHelper.display({
     id: "amount",
     header: "Oferta",
@@ -69,6 +74,7 @@ const COLUMN_LABELS = {
   destination_port_id: "POD",
   quote_date: "Dzień oferty",
   transit_days: "TT",
+  transport_mode: "Tryb",
   amount: "Oferta",
   source_ref: "source_ref",
 }
@@ -83,10 +89,12 @@ export function ChannelQuoteCatalogPage() {
   const [amount, setAmount] = useState("")
   const [currency, setCurrency] = useState("")
   const [transitDays, setTransitDays] = useState("")
+  const [transportMode, setTransportMode] = useState("other")
   const [lookupPartyId, setLookupPartyId] = useState("")
   const [lookupOrigin, setLookupOrigin] = useState("")
   const [lookupDestination, setLookupDestination] = useState("")
   const [lookupDate, setLookupDate] = useState("")
+  const [lookupTransportMode, setLookupTransportMode] = useState("other")
   const [resolved, setResolved] = useState<ChannelQuote | null>(null)
   const canWrite = Boolean(ctx.organizationId && ctx.userId)
 
@@ -108,6 +116,7 @@ export function ChannelQuoteCatalogPage() {
           amount,
           currency,
           transitDays,
+          transportMode,
         }),
       ),
     onSuccess: () => {
@@ -118,6 +127,7 @@ export function ChannelQuoteCatalogPage() {
       setAmount("")
       setCurrency("")
       setTransitDays("")
+      setTransportMode("other")
       void queryClient.invalidateQueries({ queryKey: ["channel-quotes", ctx.organizationId] })
     },
   })
@@ -129,6 +139,7 @@ export function ChannelQuoteCatalogPage() {
         originPortId: lookupOrigin.trim(),
         destinationPortId: lookupDestination.trim(),
         onDate: lookupDate,
+        transportMode: lookupTransportMode,
       }),
     onSuccess: (row) => setResolved(row),
     onError: () => setResolved(null),
@@ -138,7 +149,7 @@ export function ChannelQuoteCatalogPage() {
     <div className="space-y-3">
       <CatalogHeading
         title="Oferty z kanału armatora"
-        subtitle="channel_quote M-19 · katalog oferty · nie live HTTP · nie stawka kupna"
+        subtitle="channel_quote M-19 · e-rates HITL · air wymaga lotnisk · nie live IATA · nie stawka kupna"
       />
       {canWrite ? null : <TenantSessionNotice />}
       <form
@@ -199,6 +210,18 @@ export function ChannelQuoteCatalogPage() {
           value={transitDays}
           onChange={(event) => setTransitDays(event.target.value)}
         />
+        <label className="flex flex-col gap-1 text-sm">
+          Tryb transportu
+          <select
+            aria-label="Tryb transportu oferty"
+            className="h-9 rounded-md border border-input bg-transparent px-3 text-sm"
+            value={transportMode}
+            onChange={(event) => setTransportMode(event.target.value)}
+          >
+            <option value="other">other</option>
+            <option value="air">air</option>
+          </select>
+        </label>
         <Button type="submit" disabled={createMutation.isPending || !canWrite}>
           Dodaj ofertę
         </Button>
@@ -235,6 +258,18 @@ export function ChannelQuoteCatalogPage() {
           value={lookupDate}
           onChange={(event) => setLookupDate(event.target.value)}
         />
+        <label className="flex flex-col gap-1 text-sm">
+          Sprawdź tryb
+          <select
+            aria-label="Sprawdź tryb transportu oferty"
+            className="h-9 rounded-md border border-input bg-transparent px-3 text-sm"
+            value={lookupTransportMode}
+            onChange={(event) => setLookupTransportMode(event.target.value)}
+          >
+            <option value="other">other</option>
+            <option value="air">air</option>
+          </select>
+        </label>
         <Button
           type="submit"
           variant="outline"
@@ -250,7 +285,8 @@ export function ChannelQuoteCatalogPage() {
         </Button>
         {resolved ? (
           <p className="font-mono text-xs md:col-span-2">
-            {resolved.quote_date} · {resolved.amount} {resolved.currency}
+            {resolved.quote_date} · {resolved.transport_mode} · {resolved.amount}{" "}
+            {resolved.currency}
           </p>
         ) : null}
       </form>

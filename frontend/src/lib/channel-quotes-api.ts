@@ -11,6 +11,7 @@ export type ChannelQuote = {
   amount: string
   currency: string
   transit_days: number | null
+  transport_mode: string
   source_ref: string
   is_cheapest: boolean
   is_fastest_tt: boolean
@@ -24,6 +25,7 @@ export type ChannelQuoteDraft = {
   amount: string
   currency: string
   transitDays?: string
+  transportMode: string
 }
 
 export const EMPTY_QUOTE_DRAFT: ChannelQuoteDraft = {
@@ -33,6 +35,7 @@ export const EMPTY_QUOTE_DRAFT: ChannelQuoteDraft = {
   quoteDate: "",
   amount: "",
   currency: "",
+  transportMode: "other",
 }
 
 export function channelQuoteCreateBody(draft: ChannelQuoteDraft): {
@@ -43,6 +46,7 @@ export function channelQuoteCreateBody(draft: ChannelQuoteDraft): {
   amount: string
   currency: string
   transit_days?: number
+  transport_mode: string
 } {
   const days = draft.transitDays?.trim() ?? ""
   const body: {
@@ -53,6 +57,7 @@ export function channelQuoteCreateBody(draft: ChannelQuoteDraft): {
     amount: string
     currency: string
     transit_days?: number
+    transport_mode: string
   } = {
     party_id: draft.partyId.trim(),
     origin_port_id: draft.originPortId.trim(),
@@ -60,6 +65,7 @@ export function channelQuoteCreateBody(draft: ChannelQuoteDraft): {
     quote_date: draft.quoteDate,
     amount: draft.amount.trim(),
     currency: draft.currency.trim().toUpperCase(),
+    transport_mode: draft.transportMode.trim() || "other",
   }
   if (days !== "") {
     body.transit_days = Number(days)
@@ -101,6 +107,7 @@ export async function resolveChannelQuote(input: {
   originPortId: string
   destinationPortId: string
   onDate: string
+  transportMode?: string
 }): Promise<ChannelQuote> {
   const params = new URLSearchParams({
     party_id: input.partyId,
@@ -108,6 +115,9 @@ export async function resolveChannelQuote(input: {
     destination_port_id: input.destinationPortId,
     on_date: input.onDate,
   })
+  if (input.transportMode !== undefined && input.transportMode.trim() !== "") {
+    params.set("transport_mode", input.transportMode.trim())
+  }
   const response = await fetch(`/api/v1/channel-quotes/resolve?${params.toString()}`, {
     headers: requireAuthHeaders(),
   })

@@ -7,7 +7,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 from app.api.deps import require_tenant_session, set_authz_checker
-from app.domain.channel_quote import manual_channel_source_ref, normalize_transit_days
+from app.domain.channel_quote import manual_channel_source_ref, normalize_transit_days, require_transport_mode
 from app.domain.errors import ChannelQuoteConflict, UnknownCarrierProfile, UnknownChannelQuote
 from app.main import app
 from app.models.channel_quote import ChannelQuote
@@ -50,7 +50,9 @@ class StubChannelQuoteService:
         origin_port_id: UUID,
         destination_port_id: UUID,
         on_date: date,
+        transport_mode: object = None,
     ) -> ChannelQuote:
+        mode = "other" if transport_mode is None else str(transport_mode).strip().lower()
         matches = [
             row
             for row in self.rows
@@ -58,6 +60,7 @@ class StubChannelQuoteService:
             and row.origin_port_id == origin_port_id
             and row.destination_port_id == destination_port_id
             and row.quote_date <= on_date
+            and row.transport_mode == mode
         ]
         if not matches:
             raise UnknownChannelQuote(f"brak oferty kanału na {on_date.isoformat()}")
@@ -75,15 +78,18 @@ class StubChannelQuoteService:
         amount: object,
         currency: object,
         transit_days: object = None,
+        transport_mode: object = None,
     ) -> ChannelQuote:
         if party_id == _MISSING_CARRIER:
             raise UnknownCarrierProfile(f"brak profilu armatora: {party_id}")
+        mode = require_transport_mode(transport_mode)
         for found in self.rows:
             if (
                 found.party_id == party_id
                 and found.origin_port_id == origin_port_id
                 and found.destination_port_id == destination_port_id
                 and found.quote_date == quote_date
+                and found.transport_mode == mode
             ):
                 raise ChannelQuoteConflict(f"oferta na {quote_date.isoformat()} już istnieje")
         row = ChannelQuote(
@@ -96,6 +102,7 @@ class StubChannelQuoteService:
             destination_port_id=destination_port_id,
             quote_date=quote_date,
             transit_days=normalize_transit_days(transit_days),
+            transport_mode=mode,
             source_ref=manual_channel_source_ref(user_id),
             created_by=user_id,
         )
@@ -150,6 +157,7 @@ def test_http_create_list_and_resolve(catalog_client: TestClient) -> None:
     assert isinstance(body["amount"], str)
     assert body["currency"] == "USD"
     assert body["source_ref"] == f"tenant:manual:{user_id}"
+    assert body["transport_mode"] == "other"
     assert "buy_amount" not in body
     assert "margin" not in body
 
@@ -183,6 +191,43 @@ def test_http_create_list_and_resolve(catalog_client: TestClient) -> None:
     conflict = catalog_client.post("/api/v1/channel-quotes", headers=headers, json=payload)
     assert conflict.status_code == 409
     assert "już istnieje" in conflict.json()["detail"]
+
+
+def test_http_create_air_mode_stores_transport_mode(catalog_client: TestClient) -> None:
+    headers = bearer_auth_headers()
+    created = catalog_client.post(
+        "/api/v1/channel-quotes",
+        headers=headers,
+        json={
+            "party_id": str(uuid4()),
+            "origin_port_id": str(uuid4()),
+            "destination_port_id": str(uuid4()),
+            "quote_date": "2026-09-01",
+            "amount": "50.0000",
+            "currency": "EUR",
+            "transport_mode": "air",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["transport_mode"] == "air"
+
+
+def test_http_create_rejects_bad_transport_mode(catalog_client: TestClient) -> None:
+    response = catalog_client.post(
+        "/api/v1/channel-quotes",
+        headers=bearer_auth_headers(),
+        json={
+            "party_id": str(uuid4()),
+            "origin_port_id": str(uuid4()),
+            "destination_port_id": str(uuid4()),
+            "quote_date": "2026-09-01",
+            "amount": "10.0000",
+            "currency": "USD",
+            "transport_mode": "rail",
+        },
+    )
+    assert response.status_code == 400
+    assert "tryb" in response.json()["detail"]
 
 
 def test_http_create_rejects_zero_transit_days(catalog_client: TestClient) -> None:

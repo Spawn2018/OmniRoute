@@ -11,6 +11,8 @@ from app.domain.channel_quote import (
     normalize_quote_currency,
     normalize_quote_date,
     normalize_transit_days,
+    require_air_channel_ports,
+    require_transport_mode,
 )
 from app.domain.errors import (
     ChannelQuoteConflict,
@@ -37,6 +39,7 @@ def _new_channel_quote(
     amount: Decimal,
     currency: str,
     transit_days: int | None,
+    transport_mode: str,
     source_ref: str,
 ) -> ChannelQuote:
     return ChannelQuote(
@@ -49,6 +52,7 @@ def _new_channel_quote(
         destination_port_id=destination_port_id,
         quote_date=quote_date,
         transit_days=transit_days,
+        transport_mode=transport_mode,
         source_ref=source_ref,
         created_by=user_id,
     )
@@ -77,13 +81,16 @@ class ChannelQuoteService:
         origin_port_id: UUID,
         destination_port_id: UUID,
         on_date: object,
+        transport_mode: object = None,
     ) -> ChannelQuote:
         day = normalize_quote_date(on_date)
+        mode = require_transport_mode(transport_mode)
         found = await self._lane_quote(
             party_id,
             origin_port_id,
             destination_port_id,
             day,
+            mode,
         )
         if found is None:
             raise UnknownChannelQuote(f"brak oferty kanału na {day.isoformat()}")
@@ -95,6 +102,7 @@ class ChannelQuoteService:
         origin_port_id: UUID,
         destination_port_id: UUID,
         day: date,
+        transport_mode: str,
     ) -> ChannelQuote | None:
         await self._require_carrier(party_id)
         await self._require_port(origin_port_id)
@@ -104,6 +112,7 @@ class ChannelQuoteService:
             origin_port_id=origin_port_id,
             destination_port_id=destination_port_id,
             on_date=day,
+            transport_mode=transport_mode,
         )
 
     async def create_quote(
@@ -118,15 +127,18 @@ class ChannelQuoteService:
         amount: object,
         currency: object,
         transit_days: object = None,
+        transport_mode: object = None,
         source_ref: object = None,
     ) -> ChannelQuote:
         day = normalize_quote_date(quote_date)
         stored_amount = normalize_quote_amount(amount)
         iso = normalize_quote_currency(currency)
         days = normalize_transit_days(transit_days)
+        mode = require_transport_mode(transport_mode)
         origin = self._quote_source_ref(user_id, source_ref)
+        await self._require_mode_ports(mode, origin_port_id, destination_port_id)
         await self._reject_same_day_lane(
-            party_id, origin_port_id, destination_port_id, day
+            party_id, origin_port_id, destination_port_id, day, mode,
         )
         return await self._insert_quote(
             organization_id=organization_id,
@@ -138,6 +150,7 @@ class ChannelQuoteService:
             amount=stored_amount,
             currency=iso,
             transit_days=days,
+            transport_mode=mode,
             source_ref=origin,
         )
 
@@ -153,12 +166,14 @@ class ChannelQuoteService:
         origin_port_id: UUID,
         destination_port_id: UUID,
         day: date,
+        transport_mode: str,
     ) -> None:
         existing = await self._lane_quote(
             party_id,
             origin_port_id,
             destination_port_id,
             day,
+            transport_mode,
         )
         if existing is not None and existing.quote_date == day:
             raise ChannelQuoteConflict(f"oferta na {day.isoformat()} już istnieje")
@@ -175,6 +190,7 @@ class ChannelQuoteService:
         amount: Decimal,
         currency: str,
         transit_days: int | None,
+        transport_mode: str,
         source_ref: str,
     ) -> ChannelQuote:
         try:
@@ -189,6 +205,7 @@ class ChannelQuoteService:
                     amount=amount,
                     currency=currency,
                     transit_days=transit_days,
+                    transport_mode=transport_mode,
                     source_ref=source_ref,
                 )
             )
@@ -204,3 +221,16 @@ class ChannelQuoteService:
         found = await self._quotes.get_port(port_id)
         if found is None:
             raise UnknownPort(f"nieznany port: {port_id}")
+
+    async def _require_mode_ports(
+        self,
+        transport_mode: str,
+        origin_port_id: UUID,
+        destination_port_id: UUID,
+    ) -> None:
+        origin = await self._quotes.get_port(origin_port_id)
+        destination = await self._quotes.get_port(destination_port_id)
+        if origin is None or destination is None:
+            raise UnknownPort("nieznany port")
+        if transport_mode == "air":
+            require_air_channel_ports(origin.function_flags, destination.function_flags)

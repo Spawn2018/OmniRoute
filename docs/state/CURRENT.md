@@ -1,22 +1,22 @@
 ﻿# Bieżący focus
 
-**Faza:** Oś pinu — plaster **620.0** (U3 e-rates air)
+**Faza:** Oś pinu — plan **621.0** (D6c pule HBL/MBL)
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **619.0** U3c pule HAWB/MAWB (gate success)
+**Ostatni plaster:** **620.0** U3 e-rates air na `channel_quote` (lokalne; CI po push)
 
-**Etap:** Plaster **620.0**. Delta zaakceptowana (`/noc`). Komenda `/plaster`.
+**Etap:** Plan **621.0**. Komenda `/plan-modul`.
 
 **Noc:** `/noc 7` do **2026-09-22T07:00:00+02:00**
 
 **Miejsce pracy:** produkt = to repo + GitHub.
 
-**Następny:** **620.0** U3 leftover e-rates IATA HITL (`channel_quote` + `transport_mode=air`). Daty bazowe zlecenia / matching T5 / FK kontekstu / T8 live / cyfra kontrolna IATA = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
+**Następny:** **621.0** D6 leftover pule numerów HBL/MBL z M-03 (`ocean_bill`, analog 619.0). Daty bazowe zlecenia / matching T5 / FK kontekstu / T8 live / cyfra kontrolna IATA / D6b konsolidacja = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
 
-**Park / czeka w PLAN:** daty bazowe · fx×FV compose · matching T5 · FK kontekstu · T8 live · cyfra kontrolna IATA · HW · SH-R16-4 UXCL · AI3 · G0-SH · N3 · …
+**Park / czeka w PLAN:** daty bazowe · fx×FV compose · matching T5 · FK kontekstu · T8 live · cyfra kontrolna IATA · D6b · HW · SH-R16-4 UXCL · AI3 · G0-SH · N3 · …
 
-**Spec (jedyna na sesję produktu):** [docs/deltas/open/620.0-air-channel-erate.md](../deltas/open/620.0-air-channel-erate.md)
+**Spec (jedyna na sesję produktu):** brak — najpierw delta `/plan-modul` dla 621.0.
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 
@@ -24,12 +24,12 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
+**2026-09-22:** Plaster **620.0** U3 e-rates air zamknięty lokalnie (CI po push). `/noc 7`.
 **2026-09-22:** Plan **620.0** U3 e-rates air na `channel_quote` (`/noc 7`). 619.0 gate success.
 **2026-09-22:** Plaster **619.0** U3c pule HAWB/MAWB zamknięty (gate success). `/noc 7`.
 **2026-09-22:** Plan **619.0** U3c pule HAWB/MAWB z M-03 (`/noc 7`). 618.0 gate success.
 **2026-09-22:** Plaster **618.0** T7d `charge_sell_in_pln` zamknięty (gate success). `/noc 7`.
 **2026-09-22:** Plan **618.0** T7d przeliczenie kursu w SQL (`/noc 7`). 617.0 gate success.
-**2026-09-22:** Plaster **617.0** T7c `fx_rate_day` zamknięty (gate success). `/noc 7`.
 **2026-09-21:** Plan **617.0** T7c dzień roboczy U4 przy offsecie kursu (`/noc 7`). 616.0 gate success.
 **2026-09-21:** Plaster **616.0** T5 `task` HITL zamknięty (gate success). `/noc 7`.
 **2026-09-21:** Plan **616.0** T5 `task` HITL (`/noc 7`). 615.0 gate success.

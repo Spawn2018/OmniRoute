@@ -23,7 +23,18 @@ def _service() -> ChannelQuoteService:
     return service
 
 
-def _row(*, party_id, origin_port_id, destination_port_id, quote_date: date) -> ChannelQuote:
+def _port(*, flags: list[str] | None = None) -> SimpleNamespace:
+    return SimpleNamespace(id=uuid4(), function_flags=flags if flags is not None else ["port"])
+
+
+def _row(
+    *,
+    party_id,
+    origin_port_id,
+    destination_port_id,
+    quote_date: date,
+    transport_mode: str = "other",
+) -> ChannelQuote:
     return ChannelQuote(
         id=uuid4(),
         organization_id=uuid4(),
@@ -33,6 +44,7 @@ def _row(*, party_id, origin_port_id, destination_port_id, quote_date: date) -> 
         origin_port_id=origin_port_id,
         destination_port_id=destination_port_id,
         quote_date=quote_date,
+        transport_mode=transport_mode,
         source_ref="tenant:manual",
     )
 
@@ -40,6 +52,7 @@ def _row(*, party_id, origin_port_id, destination_port_id, quote_date: date) -> 
 @pytest.mark.asyncio
 async def test_create_quote_requires_carrier_profile() -> None:
     service = _service()
+    service._quotes.get_port = AsyncMock(return_value=_port())
     service._quotes.get_carrier_profile = AsyncMock(return_value=None)
     with pytest.raises(UnknownCarrierProfile, match="profilu armatora"):
         await service.create_quote(
@@ -57,7 +70,6 @@ async def test_create_quote_requires_carrier_profile() -> None:
 @pytest.mark.asyncio
 async def test_create_quote_unknown_port() -> None:
     service = _service()
-    service._quotes.get_carrier_profile = AsyncMock(return_value=SimpleNamespace(id=uuid4()))
     service._quotes.get_port = AsyncMock(return_value=None)
     with pytest.raises(UnknownPort, match="nieznany port"):
         await service.create_quote(
@@ -84,7 +96,7 @@ async def test_create_quote_normalizes_and_keeps_manual_origin() -> None:
         return row
 
     service._quotes.get_carrier_profile = AsyncMock(return_value=SimpleNamespace(id=uuid4()))
-    service._quotes.get_port = AsyncMock(return_value=SimpleNamespace(id=origin_id))
+    service._quotes.get_port = AsyncMock(return_value=_port())
     service._quotes.find_as_of = AsyncMock(return_value=None)
     service._quotes.add = add
     stored = await service.create_quote(
@@ -99,9 +111,71 @@ async def test_create_quote_normalizes_and_keeps_manual_origin() -> None:
     )
     assert stored.amount == Decimal("1200.5000")
     assert stored.currency == "USD"
+    assert stored.transport_mode == "other"
     assert stored.source_ref.startswith("tenant:manual:")
     assert stored.organization_id == org_id
     assert stored.party_id == party_id
+
+
+@pytest.mark.asyncio
+async def test_create_air_quote_requires_airport_flags() -> None:
+    service = _service()
+    service._quotes.get_port = AsyncMock(return_value=_port(flags=["port"]))
+    with pytest.raises(InvalidChannelQuote, match="lotnisko"):
+        await service.create_quote(
+            organization_id=uuid4(),
+            user_id=uuid4(),
+            party_id=uuid4(),
+            origin_port_id=uuid4(),
+            destination_port_id=uuid4(),
+            quote_date=date(2026, 9, 1),
+            amount="10",
+            currency="USD",
+            transport_mode="air",
+        )
+
+
+@pytest.mark.asyncio
+async def test_create_air_quote_stores_mode() -> None:
+    service = _service()
+    org_id = uuid4()
+
+    async def add(row: ChannelQuote) -> ChannelQuote:
+        return row
+
+    service._quotes.get_carrier_profile = AsyncMock(return_value=SimpleNamespace(id=uuid4()))
+    service._quotes.get_port = AsyncMock(return_value=_port(flags=["airport"]))
+    service._quotes.find_as_of = AsyncMock(return_value=None)
+    service._quotes.add = add
+    stored = await service.create_quote(
+        organization_id=org_id,
+        user_id=uuid4(),
+        party_id=uuid4(),
+        origin_port_id=uuid4(),
+        destination_port_id=uuid4(),
+        quote_date=date(2026, 9, 1),
+        amount="99",
+        currency="EUR",
+        transport_mode="air",
+    )
+    assert stored.transport_mode == "air"
+
+
+@pytest.mark.asyncio
+async def test_create_quote_rejects_bad_mode() -> None:
+    service = _service()
+    with pytest.raises(InvalidChannelQuote, match="tryb"):
+        await service.create_quote(
+            organization_id=uuid4(),
+            user_id=uuid4(),
+            party_id=uuid4(),
+            origin_port_id=uuid4(),
+            destination_port_id=uuid4(),
+            quote_date=date(2026, 9, 1),
+            amount="10",
+            currency="USD",
+            transport_mode="rail",
+        )
 
 
 @pytest.mark.asyncio
@@ -112,7 +186,7 @@ async def test_create_quote_rejects_duplicate_day() -> None:
     dest_id = uuid4()
     day = date(2026, 9, 1)
     service._quotes.get_carrier_profile = AsyncMock(return_value=SimpleNamespace(id=uuid4()))
-    service._quotes.get_port = AsyncMock(return_value=SimpleNamespace(id=origin_id))
+    service._quotes.get_port = AsyncMock(return_value=_port())
     service._quotes.find_as_of = AsyncMock(
         return_value=_row(
             party_id=party_id,
@@ -132,6 +206,37 @@ async def test_create_quote_rejects_duplicate_day() -> None:
             amount="10",
             currency="USD",
         )
+
+
+@pytest.mark.asyncio
+async def test_create_quote_allows_same_lane_different_mode() -> None:
+    service = _service()
+    party_id = uuid4()
+    origin_id = uuid4()
+    dest_id = uuid4()
+    day = date(2026, 9, 1)
+
+    async def add(row: ChannelQuote) -> ChannelQuote:
+        return row
+
+    service._quotes.get_carrier_profile = AsyncMock(return_value=SimpleNamespace(id=uuid4()))
+    service._quotes.get_port = AsyncMock(return_value=_port(flags=["airport"]))
+    service._quotes.find_as_of = AsyncMock(return_value=None)
+    service._quotes.add = add
+    stored = await service.create_quote(
+        organization_id=uuid4(),
+        user_id=uuid4(),
+        party_id=party_id,
+        origin_port_id=origin_id,
+        destination_port_id=dest_id,
+        quote_date=day,
+        amount="10",
+        currency="USD",
+        transport_mode="air",
+    )
+    assert stored.transport_mode == "air"
+    service._quotes.find_as_of.assert_awaited()
+    assert service._quotes.find_as_of.await_args.kwargs["transport_mode"] == "air"
 
 
 @pytest.mark.asyncio
@@ -163,7 +268,7 @@ async def test_resolve_returns_row() -> None:
         quote_date=date(2026, 9, 1),
     )
     service._quotes.get_carrier_profile = AsyncMock(return_value=SimpleNamespace(id=uuid4()))
-    service._quotes.get_port = AsyncMock(return_value=SimpleNamespace(id=origin_id))
+    service._quotes.get_port = AsyncMock(return_value=_port())
     service._quotes.find_as_of = AsyncMock(return_value=row)
     found = await service.resolve(
         party_id=party_id,
@@ -200,7 +305,7 @@ async def test_get_quote_unknown() -> None:
 async def test_resolve_unknown() -> None:
     service = _service()
     service._quotes.get_carrier_profile = AsyncMock(return_value=SimpleNamespace(id=uuid4()))
-    service._quotes.get_port = AsyncMock(return_value=SimpleNamespace(id=uuid4()))
+    service._quotes.get_port = AsyncMock(return_value=_port())
     service._quotes.find_as_of = AsyncMock(return_value=None)
     with pytest.raises(UnknownChannelQuote, match="brak oferty"):
         await service.resolve(

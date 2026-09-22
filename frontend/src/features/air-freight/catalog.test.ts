@@ -37,6 +37,8 @@ describe("air surface for 154.0", () => {
     expect(src("features/ops/ops-index.ts")).toContain('"154.0": "/air"')
     expect(src("features/ops/ops-index.ts")).toContain('"209.0": "/air"')
     expect(src("features/ops/ops-index.ts")).toContain('"619.0": "/air"')
+    expect(page).toContain('/channel-quotes')
+    expect(page).toContain("e-rates")
   })
 
   it("issues HAWB/MAWB from M-03 prefix without IATA check digit", () => {

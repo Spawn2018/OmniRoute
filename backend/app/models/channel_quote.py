@@ -28,7 +28,8 @@ class ChannelQuote(Base, TimestampMixin):
             "origin_port_id",
             "destination_port_id",
             "quote_date",
-            name="uq_channel_quote_org_lane_day",
+            "transport_mode",
+            name="uq_channel_quote_org_lane_day_mode",
         ),
         ForeignKeyConstraint(
             ["organization_id", "party_id"],
@@ -53,6 +54,10 @@ class ChannelQuote(Base, TimestampMixin):
             "transit_days IS NULL OR transit_days >= 1",
             name="ck_channel_quote_transit_days",
         ),
+        CheckConstraint(
+            "transport_mode IN ('air', 'other')",
+            name="ck_channel_quote_transport_mode",
+        ),
     )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
@@ -69,4 +74,5 @@ class ChannelQuote(Base, TimestampMixin):
     amount: Mapped[Decimal] = mapped_column(Numeric(14, 4), nullable=False)
     currency: Mapped[str] = mapped_column(CHAR(3), nullable=False)
     transit_days: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    transport_mode: Mapped[str] = mapped_column(String(16), nullable=False, default="other")
     source_ref: Mapped[str] = mapped_column(String(256), nullable=False)
