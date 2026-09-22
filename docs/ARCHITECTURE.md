@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **623.0** D7d `pallet_kind=epal` (CI po push). **Etap:** Plan **624.0**. Komenda `/plan-modul`. **Następny:** **624.0** D4b POD/ROD na dokumencie zlecenia (HITL, nie skan). Daty bazowe zlecenia / matching T5 / FK kontekstu / T8 live / D6b konsolidacja / D7b giełda = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **623.0** D7d `pallet_kind=epal` (gate success). **Etap:** Plaster **624.0**. Delta zaakceptowana. Wolno `/plaster`. **Następny:** **624.0** D4b POD/ROD na dokumencie zlecenia (HITL, nie skan). Daty bazowe zlecenia / matching T5 / FK kontekstu / T8 live / D6b konsolidacja / D7b giełda = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
