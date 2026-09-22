@@ -26,7 +26,7 @@ class PalletBalance(Base, TimestampMixin):
         ),
         UniqueConstraint("organization_id", "id", name="uq_pallet_balance_org_id"),
         CheckConstraint(
-            "pallet_kind IN ('chep','lpr')",
+            "pallet_kind IN ('chep','lpr','epal')",
             name="ck_pallet_balance_kind",
         ),
         CheckConstraint("unit_count >= 0", name="ck_pallet_balance_count"),

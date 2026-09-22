@@ -2,7 +2,7 @@ from uuid import UUID
 
 from app.domain.errors import InvalidPalletBalance
 
-_KINDS = frozenset({"chep", "lpr"})
+_KINDS = frozenset({"chep", "lpr", "epal"})
 _MAX_REF = 256
 _FIXTURE = "fixture://pallet-balance/"
 _MANUAL = "tenant:manual"

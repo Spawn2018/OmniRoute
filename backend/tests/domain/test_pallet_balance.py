@@ -13,12 +13,12 @@ from app.domain.pallet_balance import (
 )
 
 
-@given(st.sampled_from(["chep", "lpr"]))
+@given(st.sampled_from(["chep", "lpr", "epal"]))
 def test_pallet_kind_allowlist(raw: str) -> None:
     assert require_pallet_kind(raw) == raw
 
 
-@given(st.sampled_from(["euro", "epal", "CHEP"]))
+@given(st.sampled_from(["euro", "CHEP"]))
 def test_pallet_kind_rejects_unknown(raw: str) -> None:
     with pytest.raises(InvalidPalletBalance, match="rodzaj"):
         require_pallet_kind(raw)

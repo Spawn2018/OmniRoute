@@ -1,6 +1,8 @@
 # Historia plastrów
 
 | Data | Plaster | Moduł | Opis |
+| 2026-09-22 | 623.0 | D7d pallet epal | 2026-09-22 | PRZESZŁO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZŁO | N/A | 30 | PRZESZŁO |
+| 2026-09-22 | Plan 623.0 | D7d pallet epal | Plan `pallet_kind=epal` (`/noc 17`). 622.0 gate success. |
 | 2026-09-22 | 622.0 | U3 MAWB IATA check | 2026-09-22 | PRZESZŁO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZŁO | N/A | 25 | PRZESZŁO |
 | 2026-09-22 | Plan 622.0 | U3 MAWB IATA check | Plan cyfry kontrolnej na wklejonym MAWB (`/noc 17`). 621.0 gate po push. |
 | 2026-09-22 | 621.0 | D6c ocean bill pools | 2026-09-22 | PRZESZŁO | N/A | EXPLAIN | OK | OK | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |

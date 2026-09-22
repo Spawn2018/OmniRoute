@@ -5,7 +5,7 @@ import { CatalogError } from "@/components/catalog/catalog-parts"
 import { Button } from "@/components/ui/button"
 import { listPoolMarks, persistPoolMark, poolWrite } from "@/lib/pallet-balances-api"
 
-const KINDS = ["chep", "lpr"] as const
+const KINDS = ["chep", "lpr", "epal"] as const
 
 type PoolDraft = {
   counterpartToken: string
@@ -41,7 +41,7 @@ function PoolSave(args: { organizationId: string | null }) {
       }}
     >
       <p className="text-xs text-muted-foreground">
-        Saldo sztuk palet Chep albo LPR na kontrahencie. To nie giełda i nie depozyt na
+        Saldo sztuk palet Chep, LPR albo EPAL na kontrahencie. To nie giełda i nie depozyt na
         `/charges`.
       </p>
       <label className="flex flex-col gap-1 text-xs">

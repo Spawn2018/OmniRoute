@@ -1,6 +1,6 @@
 # BC pallet_balance (D7)
 
-Saldo Chep/LPR per tenant, FK do `party`. Nie giełda, nie depozyt, nie kwota.
+Saldo Chep/LPR/EPAL per tenant, FK do `party`. 623.0 dopuszcza `epal`. Nie giełda, nie depozyt, nie kwota.
 
 ## Dozwolone zależności
 - `app.models.pallet_balance`

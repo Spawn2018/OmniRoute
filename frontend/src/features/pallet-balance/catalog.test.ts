@@ -39,5 +39,7 @@ describe("pallet_balance surface for 161.0", () => {
     expect(panel).not.toContain("CatalogCreateForm")
     expect(panel).not.toContain("buy_amount")
     expect(src("features/ops/ops-index.ts")).toContain('"161.0": "/pallet-balances"')
+    expect(src("features/ops/ops-index.ts")).toContain('"623.0": "/pallet-balances"')
+    expect(panel).toContain("epal")
   })
 })

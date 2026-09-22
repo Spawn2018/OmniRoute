@@ -1,22 +1,22 @@
 ﻿# Bieżący focus
 
-**Faza:** Oś pinu — plaster **623.0** (D7d rodzaj palety EPAL)
+**Faza:** Oś pinu — plan **624.0** (D4b POD/ROD)
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **622.0** U3 cyfra kontrolna IATA na MAWB (gate success, rerun po utracie runnera)
+**Ostatni plaster:** **623.0** D7d `pallet_kind=epal` (CI po push)
 
-**Etap:** Plaster **623.0**. Delta zaakceptowana. Wolno `/plaster`.
+**Etap:** Plan **624.0**. Komenda `/plan-modul`.
 
 **Noc:** `/noc 17` do **2026-09-22T17:00:00+02:00**
 
 **Miejsce pracy:** produkt = to repo + GitHub.
 
-**Następny:** **623.0** D7d `pallet_kind` `epal` na saldzie palet (HITL, nie giełda). Daty bazowe zlecenia / matching T5 / FK kontekstu / T8 live / D6b konsolidacja = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
+**Następny:** **624.0** D4b POD/ROD na dokumencie zlecenia (HITL, nie skan). Daty bazowe zlecenia / matching T5 / FK kontekstu / T8 live / D6b konsolidacja / D7b giełda = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
 
 **Park / czeka w PLAN:** daty bazowe · fx×FV compose · matching T5 · FK kontekstu · T8 live · D6b · HW · SH-R16-4 UXCL · AI3 · G0-SH · N3 · …
 
-**Spec (jedyna na sesję produktu):** [623.0-pallet-balance-epal.md](../deltas/open/623.0-pallet-balance-epal.md).
+**Spec (jedyna na sesję produktu):** brak — `/plan-modul` przed kodem.
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 
@@ -24,6 +24,7 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
+**2026-09-22:** Plaster **623.0** D7d `epal` na saldzie palet zamknięty lokalnie (CI po push). `/noc 17`.
 **2026-09-22:** Plan **623.0** D7d `pallet_kind=epal` na saldzie palet (`/noc 17`). 622.0 gate success.
 **2026-09-22:** Plaster **622.0** U3 cyfra kontrolna IATA na MAWB zamknięty lokalnie (CI po push). `/noc 17`.
 **2026-09-22:** Plan **622.0** U3 cyfra kontrolna IATA na wklejonym MAWB (`/noc 17`). 621.0 gate po push.

@@ -1,3 +1,4 @@
+- **623.0 DONE:** `pallet_balance.pallet_kind` przyjmuje `epal`. Leftover: D7b giełda park live · D7c ledger ujemny.
 - **617.0 leftover:** przeliczenie SQL przy FV · odczyt kwoty `nbp_rate`. 617.0 = `fx_rate_day` (offset −1 = poprzedni dzień roboczy U4, nie mnożenie).
 - **612.0 leftover:** HW · UXCL · N3 · AI3 · G0-SH. 612.0 = HITL `container.destination_city` (tekst do 64, nie geokoder).
 - **611.0 leftover:** `destination_city` · FK portu · HW · UXCL · N3. 611.0 = HITL `container.pod_unlocode` (5 znaków UN/LOCODE, nie resolve, nie mapa).
@@ -206,7 +207,7 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **164.0 leftover:** P2c exclusion daterange DONE 206.0. Tu kolekcja `charge_code` + daty + GiST. Nie `charge`. Nie FSC.
 - **163.0 leftover:** P1b matching GET DONE 205.0. Zostaje parser WHEN/IF/CALC (P1c); daty ważności (P1d). Tu `applies_when` tekst + Decimal + równość SQL. Nie `rate_line`. Nie `charge`.
 - **162.0 leftover:** D9b `shipment_ref` HITL DONE 204.0. Zostaje: `network_print_requirement` / 409 (D9c; nie C8); PDF/ZPL/QR bitmap (D9d); skan HITL bez kodu Omni (D9e); `branding_ref` / `pdf`/`zpl` (D9f). Tu katalog `own_label`/`cmr` + `html_print` + numer HITL. Nie D8.
-- **161.0 leftover:** giełda/HTTP Chep/LPR (D7b); ledger ujemny (D7c); euro/EPAL (D7d). Tu tylko integer sztuk `chep`/`lpr` na `party`. Nie depozyt.
+- **161.0 leftover:** giełda/HTTP Chep/LPR (D7b); ledger ujemny (D7c). EPAL = **623.0** DONE. Tu integer sztuk `chep`/`lpr`/`epal` na `party`. Nie depozyt.
 - **621.0 DONE:** `/ocean-bills` pule HBL/MBL z M-03 (`hbl_number_prefix`/`mbl_number_prefix`); `bill_no` nullable; Nadaj SQL. Leftover: D6b konsolidacja · PDF · live booking.
 - **622.0 DONE:** wklejony MAWB w kształcie IATA — cyfra = seria modulo 7. Leftover: live booking / e-rates API. Pula M-03 bez cyfry.
 - **620.0 DONE:** `/channel-quotes` `transport_mode` air|other; air wymaga `airport`. Leftover: live booking / e-rates API. Cyfra IATA = 622.0.

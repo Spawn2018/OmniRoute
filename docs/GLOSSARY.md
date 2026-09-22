@@ -86,7 +86,7 @@ kolumn. Nie 468.0.
 | pobranie COD | cod_instruction | 158.0 znacznik na `shipment` bez kwoty; nie rozliczenie F; nie POD portu |
 | cennik drobnicy | groupage_tariff | 159.0 próg `chargeable_weight` na strefie; Decimal; nie silnik P1; nie FSC |
 | konosament LCL | ocean_bill | 160.0 HBL/MBL na `shipment`; nie PDF; nie booking; nie druga tabela LCL |
-| saldo palet | pallet_balance | 161.0 Chep/LPR na `party`; integer sztuk; nie giełda; nie depozyt |
+| saldo palet | pallet_balance | 161.0 Chep/LPR na `party`; 623.0 także `epal`; integer sztuk; nie giełda; nie depozyt |
 | szablon wydruku | document_template | 162.0 layout jako dane; nie `quotation_print_template`; nie PDF |
 | karta stawek | rate_card | 163.0 `applies_when` jako dane + Decimal; 205.0 równość GET matching; nie silnik WHEN/IF; nie `rate_line` |
 | szablon opłat | charge_template | 164.0 kolekcja `charge_code` + daty; 206.0 exclusion daterange; nie `charge` |

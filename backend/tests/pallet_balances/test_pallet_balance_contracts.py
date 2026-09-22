@@ -21,6 +21,18 @@ def test_migration_101_creates_pallet_balance_and_forces_rls() -> None:
     assert "drop_table" in source.split("def downgrade")[1]
 
 
+def test_migration_495_adds_epal_kind_without_new_table() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "495_pallet_balance_epal.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "495_pallet_balance_epal"' in source
+    assert 'down_revision: str | None = "494_ocean_bill_number_pool"' in source
+    assert "epal" in source
+    assert "create_table" not in source
+    assert "httpx" not in source
+    assert "Numeric" not in source
+
+
 def test_pallet_balance_service_does_not_import_parents() -> None:
     service = (_SERVICES / "pallet_balances" / "pallet_balance_service.py").read_text(
         encoding="utf-8",
@@ -28,6 +40,7 @@ def test_pallet_balance_service_does_not_import_parents() -> None:
     assert "app.services.parties" not in service
     assert "app.services.charges" not in service
     assert "app.services.shipments" not in service
+    assert "app.services.pallet_pool_marks" not in service
     assert "httpx" not in service
     assert "buy_amount" not in service
     assert "Decimal" not in service

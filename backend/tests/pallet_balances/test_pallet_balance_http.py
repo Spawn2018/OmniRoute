@@ -169,6 +169,25 @@ def test_http_create_pallet_unknown_kind_is_400(catalog_client: object) -> None:
     assert "rodzaj" in response.json()["detail"]
 
 
+def test_http_create_pallet_epal_kind(catalog_client: object) -> None:
+    client, counterparts, _rows = catalog_client
+    assert counterparts.row is not None
+    created = client.post(
+        "/api/v1/pallet-balances",
+        headers=bearer_auth_headers(),
+        json={
+            "party_id": str(counterparts.row.id),
+            "pallet_kind": "epal",
+            "unit_count": 4,
+            "source_ref": "fixture://pallet-balance/1",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["pallet_kind"] == "epal"
+    assert created.json()["unit_count"] == 4
+    assert "amount" not in created.json()
+
+
 def test_http_create_pallet_negative_count_is_400(catalog_client: object) -> None:
     client, counterparts, _rows = catalog_client
     assert counterparts.row is not None
