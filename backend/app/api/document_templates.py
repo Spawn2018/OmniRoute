@@ -24,6 +24,7 @@ class DocumentTemplateCreate(BaseModel):
     layout_ref: str
     output_kind: str
     source_ref: str
+    branding_ref: str | None = None
 
 
 class DocumentTemplateResponse(BaseModel):
@@ -34,6 +35,7 @@ class DocumentTemplateResponse(BaseModel):
     template_kind: str
     language: str
     layout_ref: str
+    branding_ref: str | None
     output_kind: str
     source_ref: str
 
@@ -70,6 +72,7 @@ async def create_document_template(
         layout_ref=body.layout_ref,
         output_kind=body.output_kind,
         source_ref=body.source_ref,
+        branding_ref=body.branding_ref,
     )
     await session.commit()
     return _as_row(row)

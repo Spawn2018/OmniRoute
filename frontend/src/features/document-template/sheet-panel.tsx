@@ -12,6 +12,7 @@ type SheetDraft = {
   kindToken: string
   tongueToken: string
   layoutToken: string
+  brandToken: string
   exitToken: string
   originStamp: string
 }
@@ -20,6 +21,7 @@ const EMPTY_SHEET: SheetDraft = {
   kindToken: "own_label",
   tongueToken: "pl",
   layoutToken: "own-label-pl",
+  brandToken: "",
   exitToken: "html_print",
   originStamp: "fixture://document-template/",
 }
@@ -88,6 +90,15 @@ function SheetSave(args: { organizationId: string | null }) {
         />
       </label>
       <label className="flex flex-col gap-1 text-xs">
+        Wskazanie brandingu (opcjonalne)
+        <input
+          aria-label="Wskazanie brandingu"
+          className="h-9 rounded-md border bg-background px-2 font-mono"
+          value={draft.brandToken}
+          onChange={(change) => setDraft({ ...draft, brandToken: change.target.value })}
+        />
+      </label>
+      <label className="flex flex-col gap-1 text-xs">
         Rodzaj wyjścia
         <select
           aria-label="Rodzaj wyjścia"
@@ -136,6 +147,7 @@ function SheetRows(args: { organizationId: string | null }) {
             <span>{row.template_kind}</span>
             <span>{row.language}</span>
             <span>{row.layout_ref}</span>
+            <span>{row.branding_ref ?? "—"}</span>
             <span>{row.output_kind}</span>
           </li>
         ))}

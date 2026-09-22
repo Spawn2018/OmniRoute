@@ -1,6 +1,7 @@
 # Historia plastrów
 
 | Data | Plaster | Moduł | Opis |
+| 2026-09-22 | 627.0 | D9f branding HITL | 2026-09-22 | PRZESZŁO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZŁO | N/A | 40 | PRZESZŁO |
 | 2026-09-22 | Plan 627.0 | D9f branding HITL | Plan opcjonalnego `branding_ref` na szablonie (`/noc 7`). 626.0 gate po push. |
 | 2026-09-22 | 626.0 | D9c network print | 2026-09-22 | PRZESZŁO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZŁO | N/A | 35 | PRZESZŁO |
 | 2026-09-22 | Plan 626.0 | D9c network print | Plan katalogu `network_print_requirement` (`/noc 17`). 625.0 gate success. |

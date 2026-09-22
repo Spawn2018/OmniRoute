@@ -37334,6 +37334,17 @@
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
+          },
+          "branding_ref": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Branding Ref"
           }
         },
         "additionalProperties": false,
@@ -37371,6 +37382,17 @@
             "type": "string",
             "title": "Layout Ref"
           },
+          "branding_ref": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Branding Ref"
+          },
           "output_kind": {
             "type": "string",
             "title": "Output Kind"
@@ -37387,6 +37409,7 @@
           "template_kind",
           "language",
           "layout_ref",
+          "branding_ref",
           "output_kind",
           "source_ref"
         ],

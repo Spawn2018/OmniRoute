@@ -1,22 +1,22 @@
 ﻿# Bieżący focus
 
-**Faza:** Oś pinu — po **626.0** (D9c katalog wymogu wydruku sieci)
+**Faza:** Oś pinu — po **627.0** (D9f `branding_ref` HITL)
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **626.0** D9c `network_print_requirement` (gate po push)
+**Ostatni plaster:** **627.0** D9f `branding_ref` na `document_template` (gate po push)
 
-**Etap:** Plaster **627.0**. Delta zaakceptowana (`/noc 7`). Leftover D9f `branding_ref` HITL na szablonie (nie PDF/ZPL).
+**Etap:** Plan **628.0**. Leftover T7 daty bazowe HITL (nie fx×FV SQL).
 
 **Noc:** `/noc 7` do **2026-09-23T07:00:00+02:00**
 
 **Miejsce pracy:** produkt = to repo + GitHub.
 
-**Następny:** **627.0** D9f branding HITL (nie PDF). D9c 409 / D9d PDF-QR / D9e skan / daty bazowe / matching T5 / FK kontekstu / T8 live / D6b / D7b = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
+**Następny:** **628.0** T7 daty bazowe HITL. D9c 409 / D9d PDF-QR / D9e skan / D9f pdf-zpl / matching T5 / FK kontekstu / T8 live / D6b / D7b = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
 
-**Park / czeka w PLAN:** D9c 409 · D9d · D9e · daty bazowe · fx×FV · matching T5 · FK kontekstu · T8 live · D6b · HW · SH-R16-4 UXCL · AI3 · G0-SH · N3 · …
+**Park / czeka w PLAN:** D9c 409 · D9d · D9e · D9f pdf-zpl · fx×FV · matching T5 · FK kontekstu · T8 live · D6b · HW · SH-R16-4 UXCL · AI3 · G0-SH · N3 · …
 
-**Spec (jedyna na sesję produktu):** [docs/deltas/open/627.0-document-template-branding.md](../deltas/open/627.0-document-template-branding.md)
+**Spec (jedyna na sesję produktu):** brak — najpierw `/plan-modul` → delta `628.0`.
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 
@@ -24,6 +24,7 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
+**2026-09-22:** Plaster **627.0** D9f `branding_ref` HITL zamknięty lokalnie (CI po push). `/noc 7`.
 **2026-09-22:** Plan **627.0** D9f `branding_ref` HITL na szablonie (`/noc 7`). 626.0 gate po push.
 **2026-09-22:** Plaster **626.0** D9c katalog `network_print_requirement` zamknięty lokalnie (CI po push). `/noc 17`.
 **2026-09-22:** Plan **626.0** D9c katalog `network_print_requirement` bez 409 (`/noc 17`). 625.0 gate success.

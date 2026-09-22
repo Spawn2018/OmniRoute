@@ -11,6 +11,7 @@ describe("sheetWrite", () => {
         kindToken: " cmr ",
         tongueToken: " en ",
         layoutToken: " cmr-en ",
+        brandToken: " tenant-logo ",
         exitToken: " html_print ",
         originStamp: "tenant:manual",
       }),
@@ -18,9 +19,23 @@ describe("sheetWrite", () => {
       template_kind: "cmr",
       language: "en",
       layout_ref: "cmr-en",
+      branding_ref: "tenant-logo",
       output_kind: "html_print",
       source_ref: "tenant:manual",
     })
+  })
+
+  it("omits blank branding as null", () => {
+    expect(
+      sheetWrite({
+        kindToken: "own_label",
+        tongueToken: "pl",
+        layoutToken: "own-label-pl",
+        brandToken: "  ",
+        exitToken: "html_print",
+        originStamp: "tenant:manual",
+      }).branding_ref,
+    ).toBeNull()
   })
 })
 
@@ -36,10 +51,12 @@ describe("document_template surface for 162.0", () => {
     expect(panel).toContain("persistSheetMark")
     expect(panel).toContain('data-document-template="sheet-form"')
     expect(panel).toContain("Zapisz szablon wydruku")
+    expect(panel).toContain("Wskazanie brandingu")
     expect(panel).not.toContain("parseFloat")
     expect(panel).not.toContain("leaflet")
     expect(panel).not.toContain("CatalogCreateForm")
     expect(panel).not.toContain("buy_amount")
     expect(src("features/ops/ops-index.ts")).toContain('"162.0": "/document-templates"')
+    expect(src("features/ops/ops-index.ts")).toContain('"627.0": "/document-templates"')
   })
 })

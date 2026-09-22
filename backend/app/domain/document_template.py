@@ -29,6 +29,19 @@ def require_layout_ref(raw: object) -> str:
     return token
 
 
+def require_branding_ref(raw: object) -> str | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidDocumentTemplate("branding musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        return None
+    if _LAYOUT.fullmatch(token) is None:
+        raise InvalidDocumentTemplate("branding: 2–64 snake")
+    return token
+
+
 def require_template_language(raw: object) -> str:
     if type(raw) is not str:
         raise InvalidDocumentTemplate("język szablonu musi być tekstem")

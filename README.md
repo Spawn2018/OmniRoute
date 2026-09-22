@@ -87,10 +87,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **626.0** D9c `network_print_requirement` (gate po push)
-- **Etap:** Plaster **627.0**. Delta zaakceptowana (`/noc 7`). Leftover D9f `branding_ref` HITL na szablonie (nie PDF/ZPL).
-- **Następny:** **627.0** D9f branding HITL (nie PDF). D9c 409 / D9d PDF-QR / D9e skan / daty bazowe / matching T5 / FK kontekstu / T8 live / D6b / D7b = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **627.0** D9f `branding_ref` na `document_template` (gate po push)
+- **Etap:** Plan **628.0**. Leftover T7 daty bazowe HITL (nie fx×FV SQL).
+- **Następny:** **628.0** T7 daty bazowe HITL. D9c 409 / D9d PDF-QR / D9e skan / D9f pdf-zpl / matching T5 / FK kontekstu / T8 live / D6b / D7b = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

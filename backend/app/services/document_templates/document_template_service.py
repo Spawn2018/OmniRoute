@@ -3,6 +3,7 @@ from uuid import UUID, uuid4
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.document_template import (
+    require_branding_ref,
     require_layout_ref,
     require_output_kind,
     require_template_kind,
@@ -32,6 +33,7 @@ class DocumentTemplateService:
         layout_ref: object,
         output_kind: object,
         source_ref: object,
+        branding_ref: object = None,
     ) -> DocumentTemplate:
         row = DocumentTemplate(
             id=uuid4(),
@@ -39,6 +41,7 @@ class DocumentTemplateService:
             template_kind=require_template_kind(template_kind),
             language=require_template_language(language),
             layout_ref=require_layout_ref(layout_ref),
+            branding_ref=require_branding_ref(branding_ref),
             output_kind=require_output_kind(output_kind),
             source_ref=require_template_source_ref(source_ref),
             created_by=user_id,

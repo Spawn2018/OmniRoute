@@ -6,6 +6,7 @@ from fastapi.testclient import TestClient
 
 from app.api.deps import require_tenant_session, set_authz_checker
 from app.domain.document_template import (
+    require_branding_ref,
     require_layout_ref,
     require_output_kind,
     require_template_kind,
@@ -47,6 +48,7 @@ class StubDocumentTemplateService:
         layout_ref: str,
         output_kind: str,
         source_ref: str,
+        branding_ref: str | None = None,
     ) -> DocumentTemplate:
         row = DocumentTemplate(
             id=uuid4(),
@@ -54,6 +56,7 @@ class StubDocumentTemplateService:
             template_kind=require_template_kind(template_kind),
             language=require_template_language(language),
             layout_ref=require_layout_ref(layout_ref),
+            branding_ref=require_branding_ref(branding_ref),
             output_kind=require_output_kind(output_kind),
             source_ref=require_template_source_ref(source_ref),
             created_by=user_id,
@@ -111,12 +114,35 @@ def test_http_create_and_list_document_template(catalog_client: object) -> None:
     assert body["organization_id"] == str(org_id)
     assert body["template_kind"] == "own_label"
     assert body["layout_ref"] == "own-label-pl"
+    assert body["branding_ref"] is None
     assert body["output_kind"] == "html_print"
     assert "amount" not in body
     assert "buy_amount" not in body
     listed = client.get("/api/v1/document-templates", headers=headers)
     assert listed.status_code == 200
     assert listed.json()[0]["id"] == body["id"]
+
+
+def test_http_create_template_with_branding_ref(catalog_client: object) -> None:
+    client, _rows = catalog_client
+    created = client.post(
+        "/api/v1/document-templates",
+        headers=bearer_auth_headers(),
+        json=_payload(branding_ref="tenant-logo"),
+    )
+    assert created.status_code == 201
+    assert created.json()["branding_ref"] == "tenant-logo"
+
+
+def test_http_create_template_bad_branding_is_400(catalog_client: object) -> None:
+    client, _rows = catalog_client
+    response = client.post(
+        "/api/v1/document-templates",
+        headers=bearer_auth_headers(),
+        json=_payload(branding_ref="Own Brand"),
+    )
+    assert response.status_code == 400
+    assert "branding" in response.json()["detail"]
 
 
 def test_http_create_template_unknown_kind_is_400(catalog_client: object) -> None:

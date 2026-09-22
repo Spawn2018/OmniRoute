@@ -4988,6 +4988,10 @@ export type DocumentTemplateCreate = {
      * Source Ref
      */
     source_ref: string;
+    /**
+     * Branding Ref
+     */
+    branding_ref?: string | null;
 };
 
 /**
@@ -5014,6 +5018,10 @@ export type DocumentTemplateResponse = {
      * Layout Ref
      */
     layout_ref: string;
+    /**
+     * Branding Ref
+     */
+    branding_ref: string | null;
     /**
      * Output Kind
      */

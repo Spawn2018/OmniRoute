@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **627.0** D9f branding HITL (nie PDF). D9c 409 / D9d PDF-QR / D9e skan / daty bazowe / matching T5 / FK kontekstu / T8 live / D6b / D7b = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
+**Następny:** **628.0** T7 daty bazowe HITL. D9c 409 / D9d PDF-QR / D9e skan / D9f pdf-zpl / matching T5 / FK kontekstu / T8 live / D6b / D7b = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -509,7 +509,7 @@ Przy `/plan-modul`: karta T + [EXP1](analysis/karty-pol-fala-exp.md) (stop/konte
 | T5 | task engine (warunki = dane) | zamknięty HITL szablon ([263.0](deltas/archived/263.0-task-template.md); leftover outbox kind ([264.0](deltas/archived/264.0-outbox-task-template.md)); HITL instancja `task` [616.0](deltas/archived/616.0-task.md); leftover matching SQL / FK kontekstu / konsument) | po T2 | async po konsumencie outboxa (leftover M-02) |
 | T6 | planning board 4 widoki + mapa lazy + klawiatura N10 | zamknięty HITL mapa ([261.0](deltas/archived/261.0-planning-map.md); leftover 4 widoki / N10 / T6b–d / X8) | po T2 | mapa poza 250 kB |
 | **N11** | handover SBAR zmiany | zamknięty HITL ([529.0](deltas/archived/529.0-handover-sbar-mark.md); notatka S/B/A/R [543.0](deltas/archived/543.0-handover-note.md); leftover T6 bind · N8) | po T6 | leftover T6 bind · N8 |
-| T7 | `fx_rate_basis` SQL; kalendarz U4 | zamknięty HITL ([211.0](deltas/archived/211.0-fx-rate-basis.md); leftover T7b override/`charge` [615.0](deltas/archived/615.0-charge-fx-rate.md); T7c `fx_rate_day` [617.0](deltas/archived/617.0-fx-working-day.md); T7d SQL `charge_sell_in_pln` [618.0](deltas/archived/618.0-charge-fx-sql.md); leftover daty bazowe / fx×FV) | po T1+U4 | LLM/JS nie liczą |
+| T7 | `fx_rate_basis` SQL; kalendarz U4 | zamknięty HITL ([211.0](deltas/archived/211.0-fx-rate-basis.md); leftover T7b override/`charge` [615.0](deltas/archived/615.0-charge-fx-rate.md); T7c `fx_rate_day` [617.0](deltas/archived/617.0-fx-working-day.md); T7d SQL `charge_sell_in_pln` [618.0](deltas/archived/618.0-charge-fx-sql.md); leftover daty bazowe → Plan **628.0** / fx×FV) | po T1+U4 | LLM/JS nie liczą |
 | T8 | slot capability + godziny terminalu N4; **confirmed tylko z API** | zamknięty HITL ([269.0](deltas/archived/269.0-terminal-slot-connector.md); leftover live API / `terminal_appointment` / confirmed z adaptera) | po T3 | nie gwarancja prawna; nie Selenium |
 
 **B0b** (po T2): zamknięty HITL `prediction_ledger` + N7 ([193.0](deltas/archived/193.0-prediction-ledger.md)); zamknięty HITL `plan_snapshot` ([265.0](deltas/archived/265.0-plan-snapshot.md)); zamknięty HITL `circle_sim` ([266.0](deltas/archived/266.0-circle-sim.md)); zamknięty HITL `lane_km` ([267.0](deltas/archived/267.0-lane-km.md)); leftover TT z actuals — karta [karty-pol-fala-v.md](analysis/karty-pol-fala-v.md). Indeks paliwa = P3 `fuel_index`.
@@ -522,7 +522,7 @@ Przy `/plan-modul`: karta T + [EXP1](analysis/karty-pol-fala-exp.md) (stop/konte
 |---|---|---|---|
 | D1–D7 | linie, paczka, cross-dock, COD, cennik LTL, LCL/HBL, palety Chep/LPR (EXP2.17) | D1 zamknięty ([155.0](deltas/archived/155.0-groupage-line.md); leftover OR hubów); D2 zamknięty ([156.0](deltas/archived/156.0-shipment-package.md); leftover kamera/WMS/SSCC); D3 zamknięty ([157.0](deltas/archived/157.0-dock-appointment.md); leftover D3b/G15/T8); D4 zamknięty ([158.0](deltas/archived/158.0-cod-instruction.md); leftover D4b POD/ROD [624.0](deltas/archived/624.0-shipment-document-rod.md)); D5 zamknięty ([159.0](deltas/archived/159.0-groupage-tariff.md); leftover D5b objętość [625.0](deltas/archived/625.0-groupage-tariff-volume.md) / P1); D6 zamknięty ([160.0](deltas/archived/160.0-ocean-bill.md); leftover D6b; leftover D6c pule M-03 [621.0](deltas/archived/621.0-ocean-bill-pools.md)); D7 zamknięty ([161.0](deltas/archived/161.0-pallet-balance.md); leftover D7b giełda park live; leftover D7c ledger; leftover D7d EPAL [623.0](deltas/archived/623.0-pallet-balance-epal.md)) | po U3+T2; nie WMS; karta [karty-pol-fala-d.md](analysis/karty-pol-fala-d.md) |
 | D8 | etykieta sieci po oficjalnym API | parked aż TO_VERIFY API | zakaz generatora Palletforce |
-| D9 | silnik wydruków + QR `shipment_ref` | zamknięty ([162.0](deltas/archived/162.0-document-template.md); leftover D9b HITL numer ([204.0](deltas/archived/204.0-shipment-ref.md)); leftover D9c katalog ([626.0](deltas/archived/626.0-network-print-requirement.md)); leftover D9f branding ([627.0](deltas/open/627.0-document-template-branding.md) delta); leftover D9c 409 / D9d–e / D9f pdf-zpl) | 409 bez etykiety sieci = leftover D9c; D8 parked |
+| D9 | silnik wydruków + QR `shipment_ref` | zamknięty ([162.0](deltas/archived/162.0-document-template.md); leftover D9b HITL numer ([204.0](deltas/archived/204.0-shipment-ref.md)); leftover D9c katalog ([626.0](deltas/archived/626.0-network-print-requirement.md)); leftover D9f branding ([627.0](deltas/archived/627.0-document-template-branding.md)); leftover D9c 409 / D9d–e / D9f pdf-zpl) | 409 bez etykiety sieci = leftover D9c; D8 parked |
 
 ### Fala P — pricing (P1–P6; P0 wyżej)
 
@@ -892,13 +892,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

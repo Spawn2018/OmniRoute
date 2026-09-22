@@ -23,6 +23,10 @@ class DocumentTemplate(Base, TimestampMixin):
             "output_kind IN ('html_print')",
             name="ck_document_template_output",
         ),
+        CheckConstraint(
+            "branding_ref IS NULL OR branding_ref ~ '^[a-z0-9][a-z0-9_-]{1,63}$'",
+            name="ck_document_template_branding",
+        ),
         Index("ix_document_template_org_kind", "organization_id", "template_kind"),
     )
 
@@ -37,5 +41,6 @@ class DocumentTemplate(Base, TimestampMixin):
     template_kind: Mapped[str] = mapped_column(String(16), nullable=False)
     language: Mapped[str] = mapped_column(String(8), nullable=False)
     layout_ref: Mapped[str] = mapped_column(String(64), nullable=False)
+    branding_ref: Mapped[str | None] = mapped_column(String(64), nullable=True)
     output_kind: Mapped[str] = mapped_column(String(16), nullable=False)
     source_ref: Mapped[str] = mapped_column(String(256), nullable=False)

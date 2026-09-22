@@ -9,6 +9,7 @@ export type SheetMark = {
   template_kind: string
   language: string
   layout_ref: string
+  branding_ref: string | null
   output_kind: string
   source_ref: string
 }
@@ -17,6 +18,7 @@ export type SheetMarkWrite = {
   template_kind: string
   language: string
   layout_ref: string
+  branding_ref?: string | null
   output_kind: string
   source_ref: string
 }
@@ -25,13 +27,16 @@ export function sheetWrite(args: {
   kindToken: string
   tongueToken: string
   layoutToken: string
+  brandToken: string
   exitToken: string
   originStamp: string
 }): SheetMarkWrite {
+  const branding = args.brandToken.trim()
   return {
     template_kind: args.kindToken.trim(),
     language: args.tongueToken.trim(),
     layout_ref: args.layoutToken.trim(),
+    branding_ref: branding === "" ? null : branding,
     output_kind: args.exitToken.trim(),
     source_ref: args.originStamp.trim(),
   }

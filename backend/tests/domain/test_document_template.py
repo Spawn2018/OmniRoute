@@ -5,6 +5,7 @@ from hypothesis import given
 from hypothesis import strategies as st
 
 from app.domain.document_template import (
+    require_branding_ref,
     require_layout_ref,
     require_output_kind,
     require_template_kind,
@@ -34,6 +35,23 @@ def test_layout_ref_accepts_snake(raw: str) -> None:
 def test_layout_ref_rejects_empty_upper_slash_long(raw: str) -> None:
     with pytest.raises(InvalidDocumentTemplate, match="układ"):
         require_layout_ref(raw)
+
+
+def test_branding_ref_none_and_blank() -> None:
+    assert require_branding_ref(None) is None
+    assert require_branding_ref("") is None
+    assert require_branding_ref("  ") is None
+
+
+@given(st.from_regex(r"\A[a-z0-9][a-z0-9_-]{1,63}\Z"))
+def test_branding_ref_accepts_snake(raw: str) -> None:
+    assert require_branding_ref(raw) == raw
+
+
+@given(st.sampled_from(["A", "Own Brand", "x/y", "a" * 65]))
+def test_branding_ref_rejects_bad_shape(raw: str) -> None:
+    with pytest.raises(InvalidDocumentTemplate, match="branding"):
+        require_branding_ref(raw)
 
 
 @given(st.sampled_from(["pl", "en"]))
