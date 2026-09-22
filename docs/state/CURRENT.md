@@ -1,14 +1,14 @@
 ﻿# Bieżący focus
 
-**Faza:** Oś pinu — plan **622.0** (U3 leftover cyfra kontrolna IATA)
+**Faza:** Oś pinu — plaster **622.0** (U3 leftover cyfra kontrolna IATA)
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 **Ostatni plaster:** **621.0** D6c pule HBL/MBL z M-03 (gate po push)
 
-**Etap:** Plan **622.0**. Komenda `/plan-modul`.
+**Etap:** Plaster **622.0**. Delta zaakceptowana. Wolno `/plaster`.
 
-**Noc:** `/noc 7` do **2026-09-22T07:00:00+02:00**
+**Noc:** `/noc 17` do **2026-09-22T17:00:00+02:00**
 
 **Miejsce pracy:** produkt = to repo + GitHub.
 
@@ -16,7 +16,7 @@
 
 **Park / czeka w PLAN:** daty bazowe · fx×FV compose · matching T5 · FK kontekstu · T8 live · D6b · HW · SH-R16-4 UXCL · AI3 · G0-SH · N3 · …
 
-**Spec (jedyna na sesję produktu):** brak — `/plan-modul` przed kodem.
+**Spec (jedyna na sesję produktu):** [622.0-mawb-iata-check.md](../deltas/open/622.0-mawb-iata-check.md).
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 
@@ -24,6 +24,7 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
+**2026-09-22:** Plan **622.0** U3 cyfra kontrolna IATA na wklejonym MAWB (`/noc 17`). 621.0 gate po push.
 **2026-09-22:** Plaster **621.0** D6c pule HBL/MBL zamknięty (`/noc 7`).
 **2026-09-22:** Plan **621.0** D6c pule HBL/MBL z M-03 (`/noc 7`). 620.0 gate success.
 **2026-09-22:** Plaster **620.0** U3 e-rates air zamknięty (gate success). `/noc 7`.

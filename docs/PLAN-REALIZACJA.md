@@ -481,7 +481,7 @@ Karta: [karty-pol-fala-u.md](analysis/karty-pol-fala-u.md). **U6** + **M-72** = 
 | **U1** | `field_carry_forward` oferta→zlecenie→booking→FV; diff przy POST | zamknięty (`docs/deltas/archived/144.0-u1-u5-carry-checklist.md`) | po O8, przed I1 | mutacja = nowy wiersz / `superseded_by` |
 | **U5** | `document_checklist_rule` (incoterm×side×mode) + `blocks_dispatch` | zamknięty (z U1, 144.0) | z U1 | ≠ C8 polisa podwykonawcy |
 | **U4** | `organization_calendar` + `is_working_day`; grace V5 = 3 dni **robocze** | zamknięty (`docs/deltas/archived/149.0-organization-calendar.md`) | po I4, przed T1 | nie `+3` kalendarzowe |
-| **U3** | `shipment_leg.kind=air` HAWB/MAWB + pule; lotnisko = `port` air | zamknięty ([154.0](deltas/archived/154.0-air.md); leftover U3b HAWB/MAWB [209.0](deltas/archived/209.0-air-hawb.md); leftover U3c pule [619.0](deltas/archived/619.0-air-waybill-pools.md); leftover e-rates [620.0](deltas/archived/620.0-air-channel-erate.md); leftover cyfra kontrolna IATA → **622.0**) | po T, przed D | nie live IATA bez umowy |
+| **U3** | `shipment_leg.kind=air` HAWB/MAWB + pule; lotnisko = `port` air | zamknięty ([154.0](deltas/archived/154.0-air.md); leftover U3b HAWB/MAWB [209.0](deltas/archived/209.0-air-hawb.md); leftover U3c pule [619.0](deltas/archived/619.0-air-waybill-pools.md); leftover e-rates [620.0](deltas/archived/620.0-air-channel-erate.md); leftover cyfra kontrolna IATA [622.0](deltas/open/622.0-mawb-iata-check.md)) | po T, przed D | nie live IATA bez umowy |
 | **N9** | F2 + klon ostatniego podobnego zlecenia | zamknięty HITL intencja ([528.0](deltas/archived/528.0-shipment-clone-mark.md); leftover copy/U1 / similar SQL / F2b) | z U1 | nie drugi SoR |
 
 ### Fala I — Incoterms, booking, odprawa (po U1; zlecenie już jest)
@@ -892,13 +892,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plan-modul` (Etap z CURRENT.md).
+**Teraz:** `/plaster` (Etap z CURRENT.md).
 
 ```
-/plan-modul
+/plaster
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->
