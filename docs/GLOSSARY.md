@@ -88,6 +88,7 @@ kolumn. Nie 468.0.
 | konosament LCL | ocean_bill | 160.0 HBL/MBL na `shipment`; nie PDF; nie booking; nie druga tabela LCL |
 | saldo palet | pallet_balance | 161.0 Chep/LPR na `party`; 623.0 także `epal`; integer sztuk ≥ 0; nie giełda; nie depozyt |
 | ledger ruchu palet | pallet_ledger | 629.0 HITL ruch sztuk na `party`; `delta_count` ze znakiem; nie mutuje salda; nie giełda |
+| stance synchro palet | pallet_synchro_mark | 630.0 HITL zgodność salda↔ledger; `aligned`|`drift`|`held`|`other`; nie auto-UPDATE; nie giełda |
 | szablon wydruku | document_template | 162.0 layout jako dane; nie `quotation_print_template`; nie PDF |
 | wskazanie brandingu | branding_ref | D9f HITL 627.0 opcjonalny snake na `document_template`; nie plik; nie PDF/ZPL |
 | wymóg wydruku sieci | network_print_requirement | 626.0 HITL etykieta sieci; nie 409; nie PDF |

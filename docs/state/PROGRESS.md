@@ -1,7 +1,8 @@
 # Historia plastrów
 
 | Data | Plaster | Moduł | Opis |
-| 2026-09-22 | 629.0 | D7c ledger ruchu palet HITL | 2026-09-22 | PRZESZŁO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
+| 2026-09-22 | Plan 630.0 | D7c synchro stance HITL | Plan `pallet_synchro_mark` aligned|drift|held|other (`/noc 7`). 629.0 gate success. |
+| 2026-09-22 | 629.0 | D7c ledger ruchu palet HITL | 2026-09-22 | PRZESZŁO | N/A | N/A | OK | OK | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 2026-09-22 | Plan 629.0 | D7c ledger ruchu palet HITL | Plan `pallet_ledger` z podpisanym `delta_count` (`/noc 7`). 628.0 gate success. |
 | 2026-09-22 | 628.0 | T7 daty bazowe HITL | 2026-09-22 | PRZESZŁO | N/A | N/A | OK | OK | 5-15 | PRZESZŁO | 1 | N/A | PRZESZŁO |
 | 2026-09-22 | Plan 628.0 | T7 daty bazowe HITL | Plan czterech DATE na `shipment` (`/noc 7`). 627.0 gate success. |

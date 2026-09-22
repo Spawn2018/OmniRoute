@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **629.0** D7c `pallet_ledger` HITL (gate po push)
-- **Etap:** Plan **630.0**. Leftover synchro salda↔ledger HITL stance (nie auto-UPDATE, nie giełda).
-- **Następny:** **630.0** D7c leftover synchro stance HITL. D9c 409 / D9d PDF-QR / D9e skan / D9f pdf-zpl / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-UPDATE salda = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
+- **Ostatni plaster:** **629.0** D7c `pallet_ledger` HITL (gate success)
+- **Etap:** Plan **630.0**. Delta zaakceptowana `/noc 7` — wolno `/plaster`. Leftover synchro salda↔ledger HITL stance (nie auto-UPDATE, nie giełda).
+- **Następny:** **630.0** plaster `pallet_synchro_mark`. D9c 409 / D9d PDF-QR / D9e skan / D9f pdf-zpl / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-UPDATE salda = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`. Po 630: Plan **631.0** leftover 528 clone U1 carry HITL.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
