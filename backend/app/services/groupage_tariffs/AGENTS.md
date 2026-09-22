@@ -1,6 +1,6 @@
 # BC groupage_tariff (D5)
 
-Cennik drobnicy per tenant: próg `chargeable_weight` na strefie, kwota Decimal. Nie silnik P1.
+Cennik drobnicy per tenant: próg `chargeable_weight` na strefie, opcjonalne `volume_m3`, kwota Decimal. 625.0 nie liczy progu z objętości. Nie silnik P1.
 
 ## Dozwolone zależności
 - `app.models.groupage_tariff`

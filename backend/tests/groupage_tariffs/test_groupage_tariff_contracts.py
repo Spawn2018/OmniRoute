@@ -20,6 +20,17 @@ def test_migration_099_creates_groupage_tariff_and_forces_rls() -> None:
     assert "drop_table" in source.split("def downgrade")[1]
 
 
+def test_migration_497_adds_optional_volume() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "497_groupage_tariff_volume.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "497_groupage_tariff_volume"' in source
+    assert 'down_revision: str | None = "496_shipment_document_rod"' in source
+    assert "volume_m3" in source
+    assert "create_table" not in source
+    assert "httpx" not in source
+
+
 def test_groupage_tariff_service_does_not_import_parents() -> None:
     service = (_SERVICES / "groupage_tariffs" / "groupage_tariff_service.py").read_text(
         encoding="utf-8",

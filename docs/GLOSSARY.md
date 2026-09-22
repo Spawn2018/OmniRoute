@@ -84,7 +84,7 @@ kolumn. Nie 468.0.
 | paczka na zleceniu | shipment_package | 156.0 sztuka na `shipment`: `package_status`, skan QR Omni, `stop` z trasy; nie WMS; nie auto-link |
 | awizacja doku | dock_appointment | 157.0 okno TIME na `stop` w magazynie (`postal_zone`/`address`); nie WMS; nie T8 |
 | pobranie COD | cod_instruction | 158.0 znacznik na `shipment` bez kwoty; nie rozliczenie F; nie POD portu |
-| cennik drobnicy | groupage_tariff | 159.0 próg `chargeable_weight` na strefie; Decimal; nie silnik P1; nie FSC |
+| cennik drobnicy | groupage_tariff | 159.0 próg `chargeable_weight` na strefie; 625.0 opcjonalne `volume_m3` (nie liczy progu); Decimal; nie silnik P1; nie FSC |
 | konosament LCL | ocean_bill | 160.0 HBL/MBL na `shipment`; nie PDF; nie booking; nie druga tabela LCL |
 | saldo palet | pallet_balance | 161.0 Chep/LPR na `party`; 623.0 także `epal`; integer sztuk; nie giełda; nie depozyt |
 | szablon wydruku | document_template | 162.0 layout jako dane; nie `quotation_print_template`; nie PDF |

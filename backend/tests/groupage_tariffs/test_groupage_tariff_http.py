@@ -13,6 +13,7 @@ from app.domain.groupage_tariff import (
     require_tariff_code,
     require_tariff_currency,
     require_tariff_source_ref,
+    require_tariff_volume_m3,
 )
 from app.main import app
 from app.models.groupage_tariff import GroupageTariff
@@ -62,6 +63,7 @@ class StubGroupageTariffService:
         amount: str,
         currency: str,
         source_ref: str,
+        volume_m3: object = None,
     ) -> GroupageTariff:
         row = GroupageTariff(
             id=uuid4(),
@@ -72,6 +74,7 @@ class StubGroupageTariffService:
             amount=require_tariff_amount(amount),
             currency=require_tariff_currency(currency),
             source_ref=require_tariff_source_ref(source_ref),
+            volume_m3=require_tariff_volume_m3(volume_m3),
             created_by=user_id,
         )
         self.rows.append(row)
@@ -142,6 +145,43 @@ def test_http_create_and_list_groupage_tariff(catalog_client: object) -> None:
     listed = client.get("/api/v1/groupage-tariffs", headers=headers)
     assert listed.status_code == 200
     assert listed.json()[0]["id"] == body["id"]
+    assert body["volume_m3"] is None
+
+
+def test_http_create_tariff_volume_and_reject_negative(catalog_client: object) -> None:
+    client, places, _rows = catalog_client
+    assert places.row is not None
+    saved = client.post(
+        "/api/v1/groupage-tariffs",
+        headers=bearer_auth_headers(),
+        json={
+            "location_id": str(places.row.id),
+            "tariff_code": "band_cube",
+            "chargeable_weight": "100.0000",
+            "amount": "85.5000",
+            "currency": "EUR",
+            "source_ref": "fixture://groupage-tariff/1",
+            "volume_m3": "1.5000",
+        },
+    )
+    assert saved.status_code == 201
+    assert saved.json()["volume_m3"] == "1.5000"
+    assert saved.json()["chargeable_weight"] == "100.0000"
+    rejected = client.post(
+        "/api/v1/groupage-tariffs",
+        headers=bearer_auth_headers(),
+        json={
+            "location_id": str(places.row.id),
+            "tariff_code": "band_bad",
+            "chargeable_weight": "100.0000",
+            "amount": "85.5000",
+            "currency": "EUR",
+            "source_ref": "fixture://groupage-tariff/1",
+            "volume_m3": "-1",
+        },
+    )
+    assert rejected.status_code == 400
+    assert "objętość" in rejected.json()["detail"]
 
 
 def test_http_create_tariff_unlocode_is_400(catalog_client: object) -> None:

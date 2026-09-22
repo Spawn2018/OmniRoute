@@ -25,6 +25,7 @@ class GroupageTariffCreate(BaseModel):
     amount: str
     currency: str
     source_ref: str
+    volume_m3: str | None = None
 
 
 class GroupageTariffResponse(BaseModel):
@@ -38,6 +39,7 @@ class GroupageTariffResponse(BaseModel):
     amount: str
     currency: str
     source_ref: str
+    volume_m3: str | None
 
 
 def _as_row(row: GroupageTariff) -> GroupageTariffResponse:
@@ -50,6 +52,7 @@ def _as_row(row: GroupageTariff) -> GroupageTariffResponse:
         amount=format(row.amount, "f"),
         currency=str(row.currency).strip(),
         source_ref=row.source_ref,
+        volume_m3=None if row.volume_m3 is None else format(row.volume_m3, "f"),
     )
 
 
@@ -80,6 +83,7 @@ async def create_groupage_tariff(
         amount=body.amount,
         currency=body.currency,
         source_ref=body.source_ref,
+        volume_m3=body.volume_m3,
     )
     await session.commit()
     return _as_row(row)

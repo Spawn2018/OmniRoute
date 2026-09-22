@@ -58,6 +58,14 @@ def require_tariff_amount(raw: object) -> Decimal:
     return _decimal(raw, field="amount")
 
 
+def require_tariff_volume_m3(raw: object) -> Decimal | None:
+    if raw is None:
+        return None
+    if type(raw) is str and raw.strip() == "":
+        return None
+    return _decimal(raw, field="objętość")
+
+
 def require_tariff_currency(raw: object) -> str:
     if type(raw) is not str:
         raise InvalidGroupageTariff("waluta cennika musi być tekstem")

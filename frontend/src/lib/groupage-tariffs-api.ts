@@ -12,6 +12,7 @@ export type WeightBand = {
   amount: string
   currency: string
   source_ref: string
+  volume_m3: string | null
 }
 
 export type WeightBandWrite = {
@@ -21,6 +22,7 @@ export type WeightBandWrite = {
   amount: string
   currency: string
   source_ref: string
+  volume_m3?: string
 }
 
 export function bandWrite(args: {
@@ -30,8 +32,9 @@ export function bandWrite(args: {
   cashMark: string
   ccyMark: string
   originStamp: string
+  cubeMark?: string
 }): WeightBandWrite {
-  return {
+  const payload: WeightBandWrite = {
     location_id: args.zoneToken.trim(),
     tariff_code: args.bandToken.trim(),
     chargeable_weight: args.massMark.trim(),
@@ -39,6 +42,11 @@ export function bandWrite(args: {
     currency: args.ccyMark.trim().toUpperCase(),
     source_ref: args.originStamp.trim(),
   }
+  const cube = args.cubeMark?.trim() ?? ""
+  if (cube !== "") {
+    payload.volume_m3 = cube
+  }
+  return payload
 }
 
 export async function listWeightBands(): Promise<WeightBand[]> {

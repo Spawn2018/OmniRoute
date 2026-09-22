@@ -9,6 +9,7 @@ from app.domain.groupage_tariff import (
     require_tariff_currency,
     require_tariff_location_id,
     require_tariff_source_ref,
+    require_tariff_volume_m3,
 )
 from app.models.groupage_tariff import GroupageTariff
 from app.repositories.groupage_tariffs.groupage_tariff_repository import (
@@ -34,6 +35,7 @@ class GroupageTariffService:
         amount: object,
         currency: object,
         source_ref: object,
+        volume_m3: object = None,
     ) -> GroupageTariff:
         row = GroupageTariff(
             id=uuid4(),
@@ -44,6 +46,7 @@ class GroupageTariffService:
             amount=require_tariff_amount(amount),
             currency=require_tariff_currency(currency),
             source_ref=require_tariff_source_ref(source_ref),
+            volume_m3=require_tariff_volume_m3(volume_m3),
             created_by=user_id,
         )
         return await self._rows.add(row)

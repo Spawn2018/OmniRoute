@@ -1,3 +1,4 @@
+- **625.0 DONE:** `groupage_tariff.volume_m3` opcjonalne Decimal. Nie liczy progu. Leftover D5b: paleta zostaje na saldzie, FSC na `fuel_index`.
 - **624.0 DONE:** `shipment_document.document_kind` przyjmuje `rod`. `pod` zostaje odrzucone (port wyładunku). Leftover: skan / bajty.
 - **623.0 DONE:** `pallet_balance.pallet_kind` przyjmuje `epal`. Leftover: D7b giełda park live · D7c ledger ujemny.
 - **617.0 leftover:** przeliczenie SQL przy FV · odczyt kwoty `nbp_rate`. 617.0 = `fx_rate_day` (offset −1 = poprzedni dzień roboczy U4, nie mnożenie).

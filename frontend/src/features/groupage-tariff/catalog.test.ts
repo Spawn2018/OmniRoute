@@ -42,5 +42,8 @@ describe("groupage_tariff surface for 159.0", () => {
     expect(panel).not.toContain("leaflet")
     expect(panel).not.toContain("CatalogCreateForm")
     expect(src("features/ops/ops-index.ts")).toContain('"159.0": "/groupage-tariffs"')
+    expect(src("features/ops/ops-index.ts")).toContain('"625.0": "/groupage-tariffs"')
+    expect(src("lib/groupage-tariffs-api.ts")).toContain("volume_m3")
+    expect(panel).toContain("Objętość m3")
   })
 })

@@ -13,6 +13,7 @@ type BandDraft = {
   cashMark: string
   ccyMark: string
   originStamp: string
+  cubeMark: string
 }
 
 const EMPTY_BAND: BandDraft = {
@@ -22,6 +23,7 @@ const EMPTY_BAND: BandDraft = {
   cashMark: "85.5000",
   ccyMark: "EUR",
   originStamp: "fixture://groupage-tariff/",
+  cubeMark: "",
 }
 
 function BandSave(args: { organizationId: string | null }) {
@@ -85,6 +87,15 @@ function BandSave(args: { organizationId: string | null }) {
           value={draft.cashMark}
           onChange={(change) => setDraft({ ...draft, cashMark: change.target.value })}
           required
+        />
+      </label>
+      <label className="flex flex-col gap-1 text-xs">
+        Objętość m3
+        <input
+          aria-label="Objętość m3"
+          className="h-9 rounded-md border bg-background px-2 font-mono"
+          value={draft.cubeMark}
+          onChange={(change) => setDraft({ ...draft, cubeMark: change.target.value })}
         />
       </label>
       <label className="flex flex-col gap-1 text-xs">

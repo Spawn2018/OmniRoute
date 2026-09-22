@@ -12,6 +12,7 @@ from app.domain.groupage_tariff import (
     require_tariff_code,
     require_tariff_currency,
     require_tariff_source_ref,
+    require_tariff_volume_m3,
 )
 from app.domain.location import LocationKind
 
@@ -70,6 +71,16 @@ _POSITIVE = st.decimals(
 def test_positive_decimals_quantize(units: Decimal) -> None:
     assert require_chargeable_weight(units) == units
     assert require_tariff_amount(str(units)) == units
+
+
+def test_tariff_volume_is_optional_positive_decimal() -> None:
+    assert require_tariff_volume_m3(None) is None
+    assert require_tariff_volume_m3("  ") is None
+    assert require_tariff_volume_m3("1.5") == Decimal("1.5000")
+    with pytest.raises(InvalidGroupageTariff, match="objętość"):
+        require_tariff_volume_m3("-1")
+    with pytest.raises(InvalidGroupageTariff, match="objętość"):
+        require_tariff_volume_m3(1.5)  # type: ignore[arg-type]
 
 
 def test_tariff_currency_iso() -> None:

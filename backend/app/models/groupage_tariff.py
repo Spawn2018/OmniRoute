@@ -33,6 +33,10 @@ class GroupageTariff(Base, TimestampMixin):
             name="ck_groupage_tariff_weight_positive",
         ),
         CheckConstraint("currency ~ '^[A-Z]{3}$'", name="ck_groupage_tariff_currency_iso"),
+        CheckConstraint(
+            "volume_m3 IS NULL OR volume_m3 > 0",
+            name="ck_groupage_tariff_volume_positive",
+        ),
         Index("ix_groupage_tariff_org_location", "organization_id", "location_id"),
     )
 
@@ -50,3 +54,4 @@ class GroupageTariff(Base, TimestampMixin):
     amount: Mapped[Decimal] = mapped_column(Numeric(14, 4), nullable=False)
     currency: Mapped[str] = mapped_column(CHAR(3), nullable=False)
     source_ref: Mapped[str] = mapped_column(String(256), nullable=False)
+    volume_m3: Mapped[Decimal | None] = mapped_column(Numeric(14, 4), nullable=True)
