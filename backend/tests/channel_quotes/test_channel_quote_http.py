@@ -7,7 +7,11 @@ import pytest
 from fastapi.testclient import TestClient
 
 from app.api.deps import require_tenant_session, set_authz_checker
-from app.domain.channel_quote import manual_channel_source_ref, normalize_transit_days, require_transport_mode
+from app.domain.channel_quote import (
+    manual_channel_source_ref,
+    normalize_transit_days,
+    require_transport_mode,
+)
 from app.domain.errors import ChannelQuoteConflict, UnknownCarrierProfile, UnknownChannelQuote
 from app.main import app
 from app.models.channel_quote import ChannelQuote
