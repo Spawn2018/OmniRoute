@@ -56,7 +56,7 @@ kolumn. Nie 468.0.
 | krawędź pamięci | memory_edge | W3 HITL 201.0 rodzaj krawędzi; nie RAG; nie graf na entity_event |
 | pytanie zarządu | executive_mark | W4 HITL 202.0 rodzaj pytania; nie suma LLM; nie narracja SQL |
 | oś rankingu | rank_mark | W5 HITL 203.0 oś zakupu; nie auto-award; nie N szkiców |
-| dokument zlecenia | shipment_document | 92.0 tabela na zleceniu; nie bajty; nie PDF; nie HBL |
+| dokument zlecenia | shipment_document | 92.0 tabela na zleceniu; 624.0 rodzaj `rod`; nie `pod` (to port wyładunku); nie bajty; nie PDF; nie HBL |
 | komunikat EDI | edi_message | 95.0 tabela na zleceniu; 32.0 leftover tablica kanału; nie parser; nie live HTTP |
 | faktura sprzedaży | sales_invoice | 96.0 tabela na zleceniu; 97.0 `ksef_ref` wpisany; nie live HTTP; nie druga marża |
 | rozliczenie wyceny z fakturą | quote_invoice_settlement | 98.0 tabela pary wycena+faktura; nie kwota; nie druga marża |

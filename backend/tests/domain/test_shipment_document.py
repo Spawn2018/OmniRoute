@@ -16,6 +16,12 @@ def test_require_document_kind_accepts_allowlist() -> None:
     assert require_document_kind(" noted ") == "noted"
     assert require_document_kind("attached") == "attached"
     assert require_document_kind("other") == "other"
+    assert require_document_kind(" rod ") == "rod"
+
+
+def test_require_document_kind_rejects_port_token() -> None:
+    with pytest.raises(InvalidShipmentDocument, match="rodzaj"):
+        require_document_kind("pod")
 
 
 def test_require_document_kind_rejects_unknown() -> None:

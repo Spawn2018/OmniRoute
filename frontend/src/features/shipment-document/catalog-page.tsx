@@ -37,7 +37,7 @@ function DocumentRecordForm(args: { organizationId: string | null }) {
       }}
     >
       <Input aria-label="Identyfikator zlecenia" placeholder="shipment_id" value={shipmentId} onChange={(event) => setShipmentId(event.target.value)} required />
-      <Input aria-label="Rodzaj dokumentu" placeholder="noted" value={documentKind} onChange={(event) => setDocumentKind(event.target.value)} required />
+      <Input aria-label="Rodzaj dokumentu" placeholder="noted, attached, other albo rod" value={documentKind} onChange={(event) => setDocumentKind(event.target.value)} required />
       <Input aria-label="Pochodzenie zapisu" placeholder="source_ref" value={sourceRef} onChange={(event) => setSourceRef(event.target.value)} required />
       <Button type="submit" disabled={save.isPending || !args.organizationId}>
         Zapisz dokument

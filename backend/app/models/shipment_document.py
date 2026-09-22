@@ -12,7 +12,7 @@ from sqlalchemy.orm import Mapped, mapped_column
 
 from app.models.base import Base, TimestampMixin
 
-_KIND_SQL = "document_kind IN ('noted', 'attached', 'other')"
+_KIND_SQL = "document_kind IN ('noted', 'attached', 'other', 'rod')"
 
 
 class ShipmentDocument(Base, TimestampMixin):

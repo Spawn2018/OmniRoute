@@ -163,6 +163,39 @@ def test_http_create_document_unknown_kind_is_400(catalog_client: object) -> Non
     assert "rodzaj" in response.json()["detail"]
 
 
+def test_http_create_document_rod_kind(catalog_client: object) -> None:
+    client, ships, _documents = catalog_client
+    assert ships.row is not None
+    created = client.post(
+        "/api/v1/shipment-documents",
+        headers=bearer_auth_headers(),
+        json={
+            "shipment_id": str(ships.row.id),
+            "document_kind": "rod",
+            "source_ref": "fixture://shipment-document/1",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["document_kind"] == "rod"
+    assert "amount" not in created.json()
+
+
+def test_http_create_document_pod_token_is_400(catalog_client: object) -> None:
+    client, ships, _documents = catalog_client
+    assert ships.row is not None
+    response = client.post(
+        "/api/v1/shipment-documents",
+        headers=bearer_auth_headers(),
+        json={
+            "shipment_id": str(ships.row.id),
+            "document_kind": "pod",
+            "source_ref": "fixture://shipment-document/1",
+        },
+    )
+    assert response.status_code == 400
+    assert "rodzaj" in response.json()["detail"]
+
+
 def test_http_create_document_empty_source_ref_is_400(catalog_client: object) -> None:
     client, ships, _documents = catalog_client
     assert ships.row is not None

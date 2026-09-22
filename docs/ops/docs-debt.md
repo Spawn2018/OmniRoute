@@ -1,3 +1,4 @@
+- **624.0 DONE:** `shipment_document.document_kind` przyjmuje `rod`. `pod` zostaje odrzucone (port wyładunku). Leftover: skan / bajty.
 - **623.0 DONE:** `pallet_balance.pallet_kind` przyjmuje `epal`. Leftover: D7b giełda park live · D7c ledger ujemny.
 - **617.0 leftover:** przeliczenie SQL przy FV · odczyt kwoty `nbp_rate`. 617.0 = `fx_rate_day` (offset −1 = poprzedni dzień roboczy U4, nie mnożenie).
 - **612.0 leftover:** HW · UXCL · N3 · AI3 · G0-SH. 612.0 = HITL `container.destination_city` (tekst do 64, nie geokoder).

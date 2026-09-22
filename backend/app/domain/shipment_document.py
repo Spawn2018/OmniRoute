@@ -2,7 +2,7 @@ from uuid import UUID
 
 from app.domain.errors import InvalidShipmentDocument
 
-_KINDS = frozenset({"noted", "attached", "other"})
+_KINDS = frozenset({"noted", "attached", "other", "rod"})
 _MAX_REF = 256
 _FIXTURE = "fixture://shipment-document/"
 _MANUAL = "tenant:manual"

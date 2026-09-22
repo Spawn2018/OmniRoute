@@ -29,6 +29,7 @@ describe("shipment document surface for 31.0 and 92.0", () => {
     const api = readFileSync(path.join(srcRoot, "lib/shipment-documents-api.ts"), "utf8")
     const ops = readFileSync(path.join(srcRoot, "features/ops/ops-index.ts"), "utf8")
     expect(ops).toContain('"92.0": "/shipment-documents"')
+    expect(ops).toContain('"624.0": "/shipment-documents"')
     expect(api).toContain("createShipmentDocument")
     expect(page).toContain("fetchShipmentDocuments")
     expect(page).toContain("Zapisz dokument")

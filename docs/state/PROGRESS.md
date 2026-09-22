@@ -1,6 +1,8 @@
 # Historia plastrów
 
 | Data | Plaster | Moduł | Opis |
+| 2026-09-22 | 624.0 | D4b document rod | 2026-09-22 | PRZESZŁO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZŁO | N/A | 20 | PRZESZŁO |
+| 2026-09-22 | Plan 624.0 | D4b document rod | Plan `document_kind=rod` (`/noc 17`). 623.0 gate success. |
 | 2026-09-22 | 623.0 | D7d pallet epal | 2026-09-22 | PRZESZŁO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZŁO | N/A | 30 | PRZESZŁO |
 | 2026-09-22 | Plan 623.0 | D7d pallet epal | Plan `pallet_kind=epal` (`/noc 17`). 622.0 gate success. |
 | 2026-09-22 | 622.0 | U3 MAWB IATA check | 2026-09-22 | PRZESZŁO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZŁO | N/A | 25 | PRZESZŁO |

@@ -1878,6 +1878,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "621.0": "/ocean-bills",
   "622.0": "/air",
   "623.0": "/pallet-balances",
+  "624.0": "/shipment-documents",
   "142.0": "/mail",
   "143.0": "/networks",
   "144.0": "/quotations",

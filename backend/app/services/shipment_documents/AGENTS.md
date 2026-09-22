@@ -1,6 +1,6 @@
 # BC shipment_document (M-38)
 
-Wskazanie dokumentu per tenant, FK do `shipment`. Nie bajty, nie numer listu, nie skan M-20.
+Wskazanie dokumentu per tenant, FK do `shipment`. 624.0 rodzaj `rod`. Nie bajty, nie numer listu, nie skan M-20. Nie token `pod`.
 
 ## Dozwolone zależności
 - `app.models.shipment_document`

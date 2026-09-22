@@ -131,7 +131,8 @@ describe("U-routes-breadth standing", () => {
     expect(SHIPPED_CHARGE_ROUTES["621.0"]).toBe("/ocean-bills")
     expect(SHIPPED_CHARGE_ROUTES["622.0"]).toBe("/air")
     expect(SHIPPED_CHARGE_ROUTES["623.0"]).toBe("/pallet-balances")
-    expect(Object.keys(SHIPPED_CHARGE_ROUTES)).toHaveLength(563)
+    expect(SHIPPED_CHARGE_ROUTES["624.0"]).toBe("/shipment-documents")
+    expect(Object.keys(SHIPPED_CHARGE_ROUTES)).toHaveLength(564)
 
     expect(OPS_JOBS.map((job) => job.route)).toEqual(
       expect.arrayContaining(Object.values(SHIPPED_CHARGE_ROUTES)),
