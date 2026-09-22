@@ -1,12 +1,12 @@
 ﻿# Bieżący focus
 
-**Faza:** Oś pinu — plan **626.0** (D9c etykieta sieci)
+**Faza:** Oś pinu — plaster **626.0** (D9c katalog wymogu wydruku sieci)
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **625.0** D5b `volume_m3` na cenniku drobnicy (CI po push)
+**Ostatni plaster:** **625.0** D5b `volume_m3` na cenniku drobnicy (gate success)
 
-**Etap:** Plan **626.0**. Komenda `/plan-modul`.
+**Etap:** Plaster **626.0**. Delta zaakceptowana. Wolno `/plaster`.
 
 **Noc:** `/noc 17` do **2026-09-22T17:00:00+02:00**
 
@@ -16,7 +16,7 @@
 
 **Park / czeka w PLAN:** daty bazowe · fx×FV compose · matching T5 · FK kontekstu · T8 live · D6b · HW · SH-R16-4 UXCL · AI3 · G0-SH · N3 · …
 
-**Spec (jedyna na sesję produktu):** brak — `/plan-modul` przed kodem.
+**Spec (jedyna na sesję produktu):** [626.0-network-print-requirement.md](../deltas/open/626.0-network-print-requirement.md).
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 
@@ -24,7 +24,8 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-22:** Plaster **625.0** D5b `volume_m3` na cenniku drobnicy zamknięty lokalnie (CI po push). `/noc 17`.
+**2026-09-22:** Plan **626.0** D9c katalog `network_print_requirement` bez 409 (`/noc 17`). 625.0 gate success.
+**2026-09-22:** Plaster **625.0** D5b `volume_m3` na cenniku drobnicy zamknięty (gate success). `/noc 17`.
 **2026-09-22:** Plan **625.0** D5b `volume_m3` na cenniku drobnicy (`/noc 17`). 624.0 gate success.
 **2026-09-22:** Plaster **624.0** D4b `document_kind=rod` zamknięty (gate success). `/noc 17`.
 **2026-09-22:** Plan **624.0** D4b `document_kind=rod` (`/noc 17`). 623.0 gate success.
