@@ -1,6 +1,8 @@
 # Historia plastrów
 
 | Data | Plaster | Moduł | Opis |
+| 2026-09-22 | 626.0 | D9c network print | 2026-09-22 | PRZESZŁO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZŁO | N/A | 35 | PRZESZŁO |
+| 2026-09-22 | Plan 626.0 | D9c network print | Plan katalogu `network_print_requirement` (`/noc 17`). 625.0 gate success. |
 | 2026-09-22 | 625.0 | D5b tariff volume | 2026-09-22 | PRZESZŁO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZŁO | N/A | 25 | PRZESZŁO |
 | 2026-09-22 | Plan 625.0 | D5b tariff volume | Plan opcjonalnego `volume_m3` (`/noc 17`). 624.0 gate success. |
 | 2026-09-22 | 624.0 | D4b document rod | 2026-09-22 | PRZESZŁO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZŁO | N/A | 20 | PRZESZŁO |

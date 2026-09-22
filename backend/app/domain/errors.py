@@ -1126,6 +1126,10 @@ class InvalidBillingMark(DomainError):
     """G16: HITL billing SaaS — nie live Stripe."""
 
 
+class InvalidNetworkPrintRequirement(DomainError):
+    """D9c: HITL wymóg wydruku sieci — nie 409 / nie PDF."""
+
+
 class InvalidSelfBillingMark(DomainError):
     """N14: HITL self-billing podwykonawcy — nie live / nie JPK."""
 

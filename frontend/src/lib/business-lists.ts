@@ -177,6 +177,10 @@ export const BUSINESS_LISTS = {
   aeoDossierMark: { route: "/aeo-dossier-marks", tableKey: "aeo_dossier_mark" },
   yardMark: { route: "/yard-marks", tableKey: "yard_mark" },
   billingMark: { route: "/billing-marks", tableKey: "billing_mark" },
+  networkPrintRequirement: {
+    route: "/network-print-requirements",
+    tableKey: "network_print_requirement",
+  },
   selfBillingMark: { route: "/self-billing-marks", tableKey: "self_billing_mark" },
   purchaseInvoice: { route: "/purchase-invoices", tableKey: "purchase_invoice" },
   invoiceMatchMark: { route: "/invoice-match-marks", tableKey: "invoice_match_mark" },

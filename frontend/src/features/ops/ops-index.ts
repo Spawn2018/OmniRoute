@@ -1880,6 +1880,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "623.0": "/pallet-balances",
   "624.0": "/shipment-documents",
   "625.0": "/groupage-tariffs",
+  "626.0": "/network-print-requirements",
   "142.0": "/mail",
   "143.0": "/networks",
   "144.0": "/quotations",

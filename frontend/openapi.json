@@ -1704,6 +1704,80 @@
         }
       }
     },
+    "/api/v1/network-print-requirements": {
+      "get": {
+        "tags": [
+          "network-print-requirements"
+        ],
+        "summary": "List Network Print Requirements",
+        "operationId": "list_network_print_requirements_api_v1_network_print_requirements_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/NetworkPrintRequirementResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Network Print Requirements Api V1 Network Print Requirements Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "network-print-requirements"
+        ],
+        "summary": "Create Network Print Requirement",
+        "operationId": "create_network_print_requirement_api_v1_network_print_requirements_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NetworkPrintRequirementCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NetworkPrintRequirementResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/carrier-inquiries": {
       "get": {
         "tags": [
@@ -5159,6 +5233,64 @@
         ]
       }
     },
+    "/api/v1/charges/{charge_id}/sell-in-pln": {
+      "get": {
+        "tags": [
+          "charges"
+        ],
+        "summary": "Get Charge Sell In Pln",
+        "operationId": "get_charge_sell_in_pln_api_v1_charges__charge_id__sell_in_pln_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "charge_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Charge Id"
+            }
+          },
+          {
+            "name": "on_date",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "title": "On Date"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChargeSellInPlnResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/charges": {
       "get": {
         "tags": [
@@ -5564,6 +5696,16 @@
               "type": "string",
               "format": "date",
               "title": "On Date"
+            }
+          },
+          {
+            "name": "transport_mode",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "other",
+              "title": "Transport Mode"
             }
           }
         ],
@@ -7887,6 +8029,102 @@
             "HTTPBearer": []
           }
         ]
+      }
+    },
+    "/api/v1/ocean-bills/{bill_id}/hbl-number": {
+      "post": {
+        "tags": [
+          "ocean-bills"
+        ],
+        "summary": "Issue Ocean Bill Hbl",
+        "operationId": "issue_ocean_bill_hbl_api_v1_ocean_bills__bill_id__hbl_number_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "bill_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Bill Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OceanBillResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/ocean-bills/{bill_id}/mbl-number": {
+      "post": {
+        "tags": [
+          "ocean-bills"
+        ],
+        "summary": "Issue Ocean Bill Mbl",
+        "operationId": "issue_ocean_bill_mbl_api_v1_ocean_bills__bill_id__mbl_number_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "bill_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Bill Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OceanBillResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/api/v1/ocean-feeder-marks": {
@@ -22839,6 +23077,102 @@
         ]
       }
     },
+    "/api/v1/shipment-legs/{leg_id}/hawb-number": {
+      "post": {
+        "tags": [
+          "shipment-legs"
+        ],
+        "summary": "Issue Shipment Leg Hawb",
+        "operationId": "issue_shipment_leg_hawb_api_v1_shipment_legs__leg_id__hawb_number_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "leg_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Leg Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShipmentLegResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/shipment-legs/{leg_id}/mawb-number": {
+      "post": {
+        "tags": [
+          "shipment-legs"
+        ],
+        "summary": "Issue Shipment Leg Mawb",
+        "operationId": "issue_shipment_leg_mawb_api_v1_shipment_legs__leg_id__mawb_number_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "leg_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Leg Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShipmentLegResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/shipment-monitoring-filings": {
       "get": {
         "tags": [
@@ -31706,6 +32040,11 @@
               }
             ],
             "title": "Transit Days"
+          },
+          "transport_mode": {
+            "type": "string",
+            "title": "Transport Mode",
+            "default": "other"
           }
         },
         "additionalProperties": false,
@@ -31771,6 +32110,10 @@
             ],
             "title": "Transit Days"
           },
+          "transport_mode": {
+            "type": "string",
+            "title": "Transport Mode"
+          },
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
@@ -31795,6 +32138,7 @@
           "amount",
           "currency",
           "transit_days",
+          "transport_mode",
           "source_ref",
           "is_cheapest",
           "is_fastest_tt"
@@ -32268,6 +32612,36 @@
           "source_ref"
         ],
         "title": "ChargeResponse"
+      },
+      "ChargeSellInPlnResponse": {
+        "properties": {
+          "charge_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Charge Id"
+          },
+          "on_date": {
+            "type": "string",
+            "format": "date",
+            "title": "On Date"
+          },
+          "sell_amount_pln": {
+            "type": "string",
+            "title": "Sell Amount Pln"
+          },
+          "currency": {
+            "type": "string",
+            "title": "Currency",
+            "default": "PLN"
+          }
+        },
+        "type": "object",
+        "required": [
+          "charge_id",
+          "on_date",
+          "sell_amount_pln"
+        ],
+        "title": "ChargeSellInPlnResponse"
       },
       "ChargeTemplateCreate": {
         "properties": {
@@ -39835,6 +40209,17 @@
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
+          },
+          "volume_m3": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Volume M3"
           }
         },
         "additionalProperties": false,
@@ -39885,6 +40270,17 @@
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
+          },
+          "volume_m3": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Volume M3"
           }
         },
         "type": "object",
@@ -39896,7 +40292,8 @@
           "chargeable_weight",
           "amount",
           "currency",
-          "source_ref"
+          "source_ref",
+          "volume_m3"
         ],
         "title": "GroupageTariffResponse"
       },
@@ -44347,6 +44744,65 @@
         ],
         "title": "NetworkMemberResponse"
       },
+      "NetworkPrintRequirementCreate": {
+        "properties": {
+          "requirement_code": {
+            "type": "string",
+            "title": "Requirement Code"
+          },
+          "network_label": {
+            "type": "string",
+            "title": "Network Label"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "requirement_code",
+          "network_label",
+          "source_ref"
+        ],
+        "title": "NetworkPrintRequirementCreate"
+      },
+      "NetworkPrintRequirementResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "requirement_code": {
+            "type": "string",
+            "title": "Requirement Code"
+          },
+          "network_label": {
+            "type": "string",
+            "title": "Network Label"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "requirement_code",
+          "network_label",
+          "source_ref"
+        ],
+        "title": "NetworkPrintRequirementResponse"
+      },
       "NetworkResponse": {
         "properties": {
           "id": {
@@ -44557,7 +45013,14 @@
             "title": "Shipment Id"
           },
           "bill_no": {
-            "type": "string",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Bill No"
           },
           "bill_kind": {
@@ -44573,7 +45036,6 @@
         "type": "object",
         "required": [
           "shipment_id",
-          "bill_no",
           "bill_kind",
           "source_ref"
         ],
@@ -44597,7 +45059,14 @@
             "title": "Shipment Id"
           },
           "bill_no": {
-            "type": "string",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Bill No"
           },
           "bill_kind": {

@@ -23,7 +23,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-52 | Towary niebezpieczne | 7.0 `dangerous_good` · 122.0 FK · 192.0 tunel ADR + SG | **ukończony (leftover S7b + EXP0.9 HITL)** · UN + tunel + SG; nie LLM; nie live IMO |
 | M-23 | Kurs NBP | 6.0 `nbp_rate` · 16.0 odczyt przy `quotation` | **ukończony (fundament)** · nie przeliczenie kwoty; nie żywe M-07 `rate_line` |
 | M-11 | Automatyczne kontakty | 8.0 `resolve_email` | **ukończony (fundament)** · matcher domeny z 5.0; nie IMAP; nie portal |
-| M-12 | Sieci i stowarzyszenia | 9.0 `network` · 82.0 `network_member` · 130.0 `party_id` | **ukończony (fundament + O0)** · członek wiąże kontrahenta; nie portal WCA |
+| M-12 | Sieci i stowarzyszenia | 9.0 `network` · 82.0 `network_member` · 130.0 `party_id` · **626.0** `network_print_requirement` | **ukończony (fundament + O0 + D9c HITL)** · członek wiąże kontrahenta; wymóg etykiety sieci HITL; nie portal WCA; nie 409 |
 | M-13 | Karta wyników kontrahenta | 10.0 `party_scorecard` · 120.0 decyzje oferty | **ukończony (leftover S27b)** · odczyt przyjętych/odrzuconych wycen; nie scoring osoby; SQL-refresh lane = kolejka **O5** |
 | M-16 | Procedury operacyjne klienta | 11.0 `customer_sop` · 73.0 `blocks_auto` | **ukończony (fundament)** · zatwierdzona SOP może blokować auto; nie send; nie S11 |
 | M-18 | Opłaty portowe warunkowe | 12.0 `port_surcharge` · 69.0 matching `applies_when` | **ukończony (fundament)** · katalog extra + SQL równość warunku; nie zapis do `charge`; nie parser AST |

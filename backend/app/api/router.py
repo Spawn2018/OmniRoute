@@ -178,6 +178,7 @@ from app.api import (
     named_place_marks,
     nbp_rates,
     ncts_drafts,
+    network_print_requirements,
     networks,
     nvocc_marks,
     ocean_alliance_marks,
@@ -352,6 +353,7 @@ api_router.include_router(document_dispatch_rules.router)
 api_router.include_router(booking_instructions.router)
 api_router.include_router(field_carry_forwards.router)
 api_router.include_router(networks.router)
+api_router.include_router(network_print_requirements.router)
 api_router.include_router(carrier_inquiries.router)
 api_router.include_router(inbound_messages.router)
 api_router.include_router(incoterm_responsibilities.router)

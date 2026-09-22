@@ -186,6 +186,7 @@ import { Route as NacMarksRouteImport } from './routes/nac-marks'
 import { Route as NamedPlaceMarksRouteImport } from './routes/named-place-marks'
 import { Route as NbpRatesRouteImport } from './routes/nbp-rates'
 import { Route as NctsDraftsRouteImport } from './routes/ncts-drafts'
+import { Route as NetworkPrintRequirementsRouteImport } from './routes/network-print-requirements'
 import { Route as NetworksRouteImport } from './routes/networks'
 import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as NvoccMarksRouteImport } from './routes/nvocc-marks'
@@ -1228,6 +1229,12 @@ const NctsDraftsRoute = NctsDraftsRouteImport.update({
   path: '/ncts-drafts',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NetworkPrintRequirementsRoute =
+  NetworkPrintRequirementsRouteImport.update({
+    id: '/network-print-requirements',
+    path: '/network-print-requirements',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const NetworksRoute = NetworksRouteImport.update({
   id: '/networks',
   path: '/networks',
@@ -2180,6 +2187,7 @@ export interface FileRoutesByFullPath {
   '/named-place-marks': typeof NamedPlaceMarksRoute
   '/nbp-rates': typeof NbpRatesRoute
   '/ncts-drafts': typeof NctsDraftsRoute
+  '/network-print-requirements': typeof NetworkPrintRequirementsRoute
   '/networks': typeof NetworksRoute
   '/notifications': typeof NotificationsRoute
   '/nvocc-marks': typeof NvoccMarksRoute
@@ -2513,6 +2521,7 @@ export interface FileRoutesByTo {
   '/named-place-marks': typeof NamedPlaceMarksRoute
   '/nbp-rates': typeof NbpRatesRoute
   '/ncts-drafts': typeof NctsDraftsRoute
+  '/network-print-requirements': typeof NetworkPrintRequirementsRoute
   '/networks': typeof NetworksRoute
   '/notifications': typeof NotificationsRoute
   '/nvocc-marks': typeof NvoccMarksRoute
@@ -2847,6 +2856,7 @@ export interface FileRoutesById {
   '/named-place-marks': typeof NamedPlaceMarksRoute
   '/nbp-rates': typeof NbpRatesRoute
   '/ncts-drafts': typeof NctsDraftsRoute
+  '/network-print-requirements': typeof NetworkPrintRequirementsRoute
   '/networks': typeof NetworksRoute
   '/notifications': typeof NotificationsRoute
   '/nvocc-marks': typeof NvoccMarksRoute
@@ -3182,6 +3192,7 @@ export interface FileRouteTypes {
     | '/named-place-marks'
     | '/nbp-rates'
     | '/ncts-drafts'
+    | '/network-print-requirements'
     | '/networks'
     | '/notifications'
     | '/nvocc-marks'
@@ -3515,6 +3526,7 @@ export interface FileRouteTypes {
     | '/named-place-marks'
     | '/nbp-rates'
     | '/ncts-drafts'
+    | '/network-print-requirements'
     | '/networks'
     | '/notifications'
     | '/nvocc-marks'
@@ -3848,6 +3860,7 @@ export interface FileRouteTypes {
     | '/named-place-marks'
     | '/nbp-rates'
     | '/ncts-drafts'
+    | '/network-print-requirements'
     | '/networks'
     | '/notifications'
     | '/nvocc-marks'
@@ -4182,6 +4195,7 @@ export interface RootRouteChildren {
   NamedPlaceMarksRoute: typeof NamedPlaceMarksRoute
   NbpRatesRoute: typeof NbpRatesRoute
   NctsDraftsRoute: typeof NctsDraftsRoute
+  NetworkPrintRequirementsRoute: typeof NetworkPrintRequirementsRoute
   NetworksRoute: typeof NetworksRoute
   NotificationsRoute: typeof NotificationsRoute
   NvoccMarksRoute: typeof NvoccMarksRoute
@@ -5579,6 +5593,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NctsDraftsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/network-print-requirements': {
+      id: '/network-print-requirements'
+      path: '/network-print-requirements'
+      fullPath: '/network-print-requirements'
+      preLoaderRoute: typeof NetworkPrintRequirementsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/networks': {
       id: '/networks'
       path: '/networks'
@@ -6838,6 +6859,7 @@ const rootRouteChildren: RootRouteChildren = {
   NamedPlaceMarksRoute: NamedPlaceMarksRoute,
   NbpRatesRoute: NbpRatesRoute,
   NctsDraftsRoute: NctsDraftsRoute,
+  NetworkPrintRequirementsRoute: NetworkPrintRequirementsRoute,
   NetworksRoute: NetworksRoute,
   NotificationsRoute: NotificationsRoute,
   NvoccMarksRoute: NvoccMarksRoute,

@@ -1814,6 +1814,10 @@ export type ChannelQuoteCreate = {
      * Transit Days
      */
     transit_days?: number | null;
+    /**
+     * Transport Mode
+     */
+    transport_mode?: string;
 };
 
 /**
@@ -1856,6 +1860,10 @@ export type ChannelQuoteResponse = {
      * Transit Days
      */
     transit_days: number | null;
+    /**
+     * Transport Mode
+     */
+    transport_mode: string;
     /**
      * Source Ref
      */
@@ -2108,6 +2116,28 @@ export type ChargeResponse = {
      * Source Ref
      */
     source_ref: string | null;
+};
+
+/**
+ * ChargeSellInPlnResponse
+ */
+export type ChargeSellInPlnResponse = {
+    /**
+     * Charge Id
+     */
+    charge_id: string;
+    /**
+     * On Date
+     */
+    on_date: string;
+    /**
+     * Sell Amount Pln
+     */
+    sell_amount_pln: string;
+    /**
+     * Currency
+     */
+    currency?: string;
 };
 
 /**
@@ -6962,6 +6992,10 @@ export type GroupageTariffCreate = {
      * Source Ref
      */
     source_ref: string;
+    /**
+     * Volume M3
+     */
+    volume_m3?: string | null;
 };
 
 /**
@@ -7000,6 +7034,10 @@ export type GroupageTariffResponse = {
      * Source Ref
      */
     source_ref: string;
+    /**
+     * Volume M3
+     */
+    volume_m3: string | null;
 };
 
 /**
@@ -10026,6 +10064,50 @@ export type NetworkMemberResponse = {
      * Party Id
      */
     party_id: string | null;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * NetworkPrintRequirementCreate
+ */
+export type NetworkPrintRequirementCreate = {
+    /**
+     * Requirement Code
+     */
+    requirement_code: string;
+    /**
+     * Network Label
+     */
+    network_label: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * NetworkPrintRequirementResponse
+ */
+export type NetworkPrintRequirementResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Requirement Code
+     */
+    requirement_code: string;
+    /**
+     * Network Label
+     */
+    network_label: string;
     /**
      * Source Ref
      */
@@ -19658,6 +19740,49 @@ export type CreateNetworkMemberApiV1NetworksNetworkIdMembersPostResponses = {
 
 export type CreateNetworkMemberApiV1NetworksNetworkIdMembersPostResponse = CreateNetworkMemberApiV1NetworksNetworkIdMembersPostResponses[keyof CreateNetworkMemberApiV1NetworksNetworkIdMembersPostResponses];
 
+export type ListNetworkPrintRequirementsApiV1NetworkPrintRequirementsGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/network-print-requirements';
+};
+
+export type ListNetworkPrintRequirementsApiV1NetworkPrintRequirementsGetResponses = {
+    /**
+     * Response List Network Print Requirements Api V1 Network Print Requirements Get
+     *
+     * Successful Response
+     */
+    200: Array<NetworkPrintRequirementResponse>;
+};
+
+export type ListNetworkPrintRequirementsApiV1NetworkPrintRequirementsGetResponse = ListNetworkPrintRequirementsApiV1NetworkPrintRequirementsGetResponses[keyof ListNetworkPrintRequirementsApiV1NetworkPrintRequirementsGetResponses];
+
+export type CreateNetworkPrintRequirementApiV1NetworkPrintRequirementsPostData = {
+    body: NetworkPrintRequirementCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/network-print-requirements';
+};
+
+export type CreateNetworkPrintRequirementApiV1NetworkPrintRequirementsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateNetworkPrintRequirementApiV1NetworkPrintRequirementsPostError = CreateNetworkPrintRequirementApiV1NetworkPrintRequirementsPostErrors[keyof CreateNetworkPrintRequirementApiV1NetworkPrintRequirementsPostErrors];
+
+export type CreateNetworkPrintRequirementApiV1NetworkPrintRequirementsPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: NetworkPrintRequirementResponse;
+};
+
+export type CreateNetworkPrintRequirementApiV1NetworkPrintRequirementsPostResponse = CreateNetworkPrintRequirementApiV1NetworkPrintRequirementsPostResponses[keyof CreateNetworkPrintRequirementApiV1NetworkPrintRequirementsPostResponses];
+
 export type ListCarrierInquiriesApiV1CarrierInquiriesGetData = {
     body?: never;
     path?: never;
@@ -21644,6 +21769,41 @@ export type ListTreeMarginsApiV1ChargesTreeMarginsGetResponses = {
 
 export type ListTreeMarginsApiV1ChargesTreeMarginsGetResponse = ListTreeMarginsApiV1ChargesTreeMarginsGetResponses[keyof ListTreeMarginsApiV1ChargesTreeMarginsGetResponses];
 
+export type GetChargeSellInPlnApiV1ChargesChargeIdSellInPlnGetData = {
+    body?: never;
+    path: {
+        /**
+         * Charge Id
+         */
+        charge_id: string;
+    };
+    query: {
+        /**
+         * On Date
+         */
+        on_date: string;
+    };
+    url: '/api/v1/charges/{charge_id}/sell-in-pln';
+};
+
+export type GetChargeSellInPlnApiV1ChargesChargeIdSellInPlnGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type GetChargeSellInPlnApiV1ChargesChargeIdSellInPlnGetError = GetChargeSellInPlnApiV1ChargesChargeIdSellInPlnGetErrors[keyof GetChargeSellInPlnApiV1ChargesChargeIdSellInPlnGetErrors];
+
+export type GetChargeSellInPlnApiV1ChargesChargeIdSellInPlnGetResponses = {
+    /**
+     * Successful Response
+     */
+    200: ChargeSellInPlnResponse;
+};
+
+export type GetChargeSellInPlnApiV1ChargesChargeIdSellInPlnGetResponse = GetChargeSellInPlnApiV1ChargesChargeIdSellInPlnGetResponses[keyof GetChargeSellInPlnApiV1ChargesChargeIdSellInPlnGetResponses];
+
 export type ListChargesApiV1ChargesGetData = {
     body?: never;
     path?: never;
@@ -21866,6 +22026,10 @@ export type ResolveChannelQuoteApiV1ChannelQuotesResolveGetData = {
          * On Date
          */
         on_date: string;
+        /**
+         * Transport Mode
+         */
+        transport_mode?: string;
     };
     url: '/api/v1/channel-quotes/resolve';
 };
@@ -23191,6 +23355,66 @@ export type CreateOceanBillApiV1OceanBillsPostResponses = {
 };
 
 export type CreateOceanBillApiV1OceanBillsPostResponse = CreateOceanBillApiV1OceanBillsPostResponses[keyof CreateOceanBillApiV1OceanBillsPostResponses];
+
+export type IssueOceanBillHblApiV1OceanBillsBillIdHblNumberPostData = {
+    body?: never;
+    path: {
+        /**
+         * Bill Id
+         */
+        bill_id: string;
+    };
+    query?: never;
+    url: '/api/v1/ocean-bills/{bill_id}/hbl-number';
+};
+
+export type IssueOceanBillHblApiV1OceanBillsBillIdHblNumberPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type IssueOceanBillHblApiV1OceanBillsBillIdHblNumberPostError = IssueOceanBillHblApiV1OceanBillsBillIdHblNumberPostErrors[keyof IssueOceanBillHblApiV1OceanBillsBillIdHblNumberPostErrors];
+
+export type IssueOceanBillHblApiV1OceanBillsBillIdHblNumberPostResponses = {
+    /**
+     * Successful Response
+     */
+    200: OceanBillResponse;
+};
+
+export type IssueOceanBillHblApiV1OceanBillsBillIdHblNumberPostResponse = IssueOceanBillHblApiV1OceanBillsBillIdHblNumberPostResponses[keyof IssueOceanBillHblApiV1OceanBillsBillIdHblNumberPostResponses];
+
+export type IssueOceanBillMblApiV1OceanBillsBillIdMblNumberPostData = {
+    body?: never;
+    path: {
+        /**
+         * Bill Id
+         */
+        bill_id: string;
+    };
+    query?: never;
+    url: '/api/v1/ocean-bills/{bill_id}/mbl-number';
+};
+
+export type IssueOceanBillMblApiV1OceanBillsBillIdMblNumberPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type IssueOceanBillMblApiV1OceanBillsBillIdMblNumberPostError = IssueOceanBillMblApiV1OceanBillsBillIdMblNumberPostErrors[keyof IssueOceanBillMblApiV1OceanBillsBillIdMblNumberPostErrors];
+
+export type IssueOceanBillMblApiV1OceanBillsBillIdMblNumberPostResponses = {
+    /**
+     * Successful Response
+     */
+    200: OceanBillResponse;
+};
+
+export type IssueOceanBillMblApiV1OceanBillsBillIdMblNumberPostResponse = IssueOceanBillMblApiV1OceanBillsBillIdMblNumberPostResponses[keyof IssueOceanBillMblApiV1OceanBillsBillIdMblNumberPostResponses];
 
 export type ListOceanFeederMarksApiV1OceanFeederMarksGetData = {
     body?: never;
@@ -31874,6 +32098,66 @@ export type CreateShipmentLegApiV1ShipmentLegsPostResponses = {
 };
 
 export type CreateShipmentLegApiV1ShipmentLegsPostResponse = CreateShipmentLegApiV1ShipmentLegsPostResponses[keyof CreateShipmentLegApiV1ShipmentLegsPostResponses];
+
+export type IssueShipmentLegHawbApiV1ShipmentLegsLegIdHawbNumberPostData = {
+    body?: never;
+    path: {
+        /**
+         * Leg Id
+         */
+        leg_id: string;
+    };
+    query?: never;
+    url: '/api/v1/shipment-legs/{leg_id}/hawb-number';
+};
+
+export type IssueShipmentLegHawbApiV1ShipmentLegsLegIdHawbNumberPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type IssueShipmentLegHawbApiV1ShipmentLegsLegIdHawbNumberPostError = IssueShipmentLegHawbApiV1ShipmentLegsLegIdHawbNumberPostErrors[keyof IssueShipmentLegHawbApiV1ShipmentLegsLegIdHawbNumberPostErrors];
+
+export type IssueShipmentLegHawbApiV1ShipmentLegsLegIdHawbNumberPostResponses = {
+    /**
+     * Successful Response
+     */
+    200: ShipmentLegResponse;
+};
+
+export type IssueShipmentLegHawbApiV1ShipmentLegsLegIdHawbNumberPostResponse = IssueShipmentLegHawbApiV1ShipmentLegsLegIdHawbNumberPostResponses[keyof IssueShipmentLegHawbApiV1ShipmentLegsLegIdHawbNumberPostResponses];
+
+export type IssueShipmentLegMawbApiV1ShipmentLegsLegIdMawbNumberPostData = {
+    body?: never;
+    path: {
+        /**
+         * Leg Id
+         */
+        leg_id: string;
+    };
+    query?: never;
+    url: '/api/v1/shipment-legs/{leg_id}/mawb-number';
+};
+
+export type IssueShipmentLegMawbApiV1ShipmentLegsLegIdMawbNumberPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type IssueShipmentLegMawbApiV1ShipmentLegsLegIdMawbNumberPostError = IssueShipmentLegMawbApiV1ShipmentLegsLegIdMawbNumberPostErrors[keyof IssueShipmentLegMawbApiV1ShipmentLegsLegIdMawbNumberPostErrors];
+
+export type IssueShipmentLegMawbApiV1ShipmentLegsLegIdMawbNumberPostResponses = {
+    /**
+     * Successful Response
+     */
+    200: ShipmentLegResponse;
+};
+
+export type IssueShipmentLegMawbApiV1ShipmentLegsLegIdMawbNumberPostResponse = IssueShipmentLegMawbApiV1ShipmentLegsLegIdMawbNumberPostResponses[keyof IssueShipmentLegMawbApiV1ShipmentLegsLegIdMawbNumberPostResponses];
 
 export type ListShipmentMonitoringFilingsApiV1ShipmentMonitoringFilingsGetData = {
     body?: never;

@@ -29,7 +29,7 @@ zostają w badaniach `04`).
 
 | Data | Co |
 |---|---|
-| 2026-09-22 | **626.0** D9c leftover katalog `network_print_requirement`: kod + etykieta sieci + `source_ref` (`REQUIREMENT`). HTTP 409, PDF i QR `REJECTED` w tym plasterze. Marża zostaje na `charge` (`CONFIRMED`). |
+| 2026-09-22 | **626.0** D9c leftover katalog `network_print_requirement` zamknięty: kod + etykieta sieci + `source_ref` (`CONFIRMED`). HTTP 409, PDF i QR nadal `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-22 | **625.0** D5b leftover objętość na cenniku drobnicy: opcjonalne `volume_m3` Decimal, nie zmienia `chargeable_weight` ani `amount` (`REQUIREMENT`). Paleta i FSC `REJECTED` w tym plasterze. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-22 | **624.0** D4b leftover rodzaj dokumentu: `document_kind` `rod` obok `noted`|`attached`|`other` (`REQUIREMENT`). Token `pod` `REJECTED` — POD w słowniku to port wyładunku. Skan i bajty `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-22 | **623.0** D7d leftover saldo palet: `pallet_kind` `epal` obok `chep`|`lpr` (`REQUIREMENT`). Giełda, ledger ujemny i kind `euro` `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
