@@ -85,6 +85,7 @@ modules =
     app.services.stop_groups
     app.services.pallet_balances
     app.services.pallet_ledgers
+    app.services.pallet_synchro_marks
     app.services.document_templates
     app.services.rate_cards
     app.services.charge_templates
@@ -564,6 +565,9 @@ forbidden_modules =
     app.services.pallet_ledgers
     app.repositories.pallet_ledgers
     app.models.pallet_ledger
+    app.services.pallet_synchro_marks
+    app.repositories.pallet_synchro_marks
+    app.models.pallet_synchro_mark
     app.services.document_templates
     app.repositories.document_templates
     app.models.document_template

@@ -14,6 +14,7 @@ from app.domain.errors import (
     ExtractionCandidatesNotEditable,
     MarginFloorBreach,
     PalletLedgerConflict,
+    PalletSynchroMarkConflict,
     PartyConflict,
     PermissionDenied,
     ProductTicketOwnerRequired,
@@ -154,6 +155,14 @@ async def party_conflict_handler(_request: Request, exc: PartyConflict) -> JSONR
 async def pallet_ledger_conflict_handler(
     _request: Request,
     exc: PalletLedgerConflict,
+) -> JSONResponse:
+    return JSONResponse(status_code=409, content={"detail": str(exc)})
+
+
+@app.exception_handler(PalletSynchroMarkConflict)
+async def pallet_synchro_mark_conflict_handler(
+    _request: Request,
+    exc: PalletSynchroMarkConflict,
 ) -> JSONResponse:
     return JSONResponse(status_code=409, content={"detail": str(exc)})
 

@@ -205,6 +205,7 @@ import { Route as OutcomeLedgersRouteImport } from './routes/outcome-ledgers'
 import { Route as PalletBalancesRouteImport } from './routes/pallet-balances'
 import { Route as PalletLedgersRouteImport } from './routes/pallet-ledgers'
 import { Route as PalletPoolMarksRouteImport } from './routes/pallet-pool-marks'
+import { Route as PalletSynchroMarksRouteImport } from './routes/pallet-synchro-marks'
 import { Route as PartiesRouteImport } from './routes/parties'
 import { Route as PartnerExchangeMarksRouteImport } from './routes/partner-exchange-marks'
 import { Route as PartyDocumentsRouteImport } from './routes/party-documents'
@@ -1326,6 +1327,11 @@ const PalletPoolMarksRoute = PalletPoolMarksRouteImport.update({
   path: '/pallet-pool-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PalletSynchroMarksRoute = PalletSynchroMarksRouteImport.update({
+  id: '/pallet-synchro-marks',
+  path: '/pallet-synchro-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PartiesRoute = PartiesRouteImport.update({
   id: '/parties',
   path: '/parties',
@@ -2212,6 +2218,7 @@ export interface FileRoutesByFullPath {
   '/pallet-balances': typeof PalletBalancesRoute
   '/pallet-ledgers': typeof PalletLedgersRoute
   '/pallet-pool-marks': typeof PalletPoolMarksRoute
+  '/pallet-synchro-marks': typeof PalletSynchroMarksRoute
   '/parties': typeof PartiesRoute
   '/partner-exchange-marks': typeof PartnerExchangeMarksRoute
   '/party-documents': typeof PartyDocumentsRoute
@@ -2547,6 +2554,7 @@ export interface FileRoutesByTo {
   '/pallet-balances': typeof PalletBalancesRoute
   '/pallet-ledgers': typeof PalletLedgersRoute
   '/pallet-pool-marks': typeof PalletPoolMarksRoute
+  '/pallet-synchro-marks': typeof PalletSynchroMarksRoute
   '/parties': typeof PartiesRoute
   '/partner-exchange-marks': typeof PartnerExchangeMarksRoute
   '/party-documents': typeof PartyDocumentsRoute
@@ -2883,6 +2891,7 @@ export interface FileRoutesById {
   '/pallet-balances': typeof PalletBalancesRoute
   '/pallet-ledgers': typeof PalletLedgersRoute
   '/pallet-pool-marks': typeof PalletPoolMarksRoute
+  '/pallet-synchro-marks': typeof PalletSynchroMarksRoute
   '/parties': typeof PartiesRoute
   '/partner-exchange-marks': typeof PartnerExchangeMarksRoute
   '/party-documents': typeof PartyDocumentsRoute
@@ -3220,6 +3229,7 @@ export interface FileRouteTypes {
     | '/pallet-balances'
     | '/pallet-ledgers'
     | '/pallet-pool-marks'
+    | '/pallet-synchro-marks'
     | '/parties'
     | '/partner-exchange-marks'
     | '/party-documents'
@@ -3555,6 +3565,7 @@ export interface FileRouteTypes {
     | '/pallet-balances'
     | '/pallet-ledgers'
     | '/pallet-pool-marks'
+    | '/pallet-synchro-marks'
     | '/parties'
     | '/partner-exchange-marks'
     | '/party-documents'
@@ -3890,6 +3901,7 @@ export interface FileRouteTypes {
     | '/pallet-balances'
     | '/pallet-ledgers'
     | '/pallet-pool-marks'
+    | '/pallet-synchro-marks'
     | '/parties'
     | '/partner-exchange-marks'
     | '/party-documents'
@@ -4226,6 +4238,7 @@ export interface RootRouteChildren {
   PalletBalancesRoute: typeof PalletBalancesRoute
   PalletLedgersRoute: typeof PalletLedgersRoute
   PalletPoolMarksRoute: typeof PalletPoolMarksRoute
+  PalletSynchroMarksRoute: typeof PalletSynchroMarksRoute
   PartiesRoute: typeof PartiesRoute
   PartnerExchangeMarksRoute: typeof PartnerExchangeMarksRoute
   PartyDocumentsRoute: typeof PartyDocumentsRoute
@@ -5739,6 +5752,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PalletPoolMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/pallet-synchro-marks': {
+      id: '/pallet-synchro-marks'
+      path: '/pallet-synchro-marks'
+      fullPath: '/pallet-synchro-marks'
+      preLoaderRoute: typeof PalletSynchroMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/parties': {
       id: '/parties'
       path: '/parties'
@@ -6898,6 +6918,7 @@ const rootRouteChildren: RootRouteChildren = {
   PalletBalancesRoute: PalletBalancesRoute,
   PalletLedgersRoute: PalletLedgersRoute,
   PalletPoolMarksRoute: PalletPoolMarksRoute,
+  PalletSynchroMarksRoute: PalletSynchroMarksRoute,
   PartiesRoute: PartiesRoute,
   PartnerExchangeMarksRoute: PartnerExchangeMarksRoute,
   PartyDocumentsRoute: PartyDocumentsRoute,

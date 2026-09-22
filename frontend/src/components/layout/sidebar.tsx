@@ -195,6 +195,7 @@ const NAV = [
   { to: "/parties", label: "Kontrahenci" },
   { to: "/pallet-balances", label: "Saldo palet" },
   { to: "/pallet-ledgers", label: "Ledger ruchu palet" },
+  { to: "/pallet-synchro-marks", label: "Synchro palet" },
   { to: "/document-templates", label: "Szablony wydruku" },
   { to: "/network-print-requirements", label: "Wydruk sieci" },
   { to: "/party-scorecards", label: "Karty wyników" },

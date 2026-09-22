@@ -574,6 +574,14 @@ class PalletLedgerConflict(DomainError):
     """Duplikat kodu ruchu palet w tenancie."""
 
 
+class InvalidPalletSynchroMark(DomainError):
+    """D7c leftover: HITL stance synchro salda↔ledger — nie auto-UPDATE."""
+
+
+class PalletSynchroMarkConflict(DomainError):
+    """Duplikat kodu synchro palet w tenancie."""
+
+
 class InvalidDocumentTemplate(DomainError):
     """Szablon wydruku jako dane — nie PDF, nie etykieta sieci."""
 

@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **629.0** D7c `pallet_ledger` HITL (gate success) **Następny:** **630.0** plaster `pallet_synchro_mark`. D9c 409 / D9d PDF-QR / D9e skan / D9f pdf-zpl / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-UPDATE salda = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`. Po 630: Plan **631.0** leftover 528 clone U1 carry HITL.
+**Stan (z CURRENT.md):** **630.0** D7c `pallet_synchro_mark` HITL (gate po push) **Następny:** **631.0** leftover 528 clone U1 carry HITL. D9c 409 / D9d PDF-QR / D9e skan / D9f pdf-zpl / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-UPDATE salda = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

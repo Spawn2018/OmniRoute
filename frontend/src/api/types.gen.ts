@@ -11131,6 +11131,50 @@ export type PalletPoolMarkResponse = {
 };
 
 /**
+ * PalletSynchroMarkCreate
+ */
+export type PalletSynchroMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Synchro Kind
+     */
+    synchro_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * PalletSynchroMarkResponse
+ */
+export type PalletSynchroMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Synchro Kind
+     */
+    synchro_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * PartnerExchangeMarkCreate
  */
 export type PartnerExchangeMarkCreate = {
@@ -23773,6 +23817,49 @@ export type CreatePalletLedgerApiV1PalletLedgersPostResponses = {
 };
 
 export type CreatePalletLedgerApiV1PalletLedgersPostResponse = CreatePalletLedgerApiV1PalletLedgersPostResponses[keyof CreatePalletLedgerApiV1PalletLedgersPostResponses];
+
+export type ListPalletSynchroMarksApiV1PalletSynchroMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/pallet-synchro-marks';
+};
+
+export type ListPalletSynchroMarksApiV1PalletSynchroMarksGetResponses = {
+    /**
+     * Response List Pallet Synchro Marks Api V1 Pallet Synchro Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<PalletSynchroMarkResponse>;
+};
+
+export type ListPalletSynchroMarksApiV1PalletSynchroMarksGetResponse = ListPalletSynchroMarksApiV1PalletSynchroMarksGetResponses[keyof ListPalletSynchroMarksApiV1PalletSynchroMarksGetResponses];
+
+export type CreatePalletSynchroMarkApiV1PalletSynchroMarksPostData = {
+    body: PalletSynchroMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/pallet-synchro-marks';
+};
+
+export type CreatePalletSynchroMarkApiV1PalletSynchroMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreatePalletSynchroMarkApiV1PalletSynchroMarksPostError = CreatePalletSynchroMarkApiV1PalletSynchroMarksPostErrors[keyof CreatePalletSynchroMarkApiV1PalletSynchroMarksPostErrors];
+
+export type CreatePalletSynchroMarkApiV1PalletSynchroMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: PalletSynchroMarkResponse;
+};
+
+export type CreatePalletSynchroMarkApiV1PalletSynchroMarksPostResponse = CreatePalletSynchroMarkApiV1PalletSynchroMarksPostResponses[keyof CreatePalletSynchroMarkApiV1PalletSynchroMarksPostResponses];
 
 export type ListDocumentTemplatesApiV1DocumentTemplatesGetData = {
     body?: never;

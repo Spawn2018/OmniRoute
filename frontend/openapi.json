@@ -8571,6 +8571,80 @@
         ]
       }
     },
+    "/api/v1/pallet-synchro-marks": {
+      "get": {
+        "tags": [
+          "pallet-synchro-marks"
+        ],
+        "summary": "List Pallet Synchro Marks",
+        "operationId": "list_pallet_synchro_marks_api_v1_pallet_synchro_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/PalletSynchroMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Pallet Synchro Marks Api V1 Pallet Synchro Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "pallet-synchro-marks"
+        ],
+        "summary": "Create Pallet Synchro Mark",
+        "operationId": "create_pallet_synchro_mark_api_v1_pallet_synchro_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PalletSynchroMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PalletSynchroMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/document-templates": {
       "get": {
         "tags": [
@@ -46354,6 +46428,65 @@
           "source_ref"
         ],
         "title": "PalletPoolMarkResponse"
+      },
+      "PalletSynchroMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "synchro_kind": {
+            "type": "string",
+            "title": "Synchro Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "synchro_kind",
+          "source_ref"
+        ],
+        "title": "PalletSynchroMarkCreate"
+      },
+      "PalletSynchroMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "synchro_kind": {
+            "type": "string",
+            "title": "Synchro Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "synchro_kind",
+          "source_ref"
+        ],
+        "title": "PalletSynchroMarkResponse"
       },
       "PartnerExchangeMarkCreate": {
         "properties": {

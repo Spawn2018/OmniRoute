@@ -104,6 +104,11 @@ export const OPS_JOBS = [
     job: "HITL pallet_ledger delta ze znakiem bez mutacji salda",
   },
   {
+    route: BUSINESS_LISTS.palletSynchroMark.route,
+    label: "Synchro palet",
+    job: "HITL pallet_synchro_mark stance bez auto-UPDATE",
+  },
+  {
     route: BUSINESS_LISTS.documentTemplate.route,
     label: "Szablony wydruku",
     job: "katalog document_template layout bez PDF",
@@ -1894,6 +1899,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "627.0": "/document-templates",
   "628.0": "/shipments",
   "629.0": "/pallet-ledgers",
+  "630.0": "/pallet-synchro-marks",
   "142.0": "/mail",
   "143.0": "/networks",
   "144.0": "/quotations",

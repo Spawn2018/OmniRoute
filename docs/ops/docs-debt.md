@@ -1,8 +1,8 @@
 - **625.0 DONE:** `groupage_tariff.volume_m3` opcjonalne Decimal. Nie liczy progu. Leftover D5b: paleta zostaje na saldzie, FSC na `fuel_index`.
 - **624.0 DONE:** `shipment_document.document_kind` przyjmuje `rod`. `pod` zostaje odrzucone (port wyładunku). Leftover: skan / bajty.
-- **630.0 plan:** `pallet_synchro_mark` HITL stance salda↔ledger. Nie auto-UPDATE. Leftover po: D7b giełda park · auto-UPDATE park · 528 clone U1.
-- **629.0 DONE:** `pallet_ledger` HITL ruch sztuk ze znakiem. Nie mutuje salda. Leftover: D7b giełda park live · synchro stance = **630.0** plan · auto-UPDATE salda park.
-- **623.0 DONE:** `pallet_balance.pallet_kind` przyjmuje `epal`. Leftover: D7b giełda park live · D7c ledger = **629.0** DONE · synchro = **630.0**.
+- **630.0 DONE:** `pallet_synchro_mark` HITL stance salda↔ledger. Nie auto-UPDATE. Leftover: D7b giełda park · auto-UPDATE park · 528 clone U1.
+- **629.0 DONE:** `pallet_ledger` HITL ruch sztuk ze znakiem. Nie mutuje salda. Leftover: D7b giełda park live · synchro stance = **630.0** DONE · auto-UPDATE salda park.
+- **623.0 DONE:** `pallet_balance.pallet_kind` przyjmuje `epal`. Leftover: D7b giełda park live · D7c ledger = **629.0** DONE · synchro = **630.0** DONE.
 - **617.0 leftover:** przeliczenie SQL przy FV · odczyt kwoty `nbp_rate`. 617.0 = `fx_rate_day` (offset −1 = poprzedni dzień roboczy U4, nie mnożenie).
 - **612.0 leftover:** HW · UXCL · N3 · AI3 · G0-SH. 612.0 = HITL `container.destination_city` (tekst do 64, nie geokoder).
 - **611.0 leftover:** `destination_city` · FK portu · HW · UXCL · N3. 611.0 = HITL `container.pod_unlocode` (5 znaków UN/LOCODE, nie resolve, nie mapa).

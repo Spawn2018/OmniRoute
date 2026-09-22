@@ -11,6 +11,11 @@ Na `/pallet-ledgers` zapisujesz **ruch** sztuk ze znakiem (wydanie ujemne, zwrot
 1. Podaj kod ruchu (`movement_code`), rodzaj i deltę całkowitą.
 2. „Zapisz ruch palet” z `source_ref` (`fixture://pallet-ledger/…` albo `tenant:manual`).
 
+Na `/pallet-synchro-marks` zapisujesz **stance** zgodności salda z ledgerem (`aligned` / `drift` / `held` / `other`). To nie sumuje ledgeru i nie przelicza salda.
+
+1. Podaj kod znacznika i `synchro_kind`.
+2. „Zapisz synchro palet” z `source_ref` (`fixture://pallet-synchro/…` albo `tenant:manual`).
+
 Czego tu nie ma: giełda palet, live HTTP Chep/LPR, auto-przeliczenie salda z ledgeru, kwota na `charge`.
 
-Nazwy w kodzie: `pallet_balance` · `pallet_ledger` · `pallet_kind` · `unit_count` · `delta_count` · `source_ref`.
+Nazwy w kodzie: `pallet_balance` · `pallet_ledger` · `pallet_synchro_mark` · `pallet_kind` · `unit_count` · `delta_count` · `synchro_kind` · `source_ref`.
