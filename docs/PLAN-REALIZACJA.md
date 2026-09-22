@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **631.0** leftover 528 clone U1 carry HITL. D9c 409 / D9d PDF-QR / D9e skan / D9f pdf-zpl / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-UPDATE salda = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
+**Następny:** **631.0** leftover 528 clone U1 carry HITL (`clone_carry_mark`). D9c 409 / D9d PDF-QR / D9e skan / D9f pdf-zpl / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-UPDATE salda = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -482,7 +482,7 @@ Karta: [karty-pol-fala-u.md](analysis/karty-pol-fala-u.md). **U6** + **M-72** = 
 | **U5** | `document_checklist_rule` (incoterm×side×mode) + `blocks_dispatch` | zamknięty (z U1, 144.0) | z U1 | ≠ C8 polisa podwykonawcy |
 | **U4** | `organization_calendar` + `is_working_day`; grace V5 = 3 dni **robocze** | zamknięty (`docs/deltas/archived/149.0-organization-calendar.md`) | po I4, przed T1 | nie `+3` kalendarzowe |
 | **U3** | `shipment_leg.kind=air` HAWB/MAWB + pule; lotnisko = `port` air | zamknięty ([154.0](deltas/archived/154.0-air.md); leftover U3b HAWB/MAWB [209.0](deltas/archived/209.0-air-hawb.md); leftover U3c pule [619.0](deltas/archived/619.0-air-waybill-pools.md); leftover e-rates [620.0](deltas/archived/620.0-air-channel-erate.md); leftover cyfra kontrolna IATA [622.0](deltas/archived/622.0-mawb-iata-check.md)) | po T, przed D | nie live IATA bez umowy |
-| **N9** | F2 + klon ostatniego podobnego zlecenia | zamknięty HITL intencja ([528.0](deltas/archived/528.0-shipment-clone-mark.md); leftover copy/U1 / similar SQL / F2b) | z U1 | nie drugi SoR |
+| **N9** | F2 + klon ostatniego podobnego zlecenia | zamknięty HITL intencja ([528.0](deltas/archived/528.0-shipment-clone-mark.md); leftover clone U1 carry → **631.0** `clone_carry_mark` HITL stance; park auto-copy / similar SQL / F2b) | z U1 | nie drugi SoR |
 
 ### Fala I — Incoterms, booking, odprawa (po U1; zlecenie już jest)
 

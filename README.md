@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **630.0** D7c `pallet_synchro_mark` HITL (gate po push)
-- **Etap:** Plan **631.0**. Leftover 528 clone U1 carry HITL (nie similar SQL, nie auto-copy).
-- **Następny:** **631.0** leftover 528 clone U1 carry HITL. D9c 409 / D9d PDF-QR / D9e skan / D9f pdf-zpl / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-UPDATE salda = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
+- **Ostatni plaster:** **630.0** D7c `pallet_synchro_mark` HITL (gate success)
+- **Etap:** Plan **631.0** — delta zaakceptowana (`docs/deltas/open/631.0-clone-carry-mark.md`). Wolno `/plaster`.
+- **Następny:** **631.0** leftover 528 clone U1 carry HITL (`clone_carry_mark`). D9c 409 / D9d PDF-QR / D9e skan / D9f pdf-zpl / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-UPDATE salda = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

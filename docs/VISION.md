@@ -29,6 +29,7 @@ zostają w badaniach `04`).
 
 | Data | Co |
 |---|---|
+| 2026-09-23 | **631.0** leftover 528 clone U1 carry HITL: tabela `clone_carry_mark` z `carry_kind` carry|held|skip|other (`REQUIREMENT`). Auto-copy U1, similar SQL i F2b Decimal `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-22 | **630.0** D7c leftover synchro stance HITL zamknięty: tabela `pallet_synchro_mark` z `synchro_kind` aligned|drift|held|other (`CONFIRMED`). Auto-UPDATE salda, giełda live, FK UUID i kwota nadal `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-22 | **630.0** D7c leftover synchro stance HITL: tabela `pallet_synchro_mark` z `synchro_kind` aligned|drift|held|other (`REQUIREMENT`). Auto-UPDATE salda, giełda live, FK UUID i kwota `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-22 | **629.0** D7c leftover ledger ruchu palet HITL zamknięty: tabela `pallet_ledger` z `delta_count` integer ze znakiem (`CONFIRMED`). Auto-UPDATE salda, giełda live i kwota nadal `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
