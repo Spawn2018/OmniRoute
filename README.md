@@ -87,10 +87,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **625.0** D5b `volume_m3` na cenniku drobnicy (CI po push)
-- **Etap:** Plan **626.0**. Komenda `/plan-modul`.
+- **Ostatni plaster:** **625.0** D5b `volume_m3` na cenniku drobnicy (gate success)
+- **Etap:** Plaster **626.0**. Delta zaakceptowana. Wolno `/plaster`.
 - **Następny:** **626.0** D9c etykieta sieci na wydruku (HITL, nie 409). Daty bazowe zlecenia / matching T5 / FK kontekstu / T8 live / D6b konsolidacja / D7b giełda = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
-- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 
