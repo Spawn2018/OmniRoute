@@ -4,7 +4,7 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **642.0** leftover EXP0.9 `packing_group` HITL (gate lokalne; CI po push)
+**Ostatni plaster:** **642.0** leftover EXP0.9 `packing_group` HITL (gate success)
 
 **Etap:** Plan **643.0** — po zamknięciu 642.0. Komenda `/plan-modul`.
 
