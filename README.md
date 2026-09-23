@@ -87,8 +87,8 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **632.0** leftover D9c `network_print_gate_mark` HITL (gate lokalne; CI po push)
-- **Etap:** Plan **633.0** — wolno `/plan-modul`.
+- **Ostatni plaster:** **632.0** leftover D9c `network_print_gate_mark` HITL (gate success)
+- **Etap:** Plan **633.0** — delta zaakceptowana (`docs/deltas/open/633.0-local-charge-carrier-service.md`). Wolno `/plaster`.
 - **Następny:** **633.0** leftover P4b armator/serwis HITL na `local_charge`. D9d PDF-QR / D9e skan / D9f pdf-zpl / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 / P4c warning = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`

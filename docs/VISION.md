@@ -29,6 +29,7 @@ zostają w badaniach `04`).
 
 | Data | Co |
 |---|---|
+| 2026-09-23 | **633.0** leftover P4b armator/serwis HITL: opcjonalne `carrier_label` / `service_label` na `local_charge` (`REQUIREMENT`). FK party i P4c warning `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-23 | **632.0** leftover D9c 409 stance HITL: tabela `network_print_gate_mark` z `gate_kind` block_409|warn_only|record_only|other (`REQUIREMENT`). Live 409 i PDF `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-23 | **631.0** leftover 528 clone U1 carry HITL zamknięty: tabela `clone_carry_mark` z `carry_kind` carry|held|skip|other (`CONFIRMED`). Auto-copy U1, similar SQL i F2b Decimal nadal `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-23 | **631.0** leftover 528 clone U1 carry HITL: tabela `clone_carry_mark` z `carry_kind` carry|held|skip|other (`REQUIREMENT`). Auto-copy U1, similar SQL i F2b Decimal `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
