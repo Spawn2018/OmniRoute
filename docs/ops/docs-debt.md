@@ -1,3 +1,4 @@
+**639.0 DONE:** `margin_match_mark` HITL stance (`match`|`hold`|`waive`|`other`). Nie matching SQL. Leftover: auto charge park.
 ﻿- **625.0 DONE:** `groupage_tariff.volume_m3` opcjonalne Decimal. Nie liczy progu. Leftover D5b: paleta zostaje na saldzie, FSC na `fuel_index`.
 - **624.0 DONE:** `shipment_document.document_kind` przyjmuje `rod`. `pod` zostaje odrzucone (port wyĹ‚adunku). Leftover: skan / bajty.
 - **635.0 DONE:** `local_charge_warning_mark` HITL stance ostrzeĹĽenia braku dopĹ‚aty. Nie warning-jako-fakt. Leftover: matching Â· P5bâ€“c Â· FK Â· live HTTP.
@@ -12,7 +13,7 @@
 - **637.0 DONE:** `handover_bind_mark` HITL stance wiÄ…zania przekazania (`note`|`board`|`shift`|`other`). Nie FK UUID. Leftover: T6 live Â· N8 Â· auto SBAR park.
 - **631.0 DONE:** `clone_carry_mark` HITL stance carry|held|skip przy klonie (leftover 528 U1). Nie auto-copy. Nie similar SQL. Nie F2b.
 - **528.0 leftover (po 631):** auto-copy allowlisty U1 przy klonie (compose) Â· silnik similar SQL Â· F2b Decimal na skonto przy klonie FV. 528.0 = HITL `shipment_clone_mark` (intencja; nie drugi SoR). 631.0 = HITL stance DONE.
-- **527.0 leftover:** 409 API DONE 539.0 · S11 DONE 544.0 · matching lane → **639.0** HITL stance. 527.0 = HITL margin_floor Decimal + UN/LOCODE.
+- **527.0 leftover:** 409 API DONE 539.0 · S11 DONE 544.0 · matching stance DONE **639.0**. Zostaje auto charge park. 527.0 = HITL `margin_floor` Decimal + UN/LOCODE.
 - **499.0 leftover:** Alpega live park Â· auto-award SQL. 499.0 = HITL `shipper_award_mark`.
 - **498.0 leftover:** Alpega live park Â· FK UUID Â· auto-award. 498.0 = HITL `shipper_bind_mark`. **499.0** = award stance (DONE).
 - **497.0 leftover:** HubSpot live park Â· FK UUID. 497.0 = HITL `sales_bind_mark`.

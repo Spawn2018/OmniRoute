@@ -178,6 +178,7 @@ import { Route as MailRouteImport } from './routes/mail'
 import { Route as MailAcceptMarksRouteImport } from './routes/mail-accept-marks'
 import { Route as MakeOrBuyMarksRouteImport } from './routes/make-or-buy-marks'
 import { Route as MarginFloorsRouteImport } from './routes/margin-floors'
+import { Route as MarginMatchMarksRouteImport } from './routes/margin-match-marks'
 import { Route as MemoryEdgesRouteImport } from './routes/memory-edges'
 import { Route as MobileClientMarksRouteImport } from './routes/mobile-client-marks'
 import { Route as ModelFeatureMarksRouteImport } from './routes/model-feature-marks'
@@ -1194,6 +1195,11 @@ const MakeOrBuyMarksRoute = MakeOrBuyMarksRouteImport.update({
 const MarginFloorsRoute = MarginFloorsRouteImport.update({
   id: '/margin-floors',
   path: '/margin-floors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarginMatchMarksRoute = MarginMatchMarksRouteImport.update({
+  id: '/margin-match-marks',
+  path: '/margin-match-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MemoryEdgesRoute = MemoryEdgesRouteImport.update({
@@ -2221,6 +2227,7 @@ export interface FileRoutesByFullPath {
   '/mail-accept-marks': typeof MailAcceptMarksRoute
   '/make-or-buy-marks': typeof MakeOrBuyMarksRoute
   '/margin-floors': typeof MarginFloorsRoute
+  '/margin-match-marks': typeof MarginMatchMarksRoute
   '/memory-edges': typeof MemoryEdgesRoute
   '/mobile-client-marks': typeof MobileClientMarksRoute
   '/model-feature-marks': typeof ModelFeatureMarksRoute
@@ -2562,6 +2569,7 @@ export interface FileRoutesByTo {
   '/mail-accept-marks': typeof MailAcceptMarksRoute
   '/make-or-buy-marks': typeof MakeOrBuyMarksRoute
   '/margin-floors': typeof MarginFloorsRoute
+  '/margin-match-marks': typeof MarginMatchMarksRoute
   '/memory-edges': typeof MemoryEdgesRoute
   '/mobile-client-marks': typeof MobileClientMarksRoute
   '/model-feature-marks': typeof ModelFeatureMarksRoute
@@ -2904,6 +2912,7 @@ export interface FileRoutesById {
   '/mail-accept-marks': typeof MailAcceptMarksRoute
   '/make-or-buy-marks': typeof MakeOrBuyMarksRoute
   '/margin-floors': typeof MarginFloorsRoute
+  '/margin-match-marks': typeof MarginMatchMarksRoute
   '/memory-edges': typeof MemoryEdgesRoute
   '/mobile-client-marks': typeof MobileClientMarksRoute
   '/model-feature-marks': typeof ModelFeatureMarksRoute
@@ -3247,6 +3256,7 @@ export interface FileRouteTypes {
     | '/mail-accept-marks'
     | '/make-or-buy-marks'
     | '/margin-floors'
+    | '/margin-match-marks'
     | '/memory-edges'
     | '/mobile-client-marks'
     | '/model-feature-marks'
@@ -3588,6 +3598,7 @@ export interface FileRouteTypes {
     | '/mail-accept-marks'
     | '/make-or-buy-marks'
     | '/margin-floors'
+    | '/margin-match-marks'
     | '/memory-edges'
     | '/mobile-client-marks'
     | '/model-feature-marks'
@@ -3929,6 +3940,7 @@ export interface FileRouteTypes {
     | '/mail-accept-marks'
     | '/make-or-buy-marks'
     | '/margin-floors'
+    | '/margin-match-marks'
     | '/memory-edges'
     | '/mobile-client-marks'
     | '/model-feature-marks'
@@ -4271,6 +4283,7 @@ export interface RootRouteChildren {
   MailAcceptMarksRoute: typeof MailAcceptMarksRoute
   MakeOrBuyMarksRoute: typeof MakeOrBuyMarksRoute
   MarginFloorsRoute: typeof MarginFloorsRoute
+  MarginMatchMarksRoute: typeof MarginMatchMarksRoute
   MemoryEdgesRoute: typeof MemoryEdgesRoute
   MobileClientMarksRoute: typeof MobileClientMarksRoute
   ModelFeatureMarksRoute: typeof ModelFeatureMarksRoute
@@ -5626,6 +5639,13 @@ declare module '@tanstack/react-router' {
       path: '/margin-floors'
       fullPath: '/margin-floors'
       preLoaderRoute: typeof MarginFloorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/margin-match-marks': {
+      id: '/margin-match-marks'
+      path: '/margin-match-marks'
+      fullPath: '/margin-match-marks'
+      preLoaderRoute: typeof MarginMatchMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/memory-edges': {
@@ -6991,6 +7011,7 @@ const rootRouteChildren: RootRouteChildren = {
   MailAcceptMarksRoute: MailAcceptMarksRoute,
   MakeOrBuyMarksRoute: MakeOrBuyMarksRoute,
   MarginFloorsRoute: MarginFloorsRoute,
+  MarginMatchMarksRoute: MarginMatchMarksRoute,
   MemoryEdgesRoute: MemoryEdgesRoute,
   MobileClientMarksRoute: MobileClientMarksRoute,
   ModelFeatureMarksRoute: ModelFeatureMarksRoute,

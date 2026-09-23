@@ -20,3 +20,5 @@ podłogi przechodzi. Odrzucona albo wciąż pending decyzja nie odblokowuje zapi
 Bez pary w body — bez sprawdzenia. Marża nadal liczy się tylko na `charge`.
 Zmiana wiersza podłogi = nowy rekord (brak UPDATE). Kwoty wpisujesz jako tekst
 dziesiętny, nie float.
+
+Osobno na `/margin-match-marks` zapisujesz **stance dopasowania** (`match`|`hold`|`waive`|`other`) — bez matching SQL lane i bez auto charge.

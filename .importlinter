@@ -194,6 +194,7 @@ modules =
     app.services.local_charge_warning_marks
     app.services.handover_bind_marks
     app.services.trip_variance_marks
+    app.services.margin_match_marks
     app.services.purchase_invoices
     app.services.invoice_match_marks
     app.services.invoice_match_candidates
@@ -922,6 +923,9 @@ forbidden_modules =
     app.services.trip_variance_marks
     app.repositories.trip_variance_marks
     app.models.trip_variance_mark
+    app.services.margin_match_marks
+    app.repositories.margin_match_marks
+    app.models.margin_match_mark
     app.services.purchase_invoices
     app.repositories.purchase_invoices
     app.models.purchase_invoice

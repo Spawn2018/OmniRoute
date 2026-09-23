@@ -154,6 +154,10 @@ export const BUSINESS_LISTS = {
     route: "/trip-variance-marks",
     tableKey: "trip_variance_mark",
   },
+  marginMatchMark: {
+    route: "/margin-match-marks",
+    tableKey: "margin_match_mark",
+  },
   automationBiasMark: {
     route: "/automation-bias-marks",
     tableKey: "automation_bias_mark",
@@ -701,6 +705,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/handover-bind-marks",
   "/trip-bill-marks",
   "/trip-variance-marks",
+  "/margin-match-marks",
   "/vda-odette-marks",
   "/inventory-position-marks",
   "/fair-share-marks",

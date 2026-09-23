@@ -159,6 +159,11 @@ export const OPS_JOBS = [
     job: "HITL trip_variance_mark stance bez SQL na charge",
   },
   {
+    route: BUSINESS_LISTS.marginMatchMark.route,
+    label: "Dopasowanie podłogi",
+    job: "HITL margin_match_mark stance bez matching SQL lane",
+  },
+  {
     route: BUSINESS_LISTS.tenderDataRoom.route,
     label: "Pokoje danych",
     job: "NDA na tender bez extractu",
@@ -2000,6 +2005,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "636.0": "/document-templates",
   "637.0": "/handover-bind-marks",
   "638.0": "/trip-variance-marks",
+  "639.0": "/margin-match-marks",
   "209.0": "/air",
   "210.0": "/shipments",
   "211.0": "/organization-settings",

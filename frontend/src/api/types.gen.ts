@@ -9673,6 +9673,50 @@ export type MarginFloorResponse = {
 };
 
 /**
+ * MarginMatchMarkCreate
+ */
+export type MarginMatchMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Match Kind
+     */
+    match_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * MarginMatchMarkResponse
+ */
+export type MarginMatchMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Match Kind
+     */
+    match_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * MemoryEdgeCreate
  */
 export type MemoryEdgeCreate = {
@@ -30333,6 +30377,49 @@ export type CreateTripVarianceMarkApiV1TripVarianceMarksPostResponses = {
 };
 
 export type CreateTripVarianceMarkApiV1TripVarianceMarksPostResponse = CreateTripVarianceMarkApiV1TripVarianceMarksPostResponses[keyof CreateTripVarianceMarkApiV1TripVarianceMarksPostResponses];
+
+export type ListMarginMatchMarksApiV1MarginMatchMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/margin-match-marks';
+};
+
+export type ListMarginMatchMarksApiV1MarginMatchMarksGetResponses = {
+    /**
+     * Response List Margin Match Marks Api V1 Margin Match Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<MarginMatchMarkResponse>;
+};
+
+export type ListMarginMatchMarksApiV1MarginMatchMarksGetResponse = ListMarginMatchMarksApiV1MarginMatchMarksGetResponses[keyof ListMarginMatchMarksApiV1MarginMatchMarksGetResponses];
+
+export type CreateMarginMatchMarkApiV1MarginMatchMarksPostData = {
+    body: MarginMatchMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/margin-match-marks';
+};
+
+export type CreateMarginMatchMarkApiV1MarginMatchMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateMarginMatchMarkApiV1MarginMatchMarksPostError = CreateMarginMatchMarkApiV1MarginMatchMarksPostErrors[keyof CreateMarginMatchMarkApiV1MarginMatchMarksPostErrors];
+
+export type CreateMarginMatchMarkApiV1MarginMatchMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: MarginMatchMarkResponse;
+};
+
+export type CreateMarginMatchMarkApiV1MarginMatchMarksPostResponse = CreateMarginMatchMarkApiV1MarginMatchMarksPostResponses[keyof CreateMarginMatchMarkApiV1MarginMatchMarksPostResponses];
 
 export type ListAsnsApiV1AsnsGetData = {
     body?: never;

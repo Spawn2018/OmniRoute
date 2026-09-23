@@ -622,6 +622,14 @@ class TripVarianceMarkConflict(DomainError):
     """Duplikat kodu wariancji przejazdu w tenancie."""
 
 
+class InvalidMarginMatchMark(DomainError):
+    """N6 leftover: HITL stance dopasowania podłogi — nie matching SQL."""
+
+
+class MarginMatchMarkConflict(DomainError):
+    """Duplikat kodu dopasowania podłogi w tenancie."""
+
+
 class InvalidDocumentTemplate(DomainError):
     """Szablon wydruku jako dane — nie PDF, nie etykieta sieci."""
 

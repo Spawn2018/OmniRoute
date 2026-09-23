@@ -262,7 +262,7 @@ kolumn. Nie 468.0.
 | reguła checklisty dokumentów | document_checklist_rule | U5; incoterm×strona×mode → rodzaj + blocks_dispatch |
 | przesyłka | consignment | N1; 260.0 tabela na shipment; LTL/LCL=N; nie paczka; nie FTL unique |
 | podłoga marży | margin_floor | N6; HITL Decimal DONE 527.0; 409/S11 DONE; leftover matching → 639.0 |
-| dopasowanie podłogi | margin_match_mark | N6 HITL 639.0 stance (`match`|`hold`|`waive`|`other`); nie matching SQL lane; nie auto charge |
+| dopasowanie podłogi | margin_match_mark | N6 HITL 639.0 DONE stance (`match`|`hold`|`waive`|`other`); nie matching SQL lane; nie auto charge |
 | intencja klonu zlecenia | shipment_clone_mark | N9; HITL DONE 528.0; leftover auto-copy U1 / similar SQL / F2b |
 | stance carry przy klonie | clone_carry_mark | leftover 528; HITL DONE 631.0; nie auto INSERT field_carry_forward |
 | przekazanie zmiany SBAR | handover_sbar_mark | N11; HITL DONE 529.0; bind stance DONE 637.0; leftover T6 live |

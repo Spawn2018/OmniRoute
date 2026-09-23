@@ -19373,6 +19373,80 @@
         ]
       }
     },
+    "/api/v1/margin-match-marks": {
+      "get": {
+        "tags": [
+          "margin-match-marks"
+        ],
+        "summary": "List Margin Match Marks",
+        "operationId": "list_margin_match_marks_api_v1_margin_match_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/MarginMatchMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Margin Match Marks Api V1 Margin Match Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "margin-match-marks"
+        ],
+        "summary": "Create Margin Match Mark",
+        "operationId": "create_margin_match_mark_api_v1_margin_match_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MarginMatchMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MarginMatchMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/asns": {
       "get": {
         "tags": [
@@ -44701,6 +44775,65 @@
           "source_ref"
         ],
         "title": "MarginFloorResponse"
+      },
+      "MarginMatchMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "match_kind": {
+            "type": "string",
+            "title": "Match Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "match_kind",
+          "source_ref"
+        ],
+        "title": "MarginMatchMarkCreate"
+      },
+      "MarginMatchMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "match_kind": {
+            "type": "string",
+            "title": "Match Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "match_kind",
+          "source_ref"
+        ],
+        "title": "MarginMatchMarkResponse"
       },
       "MemoryEdgeCreate": {
         "properties": {

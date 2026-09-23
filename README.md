@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **638.0** leftover P5b `trip_variance_mark` (gate success)
-- **Etap:** Plan **639.0** zaakceptowany (`docs/deltas/open/639.0-margin-match-mark.md`). Wolno `/plaster`.
-- **Następny:** **639.0** leftover N6 matching stance HITL (`margin_match_mark` stance match|hold|waive|other; zero matching SQL lane / auto charge). D9d PDF-QR / D9e skan / D9f pdf-zpl live / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 / live poll / Expo BR2.3 / warning-jako-fakt / N8 / T6 live / P5c actual-from-charge = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
+- **Ostatni plaster:** **639.0** leftover N6 `margin_match_mark` (lokalnie; CI po push)
+- **Etap:** Plan **640.0** — `/plan-modul`. Zero kodu produktu do delty.
+- **Następny:** **640.0** leftover P4c matching stance HITL (`local_charge_match_mark` stance match|gap|waive|other; zero matching SQL vs local_charge / warning-jako-fakt). D9d PDF-QR / D9e skan / D9f pdf-zpl live / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 / live poll / Expo BR2.3 / warning-jako-fakt / N8 / T6 live / P5c / N6 auto charge = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

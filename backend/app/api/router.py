@@ -170,6 +170,7 @@ from app.api import (
     mail_drafts,
     make_or_buy_marks,
     margin_floors,
+    margin_match_marks,
     memory_edges,
     mobile_client_marks,
     model_feature_marks,
@@ -577,6 +578,7 @@ api_router.include_router(handover_bind_marks.router)
 api_router.include_router(product_tickets.router)
 api_router.include_router(trip_bill_marks.router)
 api_router.include_router(trip_variance_marks.router)
+api_router.include_router(margin_match_marks.router)
 api_router.include_router(asns.router)
 api_router.include_router(otif_marks.router)
 api_router.include_router(routing_guide_enforcements.router)

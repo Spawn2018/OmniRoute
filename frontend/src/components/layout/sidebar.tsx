@@ -146,6 +146,7 @@ const NAV = [
   { to: "/handover-bind-marks", label: "Wiązania przekazania" },
   { to: "/trip-bill-marks", label: "Gotowość do FV" },
   { to: "/trip-variance-marks", label: "Wariancje przejazdu" },
+  { to: "/margin-match-marks", label: "Dopasowanie podłogi" },
   { to: "/automation-bias-marks", label: "Automation bias" },
   { to: "/l3-gate-marks", label: "Brama L3" },
   { to: "/style-cascade-marks", label: "Kaskada stylu" },

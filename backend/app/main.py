@@ -16,6 +16,7 @@ from app.domain.errors import (
     HandoverBindMarkConflict,
     LocalChargeWarningMarkConflict,
     MarginFloorBreach,
+    MarginMatchMarkConflict,
     NetworkPrintGateMarkConflict,
     PalletLedgerConflict,
     PalletSynchroMarkConflict,
@@ -210,6 +211,14 @@ async def handover_bind_mark_conflict_handler(
 async def trip_variance_mark_conflict_handler(
     _request: Request,
     exc: TripVarianceMarkConflict,
+) -> JSONResponse:
+    return JSONResponse(status_code=409, content={"detail": str(exc)})
+
+
+@app.exception_handler(MarginMatchMarkConflict)
+async def margin_match_mark_conflict_handler(
+    _request: Request,
+    exc: MarginMatchMarkConflict,
 ) -> JSONResponse:
     return JSONResponse(status_code=409, content={"detail": str(exc)})
 
