@@ -241,6 +241,38 @@ async def test_service_create_contact_rejects_blank_name() -> None:
         )
 
 
+@pytest.mark.asyncio
+async def test_service_create_contact_stores_tracking_consent() -> None:
+    service = _service()
+    service._parties.get = AsyncMock(return_value=MagicMock())
+    stored = MagicMock()
+    service._parties.add_contact = AsyncMock(return_value=stored)
+    await service.create_contact(
+        organization_id=uuid4(),
+        user_id=uuid4(),
+        party_id=uuid4(),
+        name="Anna",
+        tracking_consent=True,
+    )
+    row = service._parties.add_contact.await_args.args[0]
+    assert row.tracking_consent is True
+    assert row.name == "Anna"
+
+
+@pytest.mark.asyncio
+async def test_service_create_contact_defaults_tracking_consent_false() -> None:
+    service = _service()
+    service._parties.get = AsyncMock(return_value=MagicMock())
+    service._parties.add_contact = AsyncMock(side_effect=lambda row: row)
+    row = await service.create_contact(
+        organization_id=uuid4(),
+        user_id=uuid4(),
+        party_id=uuid4(),
+        name="Bartek",
+    )
+    assert row.tracking_consent is False
+
+
 def test_party_response_formats_credit_and_strips_country() -> None:
     row = SimpleNamespace(
         id=uuid4(),

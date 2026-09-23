@@ -3,6 +3,8 @@
 Katalog kontrahenta per tenant: `party` i tabele zależne.
 `resolve` po `tax_id` albo `resolve_email` po adresie — nie luźna nazwa. Nowy INSERT wymaga tax_id / vat_eu / eori / duns; `customer` wymaga tax_id. Lookup GUS/VIES/whitelist zwraca szkic.
 Matcher maila (M-11) nie zapisuje `party_contact`.
+`party_contact.tracking_consent` = bool HITL (634.0); nie FK do katalogu
+`tracking_consent`, nie live poll.
 Karta wyników (M-13) to snapshot — nie silnik RFQ i nie scoring osoby.
 
 ## Dozwolone zależności

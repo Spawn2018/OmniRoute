@@ -29,6 +29,8 @@ zostają w badaniach `04`).
 
 | Data | Co |
 |---|---|
+| 2026-09-23 | **635.0** leftover P4c warning stance HITL: katalog stancji ostrzeżenia braku dopłaty (nie warning-jako-fakt) (`REQUIREMENT`). Live PDF i warning engine `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
+| 2026-09-23 | **634.0** leftover BR2.2 kolumna zgody HITL zamknięty: bool `tracking_consent` na `party_contact` DEFAULT false (`CONFIRMED`). FK do katalogu i live poll nadal `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-23 | **634.0** leftover BR2.2 kolumna zgody HITL: bool `tracking_consent` na `party_contact` DEFAULT false (`REQUIREMENT`). FK do katalogu i live poll `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-23 | **633.0** leftover P4b armator/serwis HITL zamknięty: opcjonalne `carrier_label` / `service_label` na `local_charge` (`CONFIRMED`). FK party i P4c warning nadal `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-23 | **633.0** leftover P4b armator/serwis HITL: opcjonalne `carrier_label` / `service_label` na `local_charge` (`REQUIREMENT`). FK party i P4c warning `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
@@ -1318,8 +1320,8 @@ Do tego cztery tabele substratu z części B.2 (`suggestion_ledger`, `outcome_le
 - `extraction_draft.draft_kind` + `bbox` / pewność w JSONB — **448.0**
   (`CONFIRMED`); **503.0** `payload.history` (`CONFIRMED`); **515.0** undo
   (`CONFIRMED`); leftover Instructor (`07`)
-- `party_contact.tracking_consent` — leftover kolumny; katalog
-  `tracking_consent` jest (`CONFIRMED`, 459.0)
+- `party_contact.tracking_consent` — bool HITL DONE **634.0**; katalog
+  `tracking_consent` jest (`CONFIRMED`, 459.0); FK/live poll `REJECTED`
 
 ---
 ---

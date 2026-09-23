@@ -141,8 +141,9 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **197.0 leftover:** `position_event` katalog DONE 457.0. Zostaje lat/lng / poll; `credential_ciphertext`; `resource_telematics_link` + 3 dni robocze U4; V5b `exchange_message`. Tu tylko `telematics_connector` HITL `observation_kind` + `provider_code` + `source_ref`. Nie track. Nie sekrety.
 - **457.0 leftover:** współrzędne jako dane; `observed_at`; FK resource/trip; live poll. BR2.1 katalog DONE 458.0. Tu tylko `position_event` HITL `source_kind` + `source_ref`. Nie live GPS. Nie `tracking_event`.
 - **458.0 leftover:** parowanie z `resource`; cykl życia poza kind; silnik awarii; live poll. BR2.2 katalog DONE 459.0. Tu tylko `telematics_device` HITL `device_kind` + `source_ref`. Nie live. Nie konektor V5.
-- **634.0 PLAN:** bool `party_contact.tracking_consent` HITL (leftover BR2.2). Nie FK. Nie live poll.
-- **459.0 leftover:** kolumna `party_contact.tracking_consent` = **634.0** PLAN; FK do party; egzekucja; live poll; BR2.3 Expo (park). Tu tylko `tracking_consent` HITL `consent_kind` + `source_ref`. Nie live.
+- **634.0 DONE:** bool `party_contact.tracking_consent` HITL DEFAULT false. Zostaje FK do katalogu; egzekucja; live poll; BR2.3 Expo (park).
+- **459.0 leftover:** kolumna `party_contact.tracking_consent` DONE **634.0**. Zostaje FK do party; egzekucja; live poll; BR2.3 Expo (park). Tu tylko `tracking_consent` HITL `consent_kind` + `source_ref`. Nie live.
+- **635.0 PLAN:** leftover P4c warning stance HITL (nie warning-jako-fakt). Nie live PDF.
 - **203.0 leftover:** ranking SQL / Top N; N szkiców `mail_draft`; auto-award. Tu tylko `rank_mark` HITL `rank_kind` + `source_ref`. Nie sortowanie. Nie award.
 - **202.0 leftover:** zdania z agregatów SQL (117.0 / M-15); suma LLM / EBITDA; ranking W5 + auto-award. Tu tylko `executive_mark` HITL `question_kind` + `source_ref`. Nie suma. Nie narracja.
 - **201.0 leftover:** graf / FK na `entity_event`; pgvector; RAG na stawkach / umowach CI. Tu tylko `memory_edge` HITL `edge_kind` + `source_ref`. Nie wyszukiwanie. Nie wektor.
@@ -209,7 +210,7 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **155.0 leftover:** OR wielu hubów na jednym końcu (D1b). Tu tylko `groupage_line` cutoff+TT+ISODOW + dwa `location`. Nie optymalizator.
 - **167.0 leftover:** wariancja SQL na `charge` (P5b); actual z `charge` (P5c). Tu tylko freeze `expected_buy` na `trip` przy `in_transit`. Nie druga marża. Nie km.
 - **633.0 DONE:** `local_charge.carrier_label` / `service_label` HITL tekst (leftover P4b armator/serwis). Nie FK party. Nie live HTTP.
-- **166.0 leftover:** P4b `port_unlocode` DONE 207.0. P4b rest `iso_size_type` DONE 208.0. P4b armator/serwis DONE **633.0**. Zostaje warning braku dopłaty ≠ fakt (P4c). Tu rodzaj + Decimal + opcjonalny UN/LOCODE + typ ISO + etykiety armator/serwis. Nie `port_surcharge`. Nie marża.
+- **166.0 leftover:** P4b `port_unlocode` DONE 207.0. P4b rest `iso_size_type` DONE 208.0. P4b armator/serwis DONE **633.0**. Zostaje warning braku dopłaty ≠ fakt (P4c → **635.0** PLAN). Tu rodzaj + Decimal + opcjonalny UN/LOCODE + typ ISO + etykiety armator/serwis. Nie `port_surcharge`. Nie marża.
 - **165.0 leftover:** przeliczenie SQL indeksu na `charge` (P3b); live HTTP NBP/BAF (P3c); A11 nowy wiersz (P3d). Tu tylko katalog FSC/BAF/CAF + Decimal. Nie `nbp_rate`. Nie marża.
 - **164.0 leftover:** P2c exclusion daterange DONE 206.0. Tu kolekcja `charge_code` + daty + GiST. Nie `charge`. Nie FSC.
 - **163.0 leftover:** P1b matching GET DONE 205.0. Zostaje parser WHEN/IF/CALC (P1c); daty ważności (P1d). Tu `applies_when` tekst + Decimal + równość SQL. Nie `rate_line`. Nie `charge`.

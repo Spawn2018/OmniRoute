@@ -30,3 +30,7 @@ class PartyContact(Base, TimestampMixin):
     phone: Mapped[str | None] = mapped_column(String(64), nullable=True)
     position: Mapped[str | None] = mapped_column(String(128), nullable=True)
     is_primary: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+    # HITL flaga zgody — nie FK do katalogu tracking_consent, nie live poll.
+    tracking_consent: Mapped[bool] = mapped_column(
+        Boolean, nullable=False, default=False, server_default="false"
+    )

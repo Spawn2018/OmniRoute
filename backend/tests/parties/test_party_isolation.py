@@ -548,6 +548,12 @@ def test_party_contact_has_no_portal_columns() -> None:
     assert "portal_access" not in columns
 
 
+def test_party_contact_has_tracking_consent_bool() -> None:
+    column = _contact_cls().__table__.c.tracking_consent
+    assert column.nullable is False
+    assert column.type.python_type is bool
+
+
 def test_terminal_operator_party_id_is_nullable() -> None:
     columns = _terminal_cls().__table__.c
     assert "operator_party_id" in columns

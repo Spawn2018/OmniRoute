@@ -622,6 +622,7 @@ class PartyService:
         phone: str | None = None,
         position: str | None = None,
         is_primary: bool = False,
+        tracking_consent: bool = False,
     ) -> PartyContact:
         await self.get_party(party_id)
         label = " ".join(name.split())
@@ -636,6 +637,7 @@ class PartyService:
             phone=_blank_to_none(phone),
             position=_blank_to_none(position),
             is_primary=is_primary,
+            tracking_consent=tracking_consent,
             created_by=user_id,
         )
         return await self._parties.add_contact(row)

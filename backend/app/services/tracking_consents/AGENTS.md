@@ -1,7 +1,8 @@
 # BC tracking_consent (BR2.2)
 
 HITL katalog zgody na sledzenie per tenant. consent_code + consent_kind
-party|driver|other + source_ref. Nie kolumna na party_contact. Nie live poll.
+party|driver|other + source_ref. Bool `party_contact.tracking_consent` jest
+w BC parties (634.0) — tu nie mutujesz kontaktu. Nie live poll.
 
 ## Dozwolone zaleznosci
 - `app.models.tracking_consent`
@@ -16,4 +17,3 @@ party|driver|other + source_ref. Nie kolumna na party_contact. Nie live poll.
 - HTTP
 - UPDATE / DELETE wiersza
 - FK do `party` / `party_contact` / `resource`
-- kolumna `tracking_consent` na `party_contact`

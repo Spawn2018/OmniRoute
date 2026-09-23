@@ -37,6 +37,7 @@ export type PartyContact = {
   phone: string | null
   position: string | null
   is_primary: boolean
+  tracking_consent: boolean
 }
 
 export type PartyBankAccount = {
@@ -212,11 +213,15 @@ export async function fetchContacts(partyId: string): Promise<PartyContact[]> {
   return parseBody<PartyContact[]>(response, "Błąd listy kontaktów")
 }
 
-export async function createContact(partyId: string, name: string): Promise<PartyContact> {
+export async function createContact(
+  partyId: string,
+  name: string,
+  trackingConsent = false,
+): Promise<PartyContact> {
   const response = await fetch(`/api/v1/parties/${partyId}/contacts`, {
     method: "POST",
     headers: { ...requireAuthHeaders(), "Content-Type": "application/json" },
-    body: JSON.stringify({ name }),
+    body: JSON.stringify({ name, tracking_consent: trackingConsent }),
   })
   return parseBody<PartyContact>(response, "Błąd zapisu kontaktu")
 }

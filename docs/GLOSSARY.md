@@ -288,7 +288,7 @@ kolumn. Nie 468.0.
 | znacznik kampanii | campaign_mark | BR6.5 HITL katalog; leftover atrybucja live / lejek X7 |
 | zdarzenie pozycji | position_event | BR2.0 HITL katalog; leftover współrzędne / poll |
 | urządzenie telematyczne | telematics_device | BR2.1 HITL katalog; leftover parowanie / poll |
-| zgoda na śledzenie | tracking_consent | BR2.2 HITL katalog; leftover kolumna na `party_contact` = **634.0** |
+| zgoda na śledzenie | tracking_consent | BR2.2 HITL katalog; bool na `party_contact` = **634.0** DONE |
 | checklista LC | lc_checklist | G3 HITL katalog; leftover bank/due |
 | szkic NCTS | ncts_draft | G4 HITL katalog; leftover PUESC/plomby |
 | znacznik OOG | oog_mark | G5 HITL katalog; leftover wymiary/cert |

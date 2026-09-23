@@ -125,6 +125,7 @@ class ContactCreate(BaseModel):
     phone: str | None = None
     position: str | None = None
     is_primary: bool = False
+    tracking_consent: bool = False
 
 
 class ContactResponse(BaseModel):
@@ -137,6 +138,7 @@ class ContactResponse(BaseModel):
     phone: str | None
     position: str | None
     is_primary: bool
+    tracking_consent: bool
 
     @classmethod
     def from_row(cls, row: PartyContact) -> "ContactResponse":
@@ -353,6 +355,7 @@ async def create_contact(
         phone=body.phone,
         position=body.position,
         is_primary=body.is_primary,
+        tracking_consent=body.tracking_consent,
     )
     await session.commit()
     return ContactResponse.from_row(row)

@@ -131,6 +131,7 @@ export function PartyCatalogPage() {
   const [draft, setDraft] = useState<PartyDraft | null>(null)
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [contactName, setContactName] = useState("")
+  const [contactTrackingConsent, setContactTrackingConsent] = useState(false)
   const [iban, setIban] = useState("")
   const [ibanCurrency, setIbanCurrency] = useState("PLN")
   const [domain, setDomain] = useState("")
@@ -401,11 +402,12 @@ export function PartyCatalogPage() {
           <fieldset className="space-y-2 rounded-md border border-border p-3">
             <legend className="text-sm font-medium">Kontakty</legend>
             <form
-              className="flex gap-2"
+              className="flex flex-wrap items-center gap-2"
               onSubmit={(event) => {
                 event.preventDefault()
-                createContact(selectedId, contactName).then(() => {
+                createContact(selectedId, contactName, contactTrackingConsent).then(() => {
                   setContactName("")
+                  setContactTrackingConsent(false)
                   void queryClient.invalidateQueries({ queryKey: ["party-contacts", selectedId] })
                 })
               }}
@@ -416,10 +418,23 @@ export function PartyCatalogPage() {
                 onChange={(event) => setContactName(event.target.value)}
                 required
               />
+              <label className="flex items-center gap-1 text-xs">
+                <input
+                  type="checkbox"
+                  aria-label="Zgoda na śledzenie"
+                  checked={contactTrackingConsent}
+                  onChange={(event) => setContactTrackingConsent(event.target.checked)}
+                />
+                Zgoda na śledzenie
+              </label>
               <Button type="submit">Dodaj</Button>
             </form>
             <p className="text-xs text-muted-foreground">
-              {contactsQuery.data?.map((row) => row.name).join(", ") || "brak"}
+              {contactsQuery.data
+                ?.map((row) =>
+                  row.tracking_consent ? `${row.name} (zgoda)` : row.name,
+                )
+                .join(", ") || "brak"}
             </p>
           </fieldset>
 
