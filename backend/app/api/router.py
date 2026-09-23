@@ -163,6 +163,7 @@ from app.api import (
     line_impact_marks,
     load_order_marks,
     load_plan_marks,
+    local_charge_match_marks,
     local_charge_warning_marks,
     local_charges,
     locations,
@@ -579,6 +580,7 @@ api_router.include_router(product_tickets.router)
 api_router.include_router(trip_bill_marks.router)
 api_router.include_router(trip_variance_marks.router)
 api_router.include_router(margin_match_marks.router)
+api_router.include_router(local_charge_match_marks.router)
 api_router.include_router(asns.router)
 api_router.include_router(otif_marks.router)
 api_router.include_router(routing_guide_enforcements.router)

@@ -197,10 +197,7 @@ def _organization_br_catalog_relations() -> dict[str, Userset]:
         "can_manage_clone_carry_marks": _member(),
         "can_manage_handover_sbar_marks": _member(),
         "can_manage_handover_notes": _member(),
-        "can_manage_handover_bind_marks": _member(),
         "can_manage_trip_bill_marks": _member(),
-        "can_manage_trip_variance_marks": _member(),
-        "can_manage_margin_match_marks": _member(),
         "can_manage_automation_bias_marks": _member(),
 
         "can_manage_l3_gate_marks": _member(),
@@ -209,6 +206,15 @@ def _organization_br_catalog_relations() -> dict[str, Userset]:
         "can_manage_quality_descent_marks": _member(),
         "can_manage_field_confidence_marks": _member(),
         "can_manage_compliance_program_marks": _member(),
+    }
+
+
+def _organization_leftover_hitl_relations() -> dict[str, Userset]:
+    return {
+        "can_manage_handover_bind_marks": _member(),
+        "can_manage_trip_variance_marks": _member(),
+        "can_manage_margin_match_marks": _member(),
+        "can_manage_local_charge_match_marks": _member(),
     }
 
 
@@ -424,6 +430,7 @@ def _organization_relations() -> dict[str, Userset]:
         **_organization_ai_catalog_relations(),
         **_organization_ci_catalog_relations(),
         **_organization_br_catalog_relations(),
+        **_organization_leftover_hitl_relations(),
         **_organization_g_catalog_relations(),
         **_organization_exp2_catalog_relations(),
         **_organization_tender_relations(),

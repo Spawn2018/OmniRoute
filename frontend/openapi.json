@@ -19447,6 +19447,80 @@
         ]
       }
     },
+    "/api/v1/local-charge-match-marks": {
+      "get": {
+        "tags": [
+          "local-charge-match-marks"
+        ],
+        "summary": "List Local Charge Match Marks",
+        "operationId": "list_local_charge_match_marks_api_v1_local_charge_match_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/LocalChargeMatchMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Local Charge Match Marks Api V1 Local Charge Match Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "local-charge-match-marks"
+        ],
+        "summary": "Create Local Charge Match Mark",
+        "operationId": "create_local_charge_match_mark_api_v1_local_charge_match_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocalChargeMatchMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocalChargeMatchMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/asns": {
       "get": {
         "tags": [
@@ -44075,6 +44149,65 @@
           "source_ref"
         ],
         "title": "LocalChargeCreate"
+      },
+      "LocalChargeMatchMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "match_kind": {
+            "type": "string",
+            "title": "Match Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "match_kind",
+          "source_ref"
+        ],
+        "title": "LocalChargeMatchMarkCreate"
+      },
+      "LocalChargeMatchMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "match_kind": {
+            "type": "string",
+            "title": "Match Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "match_kind",
+          "source_ref"
+        ],
+        "title": "LocalChargeMatchMarkResponse"
       },
       "LocalChargeResponse": {
         "properties": {

@@ -9247,6 +9247,50 @@ export type LocalChargeCreate = {
 };
 
 /**
+ * LocalChargeMatchMarkCreate
+ */
+export type LocalChargeMatchMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Match Kind
+     */
+    match_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * LocalChargeMatchMarkResponse
+ */
+export type LocalChargeMatchMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Match Kind
+     */
+    match_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * LocalChargeResponse
  */
 export type LocalChargeResponse = {
@@ -30420,6 +30464,49 @@ export type CreateMarginMatchMarkApiV1MarginMatchMarksPostResponses = {
 };
 
 export type CreateMarginMatchMarkApiV1MarginMatchMarksPostResponse = CreateMarginMatchMarkApiV1MarginMatchMarksPostResponses[keyof CreateMarginMatchMarkApiV1MarginMatchMarksPostResponses];
+
+export type ListLocalChargeMatchMarksApiV1LocalChargeMatchMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/local-charge-match-marks';
+};
+
+export type ListLocalChargeMatchMarksApiV1LocalChargeMatchMarksGetResponses = {
+    /**
+     * Response List Local Charge Match Marks Api V1 Local Charge Match Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<LocalChargeMatchMarkResponse>;
+};
+
+export type ListLocalChargeMatchMarksApiV1LocalChargeMatchMarksGetResponse = ListLocalChargeMatchMarksApiV1LocalChargeMatchMarksGetResponses[keyof ListLocalChargeMatchMarksApiV1LocalChargeMatchMarksGetResponses];
+
+export type CreateLocalChargeMatchMarkApiV1LocalChargeMatchMarksPostData = {
+    body: LocalChargeMatchMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/local-charge-match-marks';
+};
+
+export type CreateLocalChargeMatchMarkApiV1LocalChargeMatchMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateLocalChargeMatchMarkApiV1LocalChargeMatchMarksPostError = CreateLocalChargeMatchMarkApiV1LocalChargeMatchMarksPostErrors[keyof CreateLocalChargeMatchMarkApiV1LocalChargeMatchMarksPostErrors];
+
+export type CreateLocalChargeMatchMarkApiV1LocalChargeMatchMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: LocalChargeMatchMarkResponse;
+};
+
+export type CreateLocalChargeMatchMarkApiV1LocalChargeMatchMarksPostResponse = CreateLocalChargeMatchMarkApiV1LocalChargeMatchMarksPostResponses[keyof CreateLocalChargeMatchMarkApiV1LocalChargeMatchMarksPostResponses];
 
 export type ListAsnsApiV1AsnsGetData = {
     body?: never;

@@ -1677,3 +1677,11 @@ class InvalidRoutingGuideMatch(DomainError):
 
 class InvalidRoutePlanMark(DomainError):
     """BR3.0: HITL znacznik planu trasy — nie Valhalla / VRP / km."""
+
+
+class InvalidLocalChargeMatchMark(DomainError):
+    """HITL local_charge_match_mark — zły kod/kind/source_ref."""
+
+
+class LocalChargeMatchMarkConflict(DomainError):
+    """Duplikat mark_code lub source_ref w tenancie."""

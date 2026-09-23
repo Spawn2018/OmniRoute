@@ -29,6 +29,7 @@ zostają w badaniach `04`).
 
 | Data | Co |
 |---|---|
+| 2026-09-23 | **640.0** leftover P4c matching stance HITL zamknięty: katalog `local_charge_match_mark` (`match`\|`gap`\|`waive`\|`other`) (`CONFIRMED`). Matching SQL / warning-jako-fakt nadal `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-23 | **640.0** leftover P4c matching stance HITL: katalog `local_charge_match_mark` (`match`\|`gap`\|`waive`\|`other`) — nie matching SQL vs local_charge (`REQUIREMENT`). Warning-jako-fakt `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-23 | **639.0** leftover N6 matching stance HITL zamknięty: katalog `margin_match_mark` (`match`\|`hold`\|`waive`\|`other`) (`CONFIRMED`). Matching SQL lane / auto charge nadal `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-23 | **639.0** leftover N6 matching stance HITL: katalog `margin_match_mark` (`match`\|`hold`\|`waive`\|`other`) — nie matching SQL lane (`REQUIREMENT`). Auto charge `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |

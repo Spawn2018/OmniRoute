@@ -14,6 +14,7 @@ from app.domain.errors import (
     DraftNotPending,
     ExtractionCandidatesNotEditable,
     HandoverBindMarkConflict,
+    LocalChargeMatchMarkConflict,
     LocalChargeWarningMarkConflict,
     MarginFloorBreach,
     MarginMatchMarkConflict,
@@ -219,6 +220,14 @@ async def trip_variance_mark_conflict_handler(
 async def margin_match_mark_conflict_handler(
     _request: Request,
     exc: MarginMatchMarkConflict,
+) -> JSONResponse:
+    return JSONResponse(status_code=409, content={"detail": str(exc)})
+
+
+@app.exception_handler(LocalChargeMatchMarkConflict)
+async def local_charge_match_mark_conflict_handler(
+    _request: Request,
+    exc: LocalChargeMatchMarkConflict,
 ) -> JSONResponse:
     return JSONResponse(status_code=409, content={"detail": str(exc)})
 

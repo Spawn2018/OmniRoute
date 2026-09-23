@@ -1,8 +1,8 @@
 **639.0 DONE:** `margin_match_mark` HITL stance (`match`|`hold`|`waive`|`other`). Nie matching SQL. Leftover: auto charge park.
-**640.0 WIP:** `local_charge_match_mark` HITL stance (`match`|`gap`|`waive`|`other`). Nie matching SQL. Leftover po zamknieciu: warning-jako-fakt · FK · P5c · live HTTP.
+**640.0 DONE:** `local_charge_match_mark` HITL stance (`match`|`gap`|`waive`|`other`). Nie matching SQL. Leftover: warning-jako-fakt · bind stance → **641.0** · P5c · live HTTP.
 ﻿- **625.0 DONE:** `groupage_tariff.volume_m3` opcjonalne Decimal. Nie liczy progu. Leftover D5b: paleta zostaje na saldzie, FSC na `fuel_index`.
 - **624.0 DONE:** `shipment_document.document_kind` przyjmuje `rod`. `pod` zostaje odrzucone (port wyĹ‚adunku). Leftover: skan / bajty.
-- **635.0 DONE:** `local_charge_warning_mark` HITL stance ostrzezenia braku dopłaty. Nie warning-jako-fakt. Leftover: matching stance → **640.0** · P5b–c park · FK · live HTTP.
+- **635.0 DONE:** `local_charge_warning_mark` HITL stance ostrzezenia braku dopłaty. Nie warning-jako-fakt. Leftover: matching stance DONE **640.0** · bind stance → **641.0** · P5b–c park · warning-jako-fakt · live HTTP.
 - **630.0 DONE:** `pallet_synchro_mark` HITL stance saldaâ†”ledger. Nie auto-UPDATE. Leftover: D7b gieĹ‚da park Â· auto-UPDATE park Â· 528 clone U1.
 - **629.0 DONE:** `pallet_ledger` HITL ruch sztuk ze znakiem. Nie mutuje salda. Leftover: D7b gieĹ‚da park live Â· synchro stance = **630.0** DONE Â· auto-UPDATE salda park.
 - **623.0 DONE:** `pallet_balance.pallet_kind` przyjmuje `epal`. Leftover: D7b gieĹ‚da park live Â· D7c ledger = **629.0** DONE Â· synchro = **630.0** DONE.
