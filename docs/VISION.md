@@ -29,7 +29,9 @@ zostają w badaniach `04`).
 
 | Data | Co |
 |---|---|
+| 2026-09-23 | **638.0** leftover P5b variance stance HITL zamknięty: katalog 	rip_variance_mark (expected\|ctual\|gap\|other) (CONFIRMED). P5c / SQL wariancji nadal REJECTED. Marża zostaje na charge (CONFIRMED). |
 | 2026-09-23 | **637.0** leftover 543 handover bind HITL: katalog `handover_bind_mark` (`note`\|`board`\|`shift`\|`other`) (`REQUIREMENT`). FK UUID / T6 live / auto SBAR `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
+| 2026-09-23 | **638.0** leftover P5b variance stance HITL: katalog `trip_variance_mark` (`expected`\|`actual`\|`gap`\|`other`) — nie SQL na `charge` (`REQUIREMENT`). P5c actual-from-charge i silnik wariancji `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-23 | **637.0** leftover 543 handover bind HITL zamknięty: katalog `handover_bind_mark` (`note`\|`board`\|`shift`\|`other`) (`CONFIRMED`). FK UUID / T6 live / N8 / auto SBAR nadal `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-23 | **636.0** D9f leftover `output_kind` HITL zamknięty: allowlista `html_print`\|`pdf`\|`zpl` intended na `document_template` (`CONFIRMED`). Live generacja PDF/ZPL/QR nadal `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-23 | **636.0** D9f leftover `output_kind` HITL: allowlista `html_print`\|`pdf`\|`zpl` na `document_template` jako intended output (`REQUIREMENT`). Live generacja PDF/ZPL/QR `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |

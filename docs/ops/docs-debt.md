@@ -1,72 +1,72 @@
-- **625.0 DONE:** `groupage_tariff.volume_m3` opcjonalne Decimal. Nie liczy progu. Leftover D5b: paleta zostaje na saldzie, FSC na `fuel_index`.
-- **624.0 DONE:** `shipment_document.document_kind` przyjmuje `rod`. `pod` zostaje odrzucone (port wyładunku). Leftover: skan / bajty.
-- **635.0 DONE:** `local_charge_warning_mark` HITL stance ostrzeżenia braku dopłaty. Nie warning-jako-fakt. Leftover: matching · P5b–c · FK · live HTTP.
-- **630.0 DONE:** `pallet_synchro_mark` HITL stance salda↔ledger. Nie auto-UPDATE. Leftover: D7b giełda park · auto-UPDATE park · 528 clone U1.
-- **629.0 DONE:** `pallet_ledger` HITL ruch sztuk ze znakiem. Nie mutuje salda. Leftover: D7b giełda park live · synchro stance = **630.0** DONE · auto-UPDATE salda park.
-- **623.0 DONE:** `pallet_balance.pallet_kind` przyjmuje `epal`. Leftover: D7b giełda park live · D7c ledger = **629.0** DONE · synchro = **630.0** DONE.
-- **617.0 leftover:** przeliczenie SQL przy FV · odczyt kwoty `nbp_rate`. 617.0 = `fx_rate_day` (offset −1 = poprzedni dzień roboczy U4, nie mnożenie).
-- **612.0 leftover:** HW · UXCL · N3 · AI3 · G0-SH. 612.0 = HITL `container.destination_city` (tekst do 64, nie geokoder).
-- **611.0 leftover:** `destination_city` · FK portu · HW · UXCL · N3. 611.0 = HITL `container.pod_unlocode` (5 znaków UN/LOCODE, nie resolve, nie mapa).
-- **610.0 leftover:** `pod_unlocode` · `destination_city` · FK portu · HW · UXCL · N3. 610.0 = HITL `container.pol_unlocode` (5 znaków UN/LOCODE, nie resolve, nie mapa).
+﻿- **625.0 DONE:** `groupage_tariff.volume_m3` opcjonalne Decimal. Nie liczy progu. Leftover D5b: paleta zostaje na saldzie, FSC na `fuel_index`.
+- **624.0 DONE:** `shipment_document.document_kind` przyjmuje `rod`. `pod` zostaje odrzucone (port wyĹ‚adunku). Leftover: skan / bajty.
+- **635.0 DONE:** `local_charge_warning_mark` HITL stance ostrzeĹĽenia braku dopĹ‚aty. Nie warning-jako-fakt. Leftover: matching Â· P5bâ€“c Â· FK Â· live HTTP.
+- **630.0 DONE:** `pallet_synchro_mark` HITL stance saldaâ†”ledger. Nie auto-UPDATE. Leftover: D7b gieĹ‚da park Â· auto-UPDATE park Â· 528 clone U1.
+- **629.0 DONE:** `pallet_ledger` HITL ruch sztuk ze znakiem. Nie mutuje salda. Leftover: D7b gieĹ‚da park live Â· synchro stance = **630.0** DONE Â· auto-UPDATE salda park.
+- **623.0 DONE:** `pallet_balance.pallet_kind` przyjmuje `epal`. Leftover: D7b gieĹ‚da park live Â· D7c ledger = **629.0** DONE Â· synchro = **630.0** DONE.
+- **617.0 leftover:** przeliczenie SQL przy FV Â· odczyt kwoty `nbp_rate`. 617.0 = `fx_rate_day` (offset â’1 = poprzedni dzieĹ„ roboczy U4, nie mnoĹĽenie).
+- **612.0 leftover:** HW Â· UXCL Â· N3 Â· AI3 Â· G0-SH. 612.0 = HITL `container.destination_city` (tekst do 64, nie geokoder).
+- **611.0 leftover:** `destination_city` Â· FK portu Â· HW Â· UXCL Â· N3. 611.0 = HITL `container.pod_unlocode` (5 znakĂłw UN/LOCODE, nie resolve, nie mapa).
+- **610.0 leftover:** `pod_unlocode` Â· `destination_city` Â· FK portu Â· HW Â· UXCL Â· N3. 610.0 = HITL `container.pol_unlocode` (5 znakĂłw UN/LOCODE, nie resolve, nie mapa).
 - **529.0 leftover:** wpis przekazania S/B/A/R DONE **543.0**. Bind stance DONE **637.0**. Zostaje: FK UUID / T6 live / N8 / auto SBAR park. 529.0 = HITL `handover_sbar_mark` (znacznik; nie drugi czat).
-- **637.0 DONE:** `handover_bind_mark` HITL stance wiązania przekazania (`note`|`board`|`shift`|`other`). Nie FK UUID. Leftover: T6 live · N8 · auto SBAR park.
+- **637.0 DONE:** `handover_bind_mark` HITL stance wiÄ…zania przekazania (`note`|`board`|`shift`|`other`). Nie FK UUID. Leftover: T6 live Â· N8 Â· auto SBAR park.
 - **631.0 DONE:** `clone_carry_mark` HITL stance carry|held|skip przy klonie (leftover 528 U1). Nie auto-copy. Nie similar SQL. Nie F2b.
-- **528.0 leftover (po 631):** auto-copy allowlisty U1 przy klonie (compose) · silnik similar SQL · F2b Decimal na skonto przy klonie FV. 528.0 = HITL `shipment_clone_mark` (intencja; nie drugi SoR). 631.0 = HITL stance DONE.
-- **527.0 leftover:** 409 gdy sell−buy < floor na POST charge · S11 · matching lane. 527.0 = HITL `margin_floor` Decimal + UN/LOCODE.
-- **499.0 leftover:** Alpega live park · auto-award SQL. 499.0 = HITL `shipper_award_mark`.
-- **498.0 leftover:** Alpega live park · FK UUID · auto-award. 498.0 = HITL `shipper_bind_mark`. **499.0** = award stance (DONE).
-- **497.0 leftover:** HubSpot live park · FK UUID. 497.0 = HITL `sales_bind_mark`.
-- **496.0 leftover:** cold-send · FK UUID · merge SQL. 496.0 = HITL `crm_link_mark`.
-- **495.0 leftover:** FK · cold-send · merge SQL. 495.0 = HITL `crm_dedup_mark`. **496.0** = HITL `crm_link_mark` (DONE).
-- **456.0 leftover:** FK leada/party · dedup NIP · cold-send. 456.0 = HITL `crm_opportunity`. **489.0** = HITL `crm_activity` (DONE). **490.0** = HITL `crm_pipeline_mark` (DONE). **495.0** = HITL `crm_dedup_mark` (DONE).
-- **489.0 leftover:** FK · dedup NIP · cold-send. 489.0 = HITL `crm_activity`. **490.0** = HITL `crm_pipeline_mark` (DONE). **495.0** = HITL `crm_dedup_mark` (DONE).
-- **490.0 leftover:** silnik lejka · FK · dedup NIP · cold-send. 490.0 = HITL `crm_pipeline_mark`. **495.0** = HITL `crm_dedup_mark` (DONE).
-- **460.0 leftover:** HubSpot live park · FK do okazji/party. 460.0 = HITL `sales_lane`. **491.0** = para UN/LOCODE (DONE). **492.0** = `volume_label` (DONE).
-- **491.0 leftover:** HubSpot live · FK. 491.0 = para UN/LOCODE na `sales_lane`. Wolumen = **492.0** DONE.
-- **492.0 leftover:** HubSpot live park · FK. 492.0 = `volume_label` tekst na `sales_lane`.
-- **467.0 leftover:** wymiary Decimal · live zezwolenie · escort party FK · FK do `oog_mark`. 467.0 = HITL `oog_permit_mark`.
-- **466.0 leftover:** live rezerwacja · bilet HTTP · solver art. 9 · FK do `trip` / `stop` / `route_plan_mark`. 466.0 = HITL `ferry_booking_mark`.
-- **465.0 leftover:** live DDD · Driver Time Solver · godziny SQL · FK do `trip` / `resource` / `route_plan_mark`. 465.0 = HITL `tacho_plan_mark`.
-- **464.0 leftover:** solver OR · wymiary Decimal · osie Decimal · FK do `load_plan_mark`. 464.0 = HITL `load_order_mark`.
-- **463.0 leftover:** silnik hubów · OR konsolidacji · matching cutoff · FK do `groupage_line`. 463.0 = HITL `groupage_dispatcher_mark`.
-- **462.0 leftover:** atrybucja live · lejek X7 · FK do `funnel_mark` / `crm_opportunity` · campaign HTTP. 462.0 = HITL `campaign_mark`.
-- **461.0 leftover:** Alpega live · FK · auto-award · BR6.3 Expo (park). 461.0 = HITL `shipper_tender_mark`. **493.0** rundy DONE. **494.0** like-for-like DONE.
-- **493.0 leftover:** Alpega live · FK · auto-award. 493.0 = HITL `shipper_round_mark`.
-- **494.0 leftover:** Alpega live · FK · auto-award. 494.0 = HITL `shipper_like_mark`.
-- **455.0 leftover:** Valhalla live · VRP · km · tacho constraint (BR3.3) · BR3.1 załadunek. 455.0 = HITL `route_plan_mark`.
-- **454.0 leftover:** generator 500k · km · `n_overlap` · VRP · EXPLAIN p95. 454.0 = widok `circle_sim_pair`.
-- **453.0 leftover:** AI4.2 kółka SQL · solver liczb · JSON dźwigni · CASCADE. 453.0 = FK przebieg → migawka + widok `what_if_replay`.
-- **452.0 plan:** AI4.0 FK `plan_snapshot` RESTRICT. Leftover po zamknięciu: AI4.1 · CASCADE.
-- **451.0 leftover:** `.xls` → **506.0** · arkusze → **507/508** · openpyxl → **512.0 DONE** · formuły bez cache. 451.0 = pierwszy arkusz OOXML → tekst.
-- **514.0 leftover:** live vision · DocLayNet · żywy OpenAI w CI. 514.0 = formuła bez cache jako tekst. Następny = **515.0** undo historii.
-- **513.0 leftover:** DocLayNet park · żywy OpenAI w CI · live vision · how-to. 513.0 = Instructor stub × golden. formuły = **514.0 DONE**.
-- **512.0 leftover:** live vision · Instructor CI → **513.0 DONE** · formuły bez cache → **514.0 DONE** · DocLayNet. 512.0 = openpyxl na `.xlsx`.
-- **510.0 leftover:** pętla 5 000 → **511.0 DONE** · DocLayNet park · instructor CI · live vision · how-to. 510.0 = golden ≥2000 vs MockExtractor.
-- **509.0 leftover:** pętla 2 000 → **510.0 DONE** · 5 000 · DocLayNet park · instructor CI · live vision · how-to. 509.0 = golden ≥500 vs MockExtractor.
-- **450.0 leftover:** AI3.4 zamknięty w 451.0 · większy golden → **509.0 DONE** · instructor w CI · live vision · how-to (brak jobu zapisu w 450). 450.0 = 2 przypadki vs MockExtractor.
-- **449.0 leftover:** AI3.3 zamknięty w 450.0 · AI3.4 Excel · live vision · extra=forbid na całym POST extract (zostaje ignore). 449.0 = etykieta `extract_path`.
-- **448.0 leftover:** AI3.2 zamknięty w 449.0 · historia wierszy → **503.0** · PATCH quote/rfp → **500.0**. 448.0 = `revision` + `bbox_text`/`confidence_text`.
-- **447.0 leftover:** AI3.1 (**448.0**) · PATCH quote/rfp · EXPLAIN UPDATE JSONB. 447.0 = PATCH `candidates` na pending/`rate_line`. Import `isort` w follow-up commicie (ruff I001).
-- **446.0 leftover:** Brier · auto-champion · detektor/próg · trzy BC · `data_source` (AI5) · AI3.0 PATCH szkicu (**447.0**). 446.0 = POST bez wpisu CRPS/MAE.
-- **445.0 leftover:** zapis `prediction_ledger` (**446.0**) · Brier · auto-champion · detektor/próg · trzy BC · `data_source` (AI5). 445.0 = widok średnich per dzień UTC. EXPLAIN widoku = leftover.
-- **444.0 leftover:** dryf (**445.0**) · auto-champion · Brier · zapis `prediction_ledger` · trzy BC · `data_source` (AI5). 444.0 = widok średnich per `model_version`. EXPLAIN widoku = leftover.
+- **528.0 leftover (po 631):** auto-copy allowlisty U1 przy klonie (compose) Â· silnik similar SQL Â· F2b Decimal na skonto przy klonie FV. 528.0 = HITL `shipment_clone_mark` (intencja; nie drugi SoR). 631.0 = HITL stance DONE.
+- **527.0 leftover:** 409 API DONE 539.0 · S11 DONE 544.0 · matching lane → **639.0** HITL stance. 527.0 = HITL margin_floor Decimal + UN/LOCODE.
+- **499.0 leftover:** Alpega live park Â· auto-award SQL. 499.0 = HITL `shipper_award_mark`.
+- **498.0 leftover:** Alpega live park Â· FK UUID Â· auto-award. 498.0 = HITL `shipper_bind_mark`. **499.0** = award stance (DONE).
+- **497.0 leftover:** HubSpot live park Â· FK UUID. 497.0 = HITL `sales_bind_mark`.
+- **496.0 leftover:** cold-send Â· FK UUID Â· merge SQL. 496.0 = HITL `crm_link_mark`.
+- **495.0 leftover:** FK Â· cold-send Â· merge SQL. 495.0 = HITL `crm_dedup_mark`. **496.0** = HITL `crm_link_mark` (DONE).
+- **456.0 leftover:** FK leada/party Â· dedup NIP Â· cold-send. 456.0 = HITL `crm_opportunity`. **489.0** = HITL `crm_activity` (DONE). **490.0** = HITL `crm_pipeline_mark` (DONE). **495.0** = HITL `crm_dedup_mark` (DONE).
+- **489.0 leftover:** FK Â· dedup NIP Â· cold-send. 489.0 = HITL `crm_activity`. **490.0** = HITL `crm_pipeline_mark` (DONE). **495.0** = HITL `crm_dedup_mark` (DONE).
+- **490.0 leftover:** silnik lejka Â· FK Â· dedup NIP Â· cold-send. 490.0 = HITL `crm_pipeline_mark`. **495.0** = HITL `crm_dedup_mark` (DONE).
+- **460.0 leftover:** HubSpot live park Â· FK do okazji/party. 460.0 = HITL `sales_lane`. **491.0** = para UN/LOCODE (DONE). **492.0** = `volume_label` (DONE).
+- **491.0 leftover:** HubSpot live Â· FK. 491.0 = para UN/LOCODE na `sales_lane`. Wolumen = **492.0** DONE.
+- **492.0 leftover:** HubSpot live park Â· FK. 492.0 = `volume_label` tekst na `sales_lane`.
+- **467.0 leftover:** wymiary Decimal Â· live zezwolenie Â· escort party FK Â· FK do `oog_mark`. 467.0 = HITL `oog_permit_mark`.
+- **466.0 leftover:** live rezerwacja Â· bilet HTTP Â· solver art. 9 Â· FK do `trip` / `stop` / `route_plan_mark`. 466.0 = HITL `ferry_booking_mark`.
+- **465.0 leftover:** live DDD Â· Driver Time Solver Â· godziny SQL Â· FK do `trip` / `resource` / `route_plan_mark`. 465.0 = HITL `tacho_plan_mark`.
+- **464.0 leftover:** solver OR Â· wymiary Decimal Â· osie Decimal Â· FK do `load_plan_mark`. 464.0 = HITL `load_order_mark`.
+- **463.0 leftover:** silnik hubĂłw Â· OR konsolidacji Â· matching cutoff Â· FK do `groupage_line`. 463.0 = HITL `groupage_dispatcher_mark`.
+- **462.0 leftover:** atrybucja live Â· lejek X7 Â· FK do `funnel_mark` / `crm_opportunity` Â· campaign HTTP. 462.0 = HITL `campaign_mark`.
+- **461.0 leftover:** Alpega live Â· FK Â· auto-award Â· BR6.3 Expo (park). 461.0 = HITL `shipper_tender_mark`. **493.0** rundy DONE. **494.0** like-for-like DONE.
+- **493.0 leftover:** Alpega live Â· FK Â· auto-award. 493.0 = HITL `shipper_round_mark`.
+- **494.0 leftover:** Alpega live Â· FK Â· auto-award. 494.0 = HITL `shipper_like_mark`.
+- **455.0 leftover:** Valhalla live Â· VRP Â· km Â· tacho constraint (BR3.3) Â· BR3.1 zaĹ‚adunek. 455.0 = HITL `route_plan_mark`.
+- **454.0 leftover:** generator 500k Â· km Â· `n_overlap` Â· VRP Â· EXPLAIN p95. 454.0 = widok `circle_sim_pair`.
+- **453.0 leftover:** AI4.2 kĂłĹ‚ka SQL Â· solver liczb Â· JSON dĹşwigni Â· CASCADE. 453.0 = FK przebieg â†’ migawka + widok `what_if_replay`.
+- **452.0 plan:** AI4.0 FK `plan_snapshot` RESTRICT. Leftover po zamkniÄ™ciu: AI4.1 Â· CASCADE.
+- **451.0 leftover:** `.xls` â†’ **506.0** Â· arkusze â†’ **507/508** Â· openpyxl â†’ **512.0 DONE** Â· formuĹ‚y bez cache. 451.0 = pierwszy arkusz OOXML â†’ tekst.
+- **514.0 leftover:** live vision Â· DocLayNet Â· ĹĽywy OpenAI w CI. 514.0 = formuĹ‚a bez cache jako tekst. NastÄ™pny = **515.0** undo historii.
+- **513.0 leftover:** DocLayNet park Â· ĹĽywy OpenAI w CI Â· live vision Â· how-to. 513.0 = Instructor stub Ă— golden. formuĹ‚y = **514.0 DONE**.
+- **512.0 leftover:** live vision Â· Instructor CI â†’ **513.0 DONE** Â· formuĹ‚y bez cache â†’ **514.0 DONE** Â· DocLayNet. 512.0 = openpyxl na `.xlsx`.
+- **510.0 leftover:** pÄ™tla 5 000 â†’ **511.0 DONE** Â· DocLayNet park Â· instructor CI Â· live vision Â· how-to. 510.0 = golden â‰Ą2000 vs MockExtractor.
+- **509.0 leftover:** pÄ™tla 2 000 â†’ **510.0 DONE** Â· 5 000 Â· DocLayNet park Â· instructor CI Â· live vision Â· how-to. 509.0 = golden â‰Ą500 vs MockExtractor.
+- **450.0 leftover:** AI3.4 zamkniÄ™ty w 451.0 Â· wiÄ™kszy golden â†’ **509.0 DONE** Â· instructor w CI Â· live vision Â· how-to (brak jobu zapisu w 450). 450.0 = 2 przypadki vs MockExtractor.
+- **449.0 leftover:** AI3.3 zamkniÄ™ty w 450.0 Â· AI3.4 Excel Â· live vision Â· extra=forbid na caĹ‚ym POST extract (zostaje ignore). 449.0 = etykieta `extract_path`.
+- **448.0 leftover:** AI3.2 zamkniÄ™ty w 449.0 Â· historia wierszy â†’ **503.0** Â· PATCH quote/rfp â†’ **500.0**. 448.0 = `revision` + `bbox_text`/`confidence_text`.
+- **447.0 leftover:** AI3.1 (**448.0**) Â· PATCH quote/rfp Â· EXPLAIN UPDATE JSONB. 447.0 = PATCH `candidates` na pending/`rate_line`. Import `isort` w follow-up commicie (ruff I001).
+- **446.0 leftover:** Brier Â· auto-champion Â· detektor/prĂłg Â· trzy BC Â· `data_source` (AI5) Â· AI3.0 PATCH szkicu (**447.0**). 446.0 = POST bez wpisu CRPS/MAE.
+- **445.0 leftover:** zapis `prediction_ledger` (**446.0**) Â· Brier Â· auto-champion Â· detektor/prĂłg Â· trzy BC Â· `data_source` (AI5). 445.0 = widok Ĺ›rednich per dzieĹ„ UTC. EXPLAIN widoku = leftover.
+- **444.0 leftover:** dryf (**445.0**) Â· auto-champion Â· Brier Â· zapis `prediction_ledger` Â· trzy BC Â· `data_source` (AI5). 444.0 = widok Ĺ›rednich per `model_version`. EXPLAIN widoku = leftover.
 
-- **443.0 leftover:** Brier · zapis `prediction_ledger` · AI2.1 / 444.0 · trzy BC · `data_source` (AI5). 443.0 = widok MAE/CRPS. EXPLAIN widoku = leftover.
-- **442.0 leftover:** `data_source` (park AI5) · trzy BC · AI4.1 · CRPS (AI2.0 / 443.0). 442.0 = FK `outcome_ledger` → `outcome_kind`.
-- **441.0 leftover:** AI1.4 FK `outcome_ledger` → `outcome_kind` (442.0) · `data_source` (park AI5); trzy BC; silnik AI4.1; CRPS (AI2). 441.0 = HITL `outcome_kind`.
-- **440.0 leftover:** AI1.4 HITL `outcome_kind` zamknięty w 441.0 · FK `outcome_ledger` (442.0) · `data_source` (park AI5); trzy BC; silnik AI4.1; CRPS (AI2). 440.0 = FK `twin_mark` → `twin_kind`.
-- **439.0 leftover:** AI1.4 FK `twin_mark` zamknięty w 440.0 · `data_source` (park AI5) · `outcome_ledger.outcome_kind` CHECK; trzy BC; silnik AI4.1; CRPS (AI2). 439.0 = FK `suggestion_ledger` → `suggestion_kind`.
-- **438.0 leftover:** AI1.4 FK `suggestion_ledger` zamknięty w 439.0 · CHECK `twin_mark` · `data_source` (park AI5); trzy BC piszą; silnik AI4.1; CRPS (AI2). 438.0 = HITL `autonomy_level`.
-- **437.0 leftover:** AI1.4 `autonomy_level` zamknięty w 438.0 · `data_source` (park AI5, licencja); zdjęcie CHECK na suggestion_ledger i twin_mark + FK; trzy BC piszą do substratu; silnik AI4.1; CRPS liczone (AI2). 437.0 = HITL `twin_kind`.
-- **436.0 leftover:** AI1.4 `twin_kind` zamknięty w 437.0; leftover `data_source` / `autonomy_level`; zdjęcie CHECK na suggestion_ledger i twin_mark + FK; trzy BC piszą do substratu; silnik AI4.1; CRPS liczone (AI2). 436.0 = HITL `suggestion_kind`.
-- **435.0 leftover:** AI1.4 pierwszy słownik zamknięty w 436.0; leftover twin/data_source/autonomy; trzy BC piszą do substratu; silnik AI4.1; CRPS liczone (AI2). 435.0 = HITL `benefit_ledger`.
-- **434.0 leftover:** AI1.3 zamknięty w 435.0; AI1.4 słowniki otwarte; trzy BC piszą do substratu; silnik AI4.1; CRPS liczone (AI2). 434.0 = HITL `counterfactual_run`.
-- **433.0 leftover:** AI1.2 zamknięty w 434.0; AI1.3 `benefit_ledger`; AI1.4 słowniki otwarte; trzy BC piszą do substratu; CRPS liczone (AI2). 433.0 = HITL `outcome_ledger`.
-- **432.0 leftover:** AI1.1 zamknięty w 433.0; AI1.4 słowniki otwarte; trzy BC piszą do substratu; CRPS liczone (AI2). 432.0 = HITL `suggestion_ledger`.
-- **431.0 leftover:** kolumny `valid_until` / `revision_no` / `supersedes_id` na `quotation`. 431.0 = HITL `quote_validity_mark` (validity_kind). AI1.0 zamknięty w 432.0.
-- **340.0 leftover:** allocation SQL; ABC engine; druga marża; klej charge. 340.0 = HITL `cost_allocation_mark` (alloc_kind).
-- **339.0 leftover:** silnik make-or-buy; allocation SQL; druga marża; klej charge. 339.0 = HITL `make_or_buy_mark` (buy_kind).
-- **338.0 leftover:** DSO SQL; cash-at-risk SQL; aging SQL; druga marża; klej F1. 338.0 = HITL `working_capital_mark` (capital_kind).
+- **443.0 leftover:** Brier Â· zapis `prediction_ledger` Â· AI2.1 / 444.0 Â· trzy BC Â· `data_source` (AI5). 443.0 = widok MAE/CRPS. EXPLAIN widoku = leftover.
+- **442.0 leftover:** `data_source` (park AI5) Â· trzy BC Â· AI4.1 Â· CRPS (AI2.0 / 443.0). 442.0 = FK `outcome_ledger` â†’ `outcome_kind`.
+- **441.0 leftover:** AI1.4 FK `outcome_ledger` â†’ `outcome_kind` (442.0) Â· `data_source` (park AI5); trzy BC; silnik AI4.1; CRPS (AI2). 441.0 = HITL `outcome_kind`.
+- **440.0 leftover:** AI1.4 HITL `outcome_kind` zamkniÄ™ty w 441.0 Â· FK `outcome_ledger` (442.0) Â· `data_source` (park AI5); trzy BC; silnik AI4.1; CRPS (AI2). 440.0 = FK `twin_mark` â†’ `twin_kind`.
+- **439.0 leftover:** AI1.4 FK `twin_mark` zamkniÄ™ty w 440.0 Â· `data_source` (park AI5) Â· `outcome_ledger.outcome_kind` CHECK; trzy BC; silnik AI4.1; CRPS (AI2). 439.0 = FK `suggestion_ledger` â†’ `suggestion_kind`.
+- **438.0 leftover:** AI1.4 FK `suggestion_ledger` zamkniÄ™ty w 439.0 Â· CHECK `twin_mark` Â· `data_source` (park AI5); trzy BC piszÄ…; silnik AI4.1; CRPS (AI2). 438.0 = HITL `autonomy_level`.
+- **437.0 leftover:** AI1.4 `autonomy_level` zamkniÄ™ty w 438.0 Â· `data_source` (park AI5, licencja); zdjÄ™cie CHECK na suggestion_ledger i twin_mark + FK; trzy BC piszÄ… do substratu; silnik AI4.1; CRPS liczone (AI2). 437.0 = HITL `twin_kind`.
+- **436.0 leftover:** AI1.4 `twin_kind` zamkniÄ™ty w 437.0; leftover `data_source` / `autonomy_level`; zdjÄ™cie CHECK na suggestion_ledger i twin_mark + FK; trzy BC piszÄ… do substratu; silnik AI4.1; CRPS liczone (AI2). 436.0 = HITL `suggestion_kind`.
+- **435.0 leftover:** AI1.4 pierwszy sĹ‚ownik zamkniÄ™ty w 436.0; leftover twin/data_source/autonomy; trzy BC piszÄ… do substratu; silnik AI4.1; CRPS liczone (AI2). 435.0 = HITL `benefit_ledger`.
+- **434.0 leftover:** AI1.3 zamkniÄ™ty w 435.0; AI1.4 sĹ‚owniki otwarte; trzy BC piszÄ… do substratu; silnik AI4.1; CRPS liczone (AI2). 434.0 = HITL `counterfactual_run`.
+- **433.0 leftover:** AI1.2 zamkniÄ™ty w 434.0; AI1.3 `benefit_ledger`; AI1.4 sĹ‚owniki otwarte; trzy BC piszÄ… do substratu; CRPS liczone (AI2). 433.0 = HITL `outcome_ledger`.
+- **432.0 leftover:** AI1.1 zamkniÄ™ty w 433.0; AI1.4 sĹ‚owniki otwarte; trzy BC piszÄ… do substratu; CRPS liczone (AI2). 432.0 = HITL `suggestion_ledger`.
+- **431.0 leftover:** kolumny `valid_until` / `revision_no` / `supersedes_id` na `quotation`. 431.0 = HITL `quote_validity_mark` (validity_kind). AI1.0 zamkniÄ™ty w 432.0.
+- **340.0 leftover:** allocation SQL; ABC engine; druga marĹĽa; klej charge. 340.0 = HITL `cost_allocation_mark` (alloc_kind).
+- **339.0 leftover:** silnik make-or-buy; allocation SQL; druga marĹĽa; klej charge. 339.0 = HITL `make_or_buy_mark` (buy_kind).
+- **338.0 leftover:** DSO SQL; cash-at-risk SQL; aging SQL; druga marĹĽa; klej F1. 338.0 = HITL `working_capital_mark` (capital_kind).
 - **337.0 leftover:** live CEIDG/KRS/VIES/whitelist; auto notice; scrape; klej M-10. 337.0 = HITL `registry_poll_mark` (poll_kind).
 - **336.0 leftover:** live Stripe; Paddle; platform_usage_daily; limity SQL; klej S53. 336.0 = HITL `billing_mark` (billing_kind).
 - **335.0 leftover:** live yard; WMS; weigh SQL vs VGM; EIR PDF; klej D3+T3. 335.0 = HITL `yard_mark` (yard_kind).
@@ -79,19 +79,19 @@
 - **328.0 leftover:** work_order silnik; dtc z V5 live; kara kierowcy; klej T2. 328.0 = HITL `cmms_mark` (work_kind).
 - **327.0 leftover:** solver OR; osie Decimal; ADR tunel; klej T2+M-52; LLM-VRP. 327.0 = HITL `load_plan_mark` (stance_kind).
 - **326.0 leftover:** wymiary; lashing_cert; escort FK; zezwolenie_kraj; klej T1. 326.0 = HITL `oog_mark` (escort_kind).
-- **325.0 leftover:** plomby z nóg; klej C2; teatr PUESC; XML. 325.0 = HITL `ncts_draft` (transit_kind).
+- **325.0 leftover:** plomby z nĂłg; klej C2; teatr PUESC; XML. 325.0 = HITL `ncts_draft` (transit_kind).
 - **324.0 leftover:** bank stakeholder; presentation_due; klej U5/I3; bank live. 324.0 = HITL `lc_checklist` (status_kind).
 - **323.0 leftover:** crm_opportunity; activity; dedup NIP; klej X7; cold auto-send. 323.0 = HITL `crm_lead` (stage_kind).
-- **322.0 leftover:** predicted_loss / repair_cost / actual_loss / saved SQL; suma nachodzących oszczędności. 322.0 = HITL `intervention_outcome` (result_kind).
+- **322.0 leftover:** predicted_loss / repair_cost / actual_loss / saved SQL; suma nachodzÄ…cych oszczÄ™dnoĹ›ci. 322.0 = HITL `intervention_outcome` (result_kind).
 - **321.0 leftover:** kara SQL; auto linia produkcyjna. 321.0 = HITL `penalty_mark` (breach_kind).
-- **320.0 leftover:** SQL FV vs charge; druga marża. 320.0 = HITL `spend_mark` (leakage_kind).
+- **320.0 leftover:** SQL FV vs charge; druga marĹĽa. 320.0 = HITL `spend_mark` (leakage_kind).
 - **319.0 leftover:** auto-send S11; mail_draft auto. 319.0 = HITL `repair_playbook` (stance_kind).
-- **318.0 leftover:** MAE SQL; sample≥N egzekucja; suma oszczędności. 318.0 = HITL `calibration_mark` (sample_ready).
+- **318.0 leftover:** MAE SQL; sampleâ‰ĄN egzekucja; suma oszczÄ™dnoĹ›ci. 318.0 = HITL `calibration_mark` (sample_ready).
 - **317.0 leftover:** egzekucja 409; auto-kara FV; CI2/CI5. 317.0 = HITL `clause_notice` (clause_label).
 - **316.0 leftover:** EBITDA SQL; intervention_outcome; CI2/CI5; S11. 316.0 = HITL `impact_scenario` (chain_label).
 - **315.0 leftover:** repair_cost / expected_save; intervention_outcome SQL; S11 auto-send; CI2/CI5. 315.0 = HITL `remediation_option` (kind).
-- **314.0 leftover:** wróżba punktowa / GPS; CI2 spend; CI3 409; CI5 kara; CI6 kwoty na remediation. 314.0 = HITL `delay_forecast` (horizon + p_late Decimal).
-- **313.0 leftover:** extract LLM / upload PDF; `penalty_ciphertext` / `obligation_ciphertext`; CI5 kara SQL; CI2 spend; CT2; X1 portal. 313.0 = HITL `sla_clause` (metryka + próg tekst + FK umowa).
+- **314.0 leftover:** wrĂłĹĽba punktowa / GPS; CI2 spend; CI3 409; CI5 kara; CI6 kwoty na remediation. 314.0 = HITL `delay_forecast` (horizon + p_late Decimal).
+- **313.0 leftover:** extract LLM / upload PDF; `penalty_ciphertext` / `obligation_ciphertext`; CI5 kara SQL; CI2 spend; CT2; X1 portal. 313.0 = HITL `sla_clause` (metryka + prĂłg tekst + FK umowa).
 - **312.0 leftover:** label-form SourceRef wyczerpane. 313.0 = CI1 `sla_clause`. 312.0 = SourceRefField na local-charge/charge-template/cod.
 - **311.0 leftover:** local/charge-template/cod DONE 312.0. 311.0 = SourceRefField na rate-card/fuel/groupage.
 - **310.0 leftover:** rate-card/fuel/groupage DONE 311.0. 310.0 = SourceRefField na round/matrix/side.
@@ -104,131 +104,132 @@
 - **303.0 leftover:** asn/routing/capa DONE 304.0. 303.0 = SourceRefField na po-line/visibility/sap.
 - **302.0 leftover:** po-line/visibility/sap DONE 303.0. 302.0 = kek/PO/terminal-slot.
 - **301.0 leftover:** kek/PO/terminal-slot DONE 302.0. 301.0 = erp/idp/contract.
-- **300.0 leftover:** connector/header DONE częściowo 301.0. 300.0 = prediction/weather/exchange.
+- **300.0 leftover:** connector/header DONE czÄ™Ĺ›ciowo 301.0. 300.0 = prediction/weather/exchange.
 - **299.0 leftover:** prediction/weather DONE 300.0. 299.0 = rank/executive/memory.
-- **298.0 leftover:** label-form DONE częściowo 299.0. Zostaje prediction/weather. 298.0 = war-room/twin/tower.
-- **297.0 leftover:** label-form DONE częściowo 298.0 (W marks). Zostaje rank/executive/memory/prediction/weather. 297.0 = circle/lane-km/plan-snapshot.
-- **296.0 leftover:** paper-form pozostałe DONE częściowo; label-form DONE częściowo 297.0. 296.0 = HintField na TED/award/bid-stance.
-- **295.0 leftover:** paper-form tender DONE częściowo 296.0. Zostaje inne paper-form / label-form. 295.0 = HintField na lane/monitoring/carbon.
-- **294.0 leftover:** live p44 / FourKites / Shippeo HTTP (TO_VERIFY umowa); „drugi vendor jako prawda” live; CT8 AIS; U1 masowy; wspólny SELECT; CT2. 294.0 = tokeny `fourkites`|`shippeo` na istniejącej tabeli.
-- **293.0 leftover:** paper-form DONE częściowo 295.0 (lane/monitoring/carbon). Zostaje tender-* reszta + label-form. 293.0 = HintField na cash/kreptd/party-doc.
-- **292.0 leftover:** paper-form DONE częściowo 293.0. Zostaje reszta paper-form + label-form HITL; `parse*` w `*-api.ts`; EXPLAIN `ix_resource_org_kind` lokalnie. 292.0 = `CatalogSourceRefField` na trzech formularzach.
-- **291.0 leftover:** U1 masowy; qty float; wspólny SELECT; auto przy POST asn (zakaz); CT2; CT5/CT8 live. 291.0 = HITL promote. Lock: `SHIPPED_CHARGE_ROUTES["291.0"]`.
-- **290.0 leftover:** wspólny SELECT; auto shipment HITL DONE 291.0; CT2; CT5/CT8 live; live EDI. 290.0 = lane/mode na shipment. Lock: `SHIPPED_CHARGE_ROUTES["290.0"]`.
-- **289.0 leftover:** matching na shipment DONE 290.0. Zostaje wspólny SELECT; auto shipment DONE 291.0; CT2; CT5/CT8 live. 289.0 = lane/mode na ASN. Lock: `SHIPPED_CHARGE_ROUTES["289.0"]`.
-- **288.0 leftover:** silnik matching lane/mode na POST DONE 289–290. Zostaje wspólny SELECT; auto shipment DONE 291.0; CT2; CT5/CT8 live. 288.0 = katalog trybu. Lock: `SHIPPED_CHARGE_ROUTES["288.0"]`.
-# Dług techniczny — żywy rejestr
+- **298.0 leftover:** label-form DONE czÄ™Ĺ›ciowo 299.0. Zostaje prediction/weather. 298.0 = war-room/twin/tower.
+- **297.0 leftover:** label-form DONE czÄ™Ĺ›ciowo 298.0 (W marks). Zostaje rank/executive/memory/prediction/weather. 297.0 = circle/lane-km/plan-snapshot.
+- **296.0 leftover:** paper-form pozostaĹ‚e DONE czÄ™Ĺ›ciowo; label-form DONE czÄ™Ĺ›ciowo 297.0. 296.0 = HintField na TED/award/bid-stance.
+- **295.0 leftover:** paper-form tender DONE czÄ™Ĺ›ciowo 296.0. Zostaje inne paper-form / label-form. 295.0 = HintField na lane/monitoring/carbon.
+- **294.0 leftover:** live p44 / FourKites / Shippeo HTTP (TO_VERIFY umowa); â€ždrugi vendor jako prawdaâ€ť live; CT8 AIS; U1 masowy; wspĂłlny SELECT; CT2. 294.0 = tokeny `fourkites`|`shippeo` na istniejÄ…cej tabeli.
+- **293.0 leftover:** paper-form DONE czÄ™Ĺ›ciowo 295.0 (lane/monitoring/carbon). Zostaje tender-* reszta + label-form. 293.0 = HintField na cash/kreptd/party-doc.
+- **292.0 leftover:** paper-form DONE czÄ™Ĺ›ciowo 293.0. Zostaje reszta paper-form + label-form HITL; `parse*` w `*-api.ts`; EXPLAIN `ix_resource_org_kind` lokalnie. 292.0 = `CatalogSourceRefField` na trzech formularzach.
+- **291.0 leftover:** U1 masowy; qty float; wspĂłlny SELECT; auto przy POST asn (zakaz); CT2; CT5/CT8 live. 291.0 = HITL promote. Lock: `SHIPPED_CHARGE_ROUTES["291.0"]`.
+- **290.0 leftover:** wspĂłlny SELECT; auto shipment HITL DONE 291.0; CT2; CT5/CT8 live; live EDI. 290.0 = lane/mode na shipment. Lock: `SHIPPED_CHARGE_ROUTES["290.0"]`.
+- **289.0 leftover:** matching na shipment DONE 290.0. Zostaje wspĂłlny SELECT; auto shipment DONE 291.0; CT2; CT5/CT8 live. 289.0 = lane/mode na ASN. Lock: `SHIPPED_CHARGE_ROUTES["289.0"]`.
+- **288.0 leftover:** silnik matching lane/mode na POST DONE 289â€“290. Zostaje wspĂłlny SELECT; auto shipment DONE 291.0; CT2; CT5/CT8 live. 288.0 = katalog trybu. Lock: `SHIPPED_CHARGE_ROUTES["288.0"]`.
+# DĹ‚ug techniczny â€” ĹĽywy rejestr
 
-Aktualizuj **po każdym plasterze** (pętla `docs/ops/post-plaster.md`). Nie dumpuj audytu od nowa.
+Aktualizuj **po kaĹĽdym plasterze** (pÄ™tla `docs/ops/post-plaster.md`). Nie dumpuj audytu od nowa.
 
-Źródło początkowe: audyt Gate/DoD + canvas `post-audit-review` (przegląd, nie lista do kodu).
+ĹąrĂłdĹ‚o poczÄ…tkowe: audyt Gate/DoD + canvas `post-audit-review` (przeglÄ…d, nie lista do kodu).
 
-Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftoverów.
+KolejnoĹ›Ä‡ pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) Â§ Rejestr leftoverĂłw.
 
-**Zrobione w syncu (nie wracać):** nagłówek PLAN nie mówi „0.5 lokalnie”; `just test` pada przy failu unita (bez `|| true`). Ręczny SHA HEAD w PLAN (`8fb8c93` / 3.0) zdjęty w 128.0 — SoT = CURRENT.
+**Zrobione w syncu (nie wracaÄ‡):** nagĹ‚Ăłwek PLAN nie mĂłwi â€ž0.5 lokalnieâ€ť; `just test` pada przy failu unita (bez `|| true`). RÄ™czny SHA HEAD w PLAN (`8fb8c93` / 3.0) zdjÄ™ty w 128.0 â€” SoT = CURRENT.
 
-- **128.0 leftover context rot DONE:** PLAN wiersz HEAD → CURRENT. `AGENTS.md` M-71: szyna z `changed` i lockiem; zakaz extract/send zostaje. Nie konsument outboxa. Nie Auth0.
+- **128.0 leftover context rot DONE:** PLAN wiersz HEAD â†’ CURRENT. `AGENTS.md` M-71: szyna z `changed` i lockiem; zakaz extract/send zostaje. Nie konsument outboxa. Nie Auth0.
 
 - **148.0 leftover:** dwa `mail_draft` przy DAP `contact_exchange`; live HTTP S21. Tu tylko status na wierszu. Nie send.
 - **147.0 leftover:** tabela `document_dispatch` (batch mail + send S18). Tu tylko katalog adresata. Nie auto-send.
-- **606.0 leftover:** T1 EXP1 `weigh_out_kg` DONE. Para wjazd/wyjazd na `stop` zamknięta. Zostaje HW; UXCL. Tu tylko waga wyjazdu HITL. Nie VGM. Nie wymóg pary.
+- **606.0 leftover:** T1 EXP1 `weigh_out_kg` DONE. Para wjazd/wyjazd na `stop` zamkniÄ™ta. Zostaje HW; UXCL. Tu tylko waga wyjazdu HITL. Nie VGM. Nie wymĂłg pary.
 - **605.0 leftover:** T1 EXP1 `weigh_in_kg` DONE. `weigh_out_kg` DONE 606.0. Zostaje HW; UXCL. Tu tylko waga wjazdu HITL na punkcie. Nie VGM. Nie waga wyjazdu.
 - **604.0 leftover:** T1 EXP1 `no_show_at` DONE. `weigh_in_kg` DONE 605.0. Zostaje `weigh_out_kg`; HW; UXCL. Tu tylko chwila niestawiennictwa HITL na punkcie. Nie charge. Nie auto-status.
 - **603.0 leftover:** T1 EXP1 `appointment_status` DONE. `no_show_at` DONE 604.0. Zostaje weigh_in/out; HW; UXCL. Tu tylko status awizacji HITL na punkcie. Nie dok. Nie auto-status.
 - **602.0 leftover:** T1b sync DONE. Zostaje HW; UXCL; weigh. Tu tylko fill kodu z FK. Nie auto-create.
 - **601.0 leftover:** T1b bind DONE. Sync DONE 602.0. Zostaje HW; UXCL. Tu tylko opcjonalny FK grupy na punkcie. Nie mapa.
-- **600.0 leftover:** T1b tabela `stop_group` DONE. Bind DONE 601.0. Zostaje sync; HW; UXCL. Tu tylko HITL nagłówek grupy na zleceniu. Nie mapa. Nie członkostwo.
+- **600.0 leftover:** T1b tabela `stop_group` DONE. Bind DONE 601.0. Zostaje sync; HW; UXCL. Tu tylko HITL nagĹ‚Ăłwek grupy na zleceniu. Nie mapa. Nie czĹ‚onkostwo.
 - **150.0 leftover:** `stop_group` kolumna DONE 213.0. `notes_for_driver` DONE 215.0. T1b tabela DONE 600.0. Zostaje T1b bind; EXP1 `appointment_status`/`no_show_at`. ETA HITL DONE 194.0. Tu tylko punkt + location + strefa IANA + dwa ETA HITL + grupa + notatka. Nie mapa. `resource` = 151.0. `trip` = 152.0.
-- **194.0 leftover:** Open-Meteo live HTTP / geometria trip DONE HITL 195.0 (`weather_observation`). `stop_group` kolumna DONE 213.0. Zostaje feed Open-Meteo / lat/lng; myto → `charge` (V2b); GPS/tacho / silnik ETA; T1b tabela. Tu tylko `eta_physical` + `eta_legal` HITL na `stop`. Nie GPS.
+- **194.0 leftover:** Open-Meteo live HTTP / geometria trip DONE HITL 195.0 (`weather_observation`). `stop_group` kolumna DONE 213.0. Zostaje feed Open-Meteo / lat/lng; myto â†’ `charge` (V2b); GPS/tacho / silnik ETA; T1b tabela. Tu tylko `eta_physical` + `eta_legal` HITL na `stop`. Nie GPS.
 - **197.0 leftover:** `position_event` katalog DONE 457.0. Zostaje lat/lng / poll; `credential_ciphertext`; `resource_telematics_link` + 3 dni robocze U4; V5b `exchange_message`. Tu tylko `telematics_connector` HITL `observation_kind` + `provider_code` + `source_ref`. Nie track. Nie sekrety.
-- **457.0 leftover:** współrzędne jako dane; `observed_at`; FK resource/trip; live poll. BR2.1 katalog DONE 458.0. Tu tylko `position_event` HITL `source_kind` + `source_ref`. Nie live GPS. Nie `tracking_event`.
-- **458.0 leftover:** parowanie z `resource`; cykl życia poza kind; silnik awarii; live poll. BR2.2 katalog DONE 459.0. Tu tylko `telematics_device` HITL `device_kind` + `source_ref`. Nie live. Nie konektor V5.
+- **457.0 leftover:** wspĂłĹ‚rzÄ™dne jako dane; `observed_at`; FK resource/trip; live poll. BR2.1 katalog DONE 458.0. Tu tylko `position_event` HITL `source_kind` + `source_ref`. Nie live GPS. Nie `tracking_event`.
+- **458.0 leftover:** parowanie z `resource`; cykl ĹĽycia poza kind; silnik awarii; live poll. BR2.2 katalog DONE 459.0. Tu tylko `telematics_device` HITL `device_kind` + `source_ref`. Nie live. Nie konektor V5.
 - **634.0 DONE:** bool `party_contact.tracking_consent` HITL DEFAULT false. Zostaje FK do katalogu; egzekucja; live poll; BR2.3 Expo (park).
 - **459.0 leftover:** kolumna `party_contact.tracking_consent` DONE **634.0**. Zostaje FK do party; egzekucja; live poll; BR2.3 Expo (park). Tu tylko `tracking_consent` HITL `consent_kind` + `source_ref`. Nie live.
-- **203.0 leftover:** ranking SQL / Top N; N szkiców `mail_draft`; auto-award. Tu tylko `rank_mark` HITL `rank_kind` + `source_ref`. Nie sortowanie. Nie award.
-- **202.0 leftover:** zdania z agregatów SQL (117.0 / M-15); suma LLM / EBITDA; ranking W5 + auto-award. Tu tylko `executive_mark` HITL `question_kind` + `source_ref`. Nie suma. Nie narracja.
+- **203.0 leftover:** ranking SQL / Top N; N szkicĂłw `mail_draft`; auto-award. Tu tylko `rank_mark` HITL `rank_kind` + `source_ref`. Nie sortowanie. Nie award.
+- **202.0 leftover:** zdania z agregatĂłw SQL (117.0 / M-15); suma LLM / EBITDA; ranking W5 + auto-award. Tu tylko `executive_mark` HITL `question_kind` + `source_ref`. Nie suma. Nie narracja.
 - **201.0 leftover:** graf / FK na `entity_event`; pgvector; RAG na stawkach / umowach CI. Tu tylko `memory_edge` HITL `edge_kind` + `source_ref`. Nie wyszukiwanie. Nie wektor.
-- **200.0 leftover:** koalescencja N8; drugi czat; T8 `confirmed` z live API; widok sklejający M-37 + pending S11 + V6 + mapa. Tu tylko `war_room_mark` HITL `incident_kind` + `source_ref`. Nie scalanie. Nie czat.
-- **478.0 leftover:** N8 / widok sklejony / T8 live zostają (BR7.0 dodał tylko HITL `ops_room_mark` layer_kind). Nie drugi czat.
-- **479.0 leftover:** SQL line impact / EBITDA / plant feed zostają (BR7.1 dodał tylko HITL `line_impact_layer_mark`). Nie silnik w Pythonie.
-- **199.0 leftover:** `plan_snapshot` DONE 265.0. Zostaje 8 silników fizyki; V7 tacho TO_VERIFY; V8 what-if. Tu tylko `twin_mark` HITL `twin_kind` + `source_ref`. Nie fizyka. Nie kółka G2.20.
-- **198.0 leftover:** silnik stock→produkcja→sprzedaż→EBITDA; `sla_clause` / kara CI5; what-if V8; scoring osoby; klejenie CT2. Tu tylko `tower_impact` HITL `chain_stage` + `contract_data_status` + `source_ref`. Nie silnik. Nie kara.
-- **196.0 leftover:** N3 countdown remaining + szkic `charge`; live HTTP armatora. Blank sailing = **565.0**. `demurrage_free_days` = **566.0**. `detention_free_days` = **567.0**. `mixed_dd_days` = **568.0**. Tu tylko `free_time_clock` HITL `clock_kind` + `free_days` + `source_ref`. Nie odliczanie. Nie marża.
-- **566.0 leftover:** `detention_free_days` DONE 567.0. `mixed_dd_days` DONE 568.0. Zostaje N3 countdown · szkic charge · live armator. Tu tylko `demurrage_free_days` HITL (dni, nie godzin).
-- **567.0 leftover:** `mixed_dd_days` DONE 568.0. Zostaje N3 countdown · szkic charge · live armator. Tu tylko `detention_free_days` HITL (dni, nie godzin).
-- **568.0 leftover:** N3 countdown · szkic charge · live armator. Tu tylko `mixed_dd_days` HITL (dni, nie godzin).
-- **195.0 leftover:** Open-Meteo / IMGW / DWD live HTTP; `trip_id` / geometria / lat/lng / WMO; myto → `charge` (V2b). Tu tylko `weather_observation` HITL warunek + UN/LOCODE + czas + `source_ref`. Nie feed. Nie ETA.
+- **200.0 leftover:** koalescencja N8; drugi czat; T8 `confirmed` z live API; widok sklejajÄ…cy M-37 + pending S11 + V6 + mapa. Tu tylko `war_room_mark` HITL `incident_kind` + `source_ref`. Nie scalanie. Nie czat.
+- **478.0 leftover:** N8 / widok sklejony / T8 live zostajÄ… (BR7.0 dodaĹ‚ tylko HITL `ops_room_mark` layer_kind). Nie drugi czat.
+- **479.0 leftover:** SQL line impact / EBITDA / plant feed zostajÄ… (BR7.1 dodaĹ‚ tylko HITL `line_impact_layer_mark`). Nie silnik w Pythonie.
+- **199.0 leftover:** `plan_snapshot` DONE 265.0. Zostaje 8 silnikĂłw fizyki; V7 tacho TO_VERIFY; V8 what-if. Tu tylko `twin_mark` HITL `twin_kind` + `source_ref`. Nie fizyka. Nie kĂłĹ‚ka G2.20.
+- **198.0 leftover:** silnik stockâ†’produkcjaâ†’sprzedaĹĽâ†’EBITDA; `sla_clause` / kara CI5; what-if V8; scoring osoby; klejenie CT2. Tu tylko `tower_impact` HITL `chain_stage` + `contract_data_status` + `source_ref`. Nie silnik. Nie kara.
+- **196.0 leftover:** N3 countdown remaining + szkic `charge`; live HTTP armatora. Blank sailing = **565.0**. `demurrage_free_days` = **566.0**. `detention_free_days` = **567.0**. `mixed_dd_days` = **568.0**. Tu tylko `free_time_clock` HITL `clock_kind` + `free_days` + `source_ref`. Nie odliczanie. Nie marĹĽa.
+- **566.0 leftover:** `detention_free_days` DONE 567.0. `mixed_dd_days` DONE 568.0. Zostaje N3 countdown Â· szkic charge Â· live armator. Tu tylko `demurrage_free_days` HITL (dni, nie godzin).
+- **567.0 leftover:** `mixed_dd_days` DONE 568.0. Zostaje N3 countdown Â· szkic charge Â· live armator. Tu tylko `detention_free_days` HITL (dni, nie godzin).
+- **568.0 leftover:** N3 countdown Â· szkic charge Â· live armator. Tu tylko `mixed_dd_days` HITL (dni, nie godzin).
+- **195.0 leftover:** Open-Meteo / IMGW / DWD live HTTP; `trip_id` / geometria / lat/lng / WMO; myto â†’ `charge` (V2b). Tu tylko `weather_observation` HITL warunek + UN/LOCODE + czas + `source_ref`. Nie feed. Nie ETA.
 - **151.0 leftover:** `trip` DONE 152.0. `driver2` DONE 212.0. `route_label` DONE 214.0. km DONE 256.0/257.0. `party_id` DONE 258.0. `/fleet` DONE 259.0. `capacity_kg` DONE 589.0. `capacity_ldm` DONE 590.0. `capacity_m3` DONE 591.0. `document_expiries` DONE 592.0. `inventory_no` DONE 593.0. `adr_certified` DONE 594.0. `reefer` DONE 595.0. `tail_lift` DONE 596.0. `phone` DONE 597.0. `driver_card_no` DONE 598.0. `vehicle_profile` DONE 599.0. Zostaje T2c: HW. Tu tylko katalog pojazd/kierowca/naczepa.
-- **153.0 leftover:** `seal_no_1` DONE 216.0. `seal_no_2` DONE 217.0. `seal_no_3` DONE 218.0. `vessel_name` DONE 219.0. `voyage_no` DONE 220.0. `remarks` DONE 221.0. `cargo_description` DONE 222.0. `packaging_code` DONE 223.0. `ref_1` DONE 224.0. `ref_2` DONE 225.0. `ref_3` DONE 226.0. `ref_4` DONE 227.0. `ref_5` DONE 228.0. `reefer` DONE 229.0. `pickup_terminal` DONE 230.0. `return_terminal` DONE 231.0. `bl_kind` DONE 232.0. `free_time_origin_h` DONE 233.0. `free_time_dest_h` DONE 234.0. `si_cutoff_at` DONE 235.0. `ams_cutoff_at` DONE 236.0. `cy_cutoff_at` DONE 237.0. `cfs_cutoff_at` DONE 238.0. VGM bundle DONE 239.0. `last_survey_at` DONE 240.0. `booking_no` DONE 241.0. `carrier_party_id` DONE 242.0. `shipment_leg_id` DONE 243.0. Zostaje leftover T3 TARA Decimal DONE 569.0; PIN DONE 570.0; payload_kg DONE 571.0; TEU DONE 572.0; quantity DONE 573.0; weight_kg DONE 574.0; volume_m3 DONE 575.0; pickup_date DONE 576.0; return_date DONE 577.0; gate_in_date DONE 578.0; delivery_date DONE 579.0; unload_date DONE 580.0; temp_min DONE 581.0; temp_max DONE 582.0; needs_external_power DONE 583.0; container_release_party_id DONE 584.0; temp band min≤max DONE 585.0; 409 temp bez reefer DONE 586.0; 409 power bez reefer DONE 587.0. Następny: park N3/live/ciphertext/AI3/G0-SH; SH-R16-4 UXCL banner (park w /noc). Tu tylko ISO 6346 + typ + zlecenie + trzy plomby + statek + rejs + uwaga + ładunek + opakowanie + Ref 1–5 + flaga chłodniczego + terminale pobrania i zwrotu + rodzaj listu (nie HBL) + godziny wolnego czasu origin i destination + cutoff SI + cutoff AMS + cutoff CY + cutoff CFS + VGM bundle + last_survey_at + booking_no + carrier_party_id + shipment_leg_id. Nie temperatura. Nie PIN. Nie booking S21. Nie odliczanie. Nie live HTTP.
+- **153.0 leftover:** `seal_no_1` DONE 216.0. `seal_no_2` DONE 217.0. `seal_no_3` DONE 218.0. `vessel_name` DONE 219.0. `voyage_no` DONE 220.0. `remarks` DONE 221.0. `cargo_description` DONE 222.0. `packaging_code` DONE 223.0. `ref_1` DONE 224.0. `ref_2` DONE 225.0. `ref_3` DONE 226.0. `ref_4` DONE 227.0. `ref_5` DONE 228.0. `reefer` DONE 229.0. `pickup_terminal` DONE 230.0. `return_terminal` DONE 231.0. `bl_kind` DONE 232.0. `free_time_origin_h` DONE 233.0. `free_time_dest_h` DONE 234.0. `si_cutoff_at` DONE 235.0. `ams_cutoff_at` DONE 236.0. `cy_cutoff_at` DONE 237.0. `cfs_cutoff_at` DONE 238.0. VGM bundle DONE 239.0. `last_survey_at` DONE 240.0. `booking_no` DONE 241.0. `carrier_party_id` DONE 242.0. `shipment_leg_id` DONE 243.0. Zostaje leftover T3 TARA Decimal DONE 569.0; PIN DONE 570.0; payload_kg DONE 571.0; TEU DONE 572.0; quantity DONE 573.0; weight_kg DONE 574.0; volume_m3 DONE 575.0; pickup_date DONE 576.0; return_date DONE 577.0; gate_in_date DONE 578.0; delivery_date DONE 579.0; unload_date DONE 580.0; temp_min DONE 581.0; temp_max DONE 582.0; needs_external_power DONE 583.0; container_release_party_id DONE 584.0; temp band minâ‰¤max DONE 585.0; 409 temp bez reefer DONE 586.0; 409 power bez reefer DONE 587.0. NastÄ™pny: park N3/live/ciphertext/AI3/G0-SH; SH-R16-4 UXCL banner (park w /noc). Tu tylko ISO 6346 + typ + zlecenie + trzy plomby + statek + rejs + uwaga + Ĺ‚adunek + opakowanie + Ref 1â€“5 + flaga chĹ‚odniczego + terminale pobrania i zwrotu + rodzaj listu (nie HBL) + godziny wolnego czasu origin i destination + cutoff SI + cutoff AMS + cutoff CY + cutoff CFS + VGM bundle + last_survey_at + booking_no + carrier_party_id + shipment_leg_id. Nie temperatura. Nie PIN. Nie booking S21. Nie odliczanie. Nie live HTTP.
 - **269.0 leftover:** live T8 HTTP / Navis N4 / Selenium; `terminal_appointment` + `confirmed` z adaptera API; yard / D3b. Tu tylko `terminal_slot_connector` HITL `mode` + godziny N4 + `source_ref`. Nie booking. Nie gwarancja.
-- **287.0 leftover:** matching lane/mode; wspólny SELECT; auto shipment; CT2; CT5/CT8 live. 287.0 = 409 na POST shipment gdy block_409.
-- **286.0 leftover:** żywy HTTP 409 przy zapisie zlecenia poza guide; matching lane/mode; live EDI; auto shipment. 286.0 = 409 na ASN. Lock trasy: `SHIPPED_CHARGE_ROUTES["286.0"]`.
-- **285.0 leftover:** żywy HTTP 409 na ASN DONE 286.0. Zostaje 409 na shipment; wspólny SELECT; CT9; auto shipment; CT2; CT5/CT8 live. 285.0 = katalog trybu. Lock trasy: `SHIPPED_CHARGE_ROUTES["285.0"]`.
-- **284.0 leftover:** wspólny SELECT; tuple OpenFGA 3 strony; egzekucja 409 na ASN DONE 286.0; CT9; auto shipment; CT2; CT5/CT8 live. 284.0 = katalog roli. Lock trasy: `SHIPPED_CHARGE_ROUTES["284.0"]`.
-- **283.0 leftover:** SQL FV vs `charge`; druga marża; egzekucja 409 na ASN DONE 286.0; auto shipment; CT2; CT5/CT8 live; CT9/CT11. 283.0 = katalog rodzaju. Lock trasy: `SHIPPED_CHARGE_ROUTES["283.0"]`.
+- **287.0 leftover:** matching lane/mode; wspĂłlny SELECT; auto shipment; CT2; CT5/CT8 live. 287.0 = 409 na POST shipment gdy block_409.
+- **286.0 leftover:** ĹĽywy HTTP 409 przy zapisie zlecenia poza guide; matching lane/mode; live EDI; auto shipment. 286.0 = 409 na ASN. Lock trasy: `SHIPPED_CHARGE_ROUTES["286.0"]`.
+- **285.0 leftover:** ĹĽywy HTTP 409 na ASN DONE 286.0. Zostaje 409 na shipment; wspĂłlny SELECT; CT9; auto shipment; CT2; CT5/CT8 live. 285.0 = katalog trybu. Lock trasy: `SHIPPED_CHARGE_ROUTES["285.0"]`.
+- **284.0 leftover:** wspĂłlny SELECT; tuple OpenFGA 3 strony; egzekucja 409 na ASN DONE 286.0; CT9; auto shipment; CT2; CT5/CT8 live. 284.0 = katalog roli. Lock trasy: `SHIPPED_CHARGE_ROUTES["284.0"]`.
+- **283.0 leftover:** SQL FV vs `charge`; druga marĹĽa; egzekucja 409 na ASN DONE 286.0; auto shipment; CT2; CT5/CT8 live; CT9/CT11. 283.0 = katalog rodzaju. Lock trasy: `SHIPPED_CHARGE_ROUTES["283.0"]`.
 - **282.0 leftover:** workflow CAPA/8D; egzekucja 409 na ASN DONE 286.0; auto shipment; CT2; CT5/CT8 live. 282.0 = katalog rodzaju. Lock trasy: `SHIPPED_CHARGE_ROUTES["282.0"]`.
 - **281.0 leftover:** live SOAP/RFC/SQL do SAP; CT12 CAPA; egzekucja 409 na ASN DONE 286.0; auto shipment; CT2; CT5/CT8 live. 281.0 = katalog. Lock trasy: `SHIPPED_CHARGE_ROUTES["281.0"]`.
 - **280.0 leftover:** OTIF% SQL / egzekucja na stop/SKU; egzekucja 409 na ASN DONE 286.0; CT1 auto shipment; CT2 klej CI5; CT5 EDI live; CT8 AIS live. 280.0 = katalog zakresu. Lock trasy: `SHIPPED_CHARGE_ROUTES["280.0"]`.
 - **279.0 leftover:** egzekucja 409 na ASN DONE 286.0; CT1 auto shipment (compose + quotation); CT2 klej CI5; CT3 OTIF% (katalog zakresu DONE 280.0); CT5 EDI live; CT8 AIS live. 279.0 = katalog, nie 409 shipment. Lock trasy: `SHIPPED_CHARGE_ROUTES["279.0"]`.
 - **278.0 leftover:** auto `shipment` (U1) z ASN parked (quotation_id + zakaz FK w BC PO); CT5 EDI 856 live; CT8 AIS live; live p44; CI1 extract. 278.0 = awizo HITL. Lock trasy: `SHIPPED_CHARGE_ROUTES["278.0"]`.
 - **277.0 leftover:** ASN DONE 278.0. Zostaje auto `shipment` (parked); CT5 EDI 856 live; CT8 AIS live; live p44; CI1 extract. 277.0 = linia SKU. Lock trasy: `SHIPPED_CHARGE_ROUTES["277.0"]`.
-- **276.0 leftover:** `po_line` DONE 277.0; ASN DONE 278.0. Zostaje auto `shipment` (parked); CT5 EDI 856 live; CT8 AIS live; live p44; CI1 extract. 276.0 = nagłówek. Lock trasy: `SHIPPED_CHARGE_ROUTES["276.0"]`.
+- **276.0 leftover:** `po_line` DONE 277.0; ASN DONE 278.0. Zostaje auto `shipment` (parked); CT5 EDI 856 live; CT8 AIS live; live p44; CI1 extract. 276.0 = nagĹ‚Ăłwek. Lock trasy: `SHIPPED_CHARGE_ROUTES["276.0"]`.
 - **275.0 leftover:** live p44 / FourKites / Shippeo (TO_VERIFY umowa); CT8 AIS live; CT1 ASN DONE 278.0. 275.0 = fixture `p44`, nie live track. Lock trasy: `SHIPPED_CHARGE_ROUTES["275.0"]`.
 - **274.0 leftover:** `wrapped_dek` / KMS unwrap; super-admin = bytea; CI1 `sla_clause`; CT7 p44/FourKites/Shippeo live (TO_VERIFY umowa). 274.0 = znacznik owijki, nie klucz. 273.0 nadal nie szyfr. Nie KMS. Lock trasy: `SHIPPED_CHARGE_ROUTES["274.0"]` w `routes-breadth.test.ts`.
 - **273.0 leftover:** KEK mark DONE 274.0. Zostaje `wrapped_dek` / KMS / unwrap; super-admin = bytea; CI1 `sla_clause`; CT7 p44/FourKites/Shippeo live (TO_VERIFY umowa). 273.0 = opaque BYTEA present/absent, nie szyfr. Nie KMS. Lock trasy: `SHIPPED_CHARGE_ROUTES["273.0"]` w `routes-breadth.test.ts`.
-- **272.0 leftover:** opaque BYTEA DONE 273.0. KEK mark DONE 274.0. Zostaje `wrapped_dek`; super-admin = bytea; CI1 `sla_clause`; CT7 p44/FourKites/Shippeo live (TO_VERIFY umowa). 272.0 = nagłówek. Nie KMS.
-- **271.0 leftover:** live Trans.eu / TIMOCOM / Transporeon / Teleroute; X1–X5 SPA / OAuth2 / konsument outboxa; C9 snapshot; V5b `exchange_message`. Tu tylko `exchange_connector` HITL kod + kind `trans_eu` + `source_ref`. Nie live HTTP. Nie sekrety.
+- **272.0 leftover:** opaque BYTEA DONE 273.0. KEK mark DONE 274.0. Zostaje `wrapped_dek`; super-admin = bytea; CI1 `sla_clause`; CT7 p44/FourKites/Shippeo live (TO_VERIFY umowa). 272.0 = nagĹ‚Ăłwek. Nie KMS.
+- **271.0 leftover:** live Trans.eu / TIMOCOM / Transporeon / Teleroute; X1â€“X5 SPA / OAuth2 / konsument outboxa; C9 snapshot; V5b `exchange_message`. Tu tylko `exchange_connector` HITL kod + kind `trans_eu` + `source_ref`. Nie live HTTP. Nie sekrety.
 - **268.0 leftover:** XL / Symfonia / nexo / GT / enova / WAPRO; live SOAP/agent; `purchase_invoice` / FS+FZ; sekrety / ciphertext. Tu tylko `erp_connector` HITL kod + kind `optima` + `source_ref`. Nie live HTTP. Nie SQL `sa`.
-- **266.0 leftover:** km ładowny/pusty/dolot (G2.21); P=`n_overlap` / lista P (G2.22); silnik `circle_sim` ≥500k. Tu tylko `circle_sim` HITL `sim_code` + para UN/LOCODE unload/load + `source_ref`. Nie silnik. Nie km.
-- **265.0 leftover:** `circle_sim` HITL DONE 266.0. FK trójki DONE 452.0 (RESTRICT). Zostaje km ładowny (G2.21–G2.22) / silnik 500k; TT z actuals `stop`; what-if V8; 8 silników fizyki. Nie silnik. Nie mapa.
-- **193.0 leftover:** `plan_snapshot` DONE 265.0. Zostaje TT z actuals; champion/challenger / drift; GPS / AIS wieży. Tu tylko `prediction_ledger` HITL przedział + CRPS/MAE + `source_ref`. Nie silnik. Nie scoring osoby.
-- **192.0 leftover:** packing group / grupy zgodności 1.xA / live IMO. Tu tylko `adr_tunnel_code` + `segregation_group` HITL na `dangerous_good`. LLM nie nadaje klasy.
+- **266.0 leftover:** km Ĺ‚adowny/pusty/dolot (G2.21); P=`n_overlap` / lista P (G2.22); silnik `circle_sim` â‰Ą500k. Tu tylko `circle_sim` HITL `sim_code` + para UN/LOCODE unload/load + `source_ref`. Nie silnik. Nie km.
+- **265.0 leftover:** `circle_sim` HITL DONE 266.0. FK trĂłjki DONE 452.0 (RESTRICT). Zostaje km Ĺ‚adowny (G2.21â€“G2.22) / silnik 500k; TT z actuals `stop`; what-if V8; 8 silnikĂłw fizyki. Nie silnik. Nie mapa.
+- **193.0 leftover:** `plan_snapshot` DONE 265.0. Zostaje TT z actuals; champion/challenger / drift; GPS / AIS wieĹĽy. Tu tylko `prediction_ledger` HITL przedziaĹ‚ + CRPS/MAE + `source_ref`. Nie silnik. Nie scoring osoby.
+- **192.0 leftover:** packing group / grupy zgodnoĹ›ci 1.xA / live IMO. Tu tylko `adr_tunnel_code` + `segregation_group` HITL na `dangerous_good`. LLM nie nadaje klasy.
 
 - **191.0 leftover:** Deadline Engine (`timedelta` 7/21/365 od dostawy); evidence GPS/temp/photo; `liable_party_id` (S11). Tu tylko `damage_code` + `cmr_notice_window` + dwa dni HITL na `cargo_claim`. Nie kwota. Nie silnik.
 
 - **190.0 leftover:** live VIES/GUS (C3); eCMR/eFTI (C4); Trans.eu snapshot (C9); AIS/PUESC (C2); BDO/MOS (C6); kg/CBAM. Tu tylko `carbon_method` HITL `method_code` + `method_version` + `source_ref`. Nie kg. Nie kalkulator.
-- **189.0 leftover:** Decimal / waluta / mnożenie skonta (F2b); noty korygujące + period lock N13 (F3); CAMT/MT940 + HITL rekoncyliacja + biała lista (F4). Tu tylko `cash_discount` HITL `discount_kind` + `source_ref` na `sales_invoice`. Nie kwota. Nie CAMT.
-- **188.0 leftover:** `relation_document_requirement` + 409 na `POST shipment`; daty ważności / `premium_status`; HITL extract bajtów. Tu tylko `party_document` HITL `document_kind` + `source_ref` na `party`. Nie blokada zlecenia. Nie kwota.
-- **187.0 leftover:** C1 `shipment_monitoring_filing` / SENT XML / PUESC HTTP / SENT-GEO; kolumny API/GEO/urząd na schemacie; seed mapy UE; C8 409 + `relation_document_requirement`; F1 live FA(3); G2.20–G2.22 `circle_sim`. `party_document` HITL DONE 188.0. Tu tylko `monitoring_scheme` HITL `scheme_code` + `source_ref`. Nie zgłoszenie. Nie kwota.
+- **189.0 leftover:** Decimal / waluta / mnoĹĽenie skonta (F2b); noty korygujÄ…ce + period lock N13 (F3); CAMT/MT940 + HITL rekoncyliacja + biaĹ‚a lista (F4). Tu tylko `cash_discount` HITL `discount_kind` + `source_ref` na `sales_invoice`. Nie kwota. Nie CAMT.
+- **188.0 leftover:** `relation_document_requirement` + 409 na `POST shipment`; daty waĹĽnoĹ›ci / `premium_status`; HITL extract bajtĂłw. Tu tylko `party_document` HITL `document_kind` + `source_ref` na `party`. Nie blokada zlecenia. Nie kwota.
+- **187.0 leftover:** C1 `shipment_monitoring_filing` / SENT XML / PUESC HTTP / SENT-GEO; kolumny API/GEO/urzÄ…d na schemacie; seed mapy UE; C8 409 + `relation_document_requirement`; F1 live FA(3); G2.20â€“G2.22 `circle_sim`. `party_document` HITL DONE 188.0. Tu tylko `monitoring_scheme` HITL `scheme_code` + `source_ref`. Nie zgĹ‚oszenie. Nie kwota.
 - **186.0 leftover:** Citizen API / certyfikat / scrape kreptd.gitd.gov.pl; C8 `party_document` + 409 na `POST shipment`. `monitoring_scheme` DONE 187.0. Tu tylko `kreptd_licence` HITL numer + `source_ref` na `party`. Nie kolumny na `party`. Nie kwota. Nie scoring osoby.
-- **185.0 leftover:** `circle_sim` / km ładowny/pusty/dolot / P z actuals (G2.20–G2.22). `kreptd_licence` DONE 186.0. Tu tylko `lane_pattern` HITL para UN/LOCODE + `source_ref`. Nie km. Nie silnik 500k. Nie kwota. Nie auto-award.
-- **184.0 leftover:** kg / tCO₂e / CBAM (G2.15–G2.18). `lane_pattern` DONE 185.0. Tu tylko `tender_carbon_mark` HITL declared/exempt + `source_ref`. Nie kalkulator. Nie kwota. Nie auto-award.
-- **183.0 leftover:** CO₂ HITL DONE 184.0. Zostaje kg/CBAM (G2.15–G2.18). Tu tylko `tender_ted_notice` HITL numer TED + `source_ref`. Nie scrape. Nie live HTTP. Nie kwota. Nie auto-award.
-- **182.0 leftover:** TED DONE 183.0. CO₂ HITL DONE 184.0. Zostaje kg/CBAM (G2.15–G2.18). Tu tylko `tender_award_review` HITL countersign/challenge + `source_ref`. Nie mutacja `tender.status`. Nie win/loss. Nie dwa user_id. Nie kwota. Nie auto-award.
-- **181.0 leftover:** four-eyes DONE 182.0. TED DONE 183.0. CO₂ HITL DONE 184.0. Zostaje kg/CBAM (G2.15–G2.18). Tu tylko `tender_bid_stance` HITL bid/no-bid + `source_ref`. Nie mutacja `tender.status`. Nie win/loss. Nie kwota. Nie auto-award.
-- **180.0 leftover:** bid/no-bid DONE 181.0. Four-eyes DONE 182.0. TED DONE 183.0. CO₂ HITL DONE 184.0. Zostaje kg/CBAM (G2.15–G2.18). Tu tylko `tender_prospect` HITL + `source_ref`. Nie scrape. Nie kwota. Nie auto-award.
-- **179.0 leftover:** prospecting HITL DONE 180.0. Bid/no-bid DONE 181.0. Four-eyes DONE 182.0. Zostaje TED / CO₂ (G2.13–G2.18). Tu tylko `draft_kind=tender_rfp` + accept → `tender_rfp_intake`. Nie zapis z LLM. Nie kwota. Nie auto-award.
-- **178.0 leftover:** `draft_kind=tender_rfp` DONE 179.0. Zostaje prospecting / four-eyes / TED / CO₂ (G2.10–G2.18). Tu tylko `tender_rfp_intake` HITL + `source_ref`. Nie zapis z LLM. Nie kwota. Nie auto-award.
-- **176.0 leftover:** extract RFP HITL; four-eyes; TED / CO₂ / consortium (G2.8–G2.18). Tu tylko `tender_win_loss` wynik + `source_ref`. Nie mutacja `tender.status`. Nie LLM. Nie kwota. Nie auto-award.
-- **175.0 leftover:** win/loss DONE 176.0. Zostaje extract RFP HITL; four-eyes; TED / CO₂ / consortium (G2.8–G2.18). Tu tylko `tender_playbook` twierdzenie + `source_ref`. Nie LLM. Nie kwota. Nie auto-award.
-- **174.0 leftover:** playbook DONE 175.0. Zostaje extract RFP HITL; win/loss; four-eyes; TED (G2.7–G2.18). FK `charge` leftover. Tu tylko `tender_matrix_cell` Decimal z P. Nie LLM kolumny. Nie druga marża. Nie auto-award.
-- **173.0 leftover:** extract RFP HITL; matryca DONE 174.0; playbook; four-eyes; TED (G2.6–G2.18). ACL per plik leftover. Tu tylko `tender_data_room` NDA signed. Nie bajty. Nie kwota. Nie auto-award.
-- **172.0 leftover:** `tender_data_room` DONE 173.0. Zostaje extract RFP HITL; matryca; playbook; four-eyes; TED (G2.5–G2.18). Tu tylko `tender_round` numer rundy. Nie kwota. Nie auto-award.
-- **171.0 leftover:** `tender_round` DONE 172.0. Zostaje data room; matryca; playbook; four-eyes; TED (G2.4–G2.18). Resolve `port` leftover. Tu tylko `tender_lane` para UN/LOCODE. Nie kwota. Nie auto-award.
-- **170.0 leftover:** `tender_lane` DONE 171.0. Zostaje `tender_round` (G2.3+); data room; matryca; playbook; four-eyes; TED (G2.3–G2.18). Tu tylko `tender_lot` kod partii. Nie kwota. Nie auto-award.
-- **169.0 leftover:** `tender_lot` DONE 170.0. Zostaje lane/round (G2.2+); data room+NDA; extract RFP HITL; matryca; playbook; four-eyes; win/loss; TED; CO₂; consortium (G2.2–G2.18); U4 `is_working_day` na `deadline_at`. Tu tylko nagłówek `tender`. Nie auto-award. Nie kwota.
-- **168.0 leftover:** obiekt `tender` DONE 169.0. Zostaje auto-award (P6c). Tu tylko `tender_quote` ważność + `order_limit` integer. Nie kwota.
-- **155.0 leftover:** OR wielu hubów na jednym końcu (D1b). Tu tylko `groupage_line` cutoff+TT+ISODOW + dwa `location`. Nie optymalizator.
-- **167.0 leftover:** wariancja SQL na `charge` (P5b); actual z `charge` (P5c). Tu tylko freeze `expected_buy` na `trip` przy `in_transit`. Nie druga marża. Nie km.
+- **185.0 leftover:** `circle_sim` / km Ĺ‚adowny/pusty/dolot / P z actuals (G2.20â€“G2.22). `kreptd_licence` DONE 186.0. Tu tylko `lane_pattern` HITL para UN/LOCODE + `source_ref`. Nie km. Nie silnik 500k. Nie kwota. Nie auto-award.
+- **184.0 leftover:** kg / tCOâ‚‚e / CBAM (G2.15â€“G2.18). `lane_pattern` DONE 185.0. Tu tylko `tender_carbon_mark` HITL declared/exempt + `source_ref`. Nie kalkulator. Nie kwota. Nie auto-award.
+- **183.0 leftover:** COâ‚‚ HITL DONE 184.0. Zostaje kg/CBAM (G2.15â€“G2.18). Tu tylko `tender_ted_notice` HITL numer TED + `source_ref`. Nie scrape. Nie live HTTP. Nie kwota. Nie auto-award.
+- **182.0 leftover:** TED DONE 183.0. COâ‚‚ HITL DONE 184.0. Zostaje kg/CBAM (G2.15â€“G2.18). Tu tylko `tender_award_review` HITL countersign/challenge + `source_ref`. Nie mutacja `tender.status`. Nie win/loss. Nie dwa user_id. Nie kwota. Nie auto-award.
+- **181.0 leftover:** four-eyes DONE 182.0. TED DONE 183.0. COâ‚‚ HITL DONE 184.0. Zostaje kg/CBAM (G2.15â€“G2.18). Tu tylko `tender_bid_stance` HITL bid/no-bid + `source_ref`. Nie mutacja `tender.status`. Nie win/loss. Nie kwota. Nie auto-award.
+- **180.0 leftover:** bid/no-bid DONE 181.0. Four-eyes DONE 182.0. TED DONE 183.0. COâ‚‚ HITL DONE 184.0. Zostaje kg/CBAM (G2.15â€“G2.18). Tu tylko `tender_prospect` HITL + `source_ref`. Nie scrape. Nie kwota. Nie auto-award.
+- **179.0 leftover:** prospecting HITL DONE 180.0. Bid/no-bid DONE 181.0. Four-eyes DONE 182.0. Zostaje TED / COâ‚‚ (G2.13â€“G2.18). Tu tylko `draft_kind=tender_rfp` + accept â†’ `tender_rfp_intake`. Nie zapis z LLM. Nie kwota. Nie auto-award.
+- **178.0 leftover:** `draft_kind=tender_rfp` DONE 179.0. Zostaje prospecting / four-eyes / TED / COâ‚‚ (G2.10â€“G2.18). Tu tylko `tender_rfp_intake` HITL + `source_ref`. Nie zapis z LLM. Nie kwota. Nie auto-award.
+- **176.0 leftover:** extract RFP HITL; four-eyes; TED / COâ‚‚ / consortium (G2.8â€“G2.18). Tu tylko `tender_win_loss` wynik + `source_ref`. Nie mutacja `tender.status`. Nie LLM. Nie kwota. Nie auto-award.
+- **175.0 leftover:** win/loss DONE 176.0. Zostaje extract RFP HITL; four-eyes; TED / COâ‚‚ / consortium (G2.8â€“G2.18). Tu tylko `tender_playbook` twierdzenie + `source_ref`. Nie LLM. Nie kwota. Nie auto-award.
+- **174.0 leftover:** playbook DONE 175.0. Zostaje extract RFP HITL; win/loss; four-eyes; TED (G2.7â€“G2.18). FK `charge` leftover. Tu tylko `tender_matrix_cell` Decimal z P. Nie LLM kolumny. Nie druga marĹĽa. Nie auto-award.
+- **173.0 leftover:** extract RFP HITL; matryca DONE 174.0; playbook; four-eyes; TED (G2.6â€“G2.18). ACL per plik leftover. Tu tylko `tender_data_room` NDA signed. Nie bajty. Nie kwota. Nie auto-award.
+- **172.0 leftover:** `tender_data_room` DONE 173.0. Zostaje extract RFP HITL; matryca; playbook; four-eyes; TED (G2.5â€“G2.18). Tu tylko `tender_round` numer rundy. Nie kwota. Nie auto-award.
+- **171.0 leftover:** `tender_round` DONE 172.0. Zostaje data room; matryca; playbook; four-eyes; TED (G2.4â€“G2.18). Resolve `port` leftover. Tu tylko `tender_lane` para UN/LOCODE. Nie kwota. Nie auto-award.
+- **170.0 leftover:** `tender_lane` DONE 171.0. Zostaje `tender_round` (G2.3+); data room; matryca; playbook; four-eyes; TED (G2.3â€“G2.18). Tu tylko `tender_lot` kod partii. Nie kwota. Nie auto-award.
+- **169.0 leftover:** `tender_lot` DONE 170.0. Zostaje lane/round (G2.2+); data room+NDA; extract RFP HITL; matryca; playbook; four-eyes; win/loss; TED; COâ‚‚; consortium (G2.2â€“G2.18); U4 `is_working_day` na `deadline_at`. Tu tylko nagĹ‚Ăłwek `tender`. Nie auto-award. Nie kwota.
+- **168.0 leftover:** obiekt `tender` DONE 169.0. Zostaje auto-award (P6c). Tu tylko `tender_quote` waĹĽnoĹ›Ä‡ + `order_limit` integer. Nie kwota.
+- **155.0 leftover:** OR wielu hubĂłw na jednym koĹ„cu (D1b). Tu tylko `groupage_line` cutoff+TT+ISODOW + dwa `location`. Nie optymalizator.
+- **638.0 DONE:** `trip_variance_mark` HITL stance (`expected`|`actual`|`gap`|`other`). Nie SQL na charge. Leftover: P5b SQL wariancji · P5c actual-from-charge park.
+- **167.0 leftover:** wariancja SQL na `charge` (P5b); actual z `charge` (P5c). Tu tylko freeze `expected_buy` na `trip` przy `in_transit`. Nie druga marĹĽa. Nie km.
 - **633.0 DONE:** `local_charge.carrier_label` / `service_label` HITL tekst (leftover P4b armator/serwis). Nie FK party. Nie live HTTP.
-- **166.0 leftover:** P4b `port_unlocode` DONE 207.0. P4b rest `iso_size_type` DONE 208.0. P4b armator/serwis DONE **633.0**. P4c warning stance DONE **635.0**. Zostaje warning-jako-fakt (compose park). Tu rodzaj + Decimal + opcjonalny UN/LOCODE + typ ISO + etykiety armator/serwis. Nie `port_surcharge`. Nie marża.
-- **165.0 leftover:** przeliczenie SQL indeksu na `charge` (P3b); live HTTP NBP/BAF (P3c); A11 nowy wiersz (P3d). Tu tylko katalog FSC/BAF/CAF + Decimal. Nie `nbp_rate`. Nie marża.
+- **166.0 leftover:** P4b `port_unlocode` DONE 207.0. P4b rest `iso_size_type` DONE 208.0. P4b armator/serwis DONE **633.0**. P4c warning stance DONE **635.0**. Zostaje warning-jako-fakt (compose park). Tu rodzaj + Decimal + opcjonalny UN/LOCODE + typ ISO + etykiety armator/serwis. Nie `port_surcharge`. Nie marĹĽa.
+- **165.0 leftover:** przeliczenie SQL indeksu na `charge` (P3b); live HTTP NBP/BAF (P3c); A11 nowy wiersz (P3d). Tu tylko katalog FSC/BAF/CAF + Decimal. Nie `nbp_rate`. Nie marĹĽa.
 - **164.0 leftover:** P2c exclusion daterange DONE 206.0. Tu kolekcja `charge_code` + daty + GiST. Nie `charge`. Nie FSC.
-- **163.0 leftover:** P1b matching GET DONE 205.0. Zostaje parser WHEN/IF/CALC (P1c); daty ważności (P1d). Tu `applies_when` tekst + Decimal + równość SQL. Nie `rate_line`. Nie `charge`.
+- **163.0 leftover:** P1b matching GET DONE 205.0. Zostaje parser WHEN/IF/CALC (P1c); daty waĹĽnoĹ›ci (P1d). Tu `applies_when` tekst + Decimal + rĂłwnoĹ›Ä‡ SQL. Nie `rate_line`. Nie `charge`.
 - **632.0 DONE:** `network_print_gate_mark` HITL stance block_409|warn_only|record_only (leftover D9c 409). Nie live 409. Nie PDF.
-- **162.0 leftover:** D9b `shipment_ref` HITL DONE 204.0. D9c katalog `network_print_requirement` DONE 626.0. D9f `branding_ref` HITL DONE **627.0**. D9c 409 stance DONE **632.0**. D9f `output_kind` pdf|zpl HITL DONE **636.0**. Zostaje: live 409 wyjazdu (park); PDF/ZPL/QR bitmap (D9d); skan HITL bez kodu Omni (D9e); D9f pdf-zpl live. Tu katalog `own_label`/`cmr` + intended `output_kind` + numer HITL + wymóg sieci + branding + stance bramy. Nie D8.
-- **161.0 leftover:** giełda/HTTP Chep/LPR (D7b); ledger ujemny (D7c). EPAL = **623.0** DONE. Tu integer sztuk `chep`/`lpr`/`epal` na `party`. Nie depozyt.
-- **621.0 DONE:** `/ocean-bills` pule HBL/MBL z M-03 (`hbl_number_prefix`/`mbl_number_prefix`); `bill_no` nullable; Nadaj SQL. Leftover: D6b konsolidacja · PDF · live booking.
-- **622.0 DONE:** wklejony MAWB w kształcie IATA — cyfra = seria modulo 7. Leftover: live booking / e-rates API. Pula M-03 bez cyfry.
+- **162.0 leftover:** D9b `shipment_ref` HITL DONE 204.0. D9c katalog `network_print_requirement` DONE 626.0. D9f `branding_ref` HITL DONE **627.0**. D9c 409 stance DONE **632.0**. D9f `output_kind` pdf|zpl HITL DONE **636.0**. Zostaje: live 409 wyjazdu (park); PDF/ZPL/QR bitmap (D9d); skan HITL bez kodu Omni (D9e); D9f pdf-zpl live. Tu katalog `own_label`/`cmr` + intended `output_kind` + numer HITL + wymĂłg sieci + branding + stance bramy. Nie D8.
+- **161.0 leftover:** gieĹ‚da/HTTP Chep/LPR (D7b); ledger ujemny (D7c). EPAL = **623.0** DONE. Tu integer sztuk `chep`/`lpr`/`epal` na `party`. Nie depozyt.
+- **621.0 DONE:** `/ocean-bills` pule HBL/MBL z M-03 (`hbl_number_prefix`/`mbl_number_prefix`); `bill_no` nullable; Nadaj SQL. Leftover: D6b konsolidacja Â· PDF Â· live booking.
+- **622.0 DONE:** wklejony MAWB w ksztaĹ‚cie IATA â€” cyfra = seria modulo 7. Leftover: live booking / e-rates API. Pula M-03 bez cyfry.
 - **620.0 DONE:** `/channel-quotes` `transport_mode` air|other; air wymaga `airport`. Leftover: live booking / e-rates API. Cyfra IATA = 622.0.
-- **160.0 leftover:** konsolidacja wielu house pod jeden MBL (D6b); pula numerów M-03 (D6c → **621.0** DONE). Tu tylko znacznik HBL/MBL na `shipment`. Nie PDF. Nie booking.
-- **159.0 leftover:** objętość / paleta / FSC (D5b, P3); silnik dopasowania WHEN/IF (P1). Tu tylko próg `chargeable_weight` na `postal_zone` + Decimal. Nie T-SQL.
-- **158.0 leftover:** POD/ROD jako `shipment_document` (D4b; `pod` koliduje z portem wyładunku); Decimal / rozliczenie pobrań = Fala F. Tu tylko znacznik `collection_status` bez kwoty.
-- **157.0 leftover:** sloty/drzwi doków / overnight (D3b); yard/EIR (G15); T8 `terminal_appointment` (capability HITL DONE 269.0). Tu tylko okno TIME na `stop` magazynu (`postal_zone`/`address`). Nie WMS.
+- **160.0 leftover:** konsolidacja wielu house pod jeden MBL (D6b); pula numerĂłw M-03 (D6c â†’ **621.0** DONE). Tu tylko znacznik HBL/MBL na `shipment`. Nie PDF. Nie booking.
+- **159.0 leftover:** objÄ™toĹ›Ä‡ / paleta / FSC (D5b, P3); silnik dopasowania WHEN/IF (P1). Tu tylko prĂłg `chargeable_weight` na `postal_zone` + Decimal. Nie T-SQL.
+- **158.0 leftover:** POD/ROD jako `shipment_document` (D4b; `pod` koliduje z portem wyĹ‚adunku); Decimal / rozliczenie pobraĹ„ = Fala F. Tu tylko znacznik `collection_status` bez kwoty.
+- **157.0 leftover:** sloty/drzwi dokĂłw / overnight (D3b); yard/EIR (G15); T8 `terminal_appointment` (capability HITL DONE 269.0). Tu tylko okno TIME na `stop` magazynu (`postal_zone`/`address`). Nie WMS.
 - **156.0 leftover:** kamera / WMS / SSCC / `shipment_ref` (D9); auto-link bez QR Omni. Tu tylko skan Omni + `stop` trasy.
-- **211.0 leftover:** nadpisanie `fx_rate_*` na `charge`/`shipment` (T7b); D-1 jako dzień roboczy U4 (T7c); SQL mnożenia przy fakturze. Tu tylko allowlista w `organization_setting`. Nie kwota.
+- **211.0 leftover:** nadpisanie `fx_rate_*` na `charge`/`shipment` (T7b); D-1 jako dzieĹ„ roboczy U4 (T7c); SQL mnoĹĽenia przy fakturze. Tu tylko allowlista w `organization_setting`. Nie kwota.
 
-- **210.0 leftover:** rentowność SQL główne+podzlecenia na `charge` (T4b). Tu tylko `parent_shipment_id` + `relation_kind` HITL. Nie N1. Nie suma.
+- **210.0 leftover:** rentownoĹ›Ä‡ SQL gĹ‚Ăłwne+podzlecenia na `charge` (T4b). Tu tylko `parent_shipment_id` + `relation_kind` HITL. Nie N1. Nie suma.
 
 - **154.0 leftover:** e-rates IATA; live IATA. Cyfra IATA = 622.0. HAWB/MAWB = 209.0 token; pule M-03 = 619.0. Tu `leg_kind=air` + `airport` w flags.
 - **216.0 leftover:** `seal_no_2` DONE 217.0. Zostaje leftover T3 `seal_no_3`; PIN; VGM/cutoffy. Tu tylko `seal_no_1` HITL. Nie sekret. Nie waga.
@@ -262,9 +263,9 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **244.0 leftover:** leftover 2b (`inquiry_sent` / `quote_recorded` / batch / `channel_quote`). Tu tylko 2a `inquiry_queued` z API. Nie import BC. Nie live HTTP. Nie Temporal.
 - **245.0 leftover:** leftover `quote_recorded` / batch / `channel_quote`. Tu tylko 2b `inquiry_sent` z API. Nie import BC. Nie live HTTP. Nie Temporal.
 - **246.0 leftover:** leftover POST `channel_quote` / batch / PATCH. leftover T1b tabela `stop_group`; EXP1. Tu tylko `quote_recorded` z API przy POST `answered`. Nie import BC. Nie live HTTP. Nie Temporal.
-- **247.0 leftover:** leftover T1 EXP1 ilość/opakowanie/plomba/awizacja/waiting/POD; leftover T1b tabela. Tu tylko `weight_kg` HITL. Nie VGM. Nie mapa. Nie live HTTP.
+- **247.0 leftover:** leftover T1 EXP1 iloĹ›Ä‡/opakowanie/plomba/awizacja/waiting/POD; leftover T1b tabela. Tu tylko `weight_kg` HITL. Nie VGM. Nie mapa. Nie live HTTP.
 - **248.0 leftover:** leftover T1 EXP1 opakowanie/plomba/awizacja/waiting/POD; leftover T1b tabela. Tu tylko `quantity` HITL. Nie opakowanie. Nie mapa. Nie live HTTP.
-- **249.0 leftover:** leftover T1 EXP1 plomba/awizacja/waiting/POD; leftover T1b tabela. Tu tylko `packaging_code` HITL. Nie FK słownika. Nie plomba. Nie live HTTP.
+- **249.0 leftover:** leftover T1 EXP1 plomba/awizacja/waiting/POD; leftover T1b tabela. Tu tylko `packaging_code` HITL. Nie FK sĹ‚ownika. Nie plomba. Nie live HTTP.
 - **250.0 leftover:** `seal_out` DONE 251.0. Zostaje leftover T1 EXP1 awizacja/waiting/POD; leftover T1b tabela. Tu tylko `seal_in` HITL. Nie PIN. Nie live HTTP.
 - **251.0 leftover:** `appointment_ref` DONE 252.0. Zostaje leftover T1 EXP1 waiting/POD; leftover T1b tabela. Tu tylko `seal_out` HITL. Nie PIN. Nie live HTTP.
 - **252.0 leftover:** leftover T1 EXP1 `appointment_status`/`no_show_at`/waiting/POD; leftover T1b tabela. Tu tylko `appointment_ref` HITL. Nie D3. Nie T8. Nie live HTTP.
@@ -273,273 +274,273 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **255.0 leftover:** leftover T1b tabela; leftover `appointment_status`/`no_show_at`; leftover T2c km/`/fleet`. Tu tylko `pod_quality` HITL. Nie kamera. Nie live HTTP.
 - **256.0 leftover:** leftover T2c `actual_distance_km` DONE 257.0. leftover `subcontractor_party_id` / `/fleet`; leftover T1b tabela. Tu tylko `planned_distance_km` HITL. Nie GPS. Nie live HTTP.
 - **257.0 leftover:** leftover T2c `subcontractor_party_id` DONE 258.0. leftover `/fleet`; leftover T1b tabela. Tu tylko `actual_distance_km` HITL. Nie GPS. Nie live HTTP.
-- **258.0 leftover:** leftover T2c `/fleet` DONE 259.0. leftover T1b tabela. leftover pojemności / HW. Tu tylko `subcontractor_party_id` HITL. Nie C8 409. Nie live HTTP.
-- **259.0 leftover:** leftover T1b tabela; leftover pojemności DONE 589–591; `document_expiries` DONE 592.0; HW. Tu tylko trasa `/fleet` na `resource`. Nie GPS. Nie live HTTP.
-- **260.0 leftover:** leftover FTL=1 409; leftover D2b FK paczki na przesyłkę; leftover `stop` na consignment. Tu tylko tabela `consignment` N na `shipment`. Nie mapa. Nie live HTTP.
-- **261.0 leftover:** 4 widoki Timeline/Blocks/Table/Legs; N10; T6b–d select&drop/pre-planning/polygon; X8 podkłady; GET `stop` bez `shipment_id`. Tu tylko `/planning` + lazy overlay `trip`. Nie leaflet.
-- **262.0 leftover:** widok `shipment_tree_margin` jest w 614.0 (korzeń + bezpośrednie dzieci, suma w SQL). Wnuki zostają. Nie generated column, nie suma w Pythonie.
+- **258.0 leftover:** leftover T2c `/fleet` DONE 259.0. leftover T1b tabela. leftover pojemnoĹ›ci / HW. Tu tylko `subcontractor_party_id` HITL. Nie C8 409. Nie live HTTP.
+- **259.0 leftover:** leftover T1b tabela; leftover pojemnoĹ›ci DONE 589â€“591; `document_expiries` DONE 592.0; HW. Tu tylko trasa `/fleet` na `resource`. Nie GPS. Nie live HTTP.
+- **260.0 leftover:** leftover FTL=1 409; leftover D2b FK paczki na przesyĹ‚kÄ™; leftover `stop` na consignment. Tu tylko tabela `consignment` N na `shipment`. Nie mapa. Nie live HTTP.
+- **261.0 leftover:** 4 widoki Timeline/Blocks/Table/Legs; N10; T6bâ€“d select&drop/pre-planning/polygon; X8 podkĹ‚ady; GET `stop` bez `shipment_id`. Tu tylko `/planning` + lazy overlay `trip`. Nie leaflet.
+- **262.0 leftover:** widok `shipment_tree_margin` jest w 614.0 (korzeĹ„ + bezpoĹ›rednie dzieci, suma w SQL). Wnuki zostajÄ…. Nie generated column, nie suma w Pythonie.
 - **263.0 leftover:** leftover outbox kind DONE 264.0. leftover HITL `task` DONE 616.0 (`task_code` + `template_code` tekst + status). Zostaje matching SQL `applies_when`; FK shipment/trip/stop; assignee; konsument. Tu tylko HITL `task_template` kod + warunek jako dane. Nie worker.
-- **264.0 leftover:** konsument / `processed` / Temporal; matching SQL `applies_when`; FK kontekstu na `task`. HITL `task` DONE 616.0. Tu tylko kind `task_template_saved` na istniejącej `outbox_event`. Nie worker.
+- **264.0 leftover:** konsument / `processed` / Temporal; matching SQL `applies_when`; FK kontekstu na `task`. HITL `task` DONE 616.0. Tu tylko kind `task_template_saved` na istniejÄ…cej `outbox_event`. Nie worker.
 - **616.0 leftover:** matching SQL `applies_when`; FK shipment/trip/stop; assignee; outbox/Temporal; M-71. Tu tylko HITL `task` kod + template_code tekst + status. Nie matching.
 - **215.0 leftover:** leftover T1b tabela `stop_group`; EXP1 waga/plomba/awizacja. Tu tylko `notes_for_driver` HITL. Nie waga. Nie mapa.
 - **214.0 leftover:** leftover T2c km/`party`/`/fleet`. Tu tylko `route_label` HITL. Nie km. Nie mapa.
 - **152.0 leftover:** `driver2_id` DONE 212.0; `route_label` DONE 214.0; `stop_group` kolumna DONE 213.0. Zostaje Decimal km / freeze kosztu; `party_id`; `/fleet` / HW. Tu tylko status + opcjonalny slot floty + etykieta. Nie km.
 - **149.0 leftover:** V5 hub GPS / `observation_ends_at` / 3 dni robocze trip. Tu tylko katalog + SQL `is_working_day`. Nie NBP.
-- **143.0 leftover:** auto-INSERT notice z inquiry (zakaz M-34); cron/Graph send. Data ciszy to pole, nie wyliczenie. Kalendarz U4 jest (149.0); N5 nie woła `is_working_day`.
-- **OS-4 (fabryka, poza osią Q/S):** [delta](../deltas/open/OS-4-fabryka-styl-rzemiosla.md). `just craft-style` + sufit `long_functions` / `long_function_overflow`. Nie merytoryka spedycji. Nie S4.
+- **143.0 leftover:** auto-INSERT notice z inquiry (zakaz M-34); cron/Graph send. Data ciszy to pole, nie wyliczenie. Kalendarz U4 jest (149.0); N5 nie woĹ‚a `is_working_day`.
+- **OS-4 (fabryka, poza osiÄ… Q/S):** [delta](../deltas/open/OS-4-fabryka-styl-rzemiosla.md). `just craft-style` + sufit `long_functions` / `long_function_overflow`. Nie merytoryka spedycji. Nie S4.
 
-- **OS-3 (fabryka, poza osią Q/S):** [delta](../deltas/open/OS-3-fabryka-test-howto-delta.md). Test w tym samym commicie co nowy serwis/API; how-to albo leftover przy jobie zapisu; delta produktu zanim kod. Nie S4.
+- **OS-3 (fabryka, poza osiÄ… Q/S):** [delta](../deltas/open/OS-3-fabryka-test-howto-delta.md). Test w tym samym commicie co nowy serwis/API; how-to albo leftover przy jobie zapisu; delta produktu zanim kod. Nie S4.
 
-- **OS-2 (fabryka, poza osią Q/S):** [delta](../deltas/open/OS-2-fabryka-monitoring-samouczenie.md). C2, E2 `run_gate`, bench, `factory_cycle` na `/noc` `/plan-modul` `/plaster` `/refaktor` `/zamknij`, podłoga jakości, karty z 3× CI. Nie Auto-AGENTS. Nie S4. Leftover: promptfoo `synth://`; D1/D3/D4 off.
+- **OS-2 (fabryka, poza osiÄ… Q/S):** [delta](../deltas/open/OS-2-fabryka-monitoring-samouczenie.md). C2, E2 `run_gate`, bench, `factory_cycle` na `/noc` `/plan-modul` `/plaster` `/refaktor` `/zamknij`, podĹ‚oga jakoĹ›ci, karty z 3Ă— CI. Nie Auto-AGENTS. Nie S4. Leftover: promptfoo `synth://`; D1/D3/D4 off.
 
-- **OS-1 (fabryka, poza osią Q/S, open):** [delta](../deltas/open/OS-1-fabryka-uczenie-i-automacje.md) · [playbook](multitask-playbook.md) · [automations.md](automations.md). E1 na `main` (a6ba742). E3 + zamek drzewa + karty 006–008/002–003 + `.cursorignore` `_source` = `2bfa483`. **Kolizja 2026-09-02:** commity fabryki weszły pod plaster 66.0 — nie przepisywać historii 66.0. Leftover: D1/D3/D4 wyłączone; promptfoo `synth://` echo (B3). E2 i monitoring = OS-2.
+- **OS-1 (fabryka, poza osiÄ… Q/S, open):** [delta](../deltas/open/OS-1-fabryka-uczenie-i-automacje.md) Â· [playbook](multitask-playbook.md) Â· [automations.md](automations.md). E1 na `main` (a6ba742). E3 + zamek drzewa + karty 006â€“008/002â€“003 + `.cursorignore` `_source` = `2bfa483`. **Kolizja 2026-09-02:** commity fabryki weszĹ‚y pod plaster 66.0 â€” nie przepisywaÄ‡ historii 66.0. Leftover: D1/D3/D4 wyĹ‚Ä…czone; promptfoo `synth://` echo (B3). E2 i monitoring = OS-2.
 
-- **SH-R16 (2026-09-16 / 16b):** [rejestr-wdrozenia-16-ix.md](rejestr-wdrozenia-16-ix.md) §5. DONE: 29 szablonów, false DONE, playbooki/RACI. Czeka rytuał: SH-R16-12…15. Leftover produktu: UXCL-L1 / AI3-payload. Park: G0/SBOM/EAA/CRA/hire.
+- **SH-R16 (2026-09-16 / 16b):** [rejestr-wdrozenia-16-ix.md](rejestr-wdrozenia-16-ix.md) Â§5. DONE: 29 szablonĂłw, false DONE, playbooki/RACI. Czeka rytuaĹ‚: SH-R16-12â€¦15. Leftover produktu: UXCL-L1 / AI3-payload. Park: G0/SBOM/EAA/CRA/hire.
 
-- **63.0 Q-E4 DONE:** STRIDE tenant+HITL w `docs/ops/threat-model-tenant-hitl.md`. CodeQL workflow (python + JS/TS) poza `just gate`. Pierwszy run: analiza OK, upload SARIF padł („Code scanning is not enabled”). `upload: never` — leftover GHAS, nie DoD.
-- **62.0 Q-E3 DONE:** how-to `docs/operator/kontrahent.md` i `katalogi.md`; C4 context+container w ARCHITECTURE. Nie 70 stubów. Nie how-to tablic-odczytów.
-- **61.0 Q-E2 DONE:** testy jadą przez `alembic upgrade head` na `omniroute_test` (`ALEMBIC_DATABASE_URL`). Indeks `ix_rate_line_current_charge_code` w EXPLAIN. `rate_line` = 0 wierszy — p95 50k = N/A ([quote-budget.md](quote-budget.md)). Nie seed. Nie k6.
-- **60.0 Q-E1 DONE:** `/charges`, `/organization-settings`, `/rate-lines` biorą nagłówek/sesję/błąd z `catalog-parts`; charges i ustawienia także `CatalogLoadedTable`. Formularze pól lokalne. `just dup` 2,78% total (tsx 2,76%). Mixin modeli **nie** w tym slocie.
-- **59.0 Fala E w kolejce:** kanon 4,4–5 w PLAN. Q-E4 zamknięty (63.0). Fala E domknięta. Następny = S1, nie F9.1.
+- **63.0 Q-E4 DONE:** STRIDE tenant+HITL w `docs/ops/threat-model-tenant-hitl.md`. CodeQL workflow (python + JS/TS) poza `just gate`. Pierwszy run: analiza OK, upload SARIF padĹ‚ (â€žCode scanning is not enabledâ€ť). `upload: never` â€” leftover GHAS, nie DoD.
+- **62.0 Q-E3 DONE:** how-to `docs/operator/kontrahent.md` i `katalogi.md`; C4 context+container w ARCHITECTURE. Nie 70 stubĂłw. Nie how-to tablic-odczytĂłw.
+- **61.0 Q-E2 DONE:** testy jadÄ… przez `alembic upgrade head` na `omniroute_test` (`ALEMBIC_DATABASE_URL`). Indeks `ix_rate_line_current_charge_code` w EXPLAIN. `rate_line` = 0 wierszy â€” p95 50k = N/A ([quote-budget.md](quote-budget.md)). Nie seed. Nie k6.
+- **60.0 Q-E1 DONE:** `/charges`, `/organization-settings`, `/rate-lines` biorÄ… nagĹ‚Ăłwek/sesjÄ™/bĹ‚Ä…d z `catalog-parts`; charges i ustawienia takĹĽe `CatalogLoadedTable`. Formularze pĂłl lokalne. `just dup` 2,78% total (tsx 2,76%). Mixin modeli **nie** w tym slocie.
+- **59.0 Fala E w kolejce:** kanon 4,4â€“5 w PLAN. Q-E4 zamkniÄ™ty (63.0). Fala E domkniÄ™ta. NastÄ™pny = S1, nie F9.1.
 
-- **58.0 baseline karty jakości (całe drzewo, nie rytm co plaster):** C901 czyste. jscpd 2,81% total (python 3,48% linii = nagłówki modeli + katalogi FE; gate liczy total). `refactor_ratio` 0,6% / 10% za 4 tyg. — slot `/refaktor`, nie mixin 40 modeli tutaj. N+1: `quote_batch` pętla max 20 = leftover 20.0. EXPLAIN wyceny: 61.0 na `omniroute_test` (Index Scan, 0 wierszy, N/A). Proza operatora rdzenia: `docs/operator/ścieżka-pieniędzy.md`. Kontrahent i katalogi zapisu: 62.0. `U-catalog-parts` DONE 60.0. CodeQL/mutacje: workflow CodeQL 63.0 (GHAS leftover); mutacje poza tabelą co plaster.
+- **58.0 baseline karty jakoĹ›ci (caĹ‚e drzewo, nie rytm co plaster):** C901 czyste. jscpd 2,81% total (python 3,48% linii = nagĹ‚Ăłwki modeli + katalogi FE; gate liczy total). `refactor_ratio` 0,6% / 10% za 4 tyg. â€” slot `/refaktor`, nie mixin 40 modeli tutaj. N+1: `quote_batch` pÄ™tla max 20 = leftover 20.0. EXPLAIN wyceny: 61.0 na `omniroute_test` (Index Scan, 0 wierszy, N/A). Proza operatora rdzenia: `docs/operator/Ĺ›cieĹĽka-pieniÄ™dzy.md`. Kontrahent i katalogi zapisu: 62.0. `U-catalog-parts` DONE 60.0. CodeQL/mutacje: workflow CodeQL 63.0 (GHAS leftover); mutacje poza tabelÄ… co plaster.
 
-- **Audyt gate #79–#88:** siedem czerwonych pushy, dwie przyczyny, zero z nich w kodzie produktu. Sześć runów (#79, #80, #82–#85) padło na `agentlint` — hash `AGENTS.md` i `.cursor/rules/context.mdc` rozjechany z baseline. Jeden (#81) na `check_agent_refs`. Kod plastra 4.0 przeszedł pełny gate dopiero w #86; #86/#87/#88 mają wszystkie kroki `success`, więc nic z tej serii nie zostało niezweryfikowane.
-- **Kolejność `gate` maskuje kod (leftover, `justfile` nie w tym audycie):** `docs-check → agent-refs → agentlint` idą przed `check`, `test-unit`, `arch`, frontendem. Pierwszy fail meta ubija przebieg, a kroki po `just gate` w `gate.yml` (`audit`, `promptfoo`, `test-integration`) w ogóle nie startują. Skutek: `lint-imports` zepsuty przez 87c4cf3 (brak `__init__.py` w `services/geography` i `repositories/geography`) wyszedł lokalnie, nie z CI — czerwień #82–#85 pokazywała inny powód niż realna usterka. Naprawa = meta-checki po checkach kodu albo osobny job.
-- **agentlint to podpis, nie zabezpieczenie:** każda zmiana `AGENTS.md` / `GROUNDING.md` / `.cursor/rules/*` bez `python scripts/quality/agentlint.py --write` w **tym samym** commicie daje czerwony push. Sześć runów z rzędu, bo poprawki szły w commitach, które znowu ruszały kontrakt.
-- **check_agent_refs FIXED:** link względny liczy się teraz wobec katalogu własnego pliku. Wcześniej każda ścieżka szła wobec ROOT plus zgadywanie po samej nazwie w `docs/`, `docs/state/`, `docs/spec/` — poprawny `[…](../deltas/open/4.0-port.md)` z `docs/state/CURRENT.md` był fałszywym alarmem (#81), a `../PLAN-REALIZACJA.md` przechodził tylko przypadkiem. Zgadywanie po nazwie zostaje; zwężenie = osobny slot `refaktor-pass`.
-- **Skrypty gate'u poza ruffem:** `just check` lintuje wyłącznie `backend`, więc E501 w `scripts/quality/agentlint.py` i `scripts/quality/sync_os_status.py` żyją w narzędziach, które same pilnują stylu. Rozszerzenie zakresu ruff = osobny plaster, nie hotfix.
-- **OS słownik DONE:** kanon `/testy` / `/bramka` / skill `zamknij-plaster`; persony z archiwum tylko w tabeli ADR-0001; lint w `check_agent_refs.py`
-- **0.15 DONE:** hasła argon2id + `refresh_token` + rotacja; UUID-login wycięty. RLS isolation = integration CI (lokalnie PG wisiał)
-- **D0 DONE:** AGENTS stos dziś vs cel; Infisical wycięty; `.cursorignore` na dump; `AGENTS.ARCHIVE.md`; leftover ≠ DONE. HITL i 13 zasad zostają.
-- **0.15 T0 DONE:** `document_base64` max_length 2_666_668 → 422 przed decode
-- **0.16 T1 DONE:** rola `omniroute_app` NOBYPASSRLS; `DATABASE_URL` runtime. Integration RLS = CI (lokalnie PG wisiał)
-- **0.17 T2 DONE:** WITH CHECK + matryca S1–S6; integration = CI
-- **0.18 DONE:** HTTP extract live PG + token A / draft B → 404; integration = CI
-- **0.19 A1 DONE:** undeclared `/api/v1` → 403; Swagger/ReDoc off
+- **Audyt gate #79â€“#88:** siedem czerwonych pushy, dwie przyczyny, zero z nich w kodzie produktu. SzeĹ›Ä‡ runĂłw (#79, #80, #82â€“#85) padĹ‚o na `agentlint` â€” hash `AGENTS.md` i `.cursor/rules/context.mdc` rozjechany z baseline. Jeden (#81) na `check_agent_refs`. Kod plastra 4.0 przeszedĹ‚ peĹ‚ny gate dopiero w #86; #86/#87/#88 majÄ… wszystkie kroki `success`, wiÄ™c nic z tej serii nie zostaĹ‚o niezweryfikowane.
+- **KolejnoĹ›Ä‡ `gate` maskuje kod (leftover, `justfile` nie w tym audycie):** `docs-check â†’ agent-refs â†’ agentlint` idÄ… przed `check`, `test-unit`, `arch`, frontendem. Pierwszy fail meta ubija przebieg, a kroki po `just gate` w `gate.yml` (`audit`, `promptfoo`, `test-integration`) w ogĂłle nie startujÄ…. Skutek: `lint-imports` zepsuty przez 87c4cf3 (brak `__init__.py` w `services/geography` i `repositories/geography`) wyszedĹ‚ lokalnie, nie z CI â€” czerwieĹ„ #82â€“#85 pokazywaĹ‚a inny powĂłd niĹĽ realna usterka. Naprawa = meta-checki po checkach kodu albo osobny job.
+- **agentlint to podpis, nie zabezpieczenie:** kaĹĽda zmiana `AGENTS.md` / `GROUNDING.md` / `.cursor/rules/*` bez `python scripts/quality/agentlint.py --write` w **tym samym** commicie daje czerwony push. SzeĹ›Ä‡ runĂłw z rzÄ™du, bo poprawki szĹ‚y w commitach, ktĂłre znowu ruszaĹ‚y kontrakt.
+- **check_agent_refs FIXED:** link wzglÄ™dny liczy siÄ™ teraz wobec katalogu wĹ‚asnego pliku. WczeĹ›niej kaĹĽda Ĺ›cieĹĽka szĹ‚a wobec ROOT plus zgadywanie po samej nazwie w `docs/`, `docs/state/`, `docs/spec/` â€” poprawny `[â€¦](../deltas/open/4.0-port.md)` z `docs/state/CURRENT.md` byĹ‚ faĹ‚szywym alarmem (#81), a `../PLAN-REALIZACJA.md` przechodziĹ‚ tylko przypadkiem. Zgadywanie po nazwie zostaje; zwÄ™ĹĽenie = osobny slot `refaktor-pass`.
+- **Skrypty gate'u poza ruffem:** `just check` lintuje wyĹ‚Ä…cznie `backend`, wiÄ™c E501 w `scripts/quality/agentlint.py` i `scripts/quality/sync_os_status.py` ĹĽyjÄ… w narzÄ™dziach, ktĂłre same pilnujÄ… stylu. Rozszerzenie zakresu ruff = osobny plaster, nie hotfix.
+- **OS sĹ‚ownik DONE:** kanon `/testy` / `/bramka` / skill `zamknij-plaster`; persony z archiwum tylko w tabeli ADR-0001; lint w `check_agent_refs.py`
+- **0.15 DONE:** hasĹ‚a argon2id + `refresh_token` + rotacja; UUID-login wyciÄ™ty. RLS isolation = integration CI (lokalnie PG wisiaĹ‚)
+- **D0 DONE:** AGENTS stos dziĹ› vs cel; Infisical wyciÄ™ty; `.cursorignore` na dump; `AGENTS.ARCHIVE.md`; leftover â‰  DONE. HITL i 13 zasad zostajÄ….
+- **0.15 T0 DONE:** `document_base64` max_length 2_666_668 â†’ 422 przed decode
+- **0.16 T1 DONE:** rola `omniroute_app` NOBYPASSRLS; `DATABASE_URL` runtime. Integration RLS = CI (lokalnie PG wisiaĹ‚)
+- **0.17 T2 DONE:** WITH CHECK + matryca S1â€“S6; integration = CI
+- **0.18 DONE:** HTTP extract live PG + token A / draft B â†’ 404; integration = CI
+- **0.19 A1 DONE:** undeclared `/api/v1` â†’ 403; Swagger/ReDoc off
 - **0.20 A2 DONE:** `can_review_extractions` = reviewer; seed first-login = member
 - **0.21 T4 DONE:** `hello_token` default false; mint UUID tylko przy fladze
 - **0.22 T5 DONE:** JWT iss/aud/jti/ver; TTL 15 min
-- **0.23 S1 DONE:** JWT_SECRET z GitHub Encrypted Secrets; literał usunięty z gate.yml
+- **0.23 S1 DONE:** JWT_SECRET z GitHub Encrypted Secrets; literaĹ‚ usuniÄ™ty z gate.yml
 - **0.24 DONE:** `/ready` + `X-Request-ID` + SHA pin Actions + `just audit` (pip-audit projektu, nie echo). Auth0 I1/I2 **odroczone**.
-- **2.1–2.2 DONE:** Presidio stub tylko na `InstructorExtractor` + 10 syntetyk `synth://`. Nie Presidio-all, nie 30 PDF klienta, nie żywy OpenAI w gate.
-- **2.0 DONE:** `quotation` INSERT…SELECT z bieżącego `rate_line` + RLS + `/quotations`. Nie k6, nie marża, HITL bez zmian. Isolation/integration = CI. p95 50k niewymierzony (N/A, nie teatr).
-- **3.0 DONE:** `organization_setting` allowlista `default_currency` + RLS + `/organization-settings`. Nie sekrety, nie Infisical, nie outbox. Isolation = CI. **Następny leftover MODULES z jobem operatora:** brak. M-02 bez zdarzeń.
-- **71.0 leftover — numer na ofercie:** **DONE w 72.0.** Prefiks zostaje w M-03; numer siedzi na `quotation`.
-- **72.0 leftover — letterhead / send (dlaczego nie w tym plasterze):** S9 = numer + istniejący `@media print`. Blob papieru firmowego i wysyłka maila = S18, nie F9.1.
-- **73.0 leftover — send czyta `blocks_auto` (dlaczego nie w tym plasterze):** S10 = flaga i odczyt. Graph send = S18 po S11.
-- **74.0 leftover — `changed` / FK inbound / send (dlaczego nie w tym plasterze):** S11 = pending + accept/reject. Zapis `changed` i lock = S13/S14. Skład z `inbound_message` = leftover S13. Graph send = S18.
-- **123.0 DONE:** filtr kind na tablicy 27.0. Tabela inbox nie jest źródłem pending. Nie auto-INSERT.
-- **124.0 DONE:** liczniki na `/watchtower` z list już pobranych. AIS / leaflet leftover.
-- **125.0 DONE:** trzy metody `PartyService` ≤40 linii. `create_quote` leftover spłacony w 126.0. Nie mixin modeli.
-- **126.0 DONE:** `create_quote` ≤40. Sufit `long_functions` = 0.
-- **127.0 DONE:** `--ink` / `--on-ink` aliasują rail; trzy ternary w PartyService → `_blank_to_none`. Nie mixin modeli.
-- **75.0 leftover — filtr 27.0 i send:** filtr **DONE w 123.0**. Auto-INSERT i Graph send = S18.
-- **76.0 leftover — send / `changed` (dlaczego nie w tym plasterze):** S13 = szkic `draft` + pending na S11. Lock = 77.0. Zapis `changed` leftover. Graph send = S18. Czat = S56.
-- **77.0 leftover — `changed` / send (dlaczego nie w tym plasterze):** S14 = atomowy UPDATE po wersji. `changed` nie jest werdyktem. Graph send = S18. Ingest Graph = S15.
-- **78.0 leftover — live Graph HTTP / sekret tenanta (dlaczego nie w tym plasterze):** S15 = payload już pobrany, `graph://` + `external_id`. Live `httpx` do Graph = teatr bez umowy. Token w bazie/kodzie zakazany (HC: sekret tylko szyfrowany kluczem tenanta; kasa kryptograficzna nie istnieje). IMAP = S17. Send = S18. Outbox = S16.
-- **79.0 leftover — konsument / dispatch (dlaczego nie w tym plasterze):** S16 = zapis zdarzenia. Worker, Temporal i status `processed` = teatr bez odbiorcy poza HTTP. IMAP = S17. Send = S18.
-- **80.0 leftover — live IMAP / EmailEngine / sekret (dlaczego nie w tym plasterze):** S17 = payload już pobrany, `imap://` + `external_id`. Live skrzynka i EmailEngine = teatr bez umowy. Sekret tylko szyfrowany kluczem tenanta (kasa brak). Send = S18.
-- **81.0 leftover — Graph send HTTP / sekret tenanta (dlaczego nie w tym plasterze):** S18 = świadomy `mailto:` po accept. Live Graph / SMTP = teatr bez kasy klucza tenanta. Auto-send zostaje zakazane.
-- **119.0 leftover — OTel / k6 / tabela rollout (dlaczego park):** 48.0–50.0 zostają tablicami. Konsument outboxa i billing SaaS nie istnieją. Nie 70 stubów 71–212.
-- **4.0 DONE:** `port` UN/LOCODE per tenant + RLS FORCE + `resolve` (alias/kod) + `/ports`. Nie `location`, nie `terminal`, nie WPI, nie `pg_trgm`. **Pierwszy plaster z realnie zielonym `pytest -m integration` lokalnie** (45/45) — nie „PG wisiał, zostaje CI”.
-- **4.0 środowisko:** instalator EDB odrzuca argumenty z winget (exit 1, zero własnego logu) także po elewacji — PG 16 stoi jako klaster przenośny `tools/pg16` + `tools/pgdata` (gitignore), start `pg_ctl`. Toolchain lokalny domknięty: `just` 1.58 w `tools/just`, `lint-imports` i reszta skryptów Pythona oraz `psql`/`pg_ctl` dopisane do PATH użytkownika, `sh` dla `just` z `D:\Git\bin`. **`just gate` przechodzi lokalnie w całości**, `just test-integration` 45/45 bez ustawiania zmiennych (domyślne URL-e z `conftest` trafiają w ten klaster). `scripts/dev-native.ps1` znajdzie teraz `psql` przez `Get-Command`, ale pełnego przebiegu skryptu nie weryfikowano. Dysk `C:` = 0 B wolnego (stan zastany, nie z tego plastra) — dlatego nic nie dokładano do `site-packages`, a `npx` pada ENOSPC.
-- **4.0 leftover:** `resolve` dopasowuje dokładnie kod albo alias — nie nazwę wiersza; `pg_trgm` / dopasowanie przybliżone dopiero przy realnej potrzebie (ustalenie z delty). Seed 670k wierszy nie odpalony na żywym źródle — ingest dowiedziony fixture'em i `scripts/seed_ports.py`.
-- **4.1 DONE:** `location` + `location_zone_member`, typ `postal_range` (kolacja `"C"`), kolumna generowana `postal_span`, exclusion GiST, RLS FORCE na obu tabelach, `resolve(country, postal)` w Postgresie, `/locations`. Migracja `013` dokłada też `uq_port_org_id` na `port` — 4.0 zostawiło tylko unikat po `unlocode`, więc FK złożone nie miało nośnika. Drugi plaster z realnie zielonym `pytest -m integration` lokalnie (61/61). Nie `terminal`, nie WPI, nie `pg_trgm`, nie geometria.
-- **4.1 leftover — DDL w dwóch miejscach:** **DONE w 61.0.** Testy jadą przez Alembic; `_apply_postal_zone_ddl` i ręczne RLS w conftest usunięte.
-- **4.1 leftover — `kind` bez ścieżki zapisu:** `unlocode` i `address` istnieją w schemacie i w CHECK, ale serwis nie ma metody tworzącej takie wiersze — job operatora z delty to wyłącznie strefy. FK złożone do `port` jest dowiedzione na poziomie bazy (`test_location_may_not_point_at_another_tenant_port`). Metoda serwisowa dopiero, gdy pojawi się ekran, który jej potrzebuje — nie „na przyszłość”.
-- **4.1 leftover — klony nagłówka modeli:** `jscpd` wskazuje `models/location.py` przeciw `models/app_user.py` i `models/table_view.py`. To wspólny blok `id` / `organization_id` / FK powtórzony w każdym modelu repo, nie duplikat tej domeny. Miksin = zmiana wszystkich modeli naraz, `refaktor-pass`. Próg 3% nadal spełniony (2,92% total).
-- **4.1 leftover — konwencja commita:** commit plastra (`2c4b684`) wyszedł bez stopki `Co-authored-by` z `/zamknij`. Wypchnięty na `main`, więc poprawka wymagałaby force-push — zostaje jak jest, konwencja pilnowana od następnego plastra.
+- **2.1â€“2.2 DONE:** Presidio stub tylko na `InstructorExtractor` + 10 syntetyk `synth://`. Nie Presidio-all, nie 30 PDF klienta, nie ĹĽywy OpenAI w gate.
+- **2.0 DONE:** `quotation` INSERTâ€¦SELECT z bieĹĽÄ…cego `rate_line` + RLS + `/quotations`. Nie k6, nie marĹĽa, HITL bez zmian. Isolation/integration = CI. p95 50k niewymierzony (N/A, nie teatr).
+- **3.0 DONE:** `organization_setting` allowlista `default_currency` + RLS + `/organization-settings`. Nie sekrety, nie Infisical, nie outbox. Isolation = CI. **NastÄ™pny leftover MODULES z jobem operatora:** brak. M-02 bez zdarzeĹ„.
+- **71.0 leftover â€” numer na ofercie:** **DONE w 72.0.** Prefiks zostaje w M-03; numer siedzi na `quotation`.
+- **72.0 leftover â€” letterhead / send (dlaczego nie w tym plasterze):** S9 = numer + istniejÄ…cy `@media print`. Blob papieru firmowego i wysyĹ‚ka maila = S18, nie F9.1.
+- **73.0 leftover â€” send czyta `blocks_auto` (dlaczego nie w tym plasterze):** S10 = flaga i odczyt. Graph send = S18 po S11.
+- **74.0 leftover â€” `changed` / FK inbound / send (dlaczego nie w tym plasterze):** S11 = pending + accept/reject. Zapis `changed` i lock = S13/S14. SkĹ‚ad z `inbound_message` = leftover S13. Graph send = S18.
+- **123.0 DONE:** filtr kind na tablicy 27.0. Tabela inbox nie jest ĹşrĂłdĹ‚em pending. Nie auto-INSERT.
+- **124.0 DONE:** liczniki na `/watchtower` z list juĹĽ pobranych. AIS / leaflet leftover.
+- **125.0 DONE:** trzy metody `PartyService` â‰¤40 linii. `create_quote` leftover spĹ‚acony w 126.0. Nie mixin modeli.
+- **126.0 DONE:** `create_quote` â‰¤40. Sufit `long_functions` = 0.
+- **127.0 DONE:** `--ink` / `--on-ink` aliasujÄ… rail; trzy ternary w PartyService â†’ `_blank_to_none`. Nie mixin modeli.
+- **75.0 leftover â€” filtr 27.0 i send:** filtr **DONE w 123.0**. Auto-INSERT i Graph send = S18.
+- **76.0 leftover â€” send / `changed` (dlaczego nie w tym plasterze):** S13 = szkic `draft` + pending na S11. Lock = 77.0. Zapis `changed` leftover. Graph send = S18. Czat = S56.
+- **77.0 leftover â€” `changed` / send (dlaczego nie w tym plasterze):** S14 = atomowy UPDATE po wersji. `changed` nie jest werdyktem. Graph send = S18. Ingest Graph = S15.
+- **78.0 leftover â€” live Graph HTTP / sekret tenanta (dlaczego nie w tym plasterze):** S15 = payload juĹĽ pobrany, `graph://` + `external_id`. Live `httpx` do Graph = teatr bez umowy. Token w bazie/kodzie zakazany (HC: sekret tylko szyfrowany kluczem tenanta; kasa kryptograficzna nie istnieje). IMAP = S17. Send = S18. Outbox = S16.
+- **79.0 leftover â€” konsument / dispatch (dlaczego nie w tym plasterze):** S16 = zapis zdarzenia. Worker, Temporal i status `processed` = teatr bez odbiorcy poza HTTP. IMAP = S17. Send = S18.
+- **80.0 leftover â€” live IMAP / EmailEngine / sekret (dlaczego nie w tym plasterze):** S17 = payload juĹĽ pobrany, `imap://` + `external_id`. Live skrzynka i EmailEngine = teatr bez umowy. Sekret tylko szyfrowany kluczem tenanta (kasa brak). Send = S18.
+- **81.0 leftover â€” Graph send HTTP / sekret tenanta (dlaczego nie w tym plasterze):** S18 = Ĺ›wiadomy `mailto:` po accept. Live Graph / SMTP = teatr bez kasy klucza tenanta. Auto-send zostaje zakazane.
+- **119.0 leftover â€” OTel / k6 / tabela rollout (dlaczego park):** 48.0â€“50.0 zostajÄ… tablicami. Konsument outboxa i billing SaaS nie istniejÄ…. Nie 70 stubĂłw 71â€“212.
+- **4.0 DONE:** `port` UN/LOCODE per tenant + RLS FORCE + `resolve` (alias/kod) + `/ports`. Nie `location`, nie `terminal`, nie WPI, nie `pg_trgm`. **Pierwszy plaster z realnie zielonym `pytest -m integration` lokalnie** (45/45) â€” nie â€žPG wisiaĹ‚, zostaje CIâ€ť.
+- **4.0 Ĺ›rodowisko:** instalator EDB odrzuca argumenty z winget (exit 1, zero wĹ‚asnego logu) takĹĽe po elewacji â€” PG 16 stoi jako klaster przenoĹ›ny `tools/pg16` + `tools/pgdata` (gitignore), start `pg_ctl`. Toolchain lokalny domkniÄ™ty: `just` 1.58 w `tools/just`, `lint-imports` i reszta skryptĂłw Pythona oraz `psql`/`pg_ctl` dopisane do PATH uĹĽytkownika, `sh` dla `just` z `D:\Git\bin`. **`just gate` przechodzi lokalnie w caĹ‚oĹ›ci**, `just test-integration` 45/45 bez ustawiania zmiennych (domyĹ›lne URL-e z `conftest` trafiajÄ… w ten klaster). `scripts/dev-native.ps1` znajdzie teraz `psql` przez `Get-Command`, ale peĹ‚nego przebiegu skryptu nie weryfikowano. Dysk `C:` = 0 B wolnego (stan zastany, nie z tego plastra) â€” dlatego nic nie dokĹ‚adano do `site-packages`, a `npx` pada ENOSPC.
+- **4.0 leftover:** `resolve` dopasowuje dokĹ‚adnie kod albo alias â€” nie nazwÄ™ wiersza; `pg_trgm` / dopasowanie przybliĹĽone dopiero przy realnej potrzebie (ustalenie z delty). Seed 670k wierszy nie odpalony na ĹĽywym ĹşrĂłdle â€” ingest dowiedziony fixture'em i `scripts/seed_ports.py`.
+- **4.1 DONE:** `location` + `location_zone_member`, typ `postal_range` (kolacja `"C"`), kolumna generowana `postal_span`, exclusion GiST, RLS FORCE na obu tabelach, `resolve(country, postal)` w Postgresie, `/locations`. Migracja `013` dokĹ‚ada teĹĽ `uq_port_org_id` na `port` â€” 4.0 zostawiĹ‚o tylko unikat po `unlocode`, wiÄ™c FK zĹ‚oĹĽone nie miaĹ‚o noĹ›nika. Drugi plaster z realnie zielonym `pytest -m integration` lokalnie (61/61). Nie `terminal`, nie WPI, nie `pg_trgm`, nie geometria.
+- **4.1 leftover â€” DDL w dwĂłch miejscach:** **DONE w 61.0.** Testy jadÄ… przez Alembic; `_apply_postal_zone_ddl` i rÄ™czne RLS w conftest usuniÄ™te.
+- **4.1 leftover â€” `kind` bez Ĺ›cieĹĽki zapisu:** `unlocode` i `address` istniejÄ… w schemacie i w CHECK, ale serwis nie ma metody tworzÄ…cej takie wiersze â€” job operatora z delty to wyĹ‚Ä…cznie strefy. FK zĹ‚oĹĽone do `port` jest dowiedzione na poziomie bazy (`test_location_may_not_point_at_another_tenant_port`). Metoda serwisowa dopiero, gdy pojawi siÄ™ ekran, ktĂłry jej potrzebuje â€” nie â€žna przyszĹ‚oĹ›Ä‡â€ť.
+- **4.1 leftover â€” klony nagĹ‚Ăłwka modeli:** `jscpd` wskazuje `models/location.py` przeciw `models/app_user.py` i `models/table_view.py`. To wspĂłlny blok `id` / `organization_id` / FK powtĂłrzony w kaĹĽdym modelu repo, nie duplikat tej domeny. Miksin = zmiana wszystkich modeli naraz, `refaktor-pass`. PrĂłg 3% nadal speĹ‚niony (2,92% total).
+- **4.1 leftover â€” konwencja commita:** commit plastra (`2c4b684`) wyszedĹ‚ bez stopki `Co-authored-by` z `/zamknij`. WypchniÄ™ty na `main`, wiÄ™c poprawka wymagaĹ‚aby force-push â€” zostaje jak jest, konwencja pilnowana od nastÄ™pnego plastra.
 - **4.2 DONE:** `terminal` + WPI na `port`, RLS FORCE, `/terminals`, kolumny WPI na `/ports`, ingest fixture + `scripts/seed_wpi.py`. Nie `operator_party_id`, nie live NGA, nie `kind=terminal` na `location`. `just gate` zielony lokalnie.
-- **4.2 leftover — pełny CSV NGA (dlaczego nie w tym plasterze):** ingest dowiedziony fixture'em (`wpi_sample.csv`, PLGDY) i skryptem `scripts/seed_wpi.py`. Pełny `UpdatedPub150.csv` nie w git i nie odpalony na żywym tenancie — ten sam wzorzec co seed 670k UN/LOCODE w 4.0. Operator odpala lokalnie, gdy ma plik.
-- **4.2 leftover — `operator_party_id`:** **DONE w 5.0.** Tekst `operator_name` zostaje; FK nullable do `party`.
+- **4.2 leftover â€” peĹ‚ny CSV NGA (dlaczego nie w tym plasterze):** ingest dowiedziony fixture'em (`wpi_sample.csv`, PLGDY) i skryptem `scripts/seed_wpi.py`. PeĹ‚ny `UpdatedPub150.csv` nie w git i nie odpalony na ĹĽywym tenancie â€” ten sam wzorzec co seed 670k UN/LOCODE w 4.0. Operator odpala lokalnie, gdy ma plik.
+- **4.2 leftover â€” `operator_party_id`:** **DONE w 5.0.** Tekst `operator_name` zostaje; FK nullable do `party`.
 - **5.0 DONE:** `party` + dzieci, RLS FORCE, `resolve(tax_id)`, lookup fixture, OpenFGA `can_manage_parties`, `/parties`, `terminal.operator_party_id`. Nie Q3, nie silnik wyceny z override.
-- **5.0 leftover — żywe GUS/VIES/whitelist (dlaczego nie w tym plasterze):** delta = CI fixture, zero sieci. Piaskownica REGON bez klucza w repo. Żywy HTTP = gdy operator ma konto API, nie „na przyszłość” w 5.0.
-- **5.1 DONE:** POL/POD + `party_id` na `quotation`, FK złożone, CHECK kompletności, filtry SQL, `/quotations` z pickerami. Kwota nadal ze stawki. Nie override, nie k6.
-- **5.1 leftover — powtórzone pickery POL/POD (dlaczego nie w tym plasterze):** formularz i filtry na `/quotations` powielają `<select>`. `dup` poniżej 3%. Wspólny kontroler = gdy trzeci katalog zacznie ten sam wzorzec, albo slot `refaktor-pass`.
-- **5.0 leftover — `quotation.party_id` / POL/POD:** Q3, Plan (`/plan-modul`), nie plaster w tym commicie.
-- **5.0 leftover — `party_charge_override` w wycenie:** katalog uzgodnień. `quotations` / `charges` / `rate_lines` nie importują. Marża zostaje w `charge.margin()`.
-- **5.0 leftover — M-11 matcher domen / OpenFGA per party:** matcher **DONE w 8.0** (`resolve_email`). `can_manage_parties` = member organizacji, nie tuple na wiersz — tuple zostaje leftover.
-- **5.2 DONE:** `commodity_code` HS/CN + aliasy + `source_ref`, RLS FORCE, `resolve`, OpenFGA `can_manage_commodity_codes`, `/commodity-codes`. Nie podpięcie do wyceny, nie IMDG, nie TARIC.
-- **5.2 leftover — bliźniacze kolumny katalogu (dlaczego nie w tym plasterze):** `charge_code` i `commodity_code` nadal powielają accessor `code`/`name`/`aliases`. `just dup` 2,91% po wyodrębnieniu `CatalogCreateForm`, `CatalogLoadedTable` i `catalogCreateBody`. Wspólne kolumny = gdy czwarty katalog skopiuje ten sam blok, albo slot `refaktor-pass`.
+- **5.0 leftover â€” ĹĽywe GUS/VIES/whitelist (dlaczego nie w tym plasterze):** delta = CI fixture, zero sieci. Piaskownica REGON bez klucza w repo. Ĺ»ywy HTTP = gdy operator ma konto API, nie â€žna przyszĹ‚oĹ›Ä‡â€ť w 5.0.
+- **5.1 DONE:** POL/POD + `party_id` na `quotation`, FK zĹ‚oĹĽone, CHECK kompletnoĹ›ci, filtry SQL, `/quotations` z pickerami. Kwota nadal ze stawki. Nie override, nie k6.
+- **5.1 leftover â€” powtĂłrzone pickery POL/POD (dlaczego nie w tym plasterze):** formularz i filtry na `/quotations` powielajÄ… `<select>`. `dup` poniĹĽej 3%. WspĂłlny kontroler = gdy trzeci katalog zacznie ten sam wzorzec, albo slot `refaktor-pass`.
+- **5.0 leftover â€” `quotation.party_id` / POL/POD:** Q3, Plan (`/plan-modul`), nie plaster w tym commicie.
+- **5.0 leftover â€” `party_charge_override` w wycenie:** katalog uzgodnieĹ„. `quotations` / `charges` / `rate_lines` nie importujÄ…. MarĹĽa zostaje w `charge.margin()`.
+- **5.0 leftover â€” M-11 matcher domen / OpenFGA per party:** matcher **DONE w 8.0** (`resolve_email`). `can_manage_parties` = member organizacji, nie tuple na wiersz â€” tuple zostaje leftover.
+- **5.2 DONE:** `commodity_code` HS/CN + aliasy + `source_ref`, RLS FORCE, `resolve`, OpenFGA `can_manage_commodity_codes`, `/commodity-codes`. Nie podpiÄ™cie do wyceny, nie IMDG, nie TARIC.
+- **5.2 leftover â€” bliĹşniacze kolumny katalogu (dlaczego nie w tym plasterze):** `charge_code` i `commodity_code` nadal powielajÄ… accessor `code`/`name`/`aliases`. `just dup` 2,91% po wyodrÄ™bnieniu `CatalogCreateForm`, `CatalogLoadedTable` i `catalogCreateBody`. WspĂłlne kolumny = gdy czwarty katalog skopiuje ten sam blok, albo slot `refaktor-pass`.
 - **122.0 DONE:** `dangerous_good_id` na RFQ/wycenie. `/mail` Podpnij UN. Kwota ze stawki. Nie LLM. Nie filtr `rate_line`.
-- **70.0 leftover — UN z M-52 na RFQ:** **DONE w 122.0**.
+- **70.0 leftover â€” UN z M-52 na RFQ:** **DONE w 122.0**.
 - **6.0 DONE:** `nbp_rate` tabela A + `source_ref`, RLS FORCE, `resolve(currency, on_date)`, OpenFGA `can_manage_nbp_rates`, `/nbp-rates`. Nie przeliczenie wyceny, nie live NBP, nie M-07 `rate_line`.
-- **6.0 leftover — live NBP / mnożenie (dlaczego nie w 6.0 ani 16.0):** ingest w CI = fixture; ręczny wpis = `tenant:manual`. `api.nbp.pl` zostaje. 16.0 = odczyt `mid` przy `/quotations`, nie `amount * mid`.
-- **16.0 DONE:** `/quotations` resolve `nbp_rate` (waluta z listy wycen + dzień). Nie nowa tabela. Nie mnożenie kwoty. PLN bez requestu.
-- **16.0 leftover — przeliczenie oferty (dlaczego nie w tym plasterze):** `amount * mid` w Pythonie/JS = silnik walut; PLAN: LLM nie liczy. Snapshot `nbp_rate_id` na `quotation` = zgadywanie schematu. Live NBP HTTP = leftover 6.0. `just dup` 2,76%.
+- **6.0 leftover â€” live NBP / mnoĹĽenie (dlaczego nie w 6.0 ani 16.0):** ingest w CI = fixture; rÄ™czny wpis = `tenant:manual`. `api.nbp.pl` zostaje. 16.0 = odczyt `mid` przy `/quotations`, nie `amount * mid`.
+- **16.0 DONE:** `/quotations` resolve `nbp_rate` (waluta z listy wycen + dzieĹ„). Nie nowa tabela. Nie mnoĹĽenie kwoty. PLN bez requestu.
+- **16.0 leftover â€” przeliczenie oferty (dlaczego nie w tym plasterze):** `amount * mid` w Pythonie/JS = silnik walut; PLAN: LLM nie liczy. Snapshot `nbp_rate_id` na `quotation` = zgadywanie schematu. Live NBP HTTP = leftover 6.0. `just dup` 2,76%.
 - **17.0 DONE:** `/quotations` resolve `credit_review` + `fetchPartyScorecard`. Nie nowa tabela. Nie scoring.
-- **17.0 leftover — scoring / biuro (dlaczego nie w tym plasterze):** leftover 14.0 (AI Act, BIK/KRD, zapis `credit_limit`). 17.0 tylko odczyt. `just dup` 2,75%.
+- **17.0 leftover â€” scoring / biuro (dlaczego nie w tym plasterze):** leftover 14.0 (AI Act, BIK/KRD, zapis `credit_limit`). 17.0 tylko odczyt. `just dup` 2,75%.
 - **18.0 DONE:** `/quotations` resolve `channel_quote` na lane wyceny. Nie nowa tabela. Nie odejmowanie kwot.
-- **18.0 leftover — wynik won/lost (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Katalog wyniku = osobny Plan. Live HTTP armatora = leftover 13.0. `just dup` 2,73%.
-- **19.0 DONE:** `/quotations` podgląd dokumentu z pól wyceny (`<Money/>`). Nie PDF. Nie `window.print`.
-- **19.0 leftover — PDF / U-print (dlaczego nie w tym plasterze):** PLAN: U-print = B/L/FV Fala 5/6. Letterhead spoza `default_currency`. `just dup` 2,72%.
-- **20.0 DONE:** `POST /quotations/batch` + textarea na `/quotations`. Kwota z istniejącego INSERT…SELECT. Nie CSV. Nie nowa tabela.
-- **20.0 leftover — CSV / set-based SQL (dlaczego nie w tym plasterze):** ingest pliku i Temporal = zgadywanie schematu (M-02 parked). Pętla max 20 `quote_from_current_rate` jest świadoma; jeden INSERT…SELECT wielu kodów = gdy operator zgłosi p95. `just dup` 2,71%.
-- **21.0 DONE:** `/quotations` panel zapytań grupuje wyceny po `party_id`. Nie nowa tabela. Nie IMAP.
-- **21.0 leftover — tabela RFQ / IMAP (dlaczego nie w tym plasterze):** tabela **DONE w 67.0** (`customer_rfq`). S17 IMAP. Silnik na RFQ = S5.
+- **18.0 leftover â€” wynik won/lost (dlaczego nie w tym plasterze):** CURRENT zakazaĹ‚ zgadywania schematu. Katalog wyniku = osobny Plan. Live HTTP armatora = leftover 13.0. `just dup` 2,73%.
+- **19.0 DONE:** `/quotations` podglÄ…d dokumentu z pĂłl wyceny (`<Money/>`). Nie PDF. Nie `window.print`.
+- **19.0 leftover â€” PDF / U-print (dlaczego nie w tym plasterze):** PLAN: U-print = B/L/FV Fala 5/6. Letterhead spoza `default_currency`. `just dup` 2,72%.
+- **20.0 DONE:** `POST /quotations/batch` + textarea na `/quotations`. Kwota z istniejÄ…cego INSERTâ€¦SELECT. Nie CSV. Nie nowa tabela.
+- **20.0 leftover â€” CSV / set-based SQL (dlaczego nie w tym plasterze):** ingest pliku i Temporal = zgadywanie schematu (M-02 parked). PÄ™tla max 20 `quote_from_current_rate` jest Ĺ›wiadoma; jeden INSERTâ€¦SELECT wielu kodĂłw = gdy operator zgĹ‚osi p95. `just dup` 2,71%.
+- **21.0 DONE:** `/quotations` panel zapytaĹ„ grupuje wyceny po `party_id`. Nie nowa tabela. Nie IMAP.
+- **21.0 leftover â€” tabela RFQ / IMAP (dlaczego nie w tym plasterze):** tabela **DONE w 67.0** (`customer_rfq`). S17 IMAP. Silnik na RFQ = S5.
 - **22.0 DONE:** `/quotations` panel pending akceptacji z wycen z `party_id`. Nie nowa tabela. Nie HITL accept. Nie `won`/`lost`.
-- **22.0 leftover — zapis wyniku / IMAP (dlaczego nie w tym plasterze):** leftover 18.0 (katalog won/lost). CURRENT zakazał zgadywania schematu. Skrzynka = M-32. `just dup` 2,70%.
-- **23.0 DONE:** `/quotations` ślad `channel_quote` na lane wyceny. Nie nowa tabela. Nie live HTTP. Nie odejmowanie kwot.
-- **23.0 leftover — wysyłka RFQ / live HTTP (dlaczego nie w tym plasterze):** leftover 13.0. Tabela jobów = zgadywanie schematu. M-31 porównanie **DONE w 24.0**. `just dup` 2,69%.
+- **22.0 leftover â€” zapis wyniku / IMAP (dlaczego nie w tym plasterze):** leftover 18.0 (katalog won/lost). CURRENT zakazaĹ‚ zgadywania schematu. Skrzynka = M-32. `just dup` 2,70%.
+- **23.0 DONE:** `/quotations` Ĺ›lad `channel_quote` na lane wyceny. Nie nowa tabela. Nie live HTTP. Nie odejmowanie kwot.
+- **23.0 leftover â€” wysyĹ‚ka RFQ / live HTTP (dlaczego nie w tym plasterze):** leftover 13.0. Tabela jobĂłw = zgadywanie schematu. M-31 porĂłwnanie **DONE w 24.0**. `just dup` 2,69%.
 - **24.0 DONE:** `/quotations` zestawienie wyceny i `channel_quote` na POL/POD. Nie nowa tabela. Nie odejmowanie kwot.
-- **24.0 leftover — silnik różnicy Decimal (dlaczego nie w tym plasterze):** `quotation.amount − channel.amount` w JS zakazane (LLM nie liczy; nie drugi `margin()`). Tabela spread / won-lost = zgadywanie schematu. Adresy mail **DONE w 25.0**; live IMAP leftover 25.0. `just dup` 2,67%.
+- **24.0 leftover â€” silnik rĂłĹĽnicy Decimal (dlaczego nie w tym plasterze):** `quotation.amount â’ channel.amount` w JS zakazane (LLM nie liczy; nie drugi `margin()`). Tabela spread / won-lost = zgadywanie schematu. Adresy mail **DONE w 25.0**; live IMAP leftover 25.0. `just dup` 2,67%.
 - **25.0 DONE:** `/mail` odczyt `party_email_domain` + `party_contact.email` + `resolve_email`. Nie nowa tabela. Nie IMAP.
-- **25.0 leftover — live IMAP / sekrety (dlaczego nie w tym plasterze):** leftover HC magazynu kluczy tenanta. Tabela `inbound_message` **DONE w 64.0**; live IMAP leftover S17. `mailto:` **DONE w 26.0**; dodatek Office leftover 26.0. `just dup` 2,69%.
+- **25.0 leftover â€” live IMAP / sekrety (dlaczego nie w tym plasterze):** leftover HC magazynu kluczy tenanta. Tabela `inbound_message` **DONE w 64.0**; live IMAP leftover S17. `mailto:` **DONE w 26.0**; dodatek Office leftover 26.0. `just dup` 2,69%.
 - **64.0 DONE:** `/mail` zapis `inbound_message` z fixture. RLS. Nie Graph. Nie IMAP.
-- **64.0 leftover — resolve_email na wierszu / IMAP (dlaczego nie w tym plasterze):** `resolve_email` **DONE w 65.0**. S17 IMAP. Nie zgadujemy załączników w S1.
-- **65.0 DONE:** `/mail` dopina nadawcę `inbound_message` przez `resolve_email`. Nie IMAP. Nie extract.
-- **65.0 leftover — extract z treści (dlaczego nie w tym plasterze):** **DONE w 66.0.** ExtractionService nie zapisuje `rate_line`.
-- **66.0 DONE:** `/mail` „Extract HITL” → `extract_to_draft` z tematu i treści. Nie accept. Nie `rate_line` z poczty.
-- **66.0 leftover — załącznik blob / IMAP (dlaczego nie w tym plasterze):** S3 = treść, nie plik. Parser dokumentu już jest inną ścieżką. IMAP leftover S17. RFQ **DONE w 67.0**.
-- **67.0 DONE:** `/mail` „Utwórz RFQ” → `customer_rfq` z `inbound_message`. Nie kwota. Nie silnik.
-- **67.0 leftover — silnik wyceny na RFQ (dlaczego nie w tym plasterze):** S5 istniejący silnik. LLM nie liczy.
+- **64.0 leftover â€” resolve_email na wierszu / IMAP (dlaczego nie w tym plasterze):** `resolve_email` **DONE w 65.0**. S17 IMAP. Nie zgadujemy zaĹ‚Ä…cznikĂłw w S1.
+- **65.0 DONE:** `/mail` dopina nadawcÄ™ `inbound_message` przez `resolve_email`. Nie IMAP. Nie extract.
+- **65.0 leftover â€” extract z treĹ›ci (dlaczego nie w tym plasterze):** **DONE w 66.0.** ExtractionService nie zapisuje `rate_line`.
+- **66.0 DONE:** `/mail` â€žExtract HITLâ€ť â†’ `extract_to_draft` z tematu i treĹ›ci. Nie accept. Nie `rate_line` z poczty.
+- **66.0 leftover â€” zaĹ‚Ä…cznik blob / IMAP (dlaczego nie w tym plasterze):** S3 = treĹ›Ä‡, nie plik. Parser dokumentu juĹĽ jest innÄ… Ĺ›cieĹĽkÄ…. IMAP leftover S17. RFQ **DONE w 67.0**.
+- **67.0 DONE:** `/mail` â€žUtwĂłrz RFQâ€ť â†’ `customer_rfq` z `inbound_message`. Nie kwota. Nie silnik.
+- **67.0 leftover â€” silnik wyceny na RFQ (dlaczego nie w tym plasterze):** S5 istniejÄ…cy silnik. LLM nie liczy.
 - **26.0 DONE:** `/mail` `mailto:` z `party_contact.email`. Nie Office.js. Nie Graph.
-- **26.0 leftover — dodatek Office / Graph (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Auth0 odroczone. M-34 powiadomienia **DONE w 27.0**. `just dup` 2,69%.
-- **27.0 DONE:** `/notifications` odczyt HITL pending + wyceny pending. Nie nowa tabela. Nie wysyłka.
-- **27.0 leftover — tabela zdarzeń / push / SMTP (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Outbox = M-02 parked. Fala 5 zlecenie **DONE w 28.0** (tablica odczytu). `just dup` 2,67%.
+- **26.0 leftover â€” dodatek Office / Graph (dlaczego nie w tym plasterze):** CURRENT zakazaĹ‚ zgadywania schematu. Auth0 odroczone. M-34 powiadomienia **DONE w 27.0**. `just dup` 2,69%.
+- **27.0 DONE:** `/notifications` odczyt HITL pending + wyceny pending. Nie nowa tabela. Nie wysyĹ‚ka.
+- **27.0 leftover â€” tabela zdarzeĹ„ / push / SMTP (dlaczego nie w tym plasterze):** CURRENT zakazaĹ‚ zgadywania schematu. Outbox = M-02 parked. Fala 5 zlecenie **DONE w 28.0** (tablica odczytu). `just dup` 2,67%.
 - **28.0 DONE:** `/shipments` odczyt wycen z `party_id`. Nie nowa tabela. Nie tracking.
-- **28.0 leftover — tabela `shipment`:** spłacone w **90.0**. Odcinki / tracking / numer = S29+.
-- **90.0 leftover — odcinki / tracking / numer / auto z S11 (dlaczego nie w tym plasterze):** S28 = jeden wiersz z wyceny. M-36 to S29. `just dup` na diffie.
+- **28.0 leftover â€” tabela `shipment`:** spĹ‚acone w **90.0**. Odcinki / tracking / numer = S29+.
+- **90.0 leftover â€” odcinki / tracking / numer / auto z S11 (dlaczego nie w tym plasterze):** S28 = jeden wiersz z wyceny. M-36 to S29. `just dup` na diffie.
 - **29.0 DONE:** `/tracking` odczyt lane POL/POD + UN/LOCODE. Nie nowa tabela. Nie AIS. Nie mapa.
-- **29.0 leftover — tabela zdarzeń / AIS / mapa (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Watchtower parked. M-37 wyjątki **DONE w 30.0**. `just dup` 2,73%.
-- **30.0 DONE:** `/exceptions` odczyt wycen z `party_id` bez pełnego POL/POD. Nie nowa tabela. Nie AIS. Nie mapa.
-- **30.0 leftover — tabela zdarzeń / AIS / mapa (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Hold/ETA = zgadywanie. Watchtower parked. M-38 dokumenty zlecenia **DONE w 31.0**.
+- **29.0 leftover â€” tabela zdarzeĹ„ / AIS / mapa (dlaczego nie w tym plasterze):** CURRENT zakazaĹ‚ zgadywania schematu. Watchtower parked. M-37 wyjÄ…tki **DONE w 30.0**. `just dup` 2,73%.
+- **30.0 DONE:** `/exceptions` odczyt wycen z `party_id` bez peĹ‚nego POL/POD. Nie nowa tabela. Nie AIS. Nie mapa.
+- **30.0 leftover â€” tabela zdarzeĹ„ / AIS / mapa (dlaczego nie w tym plasterze):** CURRENT zakazaĹ‚ zgadywania schematu. Hold/ETA = zgadywanie. Watchtower parked. M-38 dokumenty zlecenia **DONE w 31.0**.
 - **31.0 DONE:** `/shipment-documents` odczyt `source_ref` wycen z `party_id`. Nie nowa tabela. Nie PDF. Nie HBL.
-- **31.0 leftover — PDF / HBL / U-print (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. U-print = B/L/FV Fala 5/6. M-39 EDI **DONE w 32.0**.
+- **31.0 leftover â€” PDF / HBL / U-print (dlaczego nie w tym plasterze):** CURRENT zakazaĹ‚ zgadywania schematu. U-print = B/L/FV Fala 5/6. M-39 EDI **DONE w 32.0**.
 - **32.0 DONE:** `/edi` odczyt `channel_quote` na lane wyceny. Nie nowa tabela. Nie X12. Nie live HTTP.
-- **32.0 leftover — parser EDI / live HTTP (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. X12/EDIFACT = zgadywanie. Outbox = M-02 parked. M-40 fakturowanie **DONE w 33.0**.
+- **32.0 leftover â€” parser EDI / live HTTP (dlaczego nie w tym plasterze):** CURRENT zakazaĹ‚ zgadywania schematu. X12/EDIFACT = zgadywanie. Outbox = M-02 parked. M-40 fakturowanie **DONE w 33.0**.
 - **33.0 DONE:** `/invoices` odczyt `sell` z `charge`. Nie nowa tabela. Nie KSeF. JS nie odejmuje.
-- **33.0 leftover — KSeF / numer FV (dlaczego nie w tym plasterze):** tabela **DONE w 96.0**. KSeF = S35. Licznik leftover S8. U-print leftover. M-41 rozliczenie **DONE w 34.0**.
+- **33.0 leftover â€” KSeF / numer FV (dlaczego nie w tym plasterze):** tabela **DONE w 96.0**. KSeF = S35. Licznik leftover S8. U-print leftover. M-41 rozliczenie **DONE w 34.0**.
 - **96.0 DONE:** `/invoices` zapis `sales_invoice` na zleceniu. RLS. Nie KSeF. Nie kwota na wierszu.
-- **96.0 leftover — KSeF / licznik numeru (dlaczego nie w tym plasterze):** S35 = sieć prawna. Licznik leftover S8. Rozliczenie M-41 zostaje tablicą.
+- **96.0 leftover â€” KSeF / licznik numeru (dlaczego nie w tym plasterze):** S35 = sieÄ‡ prawna. Licznik leftover S8. Rozliczenie M-41 zostaje tablicÄ….
 - **97.0 DONE:** `/invoices` zapis `ksef_ref` na `sales_invoice`. Nie live HTTP. Nie XML.
-- **97.0 leftover — live HTTP MF / XML / FA(3) (dlaczego nie w tym plasterze):** brak umowy i kasy klucza tenanta. Licznik leftover S8. M-41 rozliczenie = S36.
+- **97.0 leftover â€” live HTTP MF / XML / FA(3) (dlaczego nie w tym plasterze):** brak umowy i kasy klucza tenanta. Licznik leftover S8. M-41 rozliczenie = S36.
 - **34.0 DONE:** `/quote-invoices` odczyt wyceny i `sell` z `charge` po `rate_line_id`. Nie nowa tabela. JS nie odejmuje.
-- **34.0 leftover — tabela rozliczenia / FK / match_rate (dlaczego nie w tym plasterze):** tabela **DONE w 98.0**. `quotation_id` na `charge` leftover. SQL-refresh `quote_invoice_match_rate` leftover 10.0. M-42 bank **DONE w 35.0**.
+- **34.0 leftover â€” tabela rozliczenia / FK / match_rate (dlaczego nie w tym plasterze):** tabela **DONE w 98.0**. `quotation_id` na `charge` leftover. SQL-refresh `quote_invoice_match_rate` leftover 10.0. M-42 bank **DONE w 35.0**.
 - **98.0 DONE:** `/quote-invoices` zapis pary wycena+faktura. RLS. Nie kwota. Nie odejmowanie.
-- **98.0 leftover — match `shipment.quotation_id` / `quote_invoice_match_rate` (dlaczego nie w tym plasterze):** operator podaje dwa istniejące ID. SQL-refresh leftover 10.0. S37 bank.
+- **98.0 leftover â€” match `shipment.quotation_id` / `quote_invoice_match_rate` (dlaczego nie w tym plasterze):** operator podaje dwa istniejÄ…ce ID. SQL-refresh leftover 10.0. S37 bank.
 - **35.0 DONE:** `/payments` odczyt IBAN kontrahenta i `sell` z `charge`. Nie nowa tabela. Nie N+1. JS nie odejmuje.
-- **35.0 leftover — SEPA / wyciąg / tabela płatności (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. PSD2 leftover. M-43 koszt pieniądza **DONE w 36.0**.
-- **36.0 DONE:** `/money-cost` odczyt NBP i `buy` z `charge`. Nie nowa tabela. JS nie mnoży kursem.
-- **36.0 leftover — odsetki / WACC / payment_terms_days w API (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Mnożenie Decimal w SQL leftover. M-44 różnice kursowe **DONE w 37.0**.
+- **35.0 leftover â€” SEPA / wyciÄ…g / tabela pĹ‚atnoĹ›ci (dlaczego nie w tym plasterze):** CURRENT zakazaĹ‚ zgadywania schematu. PSD2 leftover. M-43 koszt pieniÄ…dza **DONE w 36.0**.
+- **36.0 DONE:** `/money-cost` odczyt NBP i `buy` z `charge`. Nie nowa tabela. JS nie mnoĹĽy kursem.
+- **36.0 leftover â€” odsetki / WACC / payment_terms_days w API (dlaczego nie w tym plasterze):** CURRENT zakazaĹ‚ zgadywania schematu. MnoĹĽenie Decimal w SQL leftover. M-44 rĂłĹĽnice kursowe **DONE w 37.0**.
 - **37.0 DONE:** `/fx-differences` odczyt NBP walut z `charge`/`quotation`. Nie nowa tabela. JS nie przelicza.
-- **37.0 leftover — tabela FX / amount×mid (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. MixedCurrencyCharge zostaje na `margin()`. M-45 przepływy **DONE w 38.0**.
-- **38.0 DONE:** `/cashflows` odczyt `buy` i `sell` z `charge` jako wypływ/wpływ. Nie nowa tabela. JS nie odejmuje.
-- **38.0 leftover — księga / DSO / sell−buy w JS (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Marża zostaje w `margin()`. M-46 koszt obsługi **DONE w 39.0**.
+- **37.0 leftover â€” tabela FX / amountĂ—mid (dlaczego nie w tym plasterze):** CURRENT zakazaĹ‚ zgadywania schematu. MixedCurrencyCharge zostaje na `margin()`. M-45 przepĹ‚ywy **DONE w 38.0**.
+- **38.0 DONE:** `/cashflows` odczyt `buy` i `sell` z `charge` jako wypĹ‚yw/wpĹ‚yw. Nie nowa tabela. JS nie odejmuje.
+- **38.0 leftover â€” ksiÄ™ga / DSO / sellâ’buy w JS (dlaczego nie w tym plasterze):** CURRENT zakazaĹ‚ zgadywania schematu. MarĹĽa zostaje w `margin()`. M-46 koszt obsĹ‚ugi **DONE w 39.0**.
 - **39.0 DONE:** `/cost-to-serve` odczyt SOP i wycen wybranego kontrahenta. Nie nowa tabela. JS nie sumuje.
-- **39.0 leftover — ABC / suma wycen / party_id na charge (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. M-47 księgowość **DONE w 40.0**.
-- **40.0 DONE:** `/bookkeeping` odczyt `charge` z nazwą z `charge_code`. Nie nowa tabela. Nie JPK. JS nie odejmuje.
-- **40.0 leftover — JPK / ERP HTTP (dlaczego nie w tym plasterze):** tabela dekretów = 104.0. JPK i ERP zostają poza S42. Fala 7 M-48 transport drogowy **DONE w 41.0**.
-- **104.0 DONE:** tabela `bookkeeping` para opłata+faktura. Nie JPK. Nie odejmowanie. JS nie liczy.
-- **105.0 DONE:** tabela `collective_invoice` para faktura+dodatkowe zlecenie. Nie płatność paczką. Nie JPK.
-- **105.0 leftover — płatność paczką / JPK (dlaczego nie w tym plasterze):** `bank_payment` zostaje 1:1. S43 to zbiorcze FV, nie wpłata wielu faktur.
+- **39.0 leftover â€” ABC / suma wycen / party_id na charge (dlaczego nie w tym plasterze):** CURRENT zakazaĹ‚ zgadywania schematu. M-47 ksiÄ™gowoĹ›Ä‡ **DONE w 40.0**.
+- **40.0 DONE:** `/bookkeeping` odczyt `charge` z nazwÄ… z `charge_code`. Nie nowa tabela. Nie JPK. JS nie odejmuje.
+- **40.0 leftover â€” JPK / ERP HTTP (dlaczego nie w tym plasterze):** tabela dekretĂłw = 104.0. JPK i ERP zostajÄ… poza S42. Fala 7 M-48 transport drogowy **DONE w 41.0**.
+- **104.0 DONE:** tabela `bookkeeping` para opĹ‚ata+faktura. Nie JPK. Nie odejmowanie. JS nie liczy.
+- **105.0 DONE:** tabela `collective_invoice` para faktura+dodatkowe zlecenie. Nie pĹ‚atnoĹ›Ä‡ paczkÄ…. Nie JPK.
+- **105.0 leftover â€” pĹ‚atnoĹ›Ä‡ paczkÄ… / JPK (dlaczego nie w tym plasterze):** `bank_payment` zostaje 1:1. S43 to zbiorcze FV, nie wpĹ‚ata wielu faktur.
 - **106.0 DONE:** `/finance` czyta `sales_invoice`. Nie suma. Nie narracja.
-- **106.0 leftover — suma FV / silnik limitu (dlaczego nie w 106.0):** tablica odczytuje wiersze. Narracja = 117.0. Limit zostaje na `party`. Zbiorcze zostaje na `/invoices`.
-- **117.0 DONE:** `/finance` składa narrację po SQL. Nie suma. Nie LLM.
-- **117.0 leftover — suma FV / silnik limitu / asystent LLM (dlaczego nie w tym plasterze):** zdania z pól GET. Suma i limit nie wchodzą. Komentarz modelu nie liczy.
+- **106.0 leftover â€” suma FV / silnik limitu (dlaczego nie w 106.0):** tablica odczytuje wiersze. Narracja = 117.0. Limit zostaje na `party`. Zbiorcze zostaje na `/invoices`.
+- **117.0 DONE:** `/finance` skĹ‚ada narracjÄ™ po SQL. Nie suma. Nie LLM.
+- **117.0 leftover â€” suma FV / silnik limitu / asystent LLM (dlaczego nie w tym plasterze):** zdania z pĂłl GET. Suma i limit nie wchodzÄ…. Komentarz modelu nie liczy.
 - **107.0 DONE:** tabela `gdpr_request` access/erasure + tombstone konta na `/gdpr`. Nie DPIA. Nie DELETE `app_user`.
-- **107.0 leftover — DPIA / kasowanie inbound/party / portal osoby / JWT (dlaczego nie w tym plasterze):** S45 to katalog konta, nie mapa PII w innych BC. Unieważnienie sesji leftover.
+- **107.0 leftover â€” DPIA / kasowanie inbound/party / portal osoby / JWT (dlaczego nie w tym plasterze):** S45 to katalog konta, nie mapa PII w innych BC. UniewaĹĽnienie sesji leftover.
 - **41.0 DONE:** `/road` odczyt `location` `postal_zone`/`address`. Nie nowa tabela. Nie TMS. Nie GPS.
-- **41.0 leftover — TMS / GPS (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Tabela odcinka = 108.0. TMS i GPS zostają poza S46.
+- **41.0 leftover â€” TMS / GPS (dlaczego nie w tym plasterze):** CURRENT zakazaĹ‚ zgadywania schematu. Tabela odcinka = 108.0. TMS i GPS zostajÄ… poza S46.
 - **108.0 DONE:** tabela `shipment_leg` `leg_kind=road` na `/road`. Nie mapa. Nie TMS. Nie GPS.
-- **108.0 leftover — S47–S49 kind / mapa / TMS (dlaczego nie w tym plasterze):** CHECK jest `road`. Kolej i drobnica to osobne Q. Mapa zakazana w PLAN.
-- **42.0 DONE:** `/rail` odczyt portów z flagą `rail`. Nie nowa tabela. Nie wagon. Nie CIM.
-- **42.0 leftover — wagon / CIM / GPS (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Odcinek kolejowy = 109.0. Wagon i CIM zostają poza S47.
+- **108.0 leftover â€” S47â€“S49 kind / mapa / TMS (dlaczego nie w tym plasterze):** CHECK jest `road`. Kolej i drobnica to osobne Q. Mapa zakazana w PLAN.
+- **42.0 DONE:** `/rail` odczyt portĂłw z flagÄ… `rail`. Nie nowa tabela. Nie wagon. Nie CIM.
+- **42.0 leftover â€” wagon / CIM / GPS (dlaczego nie w tym plasterze):** CURRENT zakazaĹ‚ zgadywania schematu. Odcinek kolejowy = 109.0. Wagon i CIM zostajÄ… poza S47.
 - **109.0 DONE:** `shipment_leg.leg_kind=rail` na `/rail`. Nie wagon. Nie mapa.
-- **109.0 leftover — S49 kind / wagon / mapa (dlaczego nie w tym plasterze):** CHECK po 109.0 jest `road|rail`. Kolej z Chin **DONE w 110.0**. Drobnica to S49.
-- **43.0 DONE:** `/china-rail` odczyt portów CN z flagą `rail`. Nie nowa tabela. Nie korytarz. Nie HTTP.
-- **43.0 leftover — korytarz / HTTP CR (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Odcinek `china_rail` = 110.0. Korytarz i HTTP zostają poza S48.
+- **109.0 leftover â€” S49 kind / wagon / mapa (dlaczego nie w tym plasterze):** CHECK po 109.0 jest `road|rail`. Kolej z Chin **DONE w 110.0**. Drobnica to S49.
+- **43.0 DONE:** `/china-rail` odczyt portĂłw CN z flagÄ… `rail`. Nie nowa tabela. Nie korytarz. Nie HTTP.
+- **43.0 leftover â€” korytarz / HTTP CR (dlaczego nie w tym plasterze):** CURRENT zakazaĹ‚ zgadywania schematu. Odcinek `china_rail` = 110.0. Korytarz i HTTP zostajÄ… poza S48.
 - **110.0 DONE:** `shipment_leg.leg_kind=china_rail` na `/china-rail`. Nie korytarz. Nie HTTP.
-- **110.0 leftover — S50 flota / korytarz / mapa (dlaczego nie w tym plasterze):** CHECK po 110.0 jest `road|rail|china_rail`. Drobnica **DONE w 111.0**. Flota to S50.
-- **44.0 DONE:** `/lcl` odczyt portów z `is_seaport`. Nie nowa tabela. Nie CFS. Nie LCL vs FCL.
-- **44.0 leftover — CFS / LCL vs FCL / HTTP konsolidatora (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Odcinek `ocean_lcl` = 111.0. CFS zostaje poza S49.
+- **110.0 leftover â€” S50 flota / korytarz / mapa (dlaczego nie w tym plasterze):** CHECK po 110.0 jest `road|rail|china_rail`. Drobnica **DONE w 111.0**. Flota to S50.
+- **44.0 DONE:** `/lcl` odczyt portĂłw z `is_seaport`. Nie nowa tabela. Nie CFS. Nie LCL vs FCL.
+- **44.0 leftover â€” CFS / LCL vs FCL / HTTP konsolidatora (dlaczego nie w tym plasterze):** CURRENT zakazaĹ‚ zgadywania schematu. Odcinek `ocean_lcl` = 111.0. CFS zostaje poza S49.
 - **111.0 DONE:** `shipment_leg.leg_kind=ocean_lcl` na `/lcl`. Nie CFS. Nie CBM.
-- **111.0 leftover — CFS / LCL vs FCL / flota S50 (dlaczego nie w tym plasterze):** CHECK jest `road|rail|china_rail|ocean_lcl`. Flota named park **DONE w 112.0**.
-- **112.0 DONE (park):** S50 flota bez tabeli i bez `/fleet`. Brak jobu „własne auto”.
+- **111.0 leftover â€” CFS / LCL vs FCL / flota S50 (dlaczego nie w tym plasterze):** CHECK jest `road|rail|china_rail|ocean_lcl`. Flota named park **DONE w 112.0**.
+- **112.0 DONE (park):** S50 flota bez tabeli i bez `/fleet`. Brak jobu â€žwĹ‚asne autoâ€ť.
 - **45.0 DONE:** `/sanctions` odczyt aktywnych `party` (`tax_id`, `country_code`). Nie nowa tabela. Nie OFAC. Nie auto-match.
-- **45.0 leftover — HTTP OFAC/EU / tabela hitów (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. M-56 RODO **DONE w 46.0** (M-54/M-55 bez nazwy w PLAN).
+- **45.0 leftover â€” HTTP OFAC/EU / tabela hitĂłw (dlaczego nie w tym plasterze):** CURRENT zakazaĹ‚ zgadywania schematu. M-56 RODO **DONE w 46.0** (M-54/M-55 bez nazwy w PLAN).
 - **46.0 DONE:** `/gdpr` odczyt `app_user.email` / `display_name`. Nie nowa tabela. Nie wniosek. Nie usuwanie.
-- **46.0 leftover — DPIA / M-54 nazwa (dlaczego nie w tym plasterze):** wniosek/usuwanie katalogu **DONE w 107.0**. DPIA i M-54 bez nazwy w PLAN.
+- **46.0 leftover â€” DPIA / M-54 nazwa (dlaczego nie w tym plasterze):** wniosek/usuwanie katalogu **DONE w 107.0**. DPIA i M-54 bez nazwy w PLAN.
 - **47.0 DONE:** `/ai` odczyt `extraction_draft` pending (`source_ref`). Nie nowa tabela. Nie czat. Nie accept.
-- **47.0 leftover — czat / prompt log / M-58 nazwa (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. M-68 obserwowalność **DONE w 48.0** (M-58–M-60 bez nazwy; Fala 10 parked).
+- **47.0 leftover â€” czat / prompt log / M-58 nazwa (dlaczego nie w tym plasterze):** CURRENT zakazaĹ‚ zgadywania schematu. M-68 obserwowalnoĹ›Ä‡ **DONE w 48.0** (M-58â€“M-60 bez nazwy; Fala 10 parked).
 - **48.0 DONE:** `/health` odczyt `fetchHealth`. Nie nowa tabela. Nie OTel. Nie k6.
-- **48.0 leftover — OTel / k6 (dlaczego nie w tym plasterze):** AGENTS: OTel = cel, nie runtime. M-69 jakość **DONE w 49.0**.
-- **49.0 DONE:** `/quality` odczyt szkiców z niepustym `unparsed_regions`. Nie nowa tabela. Nie scoring. Nie accept.
-- **49.0 leftover — scoring / tabela QA / `ab_delta_chars` (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. LLM/JS nie liczy jakości. M-70 wdrożenie **DONE w 50.0**.
+- **48.0 leftover â€” OTel / k6 (dlaczego nie w tym plasterze):** AGENTS: OTel = cel, nie runtime. M-69 jakoĹ›Ä‡ **DONE w 49.0**.
+- **49.0 DONE:** `/quality` odczyt szkicĂłw z niepustym `unparsed_regions`. Nie nowa tabela. Nie scoring. Nie accept.
+- **49.0 leftover â€” scoring / tabela QA / `ab_delta_chars` (dlaczego nie w tym plasterze):** CURRENT zakazaĹ‚ zgadywania schematu. LLM/JS nie liczy jakoĹ›ci. M-70 wdroĹĽenie **DONE w 50.0**.
 - **50.0 DONE:** `/rollout` odczyt `organization_setting` z kluczem `default_currency`. Nie nowa tabela. Nie upsert. Nie CI.
-- **50.0 leftover — tabela rollout / CI / sekrety (dlaczego nie w tym plasterze):** CURRENT zakazał zgadywania schematu. Zapis zostaje na `/organization-settings`. Fala 11 Q zamknięta; leftover Wave FE **U-oklch-dark DONE w 51.0**.
+- **50.0 leftover â€” tabela rollout / CI / sekrety (dlaczego nie w tym plasterze):** CURRENT zakazaĹ‚ zgadywania schematu. Zapis zostaje na `/organization-settings`. Fala 11 Q zamkniÄ™ta; leftover Wave FE **U-oklch-dark DONE w 51.0**.
 - **51.0 DONE:** `index.css` `oklch()` + `.dark`; `prefers-color-scheme` na `html`. Nie tabela. Nie nowa trasa.
-- **51.0 leftover — U-money-align (dlaczego nie w tym plasterze):** PLAN leftover po U-oklch-dark. **DONE w 52.0**.
+- **51.0 leftover â€” U-money-align (dlaczego nie w tym plasterze):** PLAN leftover po U-oklch-dark. **DONE w 52.0**.
 - **52.0 DONE:** `<Money/>` siatka integer / 4 miejsca / ISO. Nie `parseFloat`. Nie grouping locale.
-- **52.0 leftover — grouping tysięcy / U-condensed (dlaczego nie w tym plasterze):** `toLocaleString` na kwocie = Number. U-condensed **DONE w 53.0**.
+- **52.0 leftover â€” grouping tysiÄ™cy / U-condensed (dlaczego nie w tym plasterze):** `toLocaleString` na kwocie = Number. U-condensed **DONE w 53.0**.
 - **53.0 DONE:** `allowCondensed` na `/rate-lines`; inny DataTableShell bez opcji `condensed`. Nie nowa tabela. Nie globalnie.
-- **53.0 leftover — U-primitives-json / freeze (dlaczego nie w tym plasterze):** PLAN leftover po U-condensed. **DONE w 54.0**.
+- **53.0 leftover â€” U-primitives-json / freeze (dlaczego nie w tym plasterze):** PLAN leftover po U-condensed. **DONE w 54.0**.
 - **54.0 DONE:** `frontend/components.json` `"base": "radix"`. Nie Base UI. Nie `shadcn init` na tokenach.
-- **54.0 leftover — U-i18n-structure (dlaczego nie w tym plasterze):** PLAN leftover po pinie CLI. **DONE w 55.0**.
+- **54.0 leftover â€” U-i18n-structure (dlaczego nie w tym plasterze):** PLAN leftover po pinie CLI. **DONE w 55.0**.
 - **55.0 DONE:** `t()` + katalog `pl` na `/quality` i `/rollout`. `formatInstant` Intl. Nie EN. Nie `Number` na kwocie.
-- **55.0 leftover — U-playwright-axe (dlaczego nie w tym plasterze):** PLAN leftover po i18n. **DONE w 56.0**.
-- **56.0 DONE:** Playwright Chromium + axe na `/session`→`/rate-lines`, `/extractions`, `/quotations`. W `code-gate` po `perf`. Nie live accept.
-- **56.0 leftover — U-print (dlaczego nie w tym plasterze):** PLAN leftover po E2E. **DONE w 57.0**.
-- **57.0 DONE:** `@media print` chowa `aside` / `header` / ⌘K. Nie jsPDF. Panele oferty / FV / dokumentu zlecenia zostają.
-- **57.0 leftover — F9.1 / parked (dlaczego nie w tym plasterze):** M-58–M-60 bez żywej nazwy w PLAN. M-02, Auth0, portale parked. Nie zgaduj.
-- **6.0 leftover — klon nagłówka modelu (dlaczego nie w tym plasterze):** `jscpd` 6 linii `charge.py` przeciw `nbp_rate.py` (blok `id`). Miksin wszystkich modeli = `refaktor-pass`. `just dup` 2,83% po kompaktowym `id` i osobnym formularzu kursu (nie `CatalogCreateForm`).
-- **7.0 DONE:** `dangerous_good` UN/IMDG + aliasy + `source_ref`, RLS FORCE, `resolve`, OpenFGA `can_manage_dangerous_goods`, `/dangerous-goods`. Nie podpięcie do wyceny, nie live IMO, nie M-08 `charge`.
-- **7.0 leftover — live IMO / ADN-ADR / Fala 8 (dlaczego nie w tym plasterze):** ręczny wpis = `tenant:manual`; fixture = `imdg:<un_number>`. Seed tysięcy UN i live HTTP do IMO = jak 4.0/5.0. ADN/ADR osobne tabele i grupy zgodności 1.xA = później. Fala 8 M-53–M-56 zostaje.
+- **55.0 leftover â€” U-playwright-axe (dlaczego nie w tym plasterze):** PLAN leftover po i18n. **DONE w 56.0**.
+- **56.0 DONE:** Playwright Chromium + axe na `/session`â†’`/rate-lines`, `/extractions`, `/quotations`. W `code-gate` po `perf`. Nie live accept.
+- **56.0 leftover â€” U-print (dlaczego nie w tym plasterze):** PLAN leftover po E2E. **DONE w 57.0**.
+- **57.0 DONE:** `@media print` chowa `aside` / `header` / âŚK. Nie jsPDF. Panele oferty / FV / dokumentu zlecenia zostajÄ….
+- **57.0 leftover â€” F9.1 / parked (dlaczego nie w tym plasterze):** M-58â€“M-60 bez ĹĽywej nazwy w PLAN. M-02, Auth0, portale parked. Nie zgaduj.
+- **6.0 leftover â€” klon nagĹ‚Ăłwka modelu (dlaczego nie w tym plasterze):** `jscpd` 6 linii `charge.py` przeciw `nbp_rate.py` (blok `id`). Miksin wszystkich modeli = `refaktor-pass`. `just dup` 2,83% po kompaktowym `id` i osobnym formularzu kursu (nie `CatalogCreateForm`).
+- **7.0 DONE:** `dangerous_good` UN/IMDG + aliasy + `source_ref`, RLS FORCE, `resolve`, OpenFGA `can_manage_dangerous_goods`, `/dangerous-goods`. Nie podpiÄ™cie do wyceny, nie live IMO, nie M-08 `charge`.
+- **7.0 leftover â€” live IMO / ADN-ADR / Fala 8 (dlaczego nie w tym plasterze):** rÄ™czny wpis = `tenant:manual`; fixture = `imdg:<un_number>`. Seed tysiÄ™cy UN i live HTTP do IMO = jak 4.0/5.0. ADN/ADR osobne tabele i grupy zgodnoĹ›ci 1.xA = pĂłĹşniej. Fala 8 M-53â€“M-56 zostaje.
 - **8.0 DONE:** `resolve_email` na `party_email_domain`, GET `/parties/resolve-email`, pole na `/parties`. Nie nowa tabela, nie IMAP, nie auto-INSERT kontaktu.
-- **8.0 leftover — IMAP / denylista / prefill kontaktu (dlaczego nie w tym plasterze):** tablica adresów **DONE w 25.0**. Live IMAP leftover 25.0. Denylista `gmail.com` = gdy operator zgłosi fałszywe dopasowania. Prefill `party_contact` z local-part = trzecie kliknięcie, nie ten plaster. Tuple OpenFGA na `party` zostaje.
+- **8.0 leftover â€” IMAP / denylista / prefill kontaktu (dlaczego nie w tym plasterze):** tablica adresĂłw **DONE w 25.0**. Live IMAP leftover 25.0. Denylista `gmail.com` = gdy operator zgĹ‚osi faĹ‚szywe dopasowania. Prefill `party_contact` z local-part = trzecie klikniÄ™cie, nie ten plaster. Tuple OpenFGA na `party` zostaje.
 - **9.0 DONE:** `network` per tenant, GET/POST `/networks`, resolve, `/networks`. Nie `network_member`, nie scraping.
-- **9.0 leftover — katalog agentów / scraping / RapidFuzz (dlaczego nie w tym plasterze):** `network_member` DONE 82.0. Zostaje: `network_membership` numer; kontakty; `network_member_link` + RapidFuzz; import Excel/PDF; portal WCA zakazany (sui generis).
-- **82.0 leftover — portal / RapidFuzz / FK party (dlaczego nie w tym plasterze):** S19 = ręczny wpis. Portal i dedupe = sui generis + leftover. FK party złamałoby granicę BC.
+- **9.0 leftover â€” katalog agentĂłw / scraping / RapidFuzz (dlaczego nie w tym plasterze):** `network_member` DONE 82.0. Zostaje: `network_membership` numer; kontakty; `network_member_link` + RapidFuzz; import Excel/PDF; portal WCA zakazany (sui generis).
+- **82.0 leftover â€” portal / RapidFuzz / FK party (dlaczego nie w tym plasterze):** S19 = rÄ™czny wpis. Portal i dedupe = sui generis + leftover. FK party zĹ‚amaĹ‚oby granicÄ™ BC.
 - **10.0 DONE:** `party_scorecard` snapshot + RLS FORCE + ranking `/party-scorecards` + panel `/parties`. Nie SQL-refresh, nie scoring osoby, nie RFQ.
-- **10.0 leftover — silnik wskaźników / lane / M-14 (dlaczego nie w tym plasterze):** SQL-refresh z `quotation`/`charge` wymaga znaczników odpowiedzi (M-30) i faktury (M-40). Karta per lane = osobne ziarno. Auto-scoring `natural_person` / JDG = M-14 + AI Act. Klon 9 linii `charge.py`/`party_scorecard.py` (blok id/org) — `refaktor-pass`. `just dup` 2,97%.
-- **11.0 DONE:** `customer_sop` katalog + RLS FORCE + `/customer-sops` + panel `/parties`. Nie generator zadań, nie M-35, nie `superseded_by`.
-- **11.0 leftover — generator zadań / wersje / M-35 (dlaczego nie w tym plasterze):** SOP → task wymaga silnika zadań (M-35). Walidacja przy zleceniu = Fala 5. `superseded_by` jak `rate_line` = historia, nie 11.0. Klon nagłówka modelu vs `charge.py` / `organization_setting.py` — `refaktor-pass`. `just dup` 2,72%.
+- **10.0 leftover â€” silnik wskaĹşnikĂłw / lane / M-14 (dlaczego nie w tym plasterze):** SQL-refresh z `quotation`/`charge` wymaga znacznikĂłw odpowiedzi (M-30) i faktury (M-40). Karta per lane = osobne ziarno. Auto-scoring `natural_person` / JDG = M-14 + AI Act. Klon 9 linii `charge.py`/`party_scorecard.py` (blok id/org) â€” `refaktor-pass`. `just dup` 2,97%.
+- **11.0 DONE:** `customer_sop` katalog + RLS FORCE + `/customer-sops` + panel `/parties`. Nie generator zadaĹ„, nie M-35, nie `superseded_by`.
+- **11.0 leftover â€” generator zadaĹ„ / wersje / M-35 (dlaczego nie w tym plasterze):** SOP â†’ task wymaga silnika zadaĹ„ (M-35). Walidacja przy zleceniu = Fala 5. `superseded_by` jak `rate_line` = historia, nie 11.0. Klon nagĹ‚Ăłwka modelu vs `charge.py` / `organization_setting.py` â€” `refaktor-pass`. `just dup` 2,72%.
 - **12.0 DONE:** `port_surcharge` katalog extra + RLS FORCE + `/port-surcharges` + panel `/ports`. Nie zapis do `charge`, nie ewaluacja `applies_when`, nie M-19 live.
-- **12.0 leftover — ewaluacja warunku / zapis do charge:** matching SQL = 69.0. Zapis extra do `charge` / wyceny zostaje. Parser AST = leftover. Live taryfa = leftover M-19.
+- **12.0 leftover â€” ewaluacja warunku / zapis do charge:** matching SQL = 69.0. Zapis extra do `charge` / wyceny zostaje. Parser AST = leftover. Live taryfa = leftover M-19.
 - **13.0 DONE:** `channel_quote` katalog oferty + RLS FORCE + `/channel-quotes`. Nie live HTTP, nie IMAP, nie zapis do `rate_line`/`charge`.
-- **13.0 leftover — live HTTP / sekrety / IMAP (dlaczego nie w tym plasterze):** `carrier_profile.api_adapter` zostaje etykietą. Magazyn sekretów tenanta = leftover HC. IMAP = M-32. INSERT `rate_line`/`charge` = teatr bez silnika kanału. Klon nagłówka modelu vs `nbp_rate.py` — `refaktor-pass`. `just dup` 2,83%.
+- **13.0 leftover â€” live HTTP / sekrety / IMAP (dlaczego nie w tym plasterze):** `carrier_profile.api_adapter` zostaje etykietÄ…. Magazyn sekretĂłw tenanta = leftover HC. IMAP = M-32. INSERT `rate_line`/`charge` = teatr bez silnika kanaĹ‚u. Klon nagĹ‚Ăłwka modelu vs `nbp_rate.py` â€” `refaktor-pass`. `just dup` 2,83%.
 - **14.0 DONE:** `credit_review` katalog recenzji + RLS FORCE + `/credit-reviews` + panel `/parties`. Nie auto-scoring, nie zapis `credit_limit`, nie biuro HTTP.
-- **14.0 leftover — auto-scoring / biuro / limit (dlaczego nie w tym plasterze):** brak `legal_form` i PESEL; AI Act zakazuje scoringu osoby. HTTP BIK/KRD = sekrety tenanta (leftover HC). `party.credit_limit` zostaje ręczną parą Decimal z 5.0. M-15 VDF **DONE jako tablica odczytu** (15.0). `just dup` 2,76%.
-- **15.0 DONE:** `finance_board` `/finance` — odczyt marży z `charge`, kursów NBP, limitu i recenzji. Nie nowa tabela. LLM nie liczy.
-- **15.0 leftover — asystent LLM VDF (dlaczego nie w tym plasterze):** komentarz modelu do marży = liczenie/interpretacja kwot. PLAN: LLM nie liczy. `charge` zostaje prawdą. `just dup` 2,78%.
-- **U-catalog-parts (reszta po 60.0):** `/quotations` nadal własny chrome (panele jobów, nie trzecie powtórzenie tabeli). `/rate-lines` ma nagłówek/sesję/błąd z parts, ale `DataTableShell` + `allowCondensed` zostają w źródle strony — test 53.0 czyta te stringi. Mixin nagłówków modeli = poza Q-E1.
-- **ADR-0003 DONE (dokument):** system UI + makiety `docs/design/`. Implementacja = leftover `U-oklch-dark` … `U-print` **poza Q1**. Nie Base UI. Nie mapa w initial JS.
-- **0.24 leftover (dlaczego nie w tym plasterze):** `just audit` nie w lokalnym `just gate` (~80 s + sieć PyPI) — CI woła `just audit`; audit = drzewo pyproject, nie host site-packages (pillow/gitpython); image Dockera bez digestu; OpenFGA nie w `/ready`; k6/vulture nadal echo
-- **U-routes-breadth DONE:** standing (Charge 1.0–1.2 mają trasy). Exit Wave FE **nie** claim — nie 70 UI, nie „powierzchnia 2026”
-- **U-admin-ref DONE:** pulpit = joby operatora; sidebar/toolbar/⌘K.
+- **14.0 leftover â€” auto-scoring / biuro / limit (dlaczego nie w tym plasterze):** brak `legal_form` i PESEL; AI Act zakazuje scoringu osoby. HTTP BIK/KRD = sekrety tenanta (leftover HC). `party.credit_limit` zostaje rÄ™cznÄ… parÄ… Decimal z 5.0. M-15 VDF **DONE jako tablica odczytu** (15.0). `just dup` 2,76%.
+- **15.0 DONE:** `finance_board` `/finance` â€” odczyt marĹĽy z `charge`, kursĂłw NBP, limitu i recenzji. Nie nowa tabela. LLM nie liczy.
+- **15.0 leftover â€” asystent LLM VDF (dlaczego nie w tym plasterze):** komentarz modelu do marĹĽy = liczenie/interpretacja kwot. PLAN: LLM nie liczy. `charge` zostaje prawdÄ…. `just dup` 2,78%.
+- **U-catalog-parts (reszta po 60.0):** `/quotations` nadal wĹ‚asny chrome (panele jobĂłw, nie trzecie powtĂłrzenie tabeli). `/rate-lines` ma nagĹ‚Ăłwek/sesjÄ™/bĹ‚Ä…d z parts, ale `DataTableShell` + `allowCondensed` zostajÄ… w ĹşrĂłdle strony â€” test 53.0 czyta te stringi. Mixin nagĹ‚ĂłwkĂłw modeli = poza Q-E1.
+- **ADR-0003 DONE (dokument):** system UI + makiety `docs/design/`. Implementacja = leftover `U-oklch-dark` â€¦ `U-print` **poza Q1**. Nie Base UI. Nie mapa w initial JS.
+- **0.24 leftover (dlaczego nie w tym plasterze):** `just audit` nie w lokalnym `just gate` (~80 s + sieÄ‡ PyPI) â€” CI woĹ‚a `just audit`; audit = drzewo pyproject, nie host site-packages (pillow/gitpython); image Dockera bez digestu; OpenFGA nie w `/ready`; k6/vulture nadal echo
+- **U-routes-breadth DONE:** standing (Charge 1.0â€“1.2 majÄ… trasy). Exit Wave FE **nie** claim â€” nie 70 UI, nie â€žpowierzchnia 2026â€ť
+- **U-admin-ref DONE:** pulpit = joby operatora; sidebar/toolbar/âŚK.
 - **U-pdf-spans DONE:** viewer PDF + spany HITL; lazy pdf.js. Draft nie trzyma PDF (tylko input_text).
 - **U-size-limit-real DONE:** `just perf` = build + gzip initial JS < 250 kB; w `just gate`. k6/vulture/pip-audit nadal echo.
-- **U-a11y DONE:** skip-to-main + `:focus-visible` + ścieżka operatora.
+- **U-a11y DONE:** skip-to-main + `:focus-visible` + Ĺ›cieĹĽka operatora.
 - **U-density DONE:** compact + toggle na users / charge-codes / rate-lines / charges / extractions.
-- **U-palette-ops DONE:** ⌘K akcje operatora (extract, accept-focus, save-view, clear-session).
-- **U-art50 DONE:** label „propozycja AI” na recenzji HITL.
+- **U-palette-ops DONE:** âŚK akcje operatora (extract, accept-focus, save-view, clear-session).
+- **U-art50 DONE:** label â€žpropozycja AIâ€ť na recenzji HITL.
 - **1.3 DONE:** accept HITL + `rate_line` (kupno) w jednej transakcji HTTP; `ExtractionService` nie importuje rates.
 - **1.2 DONE:** `charge` buy+sell + `margin(buy, sell)` + `/charges`. Nie accept HITL
-- **1.3 leftover (dlaczego nie w tym plasterze):** isolation/integration = CI — lokalnie PG wisiał przy `pytest -m integration` (jak 0.16–1.2); `just api-types` nie regen — `rate_line_ids` w wrapperze nieczytane, gate = typecheck; brak MCP Postgres w sesji — nowej tabeli nie było; Wave FE U-* DONE; Auth0 I1/I2 odroczone (brak tenanta)
-- **U-routes-breadth:** 1.3 = status + link `/rate-lines` na HITL. Nie Exit Wave FE (U-density…U-admin-ref)
-- **1.1 DONE:** `rate_line` immutable + `source_ref` + `/rate-lines`. Nie `charge` / marża
+- **1.3 leftover (dlaczego nie w tym plasterze):** isolation/integration = CI â€” lokalnie PG wisiaĹ‚ przy `pytest -m integration` (jak 0.16â€“1.2); `just api-types` nie regen â€” `rate_line_ids` w wrapperze nieczytane, gate = typecheck; brak MCP Postgres w sesji â€” nowej tabeli nie byĹ‚o; Wave FE U-* DONE; Auth0 I1/I2 odroczone (brak tenanta)
+- **U-routes-breadth:** 1.3 = status + link `/rate-lines` na HITL. Nie Exit Wave FE (U-densityâ€¦U-admin-ref)
+- **1.1 DONE:** `rate_line` immutable + `source_ref` + `/rate-lines`. Nie `charge` / marĹĽa
 - **1.0 DONE:** `charge_code` katalog + aliasy + RLS + `/charge-codes`. Nie `rate_line` / `charge`
 - **0.25 DONE:** Money Decimal + waluta + `<Money/>` na HITL. Bez tabeli charge
-- **Exit Wave A:** D0 + T0…0.23. 0.24 DONE (audit w CI, nie w local gate)
-- **U-routes-breadth:** 1.2 ma `/charges`. 1.1 ma `/rate-lines`. 1.0 ma `/charge-codes`. Nie Exit Wave FE (U-density…U-admin-ref)
-- **1.2 leftover (dlaczego nie w tym plasterze):** isolation/integration = CI — lokalnie PG wisiał przy `pytest -m integration` (jak 0.16–1.1); `just api-types` nie regen — wrapper fetch, gate = typecheck; brak MCP Postgres w sesji — schemat z migracji 008/009
-- **1.1 leftover (dlaczego nie w tym plasterze):** isolation/integration = CI — lokalnie PG wisiał przy `pytest -m integration` (jak 0.16–0.18 / 1.0); `just api-types` nie regen — wrapper fetch, gate = typecheck
-- **1.0 leftover (dlaczego nie w tym plasterze):** isolation/integration = CI — lokalnie PG wisiał (jak 0.16–0.18); `just api-types` nie regen — wrapper fetch, gate = typecheck
-- **1.0 leftover:** aliasy jako `TEXT[]` na wierszu, nie osobna tabela — wystarcza resolve; osobny wiersz aliasu gdy 1.1+ tego wymaga
-- **Leftover ≠ DONE:** wiersz w tym pliku / PLAN nie zamyka plastra i nie zastępuje `just gate`
-- **OAuth/OIDC:** HITL `idp_connector` **270.0**. I1/I2 live **parked** (brak tenanta / sekretu / testu). Sesja = email+hasło+JWT (0.15 + 0.12). 0.12/0.15 **nie** są IdP.
+- **Exit Wave A:** D0 + T0â€¦0.23. 0.24 DONE (audit w CI, nie w local gate)
+- **U-routes-breadth:** 1.2 ma `/charges`. 1.1 ma `/rate-lines`. 1.0 ma `/charge-codes`. Nie Exit Wave FE (U-densityâ€¦U-admin-ref)
+- **1.2 leftover (dlaczego nie w tym plasterze):** isolation/integration = CI â€” lokalnie PG wisiaĹ‚ przy `pytest -m integration` (jak 0.16â€“1.1); `just api-types` nie regen â€” wrapper fetch, gate = typecheck; brak MCP Postgres w sesji â€” schemat z migracji 008/009
+- **1.1 leftover (dlaczego nie w tym plasterze):** isolation/integration = CI â€” lokalnie PG wisiaĹ‚ przy `pytest -m integration` (jak 0.16â€“0.18 / 1.0); `just api-types` nie regen â€” wrapper fetch, gate = typecheck
+- **1.0 leftover (dlaczego nie w tym plasterze):** isolation/integration = CI â€” lokalnie PG wisiaĹ‚ (jak 0.16â€“0.18); `just api-types` nie regen â€” wrapper fetch, gate = typecheck
+- **1.0 leftover:** aliasy jako `TEXT[]` na wierszu, nie osobna tabela â€” wystarcza resolve; osobny wiersz aliasu gdy 1.1+ tego wymaga
+- **Leftover â‰  DONE:** wiersz w tym pliku / PLAN nie zamyka plastra i nie zastÄ™puje `just gate`
+- **OAuth/OIDC:** HITL `idp_connector` **270.0**. I1/I2 live **parked** (brak tenanta / sekretu / testu). Sesja = email+hasĹ‚o+JWT (0.15 + 0.12). 0.12/0.15 **nie** sÄ… IdP.
 - **0.11 DONE:** HTTP XOR 422 + vitest `extractionCreateBody`
 - **0.12 DONE:** JWT HS256 hello (`Authorization: Bearer`); identity z claims; OpenFGA nadal AuthZ
-- **0.13 DONE:** split-screen HITL (podgląd `input_text` | recenzja); nie PDF canvas
+- **0.13 DONE:** split-screen HITL (podglÄ…d `input_text` | recenzja); nie PDF canvas
 - **0.14 DONE:** HTTP extract/list/accept/reject (unit + stub `ExtractionService`); `api/extractions.py` ~97%; nie live Postgres
-- **0.10 DONE:** langfuse trace (no-op bez kluczy) + `just promptfoo` pytest echo — nie cloud, nie żywy LLM, nie `npx promptfoo eval`
-- **Po 0.10 (eval):** `npx promptfoo eval` — lokalnie ENOSPC / playwright peers; 30 cenników = osobna decyzja danych
-- **2.1–2.2 leftover (dlaczego nie w tym plasterze):** żywy microsoft-presidio; Presidio na każdym endpoincie (cel HC); 30 PDF klienta w eval (zakaz git); `npx promptfoo eval` / OpenAI w gate
-- **0.10+ produkt:** żywy instructor/OpenAI w CI, transformers llm-guard, Presidio-all, promptfoo 30 cenników, langfuse cloud
-- **Wizja, nie kod:** outbox, Temporal/Hatchet/OTel jako działające systemy
+- **0.10 DONE:** langfuse trace (no-op bez kluczy) + `just promptfoo` pytest echo â€” nie cloud, nie ĹĽywy LLM, nie `npx promptfoo eval`
+- **Po 0.10 (eval):** `npx promptfoo eval` â€” lokalnie ENOSPC / playwright peers; 30 cennikĂłw = osobna decyzja danych
+- **2.1â€“2.2 leftover (dlaczego nie w tym plasterze):** ĹĽywy microsoft-presidio; Presidio na kaĹĽdym endpoincie (cel HC); 30 PDF klienta w eval (zakaz git); `npx promptfoo eval` / OpenAI w gate
+- **0.10+ produkt:** ĹĽywy instructor/OpenAI w CI, transformers llm-guard, Presidio-all, promptfoo 30 cennikĂłw, langfuse cloud
+- **Wizja, nie kod:** outbox, Temporal/Hatchet/OTel jako dziaĹ‚ajÄ…ce systemy
 - **Backlog produktu:** HTTP extract vs live Postgres. PDF canvas HITL = U-pdf-spans (lazy); draft nadal bez blob PDF
-- **0.14 leftover (dlaczego nie w tym plasterze):** `api/extractions.py:78` `UnparseableDocument("Brak input_text")` — gałąź obronna po XOR Pydantic (0.11); C901/jscpd na diffie czyste, bez refaktoru testów HTTP
-- **Ops:** branch protection UI (GitHub Free private 403) — [branch-protection.md](branch-protection.md); k6 / vulture = echo; `just audit` = pip-audit projektu (0.24); `just perf` = size-limit (U-size-limit-real)
-- **Kontrakt FE:** nie edytuj ręcznie `frontend/src/api/*` (flatten anyOf|null → cast w wrapperze)
-- **Zakaz:** fałszywe ruchy `refactor_ratio`, folder `.cursor/agents/` z personami, dump `Informacje z claude/` do nowych docs
+- **0.14 leftover (dlaczego nie w tym plasterze):** `api/extractions.py:78` `UnparseableDocument("Brak input_text")` â€” gaĹ‚Ä…Ĺş obronna po XOR Pydantic (0.11); C901/jscpd na diffie czyste, bez refaktoru testĂłw HTTP
+- **Ops:** branch protection UI (GitHub Free private 403) â€” [branch-protection.md](branch-protection.md); k6 / vulture = echo; `just audit` = pip-audit projektu (0.24); `just perf` = size-limit (U-size-limit-real)
+- **Kontrakt FE:** nie edytuj rÄ™cznie `frontend/src/api/*` (flatten anyOf|null â†’ cast w wrapperze)
+- **Zakaz:** faĹ‚szywe ruchy `refactor_ratio`, folder `.cursor/agents/` z personami, dump `Informacje z claude/` do nowych docs

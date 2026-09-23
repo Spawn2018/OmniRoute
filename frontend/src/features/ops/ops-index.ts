@@ -154,6 +154,11 @@ export const OPS_JOBS = [
     job: "HITL handover_bind_mark stance bez FK UUID / T6 live",
   },
   {
+    route: BUSINESS_LISTS.tripVarianceMark.route,
+    label: "Wariancje przejazdu",
+    job: "HITL trip_variance_mark stance bez SQL na charge",
+  },
+  {
     route: BUSINESS_LISTS.tenderDataRoom.route,
     label: "Pokoje danych",
     job: "NDA na tender bez extractu",
@@ -1994,6 +1999,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "635.0": "/local-charge-warning-marks",
   "636.0": "/document-templates",
   "637.0": "/handover-bind-marks",
+  "638.0": "/trip-variance-marks",
   "209.0": "/air",
   "210.0": "/shipments",
   "211.0": "/organization-settings",

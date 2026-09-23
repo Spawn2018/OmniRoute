@@ -150,6 +150,10 @@ export const BUSINESS_LISTS = {
     route: "/trip-bill-marks",
     tableKey: "trip_bill_mark",
   },
+  tripVarianceMark: {
+    route: "/trip-variance-marks",
+    tableKey: "trip_variance_mark",
+  },
   automationBiasMark: {
     route: "/automation-bias-marks",
     tableKey: "automation_bias_mark",
@@ -696,6 +700,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/handover-notes",
   "/handover-bind-marks",
   "/trip-bill-marks",
+  "/trip-variance-marks",
   "/vda-odette-marks",
   "/inventory-position-marks",
   "/fair-share-marks",

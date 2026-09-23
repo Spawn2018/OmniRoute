@@ -19299,6 +19299,80 @@
         ]
       }
     },
+    "/api/v1/trip-variance-marks": {
+      "get": {
+        "tags": [
+          "trip-variance-marks"
+        ],
+        "summary": "List Trip Variance Marks",
+        "operationId": "list_trip_variance_marks_api_v1_trip_variance_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TripVarianceMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Trip Variance Marks Api V1 Trip Variance Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "trip-variance-marks"
+        ],
+        "summary": "Create Trip Variance Mark",
+        "operationId": "create_trip_variance_mark_api_v1_trip_variance_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TripVarianceMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TripVarianceMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/asns": {
       "get": {
         "tags": [
@@ -58039,6 +58113,65 @@
           "superseded_by"
         ],
         "title": "TripResponse"
+      },
+      "TripVarianceMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "variance_kind": {
+            "type": "string",
+            "title": "Variance Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "variance_kind",
+          "source_ref"
+        ],
+        "title": "TripVarianceMarkCreate"
+      },
+      "TripVarianceMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "variance_kind": {
+            "type": "string",
+            "title": "Variance Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "variance_kind",
+          "source_ref"
+        ],
+        "title": "TripVarianceMarkResponse"
       },
       "TwinKindCreate": {
         "properties": {

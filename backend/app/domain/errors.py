@@ -614,6 +614,14 @@ class HandoverBindMarkConflict(DomainError):
     """Duplikat kodu wiązania przekazania w tenancie."""
 
 
+class InvalidTripVarianceMark(DomainError):
+    """P5 leftover: HITL stance wariancji przejazdu — nie SQL na charge."""
+
+
+class TripVarianceMarkConflict(DomainError):
+    """Duplikat kodu wariancji przejazdu w tenancie."""
+
+
 class InvalidDocumentTemplate(DomainError):
     """Szablon wydruku jako dane — nie PDF, nie etykieta sieci."""
 

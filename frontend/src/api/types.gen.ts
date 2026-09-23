@@ -18313,6 +18313,50 @@ export type TripResponse = {
 };
 
 /**
+ * TripVarianceMarkCreate
+ */
+export type TripVarianceMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Variance Kind
+     */
+    variance_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * TripVarianceMarkResponse
+ */
+export type TripVarianceMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Variance Kind
+     */
+    variance_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * TwinKindCreate
  */
 export type TwinKindCreate = {
@@ -30246,6 +30290,49 @@ export type CreateTripBillMarkApiV1TripBillMarksPostResponses = {
 };
 
 export type CreateTripBillMarkApiV1TripBillMarksPostResponse = CreateTripBillMarkApiV1TripBillMarksPostResponses[keyof CreateTripBillMarkApiV1TripBillMarksPostResponses];
+
+export type ListTripVarianceMarksApiV1TripVarianceMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/trip-variance-marks';
+};
+
+export type ListTripVarianceMarksApiV1TripVarianceMarksGetResponses = {
+    /**
+     * Response List Trip Variance Marks Api V1 Trip Variance Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<TripVarianceMarkResponse>;
+};
+
+export type ListTripVarianceMarksApiV1TripVarianceMarksGetResponse = ListTripVarianceMarksApiV1TripVarianceMarksGetResponses[keyof ListTripVarianceMarksApiV1TripVarianceMarksGetResponses];
+
+export type CreateTripVarianceMarkApiV1TripVarianceMarksPostData = {
+    body: TripVarianceMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/trip-variance-marks';
+};
+
+export type CreateTripVarianceMarkApiV1TripVarianceMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateTripVarianceMarkApiV1TripVarianceMarksPostError = CreateTripVarianceMarkApiV1TripVarianceMarksPostErrors[keyof CreateTripVarianceMarkApiV1TripVarianceMarksPostErrors];
+
+export type CreateTripVarianceMarkApiV1TripVarianceMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: TripVarianceMarkResponse;
+};
+
+export type CreateTripVarianceMarkApiV1TripVarianceMarksPostResponse = CreateTripVarianceMarkApiV1TripVarianceMarksPostResponses[keyof CreateTripVarianceMarkApiV1TripVarianceMarksPostResponses];
 
 export type ListAsnsApiV1AsnsGetData = {
     body?: never;

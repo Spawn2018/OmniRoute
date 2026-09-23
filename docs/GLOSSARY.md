@@ -91,6 +91,7 @@ kolumn. Nie 468.0.
 | stance synchro palet | pallet_synchro_mark | 630.0 HITL zgodność salda↔ledger; `aligned`|`drift`|`held`|`other`; nie auto-UPDATE; nie giełda |
 | szablon wydruku | document_template | 162.0 layout jako dane; nie `quotation_print_template`; nie PDF |
 | wskazanie brandingu | branding_ref | D9f HITL 627.0 opcjonalny snake na `document_template`; nie plik; nie PDF/ZPL |
+| wariancja przejazdu | trip_variance_mark | P5b HITL 638.0 stance (`expected`\|`actual`\|`gap`\|`other`); nie SQL na charge; nie druga marża |
 | wiązanie przekazania | handover_bind_mark | N11 HITL 637.0 stance note\|board\|shift\|other; nie FK; nie T6 live |
 | wymóg wydruku sieci | network_print_requirement | 626.0 HITL etykieta sieci; nie 409; nie PDF |
 | brama wydruku sieci | network_print_gate_mark | 632.0 HITL stance bramy; nie live 409; nie PDF |
@@ -260,7 +261,7 @@ kolumn. Nie 468.0.
 | przeniesienie pól | field_carry_forward | U1; oferta→zlecenie; nie cichy overwrite |
 | reguła checklisty dokumentów | document_checklist_rule | U5; incoterm×strona×mode → rodzaj + blocks_dispatch |
 | przesyłka | consignment | N1; 260.0 tabela na shipment; LTL/LCL=N; nie paczka; nie FTL unique |
-| podłoga marży | margin_floor | N6; HITL Decimal DONE 527.0; leftover 409/S11 |
+| podłoga marży | margin_floor | N6; HITL Decimal DONE 527.0; 409/S11 DONE; leftover matching → 639.0 |
 | intencja klonu zlecenia | shipment_clone_mark | N9; HITL DONE 528.0; leftover auto-copy U1 / similar SQL / F2b |
 | stance carry przy klonie | clone_carry_mark | leftover 528; HITL DONE 631.0; nie auto INSERT field_carry_forward |
 | przekazanie zmiany SBAR | handover_sbar_mark | N11; HITL DONE 529.0; bind stance DONE 637.0; leftover T6 live |

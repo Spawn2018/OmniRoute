@@ -145,6 +145,7 @@ const NAV = [
   { to: "/handover-notes", label: "Notatka SBAR" },
   { to: "/handover-bind-marks", label: "Wiązania przekazania" },
   { to: "/trip-bill-marks", label: "Gotowość do FV" },
+  { to: "/trip-variance-marks", label: "Wariancje przejazdu" },
   { to: "/automation-bias-marks", label: "Automation bias" },
   { to: "/l3-gate-marks", label: "Brama L3" },
   { to: "/style-cascade-marks", label: "Kaskada stylu" },

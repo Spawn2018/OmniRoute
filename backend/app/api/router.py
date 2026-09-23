@@ -327,6 +327,7 @@ from app.api import (
     tracking_consents,
     tracking_events,
     trip_bill_marks,
+    trip_variance_marks,
     trips,
     twin_kinds,
     twin_marks,
@@ -575,6 +576,7 @@ api_router.include_router(handover_notes.router)
 api_router.include_router(handover_bind_marks.router)
 api_router.include_router(product_tickets.router)
 api_router.include_router(trip_bill_marks.router)
+api_router.include_router(trip_variance_marks.router)
 api_router.include_router(asns.router)
 api_router.include_router(otif_marks.router)
 api_router.include_router(routing_guide_enforcements.router)

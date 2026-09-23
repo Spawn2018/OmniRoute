@@ -26,6 +26,7 @@ from app.domain.errors import (
     ResourceNotFound,
     RoutingGuideOffGuide,
     TenantContextMissing,
+    TripVarianceMarkConflict,
     Unauthenticated,
 )
 
@@ -200,6 +201,15 @@ async def local_charge_warning_mark_conflict_handler(
 async def handover_bind_mark_conflict_handler(
     _request: Request,
     exc: HandoverBindMarkConflict,
+) -> JSONResponse:
+    return JSONResponse(status_code=409, content={"detail": str(exc)})
+
+
+
+@app.exception_handler(TripVarianceMarkConflict)
+async def trip_variance_mark_conflict_handler(
+    _request: Request,
+    exc: TripVarianceMarkConflict,
 ) -> JSONResponse:
     return JSONResponse(status_code=409, content={"detail": str(exc)})
 

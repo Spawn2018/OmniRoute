@@ -330,6 +330,7 @@ import { Route as TowerImpactsRouteImport } from './routes/tower-impacts'
 import { Route as TrackingRouteImport } from './routes/tracking'
 import { Route as TrackingConsentsRouteImport } from './routes/tracking-consents'
 import { Route as TripBillMarksRouteImport } from './routes/trip-bill-marks'
+import { Route as TripVarianceMarksRouteImport } from './routes/trip-variance-marks'
 import { Route as TwinKindsRouteImport } from './routes/twin-kinds'
 import { Route as TwinMarksRouteImport } from './routes/twin-marks'
 import { Route as UnSegregationMarksRouteImport } from './routes/un-segregation-marks'
@@ -1959,6 +1960,11 @@ const TripBillMarksRoute = TripBillMarksRouteImport.update({
   path: '/trip-bill-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TripVarianceMarksRoute = TripVarianceMarksRouteImport.update({
+  id: '/trip-variance-marks',
+  path: '/trip-variance-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TwinKindsRoute = TwinKindsRouteImport.update({
   id: '/twin-kinds',
   path: '/twin-kinds',
@@ -2367,6 +2373,7 @@ export interface FileRoutesByFullPath {
   '/tracking': typeof TrackingRoute
   '/tracking-consents': typeof TrackingConsentsRoute
   '/trip-bill-marks': typeof TripBillMarksRoute
+  '/trip-variance-marks': typeof TripVarianceMarksRoute
   '/twin-kinds': typeof TwinKindsRoute
   '/twin-marks': typeof TwinMarksRoute
   '/un-segregation-marks': typeof UnSegregationMarksRoute
@@ -2707,6 +2714,7 @@ export interface FileRoutesByTo {
   '/tracking': typeof TrackingRoute
   '/tracking-consents': typeof TrackingConsentsRoute
   '/trip-bill-marks': typeof TripBillMarksRoute
+  '/trip-variance-marks': typeof TripVarianceMarksRoute
   '/twin-kinds': typeof TwinKindsRoute
   '/twin-marks': typeof TwinMarksRoute
   '/un-segregation-marks': typeof UnSegregationMarksRoute
@@ -3048,6 +3056,7 @@ export interface FileRoutesById {
   '/tracking': typeof TrackingRoute
   '/tracking-consents': typeof TrackingConsentsRoute
   '/trip-bill-marks': typeof TripBillMarksRoute
+  '/trip-variance-marks': typeof TripVarianceMarksRoute
   '/twin-kinds': typeof TwinKindsRoute
   '/twin-marks': typeof TwinMarksRoute
   '/un-segregation-marks': typeof UnSegregationMarksRoute
@@ -3390,6 +3399,7 @@ export interface FileRouteTypes {
     | '/tracking'
     | '/tracking-consents'
     | '/trip-bill-marks'
+    | '/trip-variance-marks'
     | '/twin-kinds'
     | '/twin-marks'
     | '/un-segregation-marks'
@@ -3730,6 +3740,7 @@ export interface FileRouteTypes {
     | '/tracking'
     | '/tracking-consents'
     | '/trip-bill-marks'
+    | '/trip-variance-marks'
     | '/twin-kinds'
     | '/twin-marks'
     | '/un-segregation-marks'
@@ -4070,6 +4081,7 @@ export interface FileRouteTypes {
     | '/tracking'
     | '/tracking-consents'
     | '/trip-bill-marks'
+    | '/trip-variance-marks'
     | '/twin-kinds'
     | '/twin-marks'
     | '/un-segregation-marks'
@@ -4411,6 +4423,7 @@ export interface RootRouteChildren {
   TrackingRoute: typeof TrackingRoute
   TrackingConsentsRoute: typeof TrackingConsentsRoute
   TripBillMarksRoute: typeof TripBillMarksRoute
+  TripVarianceMarksRoute: typeof TripVarianceMarksRoute
   TwinKindsRoute: typeof TwinKindsRoute
   TwinMarksRoute: typeof TwinMarksRoute
   UnSegregationMarksRoute: typeof UnSegregationMarksRoute
@@ -6679,6 +6692,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TripBillMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/trip-variance-marks': {
+      id: '/trip-variance-marks'
+      path: '/trip-variance-marks'
+      fullPath: '/trip-variance-marks'
+      preLoaderRoute: typeof TripVarianceMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/twin-kinds': {
       id: '/twin-kinds'
       path: '/twin-kinds'
@@ -7123,6 +7143,7 @@ const rootRouteChildren: RootRouteChildren = {
   TrackingRoute: TrackingRoute,
   TrackingConsentsRoute: TrackingConsentsRoute,
   TripBillMarksRoute: TripBillMarksRoute,
+  TripVarianceMarksRoute: TripVarianceMarksRoute,
   TwinKindsRoute: TwinKindsRoute,
   TwinMarksRoute: TwinMarksRoute,
   UnSegregationMarksRoute: UnSegregationMarksRoute,
