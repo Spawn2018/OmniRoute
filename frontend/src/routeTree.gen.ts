@@ -170,6 +170,7 @@ import { Route as LineImpactLayerMarksRouteImport } from './routes/line-impact-l
 import { Route as LineImpactMarksRouteImport } from './routes/line-impact-marks'
 import { Route as LoadOrderMarksRouteImport } from './routes/load-order-marks'
 import { Route as LoadPlanMarksRouteImport } from './routes/load-plan-marks'
+import { Route as LocalChargeWarningMarksRouteImport } from './routes/local-charge-warning-marks'
 import { Route as LocalChargesRouteImport } from './routes/local-charges'
 import { Route as LocationsRouteImport } from './routes/locations'
 import { Route as MailRouteImport } from './routes/mail'
@@ -1151,6 +1152,11 @@ const LoadOrderMarksRoute = LoadOrderMarksRouteImport.update({
 const LoadPlanMarksRoute = LoadPlanMarksRouteImport.update({
   id: '/load-plan-marks',
   path: '/load-plan-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocalChargeWarningMarksRoute = LocalChargeWarningMarksRouteImport.update({
+  id: '/local-charge-warning-marks',
+  path: '/local-charge-warning-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LocalChargesRoute = LocalChargesRouteImport.update({
@@ -2195,6 +2201,7 @@ export interface FileRoutesByFullPath {
   '/line-impact-marks': typeof LineImpactMarksRoute
   '/load-order-marks': typeof LoadOrderMarksRoute
   '/load-plan-marks': typeof LoadPlanMarksRoute
+  '/local-charge-warning-marks': typeof LocalChargeWarningMarksRoute
   '/local-charges': typeof LocalChargesRoute
   '/locations': typeof LocationsRoute
   '/mail': typeof MailRoute
@@ -2533,6 +2540,7 @@ export interface FileRoutesByTo {
   '/line-impact-marks': typeof LineImpactMarksRoute
   '/load-order-marks': typeof LoadOrderMarksRoute
   '/load-plan-marks': typeof LoadPlanMarksRoute
+  '/local-charge-warning-marks': typeof LocalChargeWarningMarksRoute
   '/local-charges': typeof LocalChargesRoute
   '/locations': typeof LocationsRoute
   '/mail': typeof MailRoute
@@ -2872,6 +2880,7 @@ export interface FileRoutesById {
   '/line-impact-marks': typeof LineImpactMarksRoute
   '/load-order-marks': typeof LoadOrderMarksRoute
   '/load-plan-marks': typeof LoadPlanMarksRoute
+  '/local-charge-warning-marks': typeof LocalChargeWarningMarksRoute
   '/local-charges': typeof LocalChargesRoute
   '/locations': typeof LocationsRoute
   '/mail': typeof MailRoute
@@ -3212,6 +3221,7 @@ export interface FileRouteTypes {
     | '/line-impact-marks'
     | '/load-order-marks'
     | '/load-plan-marks'
+    | '/local-charge-warning-marks'
     | '/local-charges'
     | '/locations'
     | '/mail'
@@ -3550,6 +3560,7 @@ export interface FileRouteTypes {
     | '/line-impact-marks'
     | '/load-order-marks'
     | '/load-plan-marks'
+    | '/local-charge-warning-marks'
     | '/local-charges'
     | '/locations'
     | '/mail'
@@ -3888,6 +3899,7 @@ export interface FileRouteTypes {
     | '/line-impact-marks'
     | '/load-order-marks'
     | '/load-plan-marks'
+    | '/local-charge-warning-marks'
     | '/local-charges'
     | '/locations'
     | '/mail'
@@ -4227,6 +4239,7 @@ export interface RootRouteChildren {
   LineImpactMarksRoute: typeof LineImpactMarksRoute
   LoadOrderMarksRoute: typeof LoadOrderMarksRoute
   LoadPlanMarksRoute: typeof LoadPlanMarksRoute
+  LocalChargeWarningMarksRoute: typeof LocalChargeWarningMarksRoute
   LocalChargesRoute: typeof LocalChargesRoute
   LocationsRoute: typeof LocationsRoute
   MailRoute: typeof MailRoute
@@ -5531,6 +5544,13 @@ declare module '@tanstack/react-router' {
       path: '/load-plan-marks'
       fullPath: '/load-plan-marks'
       preLoaderRoute: typeof LoadPlanMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/local-charge-warning-marks': {
+      id: '/local-charge-warning-marks'
+      path: '/local-charge-warning-marks'
+      fullPath: '/local-charge-warning-marks'
+      preLoaderRoute: typeof LocalChargeWarningMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/local-charges': {
@@ -6923,6 +6943,7 @@ const rootRouteChildren: RootRouteChildren = {
   LineImpactMarksRoute: LineImpactMarksRoute,
   LoadOrderMarksRoute: LoadOrderMarksRoute,
   LoadPlanMarksRoute: LoadPlanMarksRoute,
+  LocalChargeWarningMarksRoute: LocalChargeWarningMarksRoute,
   LocalChargesRoute: LocalChargesRoute,
   LocationsRoute: LocationsRoute,
   MailRoute: MailRoute,

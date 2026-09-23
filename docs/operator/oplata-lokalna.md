@@ -14,4 +14,7 @@ To nie extra portowe i nie warning braku.
 Czego tu nie ma: FK do katalogu portów/kontenerów/party, warning braków jako fakt, zapis na `charge`.
 Marża zostaje na `/charges`. Extra portowe zostają na `/port-surcharges`.
 
-Nazwy w kodzie: `local_charge` · `charge_kind` · `port_unlocode` · `iso_size_type` · `carrier_label` · `service_label` · `amount` · `currency` · `source_ref`.
+Stance ostrzeżenia braku dopłaty (ostrzeż / wstrzymaj / zwolnij / inne) zapisujesz osobno na
+`/local-charge-warning-marks`. To nie silnik braków i nie 409 na wycenie.
+
+Nazwy w kodzie: `local_charge` · `charge_kind` · `port_unlocode` · `iso_size_type` · `carrier_label` · `service_label` · `amount` · `currency` · `source_ref` · `local_charge_warning_mark` · `warning_kind`.

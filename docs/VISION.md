@@ -29,6 +29,7 @@ zostają w badaniach `04`).
 
 | Data | Co |
 |---|---|
+| 2026-09-23 | **635.0** leftover P4c warning stance HITL zamknięty: katalog `local_charge_warning_mark` (`warn`\|`hold`\|`waived`\|`other`) (`CONFIRMED`). Warning-jako-fakt i matching nadal `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-23 | **635.0** leftover P4c warning stance HITL: katalog stancji ostrzeżenia braku dopłaty (nie warning-jako-fakt) (`REQUIREMENT`). Live PDF i warning engine `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-23 | **634.0** leftover BR2.2 kolumna zgody HITL zamknięty: bool `tracking_consent` na `party_contact` DEFAULT false (`CONFIRMED`). FK do katalogu i live poll nadal `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-23 | **634.0** leftover BR2.2 kolumna zgody HITL: bool `tracking_consent` na `party_contact` DEFAULT false (`REQUIREMENT`). FK do katalogu i live poll `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |

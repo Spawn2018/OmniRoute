@@ -13,6 +13,7 @@ from app.domain.errors import (
     DomainError,
     DraftNotPending,
     ExtractionCandidatesNotEditable,
+    LocalChargeWarningMarkConflict,
     MarginFloorBreach,
     NetworkPrintGateMarkConflict,
     PalletLedgerConflict,
@@ -181,6 +182,14 @@ async def clone_carry_mark_conflict_handler(
 async def network_print_gate_mark_conflict_handler(
     _request: Request,
     exc: NetworkPrintGateMarkConflict,
+) -> JSONResponse:
+    return JSONResponse(status_code=409, content={"detail": str(exc)})
+
+
+@app.exception_handler(LocalChargeWarningMarkConflict)
+async def local_charge_warning_mark_conflict_handler(
+    _request: Request,
+    exc: LocalChargeWarningMarkConflict,
 ) -> JSONResponse:
     return JSONResponse(status_code=409, content={"detail": str(exc)})
 

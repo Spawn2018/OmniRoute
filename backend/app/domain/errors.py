@@ -598,6 +598,14 @@ class NetworkPrintGateMarkConflict(DomainError):
     """Duplikat kodu bramy wydruku sieci w tenancie."""
 
 
+class InvalidLocalChargeWarningMark(DomainError):
+    """P4c leftover: HITL stance ostrzeżenia braku dopłaty — nie warning-jako-fakt."""
+
+
+class LocalChargeWarningMarkConflict(DomainError):
+    """Duplikat kodu ostrzeżenia dopłaty lokalnej w tenancie."""
+
+
 class InvalidDocumentTemplate(DomainError):
     """Szablon wydruku jako dane — nie PDF, nie etykieta sieci."""
 

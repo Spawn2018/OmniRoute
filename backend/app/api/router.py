@@ -162,6 +162,7 @@ from app.api import (
     line_impact_marks,
     load_order_marks,
     load_plan_marks,
+    local_charge_warning_marks,
     local_charges,
     locations,
     mail_accept_marks,
@@ -359,6 +360,7 @@ api_router.include_router(field_carry_forwards.router)
 api_router.include_router(networks.router)
 api_router.include_router(network_print_gate_marks.router)
 api_router.include_router(network_print_requirements.router)
+api_router.include_router(local_charge_warning_marks.router)
 api_router.include_router(carrier_inquiries.router)
 api_router.include_router(inbound_messages.router)
 api_router.include_router(incoterm_responsibilities.router)

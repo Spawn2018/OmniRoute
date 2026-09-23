@@ -2862,6 +2862,10 @@ export type ContactCreate = {
      * Is Primary
      */
     is_primary?: boolean;
+    /**
+     * Tracking Consent
+     */
+    tracking_consent?: boolean;
 };
 
 /**
@@ -2896,6 +2900,10 @@ export type ContactResponse = {
      * Is Primary
      */
     is_primary: boolean;
+    /**
+     * Tracking Consent
+     */
+    tracking_consent: boolean;
 };
 
 /**
@@ -9234,6 +9242,50 @@ export type LocalChargeResponse = {
      * Service Label
      */
     service_label: string | null;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * LocalChargeWarningMarkCreate
+ */
+export type LocalChargeWarningMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Warning Kind
+     */
+    warning_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * LocalChargeWarningMarkResponse
+ */
+export type LocalChargeWarningMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Warning Kind
+     */
+    warning_kind: string;
     /**
      * Source Ref
      */
@@ -20073,6 +20125,49 @@ export type CreateNetworkPrintRequirementApiV1NetworkPrintRequirementsPostRespon
 };
 
 export type CreateNetworkPrintRequirementApiV1NetworkPrintRequirementsPostResponse = CreateNetworkPrintRequirementApiV1NetworkPrintRequirementsPostResponses[keyof CreateNetworkPrintRequirementApiV1NetworkPrintRequirementsPostResponses];
+
+export type ListLocalChargeWarningMarksApiV1LocalChargeWarningMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/local-charge-warning-marks';
+};
+
+export type ListLocalChargeWarningMarksApiV1LocalChargeWarningMarksGetResponses = {
+    /**
+     * Response List Local Charge Warning Marks Api V1 Local Charge Warning Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<LocalChargeWarningMarkResponse>;
+};
+
+export type ListLocalChargeWarningMarksApiV1LocalChargeWarningMarksGetResponse = ListLocalChargeWarningMarksApiV1LocalChargeWarningMarksGetResponses[keyof ListLocalChargeWarningMarksApiV1LocalChargeWarningMarksGetResponses];
+
+export type CreateLocalChargeWarningMarkApiV1LocalChargeWarningMarksPostData = {
+    body: LocalChargeWarningMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/local-charge-warning-marks';
+};
+
+export type CreateLocalChargeWarningMarkApiV1LocalChargeWarningMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateLocalChargeWarningMarkApiV1LocalChargeWarningMarksPostError = CreateLocalChargeWarningMarkApiV1LocalChargeWarningMarksPostErrors[keyof CreateLocalChargeWarningMarkApiV1LocalChargeWarningMarksPostErrors];
+
+export type CreateLocalChargeWarningMarkApiV1LocalChargeWarningMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: LocalChargeWarningMarkResponse;
+};
+
+export type CreateLocalChargeWarningMarkApiV1LocalChargeWarningMarksPostResponse = CreateLocalChargeWarningMarkApiV1LocalChargeWarningMarksPostResponses[keyof CreateLocalChargeWarningMarkApiV1LocalChargeWarningMarksPostResponses];
 
 export type ListCarrierInquiriesApiV1CarrierInquiriesGetData = {
     body?: never;

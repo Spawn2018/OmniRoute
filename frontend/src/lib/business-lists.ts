@@ -37,6 +37,10 @@ export const BUSINESS_LISTS = {
   chargeTemplate: { route: "/charge-templates", tableKey: "charge_template" },
   fuelIndex: { route: "/fuel-indexes", tableKey: "fuel_index" },
   localCharge: { route: "/local-charges", tableKey: "local_charge" },
+  localChargeWarningMark: {
+    route: "/local-charge-warning-marks",
+    tableKey: "local_charge_warning_mark",
+  },
   tenderDataRoom: { route: "/tender-data-rooms", tableKey: "tender_data_room" },
   tenderDeclineReason: { route: "/tender-decline-reasons", tableKey: "tender_decline_reason" },
   tenderMatrixCell: { route: "/tender-matrix-cells", tableKey: "tender_matrix_cell" },
@@ -561,6 +565,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/charge-templates",
   "/fuel-indexes",
   "/local-charges",
+  "/local-charge-warning-marks",
   "/tender-data-rooms",
   "/tender-decline-reasons",
   "/tender-matrix-cells",

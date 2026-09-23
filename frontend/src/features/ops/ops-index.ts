@@ -144,6 +144,11 @@ export const OPS_JOBS = [
     job: "katalog local_charge THC/ISPS bez warning",
   },
   {
+    route: BUSINESS_LISTS.localChargeWarningMark.route,
+    label: "Ostrzeżenia dopłaty lokalnej",
+    job: "HITL local_charge_warning_mark stance bez warning-jako-fakt",
+  },
+  {
     route: BUSINESS_LISTS.tenderDataRoom.route,
     label: "Pokoje danych",
     job: "NDA na tender bez extractu",
@@ -1981,6 +1986,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "208.0": "/local-charges",
   "633.0": "/local-charges",
   "634.0": "/parties",
+  "635.0": "/local-charge-warning-marks",
   "209.0": "/air",
   "210.0": "/shipments",
   "211.0": "/organization-settings",

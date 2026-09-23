@@ -1852,6 +1852,80 @@
         ]
       }
     },
+    "/api/v1/local-charge-warning-marks": {
+      "get": {
+        "tags": [
+          "local-charge-warning-marks"
+        ],
+        "summary": "List Local Charge Warning Marks",
+        "operationId": "list_local_charge_warning_marks_api_v1_local_charge_warning_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/LocalChargeWarningMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Local Charge Warning Marks Api V1 Local Charge Warning Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "local-charge-warning-marks"
+        ],
+        "summary": "Create Local Charge Warning Mark",
+        "operationId": "create_local_charge_warning_mark_api_v1_local_charge_warning_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocalChargeWarningMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocalChargeWarningMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/carrier-inquiries": {
       "get": {
         "tags": [
@@ -33973,6 +34047,11 @@
             "type": "boolean",
             "title": "Is Primary",
             "default": false
+          },
+          "tracking_consent": {
+            "type": "boolean",
+            "title": "Tracking Consent",
+            "default": false
           }
         },
         "type": "object",
@@ -34033,6 +34112,10 @@
           "is_primary": {
             "type": "boolean",
             "title": "Is Primary"
+          },
+          "tracking_consent": {
+            "type": "boolean",
+            "title": "Tracking Consent"
           }
         },
         "type": "object",
@@ -34043,7 +34126,8 @@
           "email",
           "phone",
           "position",
-          "is_primary"
+          "is_primary",
+          "tracking_consent"
         ],
         "title": "ContactResponse"
       },
@@ -43798,6 +43882,65 @@
           "source_ref"
         ],
         "title": "LocalChargeResponse"
+      },
+      "LocalChargeWarningMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "warning_kind": {
+            "type": "string",
+            "title": "Warning Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "warning_kind",
+          "source_ref"
+        ],
+        "title": "LocalChargeWarningMarkCreate"
+      },
+      "LocalChargeWarningMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "warning_kind": {
+            "type": "string",
+            "title": "Warning Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "warning_kind",
+          "source_ref"
+        ],
+        "title": "LocalChargeWarningMarkResponse"
       },
       "LocationResponse": {
         "properties": {

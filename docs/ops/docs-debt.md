@@ -1,5 +1,6 @@
 - **625.0 DONE:** `groupage_tariff.volume_m3` opcjonalne Decimal. Nie liczy progu. Leftover D5b: paleta zostaje na saldzie, FSC na `fuel_index`.
 - **624.0 DONE:** `shipment_document.document_kind` przyjmuje `rod`. `pod` zostaje odrzucone (port wyładunku). Leftover: skan / bajty.
+- **635.0 DONE:** `local_charge_warning_mark` HITL stance ostrzeżenia braku dopłaty. Nie warning-jako-fakt. Leftover: matching · P5b–c · FK · live HTTP.
 - **630.0 DONE:** `pallet_synchro_mark` HITL stance salda↔ledger. Nie auto-UPDATE. Leftover: D7b giełda park · auto-UPDATE park · 528 clone U1.
 - **629.0 DONE:** `pallet_ledger` HITL ruch sztuk ze znakiem. Nie mutuje salda. Leftover: D7b giełda park live · synchro stance = **630.0** DONE · auto-UPDATE salda park.
 - **623.0 DONE:** `pallet_balance.pallet_kind` przyjmuje `epal`. Leftover: D7b giełda park live · D7c ledger = **629.0** DONE · synchro = **630.0** DONE.
@@ -143,7 +144,6 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **458.0 leftover:** parowanie z `resource`; cykl życia poza kind; silnik awarii; live poll. BR2.2 katalog DONE 459.0. Tu tylko `telematics_device` HITL `device_kind` + `source_ref`. Nie live. Nie konektor V5.
 - **634.0 DONE:** bool `party_contact.tracking_consent` HITL DEFAULT false. Zostaje FK do katalogu; egzekucja; live poll; BR2.3 Expo (park).
 - **459.0 leftover:** kolumna `party_contact.tracking_consent` DONE **634.0**. Zostaje FK do party; egzekucja; live poll; BR2.3 Expo (park). Tu tylko `tracking_consent` HITL `consent_kind` + `source_ref`. Nie live.
-- **635.0 PLAN:** leftover P4c HITL `local_charge_warning_mark` (`warn`|`hold`|`waived`|`other`). Nie warning-jako-fakt. Nie matching.
 - **203.0 leftover:** ranking SQL / Top N; N szkiców `mail_draft`; auto-award. Tu tylko `rank_mark` HITL `rank_kind` + `source_ref`. Nie sortowanie. Nie award.
 - **202.0 leftover:** zdania z agregatów SQL (117.0 / M-15); suma LLM / EBITDA; ranking W5 + auto-award. Tu tylko `executive_mark` HITL `question_kind` + `source_ref`. Nie suma. Nie narracja.
 - **201.0 leftover:** graf / FK na `entity_event`; pgvector; RAG na stawkach / umowach CI. Tu tylko `memory_edge` HITL `edge_kind` + `source_ref`. Nie wyszukiwanie. Nie wektor.
@@ -210,12 +210,12 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **155.0 leftover:** OR wielu hubów na jednym końcu (D1b). Tu tylko `groupage_line` cutoff+TT+ISODOW + dwa `location`. Nie optymalizator.
 - **167.0 leftover:** wariancja SQL na `charge` (P5b); actual z `charge` (P5c). Tu tylko freeze `expected_buy` na `trip` przy `in_transit`. Nie druga marża. Nie km.
 - **633.0 DONE:** `local_charge.carrier_label` / `service_label` HITL tekst (leftover P4b armator/serwis). Nie FK party. Nie live HTTP.
-- **166.0 leftover:** P4b `port_unlocode` DONE 207.0. P4b rest `iso_size_type` DONE 208.0. P4b armator/serwis DONE **633.0**. Zostaje warning braku dopłaty ≠ fakt (P4c → **635.0** PLAN). Tu rodzaj + Decimal + opcjonalny UN/LOCODE + typ ISO + etykiety armator/serwis. Nie `port_surcharge`. Nie marża.
+- **166.0 leftover:** P4b `port_unlocode` DONE 207.0. P4b rest `iso_size_type` DONE 208.0. P4b armator/serwis DONE **633.0**. P4c warning stance DONE **635.0**. Zostaje warning-jako-fakt (compose park). Tu rodzaj + Decimal + opcjonalny UN/LOCODE + typ ISO + etykiety armator/serwis. Nie `port_surcharge`. Nie marża.
 - **165.0 leftover:** przeliczenie SQL indeksu na `charge` (P3b); live HTTP NBP/BAF (P3c); A11 nowy wiersz (P3d). Tu tylko katalog FSC/BAF/CAF + Decimal. Nie `nbp_rate`. Nie marża.
 - **164.0 leftover:** P2c exclusion daterange DONE 206.0. Tu kolekcja `charge_code` + daty + GiST. Nie `charge`. Nie FSC.
 - **163.0 leftover:** P1b matching GET DONE 205.0. Zostaje parser WHEN/IF/CALC (P1c); daty ważności (P1d). Tu `applies_when` tekst + Decimal + równość SQL. Nie `rate_line`. Nie `charge`.
 - **632.0 DONE:** `network_print_gate_mark` HITL stance block_409|warn_only|record_only (leftover D9c 409). Nie live 409. Nie PDF.
-- **162.0 leftover:** D9b `shipment_ref` HITL DONE 204.0. D9c katalog `network_print_requirement` DONE 626.0. D9f `branding_ref` HITL DONE **627.0**. D9c 409 stance DONE **632.0**. Zostaje: live 409 wyjazdu (park); PDF/ZPL/QR bitmap (D9d); skan HITL bez kodu Omni (D9e); `output_kind` `pdf`/`zpl` (D9f rest). Tu katalog `own_label`/`cmr` + `html_print` + numer HITL + wymóg sieci + branding + stance bramy. Nie D8.
+- **162.0 leftover:** D9b `shipment_ref` HITL DONE 204.0. D9c katalog `network_print_requirement` DONE 626.0. D9f `branding_ref` HITL DONE **627.0**. D9c 409 stance DONE **632.0**. Zostaje: live 409 wyjazdu (park); PDF/ZPL/QR bitmap (D9d); skan HITL bez kodu Omni (D9e); `output_kind` `pdf`/`zpl` (D9f rest → **636.0**). Tu katalog `own_label`/`cmr` + `html_print` + numer HITL + wymóg sieci + branding + stance bramy. Nie D8.
 - **161.0 leftover:** giełda/HTTP Chep/LPR (D7b); ledger ujemny (D7c). EPAL = **623.0** DONE. Tu integer sztuk `chep`/`lpr`/`epal` na `party`. Nie depozyt.
 - **621.0 DONE:** `/ocean-bills` pule HBL/MBL z M-03 (`hbl_number_prefix`/`mbl_number_prefix`); `bill_no` nullable; Nadaj SQL. Leftover: D6b konsolidacja · PDF · live booking.
 - **622.0 DONE:** wklejony MAWB w kształcie IATA — cyfra = seria modulo 7. Leftover: live booking / e-rates API. Pula M-03 bez cyfry.

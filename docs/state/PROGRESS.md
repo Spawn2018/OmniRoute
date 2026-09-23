@@ -1,6 +1,7 @@
 # Historia plastrów
 
 | Data | Plaster | Moduł | Opis |
+| 2026-09-23 | 635.0 | leftover P4c warning stance HITL | 2026-09-23 | PRZESZŁO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 2026-09-23 | Plan 635.0 | leftover P4c warning stance HITL | Plan `local_charge_warning_mark` warn|hold|waived|other (`/noc 7`). 634.0 gate success. |
 | 2026-09-23 | 634.0 | leftover BR2.2 party_contact consent | 2026-09-23 | PRZESZŁO | N/A | N/A | OK | OK | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 2026-09-23 | Plan 634.0 | leftover BR2.2 party_contact consent | Plan bool `tracking_consent` na kontakcie (`/noc 7`). 633.0 gate success. |

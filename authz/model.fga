@@ -64,6 +64,7 @@ type organization
     define can_manage_document_templates: member
     define can_manage_network_print_requirements: member
     define can_manage_network_print_gate_marks: member
+    define can_manage_local_charge_warning_marks: member
     define can_manage_rate_cards: member
     define can_manage_charge_templates: member
     define can_manage_task_templates: member
