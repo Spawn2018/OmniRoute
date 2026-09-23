@@ -1,12 +1,12 @@
 # Bieżący focus
 
-**Faza:** Oś pinu — po **641.0** (leftover P4c bind stance HITL)
+**Faza:** Oś pinu — Plan **642.0** (leftover EXP0.9 packing group HITL)
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **641.0** leftover P4c `local_charge_bind_mark` (gate lokalne; CI po push)
+**Ostatni plaster:** **641.0** leftover P4c `local_charge_bind_mark` (gate success)
 
-**Etap:** Plan **642.0** — `/plan-modul`. Zero kodu produktu do delty.
+**Etap:** Plan **642.0** — delta zaakceptowana (`/noc 21`). Wolno `/plaster`.
 
 **Noc:** `/noc 21` do 21:00 Europe/Warsaw.
 
@@ -16,7 +16,7 @@
 
 **Park / czeka w PLAN:** D9d · D9e · D9f pdf-zpl live · live 409 · live poll · Expo · fx×FV · matching T5 · FK kontekstu · T8 live · D6b · D7b · auto-copy U1 · similar SQL · F2b · auto-resync salda · N8 · T6 live · P5c · N6 auto charge · HW · SH-R16-4 UXCL · AI3 · G0-SH · N3 · live IMO ·
 
-**Spec (jedyna na sesję produktu):** brak — najpierw delta `642.0` (`/plan-modul`).
+**Spec (jedyna na sesję produktu):** [docs/deltas/open/642.0-dangerous-good-packing-group.md](../deltas/open/642.0-dangerous-good-packing-group.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 
@@ -24,6 +24,7 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\\pg16`.
 
+**2026-09-23:** Plan **642.0** leftover EXP0.9 packing group HITL (`/noc 21`). 641.0 gate success.
 **2026-09-23:** Plaster **641.0** leftover P4c bind stance HITL zamknięty (`/noc 21`).
 **2026-09-23:** Plan **641.0** leftover P4c bind stance HITL (`/noc 21`). 640.0 gate success.
 **2026-09-23:** Plaster **640.0** + hotfix **640.0b** na `main` (gate success). `/noc 17` stop.

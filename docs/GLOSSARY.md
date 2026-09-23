@@ -18,6 +18,7 @@ kolumn. Nie 468.0.
 | towar niebezpieczny | dangerous_good | katalog M-52; 122.0 FK na RFQ/wycenie; 192.0 HITL tunel ADR + SG; nie LLM |
 | numer UN | un_number | 4 cyfry na `dangerous_good`; prefiks UN zbędny |
 | klasa IMDG | imdg_class | allowlista 1–9 z podziałem (2.1, 4.1, …); nie packing group |
+| grupa pakowania | packing_group | HITL na `dangerous_good`: `I`\|`II`\|`III` (642.0); nie live IMO; nie LLM klasy |
 | wycena | quotation | |
 | luka wyceny | quotation_gap | brakująca dopłata |
 | port załadunku | origin_port_id | POL na `quotation`; FK do `port` |
