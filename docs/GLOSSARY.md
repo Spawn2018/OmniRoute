@@ -102,6 +102,7 @@ kolumn. Nie 468.0.
 | indeks paliwowy | fuel_index | 165.0 katalog FSC/BAF/CAF obok `nbp_rate`; nie przeliczenie na `charge` |
 | dopłata lokalna | local_charge | 166.0 THC/ISPS/seal/amendment + Decimal; 207.0 opcjonalny `port_unlocode`; 208.0 opcjonalny `iso_size_type`; 633.0 opcjonalne `carrier_label`/`service_label`; nie warning-jako-fakt; nie `port_surcharge` |
 | ostrzeżenie dopłaty lokalnej | local_charge_warning_mark | 635.0 HITL stance (`warn`\|`hold`\|`waived`\|`other`); nie warning-jako-fakt; nie matching; nie 409 wyceny |
+| dopasowanie dopłaty lokalnej | local_charge_match_mark | P4c HITL 640.0 plan stance (`match`\|`gap`\|`waive`\|`other`); nie matching SQL; nie warning-jako-fakt |
 | lotniczy | air | 154.0 odcinek `shipment_leg` air; 209.0 opcjonalny `hawb_no`/`mawb_no`; 619.0 nadanie z `hawb_number_prefix`/`mawb_number_prefix` (M-03); 622.0 cyfra IATA (seria 7 cyfr modulo 7) tylko na wklejonym MAWB w kształcie 3+8; lotnisko = `port` z `airport` |
 | reklamacja ładunku | cargo_claim | 113.0 tabela na zleceniu; 191.0 HITL OS&D + terminy CMR; nie kwota; nie silnik 7/21/365 |
 | oszustwo | fraud_flag | 114.0 tabela na kontrahencie; nie scoring osoby; nie kwota |
