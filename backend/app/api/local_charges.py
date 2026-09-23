@@ -23,6 +23,8 @@ class LocalChargeCreate(BaseModel):
     source_ref: str
     port_unlocode: str | None = None
     iso_size_type: str | None = None
+    carrier_label: str | None = None
+    service_label: str | None = None
 
 
 class LocalChargeResponse(BaseModel):
@@ -35,6 +37,8 @@ class LocalChargeResponse(BaseModel):
     currency: str
     port_unlocode: str | None
     iso_size_type: str | None
+    carrier_label: str | None
+    service_label: str | None
     source_ref: str
 
 
@@ -47,6 +51,8 @@ def _as_row(row: LocalCharge) -> LocalChargeResponse:
         currency=str(row.currency).strip(),
         port_unlocode=row.port_unlocode,
         iso_size_type=row.iso_size_type,
+        carrier_label=row.carrier_label,
+        service_label=row.service_label,
         source_ref=row.source_ref,
     )
 
@@ -76,6 +82,8 @@ async def create_local_charge(
         source_ref=body.source_ref,
         port_unlocode=body.port_unlocode,
         iso_size_type=body.iso_size_type,
+        carrier_label=body.carrier_label,
+        service_label=body.service_label,
     )
     await session.commit()
     return _as_row(row)

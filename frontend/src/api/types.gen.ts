@@ -9184,6 +9184,14 @@ export type LocalChargeCreate = {
      * Iso Size Type
      */
     iso_size_type?: string | null;
+    /**
+     * Carrier Label
+     */
+    carrier_label?: string | null;
+    /**
+     * Service Label
+     */
+    service_label?: string | null;
 };
 
 /**
@@ -9218,6 +9226,14 @@ export type LocalChargeResponse = {
      * Iso Size Type
      */
     iso_size_type: string | null;
+    /**
+     * Carrier Label
+     */
+    carrier_label: string | null;
+    /**
+     * Service Label
+     */
+    service_label: string | null;
     /**
      * Source Ref
      */

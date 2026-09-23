@@ -11,6 +11,8 @@ from app.domain.local_charge import (
     require_levy_iso,
     require_levy_kind,
     require_levy_port,
+    require_levy_carrier_label,
+    require_levy_service_label,
     require_levy_source_ref,
 )
 
@@ -78,6 +80,28 @@ def test_levy_iso_normalizes_size_type() -> None:
 def test_levy_iso_rejects_box_token() -> None:
     with pytest.raises(InvalidLocalCharge, match="typ"):
         require_levy_iso("BOX")
+
+
+def test_levy_carrier_label_trims() -> None:
+    assert require_levy_carrier_label(" MSC ") == "MSC"
+    assert require_levy_carrier_label(None) is None
+    assert require_levy_carrier_label("") is None
+
+
+def test_levy_carrier_label_rejects_long() -> None:
+    with pytest.raises(InvalidLocalCharge, match="armator"):
+        require_levy_carrier_label("x" * 65)
+
+
+def test_levy_service_label_trims() -> None:
+    assert require_levy_service_label(" AE1 ") == "AE1"
+    assert require_levy_service_label(None) is None
+    assert require_levy_service_label("") is None
+
+
+def test_levy_service_label_rejects_non_text() -> None:
+    with pytest.raises(InvalidLocalCharge, match="serwis"):
+        require_levy_service_label(12)  # type: ignore[arg-type]
 
 
 @given(st.sampled_from(["", "   ", "http://hold.example/x"]))

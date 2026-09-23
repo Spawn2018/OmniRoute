@@ -11,6 +11,8 @@ export type LevyMark = {
   currency: string
   port_unlocode: string | null
   iso_size_type: string | null
+  carrier_label: string | null
+  service_label: string | null
   source_ref: string
 }
 
@@ -21,6 +23,8 @@ export type LevyMarkWrite = {
   source_ref: string
   port_unlocode?: string
   iso_size_type?: string
+  carrier_label?: string
+  service_label?: string
 }
 
 export function levyWrite(args: {
@@ -30,9 +34,13 @@ export function levyWrite(args: {
   originStamp: string
   portToken: string
   isoToken: string
+  carrierToken: string
+  serviceToken: string
 }): LevyMarkWrite {
   const port = args.portToken.trim().toUpperCase()
   const iso = args.isoToken.trim().toUpperCase()
+  const carrier = args.carrierToken.trim()
+  const service = args.serviceToken.trim()
   const body: LevyMarkWrite = {
     charge_kind: args.kindToken.trim().toLowerCase(),
     amount: args.cashMark.trim(),
@@ -44,6 +52,12 @@ export function levyWrite(args: {
   }
   if (iso !== "") {
     body.iso_size_type = iso
+  }
+  if (carrier !== "") {
+    body.carrier_label = carrier
+  }
+  if (service !== "") {
+    body.service_label = service
   }
   return body
 }

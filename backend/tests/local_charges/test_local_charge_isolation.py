@@ -77,6 +77,7 @@ async def test_local_charge_list_uses_org_kind_index(session, two_tenants) -> No
     assert (
         "ix_local_charge_org_kind" in joined
         or "uq_local_charge_org_kind_port_type" in joined
+        or "uq_local_charge_org_kind_port_type_carrier_service" in joined
         or "Index Scan" in joined
     )
 
@@ -142,5 +143,8 @@ async def test_local_charge_duplicate_kind_port_is_refused(session, two_tenants)
             iso="22G1",
         )
     )
-    with pytest.raises(IntegrityError, match="uq_local_charge_org_kind_port_type"):
+    with pytest.raises(
+        IntegrityError,
+        match="uq_local_charge_org_kind_port_type_carrier_service",
+    ):
         await session.flush()

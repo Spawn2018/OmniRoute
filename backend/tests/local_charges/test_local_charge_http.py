@@ -7,10 +7,12 @@ from fastapi.testclient import TestClient
 from app.api.deps import require_tenant_session, set_authz_checker
 from app.domain.local_charge import (
     require_levy_amount,
+    require_levy_carrier_label,
     require_levy_currency,
     require_levy_iso,
     require_levy_kind,
     require_levy_port,
+    require_levy_service_label,
     require_levy_source_ref,
 )
 from app.main import app
@@ -49,6 +51,8 @@ class StubLocalChargeService:
         source_ref: str,
         port_unlocode: str | None = None,
         iso_size_type: str | None = None,
+        carrier_label: str | None = None,
+        service_label: str | None = None,
     ) -> LocalCharge:
         row = LocalCharge(
             id=uuid4(),
@@ -58,6 +62,8 @@ class StubLocalChargeService:
             currency=require_levy_currency(currency),
             port_unlocode=require_levy_port(port_unlocode),
             iso_size_type=require_levy_iso(iso_size_type),
+            carrier_label=require_levy_carrier_label(carrier_label),
+            service_label=require_levy_service_label(service_label),
             source_ref=require_levy_source_ref(source_ref),
             created_by=user_id,
         )
@@ -112,6 +118,32 @@ def test_http_create_and_list_local_charge(catalog_client: object) -> None:
     assert listed.json()[0]["id"] == body["id"]
     assert body["port_unlocode"] is None
     assert body["iso_size_type"] is None
+    assert body["carrier_label"] is None
+    assert body["service_label"] is None
+
+
+def test_http_create_levy_with_carrier_and_service(catalog_client: object) -> None:
+    client, _rows = catalog_client
+    created = client.post(
+        "/api/v1/local-charges",
+        headers=bearer_auth_headers(),
+        json=_payload(carrier_label=" MSC ", service_label=" AE1 "),
+    )
+    assert created.status_code == 201
+    body = created.json()
+    assert body["carrier_label"] == "MSC"
+    assert body["service_label"] == "AE1"
+
+
+def test_http_create_levy_long_carrier_is_400(catalog_client: object) -> None:
+    client, _rows = catalog_client
+    response = client.post(
+        "/api/v1/local-charges",
+        headers=bearer_auth_headers(),
+        json=_payload(carrier_label="x" * 65),
+    )
+    assert response.status_code == 400
+    assert "armator" in response.json()["detail"]
 
 
 def test_http_create_levy_with_port_unlocode(catalog_client: object) -> None:

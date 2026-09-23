@@ -84,3 +84,32 @@ def require_levy_iso(raw: object) -> str | None:
         return require_iso_size_type(token)
     except InvalidContainer as exc:
         raise InvalidLocalCharge("typ: ISO size/type 4 znaki") from exc
+
+
+_MAX_LABEL = 64
+
+
+def require_levy_carrier_label(raw: object) -> str | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidLocalCharge("armator musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        return None
+    if len(token) > _MAX_LABEL:
+        raise InvalidLocalCharge("armator za długi")
+    return token
+
+
+def require_levy_service_label(raw: object) -> str | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidLocalCharge("serwis musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        return None
+    if len(token) > _MAX_LABEL:
+        raise InvalidLocalCharge("serwis za długi")
+    return token

@@ -43677,6 +43677,28 @@
               }
             ],
             "title": "Iso Size Type"
+          },
+          "carrier_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Carrier Label"
+          },
+          "service_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Service Label"
           }
         },
         "additionalProperties": false,
@@ -43735,6 +43757,28 @@
             ],
             "title": "Iso Size Type"
           },
+          "carrier_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Carrier Label"
+          },
+          "service_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Service Label"
+          },
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
@@ -43749,6 +43793,8 @@
           "currency",
           "port_unlocode",
           "iso_size_type",
+          "carrier_label",
+          "service_label",
           "source_ref"
         ],
         "title": "LocalChargeResponse"

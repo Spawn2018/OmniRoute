@@ -14,6 +14,8 @@ describe("levyWrite", () => {
         originStamp: "tenant:manual",
         portToken: " plgdy ",
         isoToken: " 22g1 ",
+        carrierToken: " MSC ",
+        serviceToken: " AE1 ",
       }),
     ).toEqual({
       charge_kind: "thc",
@@ -22,6 +24,8 @@ describe("levyWrite", () => {
       source_ref: "tenant:manual",
       port_unlocode: "PLGDY",
       iso_size_type: "22G1",
+      carrier_label: "MSC",
+      service_label: "AE1",
     })
   })
 })
@@ -44,6 +48,9 @@ describe("local_charge surface for 166.0", () => {
     expect(src("features/ops/ops-index.ts")).toContain('"166.0": "/local-charges"')
     expect(src("features/ops/ops-index.ts")).toContain('"207.0": "/local-charges"')
     expect(src("features/ops/ops-index.ts")).toContain('"208.0": "/local-charges"')
+    expect(src("features/ops/ops-index.ts")).toContain('"633.0": "/local-charges"')
     expect(panel).toContain("Typ ISO kontenera")
+    expect(panel).toContain("Armator")
+    expect(panel).toContain("Serwis liniowy")
   })
 })

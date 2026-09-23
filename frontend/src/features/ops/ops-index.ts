@@ -1979,6 +1979,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "206.0": "/charge-templates",
   "207.0": "/local-charges",
   "208.0": "/local-charges",
+  "633.0": "/local-charges",
   "209.0": "/air",
   "210.0": "/shipments",
   "211.0": "/organization-settings",

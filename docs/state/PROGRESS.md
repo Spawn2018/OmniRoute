@@ -1,6 +1,7 @@
 # Historia plastrów
 
 | Data | Plaster | Moduł | Opis |
+| 2026-09-23 | 633.0 | leftover P4b armator/serwis HITL | 2026-09-23 | PRZESZŁO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 2026-09-23 | Plan 633.0 | leftover P4b armator/serwis HITL | Plan `carrier_label`/`service_label` na `local_charge` (`/noc 7`). 632.0 gate success. |
 | 2026-09-23 | 632.0 | leftover D9c 409 stance HITL | 2026-09-23 | PRZESZŁO | N/A | N/A | OK | OK | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 2026-09-23 | Plan 632.0 | leftover D9c 409 stance HITL | Plan `network_print_gate_mark` block_409|warn_only|record_only|other (`/noc 7`). 631.0 gate success. |

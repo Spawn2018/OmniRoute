@@ -4,10 +4,12 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.local_charge import (
     require_levy_amount,
+    require_levy_carrier_label,
     require_levy_currency,
     require_levy_iso,
     require_levy_kind,
     require_levy_port,
+    require_levy_service_label,
     require_levy_source_ref,
 )
 from app.models.local_charge import LocalCharge
@@ -32,6 +34,8 @@ class LocalChargeService:
         source_ref: object,
         port_unlocode: object = None,
         iso_size_type: object = None,
+        carrier_label: object = None,
+        service_label: object = None,
     ) -> LocalCharge:
         row = LocalCharge(
             id=uuid4(),
@@ -41,6 +45,8 @@ class LocalChargeService:
             currency=require_levy_currency(currency),
             port_unlocode=require_levy_port(port_unlocode),
             iso_size_type=require_levy_iso(iso_size_type),
+            carrier_label=require_levy_carrier_label(carrier_label),
+            service_label=require_levy_service_label(service_label),
             source_ref=require_levy_source_ref(source_ref),
             created_by=user_id,
         )

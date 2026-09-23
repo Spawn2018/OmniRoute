@@ -35,11 +35,22 @@ class LocalCharge(Base, TimestampMixin):
             "charge_kind",
             "port_unlocode",
             "iso_size_type",
-            name="uq_local_charge_org_kind_port_type",
+            "carrier_label",
+            "service_label",
+            name="uq_local_charge_org_kind_port_type_carrier_service",
+            postgresql_nulls_not_distinct=True,
         ),
         CheckConstraint(
             "iso_size_type IS NULL OR iso_size_type ~ '^[0-9]{2}[A-Z][A-Z0-9]$'",
             name="ck_local_charge_iso_size_type",
+        ),
+        CheckConstraint(
+            "carrier_label IS NULL OR char_length(btrim(carrier_label)) BETWEEN 1 AND 64",
+            name="ck_local_charge_carrier_label",
+        ),
+        CheckConstraint(
+            "service_label IS NULL OR char_length(btrim(service_label)) BETWEEN 1 AND 64",
+            name="ck_local_charge_service_label",
         ),
         Index("ix_local_charge_org_kind", "organization_id", "charge_kind"),
     )
@@ -57,4 +68,6 @@ class LocalCharge(Base, TimestampMixin):
     currency: Mapped[str] = mapped_column(CHAR(3), nullable=False)
     port_unlocode: Mapped[str | None] = mapped_column(String(5), nullable=True)
     iso_size_type: Mapped[str | None] = mapped_column(String(4), nullable=True)
+    carrier_label: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    service_label: Mapped[str | None] = mapped_column(String(64), nullable=True)
     source_ref: Mapped[str] = mapped_column(String(256), nullable=False)

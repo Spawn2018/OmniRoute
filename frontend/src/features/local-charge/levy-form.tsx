@@ -12,6 +12,8 @@ type LevyDraft = {
   originStamp: string
   portToken: string
   isoToken: string
+  carrierToken: string
+  serviceToken: string
 }
 
 const EMPTY_LEVY: LevyDraft = {
@@ -21,6 +23,8 @@ const EMPTY_LEVY: LevyDraft = {
   originStamp: "fixture://local-charge/",
   portToken: "",
   isoToken: "",
+  carrierToken: "",
+  serviceToken: "",
 }
 
 function LevySave(args: { organizationId: string | null }) {
@@ -43,8 +47,9 @@ function LevySave(args: { organizationId: string | null }) {
       }}
     >
       <p className="text-xs text-muted-foreground">
-        Dopłata THC/ISPS/seal/amendment jako dana Decimal. Opcjonalny UN/LOCODE i typ ISO,
-        nie FK katalogu. Warning braków zostaje leftover. Marża zostaje na `/charges`.
+        Dopłata THC/ISPS/seal/amendment jako dana Decimal. Opcjonalny UN/LOCODE, typ ISO,
+        etykieta armatora i serwisu — nie FK party. Warning braków zostaje leftover. Marża
+        zostaje na `/charges`.
       </p>
       <label className="flex flex-col gap-1 text-xs">
         Rodzaj dopłaty lokalnej
@@ -98,6 +103,24 @@ function LevySave(args: { organizationId: string | null }) {
           onChange={(change) => setDraft({ ...draft, isoToken: change.target.value })}
         />
       </label>
+      <label className="flex flex-col gap-1 text-xs">
+        Armator (opcjonalnie)
+        <input
+          aria-label="Etykieta armatora dopłaty"
+          className="h-9 rounded-md border bg-background px-2 font-mono"
+          value={draft.carrierToken}
+          onChange={(change) => setDraft({ ...draft, carrierToken: change.target.value })}
+        />
+      </label>
+      <label className="flex flex-col gap-1 text-xs">
+        Serwis liniowy (opcjonalnie)
+        <input
+          aria-label="Etykieta serwisu dopłaty"
+          className="h-9 rounded-md border bg-background px-2 font-mono"
+          value={draft.serviceToken}
+          onChange={(change) => setDraft({ ...draft, serviceToken: change.target.value })}
+        />
+      </label>
       <CatalogSourceRefField
         label="source_ref (tenant:manual albo fixture://local-charge/…)"
         ariaLabel="Pochodzenie zapisu dopłaty lokalnej"
@@ -128,6 +151,8 @@ function LevyRows(args: { organizationId: string | null }) {
             <span>{row.charge_kind}</span>
             {row.port_unlocode ? <span>{row.port_unlocode}</span> : null}
             {row.iso_size_type ? <span>{row.iso_size_type}</span> : null}
+            {row.carrier_label ? <span>{row.carrier_label}</span> : null}
+            {row.service_label ? <span>{row.service_label}</span> : null}
             <Money amount={row.amount} currency={row.currency} />
           </li>
         ))}
