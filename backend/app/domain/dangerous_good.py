@@ -30,6 +30,7 @@ _IMDG_CLASSES = frozenset(
 )
 _TUNNELS = frozenset({"A", "B", "C", "D", "E"})
 _GROUPS = frozenset({"none", *(f"sg{n}" for n in range(1, 19))})
+_PACKING = frozenset({"I", "II", "III"})
 
 
 def normalize_un_number(raw: object) -> str:
@@ -76,4 +77,13 @@ def normalize_segregation_group(raw: object) -> str:
     token = raw.strip().lower()
     if token not in _GROUPS:
         raise InvalidDangerousGood("segregacja: nieznana grupa")
+    return token
+
+
+def normalize_packing_group(raw: object) -> str:
+    if type(raw) is not str:
+        raise InvalidDangerousGood("pakowanie musi być tekstem")
+    token = raw.strip().upper()
+    if token not in _PACKING:
+        raise InvalidDangerousGood("pakowanie: nieznana grupa")
     return token

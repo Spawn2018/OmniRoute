@@ -30,6 +30,10 @@ class DangerousGood(Base, TimestampMixin):
             "'sg16','sg17','sg18')",
             name="ck_dangerous_good_segregation_group",
         ),
+        CheckConstraint(
+            "packing_group IN ('I', 'II', 'III')",
+            name="ck_dangerous_good_packing_group",
+        ),
     )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True)
@@ -40,6 +44,7 @@ class DangerousGood(Base, TimestampMixin):
     imdg_class: Mapped[str] = mapped_column(String(3), nullable=False)
     adr_tunnel_code: Mapped[str] = mapped_column(String(1), nullable=False)
     segregation_group: Mapped[str] = mapped_column(String(8), nullable=False)
+    packing_group: Mapped[str] = mapped_column(String(3), nullable=False)
     name: Mapped[str] = mapped_column(String(128), nullable=False)
     aliases: Mapped[list[str]] = mapped_column(
         ARRAY(Text()), nullable=False, server_default=text("'{}'"))

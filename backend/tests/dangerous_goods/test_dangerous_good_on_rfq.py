@@ -173,6 +173,7 @@ class _StubUnCatalog:
             imdg_class="3",
             adr_tunnel_code="D",
             segregation_group="none",
+        packing_group="II",
             name="Petrol",
             aliases=[],
             source_ref="tenant:manual",

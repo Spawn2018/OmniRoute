@@ -2018,6 +2018,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "639.0": "/margin-match-marks",
   "640.0": "/local-charge-match-marks",
   "641.0": "/local-charge-bind-marks",
+  "642.0": "/dangerous-goods",
   "209.0": "/air",
   "210.0": "/shipments",
   "211.0": "/organization-settings",

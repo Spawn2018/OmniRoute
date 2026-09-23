@@ -1,6 +1,7 @@
 # BC dangerous_good (M-52)
 
 Katalog numeru UN + klasy IMDG — nie `charge`. FK na RFQ/wycenie składa API.
+HITL `packing_group` I|II|III (642.0). Nie live IMO. Nie LLM klasy.
 
 ## Dozwolone zależności
 - `app.models.dangerous_good`
@@ -11,4 +12,5 @@ Katalog numeru UN + klasy IMDG — nie `charge`. FK na RFQ/wycenie składa API.
 - import innych BC services
 - zapis `quotation` / `customer_rfq` / `commodity_code` / `charge`
 - nadawanie klasy przez LLM
-- live IMO / packing group
+- live IMO / grupy zgodności 1.xA / marine pollutant / LQ
+- UPDATE / DELETE wiersza

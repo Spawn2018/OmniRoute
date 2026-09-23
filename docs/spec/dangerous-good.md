@@ -1,9 +1,9 @@
 # M-52 dangerous_good — katalog towarów niebezpiecznych
 
-**Plaster:** 7.0 (katalog) · **122.0** (UN na RFQ) · **192.0** (tunel ADR + SG)  
-**Status:** katalog numeru UN + klasy IMDG + tunel ADR + grupa SG per tenant. Nie żywe M-08 `charge`. LLM nie nadaje klasy.
+**Plaster:** 7.0 (katalog) · **122.0** (UN na RFQ) · **192.0** (tunel ADR + SG) · **642.0** (packing group)  
+**Status:** katalog numeru UN + klasy IMDG + tunel ADR + grupa SG + packing group I/II/III per tenant. Nie żywe M-08 `charge`. LLM nie nadaje klasy.
 
-Delta: [7.0](../deltas/archived/7.0-dangerous-good.md) · [122.0](../deltas/archived/122.0-un-on-rfq.md) · [192.0](../deltas/archived/192.0-dangerous-good-adr.md).
+Delta: [7.0](../deltas/archived/7.0-dangerous-good.md) · [122.0](../deltas/archived/122.0-un-on-rfq.md) · [192.0](../deltas/archived/192.0-dangerous-good-adr.md) · [642.0](../deltas/archived/642.0-dangerous-good-packing-group.md).
 
 ## Zakres
 
@@ -15,7 +15,7 @@ Delta: [7.0](../deltas/archived/7.0-dangerous-good.md) · [122.0](../deltas/arch
 
 ## Poza zakresem
 
-`quotation` / `commodity_code` z FK w 7.0 · ADN/ADR jako osobne tabele · grupy zgodności 1.xA · packing group · live IMO · nadpisanie M-08 `charge`
+`quotation` / `commodity_code` z FK w 7.0 · ADN/ADR jako osobne tabele · grupy zgodności 1.xA · live IMO · nadpisanie M-08 `charge`
 
 ## 122.0 UN na RFQ i wycenie
 
@@ -39,6 +39,18 @@ Live IMO · LLM nadaje UN · filtr `rate_line` po UN · packing group · grupy 1
 ### Poza 192.0
 
 packing group · live IMO · LLM klasa
+
+## 642.0 packing group
+
+### Zakres
+
+- `packing_group`: `I` | `II` | `III` (HITL; NOT NULL; CHECK w bazie; backfill `II`)
+- Operator wpisuje grupę; serwis nie zmienia `imdg_class` / ADR / SG
+- UI: kolumna + select przy dodaniu
+
+### Poza 642.0
+
+live IMO · LLM klasa · grupy zgodności 1.xA · nowy BC mark
 
 ## HC
 

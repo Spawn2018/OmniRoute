@@ -4,7 +4,7 @@ Wpisujesz rekord z pochodzeniem. Nie ma luźnego stringa zamiast kodu. Kwota to 
 
 Ekrany, które **zapisują** (INSERT/upsert), nie tablice-odczyty:
 
-- kody opłat, kody HS/CN, numery UN (tunel ADR + grupa SG), sieci — kod / nazwa / aliasy
+- kody opłat, kody HS/CN, numery UN (tunel ADR + grupa SG + grupa pakowania I/II/III), sieci — kod / nazwa / aliasy
 - stawki kupna — niemutowalne, `source_ref`; zmiana = nowy wiersz
 - opłaty — kupno i sprzedaż na jednym wierszu; marża z pary, nie z arkusza. Przy zapisie podajesz pochodzenie (`source_ref`: `tenant:manual`, `fixture://charge/…`). Stare wiersze mogą nie mieć pochodzenia. Porównanie na wycenie zapisuje `tenant:manual:comparison`. Sprzedaż w PLN na `/charges` liczy baza z kursu NBP na podaną datę — nie przeglądarka.
 - kurs NBP, extra portowe, oferty kanału — katalog, nie live HTTP. Na extra portowych „Dopasuj warunek” pokazuje wiersze, których `applies_when` jest dokładnie taki jak wpisałeś. To nie dopisuje opłaty ani marży.

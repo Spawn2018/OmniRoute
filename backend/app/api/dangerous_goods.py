@@ -18,6 +18,7 @@ class DangerousGoodCreate(BaseModel):
     imdg_class: str = Field(min_length=1, max_length=3)
     adr_tunnel_code: str = Field(min_length=1, max_length=1)
     segregation_group: str = Field(min_length=1, max_length=8)
+    packing_group: str = Field(min_length=1, max_length=3)
     name: str = Field(min_length=1, max_length=128)
     aliases: list[str] = Field(default_factory=list)
 
@@ -31,6 +32,7 @@ class DangerousGoodResponse(BaseModel):
     imdg_class: str
     adr_tunnel_code: str
     segregation_group: str
+    packing_group: str
     name: str
     aliases: list[str]
     source_ref: str
@@ -74,6 +76,7 @@ async def create_dangerous_good(
         aliases=body.aliases,
         adr_tunnel_code=body.adr_tunnel_code,
         segregation_group=body.segregation_group,
+        packing_group=body.packing_group,
     )
     await session.commit()
     return DangerousGoodResponse.model_validate(row)

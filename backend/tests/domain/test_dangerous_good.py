@@ -5,6 +5,7 @@ from hypothesis import strategies as st
 from app.domain.dangerous_good import (
     normalize_adr_tunnel_code,
     normalize_imdg_class,
+    normalize_packing_group,
     normalize_segregation_group,
     normalize_un_aliases,
     normalize_un_number,
@@ -64,3 +65,12 @@ def test_normalize_segregation_group_accepts_sg() -> None:
 def test_normalize_segregation_group_rejects_unknown() -> None:
     with pytest.raises(InvalidDangerousGood, match="segregacja"):
         normalize_segregation_group("sg99")
+
+
+def test_normalize_packing_group_accepts_roman() -> None:
+    assert normalize_packing_group(" ii ") == "II"
+
+
+def test_normalize_packing_group_rejects_unknown() -> None:
+    with pytest.raises(InvalidDangerousGood, match="pakowanie"):
+        normalize_packing_group("IV")

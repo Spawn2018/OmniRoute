@@ -1,6 +1,8 @@
 # Historia plastrów
 
 | Data | Plaster | Moduł | Opis |
+| 2026-09-23 | 642.0 | leftover EXP0.9 packing group HITL | 2026-09-23 | PRZESZŁO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
+| 2026-09-23 | Plan 642.0 | leftover EXP0.9 packing group HITL | Plan `packing_group` I|II|III na `dangerous_good` (`/noc 21`). 641.0 gate success. |
 | 2026-09-23 | 641.0 | leftover P4c bind stance HITL | 2026-09-23 | PRZESZŁO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 2026-09-23 | Plan 641.0 | leftover P4c bind stance HITL | Plan `local_charge_bind_mark` charge|quote|other (`/noc 21`). 640.0 gate success. |
 | 2026-09-23 | 640.0 | leftover P4c matching stance HITL | 2026-09-23 | PRZESZŁO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |

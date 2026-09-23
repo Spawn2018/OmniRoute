@@ -16,6 +16,7 @@ describe("dangerousGoodCreateBody", () => {
         aliasesText: " 1213 , , 1263 ",
         tunnelCode: " D ",
         segregationGroup: " SG1 ",
+        packingGroup: " II ",
       }),
     ).toEqual({
       un_number: "UN1203",
@@ -24,6 +25,7 @@ describe("dangerousGoodCreateBody", () => {
       aliases: ["1213", "1263"],
       adr_tunnel_code: "D",
       segregation_group: "SG1",
+      packing_group: "II",
     })
   })
 
@@ -36,6 +38,7 @@ describe("dangerousGoodCreateBody", () => {
         aliasesText: "",
         tunnelCode: "D",
         segregationGroup: "none",
+        packingGroup: "II",
       }),
     ).toEqual({
       un_number: "1203",
@@ -44,6 +47,7 @@ describe("dangerousGoodCreateBody", () => {
       aliases: [],
       adr_tunnel_code: "D",
       segregation_group: "none",
+      packing_group: "II",
     })
   })
 })
@@ -60,6 +64,7 @@ describe("dangerous goods catalog surface for 192.0", () => {
     expect(lists).toContain("dangerousGoods")
     expect(ops).toContain("/dangerous-goods")
     expect(ops).toContain('"192.0": "/dangerous-goods"')
+    expect(ops).toContain('"642.0": "/dangerous-goods"')
     expect(page).toContain("CatalogLoadedTable")
     expect(page).toContain("createDangerousGood")
     expect(page).toContain("resolveDangerousGood")
@@ -69,6 +74,7 @@ describe("dangerous goods catalog surface for 192.0", () => {
     expect(page).toContain("imdg_class")
     expect(page).toContain("adr_tunnel_code")
     expect(page).toContain("segregation_group")
+    expect(page).toContain("packing_group")
     expect(page).not.toContain("amount")
     expect(page).not.toContain("CatalogCreateForm")
   })

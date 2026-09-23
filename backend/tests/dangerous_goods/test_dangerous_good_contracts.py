@@ -50,6 +50,7 @@ def test_generated_api_types_include_dangerous_good() -> None:
     assert "DangerousGoodResponse" in source or "DangerousGoodCreate" in source
     assert "adr_tunnel_code" in source
     assert "segregation_group" in source
+    assert "packing_group" in source
 
 
 def test_migration_132_adds_adr_without_live_imo() -> None:
@@ -60,6 +61,7 @@ def test_migration_132_adds_adr_without_live_imo() -> None:
     assert 'down_revision: str | None = "131_cargo_claim_cmr"' in source
     assert "adr_tunnel_code" in source
     assert "segregation_group" in source
+    assert "packing_group" in source
     assert "httpx" not in source
     assert "buy_amount" not in source
     assert "def downgrade" in source

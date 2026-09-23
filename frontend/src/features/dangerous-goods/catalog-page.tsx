@@ -22,6 +22,7 @@ import { getTenantContext } from "@/lib/tenant"
 
 const TUNNELS = ["A", "B", "C", "D", "E"] as const
 const GROUPS = ["none", ...Array.from({ length: 18 }, (_, index) => `sg${index + 1}`)]
+const PACKING = ["I", "II", "III"] as const
 
 const helper = createColumnHelper<DangerousGood>()
 
@@ -36,6 +37,7 @@ const columns = [
   }),
   helper.accessor("adr_tunnel_code", { header: "Tunel ADR" }),
   helper.accessor("segregation_group", { header: "Grupa SG" }),
+  helper.accessor("packing_group", { header: "Grupa pakowania" }),
   helper.accessor("name", { header: "Nazwa ładunku" }),
   helper.accessor("aliases", {
     header: "Aliasy UN",
@@ -49,6 +51,7 @@ const COLUMN_LABELS = {
   imdg_class: "Klasa IMDG",
   adr_tunnel_code: "Tunel ADR",
   segregation_group: "Grupa SG",
+  packing_group: "Grupa pakowania",
   name: "Nazwa ładunku",
   aliases: "Aliasy UN",
   source_ref: "Źródło",
@@ -63,6 +66,7 @@ export function DangerousGoodCatalogPage() {
   const [aliasesText, setAliasesText] = useState("")
   const [tunnelCode, setTunnelCode] = useState("D")
   const [segregationGroup, setSegregationGroup] = useState("none")
+  const [packingGroup, setPackingGroup] = useState("II")
   const [resolved, setResolved] = useState<DangerousGood | null>(null)
   const sessionReady = Boolean(ctx.organizationId && ctx.userId)
 
@@ -83,6 +87,7 @@ export function DangerousGoodCatalogPage() {
           aliasesText,
           tunnelCode,
           segregationGroup,
+          packingGroup,
         }),
       ),
     onSuccess: () => {
@@ -92,6 +97,7 @@ export function DangerousGoodCatalogPage() {
       setAliasesText("")
       setTunnelCode("D")
       setSegregationGroup("none")
+      setPackingGroup("II")
       void queryClient.invalidateQueries({ queryKey: ["dangerous-goods", ctx.organizationId] })
     },
   })
@@ -106,13 +112,13 @@ export function DangerousGoodCatalogPage() {
     <div className="space-y-3">
       <CatalogHeading
         title="Katalog towarów niebezpiecznych"
-        subtitle="dangerous_good M-52 · UN + IMDG + tunel ADR + SG · nie klasa z modelu"
+        subtitle="dangerous_good M-52 · UN + IMDG + tunel ADR + SG + packing group · nie klasa z modelu"
       />
 
       {sessionReady ? null : <TenantSessionNotice />}
 
       <form
-        className="flex flex-col gap-2 rounded-md border border-border bg-card p-3 lg:grid lg:grid-cols-7"
+        className="flex flex-col gap-2 rounded-md border border-border bg-card p-3 lg:grid lg:grid-cols-8"
         onSubmit={(event) => {
           event.preventDefault()
           if (!sessionReady) return
@@ -159,6 +165,18 @@ export function DangerousGoodCatalogPage() {
             </option>
           ))}
         </select>
+        <select
+          aria-label="Grupa pakowania"
+          className="h-8 rounded-md border border-input bg-background px-2 text-xs"
+          value={packingGroup}
+          onChange={(event) => setPackingGroup(event.target.value)}
+        >
+          {PACKING.map((group) => (
+            <option key={group} value={group}>
+              {group}
+            </option>
+          ))}
+        </select>
         <Input
           aria-label="Nazwa ładunku"
           placeholder="Benzyna"
@@ -186,7 +204,7 @@ export function DangerousGoodCatalogPage() {
         resolved={
           resolved === null
             ? null
-            : `UN${resolved.un_number} · klasa ${resolved.imdg_class} · tunel ${resolved.adr_tunnel_code} · ${resolved.name}`
+            : `UN${resolved.un_number} · klasa ${resolved.imdg_class} · PG ${resolved.packing_group} · tunel ${resolved.adr_tunnel_code} · ${resolved.name}`
         }
         onResolve={(token) => resolveMutation.mutate(token)}
       />

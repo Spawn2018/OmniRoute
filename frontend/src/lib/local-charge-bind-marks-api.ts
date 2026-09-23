@@ -15,15 +15,7 @@ export type LocalChargeBindMarkWrite = {
   source_ref: string
 }
 
-const ROOT = "/api/v1/local-charge-bind-marks" as const
-
-function authJsonHeaders(): HeadersInit {
-  return {
-    ...requireAuthHeaders(),
-    Accept: "application/json",
-    "Content-Type": "application/json",
-  }
-}
+const LIST_PATH = "/api/v1/local-charge-bind-marks"
 
 export function buildLocalChargeBindMarkWrite(
   code: string,
@@ -37,25 +29,34 @@ export function buildLocalChargeBindMarkWrite(
   }
 }
 
-async function decodeOk<T>(response: Response, whenFail: string, ok: number): Promise<T> {
-  if (response.status === ok) {
-    return (await response.json()) as T
-  }
-  throw new ApiError(await readApiDetail(response, whenFail), httpErrorStatus(response))
-}
-
 export async function fetchLocalChargeBindMarks(): Promise<LocalChargeBindMarkRow[]> {
-  const response = await fetch(ROOT, { headers: requireAuthHeaders() })
-  return decodeOk(response, "Błąd listy wiązań dopłaty lokalnej", 200)
+  const response = await fetch(LIST_PATH, { headers: requireAuthHeaders() })
+  if (response.status !== 200) {
+    throw new ApiError(
+      await readApiDetail(response, "Błąd listy wiązań dopłaty lokalnej"),
+      httpErrorStatus(response),
+    )
+  }
+  return (await response.json()) as LocalChargeBindMarkRow[]
 }
 
 export async function saveLocalChargeBindMark(
   payload: LocalChargeBindMarkWrite,
 ): Promise<LocalChargeBindMarkRow> {
-  const response = await fetch(ROOT, {
+  const response = await fetch(LIST_PATH, {
     method: "POST",
-    headers: authJsonHeaders(),
+    headers: {
+      ...requireAuthHeaders(),
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify(payload),
   })
-  return decodeOk(response, "Błąd zapisu wiązania dopłaty lokalnej", 201)
+  if (response.status !== 201) {
+    throw new ApiError(
+      await readApiDetail(response, "Błąd zapisu wiązania dopłaty lokalnej"),
+      httpErrorStatus(response),
+    )
+  }
+  return (await response.json()) as LocalChargeBindMarkRow
 }
