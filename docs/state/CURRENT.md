@@ -6,9 +6,9 @@
 
 **Ostatni plaster:** **640.0** leftover P4c `local_charge_match_mark` (gate success; hotfix **640.0b**)
 
-**Etap:** Plan **641.0** — `/plan-modul`. Zero kodu produktu do delty.
+**Etap:** Plaster **641.0** — delta zaakceptowana (`/noc 21`). Wolno `/plaster`.
 
-**Noc:** `/noc 17` zakończona (stop po 17:00; CI hotfixu dokończone).
+**Noc:** `/noc 21` do 21:00 Europe/Warsaw.
 
 **Miejsce pracy:** produkt = to repo + GitHub.
 
@@ -16,7 +16,7 @@
 
 **Park / czeka w PLAN:** D9d · D9e · D9f pdf-zpl live · live 409 · live poll · Expo · fx×FV · matching T5 · FK kontekstu · T8 live · D6b · D7b · auto-copy U1 · similar SQL · F2b · auto-resync salda · N8 · T6 live · P5c · N6 auto charge · HW · SH-R16-4 UXCL · AI3 · G0-SH · N3 ·
 
-**Spec (jedyna na sesję produktu):** brak — najpierw delta `641.0` (`/plan-modul`).
+**Spec (jedyna na sesję produktu):** [docs/deltas/open/641.0-local-charge-bind-mark.md](../deltas/open/641.0-local-charge-bind-mark.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 
@@ -24,6 +24,7 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\\pg16`.
 
+**2026-09-23:** Plan **641.0** leftover P4c bind stance HITL (`/noc 21`). 640.0 gate success.
 **2026-09-23:** Plaster **640.0** + hotfix **640.0b** na `main` (gate success). `/noc 17` stop.
 **2026-09-23:** Plan **640.0** leftover P4c matching stance HITL (`/noc 17`). 639.0 gate success.
 **2026-09-23:** Plaster **639.0** leftover N6 `margin_match_mark` zamknięty (gate success). `/noc 17`.
