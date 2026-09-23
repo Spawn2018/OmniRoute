@@ -74,3 +74,17 @@ def test_normalize_packing_group_accepts_roman() -> None:
 def test_normalize_packing_group_rejects_unknown() -> None:
     with pytest.raises(InvalidDangerousGood, match="pakowanie"):
         normalize_packing_group("IV")
+
+
+def test_require_marine_pollutant_accepts_bool() -> None:
+    from app.domain.dangerous_good import require_marine_pollutant
+
+    assert require_marine_pollutant(True) is True
+    assert require_marine_pollutant(False) is False
+
+
+def test_require_marine_pollutant_rejects_non_bool() -> None:
+    from app.domain.dangerous_good import require_marine_pollutant
+
+    with pytest.raises(InvalidDangerousGood, match="zanieczyszczenie"):
+        require_marine_pollutant("yes")

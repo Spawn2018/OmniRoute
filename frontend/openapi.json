@@ -37224,6 +37224,10 @@
             "minLength": 1,
             "title": "Packing Group"
           },
+          "marine_pollutant": {
+            "type": "boolean",
+            "title": "Marine Pollutant"
+          },
           "name": {
             "type": "string",
             "maxLength": 128,
@@ -37246,6 +37250,7 @@
           "adr_tunnel_code",
           "segregation_group",
           "packing_group",
+          "marine_pollutant",
           "name"
         ],
         "title": "DangerousGoodCreate"
@@ -37282,6 +37287,10 @@
             "type": "string",
             "title": "Packing Group"
           },
+          "marine_pollutant": {
+            "type": "boolean",
+            "title": "Marine Pollutant"
+          },
           "name": {
             "type": "string",
             "title": "Name"
@@ -37307,6 +37316,7 @@
           "adr_tunnel_code",
           "segregation_group",
           "packing_group",
+          "marine_pollutant",
           "name",
           "aliases",
           "source_ref"

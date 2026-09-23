@@ -22,6 +22,7 @@ def _row(*, un_number: str, aliases: list[str] | None = None) -> DangerousGood:
         adr_tunnel_code="D",
         segregation_group="none",
         packing_group="II",
+        marine_pollutant=False,
         name=un_number,
         aliases=aliases or [],
         source_ref="tenant:manual",
@@ -46,6 +47,7 @@ async def test_create_normalizes_un_number_and_class() -> None:
         adr_tunnel_code="D",
         segregation_group="sg1",
         packing_group="II",
+        marine_pollutant=False,
     )
 
     assert created.un_number == "1203"
@@ -53,6 +55,7 @@ async def test_create_normalizes_un_number_and_class() -> None:
     assert created.adr_tunnel_code == "D"
     assert created.segregation_group == "sg1"
     assert created.packing_group == "II"
+    assert created.marine_pollutant is False
     assert created.name == "Petrol"
     assert created.aliases == ["1213"]
     assert created.source_ref == "tenant:manual"
@@ -74,7 +77,8 @@ async def test_create_rejects_blank_name() -> None:
             aliases=[],
             adr_tunnel_code="D",
             segregation_group="none",
-            packing_group="II",
+                        packing_group="II",
+            marine_pollutant=False,
         )
 
 
@@ -91,7 +95,8 @@ async def test_create_rejects_unknown_imdg_class() -> None:
             aliases=[],
             adr_tunnel_code="D",
             segregation_group="none",
-            packing_group="II",
+                        packing_group="II",
+            marine_pollutant=False,
         )
 
 
@@ -108,7 +113,8 @@ async def test_create_rejects_alias_equal_to_un_number() -> None:
             aliases=["1203"],
             adr_tunnel_code="D",
             segregation_group="none",
-            packing_group="II",
+                        packing_group="II",
+            marine_pollutant=False,
         )
 
 
@@ -127,7 +133,8 @@ async def test_create_rejects_token_already_in_catalog() -> None:
             aliases=["1203"],
             adr_tunnel_code="D",
             segregation_group="none",
-            packing_group="II",
+                        packing_group="II",
+            marine_pollutant=False,
         )
 
 

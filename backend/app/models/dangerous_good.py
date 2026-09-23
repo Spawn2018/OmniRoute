@@ -1,6 +1,6 @@
 import uuid
 
-from sqlalchemy import CheckConstraint, ForeignKey, String, Text, UniqueConstraint, text
+from sqlalchemy import Boolean, CheckConstraint, ForeignKey, String, Text, UniqueConstraint, text
 from sqlalchemy.dialects.postgresql import ARRAY, UUID
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -45,6 +45,7 @@ class DangerousGood(Base, TimestampMixin):
     adr_tunnel_code: Mapped[str] = mapped_column(String(1), nullable=False)
     segregation_group: Mapped[str] = mapped_column(String(8), nullable=False)
     packing_group: Mapped[str] = mapped_column(String(3), nullable=False)
+    marine_pollutant: Mapped[bool] = mapped_column(Boolean, nullable=False)
     name: Mapped[str] = mapped_column(String(128), nullable=False)
     aliases: Mapped[list[str]] = mapped_column(
         ARRAY(Text()), nullable=False, server_default=text("'{}'"))

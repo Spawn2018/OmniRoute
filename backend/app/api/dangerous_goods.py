@@ -19,6 +19,7 @@ class DangerousGoodCreate(BaseModel):
     adr_tunnel_code: str = Field(min_length=1, max_length=1)
     segregation_group: str = Field(min_length=1, max_length=8)
     packing_group: str = Field(min_length=1, max_length=3)
+    marine_pollutant: bool
     name: str = Field(min_length=1, max_length=128)
     aliases: list[str] = Field(default_factory=list)
 
@@ -33,6 +34,7 @@ class DangerousGoodResponse(BaseModel):
     adr_tunnel_code: str
     segregation_group: str
     packing_group: str
+    marine_pollutant: bool
     name: str
     aliases: list[str]
     source_ref: str
@@ -77,6 +79,7 @@ async def create_dangerous_good(
         adr_tunnel_code=body.adr_tunnel_code,
         segregation_group=body.segregation_group,
         packing_group=body.packing_group,
+        marine_pollutant=body.marine_pollutant,
     )
     await session.commit()
     return DangerousGoodResponse.model_validate(row)

@@ -10,6 +10,7 @@ from app.domain.dangerous_good import (
     normalize_imdg_class,
     normalize_packing_group,
     normalize_segregation_group,
+    require_marine_pollutant,
 )
 from app.domain.errors import UnknownDangerousGood
 from app.main import app
@@ -49,6 +50,7 @@ class StubDangerousGoodService:
         adr_tunnel_code: str,
         segregation_group: str,
         packing_group: str,
+        marine_pollutant: bool,
     ) -> DangerousGood:
         row = DangerousGood(
             id=uuid4(),
@@ -58,6 +60,7 @@ class StubDangerousGoodService:
             adr_tunnel_code=normalize_adr_tunnel_code(adr_tunnel_code),
             segregation_group=normalize_segregation_group(segregation_group),
             packing_group=normalize_packing_group(packing_group),
+            marine_pollutant=require_marine_pollutant(marine_pollutant),
             name=name.strip(),
             aliases=[alias.strip() for alias in aliases],
             source_ref="tenant:manual",
@@ -110,6 +113,7 @@ def test_http_create_and_list_dangerous_goods(catalog_client: TestClient) -> Non
             "adr_tunnel_code": "D",
             "segregation_group": "sg1",
             "packing_group": "II",
+            "marine_pollutant": False,
         },
     )
     assert created.status_code == 201
@@ -119,6 +123,7 @@ def test_http_create_and_list_dangerous_goods(catalog_client: TestClient) -> Non
     assert body["adr_tunnel_code"] == "D"
     assert body["segregation_group"] == "sg1"
     assert body["packing_group"] == "II"
+    assert body["marine_pollutant"] is False
     assert body["organization_id"] == str(org_id)
     assert body["aliases"] == ["1213"]
     assert body["source_ref"] == "tenant:manual"
@@ -153,6 +158,7 @@ def test_http_create_rejects_client_source_ref(catalog_client: TestClient) -> No
             "adr_tunnel_code": "D",
             "segregation_group": "none",
             "packing_group": "II",
+            "marine_pollutant": False,
             "source_ref": "forged:origin",
         },
     )
@@ -172,6 +178,7 @@ def test_http_resolve_returns_catalog_row(catalog_client: TestClient) -> None:
             "adr_tunnel_code": "D",
             "segregation_group": "sg1",
             "packing_group": "II",
+            "marine_pollutant": False,
         },
     )
     resolved = catalog_client.get(
@@ -195,6 +202,7 @@ def test_http_create_unknown_tunnel_is_400(catalog_client: TestClient) -> None:
             "adr_tunnel_code": "F",
             "segregation_group": "none",
             "packing_group": "II",
+            "marine_pollutant": False,
         },
     )
     assert response.status_code == 400
@@ -213,6 +221,7 @@ def test_http_create_unknown_segregation_is_400(catalog_client: TestClient) -> N
             "adr_tunnel_code": "D",
             "segregation_group": "sg99",
             "packing_group": "II",
+            "marine_pollutant": False,
         },
     )
     assert response.status_code == 400
@@ -230,8 +239,28 @@ def test_http_create_unknown_packing_is_400(catalog_client: TestClient) -> None:
             "adr_tunnel_code": "D",
             "segregation_group": "none",
             "packing_group": "IV",
+            "marine_pollutant": False,
         },
     )
     assert response.status_code == 400
     assert "pakowanie" in response.json()["detail"]
+
+
+def test_http_create_marine_pollutant_true(catalog_client: TestClient) -> None:
+    response = catalog_client.post(
+        "/api/v1/dangerous-goods",
+        headers=bearer_auth_headers(),
+        json={
+            "un_number": "3082",
+            "imdg_class": "9",
+            "name": "Environmentally hazardous",
+            "aliases": [],
+            "adr_tunnel_code": "E",
+            "segregation_group": "none",
+            "packing_group": "III",
+            "marine_pollutant": True,
+        },
+    )
+    assert response.status_code == 201
+    assert response.json()["marine_pollutant"] is True
 

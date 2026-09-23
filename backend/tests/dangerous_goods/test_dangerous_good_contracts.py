@@ -51,6 +51,7 @@ def test_generated_api_types_include_dangerous_good() -> None:
     assert "adr_tunnel_code" in source
     assert "segregation_group" in source
     assert "packing_group" in source
+    assert "marine_pollutant" in source
 
 
 def test_migration_132_adds_adr_without_live_imo() -> None:
@@ -75,6 +76,18 @@ def test_migration_514_adds_packing_group_without_live_imo() -> None:
     assert 'down_revision: str | None = "513_local_charge_bind_mark"' in source
     assert "packing_group" in source
     assert "ck_dangerous_good_packing_group" in source
+    assert "httpx" not in source
+    assert "buy_amount" not in source
+    assert "def downgrade" in source
+
+
+def test_migration_515_adds_marine_pollutant_without_live_imo() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "515_dg_marine_pollutant.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "515_dg_marine_pollutant"' in source
+    assert 'down_revision: str | None = "514_dangerous_good_packing_group"' in source
+    assert "marine_pollutant" in source
     assert "httpx" not in source
     assert "buy_amount" not in source
     assert "def downgrade" in source

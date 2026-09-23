@@ -87,3 +87,9 @@ def normalize_packing_group(raw: object) -> str:
     if token not in _PACKING:
         raise InvalidDangerousGood("pakowanie: nieznana grupa")
     return token
+
+
+def require_marine_pollutant(raw: object) -> bool:
+    if type(raw) is not bool:
+        raise InvalidDangerousGood("zanieczyszczenie morza musi być true albo false")
+    return raw

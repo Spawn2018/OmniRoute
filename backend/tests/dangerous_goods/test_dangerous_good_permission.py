@@ -26,6 +26,7 @@ _ENDPOINTS = (
             "adr_tunnel_code": "D",
             "segregation_group": "none",
             "packing_group": "II",
+            "marine_pollutant": False,
         },
     ),
 )

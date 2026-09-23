@@ -38,6 +38,10 @@ const columns = [
   helper.accessor("adr_tunnel_code", { header: "Tunel ADR" }),
   helper.accessor("segregation_group", { header: "Grupa SG" }),
   helper.accessor("packing_group", { header: "Grupa pakowania" }),
+  helper.accessor("marine_pollutant", {
+    header: "MP",
+    cell: (info) => (info.getValue() ? "tak" : "nie"),
+  }),
   helper.accessor("name", { header: "Nazwa ładunku" }),
   helper.accessor("aliases", {
     header: "Aliasy UN",
@@ -52,6 +56,7 @@ const COLUMN_LABELS = {
   adr_tunnel_code: "Tunel ADR",
   segregation_group: "Grupa SG",
   packing_group: "Grupa pakowania",
+  marine_pollutant: "Zanieczyszczenie morza",
   name: "Nazwa ładunku",
   aliases: "Aliasy UN",
   source_ref: "Źródło",
@@ -67,6 +72,7 @@ export function DangerousGoodCatalogPage() {
   const [tunnelCode, setTunnelCode] = useState("D")
   const [segregationGroup, setSegregationGroup] = useState("none")
   const [packingGroup, setPackingGroup] = useState("II")
+  const [marinePollutant, setMarinePollutant] = useState(false)
   const [resolved, setResolved] = useState<DangerousGood | null>(null)
   const sessionReady = Boolean(ctx.organizationId && ctx.userId)
 
@@ -88,6 +94,7 @@ export function DangerousGoodCatalogPage() {
           tunnelCode,
           segregationGroup,
           packingGroup,
+          marinePollutant,
         }),
       ),
     onSuccess: () => {
@@ -98,6 +105,7 @@ export function DangerousGoodCatalogPage() {
       setTunnelCode("D")
       setSegregationGroup("none")
       setPackingGroup("II")
+      setMarinePollutant(false)
       void queryClient.invalidateQueries({ queryKey: ["dangerous-goods", ctx.organizationId] })
     },
   })
@@ -112,13 +120,13 @@ export function DangerousGoodCatalogPage() {
     <div className="space-y-3">
       <CatalogHeading
         title="Katalog towarów niebezpiecznych"
-        subtitle="dangerous_good M-52 · UN + IMDG + tunel ADR + SG + packing group · nie klasa z modelu"
+        subtitle="dangerous_good M-52 · UN + IMDG + tunel ADR + SG + packing + MP · nie klasa z modelu"
       />
 
       {sessionReady ? null : <TenantSessionNotice />}
 
       <form
-        className="flex flex-col gap-2 rounded-md border border-border bg-card p-3 lg:grid lg:grid-cols-8"
+        className="flex flex-col gap-2 rounded-md border border-border bg-card p-3 lg:grid lg:grid-cols-9"
         onSubmit={(event) => {
           event.preventDefault()
           if (!sessionReady) return
@@ -177,6 +185,15 @@ export function DangerousGoodCatalogPage() {
             </option>
           ))}
         </select>
+        <label className="flex h-8 items-center gap-2 text-xs">
+          <input
+            type="checkbox"
+            aria-label="Zanieczyszczenie morza"
+            checked={marinePollutant}
+            onChange={(event) => setMarinePollutant(event.target.checked)}
+          />
+          MP
+        </label>
         <Input
           aria-label="Nazwa ładunku"
           placeholder="Benzyna"
@@ -204,7 +221,7 @@ export function DangerousGoodCatalogPage() {
         resolved={
           resolved === null
             ? null
-            : `UN${resolved.un_number} · klasa ${resolved.imdg_class} · PG ${resolved.packing_group} · tunel ${resolved.adr_tunnel_code} · ${resolved.name}`
+            : `UN${resolved.un_number} · klasa ${resolved.imdg_class} · PG ${resolved.packing_group} · MP ${resolved.marine_pollutant ? "tak" : "nie"} · tunel ${resolved.adr_tunnel_code} · ${resolved.name}`
         }
         onResolve={(token) => resolveMutation.mutate(token)}
       />

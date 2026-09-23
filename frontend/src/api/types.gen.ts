@@ -4393,6 +4393,10 @@ export type DangerousGoodCreate = {
      */
     packing_group: string;
     /**
+     * Marine Pollutant
+     */
+    marine_pollutant: boolean;
+    /**
      * Name
      */
     name: string;
@@ -4434,6 +4438,10 @@ export type DangerousGoodResponse = {
      * Packing Group
      */
     packing_group: string;
+    /**
+     * Marine Pollutant
+     */
+    marine_pollutant: boolean;
     /**
      * Name
      */

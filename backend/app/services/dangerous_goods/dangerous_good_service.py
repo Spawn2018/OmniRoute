@@ -10,6 +10,7 @@ from app.domain.dangerous_good import (
     normalize_segregation_group,
     normalize_un_aliases,
     normalize_un_number,
+    require_marine_pollutant,
 )
 from app.domain.errors import (
     DangerousGoodConflict,
@@ -47,8 +48,9 @@ class DangerousGoodService:
         adr_tunnel_code: str,
         segregation_group: str,
         packing_group: str,
+        marine_pollutant: bool,
     ) -> DangerousGood:
-        token, klass, tunnel, group, packing, label, alias_tokens = (
+        token, klass, tunnel, group, packing, pollutant, label, alias_tokens = (
             self._normalized_create_inputs(
                 un_number=un_number,
                 imdg_class=imdg_class,
@@ -57,6 +59,7 @@ class DangerousGoodService:
                 adr_tunnel_code=adr_tunnel_code,
                 segregation_group=segregation_group,
                 packing_group=packing_group,
+                marine_pollutant=marine_pollutant,
             )
         )
         await self._reject_taken([token, *alias_tokens])
@@ -68,6 +71,7 @@ class DangerousGoodService:
             adr_tunnel_code=tunnel,
             segregation_group=group,
             packing_group=packing,
+            marine_pollutant=pollutant,
             name=label,
             aliases=alias_tokens,
         )
@@ -82,6 +86,7 @@ class DangerousGoodService:
         adr_tunnel_code: str,
         segregation_group: str,
         packing_group: str,
+        marine_pollutant: bool,
         name: str,
         aliases: list[str],
     ) -> DangerousGood:
@@ -93,6 +98,7 @@ class DangerousGoodService:
             adr_tunnel_code=adr_tunnel_code,
             segregation_group=segregation_group,
             packing_group=packing_group,
+            marine_pollutant=marine_pollutant,
             name=name,
             aliases=aliases,
             source_ref=_MANUAL,
@@ -113,7 +119,8 @@ class DangerousGoodService:
         adr_tunnel_code: str,
         segregation_group: str,
         packing_group: str,
-    ) -> tuple[str, str, str, str, str, str, list[str]]:
+        marine_pollutant: bool,
+    ) -> tuple[str, str, str, str, str, bool, str, list[str]]:
         token = normalize_un_number(un_number)
         alias_tokens = normalize_un_aliases(aliases)
         if token in alias_tokens:
@@ -127,6 +134,7 @@ class DangerousGoodService:
             normalize_adr_tunnel_code(adr_tunnel_code),
             normalize_segregation_group(segregation_group),
             normalize_packing_group(packing_group),
+            require_marine_pollutant(marine_pollutant),
             label,
             alias_tokens,
         )
