@@ -87,7 +87,7 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **642.0** leftover EXP0.9 `packing_group` HITL (gate lokalne; CI po push)
+- **Ostatni plaster:** **642.0** leftover EXP0.9 `packing_group` HITL (gate success)
 - **Etap:** Plan **643.0** — po zamknięciu 642.0. Komenda `/plan-modul`.
 - **Następny:** **643.0** leftover EXP0.9 `marine_pollutant` HITL bool na `dangerous_good` (zero live IMO / LLM klasy / grupy 1.xA). D9d PDF-QR / D9e skan / D9f pdf-zpl live / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 / live poll / Expo BR2.3 / warning-jako-fakt / N8 / T6 live / P5c / N6 auto charge = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
