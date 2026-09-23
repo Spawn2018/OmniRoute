@@ -4,9 +4,9 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **636.0** leftover D9f `output_kind` HITL (lokalne; CI po push)
+**Ostatni plaster:** **636.0** leftover D9f `output_kind` HITL (gate success)
 
-**Etap:** Plan **637.0** — leftover 543 handover bind stance HITL. Komenda: `/plan-modul`.
+**Etap:** Plan **637.0** zaakceptowany (`docs/deltas/open/637.0-handover-bind-mark.md`). Wolno `/plaster`.
 
 **Noc:** `/noc 17` do **2026-09-23T17:00:00+02:00**
 
@@ -16,7 +16,7 @@
 
 **Park / czeka w PLAN:** D9d · D9e · D9f pdf-zpl live · live 409 · live poll · Expo · fx×FV · matching T5 · FK kontekstu · T8 live · D6b · D7b · auto-copy U1 · similar SQL · F2b · auto-resync salda · N8 · HW · SH-R16-4 UXCL · AI3 · G0-SH · N3 · …
 
-**Spec (jedyna na sesję produktu):** brak — najpierw Plan **637.0**.
+**Spec (jedyna na sesję produktu):** [docs/deltas/open/637.0-handover-bind-mark.md](../deltas/open/637.0-handover-bind-mark.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 
@@ -24,9 +24,9 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-23:** Plaster **636.0** leftover D9f `output_kind` pdf|zpl HITL zamknięty (`/noc 17`).
+**2026-09-23:** Plan **637.0** leftover 543 handover bind HITL (`/noc 17`). 636.0 gate success.
+**2026-09-23:** Plaster **636.0** leftover D9f `output_kind` pdf|zpl HITL zamknięty (gate success). `/noc 17`.
 **2026-09-23:** Plan **636.0** leftover D9f `output_kind` pdf|zpl HITL (`/noc 17`). 635.0 gate success.
 **2026-09-23:** Plaster **635.0** leftover P4c `local_charge_warning_mark` zamknięty (gate success). `/noc 7`.
 **2026-09-23:** Plan **635.0** leftover P4c warning stance HITL (`/noc 7`). 634.0 gate success.
 **2026-09-23:** Plaster **634.0** leftover BR2.2 `party_contact.tracking_consent` zamknięty (gate success). `/noc 7`.
-**2026-09-23:** Plan **634.0** leftover BR2.2 `party_contact.tracking_consent` (`/noc 7`). 633.0 gate success.
