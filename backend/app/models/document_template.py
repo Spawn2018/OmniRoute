@@ -20,7 +20,7 @@ class DocumentTemplate(Base, TimestampMixin):
             name="ck_document_template_language",
         ),
         CheckConstraint(
-            "output_kind IN ('html_print')",
+            "output_kind IN ('html_print','pdf','zpl')",
             name="ck_document_template_output",
         ),
         CheckConstraint(

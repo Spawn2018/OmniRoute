@@ -65,11 +65,12 @@ def test_template_language_rejects_unknown(raw: str) -> None:
         require_template_language(raw)
 
 
-def test_output_kind_accepts_html_print() -> None:
-    assert require_output_kind("html_print") == "html_print"
+@given(st.sampled_from(["html_print", "pdf", "zpl"]))
+def test_output_kind_allowlist(raw: str) -> None:
+    assert require_output_kind(raw) == raw
 
 
-@given(st.sampled_from(["pdf", "zpl", "HTML_PRINT"]))
+@given(st.sampled_from(["HTML_PRINT", "docx", "png", "zebra"]))
 def test_output_kind_rejects_unknown(raw: str) -> None:
     with pytest.raises(InvalidDocumentTemplate, match="wyjście"):
         require_output_kind(raw)

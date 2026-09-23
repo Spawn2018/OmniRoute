@@ -1987,6 +1987,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "633.0": "/local-charges",
   "634.0": "/parties",
   "635.0": "/local-charge-warning-marks",
+  "636.0": "/document-templates",
   "209.0": "/air",
   "210.0": "/shipments",
   "211.0": "/organization-settings",

@@ -29,6 +29,7 @@ zostają w badaniach `04`).
 
 | Data | Co |
 |---|---|
+| 2026-09-23 | **636.0** D9f leftover `output_kind` HITL zamknięty: allowlista `html_print`\|`pdf`\|`zpl` intended na `document_template` (`CONFIRMED`). Live generacja PDF/ZPL/QR nadal `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-23 | **636.0** D9f leftover `output_kind` HITL: allowlista `html_print`\|`pdf`\|`zpl` na `document_template` jako intended output (`REQUIREMENT`). Live generacja PDF/ZPL/QR `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-23 | **635.0** leftover P4c warning stance HITL zamknięty: katalog `local_charge_warning_mark` (`warn`\|`hold`\|`waived`\|`other`) (`CONFIRMED`). Warning-jako-fakt i matching nadal `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-23 | **635.0** leftover P4c warning stance HITL: katalog stancji ostrzeżenia braku dopłaty (nie warning-jako-fakt) (`REQUIREMENT`). Live PDF i warning engine `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |

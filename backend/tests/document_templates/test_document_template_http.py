@@ -178,12 +178,35 @@ def test_http_create_template_unknown_language_is_400(catalog_client: object) ->
     assert "język" in response.json()["detail"]
 
 
+def test_http_create_template_pdf_output_is_201(catalog_client: object) -> None:
+    client, _rows = catalog_client
+    response = client.post(
+        "/api/v1/document-templates",
+        headers=bearer_auth_headers(),
+        json=_payload(output_kind="pdf", source_ref="fixture://document-template/pdf-1"),
+    )
+    assert response.status_code == 201
+    assert response.json()["output_kind"] == "pdf"
+    assert "bytes" not in response.json()
+
+
+def test_http_create_template_zpl_output_is_201(catalog_client: object) -> None:
+    client, _rows = catalog_client
+    response = client.post(
+        "/api/v1/document-templates",
+        headers=bearer_auth_headers(),
+        json=_payload(output_kind="zpl", source_ref="fixture://document-template/zpl-1"),
+    )
+    assert response.status_code == 201
+    assert response.json()["output_kind"] == "zpl"
+
+
 def test_http_create_template_unknown_output_is_400(catalog_client: object) -> None:
     client, _rows = catalog_client
     response = client.post(
         "/api/v1/document-templates",
         headers=bearer_auth_headers(),
-        json=_payload(output_kind="pdf"),
+        json=_payload(output_kind="docx"),
     )
     assert response.status_code == 400
     assert "wyjście" in response.json()["detail"]

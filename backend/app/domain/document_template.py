@@ -4,7 +4,7 @@ from app.domain.errors import InvalidDocumentTemplate
 
 _KINDS = frozenset({"own_label", "cmr"})
 _LANGS = frozenset({"pl", "en"})
-_OUTPUTS = frozenset({"html_print"})
+_OUTPUTS = frozenset({"html_print", "pdf", "zpl"})
 _LAYOUT = re.compile(r"^[a-z0-9][a-z0-9_-]{1,63}$")
 _MAX_REF = 256
 _FIXTURE = "fixture://document-template/"

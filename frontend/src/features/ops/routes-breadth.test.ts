@@ -143,7 +143,8 @@ describe("U-routes-breadth standing", () => {
     expect(SHIPPED_CHARGE_ROUTES["633.0"]).toBe("/local-charges")
     expect(SHIPPED_CHARGE_ROUTES["634.0"]).toBe("/parties")
     expect(SHIPPED_CHARGE_ROUTES["635.0"]).toBe("/local-charge-warning-marks")
-    expect(Object.keys(SHIPPED_CHARGE_ROUTES)).toHaveLength(575)
+    expect(SHIPPED_CHARGE_ROUTES["636.0"]).toBe("/document-templates")
+    expect(Object.keys(SHIPPED_CHARGE_ROUTES)).toHaveLength(576)
 
     expect(OPS_JOBS.map((job) => job.route)).toEqual(
       expect.arrayContaining(Object.values(SHIPPED_CHARGE_ROUTES)),

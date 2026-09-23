@@ -58,5 +58,8 @@ describe("document_template surface for 162.0", () => {
     expect(panel).not.toContain("buy_amount")
     expect(src("features/ops/ops-index.ts")).toContain('"162.0": "/document-templates"')
     expect(src("features/ops/ops-index.ts")).toContain('"627.0": "/document-templates"')
+    expect(src("features/ops/ops-index.ts")).toContain('"636.0": "/document-templates"')
+    expect(panel).toContain('"pdf"')
+    expect(panel).toContain('"zpl"')
   })
 })

@@ -8,7 +8,7 @@
 - **612.0 leftover:** HW · UXCL · N3 · AI3 · G0-SH. 612.0 = HITL `container.destination_city` (tekst do 64, nie geokoder).
 - **611.0 leftover:** `destination_city` · FK portu · HW · UXCL · N3. 611.0 = HITL `container.pod_unlocode` (5 znaków UN/LOCODE, nie resolve, nie mapa).
 - **610.0 leftover:** `pod_unlocode` · `destination_city` · FK portu · HW · UXCL · N3. 610.0 = HITL `container.pol_unlocode` (5 znaków UN/LOCODE, nie resolve, nie mapa).
-- **529.0 leftover:** wpis przekazania z polami S/B/A/R · wiązanie z tablicą T6 · N8. 529.0 = HITL `handover_sbar_mark` (znacznik; nie drugi czat).
+- **529.0 leftover:** wpis przekazania S/B/A/R DONE **543.0**. Zostaje: bind stance → **637.0**; FK UUID / T6 live / N8 / auto SBAR park. 529.0 = HITL `handover_sbar_mark` (znacznik; nie drugi czat).
 - **631.0 DONE:** `clone_carry_mark` HITL stance carry|held|skip przy klonie (leftover 528 U1). Nie auto-copy. Nie similar SQL. Nie F2b.
 - **528.0 leftover (po 631):** auto-copy allowlisty U1 przy klonie (compose) · silnik similar SQL · F2b Decimal na skonto przy klonie FV. 528.0 = HITL `shipment_clone_mark` (intencja; nie drugi SoR). 631.0 = HITL stance DONE.
 - **527.0 leftover:** 409 gdy sell−buy < floor na POST charge · S11 · matching lane. 527.0 = HITL `margin_floor` Decimal + UN/LOCODE.
@@ -215,7 +215,7 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **164.0 leftover:** P2c exclusion daterange DONE 206.0. Tu kolekcja `charge_code` + daty + GiST. Nie `charge`. Nie FSC.
 - **163.0 leftover:** P1b matching GET DONE 205.0. Zostaje parser WHEN/IF/CALC (P1c); daty ważności (P1d). Tu `applies_when` tekst + Decimal + równość SQL. Nie `rate_line`. Nie `charge`.
 - **632.0 DONE:** `network_print_gate_mark` HITL stance block_409|warn_only|record_only (leftover D9c 409). Nie live 409. Nie PDF.
-- **162.0 leftover:** D9b `shipment_ref` HITL DONE 204.0. D9c katalog `network_print_requirement` DONE 626.0. D9f `branding_ref` HITL DONE **627.0**. D9c 409 stance DONE **632.0**. D9f `output_kind` pdf|zpl HITL → **636.0** (plan). Zostaje: live 409 wyjazdu (park); PDF/ZPL/QR bitmap (D9d); skan HITL bez kodu Omni (D9e); D9f pdf-zpl live. Tu katalog `own_label`/`cmr` + intended `output_kind` + numer HITL + wymóg sieci + branding + stance bramy. Nie D8.
+- **162.0 leftover:** D9b `shipment_ref` HITL DONE 204.0. D9c katalog `network_print_requirement` DONE 626.0. D9f `branding_ref` HITL DONE **627.0**. D9c 409 stance DONE **632.0**. D9f `output_kind` pdf|zpl HITL DONE **636.0**. Zostaje: live 409 wyjazdu (park); PDF/ZPL/QR bitmap (D9d); skan HITL bez kodu Omni (D9e); D9f pdf-zpl live. Tu katalog `own_label`/`cmr` + intended `output_kind` + numer HITL + wymóg sieci + branding + stance bramy. Nie D8.
 - **161.0 leftover:** giełda/HTTP Chep/LPR (D7b); ledger ujemny (D7c). EPAL = **623.0** DONE. Tu integer sztuk `chep`/`lpr`/`epal` na `party`. Nie depozyt.
 - **621.0 DONE:** `/ocean-bills` pule HBL/MBL z M-03 (`hbl_number_prefix`/`mbl_number_prefix`); `bill_no` nullable; Nadaj SQL. Leftover: D6b konsolidacja · PDF · live booking.
 - **622.0 DONE:** wklejony MAWB w kształcie IATA — cyfra = seria modulo 7. Leftover: live booking / e-rates API. Pula M-03 bez cyfry.

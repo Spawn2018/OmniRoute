@@ -6,7 +6,7 @@ import { listSheetMarks, persistSheetMark, sheetWrite } from "@/lib/document-tem
 
 const KINDS = ["own_label", "cmr"] as const
 const TONGUES = ["pl", "en"] as const
-const EXITS = ["html_print"] as const
+const EXITS = ["html_print", "pdf", "zpl"] as const
 
 type SheetDraft = {
   kindToken: string
@@ -46,8 +46,8 @@ function SheetSave(args: { organizationId: string | null }) {
       }}
     >
       <p className="text-xs text-muted-foreground">
-        Szablon wydruku jako wskazanie layoutu. To nie PDF, nie etykieta sieci i nie
-        `/charges`.
+        Szablon wydruku jako wskazanie layoutu i zamierzonego wyjścia. To nie
+        generacja PDF/ZPL, nie etykieta sieci i nie `/charges`.
       </p>
       <label className="flex flex-col gap-1 text-xs">
         Rodzaj szablonu
