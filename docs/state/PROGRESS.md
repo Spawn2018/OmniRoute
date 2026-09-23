@@ -1,7 +1,8 @@
 # Historia plastrów
 
 | Data | Plaster | Moduł | Opis |
-| 2026-09-23 | 638.0 | leftover P5b variance stance HITL | 2026-09-23 | PRZESZŁO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
+| 2026-09-23 | Plan 639.0 | leftover N6 matching stance HITL | Plan `margin_match_mark` match|hold|waive|other (`/noc 17`). 638.0 gate success. |
+| 2026-09-23 | 638.0 | leftover P5b variance stance HITL | 2026-09-23 | PRZESZŁO | N/A | N/A | OK | OK | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 2026-09-23 | Plan 638.0 | leftover P5b variance stance HITL | Plan `trip_variance_mark` expected|actual|gap|other (`/noc 17`). 637.0 gate success. |
 | 2026-09-23 | 637.0 | leftover 543 handover bind HITL | 2026-09-23 | PRZESZŁO | N/A | N/A | OK | OK | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 2026-09-23 | Plan 637.0 | leftover 543 handover bind HITL | Plan `handover_bind_mark` note|board|shift|other (`/noc 17`). 636.0 gate success. |

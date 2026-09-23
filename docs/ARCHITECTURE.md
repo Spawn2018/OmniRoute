@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **638.0** leftover P5b `trip_variance_mark` (lokalnie; CI po push). **Etap:** Plan **639.0** — `/plan-modul`. Zero kodu produktu do delty. **Następny:** **639.0** leftover N6 matching stance HITL (`margin_match_mark` stance match|hold|waive|other; zero matching SQL lane / auto charge). D9d PDF-QR / D9e skan / D9f pdf-zpl live / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 / live poll / Expo BR2.3 / warning-jako-fakt / N8 / T6 live / P5c actual-from-charge = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **638.0** leftover P5b `trip_variance_mark` (gate success). **Etap:** Plan **639.0** zaakceptowany (`docs/deltas/open/639.0-margin-match-mark.md`). Wolno `/plaster`. **Następny:** **639.0** leftover N6 matching stance HITL (`margin_match_mark` stance match|hold|waive|other; zero matching SQL lane / auto charge). D9d PDF-QR / D9e skan / D9f pdf-zpl live / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 / live poll / Expo BR2.3 / warning-jako-fakt / N8 / T6 live / P5c actual-from-charge = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
