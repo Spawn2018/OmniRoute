@@ -88,8 +88,8 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **635.0** leftover P4c HITL `local_charge_warning_mark` (gate success)
-- **Etap:** Plan **636.0** — leftover D9f rest `output_kind` HITL na `document_template`. Komenda: `/plan-modul`.
-- **Następny:** **636.0** leftover D9f rest `output_kind` HITL (`html_print` zostaje; opcjonalny intended output bez generacji PDF/ZPL). D9d PDF-QR / D9e skan / D9f pdf-zpl live / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 / live poll / Expo BR2.3 / warning-jako-fakt = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
+- **Etap:** Plan **636.0** zaakceptowany (`docs/deltas/open/636.0-document-template-output-kind.md`). Wolno `/plaster`.
+- **Następny:** **636.0** leftover D9f rest `output_kind` HITL (`html_print`|`pdf`|`zpl` jako intended; zero generacji). D9d PDF-QR / D9e skan / D9f pdf-zpl live / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 / live poll / Expo BR2.3 / warning-jako-fakt = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
