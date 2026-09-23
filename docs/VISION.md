@@ -29,6 +29,7 @@ zostają w badaniach `04`).
 
 | Data | Co |
 |---|---|
+| 2026-09-23 | **634.0** leftover BR2.2 kolumna zgody HITL: bool `tracking_consent` na `party_contact` DEFAULT false (`REQUIREMENT`). FK do katalogu i live poll `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-23 | **633.0** leftover P4b armator/serwis HITL zamknięty: opcjonalne `carrier_label` / `service_label` na `local_charge` (`CONFIRMED`). FK party i P4c warning nadal `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-23 | **633.0** leftover P4b armator/serwis HITL: opcjonalne `carrier_label` / `service_label` na `local_charge` (`REQUIREMENT`). FK party i P4c warning `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-23 | **632.0** leftover D9c 409 stance HITL: tabela `network_print_gate_mark` z `gate_kind` block_409|warn_only|record_only|other (`REQUIREMENT`). Live 409 i PDF `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
