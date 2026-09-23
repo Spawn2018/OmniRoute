@@ -196,6 +196,7 @@ modules =
     app.services.trip_variance_marks
     app.services.margin_match_marks
     app.services.local_charge_match_marks
+    app.services.local_charge_bind_marks
     app.services.purchase_invoices
     app.services.invoice_match_marks
     app.services.invoice_match_candidates
@@ -930,6 +931,9 @@ forbidden_modules =
     app.services.local_charge_match_marks
     app.repositories.local_charge_match_marks
     app.models.local_charge_match_mark
+    app.services.local_charge_bind_marks
+    app.repositories.local_charge_bind_marks
+    app.models.local_charge_bind_mark
     app.services.purchase_invoices
     app.repositories.purchase_invoices
     app.models.purchase_invoice

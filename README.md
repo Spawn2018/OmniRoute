@@ -87,10 +87,10 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **640.0** leftover P4c `local_charge_match_mark` (gate success; hotfix **640.0b**)
-- **Etap:** Plaster **641.0** — delta zaakceptowana (`/noc 21`). Wolno `/plaster`.
-- **Następny:** **641.0** leftover P4c bind stance HITL (`local_charge_bind_mark` stance charge|quote|other; zero FK UUID / warning-jako-fakt / matching SQL). D9d PDF-QR / D9e skan / D9f pdf-zpl live / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 / live poll / Expo BR2.3 / warning-jako-fakt / N8 / T6 live / P5c / N6 auto charge = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
-- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Ostatni plaster:** **641.0** leftover P4c `local_charge_bind_mark` (gate lokalne; CI po push)
+- **Etap:** Plan **642.0** — `/plan-modul`. Zero kodu produktu do delty.
+- **Następny:** **642.0** leftover EXP0.9 packing group HITL na `dangerous_good` (`packing_group` I|II|III; zero live IMO / LLM klasy). D9d PDF-QR / D9e skan / D9f pdf-zpl live / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 / live poll / Expo BR2.3 / warning-jako-fakt / N8 / T6 live / P5c / N6 auto charge = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
+- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 

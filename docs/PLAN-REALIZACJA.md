@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **641.0** leftover P4c bind stance HITL (`local_charge_bind_mark` stance charge|quote|other; zero FK UUID / warning-jako-fakt / matching SQL). D9d PDF-QR / D9e skan / D9f pdf-zpl live / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 / live poll / Expo BR2.3 / warning-jako-fakt / N8 / T6 live / P5c / N6 auto charge = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
+**Następny:** **642.0** leftover EXP0.9 packing group HITL na `dangerous_good` (`packing_group` I|II|III; zero live IMO / LLM klasy). D9d PDF-QR / D9e skan / D9f pdf-zpl live / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 / live poll / Expo BR2.3 / warning-jako-fakt / N8 / T6 live / P5c / N6 auto charge = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -530,7 +530,7 @@ Przy `/plan-modul`: karta T + [EXP1](analysis/karty-pol-fala-exp.md) (stop/konte
 |---|---|---|---|
 | P1–P3 | rate card / szablony / FSC + indeks BAF/CAF (EXP1) + A11 nowy wiersz | P1 zamknięty ([163.0](deltas/archived/163.0-rate-card.md); leftover P1b matching GET ([205.0](deltas/archived/205.0-rate-card-match.md)); leftover P1c–d); P2 zamknięty ([164.0](deltas/archived/164.0-charge-template.md); leftover P2c exclusion daterange ([206.0](deltas/archived/206.0-charge-template-span.md))); P3 zamknięty ([165.0](deltas/archived/165.0-fuel-index.md); leftover P3b–d) | po T7 + M-18; dane + SQL; nie T-SQL |
 | **N6** | `margin_floor` per tenant/lane → 409 albo S11 | zamknięty HITL ([527.0](deltas/archived/527.0-margin-floor.md); 409 API [539.0](deltas/archived/539.0-margin-floor-409.md); S11 [544.0](deltas/archived/544.0-margin-floor-s11.md); UI UN [547.0](deltas/archived/547.0-charges-un-ui.md); leftover matching stance → **639.0** DONE; leftover auto charge park) | Decimal; nie LLM |
-| P4 | Local Charge Library + THC/ISPS/seal/amendment (EXP4.5) + warning | zamknięty ([166.0](deltas/archived/166.0-local-charge.md); leftover P4b `port_unlocode` ([207.0](deltas/archived/207.0-local-charge-port.md)); leftover P4b rest `iso_size_type` ([208.0](deltas/archived/208.0-local-charge-iso.md)); leftover P4b armator/serwis ([633.0](deltas/archived/633.0-local-charge-carrier-service.md)); leftover P4c warning stance ([635.0](deltas/archived/635.0-local-charge-warning-mark.md)); leftover P4c matching stance ([640.0](deltas/archived/640.0-local-charge-match-mark.md)); leftover P4c bind stance → **641.0** (delta open); leftover warning-jako-fakt park) | po O2; warning ≠ fakt |
+| P4 | Local Charge Library + THC/ISPS/seal/amendment (EXP4.5) + warning | zamknięty ([166.0](deltas/archived/166.0-local-charge.md); leftover P4b `port_unlocode` ([207.0](deltas/archived/207.0-local-charge-port.md)); leftover P4b rest `iso_size_type` ([208.0](deltas/archived/208.0-local-charge-iso.md)); leftover P4b armator/serwis ([633.0](deltas/archived/633.0-local-charge-carrier-service.md)); leftover P4c warning stance ([635.0](deltas/archived/635.0-local-charge-warning-mark.md)); leftover P4c matching stance ([640.0](deltas/archived/640.0-local-charge-match-mark.md)); leftover P4c bind stance ([641.0](deltas/archived/641.0-local-charge-bind-mark.md)); leftover warning-jako-fakt park) | po O2; warning ≠ fakt |
 | P5 | expected vs actual na `trip` | zamknięty ([167.0](deltas/archived/167.0-trip-expected-buy.md); leftover P5b variance stance → **638.0** DONE; leftover P5c actual-from-charge park) | po T2; nie druga marża |
 | P6 | tender quotes (buy) | zamknięty ([168.0](deltas/archived/168.0-tender-quote.md); leftover P6b–c) | po M-25; nie auto-award; klej G2 |
 
@@ -578,7 +578,7 @@ Karta: [karty-pol-g2-tender.md](analysis/karty-pol-g2-tender.md). P6 = oferty od
 | C2 | AIS/AES/Intrastat | zamknięty HITL katalog ([562.0](deltas/archived/562.0-ais-import-mark.md)); leftover PUESC live | TO_VERIFY konto PUESC |
 | C3–C5 / C9 | lookup live, eCMR 2027 (EXP2.18), CO₂+metodyka, Trans.eu snapshot | zamknięty HITL C5 katalog ([190.0](deltas/archived/190.0-carbon-method.md)); leftover C3 live VIES/GUS / C4 eCMR / C9 Trans.eu | C9 bez scrapingu opinii |
 | **EXP0.8** | `cargo_claim` deadline CMR 7/21/365 + OS&D | zamknięty HITL OS&D + terminy ([191.0](deltas/archived/191.0-cargo-claim-cmr.md)); leftover Deadline Engine / evidence / S11 | nie kwota z LLM |
-| **EXP0.9** | UN: `adr_tunnel_code` + `segregation_group` | zamknięty HITL tunel ADR + SG ([192.0](deltas/archived/192.0-dangerous-good-adr.md)); leftover packing group / live IMO | LLM nie nadaje klasy |
+| **EXP0.9** | UN: `adr_tunnel_code` + `segregation_group` | zamknięty HITL tunel ADR + SG ([192.0](deltas/archived/192.0-dangerous-good-adr.md)); leftover packing group → **642.0**; leftover live IMO | LLM nie nadaje klasy |
 
 ### Fala V — predykcje / telematyka / wieża
 
@@ -892,13 +892,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plaster` (Etap z CURRENT.md).
+**Teraz:** `/plan-modul` (Etap z CURRENT.md).
 
 ```
-/plaster
+/plan-modul
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->

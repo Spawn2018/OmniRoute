@@ -171,6 +171,7 @@ import { Route as LineImpactLayerMarksRouteImport } from './routes/line-impact-l
 import { Route as LineImpactMarksRouteImport } from './routes/line-impact-marks'
 import { Route as LoadOrderMarksRouteImport } from './routes/load-order-marks'
 import { Route as LoadPlanMarksRouteImport } from './routes/load-plan-marks'
+import { Route as LocalChargeBindMarksRouteImport } from './routes/local-charge-bind-marks'
 import { Route as LocalChargeMatchMarksRouteImport } from './routes/local-charge-match-marks'
 import { Route as LocalChargeWarningMarksRouteImport } from './routes/local-charge-warning-marks'
 import { Route as LocalChargesRouteImport } from './routes/local-charges'
@@ -1161,6 +1162,11 @@ const LoadOrderMarksRoute = LoadOrderMarksRouteImport.update({
 const LoadPlanMarksRoute = LoadPlanMarksRouteImport.update({
   id: '/load-plan-marks',
   path: '/load-plan-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocalChargeBindMarksRoute = LocalChargeBindMarksRouteImport.update({
+  id: '/local-charge-bind-marks',
+  path: '/local-charge-bind-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LocalChargeMatchMarksRoute = LocalChargeMatchMarksRouteImport.update({
@@ -2226,6 +2232,7 @@ export interface FileRoutesByFullPath {
   '/line-impact-marks': typeof LineImpactMarksRoute
   '/load-order-marks': typeof LoadOrderMarksRoute
   '/load-plan-marks': typeof LoadPlanMarksRoute
+  '/local-charge-bind-marks': typeof LocalChargeBindMarksRoute
   '/local-charge-match-marks': typeof LocalChargeMatchMarksRoute
   '/local-charge-warning-marks': typeof LocalChargeWarningMarksRoute
   '/local-charges': typeof LocalChargesRoute
@@ -2569,6 +2576,7 @@ export interface FileRoutesByTo {
   '/line-impact-marks': typeof LineImpactMarksRoute
   '/load-order-marks': typeof LoadOrderMarksRoute
   '/load-plan-marks': typeof LoadPlanMarksRoute
+  '/local-charge-bind-marks': typeof LocalChargeBindMarksRoute
   '/local-charge-match-marks': typeof LocalChargeMatchMarksRoute
   '/local-charge-warning-marks': typeof LocalChargeWarningMarksRoute
   '/local-charges': typeof LocalChargesRoute
@@ -2913,6 +2921,7 @@ export interface FileRoutesById {
   '/line-impact-marks': typeof LineImpactMarksRoute
   '/load-order-marks': typeof LoadOrderMarksRoute
   '/load-plan-marks': typeof LoadPlanMarksRoute
+  '/local-charge-bind-marks': typeof LocalChargeBindMarksRoute
   '/local-charge-match-marks': typeof LocalChargeMatchMarksRoute
   '/local-charge-warning-marks': typeof LocalChargeWarningMarksRoute
   '/local-charges': typeof LocalChargesRoute
@@ -3258,6 +3267,7 @@ export interface FileRouteTypes {
     | '/line-impact-marks'
     | '/load-order-marks'
     | '/load-plan-marks'
+    | '/local-charge-bind-marks'
     | '/local-charge-match-marks'
     | '/local-charge-warning-marks'
     | '/local-charges'
@@ -3601,6 +3611,7 @@ export interface FileRouteTypes {
     | '/line-impact-marks'
     | '/load-order-marks'
     | '/load-plan-marks'
+    | '/local-charge-bind-marks'
     | '/local-charge-match-marks'
     | '/local-charge-warning-marks'
     | '/local-charges'
@@ -3944,6 +3955,7 @@ export interface FileRouteTypes {
     | '/line-impact-marks'
     | '/load-order-marks'
     | '/load-plan-marks'
+    | '/local-charge-bind-marks'
     | '/local-charge-match-marks'
     | '/local-charge-warning-marks'
     | '/local-charges'
@@ -4288,6 +4300,7 @@ export interface RootRouteChildren {
   LineImpactMarksRoute: typeof LineImpactMarksRoute
   LoadOrderMarksRoute: typeof LoadOrderMarksRoute
   LoadPlanMarksRoute: typeof LoadPlanMarksRoute
+  LocalChargeBindMarksRoute: typeof LocalChargeBindMarksRoute
   LocalChargeMatchMarksRoute: typeof LocalChargeMatchMarksRoute
   LocalChargeWarningMarksRoute: typeof LocalChargeWarningMarksRoute
   LocalChargesRoute: typeof LocalChargesRoute
@@ -5603,6 +5616,13 @@ declare module '@tanstack/react-router' {
       path: '/load-plan-marks'
       fullPath: '/load-plan-marks'
       preLoaderRoute: typeof LoadPlanMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/local-charge-bind-marks': {
+      id: '/local-charge-bind-marks'
+      path: '/local-charge-bind-marks'
+      fullPath: '/local-charge-bind-marks'
+      preLoaderRoute: typeof LocalChargeBindMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/local-charge-match-marks': {
@@ -7024,6 +7044,7 @@ const rootRouteChildren: RootRouteChildren = {
   LineImpactMarksRoute: LineImpactMarksRoute,
   LoadOrderMarksRoute: LoadOrderMarksRoute,
   LoadPlanMarksRoute: LoadPlanMarksRoute,
+  LocalChargeBindMarksRoute: LocalChargeBindMarksRoute,
   LocalChargeMatchMarksRoute: LocalChargeMatchMarksRoute,
   LocalChargeWarningMarksRoute: LocalChargeWarningMarksRoute,
   LocalChargesRoute: LocalChargesRoute,

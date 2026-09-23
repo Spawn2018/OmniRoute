@@ -215,6 +215,7 @@ def _organization_leftover_hitl_relations() -> dict[str, Userset]:
         "can_manage_trip_variance_marks": _member(),
         "can_manage_margin_match_marks": _member(),
         "can_manage_local_charge_match_marks": _member(),
+        "can_manage_local_charge_bind_marks": _member(),
     }
 
 

@@ -1685,3 +1685,11 @@ class InvalidLocalChargeMatchMark(DomainError):
 
 class LocalChargeMatchMarkConflict(DomainError):
     """Duplikat mark_code lub source_ref w tenancie."""
+
+
+class InvalidLocalChargeBindMark(DomainError):
+    """HITL local_charge_bind_mark — zły kod/kind/source_ref."""
+
+
+class LocalChargeBindMarkConflict(DomainError):
+    """Duplikat mark_code lub source_ref w tenancie."""

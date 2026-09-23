@@ -158,6 +158,10 @@ export const BUSINESS_LISTS = {
     route: "/local-charge-match-marks",
     tableKey: "local_charge_match_mark",
   },
+  localChargeBindMark: {
+    route: "/local-charge-bind-marks",
+    tableKey: "local_charge_bind_mark",
+  },
   marginMatchMark: {
     route: "/margin-match-marks",
     tableKey: "margin_match_mark",
@@ -711,6 +715,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/trip-variance-marks",
   "/margin-match-marks",
   "/local-charge-match-marks",
+  "/local-charge-bind-marks",
   "/vda-odette-marks",
   "/inventory-position-marks",
   "/fair-share-marks",

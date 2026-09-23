@@ -17,4 +17,7 @@ Marża zostaje na `/charges`. Extra portowe zostają na `/port-surcharges`.
 Stance ostrzeżenia braku dopłaty (ostrzeż / wstrzymaj / zwolnij / inne) zapisujesz osobno na
 `/local-charge-warning-marks`. To nie silnik braków i nie 409 na wycenie.
 
-Nazwy w kodzie: `local_charge` · `charge_kind` · `port_unlocode` · `iso_size_type` · `carrier_label` · `service_label` · `amount` · `currency` · `source_ref` · `local_charge_warning_mark` · `warning_kind`.
+Stance wiązania dopłaty do charge/quote (charge / quote / other) zapisujesz na
+`/local-charge-bind-marks`. To nie FK UUID i nie matching SQL.
+
+Nazwy w kodzie: `local_charge` · `charge_kind` · `port_unlocode` · `iso_size_type` · `carrier_label` · `service_label` · `amount` · `currency` · `source_ref` · `local_charge_warning_mark` · `warning_kind` · `local_charge_bind_mark` · `bind_kind`.

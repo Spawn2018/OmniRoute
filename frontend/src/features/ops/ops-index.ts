@@ -169,6 +169,11 @@ export const OPS_JOBS = [
     job: "HITL local_charge_match_mark stance bez matching SQL",
   },
   {
+    route: BUSINESS_LISTS.localChargeBindMark.route,
+    label: "Wiązanie dopłaty",
+    job: "HITL local_charge_bind_mark stance bez FK UUID",
+  },
+  {
     route: BUSINESS_LISTS.tenderDataRoom.route,
     label: "Pokoje danych",
     job: "NDA na tender bez extractu",
@@ -2012,6 +2017,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "638.0": "/trip-variance-marks",
   "639.0": "/margin-match-marks",
   "640.0": "/local-charge-match-marks",
+  "641.0": "/local-charge-bind-marks",
   "209.0": "/air",
   "210.0": "/shipments",
   "211.0": "/organization-settings",

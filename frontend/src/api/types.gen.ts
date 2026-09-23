@@ -9209,6 +9209,50 @@ export type LoadPlanMarkResponse = {
 };
 
 /**
+ * LocalChargeBindMarkCreate
+ */
+export type LocalChargeBindMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Bind Kind
+     */
+    bind_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * LocalChargeBindMarkResponse
+ */
+export type LocalChargeBindMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Bind Kind
+     */
+    bind_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * LocalChargeCreate
  */
 export type LocalChargeCreate = {
@@ -30507,6 +30551,49 @@ export type CreateLocalChargeMatchMarkApiV1LocalChargeMatchMarksPostResponses = 
 };
 
 export type CreateLocalChargeMatchMarkApiV1LocalChargeMatchMarksPostResponse = CreateLocalChargeMatchMarkApiV1LocalChargeMatchMarksPostResponses[keyof CreateLocalChargeMatchMarkApiV1LocalChargeMatchMarksPostResponses];
+
+export type ListLocalChargeBindMarksApiV1LocalChargeBindMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/local-charge-bind-marks';
+};
+
+export type ListLocalChargeBindMarksApiV1LocalChargeBindMarksGetResponses = {
+    /**
+     * Response List Local Charge Bind Marks Api V1 Local Charge Bind Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<LocalChargeBindMarkResponse>;
+};
+
+export type ListLocalChargeBindMarksApiV1LocalChargeBindMarksGetResponse = ListLocalChargeBindMarksApiV1LocalChargeBindMarksGetResponses[keyof ListLocalChargeBindMarksApiV1LocalChargeBindMarksGetResponses];
+
+export type CreateLocalChargeBindMarkApiV1LocalChargeBindMarksPostData = {
+    body: LocalChargeBindMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/local-charge-bind-marks';
+};
+
+export type CreateLocalChargeBindMarkApiV1LocalChargeBindMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateLocalChargeBindMarkApiV1LocalChargeBindMarksPostError = CreateLocalChargeBindMarkApiV1LocalChargeBindMarksPostErrors[keyof CreateLocalChargeBindMarkApiV1LocalChargeBindMarksPostErrors];
+
+export type CreateLocalChargeBindMarkApiV1LocalChargeBindMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: LocalChargeBindMarkResponse;
+};
+
+export type CreateLocalChargeBindMarkApiV1LocalChargeBindMarksPostResponse = CreateLocalChargeBindMarkApiV1LocalChargeBindMarksPostResponses[keyof CreateLocalChargeBindMarkApiV1LocalChargeBindMarksPostResponses];
 
 export type ListAsnsApiV1AsnsGetData = {
     body?: never;

@@ -148,6 +148,7 @@ const NAV = [
   { to: "/trip-variance-marks", label: "Wariancje przejazdu" },
   { to: "/margin-match-marks", label: "Dopasowanie podłogi" },
   { to: "/local-charge-match-marks", label: "Dopasowanie dopłaty" },
+  { to: "/local-charge-bind-marks", label: "Wiązanie dopłaty" },
   { to: "/automation-bias-marks", label: "Automation bias" },
   { to: "/l3-gate-marks", label: "Brama L3" },
   { to: "/style-cascade-marks", label: "Kaskada stylu" },

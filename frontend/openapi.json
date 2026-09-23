@@ -19521,6 +19521,80 @@
         ]
       }
     },
+    "/api/v1/local-charge-bind-marks": {
+      "get": {
+        "tags": [
+          "local-charge-bind-marks"
+        ],
+        "summary": "List Local Charge Bind Marks",
+        "operationId": "list_local_charge_bind_marks_api_v1_local_charge_bind_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/LocalChargeBindMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Local Charge Bind Marks Api V1 Local Charge Bind Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "local-charge-bind-marks"
+        ],
+        "summary": "Create Local Charge Bind Mark",
+        "operationId": "create_local_charge_bind_mark_api_v1_local_charge_bind_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocalChargeBindMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocalChargeBindMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/asns": {
       "get": {
         "tags": [
@@ -44076,6 +44150,65 @@
           "source_ref"
         ],
         "title": "LoadPlanMarkResponse"
+      },
+      "LocalChargeBindMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "bind_kind": {
+            "type": "string",
+            "title": "Bind Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "bind_kind",
+          "source_ref"
+        ],
+        "title": "LocalChargeBindMarkCreate"
+      },
+      "LocalChargeBindMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "bind_kind": {
+            "type": "string",
+            "title": "Bind Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "bind_kind",
+          "source_ref"
+        ],
+        "title": "LocalChargeBindMarkResponse"
       },
       "LocalChargeCreate": {
         "properties": {

@@ -1,6 +1,7 @@
 **639.0 DONE:** `margin_match_mark` HITL stance (`match`|`hold`|`waive`|`other`). Nie matching SQL. Leftover: auto charge park.
 **640.0 DONE:** `local_charge_match_mark` HITL stance (`match`|`gap`|`waive`|`other`). Nie matching SQL. Leftover: warning-jako-fakt · bind stance → **641.0** · P5c · live HTTP.
-**641.0 PLAN:** `local_charge_bind_mark` HITL stance (`charge`|`quote`|`other`). Nie FK UUID. Leftover po zamknięciu: warning-jako-fakt · matching SQL · P5c · live HTTP.
+**641.0 DONE:** `local_charge_bind_mark` HITL stance (`charge`|`quote`|`other`). Nie FK UUID. Leftover: warning-jako-fakt · matching SQL · P5c · live HTTP.
+**642.0 PLAN:** leftover EXP0.9 `packing_group` HITL na `dangerous_good` (I|II|III). Nie live IMO. Nie LLM klasy.
 ﻿- **625.0 DONE:** `groupage_tariff.volume_m3` opcjonalne Decimal. Nie liczy progu. Leftover D5b: paleta zostaje na saldzie, FSC na `fuel_index`.
 - **624.0 DONE:** `shipment_document.document_kind` przyjmuje `rod`. `pod` zostaje odrzucone (port wyĹ‚adunku). Leftover: skan / bajty.
 - **635.0 DONE:** `local_charge_warning_mark` HITL stance ostrzezenia braku dopłaty. Nie warning-jako-fakt. Leftover: matching stance DONE **640.0** · bind stance → **641.0** · P5b–c park · warning-jako-fakt · live HTTP.
