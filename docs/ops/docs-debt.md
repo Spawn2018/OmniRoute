@@ -143,7 +143,7 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **458.0 leftover:** parowanie z `resource`; cykl życia poza kind; silnik awarii; live poll. BR2.2 katalog DONE 459.0. Tu tylko `telematics_device` HITL `device_kind` + `source_ref`. Nie live. Nie konektor V5.
 - **634.0 DONE:** bool `party_contact.tracking_consent` HITL DEFAULT false. Zostaje FK do katalogu; egzekucja; live poll; BR2.3 Expo (park).
 - **459.0 leftover:** kolumna `party_contact.tracking_consent` DONE **634.0**. Zostaje FK do party; egzekucja; live poll; BR2.3 Expo (park). Tu tylko `tracking_consent` HITL `consent_kind` + `source_ref`. Nie live.
-- **635.0 PLAN:** leftover P4c warning stance HITL (nie warning-jako-fakt). Nie live PDF.
+- **635.0 PLAN:** leftover P4c HITL `local_charge_warning_mark` (`warn`|`hold`|`waived`|`other`). Nie warning-jako-fakt. Nie matching.
 - **203.0 leftover:** ranking SQL / Top N; N szkiców `mail_draft`; auto-award. Tu tylko `rank_mark` HITL `rank_kind` + `source_ref`. Nie sortowanie. Nie award.
 - **202.0 leftover:** zdania z agregatów SQL (117.0 / M-15); suma LLM / EBITDA; ranking W5 + auto-award. Tu tylko `executive_mark` HITL `question_kind` + `source_ref`. Nie suma. Nie narracja.
 - **201.0 leftover:** graf / FK na `entity_event`; pgvector; RAG na stawkach / umowach CI. Tu tylko `memory_edge` HITL `edge_kind` + `source_ref`. Nie wyszukiwanie. Nie wektor.

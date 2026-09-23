@@ -98,7 +98,7 @@ kolumn. Nie 468.0.
 | szablon zadania | task_template | T5 HITL 263.0 kod + `applies_when`; 264.0 outbox `task_template_saved`; nie matching |
 | zadanie | task | T5 HITL 616.0 kod + `template_code` tekst + status; nie matching; nie FK shipment |
 | indeks paliwowy | fuel_index | 165.0 katalog FSC/BAF/CAF obok `nbp_rate`; nie przeliczenie na `charge` |
-| dopłata lokalna | local_charge | 166.0 THC/ISPS/seal/amendment + Decimal; 207.0 opcjonalny `port_unlocode`; 208.0 opcjonalny `iso_size_type`; 633.0 opcjonalne `carrier_label`/`service_label`; nie warning; nie `port_surcharge` |
+| dopłata lokalna | local_charge | 166.0 THC/ISPS/seal/amendment + Decimal; 207.0 opcjonalny `port_unlocode`; 208.0 opcjonalny `iso_size_type`; 633.0 opcjonalne `carrier_label`/`service_label`; leftover P4c warning stance = **635.0**; nie warning-jako-fakt; nie `port_surcharge` |
 | lotniczy | air | 154.0 odcinek `shipment_leg` air; 209.0 opcjonalny `hawb_no`/`mawb_no`; 619.0 nadanie z `hawb_number_prefix`/`mawb_number_prefix` (M-03); 622.0 cyfra IATA (seria 7 cyfr modulo 7) tylko na wklejonym MAWB w kształcie 3+8; lotnisko = `port` z `airport` |
 | reklamacja ładunku | cargo_claim | 113.0 tabela na zleceniu; 191.0 HITL OS&D + terminy CMR; nie kwota; nie silnik 7/21/365 |
 | oszustwo | fraud_flag | 114.0 tabela na kontrahencie; nie scoring osoby; nie kwota |

@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **634.0** leftover BR2.2 bool `tracking_consent` na `party_contact` (gate lokalne; CI po push)
-- **Etap:** Plan **635.0** — leftover P4c warning stance HITL. Zero kodu do delty.
-- **Następny:** **635.0** leftover P4c warning braku dopłaty jako HITL stance (nie warning-jako-fakt). D9d PDF-QR / D9e skan / D9f pdf-zpl / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 / live poll / Expo BR2.3 / FK tracking_consent = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
+- **Ostatni plaster:** **634.0** leftover BR2.2 bool `tracking_consent` na `party_contact` (gate success)
+- **Etap:** Plan **635.0** — delta zaakceptowana (`docs/deltas/open/635.0-local-charge-warning-mark.md`). Wolno `/plaster`.
+- **Następny:** **635.0** leftover P4c `local_charge_warning_mark` HITL. D9d PDF-QR / D9e skan / D9f pdf-zpl / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 / live poll / Expo BR2.3 / warning-jako-fakt = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

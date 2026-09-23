@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **634.0** leftover BR2.2 bool `tracking_consent` na `party_contact` (gate lokalne; CI po push). **Etap:** Plan **635.0** — leftover P4c warning stance HITL. Zero kodu do delty. **Następny:** **635.0** leftover P4c warning braku dopłaty jako HITL stance (nie warning-jako-fakt). D9d PDF-QR / D9e skan / D9f pdf-zpl / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 / live poll / Expo BR2.3 / FK tracking_consent = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **634.0** leftover BR2.2 bool `tracking_consent` na `party_contact` (gate success). **Etap:** Plan **635.0** — delta zaakceptowana (`docs/deltas/open/635.0-local-charge-warning-mark.md`). Wolno `/plaster`. **Następny:** **635.0** leftover P4c `local_charge_warning_mark` HITL. D9d PDF-QR / D9e skan / D9f pdf-zpl / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 / live poll / Expo BR2.3 / warning-jako-fakt = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
