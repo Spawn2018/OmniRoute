@@ -187,6 +187,10 @@ export const BUSINESS_LISTS = {
     route: "/network-print-requirements",
     tableKey: "network_print_requirement",
   },
+  networkPrintGateMark: {
+    route: "/network-print-gate-marks",
+    tableKey: "network_print_gate_mark",
+  },
   selfBillingMark: { route: "/self-billing-marks", tableKey: "self_billing_mark" },
   purchaseInvoice: { route: "/purchase-invoices", tableKey: "purchase_invoice" },
   invoiceMatchMark: { route: "/invoice-match-marks", tableKey: "invoice_match_mark" },
@@ -734,6 +738,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/dual-ledger-marks",
   "/named-place-marks",
   "/network-print-requirements",
+  "/network-print-gate-marks",
   "/slot-guarantee-marks",
   "/freight-term-marks",
   "/customer-po-marks",

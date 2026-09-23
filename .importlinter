@@ -190,6 +190,7 @@ modules =
     app.services.billing_marks
     app.services.self_billing_marks
     app.services.network_print_requirements
+    app.services.network_print_gate_marks
     app.services.purchase_invoices
     app.services.invoice_match_marks
     app.services.invoice_match_candidates
@@ -906,6 +907,9 @@ forbidden_modules =
     app.services.network_print_requirements
     app.repositories.network_print_requirements
     app.models.network_print_requirement
+    app.services.network_print_gate_marks
+    app.repositories.network_print_gate_marks
+    app.models.network_print_gate_mark
     app.services.purchase_invoices
     app.repositories.purchase_invoices
     app.models.purchase_invoice

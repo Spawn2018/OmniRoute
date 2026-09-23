@@ -590,6 +590,14 @@ class CloneCarryMarkConflict(DomainError):
     """Duplikat kodu carry przy klonie w tenancie."""
 
 
+class InvalidNetworkPrintGateMark(DomainError):
+    """D9c leftover: HITL stance bramy wydruku sieci — nie live 409."""
+
+
+class NetworkPrintGateMarkConflict(DomainError):
+    """Duplikat kodu bramy wydruku sieci w tenancie."""
+
+
 class InvalidDocumentTemplate(DomainError):
     """Szablon wydruku jako dane — nie PDF, nie etykieta sieci."""
 

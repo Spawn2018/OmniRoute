@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **631.0** leftover 528 `clone_carry_mark` HITL (gate success). **Etap:** Plan **632.0** — delta zaakceptowana (`docs/deltas/open/632.0-network-print-gate-mark.md`). Wolno `/plaster`. **Następny:** **632.0** leftover D9c 409 stance HITL (`network_print_gate_mark`). D9d PDF-QR / D9e skan / D9f pdf-zpl / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **632.0** leftover D9c `network_print_gate_mark` HITL (gate lokalne; CI po push). **Etap:** Plan **633.0** — wolno `/plan-modul`. **Następny:** **633.0** leftover P4b armator/serwis HITL na `local_charge`. D9d PDF-QR / D9e skan / D9f pdf-zpl / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 / P4c warning = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).

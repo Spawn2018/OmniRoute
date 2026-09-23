@@ -119,6 +119,11 @@ export const OPS_JOBS = [
     job: "katalog network_print_requirement bez 409",
   },
   {
+    route: BUSINESS_LISTS.networkPrintGateMark.route,
+    label: "Brama wydruku sieci",
+    job: "HITL network_print_gate_mark stance bez live 409",
+  },
+  {
     route: BUSINESS_LISTS.rateCard.route,
     label: "Karty stawek",
     job: "katalog rate_card applies_when bez matching",
@@ -1906,6 +1911,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "629.0": "/pallet-ledgers",
   "630.0": "/pallet-synchro-marks",
   "631.0": "/clone-carry-marks",
+  "632.0": "/network-print-gate-marks",
   "142.0": "/mail",
   "143.0": "/networks",
   "144.0": "/quotations",

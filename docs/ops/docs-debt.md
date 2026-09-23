@@ -207,12 +207,12 @@ Kolejność pracy: [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md) § Rejestr leftov
 - **168.0 leftover:** obiekt `tender` DONE 169.0. Zostaje auto-award (P6c). Tu tylko `tender_quote` ważność + `order_limit` integer. Nie kwota.
 - **155.0 leftover:** OR wielu hubów na jednym końcu (D1b). Tu tylko `groupage_line` cutoff+TT+ISODOW + dwa `location`. Nie optymalizator.
 - **167.0 leftover:** wariancja SQL na `charge` (P5b); actual z `charge` (P5c). Tu tylko freeze `expected_buy` na `trip` przy `in_transit`. Nie druga marża. Nie km.
-- **166.0 leftover:** P4b `port_unlocode` DONE 207.0. P4b rest `iso_size_type` DONE 208.0. Zostaje macierz armator/serwis oraz warning braku dopłaty ≠ fakt (P4c). Tu rodzaj + Decimal + opcjonalny UN/LOCODE + typ ISO. Nie `port_surcharge`. Nie marża.
+- **166.0 leftover:** P4b `port_unlocode` DONE 207.0. P4b rest `iso_size_type` DONE 208.0. Zostaje macierz armator/serwis (**633.0** Plan) oraz warning braku dopłaty ≠ fakt (P4c). Tu rodzaj + Decimal + opcjonalny UN/LOCODE + typ ISO. Nie `port_surcharge`. Nie marża.
 - **165.0 leftover:** przeliczenie SQL indeksu na `charge` (P3b); live HTTP NBP/BAF (P3c); A11 nowy wiersz (P3d). Tu tylko katalog FSC/BAF/CAF + Decimal. Nie `nbp_rate`. Nie marża.
 - **164.0 leftover:** P2c exclusion daterange DONE 206.0. Tu kolekcja `charge_code` + daty + GiST. Nie `charge`. Nie FSC.
 - **163.0 leftover:** P1b matching GET DONE 205.0. Zostaje parser WHEN/IF/CALC (P1c); daty ważności (P1d). Tu `applies_when` tekst + Decimal + równość SQL. Nie `rate_line`. Nie `charge`.
-- **632.0 PLAN:** `network_print_gate_mark` HITL stance block_409|warn_only|record_only (leftover D9c 409). Nie live 409. Nie PDF.
-- **162.0 leftover:** D9b `shipment_ref` HITL DONE 204.0. D9c katalog `network_print_requirement` DONE 626.0. D9f `branding_ref` HITL DONE **627.0**. Zostaje: 409 wyjazdu (D9c; stance = **632.0** PLAN; nie C8); PDF/ZPL/QR bitmap (D9d); skan HITL bez kodu Omni (D9e); `output_kind` `pdf`/`zpl` (D9f rest). Tu katalog `own_label`/`cmr` + `html_print` + numer HITL + wymóg sieci + branding. Nie D8.
+- **632.0 DONE:** `network_print_gate_mark` HITL stance block_409|warn_only|record_only (leftover D9c 409). Nie live 409. Nie PDF.
+- **162.0 leftover:** D9b `shipment_ref` HITL DONE 204.0. D9c katalog `network_print_requirement` DONE 626.0. D9f `branding_ref` HITL DONE **627.0**. D9c 409 stance DONE **632.0**. Zostaje: live 409 wyjazdu (park); PDF/ZPL/QR bitmap (D9d); skan HITL bez kodu Omni (D9e); `output_kind` `pdf`/`zpl` (D9f rest). Tu katalog `own_label`/`cmr` + `html_print` + numer HITL + wymóg sieci + branding + stance bramy. Nie D8.
 - **161.0 leftover:** giełda/HTTP Chep/LPR (D7b); ledger ujemny (D7c). EPAL = **623.0** DONE. Tu integer sztuk `chep`/`lpr`/`epal` na `party`. Nie depozyt.
 - **621.0 DONE:** `/ocean-bills` pule HBL/MBL z M-03 (`hbl_number_prefix`/`mbl_number_prefix`); `bill_no` nullable; Nadaj SQL. Leftover: D6b konsolidacja · PDF · live booking.
 - **622.0 DONE:** wklejony MAWB w kształcie IATA — cyfra = seria modulo 7. Leftover: live booking / e-rates API. Pula M-03 bez cyfry.

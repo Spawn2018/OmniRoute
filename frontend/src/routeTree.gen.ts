@@ -187,6 +187,7 @@ import { Route as NacMarksRouteImport } from './routes/nac-marks'
 import { Route as NamedPlaceMarksRouteImport } from './routes/named-place-marks'
 import { Route as NbpRatesRouteImport } from './routes/nbp-rates'
 import { Route as NctsDraftsRouteImport } from './routes/ncts-drafts'
+import { Route as NetworkPrintGateMarksRouteImport } from './routes/network-print-gate-marks'
 import { Route as NetworkPrintRequirementsRouteImport } from './routes/network-print-requirements'
 import { Route as NetworksRouteImport } from './routes/networks'
 import { Route as NotificationsRouteImport } from './routes/notifications'
@@ -1237,6 +1238,11 @@ const NctsDraftsRoute = NctsDraftsRouteImport.update({
   path: '/ncts-drafts',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NetworkPrintGateMarksRoute = NetworkPrintGateMarksRouteImport.update({
+  id: '/network-print-gate-marks',
+  path: '/network-print-gate-marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NetworkPrintRequirementsRoute =
   NetworkPrintRequirementsRouteImport.update({
     id: '/network-print-requirements',
@@ -2206,6 +2212,7 @@ export interface FileRoutesByFullPath {
   '/named-place-marks': typeof NamedPlaceMarksRoute
   '/nbp-rates': typeof NbpRatesRoute
   '/ncts-drafts': typeof NctsDraftsRoute
+  '/network-print-gate-marks': typeof NetworkPrintGateMarksRoute
   '/network-print-requirements': typeof NetworkPrintRequirementsRoute
   '/networks': typeof NetworksRoute
   '/notifications': typeof NotificationsRoute
@@ -2543,6 +2550,7 @@ export interface FileRoutesByTo {
   '/named-place-marks': typeof NamedPlaceMarksRoute
   '/nbp-rates': typeof NbpRatesRoute
   '/ncts-drafts': typeof NctsDraftsRoute
+  '/network-print-gate-marks': typeof NetworkPrintGateMarksRoute
   '/network-print-requirements': typeof NetworkPrintRequirementsRoute
   '/networks': typeof NetworksRoute
   '/notifications': typeof NotificationsRoute
@@ -2881,6 +2889,7 @@ export interface FileRoutesById {
   '/named-place-marks': typeof NamedPlaceMarksRoute
   '/nbp-rates': typeof NbpRatesRoute
   '/ncts-drafts': typeof NctsDraftsRoute
+  '/network-print-gate-marks': typeof NetworkPrintGateMarksRoute
   '/network-print-requirements': typeof NetworkPrintRequirementsRoute
   '/networks': typeof NetworksRoute
   '/notifications': typeof NotificationsRoute
@@ -3220,6 +3229,7 @@ export interface FileRouteTypes {
     | '/named-place-marks'
     | '/nbp-rates'
     | '/ncts-drafts'
+    | '/network-print-gate-marks'
     | '/network-print-requirements'
     | '/networks'
     | '/notifications'
@@ -3557,6 +3567,7 @@ export interface FileRouteTypes {
     | '/named-place-marks'
     | '/nbp-rates'
     | '/ncts-drafts'
+    | '/network-print-gate-marks'
     | '/network-print-requirements'
     | '/networks'
     | '/notifications'
@@ -3894,6 +3905,7 @@ export interface FileRouteTypes {
     | '/named-place-marks'
     | '/nbp-rates'
     | '/ncts-drafts'
+    | '/network-print-gate-marks'
     | '/network-print-requirements'
     | '/networks'
     | '/notifications'
@@ -4232,6 +4244,7 @@ export interface RootRouteChildren {
   NamedPlaceMarksRoute: typeof NamedPlaceMarksRoute
   NbpRatesRoute: typeof NbpRatesRoute
   NctsDraftsRoute: typeof NctsDraftsRoute
+  NetworkPrintGateMarksRoute: typeof NetworkPrintGateMarksRoute
   NetworkPrintRequirementsRoute: typeof NetworkPrintRequirementsRoute
   NetworksRoute: typeof NetworksRoute
   NotificationsRoute: typeof NotificationsRoute
@@ -5639,6 +5652,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NctsDraftsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/network-print-gate-marks': {
+      id: '/network-print-gate-marks'
+      path: '/network-print-gate-marks'
+      fullPath: '/network-print-gate-marks'
+      preLoaderRoute: typeof NetworkPrintGateMarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/network-print-requirements': {
       id: '/network-print-requirements'
       path: '/network-print-requirements'
@@ -6920,6 +6940,7 @@ const rootRouteChildren: RootRouteChildren = {
   NamedPlaceMarksRoute: NamedPlaceMarksRoute,
   NbpRatesRoute: NbpRatesRoute,
   NctsDraftsRoute: NctsDraftsRoute,
+  NetworkPrintGateMarksRoute: NetworkPrintGateMarksRoute,
   NetworkPrintRequirementsRoute: NetworkPrintRequirementsRoute,
   NetworksRoute: NetworksRoute,
   NotificationsRoute: NotificationsRoute,

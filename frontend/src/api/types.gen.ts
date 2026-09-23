@@ -10123,6 +10123,50 @@ export type NetworkMemberResponse = {
 };
 
 /**
+ * NetworkPrintGateMarkCreate
+ */
+export type NetworkPrintGateMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Gate Kind
+     */
+    gate_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * NetworkPrintGateMarkResponse
+ */
+export type NetworkPrintGateMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Gate Kind
+     */
+    gate_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * NetworkPrintRequirementCreate
  */
 export type NetworkPrintRequirementCreate = {
@@ -19927,6 +19971,49 @@ export type CreateNetworkMemberApiV1NetworksNetworkIdMembersPostResponses = {
 };
 
 export type CreateNetworkMemberApiV1NetworksNetworkIdMembersPostResponse = CreateNetworkMemberApiV1NetworksNetworkIdMembersPostResponses[keyof CreateNetworkMemberApiV1NetworksNetworkIdMembersPostResponses];
+
+export type ListNetworkPrintGateMarksApiV1NetworkPrintGateMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/network-print-gate-marks';
+};
+
+export type ListNetworkPrintGateMarksApiV1NetworkPrintGateMarksGetResponses = {
+    /**
+     * Response List Network Print Gate Marks Api V1 Network Print Gate Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<NetworkPrintGateMarkResponse>;
+};
+
+export type ListNetworkPrintGateMarksApiV1NetworkPrintGateMarksGetResponse = ListNetworkPrintGateMarksApiV1NetworkPrintGateMarksGetResponses[keyof ListNetworkPrintGateMarksApiV1NetworkPrintGateMarksGetResponses];
+
+export type CreateNetworkPrintGateMarkApiV1NetworkPrintGateMarksPostData = {
+    body: NetworkPrintGateMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/network-print-gate-marks';
+};
+
+export type CreateNetworkPrintGateMarkApiV1NetworkPrintGateMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateNetworkPrintGateMarkApiV1NetworkPrintGateMarksPostError = CreateNetworkPrintGateMarkApiV1NetworkPrintGateMarksPostErrors[keyof CreateNetworkPrintGateMarkApiV1NetworkPrintGateMarksPostErrors];
+
+export type CreateNetworkPrintGateMarkApiV1NetworkPrintGateMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: NetworkPrintGateMarkResponse;
+};
+
+export type CreateNetworkPrintGateMarkApiV1NetworkPrintGateMarksPostResponse = CreateNetworkPrintGateMarkApiV1NetworkPrintGateMarksPostResponses[keyof CreateNetworkPrintGateMarkApiV1NetworkPrintGateMarksPostResponses];
 
 export type ListNetworkPrintRequirementsApiV1NetworkPrintRequirementsGetData = {
     body?: never;

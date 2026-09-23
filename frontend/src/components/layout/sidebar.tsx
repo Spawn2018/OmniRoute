@@ -199,6 +199,7 @@ const NAV = [
   { to: "/pallet-synchro-marks", label: "Synchro palet" },
   { to: "/document-templates", label: "Szablony wydruku" },
   { to: "/network-print-requirements", label: "Wydruk sieci" },
+  { to: "/network-print-gate-marks", label: "Brama wydruku sieci" },
   { to: "/party-scorecards", label: "Karty wyników" },
   { to: "/customer-sops", label: "Procedury klienta" },
   { to: "/credit-reviews", label: "Recenzje kredytowe" },

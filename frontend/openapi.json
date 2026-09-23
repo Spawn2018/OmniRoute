@@ -1704,6 +1704,80 @@
         }
       }
     },
+    "/api/v1/network-print-gate-marks": {
+      "get": {
+        "tags": [
+          "network-print-gate-marks"
+        ],
+        "summary": "List Network Print Gate Marks",
+        "operationId": "list_network_print_gate_marks_api_v1_network_print_gate_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/NetworkPrintGateMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Network Print Gate Marks Api V1 Network Print Gate Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "network-print-gate-marks"
+        ],
+        "summary": "Create Network Print Gate Mark",
+        "operationId": "create_network_print_gate_mark_api_v1_network_print_gate_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NetworkPrintGateMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NetworkPrintGateMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/network-print-requirements": {
       "get": {
         "tags": [
@@ -45047,6 +45121,65 @@
           "source_ref"
         ],
         "title": "NetworkMemberResponse"
+      },
+      "NetworkPrintGateMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "gate_kind": {
+            "type": "string",
+            "title": "Gate Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "gate_kind",
+          "source_ref"
+        ],
+        "title": "NetworkPrintGateMarkCreate"
+      },
+      "NetworkPrintGateMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "gate_kind": {
+            "type": "string",
+            "title": "Gate Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "gate_kind",
+          "source_ref"
+        ],
+        "title": "NetworkPrintGateMarkResponse"
       },
       "NetworkPrintRequirementCreate": {
         "properties": {

@@ -14,6 +14,7 @@ from app.domain.errors import (
     DraftNotPending,
     ExtractionCandidatesNotEditable,
     MarginFloorBreach,
+    NetworkPrintGateMarkConflict,
     PalletLedgerConflict,
     PalletSynchroMarkConflict,
     PartyConflict,
@@ -172,6 +173,14 @@ async def pallet_synchro_mark_conflict_handler(
 async def clone_carry_mark_conflict_handler(
     _request: Request,
     exc: CloneCarryMarkConflict,
+) -> JSONResponse:
+    return JSONResponse(status_code=409, content={"detail": str(exc)})
+
+
+@app.exception_handler(NetworkPrintGateMarkConflict)
+async def network_print_gate_mark_conflict_handler(
+    _request: Request,
+    exc: NetworkPrintGateMarkConflict,
 ) -> JSONResponse:
     return JSONResponse(status_code=409, content={"detail": str(exc)})
 
