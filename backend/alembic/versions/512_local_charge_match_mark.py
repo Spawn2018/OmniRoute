@@ -46,7 +46,7 @@ def _table_columns() -> list[sa.Column]:
     ]
 
 
-def _table_constraints() -> list[sa.SchemaItem]:
+def _table_constraints():
     return [
         sa.ForeignKeyConstraint(
             ["organization_id"],

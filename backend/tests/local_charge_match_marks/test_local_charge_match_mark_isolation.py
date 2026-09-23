@@ -1,3 +1,4 @@
+# Hotfix CI alembic load — SchemaItem usunięte z annotacji.
 from uuid import uuid4
 
 import pytest
