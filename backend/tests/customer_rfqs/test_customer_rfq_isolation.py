@@ -157,6 +157,7 @@ async def test_customer_rfq_rejects_foreign_dangerous_good(session, two_tenants)
         adr_tunnel_code="D",
         segregation_group="none",
         packing_group="II",
+        marine_pollutant=False,
         name="Petrol B",
         aliases=[],
         source_ref="tenant:manual",
