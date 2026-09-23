@@ -37218,6 +37218,12 @@
             "minLength": 1,
             "title": "Segregation Group"
           },
+          "packing_group": {
+            "type": "string",
+            "maxLength": 3,
+            "minLength": 1,
+            "title": "Packing Group"
+          },
           "name": {
             "type": "string",
             "maxLength": 128,
@@ -37239,6 +37245,7 @@
           "imdg_class",
           "adr_tunnel_code",
           "segregation_group",
+          "packing_group",
           "name"
         ],
         "title": "DangerousGoodCreate"
@@ -37271,6 +37278,10 @@
             "type": "string",
             "title": "Segregation Group"
           },
+          "packing_group": {
+            "type": "string",
+            "title": "Packing Group"
+          },
           "name": {
             "type": "string",
             "title": "Name"
@@ -37295,6 +37306,7 @@
           "imdg_class",
           "adr_tunnel_code",
           "segregation_group",
+          "packing_group",
           "name",
           "aliases",
           "source_ref"

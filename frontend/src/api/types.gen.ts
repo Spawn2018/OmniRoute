@@ -4389,6 +4389,10 @@ export type DangerousGoodCreate = {
      */
     segregation_group: string;
     /**
+     * Packing Group
+     */
+    packing_group: string;
+    /**
      * Name
      */
     name: string;
@@ -4426,6 +4430,10 @@ export type DangerousGoodResponse = {
      * Segregation Group
      */
     segregation_group: string;
+    /**
+     * Packing Group
+     */
+    packing_group: string;
     /**
      * Name
      */
