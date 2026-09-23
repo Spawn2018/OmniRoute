@@ -4,11 +4,11 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **640.0** leftover P4c `local_charge_match_mark` (lokalnie; CI po push)
+**Ostatni plaster:** **640.0** leftover P4c `local_charge_match_mark` (gate success; hotfix **640.0b**)
 
 **Etap:** Plan **641.0** — `/plan-modul`. Zero kodu produktu do delty.
 
-**Noc:** `/noc 17` do **2026-09-23T17:00:00+02:00**
+**Noc:** `/noc 17` zakończona (stop po 17:00; CI hotfixu dokończone).
 
 **Miejsce pracy:** produkt = to repo + GitHub.
 
@@ -24,7 +24,7 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\\pg16`.
 
-**2026-09-23:** Plaster **640.0** leftover P4c `local_charge_match_mark` zamknięty (lokalnie; CI po push). `/noc 17`.
+**2026-09-23:** Plaster **640.0** + hotfix **640.0b** na `main` (gate success). `/noc 17` stop.
 **2026-09-23:** Plan **640.0** leftover P4c matching stance HITL (`/noc 17`). 639.0 gate success.
 **2026-09-23:** Plaster **639.0** leftover N6 `margin_match_mark` zamknięty (gate success). `/noc 17`.
 **2026-09-23:** Plan **639.0** leftover N6 matching stance HITL (`/noc 17`). 638.0 gate success.
