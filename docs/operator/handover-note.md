@@ -10,3 +10,5 @@ Na `/handover-notes` zapisujesz **wpis przekazania zmiany** z czterema polami te
 Czego tu nie ma: auto z tablicy planowania, drugi czat, LLM, znacznik katalogu kind (`/handover-sbar-marks`), kwota, live HTTP.
 
 Nazwy w kodzie: `handover_note` · `note_code` · `situation` · `background` · `assessment` · `recommendation` · `source_ref` · `/handover-notes`.
+
+Osobno na `/handover-bind-marks` zapisujesz **stance wiązania** (`note`|`board`|`shift`|`other`) — bez FK UUID i bez tablicy T6.

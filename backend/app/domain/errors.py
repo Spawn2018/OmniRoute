@@ -606,6 +606,14 @@ class LocalChargeWarningMarkConflict(DomainError):
     """Duplikat kodu ostrzeżenia dopłaty lokalnej w tenancie."""
 
 
+class InvalidHandoverBindMark(DomainError):
+    """N11 leftover: HITL stance wiązania przekazania — nie FK UUID."""
+
+
+class HandoverBindMarkConflict(DomainError):
+    """Duplikat kodu wiązania przekazania w tenancie."""
+
+
 class InvalidDocumentTemplate(DomainError):
     """Szablon wydruku jako dane — nie PDF, nie etykieta sieci."""
 

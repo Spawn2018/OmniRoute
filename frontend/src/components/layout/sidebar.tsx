@@ -143,6 +143,7 @@ const NAV = [
   { to: "/clone-carry-marks", label: "Carry przy klonie" },
   { to: "/handover-sbar-marks", label: "Przekazanie SBAR" },
   { to: "/handover-notes", label: "Notatka SBAR" },
+  { to: "/handover-bind-marks", label: "Wiązania przekazania" },
   { to: "/trip-bill-marks", label: "Gotowość do FV" },
   { to: "/automation-bias-marks", label: "Automation bias" },
   { to: "/l3-gate-marks", label: "Brama L3" },

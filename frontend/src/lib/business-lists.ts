@@ -138,6 +138,10 @@ export const BUSINESS_LISTS = {
     route: "/handover-notes",
     tableKey: "handover_note",
   },
+  handoverBindMark: {
+    route: "/handover-bind-marks",
+    tableKey: "handover_bind_mark",
+  },
   productTicket: {
     route: "/product-tickets",
     tableKey: "product_ticket",
@@ -690,6 +694,7 @@ export const REQUIRED_BUSINESS_LIST_ROUTES = [
   "/clone-carry-marks",
   "/handover-sbar-marks",
   "/handover-notes",
+  "/handover-bind-marks",
   "/trip-bill-marks",
   "/vda-odette-marks",
   "/inventory-position-marks",

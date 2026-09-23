@@ -8,7 +8,8 @@
 - **612.0 leftover:** HW · UXCL · N3 · AI3 · G0-SH. 612.0 = HITL `container.destination_city` (tekst do 64, nie geokoder).
 - **611.0 leftover:** `destination_city` · FK portu · HW · UXCL · N3. 611.0 = HITL `container.pod_unlocode` (5 znaków UN/LOCODE, nie resolve, nie mapa).
 - **610.0 leftover:** `pod_unlocode` · `destination_city` · FK portu · HW · UXCL · N3. 610.0 = HITL `container.pol_unlocode` (5 znaków UN/LOCODE, nie resolve, nie mapa).
-- **529.0 leftover:** wpis przekazania S/B/A/R DONE **543.0**. Zostaje: bind stance → **637.0**; FK UUID / T6 live / N8 / auto SBAR park. 529.0 = HITL `handover_sbar_mark` (znacznik; nie drugi czat).
+- **529.0 leftover:** wpis przekazania S/B/A/R DONE **543.0**. Bind stance DONE **637.0**. Zostaje: FK UUID / T6 live / N8 / auto SBAR park. 529.0 = HITL `handover_sbar_mark` (znacznik; nie drugi czat).
+- **637.0 DONE:** `handover_bind_mark` HITL stance wiązania przekazania (`note`|`board`|`shift`|`other`). Nie FK UUID. Leftover: T6 live · N8 · auto SBAR park.
 - **631.0 DONE:** `clone_carry_mark` HITL stance carry|held|skip przy klonie (leftover 528 U1). Nie auto-copy. Nie similar SQL. Nie F2b.
 - **528.0 leftover (po 631):** auto-copy allowlisty U1 przy klonie (compose) · silnik similar SQL · F2b Decimal na skonto przy klonie FV. 528.0 = HITL `shipment_clone_mark` (intencja; nie drugi SoR). 631.0 = HITL stance DONE.
 - **527.0 leftover:** 409 gdy sell−buy < floor na POST charge · S11 · matching lane. 527.0 = HITL `margin_floor` Decimal + UN/LOCODE.

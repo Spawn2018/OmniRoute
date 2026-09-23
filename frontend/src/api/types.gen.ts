@@ -7111,6 +7111,50 @@ export type HttpValidationError = {
 };
 
 /**
+ * HandoverBindMarkCreate
+ */
+export type HandoverBindMarkCreate = {
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Bind Kind
+     */
+    bind_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
+ * HandoverBindMarkResponse
+ */
+export type HandoverBindMarkResponse = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Organization Id
+     */
+    organization_id: string;
+    /**
+     * Mark Code
+     */
+    mark_code: string;
+    /**
+     * Bind Kind
+     */
+    bind_kind: string;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
+};
+
+/**
  * HandoverNoteCreate
  */
 export type HandoverNoteCreate = {
@@ -30073,6 +30117,49 @@ export type CreateHandoverNoteApiV1HandoverNotesPostResponses = {
 };
 
 export type CreateHandoverNoteApiV1HandoverNotesPostResponse = CreateHandoverNoteApiV1HandoverNotesPostResponses[keyof CreateHandoverNoteApiV1HandoverNotesPostResponses];
+
+export type ListHandoverBindMarksApiV1HandoverBindMarksGetData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/handover-bind-marks';
+};
+
+export type ListHandoverBindMarksApiV1HandoverBindMarksGetResponses = {
+    /**
+     * Response List Handover Bind Marks Api V1 Handover Bind Marks Get
+     *
+     * Successful Response
+     */
+    200: Array<HandoverBindMarkResponse>;
+};
+
+export type ListHandoverBindMarksApiV1HandoverBindMarksGetResponse = ListHandoverBindMarksApiV1HandoverBindMarksGetResponses[keyof ListHandoverBindMarksApiV1HandoverBindMarksGetResponses];
+
+export type CreateHandoverBindMarkApiV1HandoverBindMarksPostData = {
+    body: HandoverBindMarkCreate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/handover-bind-marks';
+};
+
+export type CreateHandoverBindMarkApiV1HandoverBindMarksPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateHandoverBindMarkApiV1HandoverBindMarksPostError = CreateHandoverBindMarkApiV1HandoverBindMarksPostErrors[keyof CreateHandoverBindMarkApiV1HandoverBindMarksPostErrors];
+
+export type CreateHandoverBindMarkApiV1HandoverBindMarksPostResponses = {
+    /**
+     * Successful Response
+     */
+    201: HandoverBindMarkResponse;
+};
+
+export type CreateHandoverBindMarkApiV1HandoverBindMarksPostResponse = CreateHandoverBindMarkApiV1HandoverBindMarksPostResponses[keyof CreateHandoverBindMarkApiV1HandoverBindMarksPostResponses];
 
 export type ListProductTicketsApiV1ProductTicketsGetData = {
     body?: never;

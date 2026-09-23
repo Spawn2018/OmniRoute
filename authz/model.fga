@@ -144,6 +144,7 @@ type organization
     define can_manage_clone_carry_marks: member
     define can_manage_handover_sbar_marks: member
     define can_manage_handover_notes: member
+    define can_manage_handover_bind_marks: member
     define can_manage_trip_bill_marks: member
     define can_manage_automation_bias_marks: member
 

@@ -19077,6 +19077,80 @@
         ]
       }
     },
+    "/api/v1/handover-bind-marks": {
+      "get": {
+        "tags": [
+          "handover-bind-marks"
+        ],
+        "summary": "List Handover Bind Marks",
+        "operationId": "list_handover_bind_marks_api_v1_handover_bind_marks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HandoverBindMarkResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Handover Bind Marks Api V1 Handover Bind Marks Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "handover-bind-marks"
+        ],
+        "summary": "Create Handover Bind Mark",
+        "operationId": "create_handover_bind_mark_api_v1_handover_bind_marks_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HandoverBindMarkCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HandoverBindMarkResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/product-tickets": {
       "get": {
         "tags": [
@@ -40771,6 +40845,65 @@
         },
         "type": "object",
         "title": "HTTPValidationError"
+      },
+      "HandoverBindMarkCreate": {
+        "properties": {
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "bind_kind": {
+            "type": "string",
+            "title": "Bind Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mark_code",
+          "bind_kind",
+          "source_ref"
+        ],
+        "title": "HandoverBindMarkCreate"
+      },
+      "HandoverBindMarkResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Organization Id"
+          },
+          "mark_code": {
+            "type": "string",
+            "title": "Mark Code"
+          },
+          "bind_kind": {
+            "type": "string",
+            "title": "Bind Kind"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "mark_code",
+          "bind_kind",
+          "source_ref"
+        ],
+        "title": "HandoverBindMarkResponse"
       },
       "HandoverNoteCreate": {
         "properties": {

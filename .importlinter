@@ -192,6 +192,7 @@ modules =
     app.services.network_print_requirements
     app.services.network_print_gate_marks
     app.services.local_charge_warning_marks
+    app.services.handover_bind_marks
     app.services.purchase_invoices
     app.services.invoice_match_marks
     app.services.invoice_match_candidates
@@ -914,6 +915,9 @@ forbidden_modules =
     app.services.local_charge_warning_marks
     app.repositories.local_charge_warning_marks
     app.models.local_charge_warning_mark
+    app.services.handover_bind_marks
+    app.repositories.handover_bind_marks
+    app.models.handover_bind_mark
     app.services.purchase_invoices
     app.repositories.purchase_invoices
     app.models.purchase_invoice

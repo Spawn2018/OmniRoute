@@ -130,6 +130,7 @@ import { Route as GeneralAverageMarksRouteImport } from './routes/general-averag
 import { Route as GroupageRouteImport } from './routes/groupage'
 import { Route as GroupageDispatcherMarksRouteImport } from './routes/groupage-dispatcher-marks'
 import { Route as GroupageTariffsRouteImport } from './routes/groupage-tariffs'
+import { Route as HandoverBindMarksRouteImport } from './routes/handover-bind-marks'
 import { Route as HandoverNotesRouteImport } from './routes/handover-notes'
 import { Route as HandoverSbarMarksRouteImport } from './routes/handover-sbar-marks'
 import { Route as HaulierRoleMarksRouteImport } from './routes/haulier-role-marks'
@@ -951,6 +952,11 @@ const GroupageDispatcherMarksRoute = GroupageDispatcherMarksRouteImport.update({
 const GroupageTariffsRoute = GroupageTariffsRouteImport.update({
   id: '/groupage-tariffs',
   path: '/groupage-tariffs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HandoverBindMarksRoute = HandoverBindMarksRouteImport.update({
+  id: '/handover-bind-marks',
+  path: '/handover-bind-marks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HandoverNotesRoute = HandoverNotesRouteImport.update({
@@ -2161,6 +2167,7 @@ export interface FileRoutesByFullPath {
   '/groupage': typeof GroupageRoute
   '/groupage-dispatcher-marks': typeof GroupageDispatcherMarksRoute
   '/groupage-tariffs': typeof GroupageTariffsRoute
+  '/handover-bind-marks': typeof HandoverBindMarksRoute
   '/handover-notes': typeof HandoverNotesRoute
   '/handover-sbar-marks': typeof HandoverSbarMarksRoute
   '/haulier-role-marks': typeof HaulierRoleMarksRoute
@@ -2500,6 +2507,7 @@ export interface FileRoutesByTo {
   '/groupage': typeof GroupageRoute
   '/groupage-dispatcher-marks': typeof GroupageDispatcherMarksRoute
   '/groupage-tariffs': typeof GroupageTariffsRoute
+  '/handover-bind-marks': typeof HandoverBindMarksRoute
   '/handover-notes': typeof HandoverNotesRoute
   '/handover-sbar-marks': typeof HandoverSbarMarksRoute
   '/haulier-role-marks': typeof HaulierRoleMarksRoute
@@ -2840,6 +2848,7 @@ export interface FileRoutesById {
   '/groupage': typeof GroupageRoute
   '/groupage-dispatcher-marks': typeof GroupageDispatcherMarksRoute
   '/groupage-tariffs': typeof GroupageTariffsRoute
+  '/handover-bind-marks': typeof HandoverBindMarksRoute
   '/handover-notes': typeof HandoverNotesRoute
   '/handover-sbar-marks': typeof HandoverSbarMarksRoute
   '/haulier-role-marks': typeof HaulierRoleMarksRoute
@@ -3181,6 +3190,7 @@ export interface FileRouteTypes {
     | '/groupage'
     | '/groupage-dispatcher-marks'
     | '/groupage-tariffs'
+    | '/handover-bind-marks'
     | '/handover-notes'
     | '/handover-sbar-marks'
     | '/haulier-role-marks'
@@ -3520,6 +3530,7 @@ export interface FileRouteTypes {
     | '/groupage'
     | '/groupage-dispatcher-marks'
     | '/groupage-tariffs'
+    | '/handover-bind-marks'
     | '/handover-notes'
     | '/handover-sbar-marks'
     | '/haulier-role-marks'
@@ -3859,6 +3870,7 @@ export interface FileRouteTypes {
     | '/groupage'
     | '/groupage-dispatcher-marks'
     | '/groupage-tariffs'
+    | '/handover-bind-marks'
     | '/handover-notes'
     | '/handover-sbar-marks'
     | '/haulier-role-marks'
@@ -4199,6 +4211,7 @@ export interface RootRouteChildren {
   GroupageRoute: typeof GroupageRoute
   GroupageDispatcherMarksRoute: typeof GroupageDispatcherMarksRoute
   GroupageTariffsRoute: typeof GroupageTariffsRoute
+  HandoverBindMarksRoute: typeof HandoverBindMarksRoute
   HandoverNotesRoute: typeof HandoverNotesRoute
   HandoverSbarMarksRoute: typeof HandoverSbarMarksRoute
   HaulierRoleMarksRoute: typeof HaulierRoleMarksRoute
@@ -5264,6 +5277,13 @@ declare module '@tanstack/react-router' {
       path: '/groupage-tariffs'
       fullPath: '/groupage-tariffs'
       preLoaderRoute: typeof GroupageTariffsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/handover-bind-marks': {
+      id: '/handover-bind-marks'
+      path: '/handover-bind-marks'
+      fullPath: '/handover-bind-marks'
+      preLoaderRoute: typeof HandoverBindMarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/handover-notes': {
@@ -6903,6 +6923,7 @@ const rootRouteChildren: RootRouteChildren = {
   GroupageRoute: GroupageRoute,
   GroupageDispatcherMarksRoute: GroupageDispatcherMarksRoute,
   GroupageTariffsRoute: GroupageTariffsRoute,
+  HandoverBindMarksRoute: HandoverBindMarksRoute,
   HandoverNotesRoute: HandoverNotesRoute,
   HandoverSbarMarksRoute: HandoverSbarMarksRoute,
   HaulierRoleMarksRoute: HaulierRoleMarksRoute,

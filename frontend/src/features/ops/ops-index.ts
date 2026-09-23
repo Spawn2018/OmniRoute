@@ -149,6 +149,11 @@ export const OPS_JOBS = [
     job: "HITL local_charge_warning_mark stance bez warning-jako-fakt",
   },
   {
+    route: BUSINESS_LISTS.handoverBindMark.route,
+    label: "Wiązania przekazania",
+    job: "HITL handover_bind_mark stance bez FK UUID / T6 live",
+  },
+  {
     route: BUSINESS_LISTS.tenderDataRoom.route,
     label: "Pokoje danych",
     job: "NDA na tender bez extractu",
@@ -1988,6 +1993,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "634.0": "/parties",
   "635.0": "/local-charge-warning-marks",
   "636.0": "/document-templates",
+  "637.0": "/handover-bind-marks",
   "209.0": "/air",
   "210.0": "/shipments",
   "211.0": "/organization-settings",

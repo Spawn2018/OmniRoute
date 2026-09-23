@@ -263,8 +263,8 @@ kolumn. Nie 468.0.
 | podłoga marży | margin_floor | N6; HITL Decimal DONE 527.0; leftover 409/S11 |
 | intencja klonu zlecenia | shipment_clone_mark | N9; HITL DONE 528.0; leftover auto-copy U1 / similar SQL / F2b |
 | stance carry przy klonie | clone_carry_mark | leftover 528; HITL DONE 631.0; nie auto INSERT field_carry_forward |
-| przekazanie zmiany SBAR | handover_sbar_mark | N11; HITL DONE 529.0; leftover T6 bind |
-| notatka przekazania SBAR | handover_note | N11 leftover; HITL DONE 543.0; leftover T6 bind · N8 |
+| przekazanie zmiany SBAR | handover_sbar_mark | N11; HITL DONE 529.0; bind stance DONE 637.0; leftover T6 live |
+| notatka przekazania SBAR | handover_note | N11 leftover; HITL DONE 543.0; bind stance DONE 637.0; leftover T6 live · N8 |
 | gotowość przejazdu do FV | trip_bill_mark | N2; HITL DONE 530.0; leftover SQL trips_to_bill · F1 live |
 | ETA fizyczne | eta_physical | V2 HITL 194.0 na `stop`; GPS/korek leftover; nie jedyny znacznik |
 | ETA prawne | eta_legal | V2 HITL 194.0 na `stop`; zakaz jazdy/tacho leftover |

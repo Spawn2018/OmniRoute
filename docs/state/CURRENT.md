@@ -1,22 +1,22 @@
 ﻿# Bieżący focus
 
-**Faza:** Oś pinu — po **636.0** (leftover D9f `output_kind` pdf|zpl HITL)
+**Faza:** Oś pinu — po **637.0** (leftover 543 handover bind HITL)
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **636.0** leftover D9f `output_kind` HITL (gate success)
+**Ostatni plaster:** **637.0** leftover 543 `handover_bind_mark` (gate lokalne; CI po push)
 
-**Etap:** Plan **637.0** zaakceptowany (`docs/deltas/open/637.0-handover-bind-mark.md`). Wolno `/plaster`.
+**Etap:** Plan **638.0** — wolno `/plan-modul` (nie kod).
 
 **Noc:** `/noc 17` do **2026-09-23T17:00:00+02:00**
 
 **Miejsce pracy:** produkt = to repo + GitHub.
 
-**Następny:** **637.0** leftover 543 handover bind HITL (`handover_bind_mark` stance note|board|shift|other; zero FK UUID / T6 live / auto SBAR). D9d PDF-QR / D9e skan / D9f pdf-zpl live / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 / live poll / Expo BR2.3 / warning-jako-fakt / N8 = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
+**Następny:** **638.0** leftover P5b variance stance HITL (`trip_variance_mark` stance expected|actual|gap|other; zero SQL na `charge` / druga marża). D9d PDF-QR / D9e skan / D9f pdf-zpl live / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 / live poll / Expo BR2.3 / warning-jako-fakt / N8 / T6 live / P5c actual-from-charge = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
 
-**Park / czeka w PLAN:** D9d · D9e · D9f pdf-zpl live · live 409 · live poll · Expo · fx×FV · matching T5 · FK kontekstu · T8 live · D6b · D7b · auto-copy U1 · similar SQL · F2b · auto-resync salda · N8 · HW · SH-R16-4 UXCL · AI3 · G0-SH · N3 · …
+**Park / czeka w PLAN:** D9d · D9e · D9f pdf-zpl live · live 409 · live poll · Expo · fx×FV · matching T5 · FK kontekstu · T8 live · D6b · D7b · auto-copy U1 · similar SQL · F2b · auto-resync salda · N8 · T6 live · P5c · HW · SH-R16-4 UXCL · AI3 · G0-SH · N3 ·
 
-**Spec (jedyna na sesję produktu):** [docs/deltas/open/637.0-handover-bind-mark.md](../deltas/open/637.0-handover-bind-mark.md)
+**Spec (jedyna na sesję produktu):** (brak — Etap Plan 638.0)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 
@@ -24,6 +24,7 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
+**2026-09-23:** Plaster **637.0** leftover 543 handover bind HITL zamknięty (lokalnie; CI po push). `/noc 17`.
 **2026-09-23:** Plan **637.0** leftover 543 handover bind HITL (`/noc 17`). 636.0 gate success.
 **2026-09-23:** Plaster **636.0** leftover D9f `output_kind` pdf|zpl HITL zamknięty (gate success). `/noc 17`.
 **2026-09-23:** Plan **636.0** leftover D9f `output_kind` pdf|zpl HITL (`/noc 17`). 635.0 gate success.

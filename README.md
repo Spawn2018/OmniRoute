@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **636.0** leftover D9f `output_kind` HITL (gate success)
-- **Etap:** Plan **637.0** zaakceptowany (`docs/deltas/open/637.0-handover-bind-mark.md`). Wolno `/plaster`.
-- **Następny:** **637.0** leftover 543 handover bind HITL (`handover_bind_mark` stance note|board|shift|other; zero FK UUID / T6 live / auto SBAR). D9d PDF-QR / D9e skan / D9f pdf-zpl live / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 / live poll / Expo BR2.3 / warning-jako-fakt / N8 = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
+- **Ostatni plaster:** **637.0** leftover 543 `handover_bind_mark` (gate lokalne; CI po push)
+- **Etap:** Plan **638.0** — wolno `/plan-modul` (nie kod).
+- **Następny:** **638.0** leftover P5b variance stance HITL (`trip_variance_mark` stance expected|actual|gap|other; zero SQL na `charge` / druga marża). D9d PDF-QR / D9e skan / D9f pdf-zpl live / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 / live poll / Expo BR2.3 / warning-jako-fakt / N8 / T6 live / P5c actual-from-charge = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

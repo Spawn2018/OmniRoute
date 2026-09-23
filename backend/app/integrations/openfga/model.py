@@ -197,6 +197,7 @@ def _organization_br_catalog_relations() -> dict[str, Userset]:
         "can_manage_clone_carry_marks": _member(),
         "can_manage_handover_sbar_marks": _member(),
         "can_manage_handover_notes": _member(),
+        "can_manage_handover_bind_marks": _member(),
         "can_manage_trip_bill_marks": _member(),
         "can_manage_automation_bias_marks": _member(),
 
