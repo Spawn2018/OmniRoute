@@ -4,7 +4,7 @@
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **635.0** leftover P4c HITL `local_charge_warning_mark` (zamknięty lokalnie; CI po push)
+**Ostatni plaster:** **635.0** leftover P4c HITL `local_charge_warning_mark` (gate success)
 
 **Etap:** Plan **636.0** — leftover D9f rest `output_kind` HITL na `document_template`. Komenda: `/plan-modul`.
 
@@ -24,7 +24,7 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\pg16`.
 
-**2026-09-23:** Plaster **635.0** leftover P4c `local_charge_warning_mark` zamknięty (`/noc 7`). CI po push.
+**2026-09-23:** Plaster **635.0** leftover P4c `local_charge_warning_mark` zamknięty (gate success). `/noc 7`.
 **2026-09-23:** Plan **635.0** leftover P4c warning stance HITL (`/noc 7`). 634.0 gate success.
 **2026-09-23:** Plaster **634.0** leftover BR2.2 `party_contact.tracking_consent` zamknięty (gate success). `/noc 7`.
 **2026-09-23:** Plan **634.0** leftover BR2.2 `party_contact.tracking_consent` (`/noc 7`). 633.0 gate success.

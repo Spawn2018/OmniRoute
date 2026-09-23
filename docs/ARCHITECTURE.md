@@ -1,7 +1,7 @@
 # OmniRoute — architektura
 
 <!-- os-status:start -->
-**Status:** **635.0** leftover P4c HITL `local_charge_warning_mark` (zamknięty lokalnie; CI po push). **Etap:** Plan **636.0** — leftover D9f rest `output_kind` HITL na `document_template`. Komenda: `/plan-modul`. **Następny:** **636.0** leftover D9f rest `output_kind` HITL (`html_print` zostaje; opcjonalny intended output bez generacji PDF/ZPL). D9d PDF-QR / D9e skan / D9f pdf-zpl live / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 / live poll / Expo BR2.3 / warning-jako-fakt = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
+**Status:** **635.0** leftover P4c HITL `local_charge_warning_mark` (gate success). **Etap:** Plan **636.0** — leftover D9f rest `output_kind` HITL na `document_template`. Komenda: `/plan-modul`. **Następny:** **636.0** leftover D9f rest `output_kind` HITL (`html_print` zostaje; opcjonalny intended output bez generacji PDF/ZPL). D9d PDF-QR / D9e skan / D9f pdf-zpl live / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 / live poll / Expo BR2.3 / warning-jako-fakt = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`. Plan: [PLAN-REALIZACJA.md](PLAN-REALIZACJA.md).
 <!-- os-status:end --> 
 **Kształt:** modularny monolit (Python FastAPI + React Vite SPA)  
 **ADR frontend:** [0002](adr/0002-frontend-platform-2026.md) (stack) · [0003](adr/0003-frontend-ui-system-2026.md) (tokeny, wzorce). Makiety: [docs/design/](design/README.md).
