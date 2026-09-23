@@ -7,11 +7,11 @@ from hypothesis import strategies as st
 from app.domain.errors import InvalidLocalCharge
 from app.domain.local_charge import (
     require_levy_amount,
+    require_levy_carrier_label,
     require_levy_currency,
     require_levy_iso,
     require_levy_kind,
     require_levy_port,
-    require_levy_carrier_label,
     require_levy_service_label,
     require_levy_source_ref,
 )
