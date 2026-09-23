@@ -29,6 +29,7 @@ zostają w badaniach `04`).
 
 | Data | Co |
 |---|---|
+| 2026-09-23 | **643.0** leftover EXP0.9 marine pollutant HITL: kolumna `marine_pollutant` (bool) na `dangerous_good` — nie live IMO, nie LLM klasy (`REQUIREMENT`). Grupy 1.xA nadal `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-23 | **642.0** leftover EXP0.9 packing group HITL zamknięty: kolumna `packing_group` (`I`\|`II`\|`III`) na `dangerous_good` (`CONFIRMED`). Live IMO / grupy 1.xA nadal `REJECTED`. Następny = `marine_pollutant` HITL (**643.0**, `REQUIREMENT`). Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-23 | **642.0** leftover EXP0.9 packing group HITL: kolumna `packing_group` (`I`\|`II`\|`III`) na `dangerous_good` — nie live IMO, nie LLM klasy (`REQUIREMENT`). Grupy 1.xA nadal `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-23 | **641.0** leftover P4c bind stance HITL zamknięty: katalog `local_charge_bind_mark` (`charge`\|`quote`\|`other`) (`CONFIRMED`). FK UUID / matching SQL / warning-jako-fakt nadal `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |

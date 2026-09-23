@@ -1,14 +1,14 @@
 # Bieżący focus
 
-**Faza:** Oś pinu — Plan **643.0** (leftover EXP0.9 marine pollutant HITL)
+**Faza:** Oś pinu — Plaster **643.0** (leftover EXP0.9 marine pollutant HITL)
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 **Ostatni plaster:** **642.0** leftover EXP0.9 `packing_group` HITL (gate success)
 
-**Etap:** Plan **643.0** — po zamknięciu 642.0. Komenda `/plan-modul`.
+**Etap:** Plaster **643.0** — delta zaakceptowana `/noc 7`. Wolno `/plaster`.
 
-**Noc:** `/noc 21` do 21:00 Europe/Warsaw.
+**Noc:** `/noc 7` do 07:00 Europe/Warsaw (2026-09-24).
 
 **Miejsce pracy:** produkt = to repo + GitHub.
 
@@ -16,7 +16,7 @@
 
 **Park / czeka w PLAN:** D9d · D9e · D9f pdf-zpl live · live 409 · live poll · Expo · fx×FV · matching T5 · FK kontekstu · T8 live · D6b · D7b · auto-copy U1 · similar SQL · F2b · auto-resync salda · N8 · T6 live · P5c · N6 auto charge · HW · SH-R16-4 UXCL · AI3 · G0-SH · N3 · live IMO · grupy 1.xA ·
 
-**Spec (jedyna na sesję produktu):** brak — najpierw delta Plan **643.0**.
+**Spec (jedyna na sesję produktu):** [docs/deltas/open/643.0-dangerous-good-marine-pollutant.md](../deltas/open/643.0-dangerous-good-marine-pollutant.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](../VISION.md).
 
@@ -24,6 +24,7 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\\pg16`.
 
+**2026-09-23:** Plan **643.0** leftover EXP0.9 marine pollutant HITL (`/noc 7`). 642.0 gate success.
 **2026-09-23:** Plaster **642.0** leftover EXP0.9 packing group HITL zamknięty (`/noc 21`).
 **2026-09-23:** Plan **642.0** leftover EXP0.9 packing group HITL (`/noc 21`). 641.0 gate success.
 **2026-09-23:** Plaster **641.0** leftover P4c bind stance HITL zamknięty (`/noc 21`).
