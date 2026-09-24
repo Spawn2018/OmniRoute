@@ -29,6 +29,7 @@ zostają w badaniach `04`).
 
 | Data | Co |
 |---|---|
+| 2026-09-24 | **650.0** leftover EXP1 seed Omni `WAITING`/`NO_SHOW`/`DIVERSION`/`STAMP` zamknięty: POST `/charge-codes/seed`, `source_ref=omni:charge-code:exp1`, bez CHECK (`CONFIRMED`). Następny = FK fuel_index (**651.0**, `REQUIREMENT`). Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-24 | **650.0** leftover EXP1 seed Omni `WAITING`/`NO_SHOW`/`DIVERSION`/`STAMP` na `charge_code`: dane katalogu z `source_ref=omni:charge-code:exp1`, nie CHECK (`REQUIREMENT`). Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-24 | **649.0** leftover EXP1 `charge_code.source_ref`: wymagane pochodzenie kodu opłaty — nie CHECK czterech kodów, nie seed Omni w tym plasterze (`REQUIREMENT`). Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-24 | **649.0** leftover EXP1 `charge_code.source_ref` zamknięty: wymagane pochodzenie kodu opłaty; WAITING/NO_SHOW/DIVERSION/STAMP wolne bez CHECK (`CONFIRMED`). Seed Omni czterech kodów nadal leftover (`REQUIREMENT` **650.0`). Marża zostaje na `charge` (`CONFIRMED`). |

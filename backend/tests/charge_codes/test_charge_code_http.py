@@ -58,6 +58,31 @@ class StubChargeCodeService:
         self.rows.append(row)
         return row
 
+    async def seed_omni_exp1(
+        self,
+        *,
+        organization_id: UUID,
+        user_id: UUID,
+    ) -> list[ChargeCode]:
+        from app.domain.charge_code import omni_exp1_seed_codes, omni_exp1_source_ref
+
+        created: list[ChargeCode] = []
+        origin = omni_exp1_source_ref()
+        for code, name in omni_exp1_seed_codes():
+            if any(row.code == code for row in self.rows):
+                continue
+            created.append(
+                await self.create_code(
+                    organization_id=organization_id,
+                    user_id=user_id,
+                    code=code,
+                    name=name,
+                    aliases=[],
+                    source_ref=origin,
+                ),
+            )
+        return created
+
     async def resolve(self, raw: str) -> ChargeCode:
         token = raw.strip().upper()
         for row in self.rows:
@@ -170,3 +195,21 @@ def test_http_allows_exp1_waiting_token(catalog_client: TestClient) -> None:
     )
     assert created.status_code == 201
     assert created.json()["code"] == "WAITING"
+
+
+def test_http_seed_omni_exp1_creates_four_codes(catalog_client: TestClient) -> None:
+    first = catalog_client.post(
+        "/api/v1/charge-codes/seed",
+        headers=bearer_auth_headers(),
+    )
+    assert first.status_code == 201
+    codes = {row["code"] for row in first.json()}
+    assert codes == {"WAITING", "NO_SHOW", "DIVERSION", "STAMP"}
+    assert all(row["source_ref"] == "omni:charge-code:exp1" for row in first.json())
+
+    second = catalog_client.post(
+        "/api/v1/charge-codes/seed",
+        headers=bearer_auth_headers(),
+    )
+    assert second.status_code == 201
+    assert second.json() == []

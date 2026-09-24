@@ -64,3 +64,14 @@ export async function resolveChargeCode(token: string): Promise<ChargeCode> {
   })
   return readChargeCode(response, "Nieznany kod opłaty")
 }
+
+export async function seedChargeCodesOmniExp1(): Promise<ChargeCode[]> {
+  const response = await fetch("/api/v1/charge-codes/seed", {
+    method: "POST",
+    headers: requireAuthHeaders(),
+  })
+  if (!response.ok) {
+    throw new ApiError(await readApiDetail(response, "Błąd seedu kodów Omni"), httpErrorStatus(response))
+  }
+  return (await response.json()) as ChargeCode[]
+}

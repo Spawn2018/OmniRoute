@@ -16,6 +16,7 @@ import {
   createChargeCode,
   fetchChargeCodes,
   resolveChargeCode,
+  seedChargeCodesOmniExp1,
   type ChargeCode,
 } from "@/lib/charge-codes-api"
 import { BUSINESS_LISTS } from "@/lib/business-lists"
@@ -91,6 +92,13 @@ export function ChargeCodeCatalogPage() {
     },
   })
 
+  const seedMutation = useMutation({
+    mutationFn: () => seedChargeCodesOmniExp1(),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: ["charge-codes", ctx.organizationId] })
+    },
+  })
+
   return (
     <div className="space-y-3">
       <CatalogHeading
@@ -149,6 +157,28 @@ export function ChargeCodeCatalogPage() {
       </form>
 
       {createMutation.isError ? <CatalogError error={createMutation.error} /> : null}
+
+      <div className="flex max-w-lg flex-col gap-2">
+        <p className="text-xs text-muted-foreground">
+          Seed Omni EXP1 dopisuje WAITING / NO_SHOW / DIVERSION / STAMP z
+          `omni:charge-code:exp1`, gdy ich brak. Nie nadpisuje istniejących. Nie CHECK
+          allowlisty.
+        </p>
+        <Button
+          type="button"
+          variant="outline"
+          disabled={seedMutation.isPending || !ctx.organizationId}
+          onClick={() => seedMutation.mutate()}
+        >
+          Seed Omni EXP1
+        </Button>
+        {seedMutation.isError ? <CatalogError error={seedMutation.error} /> : null}
+        {seedMutation.isSuccess ? (
+          <p className="text-xs text-muted-foreground">
+            Dopisano {seedMutation.data.length} kodów (0 = już były).
+          </p>
+        ) : null}
+      </div>
 
       <ResolveTokenForm
         label="Sprawdź token kodu opłaty"

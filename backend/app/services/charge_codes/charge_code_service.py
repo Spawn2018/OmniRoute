@@ -3,7 +3,12 @@ from uuid import UUID, uuid4
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.domain.charge_code import normalize_aliases, normalize_charge_code
+from app.domain.charge_code import (
+    normalize_aliases,
+    normalize_charge_code,
+    omni_exp1_seed_codes,
+    omni_exp1_source_ref,
+)
 from app.domain.errors import ChargeCodeConflict, InvalidChargeCode, UnknownChargeCode
 from app.domain.rate_line import require_source_ref
 from app.models.charge_code import ChargeCode
@@ -50,6 +55,29 @@ class ChargeCodeService:
             return await self._codes.add(row)
         except IntegrityError as exc:
             raise ChargeCodeConflict(f"kod opłaty {token} już istnieje") from exc
+
+    async def seed_omni_exp1(
+        self,
+        *,
+        organization_id: UUID,
+        user_id: UUID,
+    ) -> list[ChargeCode]:
+        origin = omni_exp1_source_ref()
+        created: list[ChargeCode] = []
+        for code, name in omni_exp1_seed_codes():
+            existing = await self._codes.find_by_token(code)
+            if existing is not None:
+                continue
+            row = await self.create_code(
+                organization_id=organization_id,
+                user_id=user_id,
+                code=code,
+                name=name,
+                aliases=[],
+                source_ref=origin,
+            )
+            created.append(row)
+        return created
 
     async def resolve(self, raw: str) -> ChargeCode:
         token = normalize_charge_code(raw)

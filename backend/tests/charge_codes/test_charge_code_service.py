@@ -141,3 +141,26 @@ async def test_list_codes_returns_repository_rows() -> None:
 
     listed = await service.list_codes()
     assert listed == [row]
+
+
+@pytest.mark.asyncio
+async def test_seed_omni_exp1_inserts_missing_only() -> None:
+    session = AsyncMock()
+    session.add = MagicMock()
+    session.flush = AsyncMock()
+    session.scalar = AsyncMock(return_value=None)
+    service = ChargeCodeService(session)
+
+    created = await service.seed_omni_exp1(
+        organization_id=uuid4(),
+        user_id=uuid4(),
+    )
+    assert {row.code for row in created} == {"WAITING", "NO_SHOW", "DIVERSION", "STAMP"}
+    assert all(row.source_ref == "omni:charge-code:exp1" for row in created)
+
+    session.scalar = AsyncMock(return_value=created[0])
+    again = await service.seed_omni_exp1(
+        organization_id=uuid4(),
+        user_id=uuid4(),
+    )
+    assert again == []

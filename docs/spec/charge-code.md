@@ -8,7 +8,7 @@
 - Tabela `charge_code`: `organization_id`, `code`, `name`, `aliases[]`, `source_ref`, timestamps
 - Unikalność `(organization_id, code)`; token 2–32 `A-Z0-9_`
 - `source_ref` wymagany (1–512); backfill legacy `fixture://charge-code/legacy`
-- WAITING / NO_SHOW / DIVERSION / STAMP wolne jak każdy token — bez CHECK allowlisty; seed Omni = leftover
+- WAITING / NO_SHOW / DIVERSION / STAMP — seed Omni EXP1 (`POST /charge-codes/seed`, `omni:charge-code:exp1`); bez CHECK allowlisty
 - `resolve(token)` — kod albo alias; nieznany token = odrzut (nie luźny string)
 - OpenFGA `can_manage_charge_codes` = member
 - UI `/charge-codes`: lista DataTableShell + dodanie + `source_ref` + rozwiązanie tokenu

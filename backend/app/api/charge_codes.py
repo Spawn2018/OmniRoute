@@ -68,3 +68,22 @@ async def create_charge_code(
     )
     await session.commit()
     return ChargeCodeResponse.model_validate(row)
+
+
+@router.post(
+    "/seed",
+    response_model=list[ChargeCodeResponse],
+    status_code=status.HTTP_201_CREATED,
+)
+async def seed_charge_codes(
+    _authz: None = Depends(require_permission("can_manage_charge_codes", "organization")),
+    session: AsyncSession = Depends(require_tenant_session),
+    identity: SessionIdentity = Depends(get_current_identity),
+) -> list[ChargeCodeResponse]:
+    service = ChargeCodeService(session)
+    rows = await service.seed_omni_exp1(
+        organization_id=identity.organization_id,
+        user_id=identity.user_id,
+    )
+    await session.commit()
+    return [ChargeCodeResponse.model_validate(row) for row in rows]

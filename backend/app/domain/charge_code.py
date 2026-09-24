@@ -3,6 +3,7 @@ import re
 from app.domain.errors import InvalidChargeCode
 
 _CHARGE_CODE_PATTERN = re.compile(r"^[A-Z0-9_]{2,32}$")
+_OMNI_EXP1_SEED = "omni:charge-code:exp1"
 
 
 def normalize_charge_code(raw: str) -> str:
@@ -21,3 +22,17 @@ def normalize_aliases(raw: list[str]) -> list[str]:
         if token not in unique:
             unique.append(token)
     return unique
+
+
+def omni_exp1_seed_codes() -> tuple[tuple[str, str], ...]:
+    # Dane Omni EXP1 — nie CHECK allowlisty; operator może dodać inne kody.
+    return (
+        ("WAITING", "Waiting time"),
+        ("NO_SHOW", "No-show"),
+        ("DIVERSION", "Diversion"),
+        ("STAMP", "Stamp fee"),
+    )
+
+
+def omni_exp1_source_ref() -> str:
+    return _OMNI_EXP1_SEED
