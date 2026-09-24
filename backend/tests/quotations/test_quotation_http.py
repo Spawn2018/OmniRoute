@@ -13,7 +13,7 @@ from app.domain.errors import (
     UnknownChargeCode,
     UnknownCreditReview,
 )
-from app.domain.quotation import require_quotation_incoterm
+from app.domain.quotation import require_quotation_incoterm, require_valid_until
 from app.main import app
 from app.models.quotation import Quotation
 from tests.http_auth import bearer_auth_headers
@@ -76,6 +76,7 @@ class StubQuotationService:
         incoterms_version: object = None,
         trade_side: object = None,
         named_place: object = None,
+        valid_until: object = None,
     ) -> Quotation:
         token = charge_code.strip().upper()
         if token == "LOOSE":
@@ -85,6 +86,7 @@ class StubQuotationService:
         rule, version, side, place = require_quotation_incoterm(
             incoterm, incoterms_version, trade_side, named_place,
         )
+        until = require_valid_until(valid_until)
         row = Quotation(
             id=uuid4(),
             organization_id=organization_id,
@@ -104,9 +106,21 @@ class StubQuotationService:
             incoterms_version=version,
             trade_side=side,
             named_place=place,
+            valid_until=until,
         )
         self.rows.append(row)
         return row
+
+    async def set_valid_until(
+        self,
+        quotation_id: UUID,
+        valid_until: object,
+    ) -> Quotation:
+        for row in self.rows:
+            if row.id == quotation_id:
+                row.valid_until = require_valid_until(valid_until)
+                return row
+        raise ResourceNotFound("nieznana wycena")
 
     async def set_noted_credit_review(
         self,
@@ -146,6 +160,7 @@ class StubQuotationService:
         incoterms_version: object = None,
         trade_side: object = None,
         named_place: object = None,
+        valid_until: object = None,
     ) -> list[Quotation]:
         quoted: list[Quotation] = []
         for code in charge_codes:
@@ -164,6 +179,7 @@ class StubQuotationService:
                     incoterms_version=incoterms_version,
                     trade_side=trade_side,
                     named_place=named_place,
+                    valid_until=valid_until,
                 )
             )
         return quoted

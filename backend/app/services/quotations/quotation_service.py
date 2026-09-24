@@ -22,6 +22,7 @@ from app.domain.quotation import (
     require_document_number_prefix,
     require_lane_party_snapshot,
     require_quotation_incoterm,
+    require_valid_until,
 )
 from app.models.charge_code import ChargeCode
 from app.models.quotation import Quotation
@@ -92,6 +93,7 @@ class QuotationService:
         incoterms_version: object = None,
         trade_side: object = None,
         named_place: object = None,
+        valid_until: object = None,
     ) -> Quotation:
         catalog = await self._require_catalog(charge_code)
         origin, destination, party = require_lane_party_snapshot(
@@ -100,6 +102,7 @@ class QuotationService:
         terms = require_quotation_incoterm(
             incoterm, incoterms_version, trade_side, named_place,
         )
+        until = require_valid_until(valid_until)
         return await self._insert_from_rate(
             organization_id=organization_id,
             user_id=user_id,
@@ -111,6 +114,7 @@ class QuotationService:
             commodity_code_id=commodity_code_id,
             dangerous_good_id=dangerous_good_id,
             terms=terms,
+            valid_until=until,
         )
 
     async def quote_batch_from_current_rates(
@@ -129,8 +133,8 @@ class QuotationService:
         incoterms_version: object = None,
         trade_side: object = None,
         named_place: object = None,
+        valid_until: object = None,
     ) -> list[Quotation]:
-        # Pętla woła istniejący INSERT…SELECT; wsad set-based = leftover 20.0.
         codes = require_batch_charge_codes(charge_codes)
         quoted: list[Quotation] = []
         for code in codes:
@@ -149,6 +153,7 @@ class QuotationService:
                     incoterms_version=incoterms_version,
                     trade_side=trade_side,
                     named_place=named_place,
+                    valid_until=valid_until,
                 )
             )
         return quoted
@@ -166,6 +171,7 @@ class QuotationService:
         commodity_code_id: UUID | None,
         dangerous_good_id: UUID | None,
         terms: tuple[str | None, str | None, str | None, str | None],
+        valid_until: object,
     ) -> Quotation:
         try:
             quoted = await self._quotations.insert_from_current_rate(
@@ -182,6 +188,7 @@ class QuotationService:
                 incoterms_version=terms[1],
                 trade_side=terms[2],
                 named_place=terms[3],
+                valid_until=valid_until,
             )
         except IntegrityError as exc:
             mapped = _snapshot_integrity_error(exc)
@@ -191,6 +198,17 @@ class QuotationService:
         if quoted is None:
             raise QuotationGap(f"quotation_gap: brak bieżącej stawki dla {charge_code}")
         return quoted
+
+    async def set_valid_until(
+        self,
+        quotation_id: UUID,
+        valid_until: object,
+    ) -> Quotation:
+        row = await self._quotations.get(quotation_id)
+        if row is None:
+            raise ResourceNotFound("nieznana wycena")
+        row.valid_until = require_valid_until(valid_until)
+        return await self._quotations.save(row)
 
     async def set_noted_credit_review(
         self,

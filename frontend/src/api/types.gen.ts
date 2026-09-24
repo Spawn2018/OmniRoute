@@ -13140,6 +13140,10 @@ export type QuotationBatchCreate = {
      * Named Place
      */
     named_place?: string | null;
+    /**
+     * Valid Until
+     */
+    valid_until?: unknown | null;
 };
 
 /**
@@ -13190,6 +13194,10 @@ export type QuotationCreate = {
      * Named Place
      */
     named_place?: string | null;
+    /**
+     * Valid Until
+     */
+    valid_until?: unknown | null;
 };
 
 /**
@@ -13310,6 +13318,20 @@ export type QuotationResponse = {
      * Named Place
      */
     named_place: string | null;
+    /**
+     * Valid Until
+     */
+    valid_until: string | null;
+};
+
+/**
+ * QuotationValidUntil
+ */
+export type QuotationValidUntil = {
+    /**
+     * Valid Until
+     */
+    valid_until?: unknown | null;
 };
 
 /**
@@ -22891,6 +22913,36 @@ export type QuotationDocumentLayoutApiV1QuotationsDocumentLayoutGetResponses = {
 };
 
 export type QuotationDocumentLayoutApiV1QuotationsDocumentLayoutGetResponse = QuotationDocumentLayoutApiV1QuotationsDocumentLayoutGetResponses[keyof QuotationDocumentLayoutApiV1QuotationsDocumentLayoutGetResponses];
+
+export type SetQuotationValidUntilApiV1QuotationsQuotationIdValidUntilPatchData = {
+    body: QuotationValidUntil;
+    path: {
+        /**
+         * Quotation Id
+         */
+        quotation_id: string;
+    };
+    query?: never;
+    url: '/api/v1/quotations/{quotation_id}/valid-until';
+};
+
+export type SetQuotationValidUntilApiV1QuotationsQuotationIdValidUntilPatchErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type SetQuotationValidUntilApiV1QuotationsQuotationIdValidUntilPatchError = SetQuotationValidUntilApiV1QuotationsQuotationIdValidUntilPatchErrors[keyof SetQuotationValidUntilApiV1QuotationsQuotationIdValidUntilPatchErrors];
+
+export type SetQuotationValidUntilApiV1QuotationsQuotationIdValidUntilPatchResponses = {
+    /**
+     * Successful Response
+     */
+    200: QuotationResponse;
+};
+
+export type SetQuotationValidUntilApiV1QuotationsQuotationIdValidUntilPatchResponse = SetQuotationValidUntilApiV1QuotationsQuotationIdValidUntilPatchResponses[keyof SetQuotationValidUntilApiV1QuotationsQuotationIdValidUntilPatchResponses];
 
 export type NoteQuotationRiskApiV1QuotationsQuotationIdNoteRiskPatchData = {
     body: QuotationNoteRisk;

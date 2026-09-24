@@ -1,8 +1,10 @@
+from datetime import date
 from uuid import UUID
 
 from app.domain.charge_code import normalize_aliases
 from app.domain.errors import (
     IncompleteQuotationSnapshot,
+    InvalidQuotation,
     InvalidQuotationBatch,
     InvalidQuotationDocumentNumber,
     InvalidQuotationIncoterm,
@@ -98,6 +100,22 @@ def _optional_place(raw: object) -> str | None:
     if token == "":
         return None
     return token
+
+
+def require_valid_until(raw: object) -> date | None:
+    if raw is None:
+        return None
+    if type(raw) is date:
+        return raw
+    if type(raw) is not str:
+        raise InvalidQuotation("ważność: data kalendarzowa")
+    token = raw.strip()
+    if token == "":
+        return None
+    try:
+        return date.fromisoformat(token)
+    except ValueError as exc:
+        raise InvalidQuotation("ważność: data kalendarzowa") from exc
 
 
 def format_quotation_document_number(prefix: str, sequence: int) -> str:

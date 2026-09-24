@@ -1,9 +1,11 @@
 import uuid
+from datetime import date
 from decimal import Decimal
 
 from sqlalchemy import (
     CHAR,
     CheckConstraint,
+    Date,
     ForeignKey,
     ForeignKeyConstraint,
     Index,
@@ -140,3 +142,4 @@ class Quotation(Base, TimestampMixin):
     incoterms_version: Mapped[str | None] = mapped_column(CHAR(4), nullable=True)
     trade_side: Mapped[str | None] = mapped_column(String(6), nullable=True)
     named_place: Mapped[str | None] = mapped_column(String(128), nullable=True)
+    valid_until: Mapped[date | None] = mapped_column(Date(), nullable=True)

@@ -174,6 +174,10 @@ class IncompleteQuotationSnapshot(DomainError):
     """Nowa wycena wymaga POL, POD i kontrahenta — częściowy snapshot nie wchodzi."""
 
 
+class InvalidQuotation(DomainError):
+    """Niepoprawna dana wyceny (np. data ważności)."""
+
+
 class InvalidQuotationBatch(DomainError):
     """Wycena wsadowa: 1–20 kodów, bez pustego wsadu."""
 

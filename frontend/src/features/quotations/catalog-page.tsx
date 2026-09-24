@@ -99,6 +99,8 @@ const columns = [
       <span className="font-mono text-xs">{row.original.destination_port_id ?? "—"}</span>
     ),
   }),
+  helper.accessor("named_place", { header: "Named place" }),
+  helper.accessor("valid_until", { header: "Ważność" }),
   helper.accessor("source_ref", { header: "Pochodzenie" }),
   helper.accessor("rate_line_id", { header: "Stawka" }),
 ]
@@ -112,6 +114,8 @@ const COLUMN_LABELS = {
   party_id: "Kontrahent",
   origin_port_id: "POL",
   destination_port_id: "POD",
+  named_place: "Named place",
+  valid_until: "Ważność",
   source_ref: "Pochodzenie",
   rate_line_id: "Stawka",
 }
@@ -920,6 +924,7 @@ export function QuotationCatalogPage() {
   const [incotermsVersion, setIncotermsVersion] = useState("")
   const [tradeSide, setTradeSide] = useState("")
   const [namedPlace, setNamedPlace] = useState("")
+  const [validUntil, setValidUntil] = useState("")
   const signedIn = Boolean(ctx.organizationId && ctx.userId)
 
   const partiesQuery = useQuery({
@@ -1024,6 +1029,7 @@ export function QuotationCatalogPage() {
           incotermsVersion,
           tradeSide,
           namedPlace,
+          validUntil,
         }),
       ),
     onSuccess: () => {
@@ -1047,6 +1053,7 @@ export function QuotationCatalogPage() {
           incotermsVersion,
           tradeSide,
           namedPlace,
+          validUntil,
         }),
       ),
     onSuccess: () => {
@@ -1247,6 +1254,15 @@ export function QuotationCatalogPage() {
           value={namedPlace}
           onChange={(event) => setNamedPlace(event.target.value)}
         />
+        <label className="flex flex-col gap-1 text-xs" data-quote-valid-until="picker">
+          valid_until
+          <Input
+            aria-label="Ważność wyceny"
+            type="date"
+            value={validUntil}
+            onChange={(event) => setValidUntil(event.target.value)}
+          />
+        </label>
         <Button type="submit" disabled={quoteMutation.isPending || !signedIn || rfqMissingParty}>
           Wycen z bieżącej stawki
         </Button>

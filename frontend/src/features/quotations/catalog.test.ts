@@ -46,6 +46,7 @@ function quotationWithCurrency(currency: string): Quotation {
     incoterms_version: null,
     trade_side: null,
     named_place: null,
+    valid_until: null,
   }
 }
 
@@ -409,6 +410,8 @@ describe("quotation catalog screen", () => {
     expect(page).toContain("fetchDangerousGoods")
     expect(page).toContain('data-quote-un="picker"')
     expect(page).toContain('data-quote-incoterm="picker"')
+    expect(page).toContain('data-quote-valid-until="picker"')
+    expect(page).toContain("validUntil")
     expect(page).toContain("origin_port_id")
     expect(page).toContain("destination_port_id")
     expect(page).toContain("fetchParties")

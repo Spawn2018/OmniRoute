@@ -1,6 +1,7 @@
 # Historia plastrów
 
 | Data | Plaster | Moduł | Opis |
+| 2026-09-24 | 652.0 | leftover EXP1 quotation valid_until | 2026-09-24 | lokalne (CI po push) | N/A | N/A | OK | leftover | 5-15 | PRZESZŁO | N/A | ~45 | PRZESZŁO |
 | 2026-09-24 | Plan 652.0 | leftover EXP1 quotation valid_until | Plan opcjonalny valid_until DATE na quotation (`/noc 17`). 651.0 gate success. |
 | 2026-09-24 | 651.0 | leftover EXP1 FK fuel_index | 2026-09-24 | PRZESZŁO (gate success 801beb0a) | N/A | N/A | OK | leftover | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 2026-09-24 | Plan 651.0 | leftover EXP1 FK fuel_index | Plan opcjonalny fuel_index_id FK na rate_line (`/noc 17`). 650.0 gate success. |

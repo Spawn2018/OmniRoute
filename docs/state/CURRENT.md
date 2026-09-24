@@ -1,22 +1,22 @@
 # Bieżący focus
 
-**Faza:** Oś pinu — Plaster **652.0** (leftover EXP1 quotation valid_until)
+**Faza:** Oś pinu — Plan **653.0** (leftover EXP1 quotation revision_no)
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
-**Ostatni plaster:** **651.0** leftover EXP1 FK fuel_index
+**Ostatni plaster:** **652.0** leftover EXP1 quotation valid_until
 
-**Etap:** Plaster **652.0** — delta zaakceptowana `/noc 17`. Wolno `/plaster`.
+**Etap:** Plan **653.0** — po zamknięciu 652.0. Wolno `/plan-modul`.
 
 **Noc:** `/noc 17` do 17:00 Europe/Warsaw (2026-09-24).
 
 **Miejsce pracy:** produkt = to repo + GitHub.
 
-**Następny:** **652.0** leftover EXP1 opcjonalny `valid_until` DATE na `quotation` (po `quote_validity_mark` 431.0) — nie float, nie NBP. spot_or_contract na quotation / Deadline Engine / liable_party S11 / live GPS / D9d PDF-QR / D9e skan / D9f pdf-zpl live / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 / live poll / Expo BR2.3 / warning-jako-fakt / N8 / T6 live / P5c / N6 auto charge / live IMO / grupy 1.xA = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
+**Następny:** **653.0** leftover EXP1 opcjonalny `revision_no` na `quotation` (po `valid_until` 652.0) — nie float, nie NBP. supersedes_id / spot_or_contract na quotation / Deadline Engine / liable_party S11 / live GPS / D9d PDF-QR / D9e skan / D9f pdf-zpl live / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 / live poll / Expo BR2.3 / warning-jako-fakt / N8 / T6 live / P5c / N6 auto charge / live IMO / grupy 1.xA = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
 
-**Park / czeka w PLAN:** D9d · D9e · D9f pdf-zpl live · live 409 · live poll · Expo · fx×FV · matching T5 · FK kontekstu · T8 live · D6b · D7b · auto-copy U1 · similar SQL · F2b · auto-resync salda · N8 · T6 live · P5c · N6 auto charge · HW · SH-R16-4 UXCL · AI3 · G0-SH · N3 · live IMO · grupy 1.xA · Deadline Engine · liable_party S11 · spot_or_contract na quotation ·
+**Park / czeka w PLAN:** D9d · D9e · D9f pdf-zpl live · live 409 · live poll · Expo · fx×FV · matching T5 · FK kontekstu · T8 live · D6b · D7b · auto-copy U1 · similar SQL · F2b · auto-resync salda · N8 · T6 live · P5c · N6 auto charge · HW · SH-R16-4 UXCL · AI3 · G0-SH · N3 · live IMO · grupy 1.xA · Deadline Engine · liable_party S11 · spot_or_contract na quotation · supersedes_id ·
 
-**Spec (jedyna na sesję produktu):** [652.0-quotation-valid-until.md](../deltas/open/652.0-quotation-valid-until.md)
+**Spec (jedyna na sesję produktu):** (brak — Etap Plan **653.0**)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](VISION.md).
 
@@ -24,6 +24,7 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\\pg16`.
 
+**2026-09-24:** Plaster **652.0** leftover EXP1 quotation valid_until (`/noc 17`).
 **2026-09-24:** Plan **652.0** leftover EXP1 quotation valid_until (`/noc 17`). 651.0 gate success.
 **2026-09-24:** Plaster **651.0** leftover EXP1 FK fuel_index (`/noc 17`).
 **2026-09-24:** Plan **651.0** leftover EXP1 FK fuel_index (`/noc 17`). 650.0 gate success.

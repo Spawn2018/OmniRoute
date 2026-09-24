@@ -31,6 +31,7 @@ function quotation(partyId: string | null): Quotation {
     incoterms_version: null,
     trade_side: null,
     named_place: null,
+    valid_until: null,
   }
 }
 

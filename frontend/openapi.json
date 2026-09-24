@@ -6141,6 +6141,64 @@
         ]
       }
     },
+    "/api/v1/quotations/{quotation_id}/valid-until": {
+      "patch": {
+        "tags": [
+          "quotations"
+        ],
+        "summary": "Set Quotation Valid Until",
+        "operationId": "set_quotation_valid_until_api_v1_quotations__quotation_id__valid_until_patch",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "quotation_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Quotation Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuotationValidUntil"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuotationResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/quotations/{quotation_id}/note-risk": {
       "patch": {
         "tags": [
@@ -50189,6 +50247,15 @@
               }
             ],
             "title": "Named Place"
+          },
+          "valid_until": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Valid Until"
           }
         },
         "additionalProperties": false,
@@ -50303,6 +50370,15 @@
               }
             ],
             "title": "Named Place"
+          },
+          "valid_until": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Valid Until"
           }
         },
         "additionalProperties": false,
@@ -50553,6 +50629,18 @@
               }
             ],
             "title": "Named Place"
+          },
+          "valid_until": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Valid Until"
           }
         },
         "type": "object",
@@ -50576,9 +50664,26 @@
           "incoterm",
           "incoterms_version",
           "trade_side",
-          "named_place"
+          "named_place",
+          "valid_until"
         ],
         "title": "QuotationResponse"
+      },
+      "QuotationValidUntil": {
+        "properties": {
+          "valid_until": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Valid Until"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "QuotationValidUntil"
       },
       "QuoteCurrencyMarkCreate": {
         "properties": {

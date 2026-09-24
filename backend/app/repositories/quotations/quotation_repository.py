@@ -12,7 +12,7 @@ INSERT INTO quotation (
     amount, currency, source_ref, created_by,
     origin_port_id, destination_port_id, party_id, customer_rfq_id,
     commodity_code_id, dangerous_good_id,
-    incoterm, incoterms_version, trade_side, named_place
+    incoterm, incoterms_version, trade_side, named_place, valid_until
 )
 SELECT
     :qid,
@@ -32,7 +32,8 @@ SELECT
     :incoterm,
     :incoterms_version,
     :trade_side,
-    :named_place
+    :named_place,
+    :valid_until
 FROM rate_line AS rl
 WHERE rl.charge_code = :charge_code
   AND rl.superseded_by IS NULL
@@ -42,7 +43,7 @@ RETURNING id, organization_id, charge_code, rate_line_id,
           amount, currency, source_ref, created_by,
           origin_port_id, destination_port_id, party_id, customer_rfq_id,
           commodity_code_id, dangerous_good_id, document_number,
-          incoterm, incoterms_version, trade_side, named_place
+          incoterm, incoterms_version, trade_side, named_place, valid_until
 """
 
 ISSUE_DOCUMENT_NUMBER_SQL = """
@@ -87,6 +88,7 @@ def _quote_insert_binds(
     incoterms_version: str | None,
     trade_side: str | None,
     named_place: str | None,
+    valid_until: object,
 ) -> dict[str, object]:
     return {
         "qid": uuid4(),
@@ -103,6 +105,7 @@ def _quote_insert_binds(
         "incoterms_version": incoterms_version,
         "trade_side": trade_side,
         "named_place": named_place,
+        "valid_until": valid_until,
     }
 
 
@@ -129,6 +132,7 @@ def quotation_from_insert_row(row: RowMapping) -> Quotation:
         incoterms_version=row.get("incoterms_version"),
         trade_side=row.get("trade_side"),
         named_place=row.get("named_place"),
+        valid_until=row.get("valid_until"),
     )
 
 
@@ -173,6 +177,7 @@ class QuotationRepository:
         incoterms_version: str | None = None,
         trade_side: str | None = None,
         named_place: str | None = None,
+        valid_until: object = None,
     ) -> Quotation | None:
         result = await self._session.execute(
             text(QUOTE_FROM_CURRENT_SQL),
@@ -190,12 +195,11 @@ class QuotationRepository:
                 incoterms_version=incoterms_version,
                 trade_side=trade_side,
                 named_place=named_place,
+                valid_until=valid_until,
             ),
         )
         row = result.mappings().first()
-        if row is None:
-            return None
-        return quotation_from_insert_row(row)
+        return None if row is None else quotation_from_insert_row(row)
 
     async def get(self, quotation_id: UUID) -> Quotation | None:
         found = await self._session.get(Quotation, quotation_id, populate_existing=True)

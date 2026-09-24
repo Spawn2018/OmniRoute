@@ -29,6 +29,7 @@ zostają w badaniach `04`).
 
 | Data | Co |
 |---|---|
+| 2026-09-24 | **652.0** leftover EXP1 opcjonalny `valid_until` DATE na `quotation` zamknięty: kalendarzowa ważność HITL; katalog 431.0 zostaje (`CONFIRMED`). Float / NBP / Deadline Engine nadal `REJECTED`. Następny = EXP1 `quotation.revision_no` (**653.0**, `REQUIREMENT`). Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-24 | **652.0** leftover EXP1 opcjonalny `valid_until` DATE na `quotation` (po katalogu 431.0): kalendarzowa ważność HITL — nie float, nie NBP (`REQUIREMENT`). Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-24 | **651.0** leftover EXP1 opcjonalny `fuel_index_id` FK na `rate_line` zamknięty: złożone FK do katalogu P3; pin `index_id` zostaje (`CONFIRMED`). Float / mnożenie FSC nadal `REJECTED`. Następny = EXP1 `quotation.valid_until` (**652.0**, `REQUIREMENT`). Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-24 | **651.0** leftover EXP1 opcjonalny `fuel_index_id` FK na `rate_line` (pin `index_id` zostaje): złożone FK do katalogu P3 — nie float, nie mnożenie FSC (`REQUIREMENT`). Marża zostaje na `charge` (`CONFIRMED`). |

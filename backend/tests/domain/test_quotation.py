@@ -1,3 +1,4 @@
+from datetime import date
 from uuid import UUID, uuid4
 
 import pytest
@@ -6,6 +7,7 @@ from hypothesis import strategies as st
 
 from app.domain.errors import (
     IncompleteQuotationSnapshot,
+    InvalidQuotation,
     InvalidQuotationBatch,
     InvalidQuotationIncoterm,
     QuotationNamedPlaceRequired,
@@ -14,6 +16,7 @@ from app.domain.quotation import (
     require_batch_charge_codes,
     require_lane_party_snapshot,
     require_quotation_incoterm,
+    require_valid_until,
 )
 
 _UUIDS = st.uuids()
@@ -95,4 +98,16 @@ def test_quotation_dap_requires_named_place() -> None:
         "import",
         "Gdynia",
     )
+
+
+def test_quotation_valid_until_is_calendar_day() -> None:
+    assert require_valid_until(None) is None
+    assert require_valid_until("  ") is None
+    assert require_valid_until("2026-10-01") == date(2026, 10, 1)
+    with pytest.raises(InvalidQuotation, match="ważność"):
+        require_valid_until("2026-10-01T00:00:00")
+    with pytest.raises(InvalidQuotation, match="ważność"):
+        require_valid_until(True)
+    with pytest.raises(InvalidQuotation, match="ważność"):
+        require_valid_until(1)
 
