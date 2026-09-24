@@ -1317,6 +1317,18 @@ export type CargoClaimCreate = {
      */
     suit_due_at: string;
     /**
+     * Evidence Gps
+     */
+    evidence_gps: boolean;
+    /**
+     * Evidence Temp
+     */
+    evidence_temp: boolean;
+    /**
+     * Evidence Photo
+     */
+    evidence_photo: boolean;
+    /**
      * Source Ref
      */
     source_ref: string;
@@ -1358,6 +1370,18 @@ export type CargoClaimResponse = {
      * Suit Due At
      */
     suit_due_at: string;
+    /**
+     * Evidence Gps
+     */
+    evidence_gps: boolean;
+    /**
+     * Evidence Temp
+     */
+    evidence_temp: boolean;
+    /**
+     * Evidence Photo
+     */
+    evidence_photo: boolean;
     /**
      * Source Ref
      */

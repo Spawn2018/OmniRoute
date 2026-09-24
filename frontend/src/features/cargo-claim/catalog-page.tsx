@@ -24,6 +24,9 @@ function readClaimForm(form: HTMLFormElement) {
     cmr_notice_window: text("cmr_notice_window"),
     notice_due_at: text("notice_due_at"),
     suit_due_at: text("suit_due_at"),
+    evidence_gps: box.get("evidence_gps") === "on",
+    evidence_temp: box.get("evidence_temp") === "on",
+    evidence_photo: box.get("evidence_photo") === "on",
     source_ref: text("source_ref"),
   }
 }
@@ -71,6 +74,18 @@ function ClaimSaveForm(args: { organizationId: string | null }) {
         </select>
         <input className="border px-1 text-xs" name="notice_due_at" required type="date" />
         <input className="border px-1 text-xs" name="suit_due_at" required type="date" />
+        <label className="flex items-center gap-1 text-xs">
+          <input name="evidence_gps" type="checkbox" />
+          evidence GPS
+        </label>
+        <label className="flex items-center gap-1 text-xs">
+          <input name="evidence_temp" type="checkbox" />
+          evidence temp
+        </label>
+        <label className="flex items-center gap-1 text-xs">
+          <input name="evidence_photo" type="checkbox" />
+          evidence photo
+        </label>
         <input className="w-56 border px-1 text-xs" defaultValue="fixture://cargo-claim/" name="source_ref" required />
         <Button type="submit" disabled={save.isPending || !args.organizationId}>
           Zapisz reklamację
@@ -95,7 +110,8 @@ function ClaimRows(args: { organizationId: string | null }) {
         {(rows.data ?? []).map((row) => (
           <li key={row.id} className="text-xs">
             {row.claim_kind} {row.damage_code} {row.cmr_notice_window} {row.notice_due_at}{" "}
-            {row.suit_due_at} {row.shipment_id}{" "}
+            {row.suit_due_at} gps={String(row.evidence_gps)} temp={String(row.evidence_temp)}{" "}
+            photo={String(row.evidence_photo)} {row.shipment_id}{" "}
             <Link className="underline" to="/shipments">
               zlecenie
             </Link>
@@ -113,7 +129,7 @@ export function CargoClaimPage() {
     <section className="flex flex-col gap-3" data-cargo-claim="board">
       <CatalogHeading
         title="Reklamacje ładunku"
-        subtitle="cargo_claim M-55 · OS&D + terminy CMR · nie kwota · nie silnik 7/21/365"
+        subtitle="cargo_claim M-55 · OS&D + CMR + evidence HITL · nie kwota · nie live GPS"
       />
       {!ready ? <TenantSessionNotice /> : null}
       {ready ? <ClaimSaveForm organizationId={ctx.organizationId} /> : null}

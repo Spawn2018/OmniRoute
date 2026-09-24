@@ -2,6 +2,7 @@ import uuid
 from datetime import date
 
 from sqlalchemy import (
+    Boolean,
     CheckConstraint,
     Date,
     ForeignKey,
@@ -57,4 +58,7 @@ class CargoClaim(Base, TimestampMixin):
     cmr_notice_window: Mapped[str] = mapped_column(String(16), nullable=False)
     notice_due_at: Mapped[date] = mapped_column(Date, nullable=False)
     suit_due_at: Mapped[date] = mapped_column(Date, nullable=False)
+    evidence_gps: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    evidence_temp: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    evidence_photo: Mapped[bool] = mapped_column(Boolean, nullable=False)
     source_ref: Mapped[str] = mapped_column(String(256), nullable=False)

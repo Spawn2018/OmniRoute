@@ -10,6 +10,9 @@ export type CargoClaimRow = {
   cmr_notice_window: string
   notice_due_at: string
   suit_due_at: string
+  evidence_gps: boolean
+  evidence_temp: boolean
+  evidence_photo: boolean
   source_ref: string
 }
 
@@ -31,6 +34,9 @@ export async function saveCargoClaim(payload: {
   cmr_notice_window: string
   notice_due_at: string
   suit_due_at: string
+  evidence_gps: boolean
+  evidence_temp: boolean
+  evidence_photo: boolean
   source_ref: string
 }): Promise<CargoClaimRow> {
   const auth = requireAuthHeaders()

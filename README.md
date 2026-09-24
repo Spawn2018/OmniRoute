@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **644.0** leftover EXP0.9 `limited_quantity` HITL
-- **Etap:** Plan **645.0** — delta zaakceptowana (`/noc`). Wolno `/plaster`.
-- **Następny:** **645.0** leftover EXP0.8/EXP1 `cargo_claim` evidence HITL — trzy bool `evidence_gps`|`evidence_temp`|`evidence_photo` (delta). Zero Deadline Engine / live GPS / kwota. D9d PDF-QR / D9e skan / D9f pdf-zpl live / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 / live poll / Expo BR2.3 / warning-jako-fakt / N8 / T6 live / P5c / N6 auto charge / live IMO / grupy 1.xA = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
+- **Ostatni plaster:** **645.0** leftover EXP0.8/EXP1 cargo_claim evidence HITL
+- **Etap:** Plan **646.0** — wolno `/plan-modul`. Zero kodu produktu do delty.
+- **Następny:** **646.0** leftover EXP1 `rate_line.allotment_teu` HITL (opcjonalny Decimal TEU — Plan; zero matching / float / druga marża). Deadline Engine / liable_party S11 / live GPS / D9d PDF-QR / D9e skan / D9f pdf-zpl live / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 / live poll / Expo BR2.3 / warning-jako-fakt / N8 / T6 live / P5c / N6 auto charge / live IMO / grupy 1.xA = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

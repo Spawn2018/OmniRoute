@@ -2021,6 +2021,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "642.0": "/dangerous-goods",
   "643.0": "/dangerous-goods",
   "644.0": "/dangerous-goods",
+  "645.0": "/claims",
   "209.0": "/air",
   "210.0": "/shipments",
   "211.0": "/organization-settings",

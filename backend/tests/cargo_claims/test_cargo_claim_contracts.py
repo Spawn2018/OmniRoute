@@ -58,9 +58,28 @@ def test_migration_131_adds_cmr_clocks_without_timedelta() -> None:
     assert "def downgrade" in source
 
 
+def test_migration_517_adds_evidence_bools_without_gps() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "517_cargo_claim_evidence.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "517_cargo_claim_evidence"' in source
+    assert 'down_revision: str | None = "516_dg_limited_quantity"' in source
+    assert "evidence_gps" in source
+    assert "evidence_temp" in source
+    assert "evidence_photo" in source
+    assert "timedelta" not in source
+    assert "lat" not in source
+    assert "buy_amount" not in source
+    assert "httpx" not in source
+    assert "def downgrade" in source
+
+
 def test_generated_api_types_include_cargo_claim() -> None:
     source = (_ROOT / "frontend" / "src" / "api" / "types.gen.ts").read_text(encoding="utf-8")
     assert "CargoClaimResponse" in source
     assert "CargoClaimCreate" in source
     assert "damage_code" in source
     assert "notice_due_at" in source
+    assert "evidence_gps" in source
+    assert "evidence_temp" in source
+    assert "evidence_photo" in source

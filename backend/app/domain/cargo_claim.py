@@ -84,3 +84,21 @@ def require_suit_due_at(raw: object) -> date:
 def require_cmr_order(notice: date, suit: date) -> None:
     if suit < notice:
         raise InvalidCargoClaim("kolejność terminów CMR")
+
+
+def require_evidence_gps(raw: object) -> bool:
+    if type(raw) is not bool:
+        raise InvalidCargoClaim("evidence gps musi być true albo false")
+    return raw
+
+
+def require_evidence_temp(raw: object) -> bool:
+    if type(raw) is not bool:
+        raise InvalidCargoClaim("evidence temp musi być true albo false")
+    return raw
+
+
+def require_evidence_photo(raw: object) -> bool:
+    if type(raw) is not bool:
+        raise InvalidCargoClaim("evidence photo musi być true albo false")
+    return raw

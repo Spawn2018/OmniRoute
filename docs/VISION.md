@@ -29,6 +29,7 @@ zostają w badaniach `04`).
 
 | Data | Co |
 |---|---|
+| 2026-09-24 | **645.0** leftover EXP0.8/EXP1 evidence HITL zamknięty: trzy bool `evidence_gps` / `evidence_temp` / `evidence_photo` na `cargo_claim` (`CONFIRMED`). Deadline Engine / live GPS / `liable_party` nadal `REJECTED`. Następny = EXP1 `rate_line.allotment_teu` HITL (**646.0**, `REQUIREMENT`). Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-24 | **645.0** leftover EXP0.8/EXP1 evidence HITL: trzy bool `evidence_gps` / `evidence_temp` / `evidence_photo` na `cargo_claim` — nie exclusive stance, nie Deadline Engine, nie live GPS (`REQUIREMENT`). `liable_party` nadal `REJECTED`. Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-24 | **644.0** leftover EXP0.9 limited quantity HITL zamknięty: kolumna `limited_quantity` (bool) na `dangerous_good` (`CONFIRMED`). Live IMO / grupy 1.xA nadal `REJECTED`. Następny = evidence HITL na `cargo_claim` (**645.0**, `REQUIREMENT`). Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-24 | **643.0** leftover EXP0.9 marine pollutant HITL zamknięty: kolumna `marine_pollutant` (bool) na `dangerous_good` (`CONFIRMED`). Live IMO / grupy 1.xA nadal `REJECTED`. Następny = `limited_quantity` HITL (**644.0**, `REQUIREMENT`). Marża zostaje na `charge` (`CONFIRMED`). |

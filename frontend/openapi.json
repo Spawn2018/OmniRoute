@@ -31894,6 +31894,18 @@
             "type": "string",
             "title": "Suit Due At"
           },
+          "evidence_gps": {
+            "type": "boolean",
+            "title": "Evidence Gps"
+          },
+          "evidence_temp": {
+            "type": "boolean",
+            "title": "Evidence Temp"
+          },
+          "evidence_photo": {
+            "type": "boolean",
+            "title": "Evidence Photo"
+          },
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
@@ -31908,6 +31920,9 @@
           "cmr_notice_window",
           "notice_due_at",
           "suit_due_at",
+          "evidence_gps",
+          "evidence_temp",
+          "evidence_photo",
           "source_ref"
         ],
         "title": "CargoClaimCreate"
@@ -31949,6 +31964,18 @@
             "type": "string",
             "title": "Suit Due At"
           },
+          "evidence_gps": {
+            "type": "boolean",
+            "title": "Evidence Gps"
+          },
+          "evidence_temp": {
+            "type": "boolean",
+            "title": "Evidence Temp"
+          },
+          "evidence_photo": {
+            "type": "boolean",
+            "title": "Evidence Photo"
+          },
           "source_ref": {
             "type": "string",
             "title": "Source Ref"
@@ -31964,6 +31991,9 @@
           "cmr_notice_window",
           "notice_due_at",
           "suit_due_at",
+          "evidence_gps",
+          "evidence_temp",
+          "evidence_photo",
           "source_ref"
         ],
         "title": "CargoClaimResponse"
@@ -37228,6 +37258,10 @@
             "type": "boolean",
             "title": "Marine Pollutant"
           },
+          "limited_quantity": {
+            "type": "boolean",
+            "title": "Limited Quantity"
+          },
           "name": {
             "type": "string",
             "maxLength": 128,
@@ -37251,6 +37285,7 @@
           "segregation_group",
           "packing_group",
           "marine_pollutant",
+          "limited_quantity",
           "name"
         ],
         "title": "DangerousGoodCreate"
@@ -37291,6 +37326,10 @@
             "type": "boolean",
             "title": "Marine Pollutant"
           },
+          "limited_quantity": {
+            "type": "boolean",
+            "title": "Limited Quantity"
+          },
           "name": {
             "type": "string",
             "title": "Name"
@@ -37317,6 +37356,7 @@
           "segregation_group",
           "packing_group",
           "marine_pollutant",
+          "limited_quantity",
           "name",
           "aliases",
           "source_ref"

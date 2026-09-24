@@ -22,6 +22,9 @@ class CargoClaimCreate(BaseModel):
     cmr_notice_window: str
     notice_due_at: str
     suit_due_at: str
+    evidence_gps: bool
+    evidence_temp: bool
+    evidence_photo: bool
     source_ref: str
 
 
@@ -36,6 +39,9 @@ class CargoClaimResponse(BaseModel):
     cmr_notice_window: str
     notice_due_at: str
     suit_due_at: str
+    evidence_gps: bool
+    evidence_temp: bool
+    evidence_photo: bool
     source_ref: str
 
 
@@ -49,6 +55,9 @@ def _as_row(row: CargoClaim) -> CargoClaimResponse:
         cmr_notice_window=row.cmr_notice_window,
         notice_due_at=row.notice_due_at.isoformat(),
         suit_due_at=row.suit_due_at.isoformat(),
+        evidence_gps=row.evidence_gps,
+        evidence_temp=row.evidence_temp,
+        evidence_photo=row.evidence_photo,
         source_ref=row.source_ref,
     )
 
@@ -79,6 +88,9 @@ async def create_cargo_claim(
         cmr_notice_window=body.cmr_notice_window,
         notice_due_at=body.notice_due_at,
         suit_due_at=body.suit_due_at,
+        evidence_gps=body.evidence_gps,
+        evidence_temp=body.evidence_temp,
+        evidence_photo=body.evidence_photo,
         source_ref=body.source_ref,
     )
     await session.commit()

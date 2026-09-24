@@ -11,6 +11,9 @@ from app.domain.cargo_claim import (
     require_cmr_notice_window,
     require_cmr_order,
     require_damage_code,
+    require_evidence_gps,
+    require_evidence_photo,
+    require_evidence_temp,
     require_notice_due_at,
     require_suit_due_at,
 )
@@ -63,6 +66,9 @@ class StubCargoClaimService:
         cmr_notice_window: str,
         notice_due_at: str,
         suit_due_at: str,
+        evidence_gps: bool,
+        evidence_temp: bool,
+        evidence_photo: bool,
         source_ref: str,
     ) -> CargoClaim:
         notice = require_notice_due_at(notice_due_at)
@@ -77,6 +83,9 @@ class StubCargoClaimService:
             cmr_notice_window=require_cmr_notice_window(cmr_notice_window),
             notice_due_at=notice,
             suit_due_at=suit,
+            evidence_gps=require_evidence_gps(evidence_gps),
+            evidence_temp=require_evidence_temp(evidence_temp),
+            evidence_photo=require_evidence_photo(evidence_photo),
             source_ref=require_claim_source_ref(source_ref),
             created_by=user_id,
         )
@@ -84,14 +93,17 @@ class StubCargoClaimService:
         return row
 
 
-def _claim_json(shipment_id: UUID, **overrides: str) -> dict[str, str]:
-    payload = {
+def _claim_json(shipment_id: UUID, **overrides: object) -> dict[str, object]:
+    payload: dict[str, object] = {
         "shipment_id": str(shipment_id),
         "claim_kind": "damage",
         "damage_code": "damage",
         "cmr_notice_window": "notice_7",
         "notice_due_at": "2026-01-10",
         "suit_due_at": "2026-12-31",
+        "evidence_gps": False,
+        "evidence_temp": False,
+        "evidence_photo": False,
         "source_ref": "fixture://cargo-claim/1",
     }
     payload.update(overrides)
@@ -143,7 +155,7 @@ def test_http_create_and_list_cargo_claim(catalog_client: object) -> None:
     created = client.post(
         "/api/v1/cargo-claims",
         headers=headers,
-        json=_claim_json(ships.row.id),
+        json=_claim_json(ships.row.id, evidence_gps=True, evidence_photo=True),
     )
     assert created.status_code == 201
     body = created.json()
@@ -154,6 +166,9 @@ def test_http_create_and_list_cargo_claim(catalog_client: object) -> None:
     assert body["cmr_notice_window"] == "notice_7"
     assert body["notice_due_at"] == "2026-01-10"
     assert body["suit_due_at"] == "2026-12-31"
+    assert body["evidence_gps"] is True
+    assert body["evidence_temp"] is False
+    assert body["evidence_photo"] is True
     assert "amount" not in body
     listed = client.get("/api/v1/cargo-claims", headers=headers)
     assert listed.status_code == 200
@@ -232,3 +247,14 @@ def test_http_create_claim_suit_before_notice_is_400(catalog_client: object) -> 
     )
     assert response.status_code == 400
     assert "kolejność" in response.json()["detail"]
+
+
+def test_http_create_claim_null_evidence_is_422(catalog_client: object) -> None:
+    client, ships, _claims = catalog_client
+    assert ships.row is not None
+    response = client.post(
+        "/api/v1/cargo-claims",
+        headers=bearer_auth_headers(),
+        json=_claim_json(ships.row.id, evidence_gps=None),
+    )
+    assert response.status_code == 422

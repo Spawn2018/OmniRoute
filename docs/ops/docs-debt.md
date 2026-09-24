@@ -4,7 +4,7 @@
 **642.0 DONE:** `dangerous_good.packing_group` HITL (`I`|`II`|`III`). Nie live IMO. Nie LLM klasy. Leftover: marine pollutant → **643.0** · live IMO · grupy 1.xA park.
 **643.0 DONE:** `dangerous_good.marine_pollutant` HITL bool. Nie live IMO. Nie LLM klasy.
 **644.0 DONE:** `dangerous_good.limited_quantity` HITL bool. Nie live IMO. Nie LLM klasy. Leftover: live IMO · grupy 1.xA park.
-**645.0 PLAN:** `cargo_claim` evidence HITL — trzy bool `evidence_gps`|`evidence_temp`|`evidence_photo`. Nie Deadline Engine. Nie live GPS. Nie exclusive stance. Leftover: Deadline Engine · liable_party S11 · live GPS/foto.
+**645.0 DONE:** `cargo_claim` evidence HITL — trzy bool `evidence_gps`|`evidence_temp`|`evidence_photo`. Nie Deadline Engine. Nie live GPS. Leftover: Deadline Engine · liable_party S11 · live GPS/foto. Następny = **646.0** EXP1 `rate_line.allotment_teu`.
 ﻿- **625.0 DONE:** `groupage_tariff.volume_m3` opcjonalne Decimal. Nie liczy progu. Leftover D5b: paleta zostaje na saldzie, FSC na `fuel_index`.
 - **624.0 DONE:** `shipment_document.document_kind` przyjmuje `rod`. `pod` zostaje odrzucone (port wyĹ‚adunku). Leftover: skan / bajty.
 - **635.0 DONE:** `local_charge_warning_mark` HITL stance ostrzezenia braku dopłaty. Nie warning-jako-fakt. Leftover: matching stance DONE **640.0** · bind stance → **641.0** · P5b–c park · warning-jako-fakt · live HTTP.
