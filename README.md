@@ -88,8 +88,8 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **648.0** leftover EXP1 rate_line index_id FSC HITL
-- **Etap:** Plan **649.0** — wolno `/plan-modul` (delta przed kodem).
-- **Następny:** **649.0** leftover EXP1 `charge_code` waiting/no_show/diversion/stamp + source_ref — seed katalogu kodów opłat (delta). Zero matching / float / druga marża. FK fuel_index / spot_or_contract na quotation / Deadline Engine / liable_party S11 / live GPS / D9d PDF-QR / D9e skan / D9f pdf-zpl live / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 / live poll / Expo BR2.3 / warning-jako-fakt / N8 / T6 live / P5c / N6 auto charge / live IMO / grupy 1.xA = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
+- **Etap:** Plan **649.0** — delta zaakceptowana (`/noc`). Wolno `/plaster`.
+- **Następny:** **649.0** leftover EXP1 `charge_code.source_ref` — wymagane pochodzenie kodu opłaty; kody WAITING/NO_SHOW/DIVERSION/STAMP wolne (delta). Zero matching / float / druga marża. seed Omni czterech kodów / FK fuel_index / spot_or_contract na quotation / Deadline Engine / liable_party S11 / live GPS / D9d PDF-QR / D9e skan / D9f pdf-zpl live / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 / live poll / Expo BR2.3 / warning-jako-fakt / N8 / T6 live / P5c / N6 auto charge / live IMO / grupy 1.xA = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
