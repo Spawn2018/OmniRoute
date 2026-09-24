@@ -11,7 +11,7 @@ Rdzeń: RLS, HITL, LLM nie liczy, Decimal, `charge` = marża, `source_ref`.
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 <!-- os-status:start -->
-**Następny:** **644.0** leftover EXP0.9 `limited_quantity` HITL na `dangerous_good` (zero live IMO / LLM klasy / grupy 1.xA). D9d PDF-QR / D9e skan / D9f pdf-zpl live / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 / live poll / Expo BR2.3 / warning-jako-fakt / N8 / T6 live / P5c / N6 auto charge = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
+**Następny:** **644.0** leftover EXP0.9 `limited_quantity` HITL bool na `dangerous_good` (zero live IMO / LLM klasy / grupy 1.xA). D9d PDF-QR / D9e skan / D9f pdf-zpl live / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 / live poll / Expo BR2.3 / warning-jako-fakt / N8 / T6 live / P5c / N6 auto charge = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
 <!-- os-status:end -->
 
 Historia osi 0→Q1: [PLAN-HISTORIA.md](state/PLAN-HISTORIA.md).
@@ -578,7 +578,7 @@ Karta: [karty-pol-g2-tender.md](analysis/karty-pol-g2-tender.md). P6 = oferty od
 | C2 | AIS/AES/Intrastat | zamknięty HITL katalog ([562.0](deltas/archived/562.0-ais-import-mark.md)); leftover PUESC live | TO_VERIFY konto PUESC |
 | C3–C5 / C9 | lookup live, eCMR 2027 (EXP2.18), CO₂+metodyka, Trans.eu snapshot | zamknięty HITL C5 katalog ([190.0](deltas/archived/190.0-carbon-method.md)); leftover C3 live VIES/GUS / C4 eCMR / C9 Trans.eu | C9 bez scrapingu opinii |
 | **EXP0.8** | `cargo_claim` deadline CMR 7/21/365 + OS&D | zamknięty HITL OS&D + terminy ([191.0](deltas/archived/191.0-cargo-claim-cmr.md)); leftover Deadline Engine / evidence / S11 | nie kwota z LLM |
-| **EXP0.9** | UN: `adr_tunnel_code` + `segregation_group` | zamknięty HITL tunel ADR + SG ([192.0](deltas/archived/192.0-dangerous-good-adr.md)); packing group DONE **642.0**; marine pollutant DONE **643.0**; `limited_quantity` → **644.0**; leftover live IMO / grupy 1.xA park | LLM nie nadaje klasy |
+| **EXP0.9** | UN: `adr_tunnel_code` + `segregation_group` | zamknięty HITL tunel ADR + SG ([192.0](deltas/archived/192.0-dangerous-good-adr.md)); packing group DONE **642.0**; marine pollutant DONE **643.0**; `limited_quantity` Plan **644.0** (delta open `/noc 7`); leftover live IMO / grupy 1.xA park | LLM nie nadaje klasy |
 
 ### Fala V — predykcje / telematyka / wieża
 
@@ -892,13 +892,13 @@ Obowiązkowe: `nowy-plaster`, `zamknij-plaster`, `lowca-duplikatow` (przed kodem
 **Nie:** `module-factory` na 70 BC.
 
 <!-- os-start:start -->
-**Teraz:** `/plan-modul` (Etap z CURRENT.md).
+**Teraz:** `/plaster` (Etap z CURRENT.md).
 
 ```
-/plan-modul
+/plaster
 ```
 
 Kontekst: `@docs/state/CURRENT.md` `@docs/PLAN-REALIZACJA.md` `@GROUNDING.md`
 
-Druga komenda (`/plaster`) tylko gdy CURRENT zmieni Etap.
+Druga komenda (`/plan-modul`) tylko gdy CURRENT zmieni Etap.
 <!-- os-start:end -->
