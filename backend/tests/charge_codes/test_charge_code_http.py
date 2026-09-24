@@ -92,7 +92,12 @@ def test_http_create_and_list_charge_codes(catalog_client: TestClient) -> None:
     created = catalog_client.post(
         "/api/v1/charge-codes",
         headers=headers,
-        json={"code": "BAF", "name": "Bunker", "aliases": ["BUNKER"], "source_ref": "tenant:manual"},
+        json={
+            "code": "BAF",
+            "name": "Bunker",
+            "aliases": ["BUNKER"],
+            "source_ref": "tenant:manual",
+        },
     )
     assert created.status_code == 201
     body = created.json()
