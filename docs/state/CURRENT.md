@@ -1,22 +1,22 @@
 # Bieżący focus
 
-**Faza:** Oś pinu — Plan **651.0** (leftover EXP1 FK fuel_index)
+**Faza:** Oś pinu — Plaster **651.0** (leftover EXP1 FK fuel_index)
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 **Ostatni plaster:** **650.0** leftover EXP1 seed Omni charge_code
 
-**Etap:** Plan **651.0** — po 650.0. Wolno `/plan-modul`.
+**Etap:** Plaster **651.0** — delta zaakceptowana `/noc 17`. Wolno `/plaster`.
 
 **Noc:** `/noc 17` do 17:00 Europe/Warsaw (2026-09-24).
 
 **Miejsce pracy:** produkt = to repo + GitHub.
 
-**Następny:** **651.0** leftover EXP1 FK `fuel_index` na `rate_line.index_id` (albo wiązanie pin↔katalog) — nie float, nie mnożenie FSC. spot_or_contract na quotation / Deadline Engine / liable_party S11 / live GPS / D9d PDF-QR / D9e skan / D9f pdf-zpl live / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 / live poll / Expo BR2.3 / warning-jako-fakt / N8 / T6 live / P5c / N6 auto charge / live IMO / grupy 1.xA = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
+**Następny:** **651.0** leftover EXP1 opcjonalny `fuel_index_id` FK na `rate_line` (pin `index_id` zostaje) — nie float, nie mnożenie FSC. spot_or_contract na quotation / Deadline Engine / liable_party S11 / live GPS / D9d PDF-QR / D9e skan / D9f pdf-zpl live / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 / live poll / Expo BR2.3 / warning-jako-fakt / N8 / T6 live / P5c / N6 auto charge / live IMO / grupy 1.xA = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
 
 **Park / czeka w PLAN:** D9d · D9e · D9f pdf-zpl live · live 409 · live poll · Expo · fx×FV · matching T5 · FK kontekstu · T8 live · D6b · D7b · auto-copy U1 · similar SQL · F2b · auto-resync salda · N8 · T6 live · P5c · N6 auto charge · HW · SH-R16-4 UXCL · AI3 · G0-SH · N3 · live IMO · grupy 1.xA · Deadline Engine · liable_party S11 · spot_or_contract na quotation ·
 
-**Spec (jedyna na sesję produktu):** brak — Plan **651.0** (`/plan-modul`).
+**Spec (jedyna na sesję produktu):** [651.0-rate-line-fuel-index-fk.md](../deltas/open/651.0-rate-line-fuel-index-fk.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](VISION.md).
 
@@ -24,6 +24,7 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\\pg16`.
 
+**2026-09-24:** Plan **651.0** leftover EXP1 FK fuel_index (`/noc 17`). 650.0 gate success.
 **2026-09-24:** Plaster **650.0** leftover EXP1 seed Omni charge_code (`/noc 17`).
 **2026-09-24:** Plan **650.0** leftover EXP1 seed Omni charge_code (`/noc 17`). 649.0 gate success.
 **2026-09-24:** Plaster **649.0** leftover EXP1 charge_code source_ref (`/noc 17`).
