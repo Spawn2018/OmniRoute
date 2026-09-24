@@ -134,6 +134,10 @@ class RateLineAlreadySuperseded(DomainError):
     """Zmiana stawki to nowy wiersz; już zastąpionej nie rusza się drugi raz."""
 
 
+class InvalidRateLine(DomainError):
+    """Pole stawki kupna spoza reguł domeny (np. allotment_teu)."""
+
+
 class MixedCurrencyCharge(DomainError):
     """buy i sell na charge muszą mieć tę samą walutę — marża nie liczy kursu."""
 

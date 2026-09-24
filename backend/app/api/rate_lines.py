@@ -18,12 +18,14 @@ class RateLineCreate(BaseModel):
     amount: str = Field(min_length=1, max_length=32)
     currency: str = Field(min_length=3, max_length=3)
     source_ref: str = Field(min_length=1, max_length=512)
+    allotment_teu: str | None = Field(default=None, max_length=32)
 
 
 class RateLineSupersede(BaseModel):
     amount: str = Field(min_length=1, max_length=32)
     currency: str = Field(min_length=3, max_length=3)
     source_ref: str = Field(min_length=1, max_length=512)
+    allotment_teu: str | None = Field(default=None, max_length=32)
 
 
 class RateLineResponse(BaseModel):
@@ -33,12 +35,14 @@ class RateLineResponse(BaseModel):
     amount: str
     currency: str
     source_ref: str
+    allotment_teu: str | None
     superseded_by: UUID | None
 
     @classmethod
     def from_row(cls, row: RateLine) -> "RateLineResponse":
         money = Money.of(row.amount, row.currency)
         amount_text, currency = money.as_pair()
+        teu_text = None if row.allotment_teu is None else format(row.allotment_teu, "f")
         return cls(
             id=row.id,
             organization_id=row.organization_id,
@@ -46,6 +50,7 @@ class RateLineResponse(BaseModel):
             amount=amount_text,
             currency=currency,
             source_ref=row.source_ref,
+            allotment_teu=teu_text,
             superseded_by=row.superseded_by,
         )
 
@@ -75,6 +80,7 @@ async def create_rate_line(
         amount=body.amount,
         currency=body.currency,
         source_ref=body.source_ref,
+        allotment_teu=body.allotment_teu,
     )
     await session.commit()
     return RateLineResponse.from_row(row)
@@ -99,6 +105,7 @@ async def supersede_rate_line(
         amount=body.amount,
         currency=body.currency,
         source_ref=body.source_ref,
+        allotment_teu=body.allotment_teu,
     )
     await session.commit()
     return RateLineResponse.from_row(row)

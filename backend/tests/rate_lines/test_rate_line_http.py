@@ -7,6 +7,7 @@ from fastapi.testclient import TestClient
 
 from app.api.deps import require_tenant_session, set_authz_checker
 from app.domain.errors import InvalidSourceRef, RateLineAlreadySuperseded, ResourceNotFound
+from app.domain.rate_line import require_allotment_teu
 from app.main import app
 from app.models.rate_line import RateLine
 from tests.http_auth import bearer_auth_headers
@@ -41,18 +42,21 @@ class StubRateLineService:
         amount: object,
         currency: object,
         source_ref: str,
+        allotment_teu: object = None,
     ) -> RateLine:
         origin = source_ref.strip()
         if origin == "":
             raise InvalidSourceRef("source_ref jest obowiązkowy")
         if isinstance(amount, float):
             raise InvalidSourceRef("kwota nie może być float")
+        teu = require_allotment_teu(allotment_teu)
         row = RateLine(
             id=uuid4(),
             organization_id=organization_id,
             charge_code=charge_code.strip().upper(),
             amount=Decimal(str(amount)),
             currency=str(currency),
+            allotment_teu=teu,
             source_ref=origin,
             created_by=user_id,
         )
@@ -67,6 +71,7 @@ class StubRateLineService:
         amount: object,
         currency: object,
         source_ref: str,
+        allotment_teu: object = None,
     ) -> RateLine:
         current = next((row for row in self.rows if row.id == rate_line_id), None)
         if current is None:
@@ -80,6 +85,7 @@ class StubRateLineService:
             amount=amount,
             currency=currency,
             source_ref=source_ref,
+            allotment_teu=allotment_teu,
         )
         current.superseded_by = successor.id
         return successor
@@ -124,6 +130,7 @@ def test_http_create_and_list_rate_lines(rates_client: TestClient) -> None:
     assert body["amount"] == "10.5000"
     assert body["currency"] == "EUR"
     assert body["source_ref"] == "tariff://msc-2026"
+    assert body["allotment_teu"] is None
     assert body["superseded_by"] is None
     assert body["organization_id"] == str(org_id)
     assert "buy" not in body
@@ -136,6 +143,38 @@ def test_http_create_and_list_rate_lines(rates_client: TestClient) -> None:
     assert len(rows) == 1
     assert rows[0]["id"] == body["id"]
     assert rows[0]["amount"] == "10.5000"
+
+
+def test_http_create_with_allotment_teu(rates_client: TestClient) -> None:
+    created = rates_client.post(
+        "/api/v1/rate-lines",
+        headers=bearer_auth_headers(),
+        json={
+            "charge_code": "THC",
+            "amount": "10",
+            "currency": "EUR",
+            "source_ref": "tariff://teu",
+            "allotment_teu": "12.5",
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["allotment_teu"] == "12.5000"
+
+
+def test_http_rejects_negative_allotment_teu(rates_client: TestClient) -> None:
+    response = rates_client.post(
+        "/api/v1/rate-lines",
+        headers=bearer_auth_headers(),
+        json={
+            "charge_code": "THC",
+            "amount": "10",
+            "currency": "EUR",
+            "source_ref": "tariff://teu",
+            "allotment_teu": "-1",
+        },
+    )
+    assert response.status_code == 400
+    assert "allotment" in response.json()["detail"]
 
 
 def test_http_rejects_blank_source_ref(rates_client: TestClient) -> None:

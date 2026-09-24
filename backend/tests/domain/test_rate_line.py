@@ -1,9 +1,11 @@
+from decimal import Decimal
+
 import pytest
 from hypothesis import given
 from hypothesis import strategies as st
 
-from app.domain.errors import InvalidSourceRef
-from app.domain.rate_line import require_source_ref
+from app.domain.errors import InvalidRateLine, InvalidSourceRef
+from app.domain.rate_line import require_allotment_teu, require_source_ref
 
 _ORIGIN = (
     st.text(min_size=1, max_size=512)
@@ -35,3 +37,24 @@ def test_require_source_ref_rejects_too_long() -> None:
 def test_require_source_ref_is_idempotent(origin: str) -> None:
     assert require_source_ref(origin) == origin
     assert require_source_ref(f" {origin} ") == origin
+
+
+def test_require_allotment_teu_none_and_blank() -> None:
+    assert require_allotment_teu(None) is None
+    assert require_allotment_teu("") is None
+    assert require_allotment_teu("  ") is None
+
+
+def test_require_allotment_teu_quantizes() -> None:
+    assert require_allotment_teu("12.5") == Decimal("12.5000")
+    assert require_allotment_teu(Decimal("1")) == Decimal("1.0000")
+
+
+def test_require_allotment_teu_rejects_negative() -> None:
+    with pytest.raises(InvalidRateLine, match="ujemne"):
+        require_allotment_teu("-1")
+
+
+def test_require_allotment_teu_rejects_float() -> None:
+    with pytest.raises(InvalidRateLine, match="float"):
+        require_allotment_teu(1.5)  # type: ignore[arg-type]

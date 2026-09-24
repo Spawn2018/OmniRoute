@@ -51079,6 +51079,18 @@
             "maxLength": 512,
             "minLength": 1,
             "title": "Source Ref"
+          },
+          "allotment_teu": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 32
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Allotment Teu"
           }
         },
         "type": "object",
@@ -51118,6 +51130,17 @@
             "type": "string",
             "title": "Source Ref"
           },
+          "allotment_teu": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Allotment Teu"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -51139,6 +51162,7 @@
           "amount",
           "currency",
           "source_ref",
+          "allotment_teu",
           "superseded_by"
         ],
         "title": "RateLineResponse"
@@ -51162,6 +51186,18 @@
             "maxLength": 512,
             "minLength": 1,
             "title": "Source Ref"
+          },
+          "allotment_teu": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 32
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Allotment Teu"
           }
         },
         "type": "object",

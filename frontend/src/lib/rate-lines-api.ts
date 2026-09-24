@@ -8,6 +8,7 @@ export type RateLine = {
   amount: string
   currency: string
   source_ref: string
+  allotment_teu: string | null
   superseded_by: string | null
 }
 
@@ -16,25 +17,59 @@ export function rateLineCreateBody(args: {
   amount: string
   currency: string
   sourceRef: string
-}): { charge_code: string; amount: string; currency: string; source_ref: string } {
-  return {
+  allotmentTeu: string
+}): {
+  charge_code: string
+  amount: string
+  currency: string
+  source_ref: string
+  allotment_teu?: string
+} {
+  const body: {
+    charge_code: string
+    amount: string
+    currency: string
+    source_ref: string
+    allotment_teu?: string
+  } = {
     charge_code: args.chargeCode.trim(),
     amount: args.amount.trim(),
     currency: args.currency.trim().toUpperCase(),
     source_ref: args.sourceRef.trim(),
   }
+  const teu = args.allotmentTeu.trim()
+  if (teu !== "") {
+    body.allotment_teu = teu
+  }
+  return body
 }
 
 export function rateLineSupersedeBody(args: {
   amount: string
   currency: string
   sourceRef: string
-}): { amount: string; currency: string; source_ref: string } {
-  return {
+  allotmentTeu: string
+}): {
+  amount: string
+  currency: string
+  source_ref: string
+  allotment_teu?: string
+} {
+  const body: {
+    amount: string
+    currency: string
+    source_ref: string
+    allotment_teu?: string
+  } = {
     amount: args.amount.trim(),
     currency: args.currency.trim().toUpperCase(),
     source_ref: args.sourceRef.trim(),
   }
+  const teu = args.allotmentTeu.trim()
+  if (teu !== "") {
+    body.allotment_teu = teu
+  }
+  return body
 }
 
 async function readRateLine(response: Response, fallback: string): Promise<RateLine> {
@@ -57,6 +92,7 @@ export async function createRateLine(body: {
   amount: string
   currency: string
   source_ref: string
+  allotment_teu?: string
 }): Promise<RateLine> {
   const response = await fetch("/api/v1/rate-lines", {
     method: "POST",
@@ -68,7 +104,12 @@ export async function createRateLine(body: {
 
 export async function supersedeRateLine(
   rateLineId: string,
-  body: { amount: string; currency: string; source_ref: string },
+  body: {
+    amount: string
+    currency: string
+    source_ref: string
+    allotment_teu?: string
+  },
 ): Promise<RateLine> {
   const response = await fetch(`/api/v1/rate-lines/${rateLineId}/supersede`, {
     method: "POST",

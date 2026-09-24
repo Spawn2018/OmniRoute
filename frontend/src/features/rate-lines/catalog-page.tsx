@@ -39,6 +39,11 @@ const columns = [
     header: "Pochodzenie",
     cell: (info) => <span className="font-mono text-xs">{info.getValue()}</span>,
   }),
+  columnHelper.accessor("allotment_teu", {
+    id: "allotment_teu",
+    header: "Alokacja TEU",
+    cell: (info) => info.getValue() ?? "—",
+  }),
   columnHelper.accessor("superseded_by", {
     id: "superseded_by",
     header: "Zastąpiona przez",
@@ -50,6 +55,7 @@ const COLUMN_LABELS = {
   charge_code: "Kod opłaty",
   amount: "Kwota kupna",
   source_ref: "Pochodzenie",
+  allotment_teu: "Alokacja TEU",
   superseded_by: "Zastąpiona przez",
 }
 
@@ -60,10 +66,12 @@ export function RateLineCatalogPage() {
   const [amount, setAmount] = useState("")
   const [currency, setCurrency] = useState("EUR")
   const [sourceRef, setSourceRef] = useState("")
+  const [allotmentTeu, setAllotmentTeu] = useState("")
   const [predecessorId, setPredecessorId] = useState("")
   const [nextAmount, setNextAmount] = useState("")
   const [nextCurrency, setNextCurrency] = useState("EUR")
   const [nextSourceRef, setNextSourceRef] = useState("")
+  const [nextAllotmentTeu, setNextAllotmentTeu] = useState("")
 
   const query = useQuery({
     queryKey: ["rate-lines", ctx.organizationId],
@@ -74,11 +82,14 @@ export function RateLineCatalogPage() {
 
   const createMutation = useMutation({
     mutationFn: () =>
-      createRateLine(rateLineCreateBody({ chargeCode, amount, currency, sourceRef })),
+      createRateLine(
+        rateLineCreateBody({ chargeCode, amount, currency, sourceRef, allotmentTeu }),
+      ),
     onSuccess: () => {
       setChargeCode("")
       setAmount("")
       setSourceRef("")
+      setAllotmentTeu("")
       void queryClient.invalidateQueries({ queryKey: ["rate-lines", ctx.organizationId] })
     },
   })
@@ -91,12 +102,14 @@ export function RateLineCatalogPage() {
           amount: nextAmount,
           currency: nextCurrency,
           sourceRef: nextSourceRef,
+          allotmentTeu: nextAllotmentTeu,
         }),
       ),
     onSuccess: () => {
       setPredecessorId("")
       setNextAmount("")
       setNextSourceRef("")
+      setNextAllotmentTeu("")
       void queryClient.invalidateQueries({ queryKey: ["rate-lines", ctx.organizationId] })
     },
   })
@@ -105,13 +118,13 @@ export function RateLineCatalogPage() {
     <div className="space-y-3">
       <CatalogHeading
         title="Stawki kupna"
-        subtitle="rate_line M-07 · niemutowalna · source_ref obowiązkowy · nie tabela charge"
+        subtitle="rate_line M-07 · niemutowalna · source_ref obowiązkowy · opcjonalny allotment_teu · nie tabela charge"
       />
 
       {ctx.organizationId && ctx.userId ? null : <TenantSessionNotice />}
 
       <form
-        className="grid gap-2 rounded-md border border-border bg-card p-3 md:grid-cols-5"
+        className="grid gap-2 rounded-md border border-border bg-card p-3 md:grid-cols-6"
         onSubmit={(event) => {
           event.preventDefault()
           createMutation.mutate()
@@ -145,6 +158,12 @@ export function RateLineCatalogPage() {
           onChange={(event) => setSourceRef(event.target.value)}
           required
         />
+        <Input
+          aria-label="Alokacja TEU"
+          placeholder="12.5"
+          value={allotmentTeu}
+          onChange={(event) => setAllotmentTeu(event.target.value)}
+        />
         <Button type="submit" disabled={createMutation.isPending || !ctx.organizationId}>
           Dodaj stawkę
         </Button>
@@ -153,7 +172,7 @@ export function RateLineCatalogPage() {
       {createMutation.isError ? <CatalogError error={createMutation.error} /> : null}
 
       <form
-        className="grid gap-2 rounded-md border border-border bg-card p-3 md:grid-cols-5"
+        className="grid gap-2 rounded-md border border-border bg-card p-3 md:grid-cols-6"
         onSubmit={(event) => {
           event.preventDefault()
           supersedeMutation.mutate()
@@ -186,6 +205,12 @@ export function RateLineCatalogPage() {
           value={nextSourceRef}
           onChange={(event) => setNextSourceRef(event.target.value)}
           required
+        />
+        <Input
+          aria-label="Nowa alokacja TEU"
+          placeholder="20"
+          value={nextAllotmentTeu}
+          onChange={(event) => setNextAllotmentTeu(event.target.value)}
         />
         <Button type="submit" variant="outline" disabled={supersedeMutation.isPending || !predecessorId}>
           Zastąp (nowy wiersz)

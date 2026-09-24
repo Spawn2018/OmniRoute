@@ -13684,6 +13684,10 @@ export type RateLineCreate = {
      * Source Ref
      */
     source_ref: string;
+    /**
+     * Allotment Teu
+     */
+    allotment_teu?: string | null;
 };
 
 /**
@@ -13715,6 +13719,10 @@ export type RateLineResponse = {
      */
     source_ref: string;
     /**
+     * Allotment Teu
+     */
+    allotment_teu: string | null;
+    /**
      * Superseded By
      */
     superseded_by: string | null;
@@ -13736,6 +13744,10 @@ export type RateLineSupersede = {
      * Source Ref
      */
     source_ref: string;
+    /**
+     * Allotment Teu
+     */
+    allotment_teu?: string | null;
 };
 
 /**
