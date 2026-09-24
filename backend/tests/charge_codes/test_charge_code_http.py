@@ -131,7 +131,12 @@ def test_http_resolve_returns_catalog_row(catalog_client: TestClient) -> None:
     catalog_client.post(
         "/api/v1/charge-codes",
         headers=headers,
-        json={"code": "THC", "name": "Terminal", "aliases": ["TERMINAL"], "source_ref": "tenant:manual"},
+        json={
+            "code": "THC",
+            "name": "Terminal",
+            "aliases": ["TERMINAL"],
+            "source_ref": "tenant:manual",
+        },
     )
     resolved = catalog_client.get(
         "/api/v1/charge-codes/resolve",
