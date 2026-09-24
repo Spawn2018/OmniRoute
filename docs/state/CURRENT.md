@@ -1,12 +1,12 @@
 # Bieżący focus
 
-**Faza:** Oś pinu — Plan **654.0** (leftover EXP1 quotation mqc_teu)
+**Faza:** Oś pinu — Plaster **654.0** (leftover EXP1 quotation mqc_teu)
 
 **Repo:** https://github.com/Spawn2018/OmniRoute
 
 **Ostatni plaster:** **653.0** leftover EXP1 quotation revision_no
 
-**Etap:** Plan **654.0** — po zamknięciu 653.0. Wolno `/plan-modul`.
+**Etap:** Plaster **654.0** — delta zaakceptowana `/noc 7`. Wolno `/plaster`.
 
 **Noc:** `/noc 7` do 07:00 Europe/Warsaw (2026-09-25).
 
@@ -16,7 +16,7 @@
 
 **Park / czeka w PLAN:** D9d · D9e · D9f pdf-zpl live · live 409 · live poll · Expo · fx×FV · matching T5 · FK kontekstu · T8 live · D6b · D7b · auto-copy U1 · similar SQL · F2b · auto-resync salda · N8 · T6 live · P5c · N6 auto charge · HW · SH-R16-4 UXCL · AI3 · G0-SH · N3 · live IMO · grupy 1.xA · Deadline Engine · liable_party S11 · spot_or_contract na quotation · supersedes_id · mqc_window ·
 
-**Spec (jedyna na sesję produktu):** (brak — Etap Plan **654.0**)
+**Spec (jedyna na sesję produktu):** [docs/deltas/open/654.0-quotation-mqc-teu.md](../deltas/open/654.0-quotation-mqc-teu.md)
 
 **Kanon:** [PLAN-REALIZACJA.md](../PLAN-REALIZACJA.md). Wizja: [VISION.md](VISION.md).
 
@@ -24,6 +24,7 @@
 
 **Środowisko lokalne:** `just`, `lint-imports`, `psql`, `pg_ctl` w PATH. PG 16: `tools\\pg16`.
 
+**2026-09-25:** Plan **654.0** leftover EXP1 quotation mqc_teu (`/noc 7`). 653.0 na `main`.
 **2026-09-25:** Plaster **653.0** leftover EXP1 quotation revision_no (`/noc 7`).
 **2026-09-25:** Plan **653.0** leftover EXP1 quotation revision_no (`/noc 7`). 652.0 na `main`.
 **2026-09-24:** Plaster **652.0** leftover EXP1 quotation valid_until (`/noc 17`).

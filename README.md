@@ -88,9 +88,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 
 <!-- os-status:start -->
 - **Ostatni plaster:** **653.0** leftover EXP1 quotation revision_no
-- **Etap:** Plan **654.0** — po zamknięciu 653.0. Wolno `/plan-modul`.
+- **Etap:** Plaster **654.0** — delta zaakceptowana `/noc 7`. Wolno `/plaster`.
 - **Następny:** **654.0** leftover EXP1 opcjonalny `mqc_teu` na `quotation` (po `revision_no` 653.0) — Decimal HITL, nie float, nie MQC SQL. mqc_window / supersedes_id / spot_or_contract na quotation / Deadline Engine / liable_party S11 / live GPS / D9d PDF-QR / D9e skan / D9f pdf-zpl live / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 / live poll / Expo BR2.3 / warning-jako-fakt / N8 / T6 live / P5c / N6 auto charge / live IMO / grupy 1.xA = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
-- **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
+- **Komenda teraz:** `/plaster` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->
 
