@@ -782,6 +782,36 @@
         }
       }
     },
+    "/api/v1/charge-codes/seed": {
+      "post": {
+        "tags": [
+          "charge-codes"
+        ],
+        "summary": "Seed Charge Codes",
+        "operationId": "seed_charge_codes_api_v1_charge_codes_seed_post",
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ChargeCodeResponse"
+                  },
+                  "type": "array",
+                  "title": "Response Seed Charge Codes Api V1 Charge Codes Seed Post"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/commodity-codes": {
       "get": {
         "tags": [
@@ -32935,12 +32965,19 @@
             },
             "type": "array",
             "title": "Aliases"
+          },
+          "source_ref": {
+            "type": "string",
+            "maxLength": 512,
+            "minLength": 1,
+            "title": "Source Ref"
           }
         },
         "type": "object",
         "required": [
           "code",
-          "name"
+          "name",
+          "source_ref"
         ],
         "title": "ChargeCodeCreate"
       },
@@ -32970,6 +33007,10 @@
             },
             "type": "array",
             "title": "Aliases"
+          },
+          "source_ref": {
+            "type": "string",
+            "title": "Source Ref"
           }
         },
         "type": "object",
@@ -32978,7 +33019,8 @@
           "organization_id",
           "code",
           "name",
-          "aliases"
+          "aliases",
+          "source_ref"
         ],
         "title": "ChargeCodeResponse"
       },
@@ -51103,6 +51145,30 @@
               }
             ],
             "title": "Spot Or Contract"
+          },
+          "index_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Index Id"
+          },
+          "fuel_index_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fuel Index Id"
           }
         },
         "type": "object",
@@ -51164,6 +51230,29 @@
             ],
             "title": "Spot Or Contract"
           },
+          "index_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Index Id"
+          },
+          "fuel_index_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fuel Index Id"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -51187,6 +51276,8 @@
           "source_ref",
           "allotment_teu",
           "spot_or_contract",
+          "index_id",
+          "fuel_index_id",
           "superseded_by"
         ],
         "title": "RateLineResponse"
@@ -51234,6 +51325,30 @@
               }
             ],
             "title": "Spot Or Contract"
+          },
+          "index_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Index Id"
+          },
+          "fuel_index_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fuel Index Id"
           }
         },
         "type": "object",

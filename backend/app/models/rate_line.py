@@ -1,7 +1,7 @@
 import uuid
 from decimal import Decimal
 
-from sqlalchemy import CHAR, ForeignKey, Numeric, String
+from sqlalchemy import CHAR, ForeignKey, ForeignKeyConstraint, Numeric, String
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -10,6 +10,14 @@ from app.models.base import Base, TimestampMixin
 
 class RateLine(Base, TimestampMixin):
     __tablename__ = "rate_line"
+    __table_args__ = (
+        ForeignKeyConstraint(
+            ["organization_id", "fuel_index_id"],
+            ["fuel_index.organization_id", "fuel_index.id"],
+            name="fk_rate_line_fuel_index",
+            ondelete="RESTRICT",
+        ),
+    )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     organization_id: Mapped[uuid.UUID] = mapped_column(
@@ -24,6 +32,7 @@ class RateLine(Base, TimestampMixin):
     allotment_teu: Mapped[Decimal | None] = mapped_column(Numeric(14, 4), nullable=True)
     spot_or_contract: Mapped[str | None] = mapped_column(String(16), nullable=True)
     index_id: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    fuel_index_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), nullable=True)
     source_ref: Mapped[str] = mapped_column(String(512), nullable=False)
     superseded_by: Mapped[uuid.UUID | None] = mapped_column(
         UUID(as_uuid=True),

@@ -1,3 +1,4 @@
+from datetime import date
 from decimal import Decimal
 from unittest.mock import AsyncMock, MagicMock
 from uuid import uuid4
@@ -6,12 +7,14 @@ import pytest
 
 from app.domain.errors import (
     InvalidMoney,
+    InvalidRateLine,
     InvalidSourceRef,
     RateLineAlreadySuperseded,
     ResourceNotFound,
     UnknownChargeCode,
 )
 from app.models.charge_code import ChargeCode
+from app.models.fuel_index import FuelIndex
 from app.models.rate_line import RateLine
 from app.services.rate_lines.rate_line_service import RateLineService
 
@@ -24,6 +27,17 @@ def _catalog(*, code: str = "THC") -> ChargeCode:
         name=code,
         aliases=[],
         source_ref="fixture://charge-code/test"
+    )
+
+
+def _fuel_index() -> FuelIndex:
+    return FuelIndex(
+        id=uuid4(),
+        organization_id=uuid4(),
+        index_kind="fsc",
+        published_on=date(2026, 9, 1),
+        index_value=Decimal("1.1000"),
+        source_ref="fixture://fuel-index/test",
     )
 
 
@@ -104,6 +118,47 @@ async def test_create_rejects_unknown_charge_code() -> None:
             amount="10",
             currency="EUR",
             source_ref="tariff://a",
+        )
+
+
+@pytest.mark.asyncio
+async def test_create_with_fuel_index_id() -> None:
+    session = AsyncMock()
+    index = _fuel_index()
+    session.get = AsyncMock(return_value=index)
+    session.scalar = AsyncMock(return_value=_catalog(code="THC"))
+    session.add = MagicMock()
+    session.flush = AsyncMock()
+    service = RateLineService(session)
+
+    created = await service.create_buy_rate(
+        organization_id=uuid4(),
+        user_id=uuid4(),
+        charge_code="THC",
+        amount="10",
+        currency="EUR",
+        source_ref="tariff://fsc-fk",
+        fuel_index_id=index.id,
+    )
+
+    assert created.fuel_index_id == index.id
+    session.get.assert_awaited()
+
+
+@pytest.mark.asyncio
+async def test_create_rejects_unknown_fuel_index_id() -> None:
+    session = AsyncMock()
+    session.get = AsyncMock(return_value=None)
+    service = RateLineService(session)
+    with pytest.raises(InvalidRateLine, match="fuel_index"):
+        await service.create_buy_rate(
+            organization_id=uuid4(),
+            user_id=uuid4(),
+            charge_code="THC",
+            amount="10",
+            currency="EUR",
+            source_ref="tariff://fsc-fk",
+            fuel_index_id=uuid4(),
         )
 
 

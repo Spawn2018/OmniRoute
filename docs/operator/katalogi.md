@@ -5,7 +5,7 @@ Wpisujesz rekord z pochodzeniem. Nie ma luźnego stringa zamiast kodu. Kwota to 
 Ekrany, które **zapisują** (INSERT/upsert), nie tablice-odczyty:
 
 - kody opłat — typowany token + wymagane `source_ref` (`tenant:manual` / `fixture://charge-code/…` / `omni:charge-code:exp1`); przycisk Seed Omni EXP1 dopisuje WAITING / NO_SHOW / DIVERSION / STAMP gdy brak (nie nadpisuje); kody HS/CN, numery UN (tunel ADR + grupa SG + grupa pakowania I/II/III + zanieczyszczenie morza + limited quantity), sieci — kod / nazwa / aliasy
-- stawki kupna — niemutowalne, `source_ref`; opcjonalna alokacja TEU (`allotment_teu`); opcjonalny stance spot/kontrakt (`spot_or_contract`); opcjonalny pin indeksu FSC/BAF/CAF (`index_id`); zmiana = nowy wiersz
+- stawki kupna — niemutowalne, `source_ref`; opcjonalna alokacja TEU (`allotment_teu`); opcjonalny stance spot/kontrakt (`spot_or_contract`); opcjonalny pin indeksu FSC/BAF/CAF (`index_id`); opcjonalny FK do katalogu indeksu paliwowego (`fuel_index_id`); zmiana = nowy wiersz; system nie mnoży FSC
 - opłaty — kupno i sprzedaż na jednym wierszu; marża z pary, nie z arkusza. Przy zapisie podajesz pochodzenie (`source_ref`: `tenant:manual`, `fixture://charge/…`). Stare wiersze mogą nie mieć pochodzenia. Porównanie na wycenie zapisuje `tenant:manual:comparison`. Sprzedaż w PLN na `/charges` liczy baza z kursu NBP na podaną datę — nie przeglądarka.
 - kurs NBP, extra portowe, oferty kanału — katalog, nie live HTTP. Na extra portowych „Dopasuj warunek” pokazuje wiersze, których `applies_when` jest dokładnie taki jak wpisałeś. To nie dopisuje opłaty ani marży.
 - porty, strefy taryfowe, terminale — UN/LOCODE / zakres pocztowy / ISPS

@@ -1918,6 +1918,10 @@ export type ChargeCodeCreate = {
      * Aliases
      */
     aliases?: Array<string>;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
 };
 
 /**
@@ -1944,6 +1948,10 @@ export type ChargeCodeResponse = {
      * Aliases
      */
     aliases: Array<string>;
+    /**
+     * Source Ref
+     */
+    source_ref: string;
 };
 
 /**
@@ -13692,6 +13700,14 @@ export type RateLineCreate = {
      * Spot Or Contract
      */
     spot_or_contract?: string | null;
+    /**
+     * Index Id
+     */
+    index_id?: string | null;
+    /**
+     * Fuel Index Id
+     */
+    fuel_index_id?: string | null;
 };
 
 /**
@@ -13731,6 +13747,14 @@ export type RateLineResponse = {
      */
     spot_or_contract: string | null;
     /**
+     * Index Id
+     */
+    index_id: string | null;
+    /**
+     * Fuel Index Id
+     */
+    fuel_index_id: string | null;
+    /**
      * Superseded By
      */
     superseded_by: string | null;
@@ -13760,6 +13784,14 @@ export type RateLineSupersede = {
      * Spot Or Contract
      */
     spot_or_contract?: string | null;
+    /**
+     * Index Id
+     */
+    index_id?: string | null;
+    /**
+     * Fuel Index Id
+     */
+    fuel_index_id?: string | null;
 };
 
 /**
@@ -19799,6 +19831,24 @@ export type ResolveChargeCodeApiV1ChargeCodesResolveGetResponses = {
 };
 
 export type ResolveChargeCodeApiV1ChargeCodesResolveGetResponse = ResolveChargeCodeApiV1ChargeCodesResolveGetResponses[keyof ResolveChargeCodeApiV1ChargeCodesResolveGetResponses];
+
+export type SeedChargeCodesApiV1ChargeCodesSeedPostData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/charge-codes/seed';
+};
+
+export type SeedChargeCodesApiV1ChargeCodesSeedPostResponses = {
+    /**
+     * Response Seed Charge Codes Api V1 Charge Codes Seed Post
+     *
+     * Successful Response
+     */
+    201: Array<ChargeCodeResponse>;
+};
+
+export type SeedChargeCodesApiV1ChargeCodesSeedPostResponse = SeedChargeCodesApiV1ChargeCodesSeedPostResponses[keyof SeedChargeCodesApiV1ChargeCodesSeedPostResponses];
 
 export type ListCommodityCodesApiV1CommodityCodesGetData = {
     body?: never;

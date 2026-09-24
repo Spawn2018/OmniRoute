@@ -1,6 +1,7 @@
 # Historia plastrów
 
 | Data | Plaster | Moduł | Opis |
+| 2026-09-24 | 651.0 | leftover EXP1 FK fuel_index | 2026-09-24 | PRZESZŁO (lokalnie; CI po push) | N/A | N/A | OK | leftover | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 2026-09-24 | Plan 651.0 | leftover EXP1 FK fuel_index | Plan opcjonalny fuel_index_id FK na rate_line (`/noc 17`). 650.0 gate success. |
 | 2026-09-24 | 650.0 | leftover EXP1 seed Omni charge_code | 2026-09-24 | PRZESZŁO (gate success 87a8e61c) | N/A | N/A | OK | leftover | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 2026-09-24 | Plan 650.0 | leftover EXP1 seed Omni charge_code | Plan seed Omni WAITING/NO_SHOW/DIVERSION/STAMP (`/noc 17`). 649.0 gate success. |

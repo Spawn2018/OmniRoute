@@ -6,8 +6,18 @@ import pytest
 from fastapi.testclient import TestClient
 
 from app.api.deps import require_tenant_session, set_authz_checker
-from app.domain.errors import InvalidSourceRef, RateLineAlreadySuperseded, ResourceNotFound
-from app.domain.rate_line import require_allotment_teu, require_index_id, require_spot_or_contract
+from app.domain.errors import (
+    InvalidRateLine,
+    InvalidSourceRef,
+    RateLineAlreadySuperseded,
+    ResourceNotFound,
+)
+from app.domain.rate_line import (
+    require_allotment_teu,
+    require_fuel_index_id,
+    require_index_id,
+    require_spot_or_contract,
+)
 from app.main import app
 from app.models.rate_line import RateLine
 from tests.http_auth import bearer_auth_headers
@@ -45,6 +55,7 @@ class StubRateLineService:
         allotment_teu: object = None,
         spot_or_contract: object = None,
         index_id: object = None,
+        fuel_index_id: object = None,
     ) -> RateLine:
         origin = source_ref.strip()
         if origin == "":
@@ -54,6 +65,9 @@ class StubRateLineService:
         teu = require_allotment_teu(allotment_teu)
         deal = require_spot_or_contract(spot_or_contract)
         index_pin = require_index_id(index_id)
+        index_fk = require_fuel_index_id(fuel_index_id)
+        if index_fk is not None and index_fk == UUID("00000000-0000-0000-0000-000000000099"):
+            raise InvalidRateLine("nieznany fuel_index")
         row = RateLine(
             id=uuid4(),
             organization_id=organization_id,
@@ -63,6 +77,7 @@ class StubRateLineService:
             allotment_teu=teu,
             spot_or_contract=deal,
             index_id=index_pin,
+            fuel_index_id=index_fk,
             source_ref=origin,
             created_by=user_id,
         )
@@ -80,6 +95,7 @@ class StubRateLineService:
         allotment_teu: object = None,
         spot_or_contract: object = None,
         index_id: object = None,
+        fuel_index_id: object = None,
     ) -> RateLine:
         current = next((row for row in self.rows if row.id == rate_line_id), None)
         if current is None:
@@ -96,6 +112,7 @@ class StubRateLineService:
             allotment_teu=allotment_teu,
             spot_or_contract=spot_or_contract,
             index_id=index_id,
+            fuel_index_id=fuel_index_id,
         )
         current.superseded_by = successor.id
         return successor
@@ -143,6 +160,7 @@ def test_http_create_and_list_rate_lines(rates_client: TestClient) -> None:
     assert body["allotment_teu"] is None
     assert body["spot_or_contract"] is None
     assert body["index_id"] is None
+    assert body["fuel_index_id"] is None
     assert body["superseded_by"] is None
     assert body["organization_id"] == str(org_id)
     assert "buy" not in body
@@ -251,6 +269,39 @@ def test_http_rejects_long_index_id(rates_client: TestClient) -> None:
     )
     assert response.status_code == 400
     assert "index_id" in response.json()["detail"]
+
+
+def test_http_create_with_fuel_index_id(rates_client: TestClient) -> None:
+    index_uuid = uuid4()
+    created = rates_client.post(
+        "/api/v1/rate-lines",
+        headers=bearer_auth_headers(),
+        json={
+            "charge_code": "THC",
+            "amount": "10",
+            "currency": "EUR",
+            "source_ref": "tariff://fsc-fk",
+            "fuel_index_id": str(index_uuid),
+        },
+    )
+    assert created.status_code == 201
+    assert created.json()["fuel_index_id"] == str(index_uuid)
+
+
+def test_http_rejects_unknown_fuel_index_id(rates_client: TestClient) -> None:
+    response = rates_client.post(
+        "/api/v1/rate-lines",
+        headers=bearer_auth_headers(),
+        json={
+            "charge_code": "THC",
+            "amount": "10",
+            "currency": "EUR",
+            "source_ref": "tariff://fsc-fk",
+            "fuel_index_id": "00000000-0000-0000-0000-000000000099",
+        },
+    )
+    assert response.status_code == 400
+    assert "fuel_index" in response.json()["detail"]
 
 
 def test_http_rejects_blank_source_ref(rates_client: TestClient) -> None:

@@ -1,4 +1,5 @@
 from decimal import Decimal, InvalidOperation
+from uuid import UUID
 
 from app.domain.errors import InvalidRateLine, InvalidSourceRef
 
@@ -68,3 +69,11 @@ def require_index_id(raw: object) -> str | None:
     if len(pin) > _INDEX_ID_CAP:
         raise InvalidRateLine("index_id: 1–64 znaki")
     return pin
+
+
+def require_fuel_index_id(raw: object) -> UUID | None:
+    if raw is None:
+        return None
+    if type(raw) is not UUID:
+        raise InvalidRateLine("fuel_index_id musi być UUID")
+    return raw

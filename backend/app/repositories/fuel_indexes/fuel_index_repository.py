@@ -1,3 +1,5 @@
+from uuid import UUID
+
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -13,6 +15,10 @@ class FuelIndexRepository:
             select(FuelIndex).order_by(FuelIndex.published_on.desc(), FuelIndex.id),
         )
         return list(result.all())
+
+    async def get(self, fuel_index_id: UUID) -> FuelIndex | None:
+        found = await self._session.get(FuelIndex, fuel_index_id)
+        return found if isinstance(found, FuelIndex) else None
 
     async def add(self, row: FuelIndex) -> FuelIndex:
         self._session.add(row)

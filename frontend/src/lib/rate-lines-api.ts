@@ -11,6 +11,7 @@ export type RateLine = {
   allotment_teu: string | null
   spot_or_contract: string | null
   index_id: string | null
+  fuel_index_id: string | null
   superseded_by: string | null
 }
 
@@ -22,6 +23,7 @@ export function rateLineCreateBody(args: {
   allotmentTeu: string
   spotOrContract: string
   indexId: string
+  fuelIndexId: string
 }): {
   charge_code: string
   amount: string
@@ -30,6 +32,7 @@ export function rateLineCreateBody(args: {
   allotment_teu?: string
   spot_or_contract?: string
   index_id?: string
+  fuel_index_id?: string
 } {
   const body: {
     charge_code: string
@@ -39,6 +42,7 @@ export function rateLineCreateBody(args: {
     allotment_teu?: string
     spot_or_contract?: string
     index_id?: string
+    fuel_index_id?: string
   } = {
     charge_code: args.chargeCode.trim(),
     amount: args.amount.trim(),
@@ -57,6 +61,10 @@ export function rateLineCreateBody(args: {
   if (indexPin !== "") {
     body.index_id = indexPin
   }
+  const fuelFk = args.fuelIndexId.trim()
+  if (fuelFk !== "") {
+    body.fuel_index_id = fuelFk
+  }
   return body
 }
 
@@ -67,6 +75,7 @@ export function rateLineSupersedeBody(args: {
   allotmentTeu: string
   spotOrContract: string
   indexId: string
+  fuelIndexId: string
 }): {
   amount: string
   currency: string
@@ -74,6 +83,7 @@ export function rateLineSupersedeBody(args: {
   allotment_teu?: string
   spot_or_contract?: string
   index_id?: string
+  fuel_index_id?: string
 } {
   const body: {
     amount: string
@@ -82,6 +92,7 @@ export function rateLineSupersedeBody(args: {
     allotment_teu?: string
     spot_or_contract?: string
     index_id?: string
+    fuel_index_id?: string
   } = {
     amount: args.amount.trim(),
     currency: args.currency.trim().toUpperCase(),
@@ -98,6 +109,10 @@ export function rateLineSupersedeBody(args: {
   const indexPin = args.indexId.trim()
   if (indexPin !== "") {
     body.index_id = indexPin
+  }
+  const fuelFk = args.fuelIndexId.trim()
+  if (fuelFk !== "") {
+    body.fuel_index_id = fuelFk
   }
   return body
 }
@@ -125,6 +140,7 @@ export async function createRateLine(body: {
   allotment_teu?: string
   spot_or_contract?: string
   index_id?: string
+  fuel_index_id?: string
 }): Promise<RateLine> {
   const response = await fetch("/api/v1/rate-lines", {
     method: "POST",
@@ -143,6 +159,7 @@ export async function supersedeRateLine(
     allotment_teu?: string
     spot_or_contract?: string
     index_id?: string
+    fuel_index_id?: string
   },
 ): Promise<RateLine> {
   const response = await fetch(`/api/v1/rate-lines/${rateLineId}/supersede`, {

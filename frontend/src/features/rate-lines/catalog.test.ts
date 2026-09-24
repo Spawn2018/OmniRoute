@@ -16,6 +16,7 @@ describe("rateLineCreateBody", () => {
         allotmentTeu: "",
         spotOrContract: "",
         indexId: "",
+        fuelIndexId: "",
       }),
     ).toEqual({
       charge_code: "thc",
@@ -35,6 +36,7 @@ describe("rateLineCreateBody", () => {
         allotmentTeu: " 12.5 ",
         spotOrContract: "",
         indexId: "",
+        fuelIndexId: "",
       }),
     ).toEqual({
       charge_code: "THC",
@@ -55,6 +57,7 @@ describe("rateLineCreateBody", () => {
         allotmentTeu: "",
         spotOrContract: " spot ",
         indexId: "",
+        fuelIndexId: "",
       }),
     ).toEqual({
       charge_code: "THC",
@@ -75,6 +78,7 @@ describe("rateLineCreateBody", () => {
         allotmentTeu: "",
         spotOrContract: "",
         indexId: " FSC-Q3-2026 ",
+        fuelIndexId: "",
       }),
     ).toEqual({
       charge_code: "THC",
@@ -82,6 +86,27 @@ describe("rateLineCreateBody", () => {
       currency: "EUR",
       source_ref: "tariff://fsc",
       index_id: "FSC-Q3-2026",
+    })
+  })
+
+  it("includes fuel_index_id when operator fills UUID", () => {
+    expect(
+      rateLineCreateBody({
+        chargeCode: "THC",
+        amount: "10",
+        currency: "EUR",
+        sourceRef: "tariff://fsc-fk",
+        allotmentTeu: "",
+        spotOrContract: "",
+        indexId: "",
+        fuelIndexId: " 11111111-1111-1111-1111-111111111111 ",
+      }),
+    ).toEqual({
+      charge_code: "THC",
+      amount: "10",
+      currency: "EUR",
+      source_ref: "tariff://fsc-fk",
+      fuel_index_id: "11111111-1111-1111-1111-111111111111",
     })
   })
 })
@@ -96,6 +121,7 @@ describe("rateLineSupersedeBody", () => {
         allotmentTeu: "",
         spotOrContract: "",
         indexId: "",
+        fuelIndexId: "",
       }),
     ).toEqual({
       amount: "11",
@@ -137,5 +163,17 @@ describe("648.0 index_id HITL", () => {
 
   it("ships on rate-lines route", () => {
     expect(SHIPPED_CHARGE_ROUTES["648.0"]).toBe("/rate-lines")
+  })
+})
+
+describe("651.0 fuel_index_id FK HITL", () => {
+  it("exposes optional fuel_index_id on create and supersede", () => {
+    expect(page).toContain('aria-label="Identyfikator indeksu paliwowego"')
+    expect(page).toContain('aria-label="Nowy identyfikator indeksu paliwowego"')
+    expect(page).toContain("fuel_index_id")
+  })
+
+  it("ships on rate-lines route", () => {
+    expect(SHIPPED_CHARGE_ROUTES["651.0"]).toBe("/rate-lines")
   })
 })

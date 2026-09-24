@@ -54,6 +54,11 @@ const columns = [
     header: "Indeks FSC",
     cell: (info) => info.getValue() ?? "—",
   }),
+  columnHelper.accessor("fuel_index_id", {
+    id: "fuel_index_id",
+    header: "FK indeksu",
+    cell: (info) => info.getValue() ?? "—",
+  }),
   columnHelper.accessor("superseded_by", {
     id: "superseded_by",
     header: "Zastąpiona przez",
@@ -68,6 +73,7 @@ const COLUMN_LABELS = {
   allotment_teu: "Alokacja TEU",
   spot_or_contract: "Spot / kontrakt",
   index_id: "Indeks FSC",
+  fuel_index_id: "FK indeksu",
   superseded_by: "Zastąpiona przez",
 }
 
@@ -81,6 +87,7 @@ export function RateLineCatalogPage() {
   const [allotmentTeu, setAllotmentTeu] = useState("")
   const [spotOrContract, setSpotOrContract] = useState("")
   const [indexId, setIndexId] = useState("")
+  const [fuelIndexId, setFuelIndexId] = useState("")
   const [predecessorId, setPredecessorId] = useState("")
   const [nextAmount, setNextAmount] = useState("")
   const [nextCurrency, setNextCurrency] = useState("EUR")
@@ -88,6 +95,7 @@ export function RateLineCatalogPage() {
   const [nextAllotmentTeu, setNextAllotmentTeu] = useState("")
   const [nextSpotOrContract, setNextSpotOrContract] = useState("")
   const [nextIndexId, setNextIndexId] = useState("")
+  const [nextFuelIndexId, setNextFuelIndexId] = useState("")
 
   const query = useQuery({
     queryKey: ["rate-lines", ctx.organizationId],
@@ -107,6 +115,7 @@ export function RateLineCatalogPage() {
           allotmentTeu,
           spotOrContract,
           indexId,
+          fuelIndexId,
         }),
       ),
     onSuccess: () => {
@@ -116,6 +125,7 @@ export function RateLineCatalogPage() {
       setAllotmentTeu("")
       setSpotOrContract("")
       setIndexId("")
+      setFuelIndexId("")
       void queryClient.invalidateQueries({ queryKey: ["rate-lines", ctx.organizationId] })
     },
   })
@@ -131,6 +141,7 @@ export function RateLineCatalogPage() {
           allotmentTeu: nextAllotmentTeu,
           spotOrContract: nextSpotOrContract,
           indexId: nextIndexId,
+          fuelIndexId: nextFuelIndexId,
         }),
       ),
     onSuccess: () => {
@@ -140,6 +151,7 @@ export function RateLineCatalogPage() {
       setNextAllotmentTeu("")
       setNextSpotOrContract("")
       setNextIndexId("")
+      setNextFuelIndexId("")
       void queryClient.invalidateQueries({ queryKey: ["rate-lines", ctx.organizationId] })
     },
   })
@@ -148,13 +160,13 @@ export function RateLineCatalogPage() {
     <div className="space-y-3">
       <CatalogHeading
         title="Stawki kupna"
-        subtitle="rate_line M-07 · niemutowalna · source_ref · opcjonalny allotment_teu · opcjonalny spot_or_contract · opcjonalny index_id · nie charge"
+        subtitle="rate_line M-07 · niemutowalna · source_ref · opcjonalny allotment_teu · opcjonalny spot_or_contract · opcjonalny index_id · opcjonalny fuel_index_id · nie charge"
       />
 
       {ctx.organizationId && ctx.userId ? null : <TenantSessionNotice />}
 
       <form
-        className="grid gap-2 rounded-md border border-border bg-card p-3 md:grid-cols-8"
+        className="grid gap-2 rounded-md border border-border bg-card p-3 md:grid-cols-9"
         onSubmit={(event) => {
           event.preventDefault()
           createMutation.mutate()
@@ -206,6 +218,12 @@ export function RateLineCatalogPage() {
           value={indexId}
           onChange={(event) => setIndexId(event.target.value)}
         />
+        <Input
+          aria-label="Identyfikator indeksu paliwowego"
+          placeholder="uuid fuel_index"
+          value={fuelIndexId}
+          onChange={(event) => setFuelIndexId(event.target.value)}
+        />
         <Button type="submit" disabled={createMutation.isPending || !ctx.organizationId}>
           Dodaj stawkę
         </Button>
@@ -214,7 +232,7 @@ export function RateLineCatalogPage() {
       {createMutation.isError ? <CatalogError error={createMutation.error} /> : null}
 
       <form
-        className="grid gap-2 rounded-md border border-border bg-card p-3 md:grid-cols-8"
+        className="grid gap-2 rounded-md border border-border bg-card p-3 md:grid-cols-9"
         onSubmit={(event) => {
           event.preventDefault()
           supersedeMutation.mutate()
@@ -266,6 +284,12 @@ export function RateLineCatalogPage() {
           value={nextIndexId}
           onChange={(event) => setNextIndexId(event.target.value)}
         />
+        <Input
+          aria-label="Nowy identyfikator indeksu paliwowego"
+          placeholder="uuid fuel_index"
+          value={nextFuelIndexId}
+          onChange={(event) => setNextFuelIndexId(event.target.value)}
+        />
         <Button type="submit" variant="outline" disabled={supersedeMutation.isPending || !predecessorId}>
           Zastąp (nowy wiersz)
         </Button>
@@ -279,10 +303,9 @@ export function RateLineCatalogPage() {
       {query.data ? (
         <DataTableShell
           tableKey={BUSINESS_LISTS.rateLines.tableKey}
-          columns={columns}
           data={query.data}
+          columns={columns}
           columnLabels={COLUMN_LABELS}
-          globalFilterPlaceholder="Szukaj stawki kupna…"
           allowCondensed
         />
       ) : null}
