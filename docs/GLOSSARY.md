@@ -20,6 +20,7 @@ kolumn. Nie 468.0.
 | klasa IMDG | imdg_class | allowlista 1–9 z podziałem (2.1, 4.1, …); nie packing group |
 | grupa pakowania | packing_group | HITL na `dangerous_good`: `I`\|`II`\|`III` (642.0); nie live IMO; nie LLM klasy |
 | zanieczyszczenie morza | marine_pollutant | HITL bool na `dangerous_good` (643.0); nie live IMO; nie LLM klasy |
+| limited quantity | limited_quantity | HITL bool na `dangerous_good` (644.0); nie live IMO; nie LLM klasy |
 | wycena | quotation | |
 | luka wyceny | quotation_gap | brakująca dopłata |
 | port załadunku | origin_port_id | POL na `quotation`; FK do `port` |

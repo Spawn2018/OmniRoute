@@ -4397,6 +4397,10 @@ export type DangerousGoodCreate = {
      */
     marine_pollutant: boolean;
     /**
+     * Limited Quantity
+     */
+    limited_quantity: boolean;
+    /**
      * Name
      */
     name: string;
@@ -4442,6 +4446,10 @@ export type DangerousGoodResponse = {
      * Marine Pollutant
      */
     marine_pollutant: boolean;
+    /**
+     * Limited Quantity
+     */
+    limited_quantity: boolean;
     /**
      * Name
      */

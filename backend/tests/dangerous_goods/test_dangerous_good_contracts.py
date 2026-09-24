@@ -52,6 +52,7 @@ def test_generated_api_types_include_dangerous_good() -> None:
     assert "segregation_group" in source
     assert "packing_group" in source
     assert "marine_pollutant" in source
+    assert "limited_quantity" in source
 
 
 def test_migration_132_adds_adr_without_live_imo() -> None:
@@ -88,6 +89,18 @@ def test_migration_515_adds_marine_pollutant_without_live_imo() -> None:
     assert 'revision: str = "515_dg_marine_pollutant"' in source
     assert 'down_revision: str | None = "514_dangerous_good_packing_group"' in source
     assert "marine_pollutant" in source
+    assert "httpx" not in source
+    assert "buy_amount" not in source
+    assert "def downgrade" in source
+
+
+def test_migration_516_adds_limited_quantity_without_live_imo() -> None:
+    source = (
+        _ROOT / "backend" / "alembic" / "versions" / "516_dg_limited_quantity.py"
+    ).read_text(encoding="utf-8")
+    assert 'revision: str = "516_dg_limited_quantity"' in source
+    assert 'down_revision: str | None = "515_dg_marine_pollutant"' in source
+    assert "limited_quantity" in source
     assert "httpx" not in source
     assert "buy_amount" not in source
     assert "def downgrade" in source

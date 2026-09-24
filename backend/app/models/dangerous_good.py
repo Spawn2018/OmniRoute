@@ -46,6 +46,7 @@ class DangerousGood(Base, TimestampMixin):
     segregation_group: Mapped[str] = mapped_column(String(8), nullable=False)
     packing_group: Mapped[str] = mapped_column(String(3), nullable=False)
     marine_pollutant: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    limited_quantity: Mapped[bool] = mapped_column(Boolean, nullable=False)
     name: Mapped[str] = mapped_column(String(128), nullable=False)
     aliases: Mapped[list[str]] = mapped_column(
         ARRAY(Text()), nullable=False, server_default=text("'{}'"))

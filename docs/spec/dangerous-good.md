@@ -1,9 +1,9 @@
 # M-52 dangerous_good — katalog towarów niebezpiecznych
 
-**Plaster:** 7.0 (katalog) · **122.0** (UN na RFQ) · **192.0** (tunel ADR + SG) · **642.0** (packing group)  
-**Status:** katalog numeru UN + klasy IMDG + tunel ADR + grupa SG + packing group I/II/III per tenant. Nie żywe M-08 `charge`. LLM nie nadaje klasy.
+**Plaster:** 7.0 (katalog) · **122.0** (UN na RFQ) · **192.0** (tunel ADR + SG) · **642.0** (packing group) · **643.0** (marine pollutant) · **644.0** (limited quantity)  
+**Status:** katalog numeru UN + klasy IMDG + tunel ADR + grupa SG + packing group I/II/III + MP + LQ per tenant. Nie żywe M-08 `charge`. LLM nie nadaje klasy.
 
-Delta: [7.0](../deltas/archived/7.0-dangerous-good.md) · [122.0](../deltas/archived/122.0-un-on-rfq.md) · [192.0](../deltas/archived/192.0-dangerous-good-adr.md) · [642.0](../deltas/archived/642.0-dangerous-good-packing-group.md).
+Delta: [7.0](../deltas/archived/7.0-dangerous-good.md) · [122.0](../deltas/archived/122.0-un-on-rfq.md) · [192.0](../deltas/archived/192.0-dangerous-good-adr.md) · [642.0](../deltas/archived/642.0-dangerous-good-packing-group.md) · [643.0](../deltas/archived/643.0-dangerous-good-marine-pollutant.md) · [644.0](../deltas/archived/644.0-dangerous-good-limited-quantity.md).
 
 ## Zakres
 
@@ -51,6 +51,30 @@ packing group · live IMO · LLM klasa
 ### Poza 642.0
 
 live IMO · LLM klasa · grupy zgodności 1.xA · nowy BC mark
+
+## 643.0 marine pollutant
+
+### Zakres
+
+- `marine_pollutant`: bool HITL (NOT NULL; backfill `false`)
+- Operator zaznacza MP; serwis nie zmienia `imdg_class`
+- UI: kolumna + checkbox
+
+### Poza 643.0
+
+live IMO · LLM klasa · grupy 1.xA · LQ
+
+## 644.0 limited quantity
+
+### Zakres
+
+- `limited_quantity`: bool HITL (NOT NULL; backfill `false`)
+- Operator zaznacza LQ; serwis nie zmienia `imdg_class`
+- UI: kolumna + checkbox
+
+### Poza 644.0
+
+live IMO · LLM klasa · grupy 1.xA
 
 ## HC
 

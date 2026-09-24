@@ -93,3 +93,9 @@ def require_marine_pollutant(raw: object) -> bool:
     if type(raw) is not bool:
         raise InvalidDangerousGood("zanieczyszczenie morza musi być true albo false")
     return raw
+
+
+def require_limited_quantity(raw: object) -> bool:
+    if type(raw) is not bool:
+        raise InvalidDangerousGood("limited quantity musi być true albo false")
+    return raw

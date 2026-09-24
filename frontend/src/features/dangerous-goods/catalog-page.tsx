@@ -42,6 +42,10 @@ const columns = [
     header: "MP",
     cell: (info) => (info.getValue() ? "tak" : "nie"),
   }),
+  helper.accessor("limited_quantity", {
+    header: "LQ",
+    cell: (info) => (info.getValue() ? "tak" : "nie"),
+  }),
   helper.accessor("name", { header: "Nazwa ładunku" }),
   helper.accessor("aliases", {
     header: "Aliasy UN",
@@ -57,6 +61,7 @@ const COLUMN_LABELS = {
   segregation_group: "Grupa SG",
   packing_group: "Grupa pakowania",
   marine_pollutant: "Zanieczyszczenie morza",
+  limited_quantity: "Limited quantity",
   name: "Nazwa ładunku",
   aliases: "Aliasy UN",
   source_ref: "Źródło",
@@ -73,6 +78,7 @@ export function DangerousGoodCatalogPage() {
   const [segregationGroup, setSegregationGroup] = useState("none")
   const [packingGroup, setPackingGroup] = useState("II")
   const [marinePollutant, setMarinePollutant] = useState(false)
+  const [limitedQuantity, setLimitedQuantity] = useState(false)
   const [resolved, setResolved] = useState<DangerousGood | null>(null)
   const sessionReady = Boolean(ctx.organizationId && ctx.userId)
 
@@ -95,6 +101,7 @@ export function DangerousGoodCatalogPage() {
           segregationGroup,
           packingGroup,
           marinePollutant,
+          limitedQuantity,
         }),
       ),
     onSuccess: () => {
@@ -106,6 +113,7 @@ export function DangerousGoodCatalogPage() {
       setSegregationGroup("none")
       setPackingGroup("II")
       setMarinePollutant(false)
+      setLimitedQuantity(false)
       void queryClient.invalidateQueries({ queryKey: ["dangerous-goods", ctx.organizationId] })
     },
   })
@@ -120,13 +128,13 @@ export function DangerousGoodCatalogPage() {
     <div className="space-y-3">
       <CatalogHeading
         title="Katalog towarów niebezpiecznych"
-        subtitle="dangerous_good M-52 · UN + IMDG + tunel ADR + SG + packing + MP · nie klasa z modelu"
+        subtitle="dangerous_good M-52 · UN + IMDG + tunel ADR + SG + packing + MP + LQ · nie klasa z modelu"
       />
 
       {sessionReady ? null : <TenantSessionNotice />}
 
       <form
-        className="flex flex-col gap-2 rounded-md border border-border bg-card p-3 lg:grid lg:grid-cols-9"
+        className="flex flex-col gap-2 rounded-md border border-border bg-card p-3 lg:grid lg:grid-cols-10"
         onSubmit={(event) => {
           event.preventDefault()
           if (!sessionReady) return
@@ -194,6 +202,15 @@ export function DangerousGoodCatalogPage() {
           />
           MP
         </label>
+        <label className="flex h-8 items-center gap-2 text-xs">
+          <input
+            type="checkbox"
+            aria-label="Limited quantity"
+            checked={limitedQuantity}
+            onChange={(event) => setLimitedQuantity(event.target.checked)}
+          />
+          LQ
+        </label>
         <Input
           aria-label="Nazwa ładunku"
           placeholder="Benzyna"
@@ -221,7 +238,7 @@ export function DangerousGoodCatalogPage() {
         resolved={
           resolved === null
             ? null
-            : `UN${resolved.un_number} · klasa ${resolved.imdg_class} · PG ${resolved.packing_group} · MP ${resolved.marine_pollutant ? "tak" : "nie"} · tunel ${resolved.adr_tunnel_code} · ${resolved.name}`
+            : `UN${resolved.un_number} · klasa ${resolved.imdg_class} · PG ${resolved.packing_group} · MP ${resolved.marine_pollutant ? "tak" : "nie"} · LQ ${resolved.limited_quantity ? "tak" : "nie"} · tunel ${resolved.adr_tunnel_code} · ${resolved.name}`
         }
         onResolve={(token) => resolveMutation.mutate(token)}
       />

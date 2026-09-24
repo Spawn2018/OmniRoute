@@ -10,6 +10,7 @@ export type DangerousGood = {
   segregation_group: string
   packing_group: string
   marine_pollutant: boolean
+  limited_quantity: boolean
   name: string
   aliases: string[]
   source_ref: string
@@ -24,6 +25,7 @@ export function dangerousGoodCreateBody(input: {
   segregationGroup: string
   packingGroup: string
   marinePollutant: boolean
+  limitedQuantity: boolean
 }): {
   un_number: string
   imdg_class: string
@@ -33,6 +35,7 @@ export function dangerousGoodCreateBody(input: {
   segregation_group: string
   packing_group: string
   marine_pollutant: boolean
+  limited_quantity: boolean
 } {
   const aliases = input.aliasesText
     .split(",")
@@ -47,6 +50,7 @@ export function dangerousGoodCreateBody(input: {
     segregation_group: input.segregationGroup.trim(),
     packing_group: input.packingGroup.trim(),
     marine_pollutant: input.marinePollutant,
+    limited_quantity: input.limitedQuantity,
   }
 }
 
@@ -77,6 +81,7 @@ export async function createDangerousGood(body: {
   segregation_group: string
   packing_group: string
   marine_pollutant: boolean
+  limited_quantity: boolean
 }): Promise<DangerousGood> {
   const response = await fetch("/api/v1/dangerous-goods", {
     method: "POST",

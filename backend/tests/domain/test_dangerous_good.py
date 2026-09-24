@@ -88,3 +88,17 @@ def test_require_marine_pollutant_rejects_non_bool() -> None:
 
     with pytest.raises(InvalidDangerousGood, match="zanieczyszczenie"):
         require_marine_pollutant("yes")
+
+
+def test_require_limited_quantity_accepts_bool() -> None:
+    from app.domain.dangerous_good import require_limited_quantity
+
+    assert require_limited_quantity(True) is True
+    assert require_limited_quantity(False) is False
+
+
+def test_require_limited_quantity_rejects_non_bool() -> None:
+    from app.domain.dangerous_good import require_limited_quantity
+
+    with pytest.raises(InvalidDangerousGood, match="limited quantity"):
+        require_limited_quantity("yes")

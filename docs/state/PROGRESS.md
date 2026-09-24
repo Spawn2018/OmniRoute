@@ -1,6 +1,8 @@
 # Historia plastrów
 
 | Data | Plaster | Moduł | Opis |
+| 2026-09-24 | 644.0 | leftover EXP0.9 limited quantity HITL | 2026-09-24 | PRZESZŁO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
+| 2026-09-24 | Plan 644.0 | leftover EXP0.9 limited quantity HITL | Plan `limited_quantity` bool na `dangerous_good` (`/noc 7`). 643.0 gate success. |
 | 2026-09-24 | 643.0 | leftover EXP0.9 marine pollutant HITL | 2026-09-24 | PRZESZŁO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 2026-09-23 | Plan 643.0 | leftover EXP0.9 marine pollutant HITL | Plan `marine_pollutant` bool na `dangerous_good` (`/noc 7`). 642.0 gate success. |
 | 2026-09-23 | 642.0 | leftover EXP0.9 packing group HITL | 2026-09-23 | PRZESZŁO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
