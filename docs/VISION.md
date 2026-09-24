@@ -29,6 +29,8 @@ zostają w badaniach `04`).
 
 | Data | Co |
 |---|---|
+| 2026-09-24 | **647.0** leftover EXP1 `rate_line.spot_or_contract` HITL zamknięty: opcjonalny stance `spot`\|`contract`\|`other` na `rate_line` (`CONFIRMED`). Matching / FK mark / float nadal `REJECTED`. Następny = EXP1 `rate_line.index_id` FSC HITL (**648.0**, `REQUIREMENT`). Marża zostaje na `charge` (`CONFIRMED`). |
+| 2026-09-24 | **647.0** leftover EXP1 `rate_line.spot_or_contract` HITL: opcjonalny stance `spot`\|`contract`\|`other` na `rate_line` — nie matching, nie FK mark, nie float (`REQUIREMENT`). Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-24 | **646.0** leftover EXP1 `rate_line.allotment_teu` HITL zamknięty: opcjonalny Decimal TEU na `rate_line` (`CONFIRMED`). Matching / float / druga marża nadal `REJECTED`. Następny = EXP1 `rate_line.spot_or_contract` HITL (**647.0**, `REQUIREMENT`). Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-24 | **646.0** leftover EXP1 `rate_line.allotment_teu` HITL: opcjonalny Decimal TEU na `rate_line` — nie matching, nie float, nie druga marża (`REQUIREMENT`). Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-24 | **645.0** leftover EXP0.8/EXP1 evidence HITL zamknięty: trzy bool `evidence_gps` / `evidence_temp` / `evidence_photo` na `cargo_claim` (`CONFIRMED`). Deadline Engine / live GPS / `liable_party` nadal `REJECTED`. Następny = EXP1 `rate_line.allotment_teu` HITL (**646.0**, `REQUIREMENT`). Marża zostaje na `charge` (`CONFIRMED`). |

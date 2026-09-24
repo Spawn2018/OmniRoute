@@ -5,7 +5,7 @@ from hypothesis import given
 from hypothesis import strategies as st
 
 from app.domain.errors import InvalidRateLine, InvalidSourceRef
-from app.domain.rate_line import require_allotment_teu, require_source_ref
+from app.domain.rate_line import require_allotment_teu, require_source_ref, require_spot_or_contract
 
 _ORIGIN = (
     st.text(min_size=1, max_size=512)
@@ -58,3 +58,20 @@ def test_require_allotment_teu_rejects_negative() -> None:
 def test_require_allotment_teu_rejects_float() -> None:
     with pytest.raises(InvalidRateLine, match="float"):
         require_allotment_teu(1.5)  # type: ignore[arg-type]
+
+
+def test_require_spot_or_contract_none_and_blank() -> None:
+    assert require_spot_or_contract(None) is None
+    assert require_spot_or_contract("") is None
+    assert require_spot_or_contract("  ") is None
+
+
+def test_require_spot_or_contract_normalizes() -> None:
+    assert require_spot_or_contract(" Spot ") == "spot"
+    assert require_spot_or_contract("CONTRACT") == "contract"
+    assert require_spot_or_contract("other") == "other"
+
+
+def test_require_spot_or_contract_rejects_unknown() -> None:
+    with pytest.raises(InvalidRateLine, match="spot\\|contract\\|other"):
+        require_spot_or_contract("futures")

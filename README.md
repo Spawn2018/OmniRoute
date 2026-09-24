@@ -87,9 +87,9 @@ Blok **Stan faz** poniżej jest generowany z `CURRENT.md` (`just docs`). Nie edy
 ## Stan faz
 
 <!-- os-status:start -->
-- **Ostatni plaster:** **646.0** leftover EXP1 rate_line allotment_teu HITL
-- **Etap:** Plan **647.0** — brak delty. Komenda: `/plan-modul`.
-- **Następny:** **647.0** leftover EXP1 `rate_line.spot_or_contract` HITL — opcjonalny stance spot|contract|other (delta). Zero matching / float / druga marża. index_id FSC / Deadline Engine / liable_party S11 / live GPS / D9d PDF-QR / D9e skan / D9f pdf-zpl live / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 / live poll / Expo BR2.3 / warning-jako-fakt / N8 / T6 live / P5c / N6 auto charge / live IMO / grupy 1.xA = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
+- **Ostatni plaster:** **647.0** leftover EXP1 rate_line spot_or_contract HITL
+- **Etap:** Plan **648.0** — brak delty. Komenda: `/plan-modul`.
+- **Następny:** **648.0** leftover EXP1 `rate_line.index_id` FSC/BAF/CAF HITL — opcjonalny tekst pin indeksu (delta). Zero matching / float / druga marża. Deadline Engine / liable_party S11 / live GPS / D9d PDF-QR / D9e skan / D9f pdf-zpl live / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 / live poll / Expo BR2.3 / warning-jako-fakt / N8 / T6 live / P5c / N6 auto charge / live IMO / grupy 1.xA = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
 - **Komenda teraz:** `/plan-modul` (z `docs/state/CURRENT.md`; Plan → `/plan-modul`, Refaktor → `/refaktor`, inaczej `/plaster`)
 - **Jedyny plan:** `docs/PLAN-REALIZACJA.md` · `docs/state/CURRENT.md`
 <!-- os-status:end -->

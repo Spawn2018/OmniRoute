@@ -13688,6 +13688,10 @@ export type RateLineCreate = {
      * Allotment Teu
      */
     allotment_teu?: string | null;
+    /**
+     * Spot Or Contract
+     */
+    spot_or_contract?: string | null;
 };
 
 /**
@@ -13723,6 +13727,10 @@ export type RateLineResponse = {
      */
     allotment_teu: string | null;
     /**
+     * Spot Or Contract
+     */
+    spot_or_contract: string | null;
+    /**
      * Superseded By
      */
     superseded_by: string | null;
@@ -13748,6 +13756,10 @@ export type RateLineSupersede = {
      * Allotment Teu
      */
     allotment_teu?: string | null;
+    /**
+     * Spot Or Contract
+     */
+    spot_or_contract?: string | null;
 };
 
 /**

@@ -13,6 +13,7 @@ describe("rateLineCreateBody", () => {
         currency: "eur",
         sourceRef: " tariff://msc-2026 ",
         allotmentTeu: "",
+        spotOrContract: "",
       }),
     ).toEqual({
       charge_code: "thc",
@@ -30,6 +31,7 @@ describe("rateLineCreateBody", () => {
         currency: "EUR",
         sourceRef: "tariff://teu",
         allotmentTeu: " 12.5 ",
+        spotOrContract: "",
       }),
     ).toEqual({
       charge_code: "THC",
@@ -37,6 +39,25 @@ describe("rateLineCreateBody", () => {
       currency: "EUR",
       source_ref: "tariff://teu",
       allotment_teu: "12.5",
+    })
+  })
+
+  it("includes spot_or_contract when operator fills stance", () => {
+    expect(
+      rateLineCreateBody({
+        chargeCode: "THC",
+        amount: "10",
+        currency: "EUR",
+        sourceRef: "tariff://spot",
+        allotmentTeu: "",
+        spotOrContract: " spot ",
+      }),
+    ).toEqual({
+      charge_code: "THC",
+      amount: "10",
+      currency: "EUR",
+      source_ref: "tariff://spot",
+      spot_or_contract: "spot",
     })
   })
 })
@@ -49,6 +70,7 @@ describe("rateLineSupersedeBody", () => {
         currency: "eur",
         sourceRef: "tariff://b",
         allotmentTeu: "",
+        spotOrContract: "",
       }),
     ).toEqual({
       amount: "11",
@@ -70,5 +92,13 @@ describe("646.0 allotment_teu HITL", () => {
     expect(page).toContain('aria-label="Alokacja TEU"')
     expect(page).toContain('aria-label="Nowa alokacja TEU"')
     expect(page).toContain("allotment_teu")
+  })
+})
+
+describe("647.0 spot_or_contract HITL", () => {
+  it("exposes optional spot_or_contract on create and supersede", () => {
+    expect(page).toContain('aria-label="Spot lub kontrakt"')
+    expect(page).toContain('aria-label="Nowy spot lub kontrakt"')
+    expect(page).toContain("spot_or_contract")
   })
 })

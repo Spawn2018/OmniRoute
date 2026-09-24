@@ -1,6 +1,8 @@
 # Historia plastrów
 
 | Data | Plaster | Moduł | Opis |
+| 2026-09-24 | 647.0 | leftover EXP1 spot_or_contract HITL | 2026-09-24 | PRZESZŁO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
+| 2026-09-24 | Plan 647.0 | leftover EXP1 spot_or_contract HITL | Plan opcjonalny stance spot\|contract\|other na `rate_line` (`/noc 7`). 646.0 na `main`. |
 | 2026-09-24 | 646.0 | leftover EXP1 allotment_teu HITL | 2026-09-24 | PRZESZŁO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 2026-09-24 | Plan 646.0 | leftover EXP1 allotment_teu HITL | Plan opcjonalny Decimal TEU na `rate_line` (`/noc 7`). 645.0 na `main`. |
 | 2026-09-24 | 645.0 | leftover EXP0.8/EXP1 evidence HITL | 2026-09-24 | PRZESZŁO (lokalne; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |

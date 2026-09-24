@@ -14,7 +14,7 @@ Numeracja plastrów w kodzie: **0.3 = RLS**, **0.4 = OpenFGA** (nie outbox), **0
 | M-02 | Outbox / idempotencja | 79.0 `outbox_event` · 264.0 `task_template_saved` | **ukończony (fundament)** · dwa kindy; nie Temporal; nie konsument |
 | M-03 | Konfiguracja jako dane | 3.0 `organization_setting` · 71.0 prefiks/szablon | **ukończony (fundament)** · allowlista; nie sekrety; numer oferty w 72.0 |
 | M-06 | charge_code + aliasy | 1.0 katalog | **ukończony (fundament)** · aliasy na wierszu; nie `rate_line` / `charge` |
-| M-07 | rate_line (stawka kupna) | 1.1 immutable + source_ref · **646.0** allotment_teu | **ukończony (fundament + EXP1 TEU HITL)** · nie `charge` / marża |
+| M-07 | rate_line (stawka kupna) | 1.1 immutable + source_ref · **646.0** allotment_teu · **647.0** spot_or_contract | **ukończony (fundament + EXP1 TEU + spot HITL)** · nie `charge` / marża |
 | M-08 | charge (buy+sell, marża) | 1.2 jeden wiersz · 129.0 `source_ref` | **ukończony (fundament + P0)** · nie accept HITL (1.3) |
 | M-21 | Silnik wyceny (SQL) | 2.0 INSERT…SELECT z `rate_line` · 5.1 POL/POD + `party_id` · 16.0 odczyt `nbp_rate` · 20.0 wsad kodów · 68.0 `customer_rfq_id` | **ukończony (fundament)** · nie marża; nie k6; nie override; nie nowy silnik |
 | M-05 | Geografia | 4.0 `port` + 4.1 `location`/strefy + 4.2 `terminal`/WPI | **ukończony (fundament)** · `operator_party_id` od 5.0; `operator_name` zostaje |

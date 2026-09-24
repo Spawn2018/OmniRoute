@@ -7,7 +7,7 @@ kolumn. Nie 468.0.
 
 | PL | EN (kod) | Uwagi |
 |---|---|---|
-| stawka | rate_line | niemutowalna, source_ref; 646.0 opcjonalny allotment_teu Decimal HITL |
+| stawka | rate_line | niemutowalna, source_ref; 646.0 allotment_teu; 647.0 spot_or_contract HITL |
 | opłata / charge | charge / shipment_charge | jedyne miejsce prawdy o marży; buy+sell na jednym wierszu; 613.0 opcjonalny `shipment_id` (FK tenanta); 614.0 widok `shipment_tree_margin` (SQL korzeń+dzieci, nie magazyn marży); 615.0 opcjonalne `fx_rate_*` (tokeny jak 211.0, nie mnożenie) |
 | kupno | buy | kwota zakupu na `charge` |
 | sprzedaż | sell | kwota sprzedaży na `charge` |

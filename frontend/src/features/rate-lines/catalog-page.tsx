@@ -44,6 +44,11 @@ const columns = [
     header: "Alokacja TEU",
     cell: (info) => info.getValue() ?? "—",
   }),
+  columnHelper.accessor("spot_or_contract", {
+    id: "spot_or_contract",
+    header: "Spot / kontrakt",
+    cell: (info) => info.getValue() ?? "—",
+  }),
   columnHelper.accessor("superseded_by", {
     id: "superseded_by",
     header: "Zastąpiona przez",
@@ -56,6 +61,7 @@ const COLUMN_LABELS = {
   amount: "Kwota kupna",
   source_ref: "Pochodzenie",
   allotment_teu: "Alokacja TEU",
+  spot_or_contract: "Spot / kontrakt",
   superseded_by: "Zastąpiona przez",
 }
 
@@ -67,11 +73,13 @@ export function RateLineCatalogPage() {
   const [currency, setCurrency] = useState("EUR")
   const [sourceRef, setSourceRef] = useState("")
   const [allotmentTeu, setAllotmentTeu] = useState("")
+  const [spotOrContract, setSpotOrContract] = useState("")
   const [predecessorId, setPredecessorId] = useState("")
   const [nextAmount, setNextAmount] = useState("")
   const [nextCurrency, setNextCurrency] = useState("EUR")
   const [nextSourceRef, setNextSourceRef] = useState("")
   const [nextAllotmentTeu, setNextAllotmentTeu] = useState("")
+  const [nextSpotOrContract, setNextSpotOrContract] = useState("")
 
   const query = useQuery({
     queryKey: ["rate-lines", ctx.organizationId],
@@ -83,13 +91,21 @@ export function RateLineCatalogPage() {
   const createMutation = useMutation({
     mutationFn: () =>
       createRateLine(
-        rateLineCreateBody({ chargeCode, amount, currency, sourceRef, allotmentTeu }),
+        rateLineCreateBody({
+          chargeCode,
+          amount,
+          currency,
+          sourceRef,
+          allotmentTeu,
+          spotOrContract,
+        }),
       ),
     onSuccess: () => {
       setChargeCode("")
       setAmount("")
       setSourceRef("")
       setAllotmentTeu("")
+      setSpotOrContract("")
       void queryClient.invalidateQueries({ queryKey: ["rate-lines", ctx.organizationId] })
     },
   })
@@ -103,6 +119,7 @@ export function RateLineCatalogPage() {
           currency: nextCurrency,
           sourceRef: nextSourceRef,
           allotmentTeu: nextAllotmentTeu,
+          spotOrContract: nextSpotOrContract,
         }),
       ),
     onSuccess: () => {
@@ -110,6 +127,7 @@ export function RateLineCatalogPage() {
       setNextAmount("")
       setNextSourceRef("")
       setNextAllotmentTeu("")
+      setNextSpotOrContract("")
       void queryClient.invalidateQueries({ queryKey: ["rate-lines", ctx.organizationId] })
     },
   })
@@ -118,13 +136,13 @@ export function RateLineCatalogPage() {
     <div className="space-y-3">
       <CatalogHeading
         title="Stawki kupna"
-        subtitle="rate_line M-07 · niemutowalna · source_ref obowiązkowy · opcjonalny allotment_teu · nie tabela charge"
+        subtitle="rate_line M-07 · niemutowalna · source_ref · opcjonalny allotment_teu · opcjonalny spot_or_contract · nie charge"
       />
 
       {ctx.organizationId && ctx.userId ? null : <TenantSessionNotice />}
 
       <form
-        className="grid gap-2 rounded-md border border-border bg-card p-3 md:grid-cols-6"
+        className="grid gap-2 rounded-md border border-border bg-card p-3 md:grid-cols-7"
         onSubmit={(event) => {
           event.preventDefault()
           createMutation.mutate()
@@ -164,6 +182,12 @@ export function RateLineCatalogPage() {
           value={allotmentTeu}
           onChange={(event) => setAllotmentTeu(event.target.value)}
         />
+        <Input
+          aria-label="Spot lub kontrakt"
+          placeholder="spot|contract|other"
+          value={spotOrContract}
+          onChange={(event) => setSpotOrContract(event.target.value)}
+        />
         <Button type="submit" disabled={createMutation.isPending || !ctx.organizationId}>
           Dodaj stawkę
         </Button>
@@ -172,7 +196,7 @@ export function RateLineCatalogPage() {
       {createMutation.isError ? <CatalogError error={createMutation.error} /> : null}
 
       <form
-        className="grid gap-2 rounded-md border border-border bg-card p-3 md:grid-cols-6"
+        className="grid gap-2 rounded-md border border-border bg-card p-3 md:grid-cols-7"
         onSubmit={(event) => {
           event.preventDefault()
           supersedeMutation.mutate()
@@ -211,6 +235,12 @@ export function RateLineCatalogPage() {
           placeholder="20"
           value={nextAllotmentTeu}
           onChange={(event) => setNextAllotmentTeu(event.target.value)}
+        />
+        <Input
+          aria-label="Nowy spot lub kontrakt"
+          placeholder="spot|contract|other"
+          value={nextSpotOrContract}
+          onChange={(event) => setNextSpotOrContract(event.target.value)}
         />
         <Button type="submit" variant="outline" disabled={supersedeMutation.isPending || !predecessorId}>
           Zastąp (nowy wiersz)

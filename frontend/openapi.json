@@ -51091,6 +51091,18 @@
               }
             ],
             "title": "Allotment Teu"
+          },
+          "spot_or_contract": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 16
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Spot Or Contract"
           }
         },
         "type": "object",
@@ -51141,6 +51153,17 @@
             ],
             "title": "Allotment Teu"
           },
+          "spot_or_contract": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Spot Or Contract"
+          },
           "superseded_by": {
             "anyOf": [
               {
@@ -51163,6 +51186,7 @@
           "currency",
           "source_ref",
           "allotment_teu",
+          "spot_or_contract",
           "superseded_by"
         ],
         "title": "RateLineResponse"
@@ -51198,6 +51222,18 @@
               }
             ],
             "title": "Allotment Teu"
+          },
+          "spot_or_contract": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 16
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Spot Or Contract"
           }
         },
         "type": "object",

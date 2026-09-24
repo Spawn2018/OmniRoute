@@ -19,6 +19,7 @@ class RateLineCreate(BaseModel):
     currency: str = Field(min_length=3, max_length=3)
     source_ref: str = Field(min_length=1, max_length=512)
     allotment_teu: str | None = Field(default=None, max_length=32)
+    spot_or_contract: str | None = Field(default=None, max_length=16)
 
 
 class RateLineSupersede(BaseModel):
@@ -26,6 +27,7 @@ class RateLineSupersede(BaseModel):
     currency: str = Field(min_length=3, max_length=3)
     source_ref: str = Field(min_length=1, max_length=512)
     allotment_teu: str | None = Field(default=None, max_length=32)
+    spot_or_contract: str | None = Field(default=None, max_length=16)
 
 
 class RateLineResponse(BaseModel):
@@ -36,6 +38,7 @@ class RateLineResponse(BaseModel):
     currency: str
     source_ref: str
     allotment_teu: str | None
+    spot_or_contract: str | None
     superseded_by: UUID | None
 
     @classmethod
@@ -51,6 +54,7 @@ class RateLineResponse(BaseModel):
             currency=currency,
             source_ref=row.source_ref,
             allotment_teu=teu_text,
+            spot_or_contract=row.spot_or_contract,
             superseded_by=row.superseded_by,
         )
 
@@ -81,6 +85,7 @@ async def create_rate_line(
         currency=body.currency,
         source_ref=body.source_ref,
         allotment_teu=body.allotment_teu,
+        spot_or_contract=body.spot_or_contract,
     )
     await session.commit()
     return RateLineResponse.from_row(row)
@@ -106,6 +111,7 @@ async def supersede_rate_line(
         currency=body.currency,
         source_ref=body.source_ref,
         allotment_teu=body.allotment_teu,
+        spot_or_contract=body.spot_or_contract,
     )
     await session.commit()
     return RateLineResponse.from_row(row)

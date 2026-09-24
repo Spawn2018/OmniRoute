@@ -5,7 +5,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.domain.charge_code import normalize_charge_code
 from app.domain.errors import RateLineAlreadySuperseded, ResourceNotFound, UnknownChargeCode
 from app.domain.money import Money
-from app.domain.rate_line import require_allotment_teu, require_source_ref
+from app.domain.rate_line import require_allotment_teu, require_source_ref, require_spot_or_contract
 from app.models.rate_line import RateLine
 from app.repositories.charge_codes.charge_code_repository import ChargeCodeRepository
 from app.repositories.rate_lines.rate_line_repository import RateLineRepository
@@ -29,10 +29,12 @@ class RateLineService:
         currency: object,
         source_ref: str,
         allotment_teu: object = None,
+        spot_or_contract: object = None,
     ) -> RateLine:
         origin = require_source_ref(source_ref)
         money = Money.of(amount, currency)
         teu = require_allotment_teu(allotment_teu)
+        deal = require_spot_or_contract(spot_or_contract)
         token = normalize_charge_code(charge_code)
         catalog = await self._codes.find_by_token(token)
         if catalog is None:
@@ -44,6 +46,7 @@ class RateLineService:
             amount=money.amount,
             currency=money.currency.code,
             allotment_teu=teu,
+            spot_or_contract=deal,
             source_ref=origin,
             created_by=user_id,
         )
@@ -58,6 +61,7 @@ class RateLineService:
         currency: object,
         source_ref: str,
         allotment_teu: object = None,
+        spot_or_contract: object = None,
     ) -> RateLine:
         current = await self._rates.get(rate_line_id)
         if current is None:
@@ -72,6 +76,7 @@ class RateLineService:
             currency=currency,
             source_ref=source_ref,
             allotment_teu=allotment_teu,
+            spot_or_contract=spot_or_contract,
         )
         await self._rates.mark_superseded(current, successor.id)
         return successor

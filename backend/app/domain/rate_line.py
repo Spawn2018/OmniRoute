@@ -39,3 +39,16 @@ def require_allotment_teu(raw: object) -> Decimal | None:
     if quantized >= _MAX_ABS:
         raise InvalidRateLine("allotment teu: precyzja Numeric(14,4)")
     return quantized
+
+
+def require_spot_or_contract(raw: object) -> str | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidRateLine("spot_or_contract musi być tekstem")
+    token = raw.strip().lower()
+    if token == "":
+        return None
+    if token not in {"spot", "contract", "other"}:
+        raise InvalidRateLine("spot_or_contract: spot|contract|other")
+    return token

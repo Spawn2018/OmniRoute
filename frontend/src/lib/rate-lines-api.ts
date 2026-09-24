@@ -9,6 +9,7 @@ export type RateLine = {
   currency: string
   source_ref: string
   allotment_teu: string | null
+  spot_or_contract: string | null
   superseded_by: string | null
 }
 
@@ -18,12 +19,14 @@ export function rateLineCreateBody(args: {
   currency: string
   sourceRef: string
   allotmentTeu: string
+  spotOrContract: string
 }): {
   charge_code: string
   amount: string
   currency: string
   source_ref: string
   allotment_teu?: string
+  spot_or_contract?: string
 } {
   const body: {
     charge_code: string
@@ -31,6 +34,7 @@ export function rateLineCreateBody(args: {
     currency: string
     source_ref: string
     allotment_teu?: string
+    spot_or_contract?: string
   } = {
     charge_code: args.chargeCode.trim(),
     amount: args.amount.trim(),
@@ -41,6 +45,10 @@ export function rateLineCreateBody(args: {
   if (teu !== "") {
     body.allotment_teu = teu
   }
+  const deal = args.spotOrContract.trim()
+  if (deal !== "") {
+    body.spot_or_contract = deal
+  }
   return body
 }
 
@@ -49,17 +57,20 @@ export function rateLineSupersedeBody(args: {
   currency: string
   sourceRef: string
   allotmentTeu: string
+  spotOrContract: string
 }): {
   amount: string
   currency: string
   source_ref: string
   allotment_teu?: string
+  spot_or_contract?: string
 } {
   const body: {
     amount: string
     currency: string
     source_ref: string
     allotment_teu?: string
+    spot_or_contract?: string
   } = {
     amount: args.amount.trim(),
     currency: args.currency.trim().toUpperCase(),
@@ -68,6 +79,10 @@ export function rateLineSupersedeBody(args: {
   const teu = args.allotmentTeu.trim()
   if (teu !== "") {
     body.allotment_teu = teu
+  }
+  const deal = args.spotOrContract.trim()
+  if (deal !== "") {
+    body.spot_or_contract = deal
   }
   return body
 }
@@ -93,6 +108,7 @@ export async function createRateLine(body: {
   currency: string
   source_ref: string
   allotment_teu?: string
+  spot_or_contract?: string
 }): Promise<RateLine> {
   const response = await fetch("/api/v1/rate-lines", {
     method: "POST",
@@ -109,6 +125,7 @@ export async function supersedeRateLine(
     currency: string
     source_ref: string
     allotment_teu?: string
+    spot_or_contract?: string
   },
 ): Promise<RateLine> {
   const response = await fetch(`/api/v1/rate-lines/${rateLineId}/supersede`, {

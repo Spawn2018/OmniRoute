@@ -22,6 +22,7 @@ class RateLine(Base, TimestampMixin):
     amount: Mapped[Decimal] = mapped_column(Numeric(14, 4), nullable=False)
     currency: Mapped[str] = mapped_column(CHAR(3), nullable=False)
     allotment_teu: Mapped[Decimal | None] = mapped_column(Numeric(14, 4), nullable=True)
+    spot_or_contract: Mapped[str | None] = mapped_column(String(16), nullable=True)
     source_ref: Mapped[str] = mapped_column(String(512), nullable=False)
     superseded_by: Mapped[uuid.UUID | None] = mapped_column(
         UUID(as_uuid=True),
