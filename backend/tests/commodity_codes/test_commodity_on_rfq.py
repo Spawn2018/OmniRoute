@@ -112,6 +112,7 @@ async def test_quote_persists_commodity_code_id_from_bind() -> None:
             code="THC",
             name="THC",
             aliases=[],
+        source_ref="fixture://charge-code/test"
         ),
     )
     mappings = MagicMock()

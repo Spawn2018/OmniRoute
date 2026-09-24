@@ -21,6 +21,7 @@ async def test_charge_code_rls_isolates_tenants(session, two_tenants) -> None:
         code="BAF",
         name="Bunker A",
         aliases=["BUNKER"],
+        source_ref="fixture://charge-code/test",
         created_by=user_a.id,
     )
     code_b = ChargeCode(
@@ -29,6 +30,7 @@ async def test_charge_code_rls_isolates_tenants(session, two_tenants) -> None:
         code="BAF",
         name="Bunker B",
         aliases=["FUEL"],
+        source_ref="fixture://charge-code/test",
         created_by=user_b.id,
     )
 

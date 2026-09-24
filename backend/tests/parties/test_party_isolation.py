@@ -229,6 +229,7 @@ async def test_party_charge_override_rls_isolates_tenants(session, two_tenants) 
             code="THC",
             name="Terminal",
             aliases=[],
+        source_ref="fixture://charge-code/test"
         )
     )
     await session.flush()
@@ -251,6 +252,7 @@ async def test_party_charge_override_rls_isolates_tenants(session, two_tenants) 
             code="THC",
             name="Terminal",
             aliases=[],
+        source_ref="fixture://charge-code/test"
         )
     )
     await session.flush()
@@ -330,6 +332,7 @@ async def test_party_charge_override_may_not_use_another_tenant_charge_code(
             code="BAF",
             name="Bunker",
             aliases=[],
+        source_ref="fixture://charge-code/test"
         )
     )
     await session.flush()

@@ -15,6 +15,7 @@ class ChargeCodeCreate(BaseModel):
     code: str = Field(min_length=1, max_length=32)
     name: str = Field(min_length=1, max_length=128)
     aliases: list[str] = Field(default_factory=list)
+    source_ref: str = Field(min_length=1, max_length=512)
 
 
 class ChargeCodeResponse(BaseModel):
@@ -25,6 +26,7 @@ class ChargeCodeResponse(BaseModel):
     code: str
     name: str
     aliases: list[str]
+    source_ref: str
 
 
 @router.get("", response_model=list[ChargeCodeResponse])
@@ -62,6 +64,7 @@ async def create_charge_code(
         code=body.code,
         name=body.name,
         aliases=body.aliases,
+        source_ref=body.source_ref,
     )
     await session.commit()
     return ChargeCodeResponse.model_validate(row)

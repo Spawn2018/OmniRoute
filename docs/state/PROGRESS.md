@@ -1,6 +1,7 @@
 # Historia plastrów
 
 | Data | Plaster | Moduł | Opis |
+| 2026-09-24 | 649.0 | leftover EXP1 charge_code source_ref | 2026-09-24 | PRZESZŁO (lokalnie; CI po push) | N/A | N/A | OK | OK | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 2026-09-24 | Plan 649.0 | leftover EXP1 charge_code source_ref | Plan wymagany source_ref na `charge_code` (`/noc 17`). 648.0 gate success. |
 | 2026-09-24 | 648.0 | leftover EXP1 index_id FSC HITL | 2026-09-24 | PRZESZŁO (gate success 567b5a25) | N/A | N/A | OK | OK | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 2026-09-24 | Plan 648.0 | leftover EXP1 index_id FSC HITL | Plan opcjonalny pin indeksu na `rate_line` (`/noc 7`). 647.0 na `main`. |

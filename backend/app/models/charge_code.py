@@ -26,6 +26,7 @@ class ChargeCode(Base, TimestampMixin):
     )
     code: Mapped[str] = mapped_column(String(32), nullable=False)
     name: Mapped[str] = mapped_column(String(128), nullable=False)
+    source_ref: Mapped[str] = mapped_column(String(512), nullable=False)
     aliases: Mapped[list[str]] = mapped_column(
         ARRAY(Text()),
         nullable=False,

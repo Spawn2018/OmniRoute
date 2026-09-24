@@ -5,6 +5,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.charge_code import normalize_aliases, normalize_charge_code
 from app.domain.errors import ChargeCodeConflict, InvalidChargeCode, UnknownChargeCode
+from app.domain.rate_line import require_source_ref
 from app.models.charge_code import ChargeCode
 from app.repositories.charge_codes.charge_code_repository import ChargeCodeRepository
 
@@ -25,6 +26,7 @@ class ChargeCodeService:
         code: str,
         name: str,
         aliases: list[str],
+        source_ref: str,
     ) -> ChargeCode:
         token = normalize_charge_code(code)
         alias_tokens = normalize_aliases(aliases)
@@ -33,6 +35,7 @@ class ChargeCodeService:
         label = name.strip()
         if label == "":
             raise InvalidChargeCode("nazwa kodu opłaty jest wymagana")
+        origin = require_source_ref(source_ref)
         await self._reject_taken([token, *alias_tokens])
         row = ChargeCode(
             id=uuid4(),
@@ -40,6 +43,7 @@ class ChargeCodeService:
             code=token,
             name=label,
             aliases=alias_tokens,
+            source_ref=origin,
             created_by=user_id,
         )
         try:

@@ -3,7 +3,12 @@ from uuid import uuid4
 
 import pytest
 
-from app.domain.errors import ChargeCodeConflict, InvalidChargeCode, UnknownChargeCode
+from app.domain.errors import (
+    ChargeCodeConflict,
+    InvalidChargeCode,
+    InvalidSourceRef,
+    UnknownChargeCode,
+)
 from app.models.charge_code import ChargeCode
 from app.services.charge_codes.charge_code_service import ChargeCodeService
 
@@ -15,6 +20,7 @@ def _row(*, code: str, aliases: list[str] | None = None) -> ChargeCode:
         code=code,
         name=code,
         aliases=aliases or [],
+        source_ref="fixture://charge-code/test",
     )
 
 
@@ -32,11 +38,13 @@ async def test_create_normalizes_code_and_aliases() -> None:
         code=" baf ",
         name=" Bunker Adjustment ",
         aliases=[" bunker ", "BAF_ADJ"],
+        source_ref=" tenant:manual ",
     )
 
     assert created.code == "BAF"
     assert created.name == "Bunker Adjustment"
     assert created.aliases == ["BUNKER", "BAF_ADJ"]
+    assert created.source_ref == "tenant:manual"
     session.add.assert_called_once()
 
 
@@ -52,6 +60,23 @@ async def test_create_rejects_blank_name() -> None:
             code="BAF",
             name="   ",
             aliases=[],
+            source_ref="tenant:manual",
+        )
+
+
+@pytest.mark.asyncio
+async def test_create_rejects_blank_source_ref() -> None:
+    session = AsyncMock()
+    session.scalar = AsyncMock(return_value=None)
+    service = ChargeCodeService(session)
+    with pytest.raises(InvalidSourceRef, match="source_ref"):
+        await service.create_code(
+            organization_id=uuid4(),
+            user_id=uuid4(),
+            code="WAITING",
+            name="Waiting",
+            aliases=[],
+            source_ref="   ",
         )
 
 
@@ -65,6 +90,7 @@ async def test_create_rejects_alias_equal_to_code() -> None:
             code="BAF",
             name="Bunker",
             aliases=["baf"],
+            source_ref="tenant:manual",
         )
 
 
@@ -80,6 +106,7 @@ async def test_create_rejects_token_already_in_catalog() -> None:
             code="XXX",
             name="Other",
             aliases=["baf"],
+            source_ref="tenant:manual",
         )
 
 

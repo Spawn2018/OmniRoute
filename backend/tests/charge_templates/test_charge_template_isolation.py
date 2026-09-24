@@ -17,6 +17,7 @@ def _code(*, organization_id, created_by, token: str) -> ChargeCode:
         code=token,
         name=token,
         aliases=[],
+        source_ref="fixture://charge-code/test",
         created_by=created_by,
     )
 

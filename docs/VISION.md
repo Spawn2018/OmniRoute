@@ -30,6 +30,7 @@ zostają w badaniach `04`).
 | Data | Co |
 |---|---|
 | 2026-09-24 | **649.0** leftover EXP1 `charge_code.source_ref`: wymagane pochodzenie kodu opłaty — nie CHECK czterech kodów, nie seed Omni w tym plasterze (`REQUIREMENT`). Marża zostaje na `charge` (`CONFIRMED`). |
+| 2026-09-24 | **649.0** leftover EXP1 `charge_code.source_ref` zamknięty: wymagane pochodzenie kodu opłaty; WAITING/NO_SHOW/DIVERSION/STAMP wolne bez CHECK (`CONFIRMED`). Seed Omni czterech kodów nadal leftover (`REQUIREMENT` **650.0`). Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-24 | **648.0** leftover EXP1 `rate_line.index_id` FSC HITL zamknięty: opcjonalny tekst pin indeksu na `rate_line` (`CONFIRMED`). FK fuel_index / float / mnożenie FSC nadal `REJECTED`. Następny = EXP1 `charge_code.source_ref` (**649.0**, `REQUIREMENT`). Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-24 | **648.0** leftover EXP1 `rate_line.index_id` FSC HITL: opcjonalny tekst pin indeksu na `rate_line` — nie FK fuel_index, nie float, nie mnożenie FSC (`REQUIREMENT`). Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-24 | **647.0** leftover EXP1 `rate_line.spot_or_contract` HITL zamknięty: opcjonalny stance `spot`\|`contract`\|`other` na `rate_line` (`CONFIRMED`). Matching / FK mark / float nadal `REJECTED`. Następny = EXP1 `rate_line.index_id` FSC HITL (**648.0**, `REQUIREMENT`). Marża zostaje na `charge` (`CONFIRMED`). |

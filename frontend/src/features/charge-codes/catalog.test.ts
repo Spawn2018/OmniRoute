@@ -8,19 +8,29 @@ describe("chargeCodeCreateBody", () => {
         code: " baf ",
         name: " Bunker ",
         aliasesText: " bunker , , BAF_ADJ ",
+        sourceRef: " tenant:manual ",
       }),
     ).toEqual({
       code: "baf",
       name: "Bunker",
       aliases: ["bunker", "BAF_ADJ"],
+      source_ref: "tenant:manual",
     })
   })
 
   it("sends empty aliases when the field is blank", () => {
-    expect(chargeCodeCreateBody({ code: "THC", name: "Terminal", aliasesText: "" })).toEqual({
-      code: "THC",
-      name: "Terminal",
+    expect(
+      chargeCodeCreateBody({
+        code: "WAITING",
+        name: "Waiting time",
+        aliasesText: "",
+        sourceRef: "fixture://charge-code/waiting",
+      }),
+    ).toEqual({
+      code: "WAITING",
+      name: "Waiting time",
       aliases: [],
+      source_ref: "fixture://charge-code/waiting",
     })
   })
 })

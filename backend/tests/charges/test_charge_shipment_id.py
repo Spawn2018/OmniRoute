@@ -26,6 +26,7 @@ def _catalog() -> ChargeCode:
         code="THC",
         name="THC",
         aliases=[],
+        source_ref="fixture://charge-code/test"
     )
 
 

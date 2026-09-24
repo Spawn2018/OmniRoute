@@ -7,8 +7,8 @@
 **645.0 DONE:** `cargo_claim` evidence HITL — trzy bool `evidence_gps`|`evidence_temp`|`evidence_photo`. Nie Deadline Engine. Nie live GPS. Leftover: Deadline Engine · liable_party S11 · live GPS/foto.
 **646.0 DONE:** `rate_line.allotment_teu` opcjonalny Decimal HITL. Nie matching. Nie float. Nie druga marża. Leftover: spot_or_contract · index_id FSC · matching · live MQC.
 **647.0 DONE:** `rate_line.spot_or_contract` opcjonalny stance HITL. Nie matching. Nie float. Nie FK mark. Leftover: index_id FSC · spot_or_contract na quotation · matching · live MQC.
-**648.0 DONE:** `rate_line.index_id` opcjonalny pin FSC/BAF/CAF HITL. Nie FK fuel_index. Nie float. Nie mnożenie FSC. Leftover: charge_code source_ref → **649.0** · seed Omni WAITING/… · FK fuel_index · spot_or_contract na quotation · matching · live MQC.
-**649.0 PLAN:** `charge_code.source_ref` wymagany przy POST. Nie CHECK czterech kodów. Nie seed Omni. Nie matching. Nie float.
+**649.0 DONE:** `charge_code.source_ref` wymagany przy POST; backfill legacy. Nie CHECK czterech kodów. Nie seed Omni. Nie matching. Nie float. Leftover: seed Omni WAITING/… → **650.0** · FK fuel_index · spot_or_contract na quotation · matching · live MQC.
+**648.0 DONE:** `rate_line.index_id` opcjonalny pin FSC/BAF/CAF HITL. Nie FK fuel_index. Nie float. Nie mnożenie FSC. Leftover: charge_code source_ref → **649.0** DONE · seed Omni WAITING/… · FK fuel_index · spot_or_contract na quotation · matching · live MQC.
 ﻿- **625.0 DONE:** `groupage_tariff.volume_m3` opcjonalne Decimal. Nie liczy progu. Leftover D5b: paleta zostaje na saldzie, FSC na `fuel_index`.
 - **624.0 DONE:** `shipment_document.document_kind` przyjmuje `rod`. `pod` zostaje odrzucone (port wyĹ‚adunku). Leftover: skan / bajty.
 - **635.0 DONE:** `local_charge_warning_mark` HITL stance ostrzezenia braku dopłaty. Nie warning-jako-fakt. Leftover: matching stance DONE **640.0** · bind stance → **641.0** · P5b–c park · warning-jako-fakt · live HTTP.

@@ -1,5 +1,4 @@
 import { ApiError, httpErrorStatus, readApiDetail } from "@/lib/api"
-import { catalogCreateBody } from "@/lib/catalog-create"
 import { requireAuthHeaders } from "@/lib/tenant"
 
 export type ChargeCode = {
@@ -8,9 +7,26 @@ export type ChargeCode = {
   code: string
   name: string
   aliases: string[]
+  source_ref: string
 }
 
-export const chargeCodeCreateBody = catalogCreateBody
+export function chargeCodeCreateBody(args: {
+  code: string
+  name: string
+  aliasesText: string
+  sourceRef: string
+}): { code: string; name: string; aliases: string[]; source_ref: string } {
+  const aliases = args.aliasesText
+    .split(",")
+    .map((part) => part.trim())
+    .filter((part) => part.length > 0)
+  return {
+    code: args.code.trim(),
+    name: args.name.trim(),
+    aliases,
+    source_ref: args.sourceRef.trim(),
+  }
+}
 
 async function readChargeCode(response: Response, fallback: string): Promise<ChargeCode> {
   if (!response.ok) {
@@ -31,6 +47,7 @@ export async function createChargeCode(body: {
   code: string
   name: string
   aliases: string[]
+  source_ref: string
 }): Promise<ChargeCode> {
   const response = await fetch("/api/v1/charge-codes", {
     method: "POST",

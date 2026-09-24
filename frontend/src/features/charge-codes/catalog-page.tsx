@@ -1,14 +1,16 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { createColumnHelper } from "@tanstack/react-table"
-import { useState } from "react"
+import { type FormEvent, useState } from "react"
 import {
-  CatalogCreateForm,
   CatalogError,
   CatalogHeading,
   CatalogLoadedTable,
+  CatalogSourceRefField,
   ResolveTokenForm,
   TenantSessionNotice,
 } from "@/components/catalog/catalog-parts"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 import {
   chargeCodeCreateBody,
   createChargeCode,
@@ -37,12 +39,18 @@ const columns = [
     header: "Aliasy",
     cell: (info) => info.getValue().join(", ") || "—",
   }),
+  columnHelper.accessor("source_ref", {
+    id: "source_ref",
+    header: "Źródło",
+    cell: (info) => <span className="font-mono text-xs">{info.getValue()}</span>,
+  }),
 ]
 
 const COLUMN_LABELS = {
   code: "Kod",
   name: "Nazwa",
   aliases: "Aliasy",
+  source_ref: "Źródło",
 }
 
 export function ChargeCodeCatalogPage() {
@@ -51,6 +59,7 @@ export function ChargeCodeCatalogPage() {
   const [code, setCode] = useState("")
   const [name, setName] = useState("")
   const [aliasesText, setAliasesText] = useState("")
+  const [sourceRef, setSourceRef] = useState("tenant:manual")
   const [resolved, setResolved] = useState<ChargeCode | null>(null)
 
   const query = useQuery({
@@ -61,11 +70,13 @@ export function ChargeCodeCatalogPage() {
   })
 
   const createMutation = useMutation({
-    mutationFn: () => createChargeCode(chargeCodeCreateBody({ code, name, aliasesText })),
+    mutationFn: () =>
+      createChargeCode(chargeCodeCreateBody({ code, name, aliasesText, sourceRef })),
     onSuccess: () => {
       setCode("")
       setName("")
       setAliasesText("")
+      setSourceRef("tenant:manual")
       void queryClient.invalidateQueries({ queryKey: ["charge-codes", ctx.organizationId] })
     },
   })
@@ -84,29 +95,58 @@ export function ChargeCodeCatalogPage() {
     <div className="space-y-3">
       <CatalogHeading
         title="Katalog kodów opłat"
-        subtitle="charge_code M-06 · typowany kod, nie luźny string"
+        subtitle="charge_code M-06 · typowany kod z source_ref · WAITING/NO_SHOW/DIVERSION/STAMP jak każdy token"
       />
 
       {!ctx.organizationId || !ctx.userId ? <TenantSessionNotice /> : null}
 
-      <CatalogCreateForm
-        code={code}
-        name={name}
-        aliasesText={aliasesText}
-        onCodeChange={setCode}
-        onNameChange={setName}
-        onAliasesChange={setAliasesText}
-        codeLabel="Kod opłaty"
-        nameLabel="Nazwa kodu opłaty"
-        aliasesLabel="Aliasy kodu opłaty"
-        codePlaceholder="BAF"
-        namePlaceholder="Bunker Adjustment Factor"
-        aliasesPlaceholder="BUNKER, BAF_ADJ"
-        submitLabel="Dodaj kod"
-        pending={createMutation.isPending}
-        disabled={!ctx.organizationId}
-        onSubmit={() => createMutation.mutate()}
-      />
+      <form
+        className="grid max-w-lg gap-3"
+        onSubmit={(event: FormEvent) => {
+          event.preventDefault()
+          if (ctx.organizationId) createMutation.mutate()
+        }}
+      >
+        <label className="flex flex-col gap-1 text-xs">
+          Kod opłaty
+          <Input
+            aria-label="Kod opłaty"
+            className="font-mono"
+            placeholder="BAF"
+            value={code}
+            onChange={(change) => setCode(change.target.value)}
+            required
+          />
+        </label>
+        <label className="flex flex-col gap-1 text-xs">
+          Nazwa kodu opłaty
+          <Input
+            aria-label="Nazwa kodu opłaty"
+            placeholder="Bunker Adjustment Factor"
+            value={name}
+            onChange={(change) => setName(change.target.value)}
+            required
+          />
+        </label>
+        <label className="flex flex-col gap-1 text-xs">
+          Aliasy kodu opłaty
+          <Input
+            aria-label="Aliasy kodu opłaty"
+            placeholder="BUNKER, BAF_ADJ"
+            value={aliasesText}
+            onChange={(change) => setAliasesText(change.target.value)}
+          />
+        </label>
+        <CatalogSourceRefField
+          label="source_ref (tenant:manual albo fixture://charge-code/…)"
+          ariaLabel="Pochodzenie kodu opłaty"
+          value={sourceRef}
+          onChange={setSourceRef}
+        />
+        <Button type="submit" disabled={createMutation.isPending || !ctx.organizationId}>
+          Dodaj kod
+        </Button>
+      </form>
 
       {createMutation.isError ? <CatalogError error={createMutation.error} /> : null}
 

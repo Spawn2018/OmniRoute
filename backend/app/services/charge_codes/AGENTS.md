@@ -1,6 +1,6 @@
 # BC charge_code (M-06)
 
-Katalog typowanych kodów opłat — nie luźny string, nie `rate_line`, nie `charge`.
+Katalog typowanych kodów opłat + `source_ref` — nie luźny string, nie `rate_line`, nie `charge`.
 
 ## Dozwolone zależności
 - `app.models.charge_code`
@@ -11,3 +11,5 @@ Katalog typowanych kodów opłat — nie luźny string, nie `rate_line`, nie `ch
 - import innych BC services
 - zapis `rate_line` / `charge`
 - liczenie kwot / marży
+- CHECK allowlisty WAITING|NO_SHOW|DIVERSION|STAMP
+- seed Omni czterech kodów w serwisie

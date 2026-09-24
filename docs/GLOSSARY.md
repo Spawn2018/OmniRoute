@@ -12,7 +12,7 @@ kolumn. Nie 468.0.
 | kupno | buy | kwota zakupu na `charge` |
 | sprzedaż | sell | kwota sprzedaży na `charge` |
 | marża | margin | sell − buy, ta sama waluta; zapis: `margin()`; GET lista: SQL; nie kolumna magazynu |
-| kod opłaty | charge_code | katalog M-06; typowany token, nie luźny string |
+| kod opłaty | charge_code | katalog M-06; typowany token + `source_ref`; nie luźny string |
 | alias kodu opłaty | charge_code alias | synonim w katalogu tenanta |
 | kod towarowy | commodity_code | katalog M-09; 70.0 FK na RFQ/wycenie; nie luźna nazwa |
 | towar niebezpieczny | dangerous_good | katalog M-52; 122.0 FK na RFQ/wycenie; 192.0 HITL tunel ADR + SG; nie LLM |
