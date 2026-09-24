@@ -7,6 +7,7 @@
 **645.0 DONE:** `cargo_claim` evidence HITL — trzy bool `evidence_gps`|`evidence_temp`|`evidence_photo`. Nie Deadline Engine. Nie live GPS. Leftover: Deadline Engine · liable_party S11 · live GPS/foto.
 **646.0 DONE:** `rate_line.allotment_teu` opcjonalny Decimal HITL. Nie matching. Nie float. Nie druga marża. Leftover: spot_or_contract · index_id FSC · matching · live MQC.
 **647.0 DONE:** `rate_line.spot_or_contract` opcjonalny stance HITL. Nie matching. Nie float. Nie FK mark. Leftover: index_id FSC · spot_or_contract na quotation · matching · live MQC.
+**652.0 PLAN:** opcjonalny `valid_until` DATE na `quotation`. Nie float. Nie NBP. Leftover: revision_no · supersedes_id · spot_or_contract na quotation (park).
 **651.0 DONE:** opcjonalny `fuel_index_id` FK na `rate_line` (pin `index_id` zostaje). Nie float. Nie mnożenie FSC. Leftover: `quotation.valid_until` → **652.0** · spot_or_contract na quotation (park) · matching · live MQC · P3b SQL na charge.
 **650.0 DONE:** seed Omni czterech kodów EXP1 na `charge_code` (`WAITING`/`NO_SHOW`/`DIVERSION`/`STAMP`) z `source_ref=omni:charge-code:exp1`. Nie CHECK. Nie matching. Nie float. Leftover: FK fuel_index → **651.0** DONE · spot_or_contract na quotation · matching · live MQC.
 **649.0 DONE:** `charge_code.source_ref` wymagany przy POST; backfill legacy. Nie CHECK czterech kodów. Nie seed Omni. Nie matching. Nie float. Leftover: seed Omni WAITING/… → **650.0** DONE · FK fuel_index · spot_or_contract na quotation · matching · live MQC.
