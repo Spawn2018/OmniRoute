@@ -6,7 +6,7 @@ Ten plik zostaje jako krótki wskaźnik i wklejka starych promptów agenta. Canv
 Fabryka Cursor + nakładka 12m to **jedna oś** (rozjazd tylko po 0.15 hasła). Nie ma konkurencyjnego „następny = OAuth / D0 / Charge_025”.
 
 <!-- os-status:start -->
-**Stan (z CURRENT.md):** **644.0** leftover EXP0.9 `limited_quantity` HITL **Następny:** **645.0** leftover EXP0.8/EXP1 `cargo_claim` evidence HITL (`evidence_gps`|`evidence_temp`|`evidence_photo` bool albo jeden stance — Plan wybiera; zero Deadline Engine / live GPS / kwota). D9d PDF-QR / D9e skan / D9f pdf-zpl live / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 / live poll / Expo BR2.3 / warning-jako-fakt / N8 / T6 live / P5c / N6 auto charge / live IMO / grupy 1.xA = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
+**Stan (z CURRENT.md):** **644.0** leftover EXP0.9 `limited_quantity` HITL **Następny:** **645.0** leftover EXP0.8/EXP1 `cargo_claim` evidence HITL — trzy bool `evidence_gps`|`evidence_temp`|`evidence_photo` (delta). Zero Deadline Engine / live GPS / kwota. D9d PDF-QR / D9e skan / D9f pdf-zpl live / matching T5 / FK kontekstu / T8 live / D6b / D7b / fx×FV / auto-copy U1 / similar SQL / F2b / auto-resync salda / live 409 / live poll / Expo BR2.3 / warning-jako-fakt / N8 / T6 live / P5c / N6 auto charge / live IMO / grupy 1.xA = park `/noc`. **588.0** SH-R16-4 UXCL = park `/noc`.
 <!-- os-status:end -->
 
 Pełne standing rules, anti-cele, Wave A, Charge, U-*, living modules: **PLAN-REALIZACJA.md**.

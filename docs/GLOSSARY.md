@@ -108,7 +108,7 @@ kolumn. Nie 468.0.
 | dopasowanie dopłaty lokalnej | local_charge_match_mark | P4c HITL 640.0 DONE stance (`match`\|`gap`\|`waive`\|`other`); nie matching SQL; nie warning-jako-fakt |
 | wiązanie dopłaty lokalnej | local_charge_bind_mark | P4c HITL 641.0 DONE stance (`charge`\|`quote`\|`other`); nie FK UUID; nie matching SQL |
 | lotniczy | air | 154.0 odcinek `shipment_leg` air; 209.0 opcjonalny `hawb_no`/`mawb_no`; 619.0 nadanie z `hawb_number_prefix`/`mawb_number_prefix` (M-03); 622.0 cyfra IATA (seria 7 cyfr modulo 7) tylko na wklejonym MAWB w kształcie 3+8; lotnisko = `port` z `airport` |
-| reklamacja ładunku | cargo_claim | 113.0 tabela na zleceniu; 191.0 HITL OS&D + terminy CMR; nie kwota; nie silnik 7/21/365 |
+| reklamacja ładunku | cargo_claim | 113.0 tabela na zleceniu; 191.0 HITL OS&D + terminy CMR; 645.0 HITL evidence_gps/temp/photo bool; nie kwota; nie silnik 7/21/365 |
 | oszustwo | fraud_flag | 114.0 tabela na kontrahencie; nie scoring osoby; nie kwota |
 | sankcje | sanctions | 45.0 tablica aktywnych `party`; 89.0 sprawdzenie `sanctions_list_ref` na karcie; nie auto-match; nie live lista |
 | RODO | gdpr | 46.0 tablica `app_user` email; 107.0 wniosek `gdpr_request`; nie DPIA |
