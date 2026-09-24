@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs"
 import { describe, expect, it } from "vitest"
 import { rateLineCreateBody, rateLineSupersedeBody } from "@/lib/rate-lines-api"
+import { SHIPPED_CHARGE_ROUTES } from "@/features/ops/ops-index"
 
 const page = readFileSync(new URL("./catalog-page.tsx", import.meta.url), "utf8")
 
@@ -14,6 +15,7 @@ describe("rateLineCreateBody", () => {
         sourceRef: " tariff://msc-2026 ",
         allotmentTeu: "",
         spotOrContract: "",
+        indexId: "",
       }),
     ).toEqual({
       charge_code: "thc",
@@ -32,6 +34,7 @@ describe("rateLineCreateBody", () => {
         sourceRef: "tariff://teu",
         allotmentTeu: " 12.5 ",
         spotOrContract: "",
+        indexId: "",
       }),
     ).toEqual({
       charge_code: "THC",
@@ -51,6 +54,7 @@ describe("rateLineCreateBody", () => {
         sourceRef: "tariff://spot",
         allotmentTeu: "",
         spotOrContract: " spot ",
+        indexId: "",
       }),
     ).toEqual({
       charge_code: "THC",
@@ -58,6 +62,26 @@ describe("rateLineCreateBody", () => {
       currency: "EUR",
       source_ref: "tariff://spot",
       spot_or_contract: "spot",
+    })
+  })
+
+  it("includes index_id when operator fills pin", () => {
+    expect(
+      rateLineCreateBody({
+        chargeCode: "THC",
+        amount: "10",
+        currency: "EUR",
+        sourceRef: "tariff://fsc",
+        allotmentTeu: "",
+        spotOrContract: "",
+        indexId: " FSC-Q3-2026 ",
+      }),
+    ).toEqual({
+      charge_code: "THC",
+      amount: "10",
+      currency: "EUR",
+      source_ref: "tariff://fsc",
+      index_id: "FSC-Q3-2026",
     })
   })
 })
@@ -71,6 +95,7 @@ describe("rateLineSupersedeBody", () => {
         sourceRef: "tariff://b",
         allotmentTeu: "",
         spotOrContract: "",
+        indexId: "",
       }),
     ).toEqual({
       amount: "11",
@@ -100,5 +125,17 @@ describe("647.0 spot_or_contract HITL", () => {
     expect(page).toContain('aria-label="Spot lub kontrakt"')
     expect(page).toContain('aria-label="Nowy spot lub kontrakt"')
     expect(page).toContain("spot_or_contract")
+  })
+})
+
+describe("648.0 index_id HITL", () => {
+  it("exposes optional index_id on create and supersede", () => {
+    expect(page).toContain('aria-label="Pin indeksu FSC"')
+    expect(page).toContain('aria-label="Nowy pin indeksu FSC"')
+    expect(page).toContain("index_id")
+  })
+
+  it("ships on rate-lines route", () => {
+    expect(SHIPPED_CHARGE_ROUTES["648.0"]).toBe("/rate-lines")
   })
 })

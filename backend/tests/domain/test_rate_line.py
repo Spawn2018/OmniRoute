@@ -5,7 +5,12 @@ from hypothesis import given
 from hypothesis import strategies as st
 
 from app.domain.errors import InvalidRateLine, InvalidSourceRef
-from app.domain.rate_line import require_allotment_teu, require_source_ref, require_spot_or_contract
+from app.domain.rate_line import (
+    require_allotment_teu,
+    require_index_id,
+    require_source_ref,
+    require_spot_or_contract,
+)
 
 _ORIGIN = (
     st.text(min_size=1, max_size=512)
@@ -75,3 +80,23 @@ def test_require_spot_or_contract_normalizes() -> None:
 def test_require_spot_or_contract_rejects_unknown() -> None:
     with pytest.raises(InvalidRateLine, match="spot\\|contract\\|other"):
         require_spot_or_contract("futures")
+
+
+def test_require_index_id_none_and_blank() -> None:
+    assert require_index_id(None) is None
+    assert require_index_id("") is None
+    assert require_index_id("  ") is None
+
+
+def test_require_index_id_trims() -> None:
+    assert require_index_id(" FSC-Q3-2026 ") == "FSC-Q3-2026"
+
+
+def test_require_index_id_rejects_too_long() -> None:
+    with pytest.raises(InvalidRateLine, match="1–64"):
+        require_index_id("x" * 65)
+
+
+def test_require_index_id_rejects_non_string() -> None:
+    with pytest.raises(InvalidRateLine, match="tekstem"):
+        require_index_id(12)  # type: ignore[arg-type]

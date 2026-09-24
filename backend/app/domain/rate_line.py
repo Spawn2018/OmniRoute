@@ -52,3 +52,19 @@ def require_spot_or_contract(raw: object) -> str | None:
     if token not in {"spot", "contract", "other"}:
         raise InvalidRateLine("spot_or_contract: spot|contract|other")
     return token
+
+
+_INDEX_ID_CAP = 64
+
+
+def require_index_id(raw: object) -> str | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidRateLine("index_id musi być tekstem")
+    pin = raw.strip()
+    if pin == "":
+        return None
+    if len(pin) > _INDEX_ID_CAP:
+        raise InvalidRateLine("index_id: 1–64 znaki")
+    return pin
