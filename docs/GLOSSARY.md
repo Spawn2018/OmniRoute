@@ -21,7 +21,7 @@ kolumn. Nie 468.0.
 | grupa pakowania | packing_group | HITL na `dangerous_good`: `I`\|`II`\|`III` (642.0); nie live IMO; nie LLM klasy |
 | zanieczyszczenie morza | marine_pollutant | HITL bool na `dangerous_good` (643.0); nie live IMO; nie LLM klasy |
 | limited quantity | limited_quantity | HITL bool na `dangerous_good` (644.0); nie live IMO; nie LLM klasy |
-| wycena | quotation | opcjonalny `valid_until` DATE HITL (652.0); nie Deadline Engine |
+| wycena | quotation | opcjonalny `valid_until` DATE HITL (652.0); opcjonalny `revision_no` INTEGER HITL ≥ 1 (653.0); nie Deadline Engine; nie float |
 | luka wyceny | quotation_gap | brakująca dopłata |
 | port załadunku | origin_port_id | POL na `quotation`; FK do `port` |
 | port wyładunku | destination_port_id | POD na `quotation`; FK do `port` |
@@ -365,7 +365,7 @@ kolumn. Nie 468.0.
 | znacznik spot/contract | spot_contract_mark | EXP1 HITL spot\|contract\|other; nie FK quotation |
 | znacznik bid decision | bid_decision_mark | EXP1 HITL go\|no_go\|hold\|other; nie kolumna quotation |
 | znacznik waluty wyceny | quote_currency_mark | EXP1 HITL account\|pay\|other; nie kolumna quotation |
-| znacznik ważności wyceny | quote_validity_mark | EXP1 HITL open\|revised\|superseded\|other; katalog stance; data na `quotation.valid_until` (652.0) |
+| znacznik ważności wyceny | quote_validity_mark | EXP1 HITL open\|revised\|superseded\|other; katalog stance; data na `quotation.valid_until` (652.0); numer rewizji na `quotation.revision_no` (653.0) |
 | fabryka demo | demo_sim | Demo-1; nie GBOX klienta |
 | zakłócenie demo | demo_disruption | korki/wypadki fixture |
 | zużycie platformy | platform_usage_daily | Admin-P; agregat; nie cross-tenant SELECT |

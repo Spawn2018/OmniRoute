@@ -23,6 +23,7 @@ export type Quotation = {
   trade_side: string | null
   named_place: string | null
   valid_until: string | null
+  revision_no: number | null
 }
 
 export type QuotationDocumentLayout = {
@@ -43,6 +44,7 @@ export type QuotationCreateBody = {
   trade_side?: string
   named_place?: string
   valid_until?: string
+  revision_no?: number
 }
 
 export type QuotationListFilters = {
@@ -61,6 +63,7 @@ type QuoteOptionalIds = {
   tradeSide?: string
   namedPlace?: string
   validUntil?: string
+  revisionNo?: string
 }
 
 function applyQuoteOptionalIds<T extends QuotationCreateBody | QuotationBatchBody>(
@@ -75,6 +78,7 @@ function applyQuoteOptionalIds<T extends QuotationCreateBody | QuotationBatchBod
   const side = args.tradeSide?.trim()
   const place = args.namedPlace?.trim()
   const until = args.validUntil?.trim()
+  const revisionToken = args.revisionNo?.trim()
   if (rfqId) body.customer_rfq_id = rfqId
   if (hsId) body.commodity_code_id = hsId
   if (unId) body.dangerous_good_id = unId
@@ -83,6 +87,7 @@ function applyQuoteOptionalIds<T extends QuotationCreateBody | QuotationBatchBod
   if (side) body.trade_side = side
   if (place) body.named_place = place
   if (until) body.valid_until = until
+  if (revisionToken) body.revision_no = Number(revisionToken)
   return body
 }
 
@@ -99,6 +104,7 @@ export function quotationCreateBody(args: {
   tradeSide?: string
   namedPlace?: string
   validUntil?: string
+  revisionNo?: string
 }): QuotationCreateBody {
   return applyQuoteOptionalIds(
     {
@@ -124,6 +130,7 @@ export type QuotationBatchBody = {
   trade_side?: string
   named_place?: string
   valid_until?: string
+  revision_no?: number
 }
 
 export function quotationBatchBody(args: {
@@ -139,6 +146,7 @@ export function quotationBatchBody(args: {
   tradeSide?: string
   namedPlace?: string
   validUntil?: string
+  revisionNo?: string
 }): QuotationBatchBody {
   const charge_codes = args.chargeCodesText
     .split(/\r?\n/)
@@ -444,6 +452,18 @@ export async function setQuotationValidUntil(
     body: JSON.stringify({ valid_until: validUntil }),
   })
   return readQuotation(response, "Błąd ważności wyceny")
+}
+
+export async function setQuotationRevisionNo(
+  quotationId: string,
+  revisionNo: number | null,
+): Promise<Quotation> {
+  const response = await fetch(`/api/v1/quotations/${quotationId}/revision-no`, {
+    method: "PATCH",
+    headers: { ...requireAuthHeaders(), "Content-Type": "application/json" },
+    body: JSON.stringify({ revision_no: revisionNo }),
+  })
+  return readQuotation(response, "Błąd numeru rewizji wyceny")
 }
 
 export async function createQuotationBatch(body: QuotationBatchBody): Promise<Quotation[]> {

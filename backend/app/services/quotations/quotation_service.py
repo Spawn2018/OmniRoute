@@ -22,6 +22,7 @@ from app.domain.quotation import (
     require_document_number_prefix,
     require_lane_party_snapshot,
     require_quotation_incoterm,
+    require_revision_no,
     require_valid_until,
 )
 from app.models.charge_code import ChargeCode
@@ -78,22 +79,12 @@ class QuotationService:
         return found
 
     async def quote_from_current_rate(
-        self,
-        *,
-        organization_id: UUID,
-        user_id: UUID,
-        charge_code: str,
-        origin_port_id: UUID | None,
-        destination_port_id: UUID | None,
-        party_id: UUID | None,
-        customer_rfq_id: UUID | None = None,
-        commodity_code_id: UUID | None = None,
-        dangerous_good_id: UUID | None = None,
-        incoterm: object = None,
-        incoterms_version: object = None,
-        trade_side: object = None,
-        named_place: object = None,
-        valid_until: object = None,
+        self, *, organization_id: UUID, user_id: UUID, charge_code: str,
+        origin_port_id: UUID | None, destination_port_id: UUID | None, party_id: UUID | None,
+        customer_rfq_id: UUID | None = None, commodity_code_id: UUID | None = None,
+        dangerous_good_id: UUID | None = None, incoterm: object = None,
+        incoterms_version: object = None, trade_side: object = None,
+        named_place: object = None, valid_until: object = None, revision_no: object = None,
     ) -> Quotation:
         catalog = await self._require_catalog(charge_code)
         origin, destination, party = require_lane_party_snapshot(
@@ -102,93 +93,51 @@ class QuotationService:
         terms = require_quotation_incoterm(
             incoterm, incoterms_version, trade_side, named_place,
         )
-        until = require_valid_until(valid_until)
         return await self._insert_from_rate(
-            organization_id=organization_id,
-            user_id=user_id,
-            charge_code=catalog.code,
-            origin_port_id=origin,
-            destination_port_id=destination,
-            party_id=party,
-            customer_rfq_id=customer_rfq_id,
-            commodity_code_id=commodity_code_id,
-            dangerous_good_id=dangerous_good_id,
-            terms=terms,
-            valid_until=until,
+            organization_id=organization_id, user_id=user_id, charge_code=catalog.code,
+            origin_port_id=origin, destination_port_id=destination, party_id=party,
+            customer_rfq_id=customer_rfq_id, commodity_code_id=commodity_code_id,
+            dangerous_good_id=dangerous_good_id, terms=terms,
+            valid_until=require_valid_until(valid_until),
+            revision_no=require_revision_no(revision_no),
         )
 
     async def quote_batch_from_current_rates(
-        self,
-        *,
-        organization_id: UUID,
-        user_id: UUID,
-        charge_codes: list[str],
-        origin_port_id: UUID | None,
-        destination_port_id: UUID | None,
-        party_id: UUID | None,
-        customer_rfq_id: UUID | None = None,
-        commodity_code_id: UUID | None = None,
-        dangerous_good_id: UUID | None = None,
-        incoterm: object = None,
-        incoterms_version: object = None,
-        trade_side: object = None,
-        named_place: object = None,
-        valid_until: object = None,
+        self, *, organization_id: UUID, user_id: UUID, charge_codes: list[str],
+        origin_port_id: UUID | None, destination_port_id: UUID | None, party_id: UUID | None,
+        customer_rfq_id: UUID | None = None, commodity_code_id: UUID | None = None,
+        dangerous_good_id: UUID | None = None, incoterm: object = None,
+        incoterms_version: object = None, trade_side: object = None,
+        named_place: object = None, valid_until: object = None, revision_no: object = None,
     ) -> list[Quotation]:
-        codes = require_batch_charge_codes(charge_codes)
         quoted: list[Quotation] = []
-        for code in codes:
-            quoted.append(
-                await self.quote_from_current_rate(
-                    organization_id=organization_id,
-                    user_id=user_id,
-                    charge_code=code,
-                    origin_port_id=origin_port_id,
-                    destination_port_id=destination_port_id,
-                    party_id=party_id,
-                    customer_rfq_id=customer_rfq_id,
-                    commodity_code_id=commodity_code_id,
-                    dangerous_good_id=dangerous_good_id,
-                    incoterm=incoterm,
-                    incoterms_version=incoterms_version,
-                    trade_side=trade_side,
-                    named_place=named_place,
-                    valid_until=valid_until,
-                )
-            )
+        for code in require_batch_charge_codes(charge_codes):
+            quoted.append(await self.quote_from_current_rate(
+                organization_id=organization_id, user_id=user_id, charge_code=code,
+                origin_port_id=origin_port_id, destination_port_id=destination_port_id,
+                party_id=party_id, customer_rfq_id=customer_rfq_id,
+                commodity_code_id=commodity_code_id, dangerous_good_id=dangerous_good_id,
+                incoterm=incoterm, incoterms_version=incoterms_version, trade_side=trade_side,
+                named_place=named_place, valid_until=valid_until, revision_no=revision_no,
+            ))
         return quoted
 
     async def _insert_from_rate(
-        self,
-        *,
-        organization_id: UUID,
-        user_id: UUID,
-        charge_code: str,
-        origin_port_id: UUID,
-        destination_port_id: UUID,
-        party_id: UUID,
-        customer_rfq_id: UUID | None,
-        commodity_code_id: UUID | None,
+        self, *, organization_id: UUID, user_id: UUID, charge_code: str,
+        origin_port_id: UUID, destination_port_id: UUID, party_id: UUID,
+        customer_rfq_id: UUID | None, commodity_code_id: UUID | None,
         dangerous_good_id: UUID | None,
         terms: tuple[str | None, str | None, str | None, str | None],
-        valid_until: object,
+        valid_until: object, revision_no: object,
     ) -> Quotation:
         try:
             quoted = await self._quotations.insert_from_current_rate(
-                organization_id=organization_id,
-                created_by=user_id,
-                charge_code=charge_code,
-                origin_port_id=origin_port_id,
-                destination_port_id=destination_port_id,
-                party_id=party_id,
-                customer_rfq_id=customer_rfq_id,
-                commodity_code_id=commodity_code_id,
-                dangerous_good_id=dangerous_good_id,
-                incoterm=terms[0],
-                incoterms_version=terms[1],
-                trade_side=terms[2],
-                named_place=terms[3],
-                valid_until=valid_until,
+                organization_id=organization_id, created_by=user_id, charge_code=charge_code,
+                origin_port_id=origin_port_id, destination_port_id=destination_port_id,
+                party_id=party_id, customer_rfq_id=customer_rfq_id,
+                commodity_code_id=commodity_code_id, dangerous_good_id=dangerous_good_id,
+                incoterm=terms[0], incoterms_version=terms[1], trade_side=terms[2],
+                named_place=terms[3], valid_until=valid_until, revision_no=revision_no,
             )
         except IntegrityError as exc:
             mapped = _snapshot_integrity_error(exc)
@@ -208,6 +157,17 @@ class QuotationService:
         if row is None:
             raise ResourceNotFound("nieznana wycena")
         row.valid_until = require_valid_until(valid_until)
+        return await self._quotations.save(row)
+
+    async def set_revision_no(
+        self,
+        quotation_id: UUID,
+        revision_no: object,
+    ) -> Quotation:
+        row = await self._quotations.get(quotation_id)
+        if row is None:
+            raise ResourceNotFound("nieznana wycena")
+        row.revision_no = require_revision_no(revision_no)
         return await self._quotations.save(row)
 
     async def set_noted_credit_review(

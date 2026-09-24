@@ -43,6 +43,7 @@ class QuotationCreate(BaseModel):
     trade_side: str | None = None
     named_place: str | None = None
     valid_until: object | None = None
+    revision_no: object | None = None
 
 
 class QuotationBatchCreate(BaseModel):
@@ -60,6 +61,7 @@ class QuotationBatchCreate(BaseModel):
     trade_side: str | None = None
     named_place: str | None = None
     valid_until: object | None = None
+    revision_no: object | None = None
 
 
 class QuotationResponse(BaseModel):
@@ -84,6 +86,7 @@ class QuotationResponse(BaseModel):
     trade_side: str | None
     named_place: str | None
     valid_until: date | None
+    revision_no: int | None
 
     @classmethod
     def from_row(cls, row: Quotation) -> "QuotationResponse":
@@ -111,6 +114,7 @@ class QuotationResponse(BaseModel):
             trade_side=row.trade_side,
             named_place=row.named_place,
             valid_until=row.valid_until,
+            revision_no=row.revision_no,
         )
 
 
@@ -130,6 +134,12 @@ class QuotationValidUntil(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     valid_until: object | None = None
+
+
+class QuotationRevisionNo(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    revision_no: object | None = None
 
 
 class QuotationDocumentLayout(BaseModel):
@@ -224,6 +234,7 @@ async def create_quotation(
         trade_side=body.trade_side,
         named_place=body.named_place,
         valid_until=body.valid_until,
+        revision_no=body.revision_no,
     )
     await session.commit()
     return QuotationResponse.from_row(row)
@@ -255,6 +266,7 @@ async def create_quotation_batch(
         trade_side=body.trade_side,
         named_place=body.named_place,
         valid_until=body.valid_until,
+        revision_no=body.revision_no,
     )
     await session.commit()
     return [QuotationResponse.from_row(row) for row in rows]
@@ -295,6 +307,21 @@ async def set_quotation_valid_until(
     row = await QuotationService(session).set_valid_until(
         quotation_id,
         body.valid_until,
+    )
+    await session.commit()
+    return QuotationResponse.from_row(row)
+
+
+@router.patch("/{quotation_id}/revision-no", response_model=QuotationResponse)
+async def set_quotation_revision_no(
+    quotation_id: UUID,
+    body: QuotationRevisionNo,
+    _authz: None = Depends(require_permission("can_manage_quotations", "organization")),
+    session: AsyncSession = Depends(require_tenant_session),
+) -> QuotationResponse:
+    row = await QuotationService(session).set_revision_no(
+        quotation_id,
+        body.revision_no,
     )
     await session.commit()
     return QuotationResponse.from_row(row)

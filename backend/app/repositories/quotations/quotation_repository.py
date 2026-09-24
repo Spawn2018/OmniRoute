@@ -12,7 +12,7 @@ INSERT INTO quotation (
     amount, currency, source_ref, created_by,
     origin_port_id, destination_port_id, party_id, customer_rfq_id,
     commodity_code_id, dangerous_good_id,
-    incoterm, incoterms_version, trade_side, named_place, valid_until
+    incoterm, incoterms_version, trade_side, named_place, valid_until, revision_no
 )
 SELECT
     :qid,
@@ -33,7 +33,8 @@ SELECT
     :incoterms_version,
     :trade_side,
     :named_place,
-    :valid_until
+    :valid_until,
+    :revision_no
 FROM rate_line AS rl
 WHERE rl.charge_code = :charge_code
   AND rl.superseded_by IS NULL
@@ -43,7 +44,7 @@ RETURNING id, organization_id, charge_code, rate_line_id,
           amount, currency, source_ref, created_by,
           origin_port_id, destination_port_id, party_id, customer_rfq_id,
           commodity_code_id, dangerous_good_id, document_number,
-          incoterm, incoterms_version, trade_side, named_place, valid_until
+          incoterm, incoterms_version, trade_side, named_place, valid_until, revision_no
 """
 
 ISSUE_DOCUMENT_NUMBER_SQL = """
@@ -89,6 +90,7 @@ def _quote_insert_binds(
     trade_side: str | None,
     named_place: str | None,
     valid_until: object,
+    revision_no: object,
 ) -> dict[str, object]:
     return {
         "qid": uuid4(),
@@ -106,6 +108,7 @@ def _quote_insert_binds(
         "trade_side": trade_side,
         "named_place": named_place,
         "valid_until": valid_until,
+        "revision_no": revision_no,
     }
 
 
@@ -133,6 +136,7 @@ def quotation_from_insert_row(row: RowMapping) -> Quotation:
         trade_side=row.get("trade_side"),
         named_place=row.get("named_place"),
         valid_until=row.get("valid_until"),
+        revision_no=row.get("revision_no"),
     )
 
 
@@ -162,40 +166,25 @@ class QuotationRepository:
         return list(result.all())
 
     async def insert_from_current_rate(
-        self,
-        *,
-        organization_id: UUID,
-        created_by: UUID,
-        charge_code: str,
-        origin_port_id: UUID,
-        destination_port_id: UUID,
-        party_id: UUID,
-        customer_rfq_id: UUID | None = None,
-        commodity_code_id: UUID | None = None,
-        dangerous_good_id: UUID | None = None,
-        incoterm: str | None = None,
-        incoterms_version: str | None = None,
-        trade_side: str | None = None,
-        named_place: str | None = None,
-        valid_until: object = None,
+        self, *, organization_id: UUID, created_by: UUID, charge_code: str,
+        origin_port_id: UUID, destination_port_id: UUID, party_id: UUID,
+        customer_rfq_id: UUID | None = None, commodity_code_id: UUID | None = None,
+        dangerous_good_id: UUID | None = None, incoterm: str | None = None,
+        incoterms_version: str | None = None, trade_side: str | None = None,
+        named_place: str | None = None, valid_until: object = None,
+        revision_no: object = None,
     ) -> Quotation | None:
         result = await self._session.execute(
             text(QUOTE_FROM_CURRENT_SQL),
             _quote_insert_binds(
-                organization_id=organization_id,
-                created_by=created_by,
-                charge_code=charge_code,
-                origin_port_id=origin_port_id,
-                destination_port_id=destination_port_id,
-                party_id=party_id,
-                customer_rfq_id=customer_rfq_id,
-                commodity_code_id=commodity_code_id,
-                dangerous_good_id=dangerous_good_id,
-                incoterm=incoterm,
-                incoterms_version=incoterms_version,
-                trade_side=trade_side,
-                named_place=named_place,
-                valid_until=valid_until,
+                organization_id=organization_id, created_by=created_by,
+                charge_code=charge_code, origin_port_id=origin_port_id,
+                destination_port_id=destination_port_id, party_id=party_id,
+                customer_rfq_id=customer_rfq_id, commodity_code_id=commodity_code_id,
+                dangerous_good_id=dangerous_good_id, incoterm=incoterm,
+                incoterms_version=incoterms_version, trade_side=trade_side,
+                named_place=named_place, valid_until=valid_until,
+                revision_no=revision_no,
             ),
         )
         row = result.mappings().first()

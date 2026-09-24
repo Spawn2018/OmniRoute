@@ -118,6 +118,26 @@ def require_valid_until(raw: object) -> date | None:
         raise InvalidQuotation("ważność: data kalendarzowa") from exc
 
 
+def require_revision_no(raw: object) -> int | None:
+    if raw is None:
+        return None
+    if type(raw) is str:
+        token = raw.strip()
+        if token == "":
+            return None
+        try:
+            raw = int(token)
+        except ValueError as exc:
+            raise InvalidQuotation("rewizja musi być liczbą całkowitą") from exc
+    if isinstance(raw, float) or isinstance(raw, bool):
+        raise InvalidQuotation("rewizja nie może być float")
+    if type(raw) is not int:
+        raise InvalidQuotation("rewizja musi być liczbą całkowitą")
+    if raw < 1:
+        raise InvalidQuotation("rewizja musi być ≥ 1")
+    return raw
+
+
 def format_quotation_document_number(prefix: str, sequence: int) -> str:
     token = require_document_number_prefix(prefix)
     if sequence < 1:

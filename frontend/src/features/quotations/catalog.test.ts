@@ -47,6 +47,7 @@ function quotationWithCurrency(currency: string): Quotation {
     trade_side: null,
     named_place: null,
     valid_until: null,
+    revision_no: null,
   }
 }
 

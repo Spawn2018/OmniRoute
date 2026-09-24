@@ -9,6 +9,7 @@ from sqlalchemy import (
     ForeignKey,
     ForeignKeyConstraint,
     Index,
+    Integer,
     Numeric,
     String,
     UniqueConstraint,
@@ -143,3 +144,4 @@ class Quotation(Base, TimestampMixin):
     trade_side: Mapped[str | None] = mapped_column(String(6), nullable=True)
     named_place: Mapped[str | None] = mapped_column(String(128), nullable=True)
     valid_until: Mapped[date | None] = mapped_column(Date(), nullable=True)
+    revision_no: Mapped[int | None] = mapped_column(Integer(), nullable=True)

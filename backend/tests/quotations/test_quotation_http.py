@@ -13,7 +13,11 @@ from app.domain.errors import (
     UnknownChargeCode,
     UnknownCreditReview,
 )
-from app.domain.quotation import require_quotation_incoterm, require_valid_until
+from app.domain.quotation import (
+    require_quotation_incoterm,
+    require_revision_no,
+    require_valid_until,
+)
 from app.main import app
 from app.models.quotation import Quotation
 from tests.http_auth import bearer_auth_headers
@@ -77,6 +81,7 @@ class StubQuotationService:
         trade_side: object = None,
         named_place: object = None,
         valid_until: object = None,
+        revision_no: object = None,
     ) -> Quotation:
         token = charge_code.strip().upper()
         if token == "LOOSE":
@@ -87,6 +92,7 @@ class StubQuotationService:
             incoterm, incoterms_version, trade_side, named_place,
         )
         until = require_valid_until(valid_until)
+        revision = require_revision_no(revision_no)
         row = Quotation(
             id=uuid4(),
             organization_id=organization_id,
@@ -107,6 +113,7 @@ class StubQuotationService:
             trade_side=side,
             named_place=place,
             valid_until=until,
+            revision_no=revision,
         )
         self.rows.append(row)
         return row
@@ -119,6 +126,17 @@ class StubQuotationService:
         for row in self.rows:
             if row.id == quotation_id:
                 row.valid_until = require_valid_until(valid_until)
+                return row
+        raise ResourceNotFound("nieznana wycena")
+
+    async def set_revision_no(
+        self,
+        quotation_id: UUID,
+        revision_no: object,
+    ) -> Quotation:
+        for row in self.rows:
+            if row.id == quotation_id:
+                row.revision_no = require_revision_no(revision_no)
                 return row
         raise ResourceNotFound("nieznana wycena")
 
@@ -161,6 +179,7 @@ class StubQuotationService:
         trade_side: object = None,
         named_place: object = None,
         valid_until: object = None,
+        revision_no: object = None,
     ) -> list[Quotation]:
         quoted: list[Quotation] = []
         for code in charge_codes:
@@ -180,6 +199,7 @@ class StubQuotationService:
                     trade_side=trade_side,
                     named_place=named_place,
                     valid_until=valid_until,
+                    revision_no=revision_no,
                 )
             )
         return quoted

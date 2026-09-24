@@ -16,6 +16,7 @@ from app.domain.quotation import (
     require_batch_charge_codes,
     require_lane_party_snapshot,
     require_quotation_incoterm,
+    require_revision_no,
     require_valid_until,
 )
 
@@ -110,4 +111,19 @@ def test_quotation_valid_until_is_calendar_day() -> None:
         require_valid_until(True)
     with pytest.raises(InvalidQuotation, match="ważność"):
         require_valid_until(1)
+
+
+def test_quotation_revision_no_is_positive_int() -> None:
+    assert require_revision_no(None) is None
+    assert require_revision_no("  ") is None
+    assert require_revision_no(1) == 1
+    assert require_revision_no("2") == 2
+    with pytest.raises(InvalidQuotation, match="rewizja"):
+        require_revision_no(0)
+    with pytest.raises(InvalidQuotation, match="rewizja"):
+        require_revision_no(-1)
+    with pytest.raises(InvalidQuotation, match="rewizja"):
+        require_revision_no(1.5)
+    with pytest.raises(InvalidQuotation, match="rewizja"):
+        require_revision_no(True)
 

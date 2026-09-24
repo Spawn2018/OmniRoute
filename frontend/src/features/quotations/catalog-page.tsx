@@ -101,6 +101,7 @@ const columns = [
   }),
   helper.accessor("named_place", { header: "Named place" }),
   helper.accessor("valid_until", { header: "Ważność" }),
+  helper.accessor("revision_no", { header: "Rewizja" }),
   helper.accessor("source_ref", { header: "Pochodzenie" }),
   helper.accessor("rate_line_id", { header: "Stawka" }),
 ]
@@ -116,6 +117,7 @@ const COLUMN_LABELS = {
   destination_port_id: "POD",
   named_place: "Named place",
   valid_until: "Ważność",
+  revision_no: "Rewizja",
   source_ref: "Pochodzenie",
   rate_line_id: "Stawka",
 }
@@ -925,6 +927,7 @@ export function QuotationCatalogPage() {
   const [tradeSide, setTradeSide] = useState("")
   const [namedPlace, setNamedPlace] = useState("")
   const [validUntil, setValidUntil] = useState("")
+  const [revisionNo, setRevisionNo] = useState("")
   const signedIn = Boolean(ctx.organizationId && ctx.userId)
 
   const partiesQuery = useQuery({
@@ -1030,6 +1033,7 @@ export function QuotationCatalogPage() {
           tradeSide,
           namedPlace,
           validUntil,
+          revisionNo,
         }),
       ),
     onSuccess: () => {
@@ -1054,6 +1058,7 @@ export function QuotationCatalogPage() {
           tradeSide,
           namedPlace,
           validUntil,
+          revisionNo,
         }),
       ),
     onSuccess: () => {
@@ -1261,6 +1266,16 @@ export function QuotationCatalogPage() {
             type="date"
             value={validUntil}
             onChange={(event) => setValidUntil(event.target.value)}
+          />
+        </label>
+        <label className="flex flex-col gap-1 text-xs" data-quote-revision-no="field">
+          revision_no
+          <Input
+            aria-label="Numer rewizji wyceny"
+            inputMode="numeric"
+            placeholder="1"
+            value={revisionNo}
+            onChange={(event) => setRevisionNo(event.target.value)}
           />
         </label>
         <Button type="submit" disabled={quoteMutation.isPending || !signedIn || rfqMissingParty}>

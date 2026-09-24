@@ -32,6 +32,7 @@ function quotation(partyId: string | null): Quotation {
     trade_side: null,
     named_place: null,
     valid_until: null,
+    revision_no: null,
   }
 }
 
