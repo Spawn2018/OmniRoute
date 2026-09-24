@@ -93,7 +93,12 @@ async def _seed_thc(live_client: AsyncClient, *, org_id, user_id) -> None:
     created = await live_client.post(
         "/api/v1/charge-codes",
         headers=bearer_auth_headers(organization_id=org_id, user_id=user_id),
-        json={"code": "THC", "name": "Terminal handling", "aliases": []},
+        json={
+            "code": "THC",
+            "name": "Terminal handling",
+            "aliases": [],
+            "source_ref": "fixture://charge-code/thc",
+        },
     )
     assert created.status_code == 201
 
