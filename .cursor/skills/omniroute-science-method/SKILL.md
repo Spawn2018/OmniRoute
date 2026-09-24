@@ -32,7 +32,7 @@ W kodzie (25d §5): `style_cascade_mark` / `style_fidelity_mark` to katalog HITL
 
 | Warstwa | Przykład |
 |---|---|
-| Żądanie właściciela | czat / `16-ETAP2-PYTANIA-DO-BLIZNIAKOW.md` (Gdańsk–Oslo, ≥500k kombinacji) |
+| Żądanie właściciela | czat / `D:\OMNIROUTE-badania\16-ETAP2-PYTANIA-DO-BLIZNIAKOW.md` (Gdańsk–Oslo, ≥500k kombinacji) |
 | Kanon | VISION B.2 cztery tabele; B.4 poziomy 0–5, default 1 |
 | Stan kodu | HITL katalog + ledger; silnik L3+ / what-if solver / score 85% = brak albo zakaz w `AGENTS.md` |
 

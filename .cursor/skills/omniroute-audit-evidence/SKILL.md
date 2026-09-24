@@ -44,7 +44,7 @@ Nie wolno: „wiadomo że”, „zazwyczaj w TMS”, „rynek pokazuje 97%”.
 | Kanon produktu | `docs/VISION.md` |
 | Kolejka / gate | `docs/PLAN-REALIZACJA.md` |
 | Rejestr M-xx | `docs/MODULES.md` |
-| Audyt 2026-09-24 | `25-INDEKS-AUDYTU-2026-09-24.md` i `25*` |
+| Audyt 2026-09-24 | `D:\OMNIROUTE-badania\25-INDEKS-AUDYTU-2026-09-24.md` i seria `25*` poza repo |
 
 Konflikt: cytuj oba, nie „naprawiaj” w ciszy. Nie edytuj `VISION.md`, jeśli zadanie tego zabrania.
 

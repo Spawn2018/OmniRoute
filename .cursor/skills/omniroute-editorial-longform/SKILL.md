@@ -48,7 +48,7 @@ Rozdział nie zaczyna się od negacji. Najpierw fakt ze źródła, potem kontras
 
 ## Budżet ±
 
-Cel stron i tolerancja podaje user. Jeśli za krótko: dołącz kolejne **istniejące** zrzuty (najpierw spis + najdłuższe specy, potem pełne benchmarki). Jeśli za długo: **nie obcinaj faktów** — dziel na `…-czesc-01.md` i `…-czesc-02.md`; część 1 trzyma spis całego tomu.
+Cel stron i tolerancja podaje user. Jeśli za krótko: dołącz kolejne **istniejące** zrzuty (najpierw spis + najdłuższe specy, potem pełne benchmarki). Jeśli za długo: **nie obcinaj faktów** — dziel na dwa pliki z sufiksem -czesc-01 oraz -czesc-02; część 1 trzyma spis całego tomu.
 
 ## Zakaz
 
