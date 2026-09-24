@@ -1,6 +1,7 @@
 # Historia plastrów
 
 | Data | Plaster | Moduł | Opis |
+| 2026-09-25 | Plan 653.0 | leftover EXP1 quotation revision_no | Plan opcjonalny revision_no INTEGER na quotation (`/noc 7`). 652.0 na `main`. |
 | 2026-09-24 | 652.0 | leftover EXP1 quotation valid_until | 2026-09-24 | PRZESZŁO (gate success e55d5f19) | N/A | N/A | OK | leftover | 5-15 | PRZESZŁO | N/A | ~90 | PRZESZŁO |
 | 2026-09-24 | Plan 652.0 | leftover EXP1 quotation valid_until | Plan opcjonalny valid_until DATE na quotation (`/noc 17`). 651.0 gate success. |
 | 2026-09-24 | 651.0 | leftover EXP1 FK fuel_index | 2026-09-24 | PRZESZŁO (gate success 801beb0a) | N/A | N/A | OK | leftover | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
