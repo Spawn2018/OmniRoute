@@ -2031,6 +2031,7 @@ export const SHIPPED_CHARGE_ROUTES = {
   "652.0": "/quotations",
   "653.0": "/quotations",
   "654.0": "/quotations",
+  "655.0": "/quotations",
   "209.0": "/air",
   "210.0": "/shipments",
   "211.0": "/organization-settings",

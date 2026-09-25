@@ -13152,6 +13152,10 @@ export type QuotationBatchCreate = {
      * Mqc Teu
      */
     mqc_teu?: unknown | null;
+    /**
+     * Mqc Window
+     */
+    mqc_window?: unknown | null;
 };
 
 /**
@@ -13214,6 +13218,10 @@ export type QuotationCreate = {
      * Mqc Teu
      */
     mqc_teu?: unknown | null;
+    /**
+     * Mqc Window
+     */
+    mqc_window?: unknown | null;
 };
 
 /**
@@ -13238,6 +13246,16 @@ export type QuotationMqcTeu = {
      * Mqc Teu
      */
     mqc_teu?: unknown | null;
+};
+
+/**
+ * QuotationMqcWindow
+ */
+export type QuotationMqcWindow = {
+    /**
+     * Mqc Window
+     */
+    mqc_window?: unknown | null;
 };
 
 /**
@@ -13356,6 +13374,10 @@ export type QuotationResponse = {
      * Mqc Teu
      */
     mqc_teu: string | null;
+    /**
+     * Mqc Window
+     */
+    mqc_window: string | null;
 };
 
 /**
@@ -23047,6 +23069,36 @@ export type SetQuotationMqcTeuApiV1QuotationsQuotationIdMqcTeuPatchResponses = {
 };
 
 export type SetQuotationMqcTeuApiV1QuotationsQuotationIdMqcTeuPatchResponse = SetQuotationMqcTeuApiV1QuotationsQuotationIdMqcTeuPatchResponses[keyof SetQuotationMqcTeuApiV1QuotationsQuotationIdMqcTeuPatchResponses];
+
+export type SetQuotationMqcWindowApiV1QuotationsQuotationIdMqcWindowPatchData = {
+    body: QuotationMqcWindow;
+    path: {
+        /**
+         * Quotation Id
+         */
+        quotation_id: string;
+    };
+    query?: never;
+    url: '/api/v1/quotations/{quotation_id}/mqc-window';
+};
+
+export type SetQuotationMqcWindowApiV1QuotationsQuotationIdMqcWindowPatchErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type SetQuotationMqcWindowApiV1QuotationsQuotationIdMqcWindowPatchError = SetQuotationMqcWindowApiV1QuotationsQuotationIdMqcWindowPatchErrors[keyof SetQuotationMqcWindowApiV1QuotationsQuotationIdMqcWindowPatchErrors];
+
+export type SetQuotationMqcWindowApiV1QuotationsQuotationIdMqcWindowPatchResponses = {
+    /**
+     * Successful Response
+     */
+    200: QuotationResponse;
+};
+
+export type SetQuotationMqcWindowApiV1QuotationsQuotationIdMqcWindowPatchResponse = SetQuotationMqcWindowApiV1QuotationsQuotationIdMqcWindowPatchResponses[keyof SetQuotationMqcWindowApiV1QuotationsQuotationIdMqcWindowPatchResponses];
 
 export type NoteQuotationRiskApiV1QuotationsQuotationIdNoteRiskPatchData = {
     body: QuotationNoteRisk;

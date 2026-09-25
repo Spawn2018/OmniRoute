@@ -25,6 +25,7 @@ export type Quotation = {
   valid_until: string | null
   revision_no: number | null
   mqc_teu: string | null
+  mqc_window: string | null
 }
 
 export type QuotationDocumentLayout = {
@@ -47,6 +48,7 @@ export type QuotationCreateBody = {
   valid_until?: string
   revision_no?: number
   mqc_teu?: string
+  mqc_window?: string
 }
 
 export type QuotationListFilters = {
@@ -67,6 +69,7 @@ type QuoteOptionalIds = {
   validUntil?: string
   revisionNo?: string
   mqcTeu?: string
+  mqcWindow?: string
 }
 
 function applyQuoteOptionalIds<T extends QuotationCreateBody | QuotationBatchBody>(
@@ -83,6 +86,7 @@ function applyQuoteOptionalIds<T extends QuotationCreateBody | QuotationBatchBod
   const until = args.validUntil?.trim()
   const revisionToken = args.revisionNo?.trim()
   const mqcToken = args.mqcTeu?.trim()
+  const mqcWindowToken = args.mqcWindow?.trim()
   if (rfqId) body.customer_rfq_id = rfqId
   if (hsId) body.commodity_code_id = hsId
   if (unId) body.dangerous_good_id = unId
@@ -93,6 +97,7 @@ function applyQuoteOptionalIds<T extends QuotationCreateBody | QuotationBatchBod
   if (until) body.valid_until = until
   if (revisionToken) body.revision_no = Number(revisionToken)
   if (mqcToken) body.mqc_teu = mqcToken
+  if (mqcWindowToken) body.mqc_window = mqcWindowToken
   return body
 }
 
@@ -111,6 +116,7 @@ export function quotationCreateBody(args: {
   validUntil?: string
   revisionNo?: string
   mqcTeu?: string
+  mqcWindow?: string
 }): QuotationCreateBody {
   return applyQuoteOptionalIds(
     {
@@ -138,6 +144,7 @@ export type QuotationBatchBody = {
   valid_until?: string
   revision_no?: number
   mqc_teu?: string
+  mqc_window?: string
 }
 
 export function quotationBatchBody(args: {
@@ -155,6 +162,7 @@ export function quotationBatchBody(args: {
   validUntil?: string
   revisionNo?: string
   mqcTeu?: string
+  mqcWindow?: string
 }): QuotationBatchBody {
   const charge_codes = args.chargeCodesText
     .split(/\r?\n/)
@@ -484,6 +492,18 @@ export async function setQuotationMqcTeu(
     body: JSON.stringify({ mqc_teu: mqcTeu }),
   })
   return readQuotation(response, "Błąd MQC TEU wyceny")
+}
+
+export async function setQuotationMqcWindow(
+  quotationId: string,
+  mqcWindow: string | null,
+): Promise<Quotation> {
+  const response = await fetch(`/api/v1/quotations/${quotationId}/mqc-window`, {
+    method: "PATCH",
+    headers: { ...requireAuthHeaders(), "Content-Type": "application/json" },
+    body: JSON.stringify({ mqc_window: mqcWindow }),
+  })
+  return readQuotation(response, "Błąd MQC window wyceny")
 }
 
 export async function createQuotationBatch(body: QuotationBatchBody): Promise<Quotation[]> {

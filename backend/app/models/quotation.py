@@ -146,3 +146,4 @@ class Quotation(Base, TimestampMixin):
     valid_until: Mapped[date | None] = mapped_column(Date(), nullable=True)
     revision_no: Mapped[int | None] = mapped_column(Integer(), nullable=True)
     mqc_teu: Mapped[Decimal | None] = mapped_column(Numeric(14, 4), nullable=True)
+    mqc_window: Mapped[str | None] = mapped_column(String(64), nullable=True)

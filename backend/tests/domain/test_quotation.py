@@ -17,6 +17,7 @@ from app.domain.quotation import (
     require_batch_charge_codes,
     require_lane_party_snapshot,
     require_mqc_teu,
+    require_mqc_window,
     require_quotation_incoterm,
     require_revision_no,
     require_valid_until,
@@ -141,4 +142,14 @@ def test_quotation_mqc_teu_is_decimal_not_float() -> None:
         require_mqc_teu(1.5)  # type: ignore[arg-type]
     with pytest.raises(InvalidQuotation, match="mqc teu"):
         require_mqc_teu(True)
+
+
+def test_quotation_mqc_window_is_short_text() -> None:
+    assert require_mqc_window(None) is None
+    assert require_mqc_window("  ") is None
+    assert require_mqc_window("CY2026") == "CY2026"
+    with pytest.raises(InvalidQuotation, match="mqc window"):
+        require_mqc_window(1)
+    with pytest.raises(InvalidQuotation, match="mqc window"):
+        require_mqc_window("x" * 65)
 

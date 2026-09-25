@@ -49,6 +49,7 @@ function quotationWithCurrency(currency: string): Quotation {
     valid_until: null,
     revision_no: null,
     mqc_teu: null,
+    mqc_window: null,
   }
 }
 

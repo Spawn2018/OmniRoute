@@ -6315,6 +6315,64 @@
         }
       }
     },
+    "/api/v1/quotations/{quotation_id}/mqc-window": {
+      "patch": {
+        "tags": [
+          "quotations"
+        ],
+        "summary": "Set Quotation Mqc Window",
+        "operationId": "set_quotation_mqc_window_api_v1_quotations__quotation_id__mqc_window_patch",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "quotation_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Quotation Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuotationMqcWindow"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuotationResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/quotations/{quotation_id}/note-risk": {
       "patch": {
         "tags": [
@@ -50390,6 +50448,15 @@
               }
             ],
             "title": "Mqc Teu"
+          },
+          "mqc_window": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mqc Window"
           }
         },
         "additionalProperties": false,
@@ -50531,6 +50598,15 @@
               }
             ],
             "title": "Mqc Teu"
+          },
+          "mqc_window": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mqc Window"
           }
         },
         "additionalProperties": false,
@@ -50583,6 +50659,22 @@
         "additionalProperties": false,
         "type": "object",
         "title": "QuotationMqcTeu"
+      },
+      "QuotationMqcWindow": {
+        "properties": {
+          "mqc_window": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mqc Window"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "QuotationMqcWindow"
       },
       "QuotationNegotiate": {
         "properties": {
@@ -50831,6 +50923,17 @@
               }
             ],
             "title": "Mqc Teu"
+          },
+          "mqc_window": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mqc Window"
           }
         },
         "type": "object",
@@ -50857,7 +50960,8 @@
           "named_place",
           "valid_until",
           "revision_no",
-          "mqc_teu"
+          "mqc_teu",
+          "mqc_window"
         ],
         "title": "QuotationResponse"
       },

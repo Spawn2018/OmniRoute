@@ -103,6 +103,7 @@ const columns = [
   helper.accessor("valid_until", { header: "Ważność" }),
   helper.accessor("revision_no", { header: "Rewizja" }),
   helper.accessor("mqc_teu", { header: "MQC TEU" }),
+  helper.accessor("mqc_window", { header: "MQC okno" }),
   helper.accessor("source_ref", { header: "Pochodzenie" }),
   helper.accessor("rate_line_id", { header: "Stawka" }),
 ]
@@ -120,6 +121,7 @@ const COLUMN_LABELS = {
   valid_until: "Ważność",
   revision_no: "Rewizja",
   mqc_teu: "MQC TEU",
+  mqc_window: "MQC okno",
   source_ref: "Pochodzenie",
   rate_line_id: "Stawka",
 }
@@ -931,6 +933,7 @@ export function QuotationCatalogPage() {
   const [validUntil, setValidUntil] = useState("")
   const [revisionNo, setRevisionNo] = useState("")
   const [mqcTeu, setMqcTeu] = useState("")
+  const [mqcWindow, setMqcWindow] = useState("")
   const signedIn = Boolean(ctx.organizationId && ctx.userId)
 
   const partiesQuery = useQuery({
@@ -1038,6 +1041,7 @@ export function QuotationCatalogPage() {
           validUntil,
           revisionNo,
           mqcTeu,
+          mqcWindow,
         }),
       ),
     onSuccess: () => {
@@ -1064,6 +1068,7 @@ export function QuotationCatalogPage() {
           validUntil,
           revisionNo,
           mqcTeu,
+          mqcWindow,
         }),
       ),
     onSuccess: () => {
@@ -1291,6 +1296,15 @@ export function QuotationCatalogPage() {
             placeholder="12.5"
             value={mqcTeu}
             onChange={(event) => setMqcTeu(event.target.value)}
+          />
+        </label>
+        <label className="flex flex-col gap-1 text-xs" data-quote-mqc-window="field">
+          mqc_window
+          <Input
+            aria-label="MQC okno wyceny"
+            placeholder="CY2026"
+            value={mqcWindow}
+            onChange={(event) => setMqcWindow(event.target.value)}
           />
         </label>
         <Button type="submit" disabled={quoteMutation.isPending || !signedIn || rfqMissingParty}>

@@ -164,6 +164,22 @@ def require_mqc_teu(raw: object) -> Decimal | None:
     return quantized
 
 
+_MQC_WINDOW_CAP = 64
+
+
+def require_mqc_window(raw: object) -> str | None:
+    if raw is None:
+        return None
+    if type(raw) is not str:
+        raise InvalidQuotation("mqc window musi być tekstem")
+    token = raw.strip()
+    if token == "":
+        return None
+    if len(token) > _MQC_WINDOW_CAP:
+        raise InvalidQuotation("mqc window: 1–64 znaki")
+    return token
+
+
 def format_quotation_document_number(prefix: str, sequence: int) -> str:
     token = require_document_number_prefix(prefix)
     if sequence < 1:

@@ -7,6 +7,7 @@
 **645.0 DONE:** `cargo_claim` evidence HITL — trzy bool `evidence_gps`|`evidence_temp`|`evidence_photo`. Nie Deadline Engine. Nie live GPS. Leftover: Deadline Engine · liable_party S11 · live GPS/foto.
 **646.0 DONE:** `rate_line.allotment_teu` opcjonalny Decimal HITL. Nie matching. Nie float. Nie druga marża. Leftover: spot_or_contract · index_id FSC · matching · live MQC.
 **647.0 DONE:** `rate_line.spot_or_contract` opcjonalny stance HITL. Nie matching. Nie float. Nie FK mark. Leftover: index_id FSC · spot_or_contract na quotation · matching · live MQC.
+**655.0 DONE:** opcjonalny `mqc_window` HITL tekst 1–64 na `quotation`. Nie float. Nie MQC SQL. Leftover: supersedes_id · spot_or_contract na quotation (park) · currency_account/pay → **656.0**.
 **655.0 PLAN:** opcjonalny `mqc_window` HITL tekst 1–64 na `quotation`. Nie float. Nie MQC SQL. Leftover: supersedes_id · spot_or_contract na quotation (park). Delta otwarta `/noc 7` 2026-09-25.
 **654.0 DONE:** opcjonalny `mqc_teu` Decimal na `quotation`. Nie float. Nie MQC SQL. Leftover: mqc_window → **655.0** · supersedes_id · spot_or_contract na quotation (park).
 **654.0 PLAN:** opcjonalny `mqc_teu` Decimal na `quotation`. Nie float. Nie MQC SQL. Leftover: mqc_window · supersedes_id · spot_or_contract na quotation (park). Delta otwarta `/noc 7` 2026-09-25.

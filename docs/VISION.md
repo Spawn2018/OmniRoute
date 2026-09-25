@@ -29,6 +29,7 @@ zostają w badaniach `04`).
 
 | Data | Co |
 |---|---|
+| 2026-09-25 | **655.0** leftover EXP1 opcjonalny `mqc_window` tekst HITL na `quotation` zamknięty: etykieta okna 1–64; katalog `mqc_mark` zostaje (`CONFIRMED`). Float / MQC SQL / Deadline Engine nadal `REJECTED`. Następny = leftover EXP1 `currency_account`/`currency_pay` (**656.0**, `REQUIREMENT`). Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-25 | **655.0** leftover EXP1 opcjonalny `mqc_window` tekst HITL na `quotation` (po `mqc_teu` 654.0): etykieta okna 1–64 — nie float, nie MQC SQL, nie Deadline Engine (`REQUIREMENT`). Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-25 | **654.0** leftover EXP1 opcjonalny `mqc_teu` Decimal na `quotation` zamknięty: zobowiązanie TEU HITL; katalog `mqc_mark` zostaje (`CONFIRMED`). Float / MQC SQL / `mqc_window` nadal `REJECTED` / park. Następny = leftover EXP1 `mqc_window` (**655.0**, `REQUIREMENT`). Marża zostaje na `charge` (`CONFIRMED`). |
 | 2026-09-25 | **654.0** leftover EXP1 opcjonalny `mqc_teu` Decimal na `quotation` (po `revision_no` 653.0): zobowiązanie TEU HITL — nie float, nie MQC SQL, nie `mqc_window` (`REQUIREMENT`). Marża zostaje na `charge` (`CONFIRMED`). |
