@@ -12,7 +12,8 @@ INSERT INTO quotation (
     amount, currency, source_ref, created_by,
     origin_port_id, destination_port_id, party_id, customer_rfq_id,
     commodity_code_id, dangerous_good_id,
-    incoterm, incoterms_version, trade_side, named_place, valid_until, revision_no, mqc_teu, mqc_window
+    incoterm, incoterms_version, trade_side, named_place,
+    valid_until, revision_no, mqc_teu, mqc_window
 )
 SELECT
     :qid,
@@ -46,7 +47,8 @@ RETURNING id, organization_id, charge_code, rate_line_id,
           amount, currency, source_ref, created_by,
           origin_port_id, destination_port_id, party_id, customer_rfq_id,
           commodity_code_id, dangerous_good_id, document_number,
-          incoterm, incoterms_version, trade_side, named_place, valid_until, revision_no, mqc_teu, mqc_window
+          incoterm, incoterms_version, trade_side, named_place,
+          valid_until, revision_no, mqc_teu, mqc_window
 """
 
 ISSUE_DOCUMENT_NUMBER_SQL = """
