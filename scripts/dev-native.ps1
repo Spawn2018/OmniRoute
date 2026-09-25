@@ -152,7 +152,7 @@ function Run-Migrations {
   Write-Step "Alembic upgrade head"
   Push-Location (Join-Path $Root "backend")
   try {
-    $env:DATABASE_URL_SYNC = "postgresql://${PgUser}:${PgPassword}@127.0.0.1:5432/${PgDb}"
+    $env:DATABASE_URL_SYNC = "postgresql+psycopg2://${PgUser}:${PgPassword}@127.0.0.1:5432/${PgDb}"
     $env:DATABASE_URL = "postgresql+asyncpg://${PgUser}:${PgPassword}@127.0.0.1:5432/${PgDb}"
     python -m alembic upgrade head
   } finally {

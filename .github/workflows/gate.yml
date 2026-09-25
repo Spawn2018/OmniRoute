@@ -29,7 +29,7 @@ jobs:
 
     env:
       DATABASE_URL: postgresql+asyncpg://omniroute_app:omniroute@localhost:5432/omniroute
-      DATABASE_URL_SYNC: postgresql://omniroute:omniroute@localhost:5432/omniroute
+      DATABASE_URL_SYNC: postgresql+psycopg2://omniroute:omniroute@localhost:5432/omniroute
       TEST_DATABASE_URL: postgresql+asyncpg://omniroute:omniroute@localhost:5432/omniroute_test
       ADMIN_TEST_DATABASE_URL: postgresql+asyncpg://omniroute:omniroute@localhost:5432/omniroute_test
       TENANT_TEST_DATABASE_URL: postgresql+asyncpg://tenant_tester:test@localhost:5432/omniroute_test

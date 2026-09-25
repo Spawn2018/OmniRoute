@@ -78,7 +78,7 @@ def _sync_admin_url() -> str:
     override = os.getenv("ADMIN_TEST_DATABASE_URL_SYNC")
     if override:
         return override
-    return ADMIN_TEST_DATABASE_URL.replace("postgresql+asyncpg://", "postgresql://", 1)
+    return ADMIN_TEST_DATABASE_URL.replace("postgresql+asyncpg://", "postgresql+psycopg2://", 1)
 
 
 def _ensure_roles(conn) -> None:
