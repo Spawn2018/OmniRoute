@@ -46,7 +46,8 @@ export default function HitlPdfViewer({ pdfBase64, highlightTexts }: HitlPdfView
       if (canvasContext === null) {
         return
       }
-      await pdfPage.render({ canvas, canvasContext, viewport }).promise
+      // pdfjs 4.x: RenderParameters ma canvasContext, nie canvas (6.x dodał canvas)
+      await pdfPage.render({ canvasContext, viewport }).promise
       const content = await pdfPage.getTextContent()
       const needles = highlightTexts.filter((text) => text.length > 0)
       const next: OverlayBox[] = []
