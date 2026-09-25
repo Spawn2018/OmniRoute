@@ -6199,6 +6199,122 @@
         }
       }
     },
+    "/api/v1/quotations/{quotation_id}/revision-no": {
+      "patch": {
+        "tags": [
+          "quotations"
+        ],
+        "summary": "Set Quotation Revision No",
+        "operationId": "set_quotation_revision_no_api_v1_quotations__quotation_id__revision_no_patch",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "quotation_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Quotation Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuotationRevisionNo"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuotationResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/quotations/{quotation_id}/mqc-teu": {
+      "patch": {
+        "tags": [
+          "quotations"
+        ],
+        "summary": "Set Quotation Mqc Teu",
+        "operationId": "set_quotation_mqc_teu_api_v1_quotations__quotation_id__mqc_teu_patch",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "quotation_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Quotation Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuotationMqcTeu"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuotationResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/quotations/{quotation_id}/note-risk": {
       "patch": {
         "tags": [
@@ -50256,6 +50372,24 @@
               }
             ],
             "title": "Valid Until"
+          },
+          "revision_no": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Revision No"
+          },
+          "mqc_teu": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mqc Teu"
           }
         },
         "additionalProperties": false,
@@ -50379,6 +50513,24 @@
               }
             ],
             "title": "Valid Until"
+          },
+          "revision_no": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Revision No"
+          },
+          "mqc_teu": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mqc Teu"
           }
         },
         "additionalProperties": false,
@@ -50415,6 +50567,22 @@
           "print_template"
         ],
         "title": "QuotationDocumentLayout"
+      },
+      "QuotationMqcTeu": {
+        "properties": {
+          "mqc_teu": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mqc Teu"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "QuotationMqcTeu"
       },
       "QuotationNegotiate": {
         "properties": {
@@ -50641,6 +50809,28 @@
               }
             ],
             "title": "Valid Until"
+          },
+          "revision_no": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Revision No"
+          },
+          "mqc_teu": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mqc Teu"
           }
         },
         "type": "object",
@@ -50665,9 +50855,27 @@
           "incoterms_version",
           "trade_side",
           "named_place",
-          "valid_until"
+          "valid_until",
+          "revision_no",
+          "mqc_teu"
         ],
         "title": "QuotationResponse"
+      },
+      "QuotationRevisionNo": {
+        "properties": {
+          "revision_no": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Revision No"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "QuotationRevisionNo"
       },
       "QuotationValidUntil": {
         "properties": {

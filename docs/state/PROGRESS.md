@@ -1,6 +1,7 @@
 # Historia plastrów
 
 | Data | Plaster | Moduł | Opis |
+| 2026-09-25 | 654.0 | leftover EXP1 quotation mqc_teu | 2026-09-25 | lokalne (CI po push) | N/A | N/A | OK | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 2026-09-25 | Plan 654.0 | leftover EXP1 quotation mqc_teu | Plan opcjonalny mqc_teu Decimal na quotation (`/noc 7`). 653.0 na `main`. |
 | 2026-09-25 | 653.0 | leftover EXP1 quotation revision_no | 2026-09-25 | lokalne (CI po push) | N/A | N/A | OK | 5-15 | PRZESZŁO | N/A | N/A | PRZESZŁO |
 | 2026-09-25 | Plan 653.0 | leftover EXP1 quotation revision_no | Plan opcjonalny revision_no INTEGER na quotation (`/noc 7`). 652.0 na `main`. |

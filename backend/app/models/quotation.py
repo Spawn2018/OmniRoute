@@ -145,3 +145,4 @@ class Quotation(Base, TimestampMixin):
     named_place: Mapped[str | None] = mapped_column(String(128), nullable=True)
     valid_until: Mapped[date | None] = mapped_column(Date(), nullable=True)
     revision_no: Mapped[int | None] = mapped_column(Integer(), nullable=True)
+    mqc_teu: Mapped[Decimal | None] = mapped_column(Numeric(14, 4), nullable=True)

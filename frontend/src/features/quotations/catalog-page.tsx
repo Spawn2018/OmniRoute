@@ -102,6 +102,7 @@ const columns = [
   helper.accessor("named_place", { header: "Named place" }),
   helper.accessor("valid_until", { header: "Ważność" }),
   helper.accessor("revision_no", { header: "Rewizja" }),
+  helper.accessor("mqc_teu", { header: "MQC TEU" }),
   helper.accessor("source_ref", { header: "Pochodzenie" }),
   helper.accessor("rate_line_id", { header: "Stawka" }),
 ]
@@ -118,6 +119,7 @@ const COLUMN_LABELS = {
   named_place: "Named place",
   valid_until: "Ważność",
   revision_no: "Rewizja",
+  mqc_teu: "MQC TEU",
   source_ref: "Pochodzenie",
   rate_line_id: "Stawka",
 }
@@ -928,6 +930,7 @@ export function QuotationCatalogPage() {
   const [namedPlace, setNamedPlace] = useState("")
   const [validUntil, setValidUntil] = useState("")
   const [revisionNo, setRevisionNo] = useState("")
+  const [mqcTeu, setMqcTeu] = useState("")
   const signedIn = Boolean(ctx.organizationId && ctx.userId)
 
   const partiesQuery = useQuery({
@@ -1034,6 +1037,7 @@ export function QuotationCatalogPage() {
           namedPlace,
           validUntil,
           revisionNo,
+          mqcTeu,
         }),
       ),
     onSuccess: () => {
@@ -1059,6 +1063,7 @@ export function QuotationCatalogPage() {
           namedPlace,
           validUntil,
           revisionNo,
+          mqcTeu,
         }),
       ),
     onSuccess: () => {
@@ -1276,6 +1281,16 @@ export function QuotationCatalogPage() {
             placeholder="1"
             value={revisionNo}
             onChange={(event) => setRevisionNo(event.target.value)}
+          />
+        </label>
+        <label className="flex flex-col gap-1 text-xs" data-quote-mqc-teu="field">
+          mqc_teu
+          <Input
+            aria-label="MQC TEU wyceny"
+            inputMode="decimal"
+            placeholder="12.5"
+            value={mqcTeu}
+            onChange={(event) => setMqcTeu(event.target.value)}
           />
         </label>
         <Button type="submit" disabled={quoteMutation.isPending || !signedIn || rfqMissingParty}>

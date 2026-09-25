@@ -21,6 +21,7 @@ from app.domain.quotation import (
     require_batch_charge_codes,
     require_document_number_prefix,
     require_lane_party_snapshot,
+    require_mqc_teu,
     require_quotation_incoterm,
     require_revision_no,
     require_valid_until,
@@ -85,6 +86,7 @@ class QuotationService:
         dangerous_good_id: UUID | None = None, incoterm: object = None,
         incoterms_version: object = None, trade_side: object = None,
         named_place: object = None, valid_until: object = None, revision_no: object = None,
+        mqc_teu: object = None,
     ) -> Quotation:
         catalog = await self._require_catalog(charge_code)
         origin, destination, party = require_lane_party_snapshot(
@@ -100,6 +102,7 @@ class QuotationService:
             dangerous_good_id=dangerous_good_id, terms=terms,
             valid_until=require_valid_until(valid_until),
             revision_no=require_revision_no(revision_no),
+            mqc_teu=require_mqc_teu(mqc_teu),
         )
 
     async def quote_batch_from_current_rates(
@@ -109,6 +112,7 @@ class QuotationService:
         dangerous_good_id: UUID | None = None, incoterm: object = None,
         incoterms_version: object = None, trade_side: object = None,
         named_place: object = None, valid_until: object = None, revision_no: object = None,
+        mqc_teu: object = None,
     ) -> list[Quotation]:
         quoted: list[Quotation] = []
         for code in require_batch_charge_codes(charge_codes):
@@ -119,6 +123,7 @@ class QuotationService:
                 commodity_code_id=commodity_code_id, dangerous_good_id=dangerous_good_id,
                 incoterm=incoterm, incoterms_version=incoterms_version, trade_side=trade_side,
                 named_place=named_place, valid_until=valid_until, revision_no=revision_no,
+                mqc_teu=mqc_teu,
             ))
         return quoted
 
@@ -128,7 +133,7 @@ class QuotationService:
         customer_rfq_id: UUID | None, commodity_code_id: UUID | None,
         dangerous_good_id: UUID | None,
         terms: tuple[str | None, str | None, str | None, str | None],
-        valid_until: object, revision_no: object,
+        valid_until: object, revision_no: object, mqc_teu: object,
     ) -> Quotation:
         try:
             quoted = await self._quotations.insert_from_current_rate(
@@ -138,6 +143,7 @@ class QuotationService:
                 commodity_code_id=commodity_code_id, dangerous_good_id=dangerous_good_id,
                 incoterm=terms[0], incoterms_version=terms[1], trade_side=terms[2],
                 named_place=terms[3], valid_until=valid_until, revision_no=revision_no,
+                mqc_teu=mqc_teu,
             )
         except IntegrityError as exc:
             mapped = _snapshot_integrity_error(exc)
@@ -168,6 +174,17 @@ class QuotationService:
         if row is None:
             raise ResourceNotFound("nieznana wycena")
         row.revision_no = require_revision_no(revision_no)
+        return await self._quotations.save(row)
+
+    async def set_mqc_teu(
+        self,
+        quotation_id: UUID,
+        mqc_teu: object,
+    ) -> Quotation:
+        row = await self._quotations.get(quotation_id)
+        if row is None:
+            raise ResourceNotFound("nieznana wycena")
+        row.mqc_teu = require_mqc_teu(mqc_teu)
         return await self._quotations.save(row)
 
     async def set_noted_credit_review(

@@ -44,6 +44,7 @@ class QuotationCreate(BaseModel):
     named_place: str | None = None
     valid_until: object | None = None
     revision_no: object | None = None
+    mqc_teu: object | None = None
 
 
 class QuotationBatchCreate(BaseModel):
@@ -62,6 +63,7 @@ class QuotationBatchCreate(BaseModel):
     named_place: str | None = None
     valid_until: object | None = None
     revision_no: object | None = None
+    mqc_teu: object | None = None
 
 
 class QuotationResponse(BaseModel):
@@ -87,11 +89,13 @@ class QuotationResponse(BaseModel):
     named_place: str | None
     valid_until: date | None
     revision_no: int | None
+    mqc_teu: str | None
 
     @classmethod
     def from_row(cls, row: Quotation) -> "QuotationResponse":
         money = Money.of(row.amount, row.currency)
         amount_text, currency = money.as_pair()
+        teu = None if row.mqc_teu is None else format(row.mqc_teu, "f")
         return cls(
             id=row.id,
             organization_id=row.organization_id,
@@ -115,6 +119,7 @@ class QuotationResponse(BaseModel):
             named_place=row.named_place,
             valid_until=row.valid_until,
             revision_no=row.revision_no,
+            mqc_teu=teu,
         )
 
 
@@ -140,6 +145,12 @@ class QuotationRevisionNo(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     revision_no: object | None = None
+
+
+class QuotationMqcTeu(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    mqc_teu: object | None = None
 
 
 class QuotationDocumentLayout(BaseModel):
@@ -235,6 +246,7 @@ async def create_quotation(
         named_place=body.named_place,
         valid_until=body.valid_until,
         revision_no=body.revision_no,
+        mqc_teu=body.mqc_teu,
     )
     await session.commit()
     return QuotationResponse.from_row(row)
@@ -267,6 +279,7 @@ async def create_quotation_batch(
         named_place=body.named_place,
         valid_until=body.valid_until,
         revision_no=body.revision_no,
+        mqc_teu=body.mqc_teu,
     )
     await session.commit()
     return [QuotationResponse.from_row(row) for row in rows]
@@ -322,6 +335,21 @@ async def set_quotation_revision_no(
     row = await QuotationService(session).set_revision_no(
         quotation_id,
         body.revision_no,
+    )
+    await session.commit()
+    return QuotationResponse.from_row(row)
+
+
+@router.patch("/{quotation_id}/mqc-teu", response_model=QuotationResponse)
+async def set_quotation_mqc_teu(
+    quotation_id: UUID,
+    body: QuotationMqcTeu,
+    _authz: None = Depends(require_permission("can_manage_quotations", "organization")),
+    session: AsyncSession = Depends(require_tenant_session),
+) -> QuotationResponse:
+    row = await QuotationService(session).set_mqc_teu(
+        quotation_id,
+        body.mqc_teu,
     )
     await session.commit()
     return QuotationResponse.from_row(row)

@@ -13144,6 +13144,14 @@ export type QuotationBatchCreate = {
      * Valid Until
      */
     valid_until?: unknown | null;
+    /**
+     * Revision No
+     */
+    revision_no?: unknown | null;
+    /**
+     * Mqc Teu
+     */
+    mqc_teu?: unknown | null;
 };
 
 /**
@@ -13198,6 +13206,14 @@ export type QuotationCreate = {
      * Valid Until
      */
     valid_until?: unknown | null;
+    /**
+     * Revision No
+     */
+    revision_no?: unknown | null;
+    /**
+     * Mqc Teu
+     */
+    mqc_teu?: unknown | null;
 };
 
 /**
@@ -13212,6 +13228,16 @@ export type QuotationDocumentLayout = {
      * Print Template
      */
     print_template: string;
+};
+
+/**
+ * QuotationMqcTeu
+ */
+export type QuotationMqcTeu = {
+    /**
+     * Mqc Teu
+     */
+    mqc_teu?: unknown | null;
 };
 
 /**
@@ -13322,6 +13348,24 @@ export type QuotationResponse = {
      * Valid Until
      */
     valid_until: string | null;
+    /**
+     * Revision No
+     */
+    revision_no: number | null;
+    /**
+     * Mqc Teu
+     */
+    mqc_teu: string | null;
+};
+
+/**
+ * QuotationRevisionNo
+ */
+export type QuotationRevisionNo = {
+    /**
+     * Revision No
+     */
+    revision_no?: unknown | null;
 };
 
 /**
@@ -22943,6 +22987,66 @@ export type SetQuotationValidUntilApiV1QuotationsQuotationIdValidUntilPatchRespo
 };
 
 export type SetQuotationValidUntilApiV1QuotationsQuotationIdValidUntilPatchResponse = SetQuotationValidUntilApiV1QuotationsQuotationIdValidUntilPatchResponses[keyof SetQuotationValidUntilApiV1QuotationsQuotationIdValidUntilPatchResponses];
+
+export type SetQuotationRevisionNoApiV1QuotationsQuotationIdRevisionNoPatchData = {
+    body: QuotationRevisionNo;
+    path: {
+        /**
+         * Quotation Id
+         */
+        quotation_id: string;
+    };
+    query?: never;
+    url: '/api/v1/quotations/{quotation_id}/revision-no';
+};
+
+export type SetQuotationRevisionNoApiV1QuotationsQuotationIdRevisionNoPatchErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type SetQuotationRevisionNoApiV1QuotationsQuotationIdRevisionNoPatchError = SetQuotationRevisionNoApiV1QuotationsQuotationIdRevisionNoPatchErrors[keyof SetQuotationRevisionNoApiV1QuotationsQuotationIdRevisionNoPatchErrors];
+
+export type SetQuotationRevisionNoApiV1QuotationsQuotationIdRevisionNoPatchResponses = {
+    /**
+     * Successful Response
+     */
+    200: QuotationResponse;
+};
+
+export type SetQuotationRevisionNoApiV1QuotationsQuotationIdRevisionNoPatchResponse = SetQuotationRevisionNoApiV1QuotationsQuotationIdRevisionNoPatchResponses[keyof SetQuotationRevisionNoApiV1QuotationsQuotationIdRevisionNoPatchResponses];
+
+export type SetQuotationMqcTeuApiV1QuotationsQuotationIdMqcTeuPatchData = {
+    body: QuotationMqcTeu;
+    path: {
+        /**
+         * Quotation Id
+         */
+        quotation_id: string;
+    };
+    query?: never;
+    url: '/api/v1/quotations/{quotation_id}/mqc-teu';
+};
+
+export type SetQuotationMqcTeuApiV1QuotationsQuotationIdMqcTeuPatchErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type SetQuotationMqcTeuApiV1QuotationsQuotationIdMqcTeuPatchError = SetQuotationMqcTeuApiV1QuotationsQuotationIdMqcTeuPatchErrors[keyof SetQuotationMqcTeuApiV1QuotationsQuotationIdMqcTeuPatchErrors];
+
+export type SetQuotationMqcTeuApiV1QuotationsQuotationIdMqcTeuPatchResponses = {
+    /**
+     * Successful Response
+     */
+    200: QuotationResponse;
+};
+
+export type SetQuotationMqcTeuApiV1QuotationsQuotationIdMqcTeuPatchResponse = SetQuotationMqcTeuApiV1QuotationsQuotationIdMqcTeuPatchResponses[keyof SetQuotationMqcTeuApiV1QuotationsQuotationIdMqcTeuPatchResponses];
 
 export type NoteQuotationRiskApiV1QuotationsQuotationIdNoteRiskPatchData = {
     body: QuotationNoteRisk;

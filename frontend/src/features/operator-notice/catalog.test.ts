@@ -33,6 +33,7 @@ function quotation(partyId: string | null): Quotation {
     named_place: null,
     valid_until: null,
     revision_no: null,
+    mqc_teu: null,
   }
 }
 

@@ -1,4 +1,5 @@
 from datetime import date
+from decimal import Decimal, InvalidOperation
 from uuid import UUID
 
 from app.domain.charge_code import normalize_aliases
@@ -20,6 +21,8 @@ _TRADE_SIDES = frozenset({"import", "export"})
 _PLACE_RULES = frozenset({"DAP", "DDP"})
 
 _BATCH_CHARGE_CODE_LIMIT = 20
+_FOUR = Decimal("0.0001")
+_MAX_ABS = Decimal("10000000000")
 
 
 def require_lane_party_snapshot(
@@ -136,6 +139,29 @@ def require_revision_no(raw: object) -> int | None:
     if raw < 1:
         raise InvalidQuotation("rewizja musi być ≥ 1")
     return raw
+
+
+def require_mqc_teu(raw: object) -> Decimal | None:
+    if raw is None:
+        return None
+    if type(raw) is str and raw.strip() == "":
+        return None
+    if isinstance(raw, float) or isinstance(raw, bool):
+        raise InvalidQuotation("mqc teu nie może być float")
+    if not isinstance(raw, Decimal | str | int):
+        raise InvalidQuotation("mqc teu musi być liczbą dziesiętną")
+    try:
+        parsed = raw if isinstance(raw, Decimal) else Decimal(str(raw))
+    except InvalidOperation as exc:
+        raise InvalidQuotation("mqc teu musi być liczbą dziesiętną") from exc
+    if not parsed.is_finite():
+        raise InvalidQuotation("mqc teu musi być skończona")
+    if parsed < 0:
+        raise InvalidQuotation("mqc teu nie może być ujemne")
+    quantized = parsed.quantize(_FOUR)
+    if quantized >= _MAX_ABS:
+        raise InvalidQuotation("mqc teu: precyzja Numeric(14,4)")
+    return quantized
 
 
 def format_quotation_document_number(prefix: str, sequence: int) -> str:

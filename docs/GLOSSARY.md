@@ -21,7 +21,7 @@ kolumn. Nie 468.0.
 | grupa pakowania | packing_group | HITL na `dangerous_good`: `I`\|`II`\|`III` (642.0); nie live IMO; nie LLM klasy |
 | zanieczyszczenie morza | marine_pollutant | HITL bool na `dangerous_good` (643.0); nie live IMO; nie LLM klasy |
 | limited quantity | limited_quantity | HITL bool na `dangerous_good` (644.0); nie live IMO; nie LLM klasy |
-| wycena | quotation | opcjonalny `valid_until` DATE HITL (652.0); opcjonalny `revision_no` INTEGER HITL ≥ 1 (653.0); nie Deadline Engine; nie float |
+| wycena | quotation | opcjonalny `valid_until` DATE HITL (652.0); opcjonalny `revision_no` INTEGER HITL ≥ 1 (653.0); opcjonalny `mqc_teu` Decimal HITL (654.0); nie Deadline Engine; nie float; nie MQC SQL |
 | luka wyceny | quotation_gap | brakująca dopłata |
 | port załadunku | origin_port_id | POL na `quotation`; FK do `port` |
 | port wyładunku | destination_port_id | POD na `quotation`; FK do `port` |

@@ -14,6 +14,7 @@ from app.domain.errors import (
     UnknownCreditReview,
 )
 from app.domain.quotation import (
+    require_mqc_teu,
     require_quotation_incoterm,
     require_revision_no,
     require_valid_until,
@@ -82,6 +83,7 @@ class StubQuotationService:
         named_place: object = None,
         valid_until: object = None,
         revision_no: object = None,
+        mqc_teu: object = None,
     ) -> Quotation:
         token = charge_code.strip().upper()
         if token == "LOOSE":
@@ -93,6 +95,7 @@ class StubQuotationService:
         )
         until = require_valid_until(valid_until)
         revision = require_revision_no(revision_no)
+        teu = require_mqc_teu(mqc_teu)
         row = Quotation(
             id=uuid4(),
             organization_id=organization_id,
@@ -114,6 +117,7 @@ class StubQuotationService:
             named_place=place,
             valid_until=until,
             revision_no=revision,
+            mqc_teu=teu,
         )
         self.rows.append(row)
         return row
@@ -137,6 +141,17 @@ class StubQuotationService:
         for row in self.rows:
             if row.id == quotation_id:
                 row.revision_no = require_revision_no(revision_no)
+                return row
+        raise ResourceNotFound("nieznana wycena")
+
+    async def set_mqc_teu(
+        self,
+        quotation_id: UUID,
+        mqc_teu: object,
+    ) -> Quotation:
+        for row in self.rows:
+            if row.id == quotation_id:
+                row.mqc_teu = require_mqc_teu(mqc_teu)
                 return row
         raise ResourceNotFound("nieznana wycena")
 
@@ -180,6 +195,7 @@ class StubQuotationService:
         named_place: object = None,
         valid_until: object = None,
         revision_no: object = None,
+        mqc_teu: object = None,
     ) -> list[Quotation]:
         quoted: list[Quotation] = []
         for code in charge_codes:
@@ -200,6 +216,7 @@ class StubQuotationService:
                     named_place=named_place,
                     valid_until=valid_until,
                     revision_no=revision_no,
+                    mqc_teu=mqc_teu,
                 )
             )
         return quoted
@@ -558,3 +575,40 @@ def test_http_quote_keeps_amount_from_stub_not_incoterm(
     body = created.json()
     assert body["incoterm"] == "FOB"
     assert body["amount"] == "10.5000"
+
+
+def test_http_create_with_mqc_teu(quotations_client: TestClient) -> None:
+    created = quotations_client.post(
+        "/api/v1/quotations",
+        headers=bearer_auth_headers(),
+        json={**_lane_body(), "mqc_teu": "12.5"},
+    )
+    assert created.status_code == 201
+    assert created.json()["mqc_teu"] == "12.5000"
+
+
+def test_http_rejects_float_mqc_teu(quotations_client: TestClient) -> None:
+    response = quotations_client.post(
+        "/api/v1/quotations",
+        headers=bearer_auth_headers(),
+        json={**_lane_body(), "mqc_teu": 1.5},
+    )
+    assert response.status_code == 400
+    assert "mqc teu" in response.json()["detail"]
+
+
+def test_http_patch_mqc_teu(quotations_client: TestClient) -> None:
+    created = quotations_client.post(
+        "/api/v1/quotations",
+        headers=bearer_auth_headers(),
+        json=_lane_body(),
+    )
+    assert created.status_code == 201
+    qid = created.json()["id"]
+    patched = quotations_client.patch(
+        f"/api/v1/quotations/{qid}/mqc-teu",
+        headers=bearer_auth_headers(),
+        json={"mqc_teu": "3"},
+    )
+    assert patched.status_code == 200
+    assert patched.json()["mqc_teu"] == "3.0000"

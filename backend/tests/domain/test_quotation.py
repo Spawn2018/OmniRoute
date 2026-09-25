@@ -1,4 +1,5 @@
 from datetime import date
+from decimal import Decimal
 from uuid import UUID, uuid4
 
 import pytest
@@ -15,6 +16,7 @@ from app.domain.errors import (
 from app.domain.quotation import (
     require_batch_charge_codes,
     require_lane_party_snapshot,
+    require_mqc_teu,
     require_quotation_incoterm,
     require_revision_no,
     require_valid_until,
@@ -126,4 +128,17 @@ def test_quotation_revision_no_is_positive_int() -> None:
         require_revision_no(1.5)
     with pytest.raises(InvalidQuotation, match="rewizja"):
         require_revision_no(True)
+
+
+def test_quotation_mqc_teu_is_decimal_not_float() -> None:
+    assert require_mqc_teu(None) is None
+    assert require_mqc_teu("  ") is None
+    assert require_mqc_teu("12.5") == Decimal("12.5000")
+    assert require_mqc_teu(Decimal("1")) == Decimal("1.0000")
+    with pytest.raises(InvalidQuotation, match="mqc teu"):
+        require_mqc_teu("-1")
+    with pytest.raises(InvalidQuotation, match="mqc teu"):
+        require_mqc_teu(1.5)  # type: ignore[arg-type]
+    with pytest.raises(InvalidQuotation, match="mqc teu"):
+        require_mqc_teu(True)
 
