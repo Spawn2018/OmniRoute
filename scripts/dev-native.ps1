@@ -210,7 +210,7 @@ NASTĘPNE KROKI (dwa terminale PowerShell):
 1) API:
    cd $Root\backend
    `$env:DATABASE_URL='postgresql+asyncpg://${PgUser}:${PgPassword}@127.0.0.1:5432/${PgDb}'
-   `$env:DATABASE_URL_SYNC='postgresql://${PgUser}:${PgPassword}@127.0.0.1:5432/${PgDb}'
+   `$env:DATABASE_URL_SYNC='postgresql+psycopg2://${PgUser}:${PgPassword}@127.0.0.1:5432/${PgDb}'
    `$env:OPENFGA_API_URL='http://127.0.0.1:8080'
    # po seedzie ustaw OPENFGA_STORE_ID / OPENFGA_MODEL_ID z outputu
    python -m granian --interface asgi app.main:app --reload --host 127.0.0.1 --port 8000
